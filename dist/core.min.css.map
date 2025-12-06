@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/core.css"],"names":[],"mappings":"AAAA","file":"core.min.css","sourcesContent":["@import \"primitives.css\";\r\n@import \"base.css\";\r\n@import \"layout.css\";\r\n"]}

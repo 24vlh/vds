@@ -22,3 +22,126 @@ VDS operates as a long-term invariant.
 Once defined, it removes unnecessary re-decision of presentation mechanics and stabilises modification boundaries.
 It prevents drift, constrains variation and enables higher-order systems—prototypes, internal tools, customer-facing
 products and consulting assets—to evolve on top of a consistent, non-negotiable presentation substrate.
+
+-------------------------------------------------------------------------------
+
+## Installation
+
+npm install vds
+
+-------------------------------------------------------------------------------
+
+## Directory Structure
+
+The package ships two surfaces.
+
+### src/ — Authoring Source
+
+Raw uncompiled modules intended for teams integrating PostCSS or internal pipelines.
+
+```
+src/
+  core.css
+  index.css
+  identity.css
+  primitives.css
+  base.css
+  layout.css
+  utilities.css
+  components/
+    *.css
+  themes/
+    *.css
+```
+
+### dist/ — Compiled Output
+
+Production-ready bundles and modular components/themes.
+
+```
+dist/
+  vds.css
+  vds.min.css
+  core.css
+  core.min.css
+  identity.css
+  identity.min.css
+
+  components/
+    *.css
+    *.min.css
+
+  themes/
+    *.css
+    *.min.css
+```
+
+All outputs include source maps.
+
+-------------------------------------------------------------------------------
+
+## Loading Model
+
+VDS provides two consumption models.
+
+-------------------------------------------------------------------------------
+
+### 1. Full Framework Load
+
+Load the complete system (foundation + components + themes):
+
+```
+@import "vds/dist/vds.css";
+```
+
+-------------------------------------------------------------------------------
+
+### 2. Component-Level Load
+
+For optimised builds, load the foundation once:
+
+```
+@import "vds/dist/core.css";
+```
+
+Then import only required components:
+
+```
+@import "vds/dist/components/button.css";
+@import "vds/dist/components/card.css";
+```
+
+Themes are optional:
+
+```
+@import "vds/dist/themes/graphite.css";
+```
+
+Core must be loaded once before any component-level imports.
+
+-------------------------------------------------------------------------------
+
+## Production Builds
+
+Minified outputs are available for all artifacts:
+
+```
+dist/vds.min.css
+dist/core.min.css
+dist/identity.min.css
+dist/components/*.min.css
+dist/themes/*.min.css
+```
+
+Each minified file includes a corresponding ```.map.```
+
+-------------------------------------------------------------------------------
+
+## Source Consumption
+
+Teams integrating VDS into a custom toolchain may import directly from src. When consuming raw modules, the foundational
+order (primitives → base → layout → utilities) must be preserved manually.
+
+## Note
+
+Development requires a POSIX environment (Linux/macOS).
