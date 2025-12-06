@@ -1,0 +1,1277 @@
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <header class="section__header">
+            <div class="section__eyebrow">Layout surfaces</div>
+            <h1 class="section__title">Sections System (V2)</h1>
+            <p class="section__subtitle">
+                Structural building blocks for page-level content. V2 keeps legacy densities (A/B/C)
+                and adds universal rhythm (XS–XL), clean split reversal, inset variants, grid gaps,
+                stacks, inline stacks, and value lists — all token-driven.
+            </p>
+        </header>
+
+        <div class="section__list">
+            <div class="section__list-item">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M3 8.5 6.5 12 13 4" fill="none" stroke="currentColor" stroke-width="1.6"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                    <div class="section__list-item-title">Backwards compatible</div>
+                    <div class="section__list-item-desc">
+                        Existing pages using <code>A/B/C</code>, split, grids, stacks and lists continue to work.
+                    </div>
+                </div>
+            </div>
+
+            <div class="section__list-item">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M8 4.5v4l2 2" fill="none" stroke="currentColor" stroke-width="1.6"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                    <div class="section__list-item-title">Universal rhythm</div>
+                    <div class="section__list-item-desc">
+                        New <code>.section--xs/sm/md/lg/xl</code> uses primitives section-spacing tokens for predictable
+                        pacing.
+                    </div>
+                </div>
+            </div>
+
+            <div class="section__list-item">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <rect x="2.5" y="3" width="11" height="10" rx="1.8" ry="1.8" fill="none"
+                          stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M2.5 6.5h11" fill="none" stroke="currentColor" stroke-width="1.6"
+                          stroke-linecap="round"/>
+                </svg>
+                <div>
+                    <div class="section__list-item-title">Composable layouts</div>
+                    <div class="section__list-item-desc">
+                        Split sections, grids, stacks and lists compose into landing pages, docs, dashboards, and
+                        utilities.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation & dependencies</h2>
+                <p class="doc-block__summary">
+                    Sections are structural only. They depend on system tokens and typography. They do not
+                    ship standalone components — they host components.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <ul>
+                        <li><code>primitives.css</code> — global VDS tokens (spacing, radii, layout
+                            widths).
+                        </li>
+                        <li><code>base.css</code> — resets and semantic defaults.</li>
+                        <li><code>typography.css</code> — headings/body scale used in section headers.
+                        </li>
+                        <li><code>sections.css</code> — this subsystem (V2).</li>
+                        <li><code>doc-block.css</code> — documentation engine (for this page only).
+                        </li>
+                        <li><code>content-blocks.css</code> — cards, features etc. used in examples.
+                        </li>
+                        <li>One active theme (<code>slate.css</code> / others) for colours.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="../css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="../css/base.css"&gt;
+&lt;link rel="stylesheet" href="../css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/themes/slate.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/sections.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/content-blocks.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/doc-block.css"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Structural model</h2>
+                <p class="doc-block__summary">
+                    Every section is a full-width band (<code>.section</code>) with a constrained inner
+                    container (<code>.section__inner</code>). An optional header group provides an
+                    eyebrow, title, and subtitle.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--b">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Example section</div>
+                                <h2 class="section__title">Base container + inner</h2>
+                                <p class="section__subtitle">
+                                    Outer band controls vertical rhythm and background. Inner container
+                                    constrains width and arranges content.
+                                </p>
+                            </header>
+
+                            <div class="section__grid-2 section__grid-sm">
+                                <article class="card">
+                                    <div class="card__header">
+                                        <div class="text-sm text-mono">.section</div>
+                                        <div class="text-sm">Outer band</div>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="text-sm">
+                                            Controls vertical padding / density / background / dividers.
+                                        </p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <div class="card__header">
+                                        <div class="text-sm text-mono">.section__inner</div>
+                                        <div class="text-sm">Inner container</div>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="text-sm">
+                                            Width constrained to <code>--layout-max-width</code> and padded
+                                            horizontally.
+                                        </p>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section"&gt;
+    &lt;div class="section__inner"&gt;
+
+        &lt;header class="section__header"&gt;
+            &lt;div class="section__eyebrow"&gt;Section label&lt;/div&gt;
+            &lt;h2 class="section__title"&gt;Section title&lt;/h2&gt;
+            &lt;p class="section__subtitle"&gt;Short description.&lt;/p&gt;
+        &lt;/header&gt;
+
+        &lt;div class="section__stack"&gt;...&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Legacy density (A / B / C) + header alignment</h2>
+                <p class="doc-block__summary">
+                    The A/B/C density system remains intact for backwards compatibility. It adjusts
+                    vertical padding and heading scale. Alignment variants affect only the header.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="section__grid-3 section__grid-sm">
+
+                        <section data-vds-dock-block data-vds-content-block class="section section--a">
+                            <div class="section__inner">
+                                <header class="section__header">
+                                    <div class="section__eyebrow">A</div>
+                                    <h2 class="section__title">Hero density</h2>
+                                    <p class="section__subtitle">
+                                        Largest padding, largest title.
+                                    </p>
+                                </header>
+                            </div>
+                        </section>
+
+                        <section data-vds-dock-block data-vds-content-block class="section section--b section--center">
+                            <div class="section__inner">
+                                <header class="section__header">
+                                    <div class="section__eyebrow">B</div>
+                                    <h2 class="section__title">Default density</h2>
+                                    <p class="section__subtitle">
+                                        Balanced spacing for most page bands.
+                                    </p>
+                                </header>
+                            </div>
+                        </section>
+
+                        <section data-vds-dock-block data-vds-content-block class="section section--c section--right">
+                            <div class="section__inner">
+                                <header class="section__header">
+                                    <div class="section__eyebrow">C</div>
+                                    <h2 class="section__title">Compact density</h2>
+                                    <p class="section__subtitle">
+                                        Tighter padding, smaller title.
+                                    </p>
+                                </header>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section section--a"&gt;...&lt;/section&gt;
+&lt;section class="section section--b"&gt;...&lt;/section&gt;
+&lt;section class="section section--c"&gt;...&lt;/section&gt;
+
+&lt;section class="section section--center"&gt;...&lt;/section&gt;
+&lt;section class="section section--right"&gt;...&lt;/section&gt;
+</code></pre>
+                </div>
+
+                <div class="doc-block__preview">
+                    <p class="text-sm text-muted">
+                        Recommendation: use A for hero/entry sections, B for standard bands,
+                        C for dense dashboards or support pages.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Universal rhythm (XS / SM / MD / LG / XL)</h2>
+                <p class="doc-block__summary">
+                    V2 introduces a token-driven rhythm scale. These map to
+                    <code>--section-spacing-*</code> in primitives.css. Use when you want consistent
+                    pacing across pages without relying on A/B/C.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="section__grid-5 section__grid-sm">
+                        <div class="card">
+                            <div class="card__header">
+                                <div class="text-sm text-mono">.section--xs</div>
+                            </div>
+                            <div class="card__body"><p class="text-sm">Micro bands, tight utility strips.</p></div>
+                        </div>
+                        <div class="card">
+                            <div class="card__header">
+                                <div class="text-sm text-mono">.section--sm</div>
+                            </div>
+                            <div class="card__body"><p class="text-sm">Short content bands.</p></div>
+                        </div>
+                        <div class="card">
+                            <div class="card__header">
+                                <div class="text-sm text-mono">.section--md</div>
+                            </div>
+                            <div class="card__body"><p class="text-sm">Default rhythm.</p></div>
+                        </div>
+                        <div class="card">
+                            <div class="card__header">
+                                <div class="text-sm text-mono">.section--lg</div>
+                            </div>
+                            <div class="card__body"><p class="text-sm">Story blocks, large features.</p></div>
+                        </div>
+                        <div class="card">
+                            <div class="card__header">
+                                <div class="text-sm text-mono">.section--xl</div>
+                            </div>
+                            <div class="card__body"><p class="text-sm">Full-hero pacing.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section section--xs"&gt;...&lt;/section&gt;
+&lt;section class="section section--sm"&gt;...&lt;/section&gt;
+&lt;section class="section section--md"&gt;...&lt;/section&gt;
+&lt;section class="section section--lg"&gt;...&lt;/section&gt;
+&lt;section class="section section--xl"&gt;...&lt;/section&gt;
+</code></pre>
+                </div>
+
+                <div class="doc-block__preview">
+                    <p class="text-sm">
+                        These can be combined with any other section modifier (surface, split, alt, etc.).
+                        If both A/B/C and XS–XL are used, the *later class wins* in normal CSS order.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Flush & divided sections</h2>
+                <p class="doc-block__summary">
+                    Flush removes top/bottom padding. Dividers add semantic borders between stacked bands.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--flush section--divided">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Flush + divided</div>
+                                <h2 class="section__title">Use with self-padded components</h2>
+                                <p class="section__subtitle">
+                                    Ideal for tables, charts, embeds that already define outer padding.
+                                </p>
+                            </header>
+
+                            <div class="card">
+                                <div class="card__body">
+                                    <p class="text-sm">
+                                        Drop a full-width component here (table, timeline, embed).
+                                        The section won’t add extra vertical padding.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block class="section section--divided section--b">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Divided</div>
+                                <h2 class="section__title">Sequential bands</h2>
+                                <p class="section__subtitle">
+                                    Stack multiple <code>.section--divided</code> for clean vertical rhythm.
+                                </p>
+                            </header>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section section--flush"&gt;...&lt;/section&gt;
+
+&lt;section class="section section--divided"&gt;...&lt;/section&gt;
+&lt;section class="section section--divided"&gt;...&lt;/section&gt;
+
+&lt;section class="section section--divided-x"&gt;...&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Surface, subtle, alternate & brand bands</h2>
+                <p class="doc-block__summary">
+                    Bands change section background/edge behavior. Surface creates card-like elevation;
+                    subtle and alt provide low-contrast grouping; brand provides accent-tinted sections.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__grid-4 section__grid-sm">
+                    <section data-vds-dock-block data-vds-content-block class="section section--surface section--sm">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Surface</div>
+                                <h2 class="section__title">Elevated block</h2>
+                                <p class="section__subtitle">Border + radius + hover.</p>
+                            </header>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block class="section section--subtle section--sm">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Subtle</div>
+                                <h2 class="section__title">Soft grouping</h2>
+                                <p class="section__subtitle">Low-contrast surface.</p>
+                            </header>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block class="section section--alt section--sm">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Alt</div>
+                                <h2 class="section__title">Background band</h2>
+                                <p class="section__subtitle">Alternating pages.</p>
+                            </header>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block class="section section--brand section--sm">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Brand</div>
+                                <h2 class="section__title">Accent tint</h2>
+                                <p class="section__subtitle">Soft brand emphasis.</p>
+                            </header>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section section--surface"&gt;...&lt;/section&gt;
+&lt;section class="section section--subtle"&gt;...&lt;/section&gt;
+&lt;section class="section section--alt"&gt;...&lt;/section&gt;
+&lt;section class="section section--brand"&gt;...&lt;/section&gt;
+</code></pre>
+                </div>
+
+                <div class="doc-block__preview">
+                    <p class="text-sm">
+                        Surface sections default to LG padding in V2. Combine with XS–XL or A/B/C to override.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Split sections (normal & reverse)</h2>
+                <p class="doc-block__summary">
+                    Split exposes a two-column grid for copy + media/features. V2 reverse uses clean ordering
+                    (no RTL hack). Both collapse to one column under 1024px.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--split section--surface section--b">
+                        <div class="section__inner">
+
+                            <div class="section__stack">
+                                <header class="section__header">
+                                    <div class="section__eyebrow">Split layout</div>
+                                    <h2 class="section__title">Text left, content right</h2>
+                                    <p class="section__subtitle">
+                                        Use narrative on the left, supporting blocks on the right.
+                                    </p>
+                                </header>
+
+                                <div class="section__stack-sm">
+                                    <p class="text-sm">
+                                        Combine with any grid/stack inside either column.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="section__grid-2 section__grid-sm">
+                                <article class="card">
+                                    <div class="card__header">
+                                        <div class="text-sm text-mono">Feature</div>
+                                        <div class="text-sm">Composable</div>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="text-sm">
+                                            Right column can host cards, media, facts, features, etc.
+                                        </p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <div class="card__header">
+                                        <div class="text-sm text-mono">Feature</div>
+                                        <div class="text-sm">Theme-aware</div>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="text-sm">
+                                            All colors derive from active theme.
+                                        </p>
+                                    </div>
+                                </article>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section section--split"&gt;
+    &lt;div class="section__inner"&gt;
+        &lt;div&gt;Left column&lt;/div&gt;
+        &lt;div&gt;Right column&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="section section--split-reverse"&gt;
+    &lt;div class="section__inner"&gt;
+        &lt;div&gt;This renders RIGHT&lt;/div&gt;
+        &lt;div&gt;This renders LEFT&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+
+                <div class="doc-block__preview">
+                    <p class="text-sm">
+                        Tip: prefer split for “why + proof” or “copy + media”.
+                        For dense dashboards, use grids instead.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Inset sections (default / sm / lg)</h2>
+                <p class="doc-block__summary">
+                    Inset adds a padded inner surface. V2 introduces size variants for fine control.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__grid-3 section__grid-sm">
+                    <section data-vds-dock-block data-vds-content-block class="section section--surface section--inset section--sm">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Inset</div>
+                                <h2 class="section__title">Default inset</h2>
+                                <p class="section__subtitle">Balanced inner padding.</p>
+                            </header>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block class="section section--surface section--inset-sm section--sm">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Inset sm</div>
+                                <h2 class="section__title">Compact inset</h2>
+                                <p class="section__subtitle">Tighter inner padding.</p>
+                            </header>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block class="section section--surface section--inset-lg section--sm">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Inset lg</div>
+                                <h2 class="section__title">Generous inset</h2>
+                                <p class="section__subtitle">Large inner padding.</p>
+                            </header>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section section--inset"&gt;...&lt;/section&gt;
+&lt;section class="section section--inset-sm"&gt;...&lt;/section&gt;
+&lt;section class="section section--inset-lg"&gt;...&lt;/section&gt;
+</code></pre>
+                </div>
+
+                <div class="doc-block__preview">
+                    <p class="text-sm">
+                        Combine inset with <code>section--surface</code> when you want the inset to visually read as a
+                        card.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Column grids (2–6 / auto) + gap variants</h2>
+                <p class="doc-block__summary">
+                    Grids distribute child blocks evenly. Use gap modifiers to tighten or expand spacing.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--subtle section--c">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Grid preview</div>
+                                <h2 class="section__title">3-column feature grid</h2>
+                                <p class="section__subtitle">
+                                    Equal columns; collapses to fewer columns on smaller screens automatically.
+                                </p>
+                            </header>
+
+                            <div class="section__grid-3 section__grid-md">
+                                <article class="feature">
+                                    <div class="text-sm">Configurable</div>
+                                    <div class="text-xs text-muted">Choose 2–6 or auto-fit.</div>
+                                </article>
+
+                                <article class="feature">
+                                    <div class="text-sm">Compositional</div>
+                                    <div class="text-xs text-muted">Combine with any section band.</div>
+                                </article>
+
+                                <article class="feature">
+                                    <div class="text-sm">Responsive by default</div>
+                                    <div class="text-xs text-muted">Token breakpoints control collapse.</div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="section__grid-2"&gt;...&lt;/div&gt;
+&lt;div class="section__grid-3"&gt;...&lt;/div&gt;
+&lt;div class="section__grid-4"&gt;...&lt;/div&gt;
+&lt;div class="section__grid-5"&gt;...&lt;/div&gt;
+&lt;div class="section__grid-6"&gt;...&lt;/div&gt;
+&lt;div class="section__grid-auto"&gt;...&lt;/div&gt;
+
+&lt;div class="section__grid-3 section__grid-sm"&gt;...&lt;/div&gt;
+&lt;div class="section__grid-3 section__grid-md"&gt;...&lt;/div&gt;
+&lt;div class="section__grid-3 section__grid-lg"&gt;...&lt;/div&gt;
+</code></pre>
+                </div>
+
+                <div class="doc-block__preview">
+                    <p class="text-sm">
+                        Use <code>grid-auto</code> for unknown counts or responsive card decks.
+                        Use explicit grids when column count is part of the design.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Content stacks (vertical) & inline stacks (horizontal)</h2>
+                <p class="doc-block__summary">
+                    Stacks are flex groupings with token gaps. Use for tidy internal layout without custom CSS.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__grid-3 section__grid-sm">
+                    <div class="section__stack-sm">
+                        <div class="text-sm text-mono">.section__stack-sm</div>
+                        <p class="text-sm">Tight vertical rhythm.</p>
+                        <p class="text-sm text-muted">Good for metadata blocks.</p>
+                    </div>
+
+                    <div class="section__stack">
+                        <div class="text-sm text-mono">.section__stack</div>
+                        <p class="text-sm">Default internal flow.</p>
+                        <p class="text-sm text-muted">For general content composition.</p>
+                    </div>
+
+                    <div class="section__stack-lg">
+                        <div class="text-sm text-mono">.section__stack-lg</div>
+                        <p class="text-sm">Generous breathing room.</p>
+                        <p class="text-sm text-muted">For storytelling / large blocks.</p>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="section__inline">
+                        <span class="badge-inline">.section__inline</span>
+                        <span class="text-sm">Inline grouping</span>
+                    </div>
+                    <div class="section__inline-sm mt-2">
+                        <span class="badge-inline">inline-sm</span>
+                        <span class="text-sm">Tight inline</span>
+                    </div>
+                    <div class="section__inline-lg mt-2">
+                        <span class="badge-inline">inline-lg</span>
+                        <span class="text-sm">Spacious inline</span>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="section__stack-sm"&gt;...&lt;/div&gt;
+&lt;div class="section__stack"&gt;...&lt;/div&gt;
+&lt;div class="section__stack-lg"&gt;...&lt;/div&gt;
+
+&lt;div class="section__inline"&gt;...&lt;/div&gt;
+&lt;div class="section__inline-sm"&gt;...&lt;/div&gt;
+&lt;div class="section__inline-lg"&gt;...&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Value / list sections</h2>
+                <p class="doc-block__summary">
+                    A structured list pattern mixing icons, labels and descriptions. Use for checklists,
+                    feature lists, “what you get”, steps, or validations.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--subtle section--c">
+                        <div class="section__inner">
+                            <header class="section__header">
+                                <div class="section__eyebrow">Value list</div>
+                                <h2 class="section__title">What this system gives you</h2>
+                                <p class="section__subtitle">
+                                    Lists remain readable and aligned to your theme.
+                                </p>
+                            </header>
+
+                            <div class="section__list">
+
+                                <div class="section__list-item">
+                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <path d="M3 8.5 6.5 12 13 4" fill="none"
+                                              stroke="currentColor" stroke-width="1.6"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <div>
+                                        <div class="section__list-item-title">Consistent gaps</div>
+                                        <div class="section__list-item-desc">
+                                            All list spacing uses primitives tokens.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="section__list-item">
+                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <circle cx="8" cy="8" r="6.5"
+                                                fill="none" stroke="currentColor" stroke-width="1.6"/>
+                                    </svg>
+                                    <div>
+                                        <div class="section__list-item-title">Theme-aware</div>
+                                        <div class="section__list-item-desc">
+                                            Icon tint and text colors derive from your active theme.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="section__list-item">
+                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <rect x="2.5" y="3" width="11" height="10" rx="1.8" ry="1.8"
+                                              fill="none" stroke="currentColor" stroke-width="1.6"/>
+                                    </svg>
+                                    <div>
+                                        <div class="section__list-item-title">Composable</div>
+                                        <div class="section__list-item-desc">
+                                            Use inside split, inset or surface sections.
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="section__list"&gt;
+
+    &lt;div class="section__list-item"&gt;
+        &lt;svg viewBox="0 0 16 16"&gt;...&lt;/svg&gt;
+        &lt;div&gt;
+            &lt;div class="section__list-item-title"&gt;Title&lt;/div&gt;
+            &lt;div class="section__list-item-desc"&gt;Description&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Composite patterns (real-world)</h2>
+                <p class="doc-block__summary">
+                    Sections are meant to be layered. Below is a typical marketing/doc block combining:
+                    surface + split + universal rhythm + grid + list.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--surface section--split section--lg">
+                        <div class="section__inner">
+
+                            <div class="section__stack-lg">
+                                <header class="section__header section__header--wide">
+                                    <div class="section__eyebrow">VDS Layout</div>
+                                    <h2 class="section__title">Sections as layout backbone</h2>
+                                    <p class="section__subtitle">
+                                        One structural system powers landing pages, docs, and dashboards with no one-off
+                                        CSS.
+                                    </p>
+                                </header>
+
+                                <div class="section__list">
+                                    <div class="section__list-item">
+                                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                                            <path d="M3 8.5 6.5 12 13 4" fill="none"
+                                                  stroke="currentColor" stroke-width="1.6"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <div>
+                                            <div class="section__list-item-title">Single source of rhythm</div>
+                                            <div class="section__list-item-desc">
+                                                Vertical pacing defined once, reused everywhere.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="section__list-item">
+                                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                                            <circle cx="8" cy="8" r="6.5"
+                                                    fill="none" stroke="currentColor" stroke-width="1.6"/>
+                                        </svg>
+                                        <div>
+                                            <div class="section__list-item-title">Predictable composition</div>
+                                            <div class="section__list-item-desc">
+                                                Combine with cards, features, tables without surprises.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="section__grid-2 section__grid-sm">
+                                <article class="card">
+                                    <div class="card__header">
+                                        <div class="text-sm text-mono">Banding</div>
+                                        <div class="text-sm">Alt / subtle</div>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="text-sm">
+                                            Use background modifiers to group content without editing component CSS.
+                                        </p>
+                                    </div>
+                                </article>
+
+                                <article class="card">
+                                    <div class="card__header">
+                                        <div class="text-sm text-mono">Inset</div>
+                                        <div class="text-sm">Docs & dashboards</div>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="text-sm">
+                                            Inset variants give tight or generous reading surfaces.
+                                        </p>
+                                    </div>
+                                </article>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section section--surface section--split section--lg"&gt;
+    &lt;div class="section__inner"&gt;
+
+        &lt;div class="section__stack-lg"&gt;
+            &lt;header class="section__header section__header--wide"&gt;...&lt;/header&gt;
+            &lt;div class="section__list"&gt;...&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="section__grid-2 section__grid-sm"&gt;
+            &lt;article class="card"&gt;...&lt;/article&gt;
+            &lt;article class="card"&gt;...&lt;/article&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Responsive behaviour</h2>
+                <p class="doc-block__summary">
+                    Sections collapse split layouts and reflow grids at system breakpoints. No markup changes needed.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <ul class="text-sm">
+                        <li><code>.section--split</code> and <code>.section--split-reverse</code> collapse to one column
+                            below 1024px.
+                        </li>
+                        <li>All grids auto-fit to smaller min-widths at 1280 / 1024 / 768 breakpoints.</li>
+                        <li>Legacy densities shrink vertical padding to <code>--space-10</code> on small screens.</li>
+                        <li>Inset padding reduces on mobile for readability.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>/* sections.css (excerpt from V2) */
+@media (max-width: 1024px) {
+    .section--split .section__inner,
+    .section--split-reverse .section__inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section,
+    .section--a,
+    .section--b,
+    .section--c {
+        padding-top: var(--space-10);
+        padding-bottom: var(--space-10);
+    }
+}
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Surfaces & Split Sections</h2>
+                <p class="doc-block__summary">
+                    Surface variants provide themed backgrounds for content blocks such as cards,
+                    marketing panels, value sections and hero underlays. Split sections enable
+                    two-column layouts with optional reversal for balanced content presentation.
+                </p>
+            </header>
+
+            <div class="doc-block__preview">
+                <section data-vds-dock-block data-vds-content-block class="section section--surface">
+                    <div class="section__inner">
+                        <p class="text-sm">This section uses a surface background with hover elevation.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="doc-block__body">
+
+                <h3 class="text-sm text-muted">Surface Variants</h3>
+                <p class="text-sm">
+                    Surface modifiers apply predefined theme backgrounds used for highlighting content
+                    blocks. <code>.section--surface</code> also includes a hover state for interactive
+                    emphasis when used in marketing or dashboard environments.
+                </p>
+
+                <ul class="text-sm">
+                    <li><code>.section--surface</code> — full card-like background with border and radius.</li>
+                    <li><code>.section--subtle</code> — soft faded surface for light content grouping.</li>
+                    <li><code>.section--brand</code> — branded accent background using theme accent tokens.</li>
+                </ul>
+
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--surface">
+                        <div class="section__inner">
+                            <strong class="text-sm">Surface</strong>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--subtle">
+                        <div class="section__inner">
+                            <strong class="text-sm">Subtle</strong>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--brand">
+                        <div class="section__inner">
+                            <strong class="text-sm">Brand</strong>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;section class="section section--surface"&gt;...&lt;/section&gt;
+&lt;section class="section section--subtle"&gt;...&lt;/section&gt;
+&lt;section class="section section--brand"&gt;...&lt;/section&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Alternate Background</h3>
+                <p class="text-sm">
+                    Alternate background sections apply a soft page-wide background for separating
+                    content groups without creating a card-like container.
+                </p>
+
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--alt">
+                        <div class="section__inner">
+                            <p class="text-sm">This section uses an alternate background.</p>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;section class="section section--alt"&gt;
+    &lt;div class="section__inner"&gt;...&lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Split Sections</h3>
+                <p class="text-sm">
+                    Split sections use a clean two-column grid for layouts that pair text with
+                    imagery or two balanced content areas. A reversed variant allows swapping column
+                    order without modifying the markup.
+                </p>
+
+                <ul class="text-sm">
+                    <li><code>.section--split</code> — two-column grid (left → right).</li>
+                    <li><code>.section--split-reverse</code> — two-column grid with reversed content.</li>
+                    <li>Automatic stack-on-mobile via responsive rules.</li>
+                </ul>
+
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--split">
+                        <div class="section__inner">
+                            <div class="text-sm">Column A</div>
+                            <div class="text-sm">Column B</div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block class="section section--split-reverse">
+                        <div class="section__inner">
+                            <div class="text-sm">Column A (will appear right)</div>
+                            <div class="text-sm">Column B (will appear left)</div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;section class="section section--split"&gt;
+    &lt;div class="section__inner"&gt;
+        &lt;div&gt;Column A&lt;/div&gt;
+        &lt;div&gt;Column B&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="section section--split-reverse"&gt;
+    &lt;div class="section__inner"&gt;
+        &lt;div&gt;Column A&lt;/div&gt;
+        &lt;div&gt;Column B&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Usage</h3>
+                <ul class="text-sm">
+                    <li>Use <code>.section--surface</code> for card-like or interactive blocks.</li>
+                    <li>Use <code>.section--subtle</code> to group related content lightly.</li>
+                    <li>Use <code>.section--brand</code> for marketing tiers or highlighted panels.</li>
+                    <li>Alternate backgrounds help divide long pages without borders.</li>
+                    <li>Split layouts should be used for text + image or dual-column content.</li>
+                    <li>Reversed split should only be used for layout alternation, not content dependence.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Sections provide structural rhythm, containment, spacing and responsive flow.
+                    They are visually expressive but intentionally non-semantic. Accessibility comes
+                    from correct HTML landmarks, heading hierarchy, predictable reading order and
+                    token-driven contrast — never from the classes themselves.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-mono text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use real HTML landmarks:
+                            <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>,
+                            <code>&lt;main&gt;</code>.
+                            <br>Sections.css does <strong>not</strong> provide semantics.
+                        </li>
+
+                        <li>
+                            Use <code>aria-labelledby</code> when a section requires a programmatic name,
+                            pairing it with the corresponding <code>.section__title</code>.
+                        </li>
+
+                        <li>
+                            Maintain strict heading hierarchy:
+                            <code>&lt;h1&gt;</code> only once per page,
+                            then <code>&lt;h2&gt;</code> for each major section,
+                            <code>&lt;h3&gt;</code> inside subsections.
+                        </li>
+
+                        <li>
+                            Choose density (A/B/C or XS–XL) intentionally — these modify only
+                            vertical padding and do not affect structure or semantics.
+                        </li>
+
+                        <li>
+                            Use <code>.section__inner</code> to enforce readable line length
+                            (<code>--layout-max-width</code>) and proper horizontal padding.
+                        </li>
+
+                        <li>
+                            For split layouts (<code>.section--split</code> /
+                            <code>.section--split-reverse</code>), keep the DOM order meaningful.
+                            CSS reverses columns visually; assistive tech follows DOM.
+                        </li>
+
+                        <li>
+                            Ensure icon-only list items inside <code>.section__list</code>
+                            still expose text labels — icons are decorative.
+                        </li>
+
+                        <li>
+                            Maintain token-derived spacing:
+                            stacks (<code>.section__stack*</code>), insets, and grids
+                            rely on <code>--space-*</code> and <code>--section-spacing-*</code>.
+                        </li>
+
+                        <li>
+                            Verify color contrast for surface/subtle/brand/alt backgrounds.
+                            These classes apply backgrounds but do not override text logic.
+                        </li>
+
+                        <li>
+                            Treat inset surfaces (<code>.section--inset</code>, <code>--inset-sm</code>,
+                            <code>--inset-lg</code>) as <strong>visual containers only</strong> — semantics stay inside.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-mono text-muted">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t treat <code>.section</code>, <code>.section--surface</code> or
+                            <code>.section--subtle</code> as semantic roles —
+                            they do <strong>not</strong> replace <code>&lt;section&gt;</code>,
+                            <code>&lt;article&gt;</code>, etc.
+                        </li>
+
+                        <li>
+                            Don’t reorder heading hierarchy to achieve visual size;
+                            typography tokens handle scale, not incorrect heading levels.
+                        </li>
+
+                        <li>
+                            Don’t use densitiy modifiers (<code>--a</code>,
+                            <code>--b</code>, <code>--c</code>, <code>--xs</code>…<code>--xl</code>)
+                            to force semantic grouping — they are spacing only.
+                        </li>
+
+                        <li>
+                            Don’t override spacing or padding inside <code>.section</code> directly.
+                            Always extend via tokens or use stacks / insets.
+                        </li>
+
+                        <li>
+                            Don’t fake split reversal via DOM manipulation — V2 provides clean reversal
+                            (<code>.section--split-reverse</code>) without RTL hacks.
+                        </li>
+
+                        <li>
+                            Don’t place full-width components inside <code>.section--inset</code>
+                            if they already provide their own outer padding — use <code>.section--flush</code>.
+                        </li>
+
+                        <li>
+                            Don’t set fixed heights or widths on grid children —
+                            section grids are responsive and token-driven.
+                        </li>
+
+                        <li>
+                            Don’t apply interactive behaviour (toggles, overlays, drawers) to section classes.
+                            Sections are structural only.
+                        </li>
+
+                        <li>
+                            Don’t mix too many rhythm systems simultaneously (A/B/C + XS–XL + custom margins).
+                            Choose one vertical pacing logic for clarity.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. .section is visual; semantics come from the HTML tag.
+2. Use aria-labelledby to name sections programmatically.
+3. Maintain heading hierarchy (H1 once; H2 per major band).
+4. Use .section__inner for readable line length.
+5. Split: DOM order = reading order; CSS handles visual swap.
+6. Density (A/B/C or XS–XL) controls spacing only.
+7. Surface/subtle/brand backgrounds require contrast checks.
+8. Insets provide visual containment, not semantics.
+9. Grids/stacks are layout only; no role or ARIA implied.
+10. Never override padding/margins inline; extend tokens instead.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

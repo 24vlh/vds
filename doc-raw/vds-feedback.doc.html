@@ -1,0 +1,814 @@
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section">
+    <div class="section__inner section__stack">
+        <div class="section__stack-sm">
+            <h1>Feedback System</h1>
+
+            <p class="leading-relaxed text-soft">
+                The VDS Feedback Layer provides alerts, banners, feedback-toasts, status indicators,
+                info blocks, progress visualizations and result components. All are fully
+                token-driven, theme-aware, and consistent with VDS semantics.
+            </p>
+
+            <p class="text-sm text-muted">
+                Source: <code>feedback.css</code> · Sits above
+                <code>primitives.css</code>,
+                <code>themes/slate.css</code>,
+                <code>base.css</code>,
+                <code>layout.css</code> and
+                <code>utilities.css</code>.
+            </p>
+        </div>
+
+        <p class="text-sm text-muted">
+            This page documents all primitives exported by <code>feedback.css</code>.
+            Components follow a consistent structure and use semantic variants:
+            <strong>info</strong>, <strong>success</strong>, <strong>warning</strong>,
+            <strong>danger</strong>, <strong>error</strong>, <strong>neutral</strong> and
+            <strong>accent</strong>.
+        </p>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Overview &amp; Dependencies</h2>
+                <p class="doc-block__summary">
+                    <code>feedback.css</code> relies fully on VDS token layers:
+                    spacing, typography, radius, shadows, border-width, semantic colors and
+                    transitions. It introduces no globals and cleanly composes with base, layout,
+                    utilities and doc-block layers.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <ul class="text-body">
+                        <li>All colors come from semantic tokens in your theme.</li>
+                        <li>Spacing uses <code>--space-*</code> primitives.</li>
+                        <li>Transition speeds use <code>var(--transition-normal)</code>.</li>
+                        <li>Border-radius uses <code>var(--radius-sm/md)</code>.</li>
+                        <li>All dismissible components use accessibility-safe focus-visible states.</li>
+                        <li>Density modes apply uniformly across all primitives.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;link rel="stylesheet" href="./css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/slate.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/base.css"&gt;
+&lt;link rel="stylesheet" href="./css/layout.css"&gt;
+&lt;link rel="stylesheet" href="./css/utilities.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/doc-block.css"&gt;
+&lt;link rel="stylesheet" href="./css/feedback.css"&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Feedback Primitives &amp; Design Rules</h2>
+                <p class="doc-block__summary">
+                    Each feedback primitive follows a predictable API: structural wrapper,
+                    optional icon, content block, optional close button, semantic variants and
+                    density control.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <ul class="text-body">
+                    <li><strong>Alerts</strong> – inline, dismissible, semantic variants.</li>
+                    <li><strong>Banners</strong> – full-width horizontal notifications.</li>
+                    <li><strong>feedback-toasts</strong> – ephemeral notifications with animation + stack.</li>
+                    <li><strong>Info Blocks</strong> – informational panels with left-border accent.</li>
+                    <li><strong>Status Indicators</strong> – inline pills, outline mode, and dot mode.</li>
+                    <li><strong>Progress Bars</strong> – striped / animated options.</li>
+                    <li><strong>Result Blocks</strong> – centered success/error panels with actions.</li>
+                    <li><strong>Density System</strong> – compact mode across all primitives.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Alerts</h2>
+                <p class="doc-block__summary">
+                    Alerts are inline feedback components with optional icons, titles and dismiss
+                    buttons. Variants map to semantic feedback tokens.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm authoring">
+
+                <div class="doc-block__preview section__stack-sm">
+
+                    <h3 class="text-sm">Base Alert</h3>
+                    <div class="alert">
+                        <div class="alert__icon"><span class="icon icon--mask icon--info"></span></div>
+                        <div class="alert__content">
+                            <div class="alert__title">Information</div>
+                            <div class="alert__message">This is a neutral alert.</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm">Semantic Variants</h3>
+                    <div class="section__stack-sm flex flex-column gap-6">
+
+                        <div class="alert" data-variant="info">
+                            <div class="alert__icon"><span class="icon icon--mask icon--info"></span></div>
+                            <div class="alert__content">
+                                <div class="alert__title">Info</div>
+                                <div class="alert__message">System updated successfully.</div>
+                            </div>
+                        </div>
+
+                        <div class="alert" data-variant="success">
+                            <div class="alert__icon"><span class="icon icon--mask icon--success"></span></div>
+                            <div class="alert__content">
+                                <div class="alert__title">Success</div>
+                                <div class="alert__message">Your changes were saved.</div>
+                            </div>
+                        </div>
+
+                        <div class="alert" data-variant="warning">
+                            <div class="alert__icon"><span class="icon icon--mask icon--warning"></span></div>
+                            <div class="alert__content">
+                                <div class="alert__title">Warning</div>
+                                <div class="alert__message">Some fields require attention.</div>
+                            </div>
+                        </div>
+
+                        <div class="alert" data-variant="danger">
+                            <div class="alert__icon"><span class="icon icon--mask icon--danger"></span></div>
+                            <div class="alert__content">
+                                <div class="alert__title">Danger</div>
+                                <div class="alert__message">Session expired.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm">Dismissible</h3>
+                    <div class="alert" data-variant="info">
+                        <div class="alert__content">
+                            <div class="alert__title">Closable</div>
+                            <div class="alert__message">You can dismiss this message.</div>
+                        </div>
+                        <button class="alert__close" aria-label="Close alert"></button>
+                    </div>
+
+                    <h3 class="text-sm">Outline Mode</h3>
+                    <div class="alert alert--outline" data-variant="warning">
+                        <div class="alert__content">
+                            <div class="alert__title">Outline Warning</div>
+                            <div class="alert__message">No background, color from variant.</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="alert" data-variant="info"&gt;
+  &lt;div class="alert__icon"&gt;&lt;span class="icon icon--mask icon--info"&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="alert__content"&gt;
+    &lt;div class="alert__title"&gt;Info&lt;/div&gt;
+    &lt;div class="alert__message"&gt;System updated successfully.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="alert__close" aria-label="Close alert"&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert--outline" data-variant="warning"&gt;
+  &lt;div class="alert__content"&gt;
+    &lt;div class="alert__title"&gt;Outline Warning&lt;/div&gt;
+    &lt;div class="alert__message"&gt;Color-only variant.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Banners</h2>
+                <p class="doc-block__summary">
+                    Banners are full-width announcements that remain at the top of content areas.
+                    They support semantic variants, dismiss buttons and sticky mode.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm authoring">
+
+                <div class="doc-block__preview section__stack-sm">
+
+                    <div class="banner" data-variant="info">
+                        <div class="banner__inner">
+                            <span class="banner__text">New version available.</span>
+                            <button class="banner__close" aria-label="Close banner"></button>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm">Sticky</h3>
+
+                    <div class="overflow-y-auto border p-4" style="max-height: 200px;">
+                        <h4 class="text-sm">Title with banner underneath</h4>
+
+                        <div class="banner banner--sticky" data-variant="warning">
+                            <div class="banner__inner">
+                                <span class="banner__text">Maintenance scheduled tonight.</span>
+                                <button class="banner__close"></button>
+                            </div>
+                        </div>
+
+                        <p class="mt-4 text-body">Lots of content...</p>
+                        <p class="text-body">Lots of content...</p>
+                        <p class="text-body">Lots of content...</p>
+                        <p class="text-body">Lots of content...</p>
+                        <p class="text-body">Lots of content...</p>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="banner" data-variant="success"&gt;
+  &lt;div class="banner__inner"&gt;
+    &lt;span class="banner__text"&gt;Deployment complete.&lt;/span&gt;
+    &lt;button class="banner__close"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="banner banner--sticky" data-variant="warning"&gt;
+  &lt;div class="banner__inner"&gt;
+    &lt;span class="banner__text"&gt;Scheduled maintenance tonight.&lt;/span&gt;
+    &lt;button class="banner__close"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">feedback-toasts &amp; feedback-toast-Stack</h2>
+                <p class="doc-block__summary">
+                    feedback-toasts provide animated, ephemeral notifications. They support stacking,
+                    positioning and semantic variants.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm authoring">
+
+                <div class="doc-block__preview section__stack-sm">
+
+                    <h3 class="text-sm">feedback-toast Floating Top Right</h3>
+
+                    <div class="feedback-toast-stack feedback-toast--static">
+                        <div class="feedback-toast" data-variant="success">
+                            <div class="feedback-toast__icon"><span class="icon icon--mask icon--success"></span></div>
+                            <div class="feedback-toast__text">Settings saved.</div>
+                            <button class="feedback-toast__close"></button>
+                        </div>
+                    </div>
+
+                    <div class="feedback-toast-stack">
+                        <div class="feedback-toast" data-variant="success">
+                            <div class="feedback-toast__icon"><span class="icon icon--mask icon--success"></span></div>
+                            <div class="feedback-toast__text">Settings saved.</div>
+                            <button class="feedback-toast__close"></button>
+                        </div>
+                    </div>
+
+                    <p class="text-body">
+                        Check top right view port of the screen to see the actual example.
+                        The inline example is identical and controlled by <code>.feedback-toast--static</code>
+                    </p>
+
+                    <h3 class="text-sm">feedback-toast Stack</h3>
+
+                    <div class="feedback-toast-stack feedback-toast--static is-top-left">
+                        <div class="feedback-toast" data-variant="info">
+                            <div class="feedback-toast__text">Message sent.</div>
+                        </div>
+                        <div class="feedback-toast" data-variant="warning">
+                            <div class="feedback-toast__text">Network unstable.</div>
+                        </div>
+                    </div>
+
+                    <div class="feedback-toast-stack is-top-left">
+                        <div class="feedback-toast" data-variant="info">
+                            <div class="feedback-toast__text">Message sent.</div>
+                        </div>
+                        <div class="feedback-toast" data-variant="warning">
+                            <div class="feedback-toast__text">Network unstable.</div>
+                        </div>
+                        <div class="feedback-toast" data-variant="danger">
+                            <div class="feedback-toast__text">Network unresponsive.</div>
+                        </div>
+                        <div class="feedback-toast" data-variant="error">
+                            <div class="feedback-toast__text">Network down.</div>
+                        </div>
+                        <div class="feedback-toast" data-variant="neutral">
+                            <div class="feedback-toast__text">Network slow.</div>
+                        </div>
+                        <div class="feedback-toast" data-variant="accent">
+                            <div class="feedback-toast__text">Network back online.</div>
+                        </div>
+                    </div>
+
+                    <p class="text-body">
+                        Check top left view port of the screen to see the actual example.
+                        The inline example is identical and controlled by <code>.feedback-toast--static</code>
+                    </p>
+
+                    <p class="text-xs text-muted">
+                        Stacks can be positioned:
+                        <code>is-top-right</code>,
+                        <code>is-top-left</code>,
+                        <code>is-bottom-right</code>,
+                        <code>is-bottom-left</code>.
+                    </p>
+
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="feedback-toast-stack"&gt;
+    &lt;div class="feedback-toast" data-variant="success"&gt;
+        &lt;div class="feedback-toast__icon"&gt;&lt;span class="icon icon--mask icon--success"&gt;&lt;/span&gt;&lt;/div&gt;
+        &lt;div class="feedback-toast__text"&gt;Settings saved.&lt;/div&gt;
+        &lt;button class="feedback-toast__close"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="feedback-toast-stack is-top-left"&gt;
+    &lt;div class="feedback-toast" data-variant="info"&gt;
+        &lt;div class="feedback-toast__text"&gt;Message sent.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="feedback-toast" data-variant="warning"&gt;
+        &lt;div class="feedback-toast__text"&gt;Network unstable.&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Info Blocks</h2>
+                <p class="doc-block__summary">
+                    A simple content block with an accent border and semantic variants. Best for
+                    contextual messaging inside documentation or dashboard interfaces.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm authoring">
+
+                <div class="doc-block__preview section__stack-sm">
+
+                    <h3 class="text-sm">Base</h3>
+                    <div class="info-block">
+                        This is a plain info block with neutral styling.
+                    </div>
+
+                    <h3 class="text-sm">Semantic Variants</h3>
+                    <div class="info-block" data-variant="info">
+                        Informational note for the user.
+                    </div>
+
+                    <div class="info-block" data-variant="success">
+                        All systems operational.
+                    </div>
+
+                    <div class="info-block" data-variant="danger">
+                        Security alert: unusual login detected.
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="info-block" data-variant="info"&gt;
+  Informational note.
+&lt;/div&gt;
+
+&lt;div class="info-block" data-variant="success"&gt;
+  All systems operational.
+&lt;/div&gt;
+
+&lt;div class="info-block" data-variant="danger"&gt;
+  Security alert.
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Status Indicators</h2>
+                <p class="doc-block__summary">
+                    Small inline tokens for showing semantic system state. Includes solid mode,
+                    outline mode and dot mode.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm authoring">
+
+                <div class="doc-block__preview section__stack-sm">
+
+                    <h3 class="text-sm">Solid Status</h3>
+                    <span class="status" data-variant="success">Active</span>
+
+                    <h3 class="text-sm">Outline</h3>
+                    <span class="status status--outline" data-variant="warning">Pending</span>
+
+                    <h3 class="text-sm">Dot Mode</h3>
+                    <span class="status status--dot" data-variant="danger">Failed</span>
+
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;span class="status" data-variant="success"&gt;Active&lt;/span&gt;
+&lt;span class="status status--outline" data-variant="warning"&gt;Pending&lt;/span&gt;
+&lt;span class="status status--dot" data-variant="danger"&gt;Failed&lt;/span&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Progress Bars</h2>
+                <p class="doc-block__summary">
+                    A minimal progress indicator with optional striped and animated modes.
+                    Colour derives from accent tokens unless overridden.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm authoring">
+
+                <div class="doc-block__preview section__stack-sm">
+
+                    <h3 class="text-sm">Standard</h3>
+                    <div class="progress">
+                        <div class="progress__bar" style="width: 50%;"></div>
+                    </div>
+
+                    <h3 class="text-sm">Standard Animated</h3>
+                    <div class="progress progress--animated">
+                        <div class="progress__bar" style="width: 70%;"></div>
+                    </div>
+
+                    <h3 class="text-sm">Striped</h3>
+                    <div class="progress progress--striped">
+                        <div class="progress__bar" style="width: 60%;"></div>
+                    </div>
+                    <div class="progress progress--striped progress--striped__relaxed">
+                        <div class="progress__bar" style="width: 60%;"></div>
+                    </div>
+
+                    <h3 class="text-sm">Striped Animated</h3>
+                    <div class="progress progress--striped progress--animated">
+                        <div class="progress__bar" style="width: 30%;"></div>
+                    </div>
+                    <div class="progress progress--striped progress--striped__relaxed progress--animated">
+                        <div class="progress__bar" style="width: 30%;"></div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class=&quot;progress&quot;&gt;
+    &lt;div class=&quot;progress__bar&quot; style=&quot;width: 50%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;progress progress--animated&quot;&gt;
+    &lt;div class=&quot;progress__bar&quot; style=&quot;width: 70%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;progress progress--striped&quot;&gt;
+    &lt;div class=&quot;progress__bar&quot; style=&quot;width: 60%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;progress progress--striped progress--striped__relaxed&quot;&gt;
+    &lt;div class=&quot;progress__bar&quot; style=&quot;width: 60%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;progress progress--striped progress--animated&quot;&gt;
+    &lt;div class=&quot;progress__bar&quot; style=&quot;width: 30%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;progress progress--striped progress--striped__relaxed progress--animated&quot;&gt;
+    &lt;div class=&quot;progress__bar&quot; style=&quot;width: 30%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Result Blocks</h2>
+                <p class="doc-block__summary">
+                    Centered blocks for success/error states with optional actions. Typically used
+                    for empty states, success confirmations or critical alerts.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm authoring">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="result" data-variant="success">
+                        <span class="result__icon"><span class="icon icon--mask icon--success icon--lg"></span></span>
+                        <div class="result__title">Success</div>
+                        <div class="result__subtitle">Operation completed.</div>
+                        <div class="result__actions">
+                            <button class="button button--primary">Continue</button>
+                        </div>
+                    </div>
+                    <div class="result" data-variant="warning">
+                        <span class="result__icon"><span class="icon icon--mask icon--warning icon--lg"></span></span>
+                        <div class="result__title">Attention</div>
+                        <div class="result__subtitle">Operation failed.</div>
+                        <div class="result__actions">
+                            <button class="button button--primary">Continue</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="result" data-variant="success"&gt;
+  &lt;span class=&quot;result__icon&quot;&gt;&lt;span class=&quot;icon icon--mask icon--success icon--lg&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;div class="result__title"&gt;Success&lt;/div&gt;
+  &lt;div class="result__subtitle"&gt;Operation completed.&lt;/div&gt;
+  &lt;div class="result__actions"&gt;
+    &lt;button class="button"&gt;Continue&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Density System</h2>
+                <p class="doc-block__summary">
+                    Compact mode reduces padding and height across all feedback primitives. Apply
+                    with <code data-variant="neutral">data-density="compact"</code>
+                    on any container.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm authoring">
+                <div class="doc-block__preview section__stack-sm">
+                    <div data-density="compact" class="section__stack-sm">
+                        <div class="alert" data-variant="info">
+                            <div class="alert__content">
+                                <div class="alert__title">Compact Alert</div>
+                                <div class="alert__message">Reduced spacing.</div>
+                            </div>
+                        </div>
+
+                        <div class="info-block" data-variant="success">
+                            Compact info block.
+                        </div>
+
+                        <span class="status" data-variant="warning">Compact Status</span>
+
+                        <div class="progress">
+                            <div class="progress__bar" style="width: 30%;"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div data-density="compact"&gt;
+
+  &lt;div class="alert" data-variant="info"&gt;…&lt;/div&gt;
+
+  &lt;div class="info-block" data-variant="success"&gt;
+    Compact info block.
+  &lt;/div&gt;
+
+  &lt;span class="status" data-variant="warning"&gt;
+    Compact status
+  &lt;/span&gt;
+
+  &lt;div class="progress"&gt;
+    &lt;div class="progress__bar" style="width: 30%;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Integration with Doc-Blocks</h2>
+                <p class="doc-block__summary">
+                    All feedback primitives can be used inside documentation blocks without spacing
+                    collisions. Margins collapse properly, numbered code examples remain unaffected,
+                    and content blocks remain intact.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm authoring">
+                <div class="doc-block__preview section__stack-sm">
+                    <article class="doc-block">
+                        <div class="doc-block__body">
+
+                            <p>This block contains inline feedback components:</p>
+
+                            <div class="alert" data-variant="info">
+                                <div class="alert__content">
+                                    <div class="alert__title">Documentation Context</div>
+                                    <div class="alert__message">
+                                        Alerts integrate cleanly inside doc blocks.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-block" data-variant="warning">
+                                Consider resetting cache after major updates.
+                            </div>
+
+                            <p>
+                                Status indicators like
+                                <span class="status status--dot" data-variant="success">OK</span>
+                                work inline.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;article class="doc-block"&gt;
+  &lt;div class="doc-block__body"&gt;
+
+    &lt;div class="alert" data-variant="info"&gt;…&lt;/div&gt;
+
+    &lt;div class="info-block" data-variant="warning"&gt;
+      Callout inside documentation.
+    &lt;/div&gt;
+
+    &lt;p&gt;
+      Status:
+      &lt;span class="status status--dot" data-variant="success"&gt;OK&lt;/span&gt;
+    &lt;/p&gt;
+
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Contract for accessible, semantic, token-driven feedback components.
+                    Ensure alerts, banners, feedback-toasts, info blocks, indicators, progress bars and
+                    results remain navigable, readable and meaningful to assistive technology.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use semantic variants (<code>data-variant</code>) to convey
+                            real meaning: <code>info</code>, <code>success</code>,
+                            <code>warning</code>, <code>danger</code>, <code>error</code>,
+                            <code>neutral</code>, <code>accent</code>.
+                        </li>
+
+                        <li>Always provide accessible text labels for dismiss buttons:
+                            <code>aria-label="Close …"</code>.
+                        </li>
+
+                        <li>Use alerts for inline messages, banners for top-of-context notices,
+                            and feedback-toasts for ephemeral notifications.
+                        </li>
+
+                        <li>Use <code>status</code> for inline semantic cues and
+                            <code>progress</code> for quantitative state,
+                            never interchange these roles.
+                        </li>
+
+                        <li>Ensure feedback-toasts remain keyboard-accessible: dismiss buttons must be
+                            real <code>&lt;button&gt;</code> elements with focus-visible.
+                        </li>
+
+                        <li>Use <code>data-density="compact"</code> for
+                            reduced-spacing interfaces; apply at container scope.
+                        </li>
+
+                        <li>Keep animations token-driven and respect user motion preferences
+                            (the layer already supports reduced-motion).
+                        </li>
+
+                        <li>Place result blocks in contexts where a user expects a stop or
+                            confirmation moment (e.g., success, error, completion flows).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+
+                        <li>Don’t repurpose <code>danger</code> or
+                            <code>warning</code> variants for neutral or low-risk events.
+                        </li>
+
+                        <li>Don’t hide validation or warning messages behind hovers, popovers or
+                            tooltips—feedback must be directly visible.
+                        </li>
+
+                        <li>Don’t place banners mid-content; they must anchor to the top of the
+                            container or page.
+                        </li>
+
+                        <li>Don’t overload feedback-toasts with long content, links or multi-action blocks.</li>
+
+                        <li>Don’t use outline mode (<code>alert--outline</code>,
+                            <code>status--outline</code>) unless visually appropriate for the
+                            surrounding UI density.
+                        </li>
+
+                        <li>Don’t animate progress bars or feedback-toasts aggressively; keep motion subtle
+                            and token-consistent.
+                        </li>
+
+                        <li>Don’t mix multiple conflicting variants in the same structural element
+                            (e.g., <code>data-variant="success warning"</code>).
+                        </li>
+
+                        <li>Don’t override semantic colors with custom inlined colors—theme tokens
+                            must remain the single source of truth.
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Use data-variant for real semantic meaning (info/success/warning/danger/etc.).
+2. Provide aria-labels for all dismiss buttons in alerts, banners and feedback-toasts.
+3. Use banners only at the top of contexts; use feedback-toasts only for ephemeral events.
+4. Keep alerts inline and succinct; use status for inline semantic cues.
+5. Preserve token-driven motion, spacing, borders and colors.
+6. Apply data-density="compact" on containers, not per-element.
+7. Do not override focus-visible or interactive hit-areas.
+8. Keep feedback-toasts short-lived, accessible, and dismissible via keyboard.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

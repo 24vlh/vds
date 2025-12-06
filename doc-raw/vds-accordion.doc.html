@@ -1,0 +1,597 @@
+<section data-vds-dock-block data-vds-content-block class="section section--lg">
+    <div class="section__inner section__stack">
+
+        <div class="section__stack-sm">
+            <h1>Accordion</h1>
+            <p class="text-sm text-muted">
+                Native <code>&lt;details&gt;</code>-based disclosure blocks for
+                compact, accessible vertical sections in settings pages, documentation, and dense UIs.
+            </p>
+            <p class="text-sm text-muted">
+                Source: <code>accordion.css</code> · Depends on
+                <code>base.css</code>,
+                <code>layout.css</code>,
+                <code>typography.css</code>,
+                <code>icons.css</code>,
+                and theme tokens in <code>/themes/*.css</code>.
+            </p>
+        </div>
+
+        <p class="text-sm text-muted">
+            This page documents the full accordion surface: native
+            <code>&lt;details&gt;</code> anatomy, header and body roles,
+            chevron icons, open/closed state, semantic variants, and accessibility rules. Use it for
+            progressive disclosure where tabs would be too heavy and inline content would be too long.
+        </p>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accordion specimen (multiple items)</h2>
+                <p class="doc-block__summary">
+                    A compact “kitchen sink” accordion showing multiple items, open/closed states,
+                    chevron icons, and semantic variants. This is the recommended baseline for
+                    settings and documentation disclosure blocks.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="accordion">
+                                <details class="accordion-item">
+                                    <summary class="accordion-header">
+                                        <span class="accordion-title">Profile settings</span>
+                                        <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                                    </summary>
+                                    <div class="accordion-body text-sm">
+                                        <p>Basic account details: name, email, avatar, and short bio.</p>
+                                    </div>
+                                </details>
+
+                                <details class="accordion-item" open>
+                                    <summary class="accordion-header">
+                                        <span class="accordion-title">Security &amp; sign-in</span>
+                                        <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                                    </summary>
+                                    <div class="accordion-body text-sm section__stack-sm">
+                                        <p>Two-factor authentication, recovery email, and active sessions.</p>
+                                        <ul class="text-sm">
+                                            <li>Enable 2FA via SMS or authenticator app.</li>
+                                            <li>Review devices that recently accessed your account.</li>
+                                        </ul>
+                                    </div>
+                                </details>
+
+                                <details class="accordion-item accordion-item--info">
+                                    <summary class="accordion-header">
+                                        <span class="accordion-title">Billing &amp; invoices</span>
+                                        <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                                    </summary>
+                                    <div class="accordion-body text-sm">
+                                        <p>Plan, payment method, invoice history, and tax information.</p>
+                                    </div>
+                                </details>
+
+                                <details class="accordion-item accordion-item--danger">
+                                    <summary class="accordion-header">
+                                        <span class="accordion-title">Danger zone</span>
+                                        <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                                    </summary>
+                                    <div class="accordion-body text-sm section__stack-sm">
+                                        <p>Actions that cannot be easily undone.</p>
+                                        <ul class="text-sm">
+                                            <li>Delete account and all associated data.</li>
+                                            <li>Revoke all active API tokens.</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class="accordion"&gt;
+    &lt;details class="accordion-item"&gt;
+        &lt;summary class="accordion-header"&gt;
+            &lt;span class="accordion-title"&gt;Profile settings&lt;/span&gt;
+            &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+        &lt;/summary&gt;
+        &lt;div class="accordion-body"&gt;
+            &lt;p&gt;Basic account details: name, email, avatar, and short bio.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details class="accordion-item" open&gt;
+        &lt;summary class="accordion-header"&gt;
+            &lt;span class="accordion-title"&gt;Security &amp; sign-in&lt;/span&gt;
+            &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+        &lt;/summary&gt;
+        &lt;div class="accordion-body"&gt;
+            &lt;p&gt;Two-factor authentication, recovery email, and active sessions.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details class="accordion-item accordion-item--info"&gt;
+        &lt;summary class="accordion-header"&gt;
+            &lt;span class="accordion-title"&gt;Billing &amp; invoices&lt;/span&gt;
+            &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+        &lt;/summary&gt;
+        &lt;div class="accordion-body"&gt;
+            &lt;p&gt;Plan, payment method, invoice history, and tax information.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details class="accordion-item accordion-item--danger"&gt;
+        &lt;summary class="accordion-header"&gt;
+            &lt;span class="accordion-title"&gt;Danger zone&lt;/span&gt;
+            &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+        &lt;/summary&gt;
+        &lt;div class="accordion-body"&gt;
+            &lt;p&gt;Actions that cannot be easily undone.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation &amp; dependencies</h2>
+                <p class="doc-block__summary">
+                    <code>accordion.css</code> is a thin component layer for
+                    native disclosure blocks. Load it after core layout, typography, icons, and theme
+                    tokens. Documentation-only styles remain optional.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <ul class="text-sm">
+                        <li>Load <code>base.css</code> and <code>layout.css</code> first.</li>
+                        <li>Load <code>typography.css</code> and <code>icons.css</code>.</li>
+                        <li>Load an active theme: <code>themes/slate.css</code>, etc.</li>
+                        <li>Then load <code>accordion.css</code>.</li>
+                        <li>Optionally load <code>doc-block.css</code>.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="/css/base.css"&gt;
+&lt;link rel="stylesheet" href="/css/layout.css"&gt;
+&lt;link rel="stylesheet" href="/css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="/css/themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="/css/themes/navy.css"&gt;
+&lt;link rel="stylesheet" href="/css/themes/carbon.css"&gt;
+
+&lt;link rel="stylesheet" href="/css/icons.css"&gt;
+&lt;link rel="stylesheet" href="/css/accordion.css"&gt;
+
+&lt;link rel="stylesheet" href="/css/doc-block.css"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Anatomy &amp; markup contract</h2>
+                <p class="doc-block__summary">
+                    Accordions in VDS are built on native <code>&lt;details&gt;</code> elements.
+                    Each item is a disclosure block with a clickable header and a body region.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Structural elements</h3>
+                    <dl class="text-sm">
+                        <dt><code>.accordion</code></dt>
+                        <dd>Vertical stack of accordion items.</dd>
+
+                        <dt><code>.accordion-item</code> (<code>&lt;details&gt;</code>)</dt>
+                        <dd>Single disclosure block.</dd>
+
+                        <dt><code>.accordion-header</code> (<code>&lt;summary&gt;</code>)</dt>
+                        <dd>Clickable header row.</dd>
+
+                        <dt><code>.accordion-title</code></dt>
+                        <dd>Header text span.</dd>
+
+                        <dt><code>.accordion-icon</code></dt>
+                        <dd>Chevron indicator.</dd>
+
+                        <dt><code>.accordion-body</code></dt>
+                        <dd>Content region.</dd>
+
+                        <dt><code>[open]</code></dt>
+                        <dd>Native <code>&lt;details&gt;</code> state attribute.</dd>
+                    </dl>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class="accordion"&gt;
+    &lt;details class="accordion-item"&gt;
+        &lt;summary class="accordion-header"&gt;
+            &lt;span class="accordion-title"&gt;Section title&lt;/span&gt;
+            &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+        &lt;/summary&gt;
+        &lt;div class="accordion-body"&gt;
+            &lt;p&gt;Disclosure content lives here.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">States &amp; variants</h2>
+                <p class="doc-block__summary">
+                    Accordions support a neutral base style and semantic variants that reuse existing
+                    feedback tokens. Open state adds an accent border-left; chevron rotation indicates
+                    expansion. There are no height animations.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Base vs semantic variants</h3>
+
+                    <div class="accordion section__stack-sm">
+                        <details class="accordion-item" open>
+                            <summary class="accordion-header">
+                                <span class="accordion-title">Neutral item (open)</span>
+                                <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                            </summary>
+                            <div class="accordion-body text-sm">
+                                <p>Uses <code>--color-accent</code> for the left border when open.</p>
+                            </div>
+                        </details>
+
+                        <details class="accordion-item accordion-item--info" open>
+                            <summary class="accordion-header">
+                                <span class="accordion-title">Info variant</span>
+                                <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                            </summary>
+                            <div class="accordion-body text-sm">
+                                <p>Uses <code>--color-info</code> for the open border-left.</p>
+                            </div>
+                        </details>
+
+                        <details class="accordion-item accordion-item--success" open>
+                            <summary class="accordion-header">
+                                <span class="accordion-title">Success variant</span>
+                                <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                            </summary>
+                            <div class="accordion-body text-sm">
+                                <p>Uses <code>--color-success</code> for the open border-left.</p>
+                            </div>
+                        </details>
+
+                        <details class="accordion-item accordion-item--warning" open>
+                            <summary class="accordion-header">
+                                <span class="accordion-title">Warning variant</span>
+                                <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                            </summary>
+                            <div class="accordion-body text-sm">
+                                <p>Uses <code>--color-warning</code> for the open border-left.</p>
+                            </div>
+                        </details>
+
+                        <details class="accordion-item accordion-item--danger" open>
+                            <summary class="accordion-header">
+                                <span class="accordion-title">Danger variant</span>
+                                <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                            </summary>
+                            <div class="accordion-body text-sm">
+                                <p>Uses <code>--color-danger</code> for the open border-left.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;details class="accordion-item" open&gt;...&lt;/details&gt;
+&lt;details class="accordion-item accordion-item--info" open&gt;...&lt;/details&gt;
+&lt;details class="accordion-item accordion-item--success" open&gt;...&lt;/details&gt;
+&lt;details class="accordion-item accordion-item--warning" open&gt;...&lt;/details&gt;
+&lt;details class="accordion-item accordion-item--danger" open&gt;...&lt;/details&gt;
+</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Density layers</h2>
+                <p class="doc-block__summary">
+                    Accordions adapt to VDS density layers by adjusting header and body padding. Content
+                    stays identical; only vertical rhythm changes to match the surrounding layout.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Compact vs relaxed</h3>
+
+                    <div class="section__stack-sm">
+
+                        <div class="density-a">
+                            <p class="text-xs text-muted">.density-a (compact)</p>
+                            <div class="accordion">
+                                <details class="accordion-item" open>
+                                    <summary class="accordion-header">
+                                        <span class="accordion-title">Compact header</span>
+                                        <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                                    </summary>
+                                    <div class="accordion-body text-sm">
+                                        <p>Reduced padding for dense settings sidebars and admin panels.</p>
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+
+                        <div class="density-c">
+                            <p class="text-xs text-muted">.density-c (relaxed)</p>
+                            <div class="accordion">
+                                <details class="accordion-item" open>
+                                    <summary class="accordion-header">
+                                        <span class="accordion-title">Relaxed header</span>
+                                        <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                                    </summary>
+                                    <div class="accordion-body text-sm">
+                                        <p>Increased padding for marketing, onboarding, or documentation pages.</p>
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class="density-a"&gt;
+    &lt;div class="accordion"&gt;
+        &lt;details class="accordion-item" open&gt;
+            &lt;summary class="accordion-header"&gt;
+                &lt;span class="accordion-title"&gt;Compact header&lt;/span&gt;
+                &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+            &lt;/summary&gt;
+            &lt;div class="accordion-body"&gt;
+                &lt;p&gt;Reduced padding for dense settings views.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/details&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="density-c"&gt;
+    &lt;div class="accordion"&gt;
+        &lt;details class="accordion-item" open&gt;
+            &lt;summary class="accordion-header"&gt;
+                &lt;span class="accordion-title"&gt;Relaxed header&lt;/span&gt;
+                &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+            &lt;/summary&gt;
+            &lt;div class="accordion-body"&gt;
+                &lt;p&gt;Increased padding for more spacious layouts.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/details&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Usage patterns &amp; best practices</h2>
+                <p class="doc-block__summary">
+                    Use accordions for progressive disclosure in dense layouts, not as a replacement
+                    for tabs or navigation. Keep headers clear, body content short, and avoid nesting
+                    too deeply inside other collapsible components.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use accordions for secondary content: advanced settings, explanations,
+                            and optional configuration blocks.
+                        </li>
+                        <li>
+                            Keep header labels short and descriptive; treat them like section titles,
+                            not full sentences.
+                        </li>
+                        <li>
+                            Group related content into one accordion item instead of many tiny ones.
+                        </li>
+                        <li>
+                            Use semantic variants to draw attention to important sections
+                            (e.g. danger zone, billing, legal).
+                        </li>
+                        <li>
+                            Respect native keyboard behaviour; headers remain real
+                            <code>&lt;summary&gt;</code> elements.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t use accordions as primary navigation; use tabs, sidebar nav,
+                            or breadcrumbs instead.
+                        </li>
+                        <li>
+                            Don’t place critical blocking actions (like “Delete account”) inside
+                            closed items only; surface them clearly.
+                        </li>
+                        <li>
+                            Don’t nest accordions inside accordions; prefer a single-level structure
+                            with clear sections.
+                        </li>
+                        <li>
+                            Don’t remove focus styles or override <code>:focus-visible</code>
+                            on headers or actions.
+                        </li>
+                        <li>
+                            Don’t fake the markup with arbitrary <code>&lt;div&gt;</code>s;
+                            rely on real <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Accordions rely on native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>
+                    semantics, keyboard focus, and token-driven focus styles. Keep the structure intact
+                    to preserve assistive technology behaviour.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Contract</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Always use real <code>&lt;details&gt;</code> as the root of each
+                            accordion item. The <code>[open]</code> attribute controls state.
+                        </li>
+                        <li>
+                            Keep <code>&lt;summary&gt;</code> as the header; do not replace it with
+                            non-semantic elements.
+                        </li>
+                        <li>
+                            Do not remove or override <code>:focus-visible</code> styles on
+                            <code>.accordion-header</code>.
+                        </li>
+                        <li>
+                            Avoid JS that breaks native behaviour; if you need “only one open at a time”,
+                            toggle the <code>open</code> attribute.
+                        </li>
+                        <li>
+                            Ensure the body remains readable; avoid fixed heights or clipping.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Keyboard &amp; AT</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Native disclosure elements expose expanded/collapsed state to assistive tech.
+                        </li>
+                        <li>
+                            Keyboard users toggle with <kbd>Enter</kbd> or <kbd>Space</kbd>.
+                        </li>
+                        <li>
+                            The visible header must always remain the toggle element.
+                        </li>
+                        <li>
+                            Titles should be short; they act as labels for screen readers.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </article>
+    </div>
+</section>

@@ -1,0 +1,734 @@
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section">
+    <div class="section__inner section__stack">
+        <div class="section__stack-sm">
+            <h1>Documentation Blocks</h1>
+
+            <p class="leading-relaxed text-soft">
+                <code>doc-block.css</code> is the documentation engine for VDS:
+                a compact system of blocks, previews and code frames designed to teach CSS layers
+                quickly and consistently.
+            </p>
+
+            <p class="text-sm text-muted">
+                Source: <code>doc-block.css</code> · Sits above
+                <code>primitives.css</code>,
+                <code>themes/*.css</code>,
+                <code>base.css</code>,
+                <code>layout.css</code> and
+                <code>typography.css</code>.
+            </p>
+        </div>
+
+        <p class="text-sm text-muted">
+            This page documents the full authoring surface: block anatomy, surfaces, previews,
+            code frames, numbered lines, diffs, semantic presets, and meta notes. Every
+            documentation page in VDS composes these primitives.
+        </p>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation & dependencies</h2>
+                <p class="doc-block__summary">
+                    <code>doc-block.css</code> is a thin layer that styles
+                    semantic documentation markup. It assumes tokens, themes, base, layout and
+                    typography are already loaded.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <ul class="text-body">
+                        <li>Load neutral tokens: <code>primitives.css</code>.</li>
+                        <li>Load one active theme:
+                            <code>themes/slate.css</code>,
+                            <code>themes/navy.css</code>,
+                            or <code>themes/carbon.css</code>.
+                        </li>
+                        <li>Load core structural layers:
+                            <code>base.css</code>,
+                            <code>layout.css</code>,
+                            <code>typography.css</code>.
+                        </li>
+                        <li>Optionally load:
+                            <code>utilities.css</code>,
+                            <code>sections.css</code>,
+                            <code>buttons.css</code>.
+                        </li>
+                        <li>Then load <code>doc-block.css</code> to style documentation
+                            blocks and code surfaces.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;link rel="stylesheet" href="./css/primitives.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/navy.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/carbon.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/base.css"&gt;
+&lt;link rel="stylesheet" href="./css/layout.css"&gt;
+&lt;link rel="stylesheet" href="./css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/utilities.css"&gt;
+&lt;link rel="stylesheet" href="./css/sections.css"&gt;
+&lt;link rel="stylesheet" href="./css/buttons.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/doc-block.css"&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section section--subtle">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Core concept & goals</h2>
+                <p class="doc-block__summary">
+                    Documentation blocks are <strong>teaching units</strong>: each block pairs an
+                    explanation with an optional preview and code frame, all on a single,
+                    readable surface.
+                </p>
+
+                <div class="doc-block__meta">
+                    <p class="doc-block__note--info">
+                        Use <code>.doc-block</code> for any self-contained explanation:
+                        “what this layer is”, “how to wire it”, “why it exists”.
+                    </p>
+                </div>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <ul class="text-sm">
+                    <li><strong>Consistent anatomy</strong> — title, summary, body, preview, code.</li>
+                    <li><strong>Theme-aware</strong> — surfaces and borders use semantic tokens.</li>
+                    <li><strong>Composition-first</strong> — pairs naturally with sections, grids,
+                        utilities.
+                    </li>
+                    <li><strong>Authoring-friendly</strong> — predictable classes, minimal nesting,
+                        easy to copy between docs.
+                    </li>
+                </ul>
+
+                <pre class="doc-block__code"><code>&lt;article class="doc-block"&gt;
+  &lt;header class="doc-block__header"&gt;
+    &lt;h2 class="doc-block__title"&gt;Title&lt;/h2&gt;
+    &lt;p class="doc-block__summary"&gt;Short explanation.&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;div class="doc-block__body"&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Anatomy of a documentation block</h2>
+                <p class="doc-block__summary">
+                    Each block has a small, fixed vocabulary of elements. This keeps every
+                    documentation page visually consistent, regardless of layer or component.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Structural elements</h3>
+                    <dl class="text-sm">
+                        <dt><code>.doc-block__header</code></dt>
+                        <dd>Title, summary and key notes.</dd>
+
+                        <dt><code>.doc-block__body</code></dt>
+                        <dd>Explanations, lists, tables, previews and code.</dd>
+
+                        <dt><code>.doc-block__preview</code></dt>
+                        <dd>Visual examples: cards, forms, layout specimens, logos.</dd>
+
+                        <dt><code>.doc-block__code</code></dt>
+                        <dd>Code surfaces, with optional toolbar and numbered lines.</dd>
+
+                        <dt><code>.doc-block__meta</code></dt>
+                        <dd>Notes, cautions, versioning and authoring guidance.</dd>
+                    </dl>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;article class="doc-block doc-block--surface"&gt;
+  &lt;header class="doc-block__header"&gt;
+    &lt;h2 class="doc-block__title"&gt;Base Philosophy — Hybrid Reset&lt;/h2&gt;
+    &lt;p class="doc-block__summary"&gt;One-paragraph overview.&lt;/p&gt;
+    &lt;div class="doc-block__meta"&gt;
+      &lt;p class="doc-block__note--info"&gt;
+        Short, repeatable note or caution.
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;div class="doc-block__body section__stack"&gt;
+    &lt;div class="doc-block__preview"&gt;…example…&lt;/div&gt;
+    &lt;div class="doc-block__code"&gt;…code…&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Surfaces & density</h2>
+                <p class="doc-block__summary">
+                    Root modifiers control how strong each block feels on the page: neutral,
+                    surface, elevated, contrast, or compact.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-4 section__grid-md">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Neutral</h3>
+                    <article class="doc-block">
+                        <header class="doc-block__header">
+                            <h4 class="doc-block__title text-xs">doc-block</h4>
+                        </header>
+                        <div class="doc-block__body">
+                            <p class="text-xs text-muted">
+                                Minimal padding, background inherited from section.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Surface</h3>
+                    <article class="doc-block doc-block--surface mt-6">
+                        <header class="doc-block__header">
+                            <h4 class="doc-block__title text-xs">doc-block--surface</h4>
+                        </header>
+                        <div class="doc-block__body">
+                            <p class="text-xs text-muted">
+                                Own surface and border; ideal for primary explanatory blocks.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Elevated</h3>
+                    <article class="doc-block doc-block--elevated mt-6">
+                        <header class="doc-block__header">
+                            <h4 class="doc-block__title text-xs">doc-block--elevated</h4>
+                        </header>
+                        <div class="doc-block__body">
+                            <p class="text-xs text-muted">
+                                Stronger surface and subtle shadow; use for page intros.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Contrast / compact</h3>
+                    <article class="doc-block doc-block--contrast doc-block--compact mt-6">
+                        <header class="doc-block__header">
+                            <h4 class="doc-block__title text-xs">doc-block--contrast doc-block--compact</h4>
+                        </header>
+                        <div class="doc-block__body">
+                            <p class="text-xs text-muted">
+                                High-contrast surface and tighter padding; good for callouts,
+                                warnings and “do / don’t” sections.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre><code>&lt;article class="doc-block"&gt;…&lt;/article&gt;
+&lt;article class="doc-block doc-block--surface"&gt;…&lt;/article&gt;
+&lt;article class="doc-block doc-block--elevated"&gt;…&lt;/article&gt;
+&lt;article class="doc-block doc-block--contrast"&gt;…&lt;/article&gt;
+&lt;article class="doc-block doc-block--compact"&gt;…&lt;/article&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Preview patterns</h2>
+                <p class="doc-block__summary">
+                    Previews show “what this looks like”: real cards, forms, logos, layout
+                    snippets or component specimens.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-3 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Standard preview</h3>
+                    <div class="section__stack-sm">
+                        <p class="text-sm">
+                            Use <code>.doc-block__preview</code> for any visual specimen:
+                            cards, tables, layout slices.
+                        </p>
+
+                        <div class="card mt-6">
+                            <div class="card__body section__stack-sm">
+                                <div class="text-xs text-muted">Token</div>
+                                <div class="text-sm"><code>--color-surface</code></div>
+                                <p class="text-xs text-muted">Primary documentation surface.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Inline logo preview</h3>
+                    <div class="doc-block__preview doc-block__preview--inline flex items-center gap-3">
+                        <img src="../svg/vlah-horizontal-slate-light-mono.svg"
+                             alt="Vlah Group logo"
+                             class="flex-none max-w-xs"/>
+
+                        <div class="section__stack-sm">
+                            <div class="text-xs text-muted">VLAH identity</div>
+                            <div class="text-sm">Slate light · horizontal · mono</div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        Inline previews work well for identity, badges or small UI elements.
+                    </p>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Preview + code pairing</h3>
+                    <div class="section__stack-sm">
+                        <p class="text-sm">
+                            A single block can host multiple previews and a shared code frame.
+                        </p>
+
+                        <div class="flex gap-3 flex-wrap mt-6">
+                            <button class="button button--primary button--sm">Primary</button>
+                            <button class="button button--ghost button--sm">Ghost</button>
+                            <button class="button button--outline button--sm">Outline</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre><code>&lt;div class="doc-block__preview"&gt;…visual example…&lt;/div&gt;
+
+&lt;div class="doc-block__preview doc-block__preview--inline"&gt;
+  &lt;img src="./svg/vlah-horizontal-slate-lightext-mono.svg" alt="Vlah Group logo"&gt;
+  &lt;p&gt;Slate · horizontal · mono&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Code blocks, toolbar & numbered lines</h2>
+                <p class="doc-block__summary">
+                    Code surfaces share a common frame: toolbar, language label, actions and an
+                    optional numbered layout for step-by-step explanations.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Standard code block</h3>
+
+                    <div class="doc-block__code">
+                        <div class="doc-block__toolbar">
+                            <span class="doc-block__lang">CSS</span>
+                            <div class="doc-block__actions">
+                                <button class="doc-block__action" type="button">Copy</button>
+                                <button class="doc-block__action" type="button">Expand</button>
+                            </div>
+                        </div>
+                        <pre><code>.doc-block__code {
+  background: var(--color-code-bg);
+  border-radius: var(--radius-md);
+}</code></pre>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        Use the toolbar only when there is real copy/expand behaviour wired via JS.
+                    </p>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Numbered code (authoring)</h3>
+
+                    <p class="text-sm">
+                        Numbered code blocks are ideal for explaining multi-step snippets. Wrap each
+                        logical line in a child element; numbering is handled by CSS.
+                    </p>
+
+                    <pre class="doc-block__code doc-block__code--numbered"><code><span>:root {</span>
+<span>  --layout-max-width: 80rem;  /* 1. Page container */</span>
+<span>  --section-spacing-md: var(--space-7);  /* 2. Default vertical rhythm */</span>
+<span>}</span></code></pre>
+
+                    <p class="text-xs text-muted">
+                        Any direct child of <code>&lt;code&gt;</code> becomes a numbered row:
+                        <code>&lt;span&gt;</code>, <code>&lt;div&gt;</code> or <code>&lt;code&gt;</code>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre><code>&lt;div class="doc-block__code"&gt;
+  &lt;div class="doc-block__toolbar"&gt;
+    &lt;span class="doc-block__lang"&gt;HTML&lt;/span&gt;
+    &lt;div class="doc-block__actions"&gt;
+      &lt;button class="doc-block__action" type="button"&gt;Copy&lt;/button&gt;
+      &lt;button class="doc-block__action" type="button"&gt;Expand&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;pre&gt;&lt;code&gt;...plain code...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;pre class="doc-block__code doc-block__code--numbered"&gt;
+  &lt;code&gt;
+    &lt;span&gt;/* 1. Step one */&lt;/span&gt;
+    &lt;span&gt;/* 2. Step two */&lt;/span&gt;
+  &lt;/code&gt;
+&lt;/pre&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--collapsed">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Collapsed blocks & progressive disclosure</h2>
+                <p class="doc-block__summary">
+                    For long, advanced snippets, use <code>.doc-block--collapsed</code> with a
+                    toggle wired via JS. The CSS provides the collapsed visual state.
+                </p>
+
+                <div class="doc-block__meta">
+                    <p class="doc-block__note--warning">
+                        The CSS only handles the visual treatment. You are responsible for toggling
+                        <code>.doc-block--collapsed</code> in JavaScript.
+                    </p>
+                </div>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <p class="text-sm">
+                    Collapsed blocks are useful for implementation details that most readers can
+                    skip, but power users may expand.
+                </p>
+
+                <div class="doc-block__code doc-block__code--numbered">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">CSS</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code><span>.doc-block--collapsed &gt; .doc-block__body {</span>
+<span>  max-height: var(--doc-collapsed-height, 18rem);</span>
+<span>  overflow: hidden;</span>
+<span>}</span>
+
+<span>.doc-block--collapsed .doc-block__toolbar::after {</span>
+<span>  content: "Collapsed";</span>
+<span>}</span></code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--contrast doc-block--surface doc-block--diff">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Diff & change-log blocks</h2>
+                <p class="doc-block__summary">
+                    The diff pattern highlights additions and removals between two versions of a
+                    snippet. It is ideal for change logs and migration guides.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Visual behaviour</h3>
+                    <p class="text-sm">
+                        Lines marked as “added” or “removed” receive subtle inline chips and
+                        background cues. The rest of the code remains neutral.
+                    </p>
+
+                    <div class="doc-block__code doc-block__code--numbered">
+<pre><code><span>.button {</span>
+<span>  padding-inline: var(--space-3);</span>
+<span>  border-radius: var(--radius-full);</span>
+<span class="doc-block--diff-line-remove">  background: #0070f3;</span>
+<span class="doc-block--diff-line-add">  background: var(--color-accent-soft);</span>
+<span>}</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;article class="doc-block doc-block--surface doc-block--diff"&gt;
+  &lt;header class="doc-block__header"&gt;
+    &lt;h2 class="doc-block__title"&gt;Buttons v2&lt;/h2&gt;
+  &lt;/header&gt;
+
+  &lt;div class="doc-block__body"&gt;
+    &lt;div class="doc-block__code doc-block__code--numbered"&gt;
+      &lt;pre&gt;&lt;code&gt;
+        &lt;span&gt;.button {&lt;/span&gt;
+        &lt;span&gt;  padding-inline: var(--space-3);&lt;/span&gt;
+        &lt;span class="doc-block--diff-line-remove"&gt;
+          background: #0070f3;
+        &lt;/span&gt;
+        &lt;span class="doc-block--diff-line-add"&gt;
+          background: var(--color-accent-soft);
+        &lt;/span&gt;
+        &lt;span&gt;}&lt;/span&gt;
+      &lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Semantic presets & highlights</h2>
+                <p class="doc-block__summary">
+                    Optional semantic modifiers make it easy to visually separate concepts,
+                    patterns, APIs and examples without inventing new ad-hoc styles.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-4 section__grid-md">
+                <div class="doc-block__preview">
+                    <article class="doc-block doc-block--surface doc-block--concept doc-block--compact">
+                        <header class="doc-block__header">
+                            <h3 class="doc-block__title text-xs">Concept</h3>
+                        </header>
+                        <div class="doc-block__body">
+                            <p class="text-xs text-muted">
+                                Use for “what / why” explanations and mental models.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="doc-block__preview">
+                    <article class="doc-block doc-block--surface doc-block--pattern doc-block--compact">
+                        <header class="doc-block__header">
+                            <h3 class="doc-block__title text-xs">Pattern</h3>
+                        </header>
+                        <div class="doc-block__body">
+                            <p class="text-xs text-muted">
+                                Use for “how to structure” and repeatable layout or component patterns.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="doc-block__preview">
+                    <article class="doc-block doc-block--surface doc-block--api doc-block--compact">
+                        <header class="doc-block__header">
+                            <h3 class="doc-block__title text-xs">API</h3>
+                        </header>
+                        <div class="doc-block__body">
+                            <p class="text-xs text-muted">
+                                Use for class tables, props and token contracts.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="doc-block__preview">
+                    <article class="doc-block doc-block--surface doc-block--example doc-block--compact">
+                        <header class="doc-block__header">
+                            <h3 class="doc-block__title text-xs">Example</h3>
+                        </header>
+                        <div class="doc-block__body">
+                            <p class="text-xs text-muted">
+                                Use for fully wired HTML snippets and “copy-paste” recipes.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre><code>&lt;article class="doc-block doc-block--surface doc-block--concept"&gt;…&lt;/article&gt;
+&lt;article class="doc-block doc-block--surface doc-block--pattern"&gt;…&lt;/article&gt;
+&lt;article class="doc-block doc-block--surface doc-block--api"&gt;…&lt;/article&gt;
+&lt;article class="doc-block doc-block--surface doc-block--example"&gt;…&lt;/article&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section data-vds-dock-block data-vds-content-block data-vds-dock-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Contract for accessible, consistent, token-driven documentation blocks.
+                    Maintain semantic structure, preserve toolbar interactions, and ensure code
+                    surfaces remain readable, navigable and keyboard-friendly.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+
+                        <li>Use real semantic structure:
+                            <code>&lt;article class="doc-block"&gt;</code>,
+                            <code>.doc-block__header</code>,
+                            <code>.doc-block__body</code>,
+                            <code>.doc-block__preview</code>,
+                            <code>.doc-block__code</code>.
+                        </li>
+
+                        <li>Always include meaningful titles and summaries in
+                            <code>.doc-block__header</code>.
+                        </li>
+
+                        <li>Use <code>.doc-block__preview</code> for visual examples
+                            and <code>.doc-block__code</code> for code; never mix roles.
+                        </li>
+
+                        <li>Keep toolbar actions (<code>Copy</code>,
+                            <code>Expand</code>) keyboard accessible:
+                            they must remain actual <code>&lt;button&gt;</code> elements.
+                        </li>
+
+                        <li>Use numbered blocks (<code>.doc-block__code--numbered</code>)
+                            for multi-step code explanations where each line needs a semantic row.
+                        </li>
+
+                        <li>Use diff blocks (<code>.doc-block--diff</code>)
+                            to communicate additions/removals with semantic meaning.
+                        </li>
+
+                        <li>Allow <code>focus-visible</code> to remain unmodified for all
+                            interactive elements in previews and toolbars.
+                        </li>
+
+                        <li>Use <code>prefers-reduced-motion</code> fallback
+                            already embedded for accessibility; rely on tokens instead of custom transitions.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+
+                        <li>Don’t wrap previews or code blocks in arbitrary containers;
+                            use only the provided block anatomy.
+                        </li>
+
+                        <li>Don’t fake toolbar behaviour with non-button elements
+                            (<code>&lt;div&gt;</code> or <code>&lt;span&gt;</code>).
+                        </li>
+
+                        <li>Don’t override padding, borders, backgrounds or radii inside
+                            <code>.doc-block__preview</code> or
+                            <code>.doc-block__code</code>.
+                        </li>
+
+                        <li>Don’t hide essential information inside collapsed blocks
+                            without providing a clear toggle.
+                        </li>
+
+                        <li>Don’t remove or override syntax colours —
+                            rely on <code>--code-syntax-*</code> tokens only.
+                        </li>
+
+                        <li>Don’t embed screenshots where HTML specimens can be rendered directly.</li>
+
+                        <li>Don’t mix semantic presets
+                            (<code>.doc-block--concept</code>,
+                            <code>--pattern</code>,
+                            <code>--api</code>,
+                            <code>--example</code>)
+                            in the same block.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Use .doc-block anatomy exactly: header → body → preview/code → meta.
+2. Keep toolbar actions semantic: real &lt;button&gt; with focus-visible.
+3. Use previews for visuals and .doc-block__code for code (no mixing).
+4. Apply numbered code only when each row has semantic meaning.
+5. Use diff blocks for structural change explanation (add/remove).
+6. Preserve token-driven spacing, borders, radii and motion.
+7. Never remove focus-visible or syntax highlighting.</code></pre>
+            </div>
+
+        </article>
+    </div>
+</section>

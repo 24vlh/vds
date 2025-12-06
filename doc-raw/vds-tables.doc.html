@@ -1,0 +1,1684 @@
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section">
+    <div class="section__inner">
+        <h1>Tables</h1>
+        <p class="leading-relaxed text-soft">
+            Token-driven tables for data-heavy UIs: density layers, variants, row states,
+            inline actions, high-frequency finance helpers, EMPTY / LOADING states,
+            and responsive collapse for mobile.
+        </p>
+        <p class="text-sm text-muted">
+            Source: <code>tables.css</code> · Depends on
+            <code>base.css</code>,
+            <code>layout.css</code>,
+            <code>typography.css</code>,
+            theme tokens in <code>/themes/*.css</code>.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section section--b">
+    <div class="section__inner section__stack">
+        <div class="section__header">
+            <div class="section__eyebrow">High Frequency Table</div>
+            <h2 class="section__title">For finance, accounting, etc.</h2>
+        </div>
+
+        <div class="stack">
+            <table class="table table--hf table--sticky-header">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Account</th>
+                    <th>Description</th>
+                    <th><span class="t-cur">Debit</span></th>
+                    <th><span class="t-cur">Credit</span></th>
+                    <th><span class="t-cur">Balance</span></th>
+                    <th><span class="t-cur">Δ Today</span></th>
+                    <th><span class="t-pct">Δ%</span></th>
+                    <th>Trend</th>
+                    <th>Type</th>
+                    <th>Risk</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr class="table-fin--flagged">
+                    <td>2025-01-04</td>
+                    <td>AC-3321</td>
+                    <td>Unusual withdrawal</td>
+                    <td><span class="t-cur cur-gbp">-4,900.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-gbp">12,030.00</span></td>
+                    <td><span class="t-cur cur-gbp">-4,900.00</span></td>
+                    <td><span class="t-pct">-28.9%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-28.9%</span></td>
+                    <td>Withdrawal</td>
+                    <td>High</td>
+                    <td>Flagged</td>
+                </tr>
+
+                <tr class="table-fin--warning">
+                    <td>2025-01-04</td>
+                    <td>AC-2014</td>
+                    <td>Vendor double charge</td>
+                    <td><span class="t-cur cur-eur">-340.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-eur">3,210.00</span></td>
+                    <td><span class="t-cur cur-eur">-340.00</span></td>
+                    <td><span class="t-pct">-9.5%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-9.5%</span></td>
+                    <td>Expense</td>
+                    <td>Med</td>
+                    <td>Check</td>
+                </tr>
+
+                <tr class="table-fin--good">
+                    <td>2025-01-04</td>
+                    <td>AC-1208</td>
+                    <td>Invoice payment</td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-usd">8,250.00</span></td>
+                    <td><span class="t-cur cur-usd">14,480.00</span></td>
+                    <td><span class="t-cur cur-usd">+8,250.00</span></td>
+                    <td><span class="t-pct">+132%</span></td>
+                    <td><span class="t-trend t-up t-num t-pct">+132%</span></td>
+                    <td>Income</td>
+                    <td>Low</td>
+                    <td>OK</td>
+                </tr>
+
+                <tr class="table-fin--muted">
+                    <td>2025-01-04</td>
+                    <td>AC-9988</td>
+                    <td>Rounding correction</td>
+                    <td><span class="t-cur cur-ron">-1.23</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-ron">1,229.12</span></td>
+                    <td><span class="t-cur cur-ron">-1.23</span></td>
+                    <td><span class="t-pct">-0.09%</span></td>
+                    <td><span class="t-trend t-flat t-num t-pct">0%</span></td>
+                    <td>Adjustment</td>
+                    <td>None</td>
+                    <td>Muted</td>
+                </tr>
+
+                <tr class="table-fin--curious">
+                    <td>2025-01-04</td>
+                    <td>AC-3400</td>
+                    <td>Odd category spend</td>
+                    <td><span class="t-cur cur-eur">-120.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-eur">845.00</span></td>
+                    <td><span class="t-cur cur-eur">-120.00</span></td>
+                    <td><span class="t-pct">-12.4%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-12.4%</span></td>
+                    <td>Expense</td>
+                    <td>Low</td>
+                    <td>Investigate</td>
+                </tr>
+
+                <tr class="table-fin--curious">
+                    <td>2025-01-04</td>
+                    <td>AC-1112</td>
+                    <td>Split entry anomaly</td>
+                    <td><span class="t-cur cur-gbp">-820.00</span></td>
+                    <td><span class="t-cur cur-gbp">820.00</span></td>
+                    <td><span class="t-cur cur-gbp">0.00</span></td>
+                    <td><span class="t-cur cur-gbp">0.00</span></td>
+                    <td><span class="t-pct">0%</span></td>
+                    <td><span class="t-trend t-flat t-num t-pct">0%</span></td>
+                    <td>Entry</td>
+                    <td>Odd</td>
+                    <td>Review</td>
+                </tr>
+
+                <tr>
+                    <td>2025-01-04</td>
+                    <td>AC-2200</td>
+                    <td>ATM cash</td>
+                    <td><span class="t-cur cur-ron">-200.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-ron">5,833.00</span></td>
+                    <td><span class="t-cur cur-ron">-200.00</span></td>
+                    <td><span class="t-pct">-3.3%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-3.3%</span></td>
+                    <td>Cash</td>
+                    <td>Low</td>
+                    <td>OK</td>
+                </tr>
+
+                <tr>
+                    <td>2025-01-04</td>
+                    <td>AC-7021</td>
+                    <td>POS small payment</td>
+                    <td><span class="t-cur cur-ron">-54.12</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-ron">1,910.00</span></td>
+                    <td><span class="t-cur cur-ron">-54.12</span></td>
+                    <td><span class="t-pct">-2.3%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-2.3%</span></td>
+                    <td>Expense</td>
+                    <td>Low</td>
+                    <td>OK</td>
+                </tr>
+
+                <tr class="table-fin--good">
+                    <td>2025-01-04</td>
+                    <td>AC-4500</td>
+                    <td>Micro-invoice</td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-eur">95.00</span></td>
+                    <td><span class="t-cur cur-eur">1,225.12</span></td>
+                    <td><span class="t-cur cur-eur">+95.00</span></td>
+                    <td><span class="t-pct">+8.4%</span></td>
+                    <td><span class="t-trend t-up t-num t-pct">+8.4%</span></td>
+                    <td>Income</td>
+                    <td>Low</td>
+                    <td>OK</td>
+                </tr>
+
+                <tr class="table-fin--bad">
+                    <td>2025-01-04</td>
+                    <td>AC-8800</td>
+                    <td>Unauthorized charge</td>
+                    <td><span class="t-cur cur-usd">-620.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-usd">221.00</span></td>
+                    <td><span class="t-cur cur-usd">-620.00</span></td>
+                    <td><span class="t-pct">-73.8%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-73.8%</span></td>
+                    <td>Fraud</td>
+                    <td>High</td>
+                    <td>Block</td>
+                </tr>
+
+                <tr>
+                    <td>2025-01-04</td>
+                    <td>AC-3300</td>
+                    <td>Fuel</td>
+                    <td><span class="t-cur cur-ron">-230.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-ron">671.00</span></td>
+                    <td><span class="t-cur cur-ron">-230.00</span></td>
+                    <td><span class="t-pct">-25.5%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-25.5%</span></td>
+                    <td>Expense</td>
+                    <td>Low</td>
+                    <td>OK</td>
+                </tr>
+
+                <tr>
+                    <td>2025-01-04</td>
+                    <td>AC-5100</td>
+                    <td>Monthly subscription</td>
+                    <td><span class="t-cur cur-eur">-19.99</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-eur">248.00</span></td>
+                    <td><span class="t-cur cur-eur">-19.99</span></td>
+                    <td><span class="t-pct">-7.4%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-7.4%</span></td>
+                    <td>Expense</td>
+                    <td>Low</td>
+                    <td>OK</td>
+                </tr>
+
+                <tr class="table-fin--info">
+                    <td>2025-01-04</td>
+                    <td>AC-9001</td>
+                    <td>Info: limit reached</td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-pct">0%</span></td>
+                    <td><span class="t-trend t-flat t-num t-pct">0%</span></td>
+                    <td>Info</td>
+                    <td>None</td>
+                    <td>Note</td>
+                </tr>
+
+                <tr>
+                    <td>2025-01-04</td>
+                    <td>AC-1000</td>
+                    <td>Parking</td>
+                    <td><span class="t-cur cur-ron">-10.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-ron">1,129.12</span></td>
+                    <td><span class="t-cur cur-ron">-10.00</span></td>
+                    <td><span class="t-pct">-0.9%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-0.9%</span></td>
+                    <td>Expense</td>
+                    <td>Low</td>
+                    <td>OK</td>
+                </tr>
+
+                <tr class="table-fin--warning">
+                    <td>2025-01-04</td>
+                    <td>AC-7002</td>
+                    <td>Unusual merchant region</td>
+                    <td><span class="t-cur cur-usd">-310.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-usd">620.00</span></td>
+                    <td><span class="t-cur cur-usd">-310.00</span></td>
+                    <td><span class="t-pct">-33%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-33%</span></td>
+                    <td>Expense</td>
+                    <td>High</td>
+                    <td>Review</td>
+                </tr>
+
+                <tr class="table-fin--good">
+                    <td>2025-01-04</td>
+                    <td>AC-7777</td>
+                    <td>Cashback</td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-eur">12.35</span></td>
+                    <td><span class="t-cur cur-eur">712.35</span></td>
+                    <td><span class="t-cur cur-eur">+12.35</span></td>
+                    <td><span class="t-pct">+1.7%</span></td>
+                    <td><span class="t-trend t-up t-num t-pct">+1.7%</span></td>
+                    <td>Reward</td>
+                    <td>Low</td>
+                    <td>OK</td>
+                </tr>
+
+                <tr>
+                    <td>2025-01-04</td>
+                    <td>AC-2001</td>
+                    <td>Groceries</td>
+                    <td><span class="t-cur cur-ron">-155.20</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-ron">478.00</span></td>
+                    <td><span class="t-cur cur-ron">-155.20</span></td>
+                    <td><span class="t-pct">-24.5%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-24.5%</span></td>
+                    <td>Expense</td>
+                    <td>Low</td>
+                    <td>OK</td>
+                </tr>
+
+                <tr class="table-fin--bad">
+                    <td>2025-01-04</td>
+                    <td>AC-5555</td>
+                    <td>Rejected transaction</td>
+                    <td><span class="t-cur cur-usd">-180.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-usd">298.00</span></td>
+                    <td><span class="t-cur cur-usd">-180.00</span></td>
+                    <td><span class="t-pct">-37.6%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-37.6%</span></td>
+                    <td>Error</td>
+                    <td>High</td>
+                    <td>Fail</td>
+                </tr>
+
+                <tr class="table-fin--info">
+                    <td>2025-01-04</td>
+                    <td>AC-1010</td>
+                    <td>Monthly checkpoint</td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-cur cur-ron">0.00</span></td>
+                    <td><span class="t-cur cur-ron">478.00</span></td>
+                    <td><span class="t-cur">0.00</span></td>
+                    <td><span class="t-pct">0%</span></td>
+                    <td><span class="t-trend t-flat t-num t-pct">0%</span></td>
+                    <td>Info</td>
+                    <td>None</td>
+                    <td>Note</td>
+                </tr>
+
+                <tr class="table-fin--curious">
+                    <td>2025-01-04</td>
+                    <td>AC-9090</td>
+                    <td>Foreign microcharge</td>
+                    <td><span class="t-cur cur-jpy">-380</span></td>
+                    <td><span class="t-cur">0</span></td>
+                    <td><span class="t-cur cur-jpy">3,220</span></td>
+                    <td><span class="t-cur cur-jpy">-380</span></td>
+                    <td><span class="t-pct">-11%</span></td>
+                    <td><span class="t-trend t-down t-num t-pct">-11%</span></td>
+                    <td>Expense</td>
+                    <td>Med</td>
+                    <td>Check</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section section--b">
+    <div class="section__inner section__stack">
+        <header class="section__header">
+            <div class="section__eyebrow">High frequency table</div>
+            <h2 class="section__title">Dense grid for accounting, PnL, trading logs</h2>
+            <p class="section__subtitle">
+                Use <code>.table.table--hf</code> for extremely dense,
+                fully bordered financial tables, with sticky header, numeric helpers
+                and trend flags.
+            </p>
+        </header>
+
+        <div class="stack">
+            <div class="card">
+                <div class="card__body">
+                    <div class="table-wrapper">
+                        <table class="table table--hf table--sticky-header">
+                            <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Account</th>
+                                <th scope="col">Description</th>
+                                <th scope="col"><span class="t-cur cur-gbp">Debit</span></th>
+                                <th scope="col"><span class="t-cur cur-gbp">Credit</span></th>
+                                <th scope="col"><span class="t-cur cur-gbp">Balance</span></th>
+                                <th scope="col"><span class="t-cur cur-gbp">Δ Today</span></th>
+                                <th scope="col"><span class="t-pct">Δ%</span></th>
+                                <th scope="col">Trend</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Risk</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <tr>
+                                <td>2025-05-01</td>
+                                <td>Trading · Cash</td>
+                                <td>Opening balance</td>
+                                <td><span class="t-cur cur-gbp">0.00</span></td>
+                                <td><span class="t-cur cur-gbp">50,000.00</span></td>
+                                <td><span class="t-cur cur-gbp">50,000.00</span></td>
+                                <td><span class="t-cur cur-gbp">50,000.00</span></td>
+                                <td><span class="t-pct">+100.00%</span></td>
+                                <td><span class="t-trend t-up t-num t-pct">+100.00%</span></td>
+                                <td>Cash</td>
+                                <td>Low</td>
+                                <td>Posted</td>
+                            </tr>
+
+                            <tr>
+                                <td>2025-05-02</td>
+                                <td>Trading · Margin</td>
+                                <td>Equity purchase</td>
+                                <td><span class="t-cur cur-gbp">12,500.00</span></td>
+                                <td><span class="t-cur cur-gbp">0.00</span></td>
+                                <td><span class="t-cur cur-gbp">37,500.00</span></td>
+                                <td><span class="t-cur cur-gbp">-12,500.00</span></td>
+                                <td><span class="t-pct">-25.00%</span></td>
+                                <td><span class="t-trend t-down t-num t-pct">-25.00%</span></td>
+                                <td>Trade</td>
+                                <td>Medium</td>
+                                <td>Posted</td>
+                            </tr>
+
+                            <tr>
+                                <td>2025-05-03</td>
+                                <td>Trading · Margin</td>
+                                <td>Dividend income</td>
+                                <td><span class="t-cur cur-gbp">0.00</span></td>
+                                <td><span class="t-cur cur-gbp">420.00</span></td>
+                                <td><span class="t-cur cur-gbp">37,920.00</span></td>
+                                <td><span class="t-cur cur-gbp">+420.00</span></td>
+                                <td><span class="t-pct">+1.12%</span></td>
+                                <td><span class="t-trend t-up t-num t-pct">+1.12%</span></td>
+                                <td>Income</td>
+                                <td>Low</td>
+                                <td>Settled</td>
+                            </tr>
+
+                            <tr>
+                                <td>2025-05-03</td>
+                                <td>Trading · FX</td>
+                                <td>FX swap rollover</td>
+                                <td><span class="t-cur cur-usd">0.00</span></td>
+                                <td><span class="t-cur cur-usd">120.00</span></td>
+                                <td><span class="t-cur cur-usd">120.00</span></td>
+                                <td><span class="t-cur cur-usd">+120.00</span></td>
+                                <td><span class="t-pct">+0.30%</span></td>
+                                <td><span class="t-trend t-flat t-num t-pct">+0.30%</span></td>
+                                <td>FX</td>
+                                <td>Medium</td>
+                                <td>Pending</td>
+                            </tr>
+
+                            <tr>
+                                <td>2025-05-04</td>
+                                <td>Trading · Cash</td>
+                                <td>Fees &amp; commissions</td>
+                                <td><span class="t-cur cur-gbp">-250.00</span></td>
+                                <td><span class="t-cur cur-gbp">0.00</span></td>
+                                <td><span class="t-cur cur-gbp">37,670.00</span></td>
+                                <td><span class="t-cur cur-gbp">-250.00</span></td>
+                                <td><span class="t-pct">-0.66%</span></td>
+                                <td><span class="t-trend t-down t-num t-pct">-0.66%</span></td>
+                                <td>Fees</td>
+                                <td>Low</td>
+                                <td>Posted</td>
+                            </tr>
+
+                            <tr>
+                                <td>2025-05-04</td>
+                                <td>Trading · Margin</td>
+                                <td>Mark-to-market</td>
+                                <td><span class="t-cur cur-gbp">0.00</span></td>
+                                <td><span class="t-cur cur-gbp">890.00</span></td>
+                                <td><span class="t-cur cur-gbp">38,560.00</span></td>
+                                <td><span class="t-cur cur-gbp">+890.00</span></td>
+                                <td><span class="t-pct">+2.36%</span></td>
+                                <td><span class="t-trend t-up t-num t-pct">+2.36%</span></td>
+                                <td>MTM</td>
+                                <td>High</td>
+                                <td>Intraday</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;table class="table table--hf table--sticky-header"&gt;
+    &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;col&quot;&gt;Date&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;Account&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;Description&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;&lt;span class=&quot;t-cur cur-gbp&quot;&gt;Debit&lt;/span&gt;&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;&lt;span class=&quot;t-cur cur-gbp&quot;&gt;Credit&lt;/span&gt;&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;&lt;span class=&quot;t-cur cur-gbp&quot;&gt;Balance&lt;/span&gt;&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;&lt;span class=&quot;t-cur cur-gbp&quot;&gt;&Delta; Today&lt;/span&gt;&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;&lt;span class=&quot;t-pct&quot;&gt;&Delta;%&lt;/span&gt;&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;Trend&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;Type&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;Risk&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;Status&lt;/th&gt;
+            &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+            &lt;tr&gt;
+            &lt;td&gt;2025-05-04&lt;/td&gt;
+            &lt;td&gt;Trading &middot; Margin&lt;/td&gt;
+            &lt;td&gt;Mark-to-market&lt;/td&gt;
+            &lt;td&gt;&lt;span class=&quot;t-cur cur-gbp&quot;&gt;0.00&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span class=&quot;t-cur cur-gbp&quot;&gt;890.00&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span class=&quot;t-cur cur-gbp&quot;&gt;38,560.00&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span class=&quot;t-cur cur-gbp&quot;&gt;+890.00&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span class=&quot;t-pct&quot;&gt;+2.36%&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;span class=&quot;t-trend t-up t-num t-pct&quot;&gt;+2.36%&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;MTM&lt;/td&gt;
+            &lt;td&gt;High&lt;/td&gt;
+            &lt;td&gt;Intraday&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Layer stack</h2>
+                <p class="doc-block__summary">
+                    The tables subsystem is token-driven and depends on primitives, base,
+                    layout, and one active theme. Load CSS in this exact order before using any
+                    <code>.table*</code> classes.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <ul>
+                        <li><code>primitives.css</code> — all design tokens (spacing, radii, colour
+                            primitives).
+                        </li>
+                        <li><code>base.css</code> — global reset, typography baseline, element
+                            defaults.
+                        </li>
+                        <li><code>layout.css</code> — containers, grid system, section spacing.</li>
+                        <li><code>content-blocks.css</code> — optional structural blocks used in
+                            documentation.
+                        </li>
+                        <li><code>doc-block.css</code> — documentation formatting (preview / code
+                            blocks).
+                        </li>
+                        <li><code>tables.css</code> — the tables subsystem (this file).</li>
+                        <li><code>icons.css</code> — optional icon set (trend arrows do not require
+                            it).
+                        </li>
+                        <li>One active theme from <code>/themes/*.css</code> — colours, surfaces,
+                            semantic hues.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="./css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="./css/base.css"&gt;
+&lt;link rel="stylesheet" href="./css/layout.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/content-blocks.css"&gt;
+&lt;link rel="stylesheet" href="./css/doc-block.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/icons.css"&gt;
+&lt;link rel="stylesheet" href="./css/buttons.css"&gt;
+&lt;link rel="stylesheet" href="./css/tables.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/navy.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/carbon.css"&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Base anatomy</h2>
+                <p class="doc-block__summary">
+                    Canonical structure: <code>.table</code> applied to
+                    <code>&lt;table&gt;</code>, wrapped in a
+                    <code>.table-wrapper</code> or any scrollable container.
+                    Add density, striping, and hover modifiers as needed.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="table-wrapper">
+                                <table class="table table--b table--striped table--hover">
+                                    <caption>Team directory (base anatomy)</caption>
+
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Role</th>
+                                        <th scope="col">Location</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr>
+                                        <td>Alex Smith</td>
+                                        <td>Engineering Lead</td>
+                                        <td>London</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Maria Rossi</td>
+                                        <td>Product Manager</td>
+                                        <td>Milan</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kenji Tanaka</td>
+                                        <td>Quant Researcher</td>
+                                        <td>Tokyo</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="table-wrapper"&gt;
+    &lt;table class="table table--b table--striped table--hover"&gt;
+        &lt;caption&gt;Team directory (base anatomy)&lt;/caption&gt;
+
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th scope="col"&gt;Name&lt;/th&gt;
+                &lt;th scope="col"&gt;Role&lt;/th&gt;
+                &lt;th scope="col"&gt;Location&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Alex Smith&lt;/td&gt;
+                &lt;td&gt;Engineering Lead&lt;/td&gt;
+                &lt;td&gt;London&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Wrappers &amp; panels</h2>
+                <p class="doc-block__summary">
+                    Use <code>.table-wrapper</code> for horizontal scroll and
+                    <code>.table-panel*</code> for elevated, card-like blocks.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="table-panel">
+                        <div class="table-panel__header">
+                            <div>
+                                <div class="table-panel__title">Active subscriptions</div>
+                                <div class="table-panel__meta">Last updated: 2025-05-06 · 12 items</div>
+                            </div>
+                            <button class="button button--ghost button--sm">Export</button>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table class="table table--b table--hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col">Plan</th>
+                                    <th scope="col">Renewal</th>
+                                    <th scope="col">MRR</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>Acme Corp</td>
+                                    <td>Enterprise</td>
+                                    <td>2025-08-01</td>
+                                    <td><span class="t-cur cur-eur">4,200.00</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Beta Analytics</td>
+                                    <td>Pro</td>
+                                    <td>2025-06-15</td>
+                                    <td><span class="t-cur cur-eur">750.00</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="table-panel"&gt;
+    &lt;div class="table-panel__header"&gt;
+        &lt;div&gt;
+            &lt;div class="table-panel__title"&gt;Active subscriptions&lt;/div&gt;
+            &lt;div class="table-panel__meta"&gt;Last updated: 2025-05-06 · 12 items&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button class="button button--ghost button--sm"&gt;Export&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class="table-wrapper"&gt;
+        &lt;table class="table table--b table--hover"&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;Customer&lt;/th&gt;
+                    &lt;th&gt;Plan&lt;/th&gt;
+                    &lt;th&gt;Renewal&lt;/th&gt;
+                    &lt;th&gt;MRR&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Acme Corp&lt;/td&gt;
+                    &lt;td&gt;Enterprise&lt;/td&gt;
+                    &lt;td&gt;2025-08-01&lt;/td&gt;
+                    &lt;td&gt;&lt;span class="t-cur cur-eur"&gt;4,200.00&lt;/span&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Density &amp; visual variants</h2>
+                <p class="doc-block__summary">
+                    Three density layers (<code>.table--a/b/c</code>) plus standard visual variants:
+                    bordered, no-borders, striped, hover and compact, plus truncation for long content.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview stack">
+                    <div class="card">
+                        <div class="card__header">
+                            <div class="text-sm text-mono">.table.table--a</div>
+                            <div class="text-sm">Relaxed / spacious</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="table-wrapper">
+                                <table class="table table--a table--striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Plan</th>
+                                        <th>Seats</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Starter</td>
+                                        <td>10</td>
+                                        <td><span class="t-cur cur-eur">49.00</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pro</td>
+                                        <td>50</td>
+                                        <td><span class="t-cur cur-eur">199.00</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__header">
+                            <div class="text-sm text-mono">.table.table--b.table--bordered</div>
+                            <div class="text-sm">Default density, fully bordered</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="table-wrapper">
+                                <table class="table table--b table--bordered table--hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Description</th>
+                                        <th>Enabled</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>SSO</td>
+                                        <td>Single sign-on with corporate IdP.</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Audit log</td>
+                                        <td>Full history of admin actions.</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__header">
+                            <div class="text-sm text-mono">.table.table--c.table--compact</div>
+                            <div class="text-sm">Compact / monitoring-friendly</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="table-wrapper">
+                                <table class="table table--c table--compact table--striped table--truncate-cells">
+                                    <thead>
+                                    <tr>
+                                        <th>Column</th>
+                                        <th>Long value</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td title="This is a long piece of content that will be truncated.">
+                                            This is a long piece of content that will be truncated.
+                                        </td>
+                                        <td>Truncation on</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td title="Another long piece of content that exceeds typical width.">
+                                            Another long piece of content that exceeds typical width.
+                                        </td>
+                                        <td>Truncation on</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;table class="table table--a"&gt;…&lt;/table&gt;
+&lt;table class="table table--b"&gt;…&lt;/table&gt;
+&lt;table class="table table--c"&gt;…&lt;/table&gt;
+
+&lt;table class="table table--b table--bordered"&gt;…&lt;/table&gt;
+&lt;table class="table table--b table--no-borders"&gt;…&lt;/table&gt;
+&lt;table class="table table--b table--striped table--hover"&gt;…&lt;/table&gt;
+&lt;table class="table table--c table--compact"&gt;…&lt;/table&gt;
+
+&lt;table class="table table--c table--truncate-cells"&gt;…&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Row states</h2>
+                <p class="doc-block__summary">
+                    Apply semantic row classes on <code>&lt;tr&gt;</code> to visually mark status:
+                    <code>.table-row--selected</code>, <code>.table-row--success</code>,
+                    <code>.table-row--warning</code>, <code>.table-row--danger</code>,
+                    <code>.table-row--info</code>, <code>.table-row--muted</code>.
+                    These layer on top of any density or variant.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="table-wrapper">
+                        <table class="table table--b">
+                            <thead>
+                            <tr>
+                                <th>Job</th>
+                                <th>Owner</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr class="table-row--selected">
+                                <td>Daily ETL</td>
+                                <td>Data Platform</td>
+                                <td>Selected</td>
+                            </tr>
+
+                            <tr class="table-row--success">
+                                <td>Pipeline A</td>
+                                <td>Analytics</td>
+                                <td>Success</td>
+                            </tr>
+
+                            <tr class="table-row--warning">
+                                <td>Pipeline B</td>
+                                <td>Analytics</td>
+                                <td>Degraded</td>
+                            </tr>
+
+                            <tr class="table-row--danger">
+                                <td>Risk calc batch</td>
+                                <td>Risk</td>
+                                <td>Failed</td>
+                            </tr>
+
+                            <tr class="table-row--info">
+                                <td>Experiment</td>
+                                <td>Research</td>
+                                <td>Info only</td>
+                            </tr>
+
+                            <tr class="table-row--muted">
+                                <td>Legacy job</td>
+                                <td>Unknown</td>
+                                <td>Muted / archived</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;tbody&gt;
+    &lt;tr class="table-row--selected"&gt;…&lt;/tr&gt;
+    &lt;tr class="table-row--success"&gt;…&lt;/tr&gt;
+    &lt;tr class="table-row--warning"&gt;…&lt;/tr&gt;
+    &lt;tr class="table-row--danger"&gt;…&lt;/tr&gt;
+    &lt;tr class="table-row--info"&gt;…&lt;/tr&gt;
+    &lt;tr class="table-row--muted"&gt;…&lt;/tr&gt;
+&lt;/tbody&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Inline actions &amp; group headers</h2>
+                <p class="doc-block__summary">
+                    Use <code>.table-actions</code> inside action cells for
+                    aligned inline controls, and <code>.table-group-header</code>
+                    to mark grouped sections within <code>&lt;tbody&gt;</code>.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="table-wrapper">
+                                <table class="table table--b table--striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Pipeline</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr>
+                                        <td>Pipeline A</td>
+                                        <td>Running</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="button button--ghost button--sm">View</button>
+                                                <button class="button button--ghost button--sm">Pause</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="table-group-header">
+                                        <th scope="col" colspan="3">Stopped</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Pipeline C</td>
+                                        <td>Stopped</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="button button--ghost button--sm">View</button>
+                                                <button class="button button--ghost button--sm">Resume</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Pipeline A&lt;/td&gt;
+        &lt;td&gt;Running&lt;/td&gt;
+        &lt;td&gt;
+            &lt;div class="table-actions"&gt;
+                &lt;button class="button button--ghost button--sm"&gt;View&lt;/button&gt;
+                &lt;button class="button button--ghost button--sm"&gt;Pause&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class="table-group-header"&gt;
+        &lt;th scope="col" colspan="3"&gt;Stopped&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Pipeline C&lt;/td&gt;
+        &lt;td&gt;Stopped&lt;/td&gt;
+        &lt;td&gt;
+            &lt;div class="table-actions"&gt;
+                &lt;button class="button button--ghost button--sm"&gt;View&lt;/button&gt;
+                &lt;button class="button button--ghost button--sm"&gt;Resume&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Expandable rows</h2>
+                <p class="doc-block__summary">
+                    Mark the summary row with <code>.table-row--expandable</code>.
+                    Toggle expansion via <code>.table-row--expanded</code> or
+                    <code>data-expanded="true"</code>.
+                    The following row must use <code>.table-row--details</code> and
+                    typically spans the full width.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="table-wrapper">
+                        <table class="table table--b table--striped">
+                            <thead>
+                            <tr>
+                                <th>Run</th>
+                                <th>Started</th>
+                                <th>Duration</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <tr class="table-row--expandable table-row--expanded">
+                                <td>Nightly batch · #142</td>
+                                <td>2025-05-04 01:00</td>
+                                <td>32m</td>
+                            </tr>
+                            <tr class="table-row--details" data-expanded="true">
+                                <td colspan="100%">
+                                    <div class="text-sm">
+                                        Processed 12,430 records, 0 failures.<br>
+                                        Source:
+                                        <code>s3://bucket/nightly/2025-05-04</code>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="table-row--expandable">
+                                <td>Nightly batch · #141</td>
+                                <td>2025-05-03 01:00</td>
+                                <td>29m</td>
+                            </tr>
+                            <tr class="table-row--details">
+                                <td colspan="100%">
+                                    <div class="text-sm">
+                                        Processed 12,100 records, 3 soft warnings (skipped rows).
+                                    </div>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;tr class="table-row--expandable table-row--expanded"&gt;
+    &lt;td&gt;Nightly batch · #142&lt;/td&gt;
+    &lt;td&gt;2025-05-04 01:00&lt;/td&gt;
+    &lt;td&gt;32m&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr class="table-row--details" data-expanded="true"&gt;
+    &lt;td colspan="100%"&gt;
+        &lt;div class="text-sm"&gt;
+            Processed 12,430 records, 0 failures.&lt;br&gt;
+            Source: &lt;code&gt;s3://…&lt;/code&gt;
+        &lt;/div&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section section--b">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Metric tables</h2>
+                <p class="doc-block__summary">
+                    Compact key/value pairs using <code>.metric-table</code>,
+                    <code>.metric-table__label</code> and
+                    <code>.metric-table__value</code>. Perfect for summaries,
+                    dashboards or sidebar blocks.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <table class="metric-table">
+                        <tbody>
+                        <tr>
+                            <td class="metric-table__label">Total revenue (YTD)</td>
+                            <td class="metric-table__value">
+                                <span class="t-cur cur-eur">1,240,000</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="metric-table__label">Net margin</td>
+                            <td class="metric-table__value">
+                                <span class="t-pct">32.4%</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="metric-table__label">Active customers</td>
+                            <td class="metric-table__value">
+                                <span class="t-num">1,842</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;table class="metric-table"&gt;
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+            &lt;td class="metric-table__label"&gt;Total revenue (YTD)&lt;/td&gt;
+            &lt;td class="metric-table__value"&gt;
+                &lt;span class="t-cur cur-eur"&gt;1,240,000&lt;/span&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+            &lt;td class="metric-table__label"&gt;Net margin&lt;/td&gt;
+            &lt;td class="metric-table__value"&gt;
+                &lt;span class="t-pct"&gt;32.4%&lt;/span&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+            &lt;td class="metric-table__label"&gt;Active customers&lt;/td&gt;
+            &lt;td class="metric-table__value"&gt;
+                &lt;span class="t-num"&gt;1,842&lt;/span&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Empty &amp; loading states</h2>
+                <p class="doc-block__summary">
+                    Use <code>.table-empty</code> for empty datasets and
+                    <code>.table-loading</code> for skeleton placeholders.
+                    Both work independently of table density and variant.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="card">
+                        <div class="card__header">
+                            <div class="text-sm text-mono">Empty state</div>
+                        </div>
+
+                        <div class="card__body">
+                            <div class="table-wrapper">
+                                <table class="table table--b">
+                                    <tbody>
+                                    <tr class="table-empty">
+                                        <td colspan="100%">
+                                            <div class="stack text-center table-empty__content">
+                                                <div class="icon icon--mask icon--search table-empty__icon"></div>
+                                                <div class="text-sm">No records found.</div>
+                                                <div class="text-xs text-muted">
+                                                    Adjust filters or add a new item.
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__header">
+                            <div class="text-sm text-mono">Loading skeleton</div>
+                        </div>
+
+                        <div class="card__body">
+                            <div class="table-wrapper">
+                                <table class="table table--b table-loading">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="skeleton-line skeleton-line--medium skeleton--subtle"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;!-- Empty state --&gt;
+&lt;table class="table table--b"&gt;
+    &lt;tbody&gt;
+        &lt;tr class="table-empty"&gt;
+            &lt;td colspan="100%"&gt;
+                &lt;div class="stack text-center"&gt;
+                    &lt;div class="icon icon--search"&gt;&lt;/div&gt;
+                    &lt;div class="text-sm"&gt;No records found.&lt;/div&gt;
+                    &lt;div class="text-xs text-muted"&gt;
+                        Adjust filters or add a new item.
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- Loading skeleton --&gt;
+&lt;table class="table table--b table-loading"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;div class="skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;div class="skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;div class="skeleton-line skeleton-line--medium skeleton--subtle"&gt;&lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;div class="skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section section--b">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Responsive collapse</h2>
+                <p class="doc-block__summary">
+                    Add <code>.table--collapse</code> to convert rows into mobile cards.
+                    Each cell must provide a <code>data-label</code> matching its column header.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="table-wrapper doc-block__preview">
+                    <table class="table table--b table--collapse">
+                        <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Region</th>
+                            <th>Uptime</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td data-label="Service">API Gateway</td>
+                            <td data-label="Region">EU-West</td>
+                            <td data-label="Uptime">
+                                <span class="t-pct">99.98%</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td data-label="Service">DB Cluster</td>
+                            <td data-label="Region">US-East</td>
+                            <td data-label="Uptime">
+                                <span class="t-pct">99.92%</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="table-wrapper"&gt;
+    &lt;table class="table table--b table--collapse"&gt;
+
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Service&lt;/th&gt;
+                &lt;th&gt;Region&lt;/th&gt;
+                &lt;th&gt;Uptime&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td data-label="Service"&gt;API Gateway&lt;/td&gt;
+                &lt;td data-label="Region"&gt;EU-West&lt;/td&gt;
+                &lt;td data-label="Uptime"&gt;
+                    &lt;span class="t-pct"&gt;99.98%&lt;/span&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+
+    &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- IMPORTANT:
+     • Every &lt;td&gt; must include data-label="…".
+     • Values requiring numeric alignment use span.t-pct / t-cur / t-num.
+     • Column labels must match the &lt;th&gt; exactly. --&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">High frequency numeric helpers</h2>
+                <p class="doc-block__summary">
+                    Finance-first alignment helpers: currencies, numeric alignment,
+                    percentages and trends. Optimised for <code>.table--hf</code> but safe
+                    for all table types.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="table-wrapper">
+                        <table class="table table--b table--hf">
+                            <thead>
+                            <tr>
+                                <th>Instrument</th>
+                                <th>Last</th>
+                                <th>Open</th>
+                                <th>Δ Today</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <tr>
+                                <td>Stock A</td>
+                                <td><span class="t-cur cur-gbp">123.45</span></td>
+                                <td><span class="t-cur cur-gbp">120.00</span></td>
+                                <td class="t-trend t-up">
+                                    <span class="t-num t-pct">+2.30%</span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Stock B</td>
+                                <td><span class="t-cur cur-gbp">87.10</span></td>
+                                <td><span class="t-cur cur-gbp">87.84</span></td>
+                                <td class="t-trend t-down">
+                                    <span class="t-num t-pct">-0.85%</span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Stock C</td>
+                                <td><span class="t-cur cur-gbp">64.00</span></td>
+                                <td><span class="t-cur cur-gbp">64.00</span></td>
+                                <td class="t-trend t-flat">
+                                    <span class="t-num t-pct">0.00%</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;tbody&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Stock A&lt;/td&gt;
+        &lt;td&gt;&lt;span class="t-cur cur-gbp"&gt;123.45&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span class="t-cur cur-gbp"&gt;120.00&lt;/span&gt;&lt;/td&gt;
+        &lt;td class="t-trend t-up"&gt;
+            &lt;span class="t-num t-pct"&gt;+2.30%&lt;/span&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Stock B&lt;/td&gt;
+        &lt;td&gt;&lt;span class="t-cur cur-gbp"&gt;87.10&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span class="t-cur cur-gbp"&gt;87.84&lt;/span&gt;&lt;/td&gt;
+        &lt;td class="t-trend t-down"&gt;
+            &lt;span class="t-num t-pct"&gt;-0.85%&lt;/span&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Stock C&lt;/td&gt;
+        &lt;td&gt;&lt;span class="t-cur cur-gbp"&gt;64.00&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span class="t-cur cur-gbp"&gt;64.00&lt;/span&gt;&lt;/td&gt;
+        &lt;td class="t-trend t-flat"&gt;
+            &lt;span class="t-num t-pct"&gt;0.00%&lt;/span&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/tbody&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-table class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Tables require strict structural semantics, predictable reading order, numeric
+                    clarity, responsive fallbacks and assistive-friendly labels. VDS tables are
+                    semantic-first, token-driven and support complex data (finance, metrics, trends)
+                    without breaking screen-reader parsing or mobile usability.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-mono text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use semantic table structure:
+                            <code>&lt;table&gt;</code>, <code>&lt;caption&gt;</code>,
+                            <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>,
+                            <code>&lt;th scope="col"&gt;</code>, <code>&lt;th scope="row"&gt;</code>.
+                        </li>
+
+                        <li>
+                            Provide a <strong>caption</strong> for every data table —
+                            essential for screen-reader context.
+                        </li>
+
+                        <li>
+                            Keep headers sticky (<code>.table--sticky-header</code>)
+                            only when the table is long enough; sticky elements remain semantic headers.
+                        </li>
+
+                        <li>
+                            Use the VDS numeric helpers correctly:
+                            <code>.t-num</code>, <code>.t-cur</code>, <code>.t-pct</code>,
+                            <code>.t-trend</code>, <code>.t-up</code>, <code>.t-down</code>, <code>.t-flat</code>.
+                        </li>
+
+                        <li>
+                            For currencies (<code>.t-cur</code>), rely on the
+                            theme-driven symbol via <code>::before</code> (€, $, £, RON, CHF, ¥).
+                        </li>
+
+                        <li>
+                            For percentage and numeric values, ensure tabular numerals are preserved
+                            (<code>font-variant-numeric: tabular-nums</code>).
+                        </li>
+
+                        <li>
+                            In responsive collapse mode (<code>.table--collapse</code>),
+                            ensure each <code>td</code> includes a <code>data-label</code>
+                            matching the column header.
+                        </li>
+
+                        <li>
+                            Use density controls (<code>.table--a</code>/<code>--b</code>/<code>--c</code>
+                            or <code>.table--compact</code>) to improve readability based on content complexity.
+                        </li>
+
+                        <li>
+                            Use <code>.table-panel</code> wrappers for grouped contexts with proper
+                            header labeling (<code>.table-panel__title</code>).
+                        </li>
+
+                        <li>
+                            Apply row-state classes semantically:
+                            <code>.table-row--success</code>, <code>--danger</code>, <code>--warning</code>,
+                            <code>--info</code>, <code>--muted</code>.
+                        </li>
+
+                        <li>
+                            Use expand/collapse rows (<code>.table-row--expandable</code> →
+                            <code>.table-row--details</code>) with clear JS-controlled semantics and
+                            visible labels.
+                        </li>
+
+                        <li>
+                            Make sure all action icons in <code>.table-actions</code> have tooltips or
+                            sr-labels when icon-only.
+                        </li>
+
+                        <li>
+                            Use finance states (namespaced <code>.table-fin--*</code>) for meaning —
+                            good / bad / flagged, etc. — not decoration.
+                        </li>
+
+                        <li>
+                            Loading rows (<code>.table-loading</code>) must remain semantic rows — the shimmer
+                            overlay affects only visual rendering.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-mono text-muted">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t fake tables with <code>&lt;div&gt;</code> grids — assistive tech relies
+                            heavily on table semantics.
+                        </li>
+
+                        <li>
+                            Don’t reorder columns visually using CSS; numeric meaning depends on
+                            consistent left→right reading order.
+                        </li>
+
+                        <li>
+                            Don’t use ellipsis truncation (<code>.table--truncate-cells</code>)
+                            for critical fields like names, IDs, or categories.
+                        </li>
+
+                        <li>
+                            Don’t combine contradictory variants
+                            (<code>.table--bordered</code> + <code>.table--clear</code>, etc.).
+                        </li>
+
+                        <li>
+                            Don’t use row states as decorative colour stripes — they imply semantic meaning.
+                        </li>
+
+                        <li>
+                            Don’t remove <code>caption</code> in complex or financial tables.
+                        </li>
+
+                        <li>
+                            Don’t rely solely on colour to convey trend direction —
+                            pair trend helpers with explicit text (“+4.3%”, “–2.1%”).
+                        </li>
+
+                        <li>
+                            Don’t override header font-weight, border logic or cell padding via inline CSS —
+                            these are token-driven and system consistent.
+                        </li>
+
+                        <li>
+                            Don’t use sticky columns (<code>.table--sticky-col</code>) unless the table
+                            horizontally scrolls; otherwise it creates unnecessary overlap.
+                        </li>
+
+                        <li>
+                            Don’t forget <code>data-label</code> for collapsed mobile mode —
+                            missing labels break screen-reader comprehension.
+                        </li>
+
+                        <li>
+                            Don’t hide entire rows to simulate a collapse — use the official
+                            expand/collapse pattern instead.
+                        </li>
+
+                        <li>
+                            Don’t place interactive elements inside <code>&lt;th&gt;</code> unless explicitly
+                            labelled (sort buttons, filters, etc.).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Semantic structure mandatory (table/thead/tbody/th scope).
+2. Every table needs a caption for assistive context.
+3. Numeric cells require tabular-nums and correct alignment.
+4. Currency uses span.t-cur with theme-driven symbol.
+5. Trends use t-trend + arrow states; pair colour with text.
+6. Collapse mode requires data-label on every td.
+7. Sticky headers/cols only for scrollable scenarios.
+8. Expandable rows must remain semantic rows.
+9. Row states and finance states carry meaning; not decoration.
+10. Don’t override cell padding, font-size, or borders inline.
+11. Table actions must provide text or sr-only labels.
+12. Loading states stay semantic; shimmer is visual only.
+13. Mobile collapse = structural rewrite; never simulate via visibility.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

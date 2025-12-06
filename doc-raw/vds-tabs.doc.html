@@ -1,0 +1,884 @@
+<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+    <div class="section__inner">
+        <h1>Tabs</h1>
+        <p class="leading-relaxed text-soft">
+            Underline-first, token-driven tab navigation for dashboards, settings, and application pages.
+            Horizontal and vertical orientations, density variants, and accessibility hooks, with no JavaScript
+            assumptions.
+        </p>
+        <p class="text-sm text-muted">
+            Source: <code>tabs.css</code> · Depends on
+            <code>primitives.css</code>,
+            <code>base.css</code>,
+            <code>typography.css</code>,
+            <code>utilities.css</code>,
+            theme tokens in <code>/themes/*.css</code>.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Concept & anatomy</h2>
+                <p class="doc-block__summary">
+                    Tabs partition content within a single page, providing local navigation between related views.
+                    VDS tabs are neutral-surface, underline-first, keyboard accessible, and fully tokenised.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="tabs">
+                                <div class="tab-list" role="tablist" aria-label="Project tabs">
+                                    <button
+                                            class="tab tab--active"
+                                            type="button"
+                                            role="tab"
+                                            aria-selected="true"
+                                            id="tabs-concept-overview"
+                                    >
+                                        Overview
+                                    </button>
+                                    <button
+                                            class="tab"
+                                            type="button"
+                                            role="tab"
+                                            aria-selected="false"
+                                            id="tabs-concept-activity"
+                                    >
+                                        Activity
+                                    </button>
+                                    <button
+                                            class="tab"
+                                            type="button"
+                                            role="tab"
+                                            aria-selected="false"
+                                            id="tabs-concept-settings"
+                                    >
+                                        Settings
+                                    </button>
+                                </div>
+
+                                <div
+                                        class="tab-panel"
+                                        role="tabpanel"
+                                        aria-labelledby="tabs-concept-overview"
+                                >
+                                    <p class="text-sm">
+                                        Use tabs for switching between related views of the same entity (e.g. overview,
+                                        activity, settings),
+                                        not for primary app navigation.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <ul class="mt-4">
+                                <li><strong>.tabs</strong> — root container controlling orientation and density.</li>
+                                <li><strong>.tab-list</strong> — flex row/column with the underline baseline border.
+                                </li>
+                                <li><strong>.tab</strong> — interactive element (button/link) representing each tab.
+                                </li>
+                                <li><strong>.tab--active</strong> — selected tab with accent underline indicator.</li>
+                                <li><strong>.tab-panel</strong> — content region for a single tab.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;div class=&quot;tabs&quot;&gt;
+    &lt;div class=&quot;tab-list&quot; role=&quot;tablist&quot; aria-label=&quot;Project tabs&quot;&gt;
+        &lt;button
+            class=&quot;tab tab--active&quot;
+            type=&quot;button&quot;
+            role=&quot;tab&quot;
+            aria-selected=&quot;true&quot;
+            id=&quot;tab-overview&quot;&gt;
+            Overview
+        &lt;/button&gt;
+
+        &lt;button
+            class=&quot;tab&quot;
+            type=&quot;button&quot;
+            role=&quot;tab&quot;
+            aria-selected=&quot;false&quot;
+            id=&quot;tab-activity&quot;&gt;
+            Activity
+        &lt;/button&gt;
+
+        &lt;button
+            class=&quot;tab&quot;
+            type=&quot;button&quot;
+            role=&quot;tab&quot;
+            aria-selected=&quot;false&quot;
+            id=&quot;tab-settings&quot;&gt;
+            Settings
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div
+        class=&quot;tab-panel&quot;
+        role=&quot;tabpanel&quot;
+        aria-labelledby=&quot;tab-overview&quot;&gt;
+        &lt;p&gt;This is the Overview panel.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Horizontal tabs (default underline)</h2>
+                <p class="doc-block__summary">
+                    Default configuration: horizontal tab list with an accent underline on the active tab.
+                    Works on any neutral surface, inside sections, cards, or panels.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="tabs">
+                                <div class="tab-list" role="tablist" aria-label="Account tabs">
+                                    <button
+                                            class="tab tab--active"
+                                            type="button"
+                                            role="tab"
+                                            aria-selected="true"
+                                            id="tabs-base-profile"
+                                    >
+                                        Profile
+                                    </button>
+                                    <button
+                                            class="tab"
+                                            type="button"
+                                            role="tab"
+                                            aria-selected="false"
+                                            id="tabs-base-security"
+                                    >
+                                        Security
+                                    </button>
+                                    <button
+                                            class="tab"
+                                            type="button"
+                                            role="tab"
+                                            aria-selected="false"
+                                            id="tabs-base-teams"
+                                    >
+                                        Teams
+                                    </button>
+                                </div>
+
+                                <div
+                                        class="tab-panel"
+                                        role="tabpanel"
+                                        aria-labelledby="tabs-base-profile"
+                                >
+                                    <p class="text-sm">
+                                        The active tab is emphasised using an underline drawn via
+                                        <code>box-shadow</code>, aligned with the
+                                        <code>tab-list</code> bottom border.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <p class="text-sm text-muted mt-4">
+                                JavaScript only toggles <code>.tab--active</code> on the correct tab
+                                and shows/hides the corresponding <code>.tab-panel</code>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;div class=&quot;tabs&quot;&gt;
+    &lt;div class=&quot;tab-list&quot; role=&quot;tablist&quot; aria-label=&quot;Account&quot;&gt;
+        &lt;button
+            class=&quot;tab tab--active&quot;
+            type=&quot;button&quot;
+            role=&quot;tab&quot;
+            aria-selected=&quot;true&quot;
+            id=&quot;tab-profile&quot;&gt;
+            Profile
+        &lt;/button&gt;
+        &lt;button
+            class=&quot;tab&quot;
+            type=&quot;button&quot;
+            role=&quot;tab&quot;
+            aria-selected=&quot;false&quot;
+            id=&quot;tab-security&quot;&gt;
+            Security
+        &lt;/button&gt;
+        &lt;button
+            class=&quot;tab&quot;
+            type=&quot;button&quot;
+            role=&quot;tab&quot;
+            aria-selected=&quot;false&quot;
+            id=&quot;tab-teams&quot;&gt;
+            Teams
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div
+        class=&quot;tab-panel&quot;
+        role=&quot;tabpanel&quot;
+        aria-labelledby=&quot;tab-profile&quot;&gt;
+        &lt;p&gt;Profile content...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Density & stretch</h2>
+                <p class="doc-block__summary">
+                    Tabs respect the same density conventions as forms and other components.
+                    Use <code>.tabs--a</code> for relaxed layouts,
+                    <code>.tabs--c</code> for compact controls, and
+                    <code>.tabs--stretch</code> to make each tab share the available width.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <h3 class="text-sm font-semibold mb-2">Relaxed (A)</h3>
+                            <div class="tabs tabs--a">
+                                <div class="tab-list" role="tablist" aria-label="Project density A">
+                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                        General
+                                    </button>
+                                    <button class="tab" type="button" role="tab" aria-selected="false">Members</button>
+                                    <button class="tab" type="button" role="tab" aria-selected="false">Security</button>
+                                </div>
+                                <div class="tab-panel" role="tabpanel">
+                                    <p class="text-sm">
+                                        More generous click targets and larger text for wide layouts or primary
+                                        sections.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <h3 class="text-sm font-semibold mb-2">Compact (C)</h3>
+                            <div class="tabs tabs--c">
+                                <div class="tab-list" role="tablist" aria-label="Filter density C">
+                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">All
+                                    </button>
+                                    <button class="tab" type="button" role="tab" aria-selected="false">Open</button>
+                                    <button class="tab" type="button" role="tab" aria-selected="false">Closed</button>
+                                </div>
+                                <div class="tab-panel" role="tabpanel">
+                                    <p class="text-sm">
+                                        Tighter spacing for dense data views or table toolbars.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <h3 class="text-sm font-semibold mb-2">Stretch</h3>
+                            <div class="tabs tabs--stretch tabs--c">
+                                <div class="tab-list" role="tablist" aria-label="Billing window">
+                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                        Monthly
+                                    </button>
+                                    <button class="tab" type="button" role="tab" aria-selected="false">Quarterly
+                                    </button>
+                                    <button class="tab" type="button" role="tab" aria-selected="false">Yearly</button>
+                                </div>
+                                <div class="tab-panel" role="tabpanel">
+                                    <p class="text-sm">
+                                        Each tab flexes to share width, useful for segmented-like switches or pricing
+                                        windows.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;div class=&quot;tabs tabs--a&quot;&gt;
+    &lt;div class=&quot;tab-list&quot; role=&quot;tablist&quot;&gt;
+        &lt;button class=&quot;tab tab--active&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;General&lt;/button&gt;
+        &lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;Members&lt;/button&gt;
+        &lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;Security&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tab-panel&quot; role=&quot;tabpanel&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;tabs tabs--c&quot;&gt;...&lt;/div&gt;
+
+&lt;div class=&quot;tabs tabs--stretch tabs--c&quot;&gt;
+    &lt;div class=&quot;tab-list&quot; role=&quot;tablist&quot;&gt;
+        &lt;button class=&quot;tab tab--active&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;Monthly&lt;/button&gt;
+        &lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;Quarterly&lt;/button&gt;
+        &lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;Yearly&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tab-panel&quot; role=&quot;tabpanel&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Vertical tabs (settings layout)</h2>
+                <p class="doc-block__summary">
+                    Vertical tabs are suited for settings pages and account dashboards, where the tab list behaves like
+                    a lightweight sidebar. The indicator moves to the right edge of the active tab.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="tabs tabs--vertical">
+                                <div
+                                        class="tab-list"
+                                        role="tablist"
+                                        aria-orientation="vertical"
+                                        aria-label="Account settings"
+                                >
+                                    <button
+                                            class="tab tab--active"
+                                            type="button"
+                                            role="tab"
+                                            aria-selected="true"
+                                            id="tabs-vertical-profile"
+                                    >
+                                        Profile
+                                    </button>
+                                    <button
+                                            class="tab"
+                                            type="button"
+                                            role="tab"
+                                            aria-selected="false"
+                                            id="tabs-vertical-security"
+                                    >
+                                        Security
+                                    </button>
+                                    <button
+                                            class="tab"
+                                            type="button"
+                                            role="tab"
+                                            aria-selected="false"
+                                            id="tabs-vertical-notifications"
+                                    >
+                                        Notifications
+                                    </button>
+                                    <button
+                                            class="tab"
+                                            type="button"
+                                            role="tab"
+                                            aria-selected="false"
+                                            id="tabs-vertical-billing"
+                                    >
+                                        Billing
+                                    </button>
+                                </div>
+
+                                <div
+                                        class="tab-panel"
+                                        role="tabpanel"
+                                        aria-labelledby="tabs-vertical-profile"
+                                >
+                                    <h3 class="text-sm font-semibold mb-1">Profile</h3>
+                                    <p class="text-sm text-soft">
+                                        Vertical tabs align with the left edge and use a right-side indicator on the
+                                        active tab.
+                                        On small screens, they collapse back to horizontal.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;div class=&quot;tabs tabs--vertical&quot;&gt;
+    &lt;div
+        class=&quot;tab-list&quot;
+        role=&quot;tablist&quot;
+        aria-orientation=&quot;vertical&quot;
+        aria-label=&quot;Account settings&quot;&gt;
+
+        &lt;button
+            class=&quot;tab tab--active&quot;
+            type=&quot;button&quot;
+            role=&quot;tab&quot;
+            aria-selected=&quot;true&quot;
+            id=&quot;tab-profile&quot;&gt;
+            Profile
+        &lt;/button&gt;
+
+        &lt;button
+            class=&quot;tab&quot;
+            type=&quot;button&quot;
+            role=&quot;tab&quot;
+            aria-selected=&quot;false&quot;
+            id=&quot;tab-security&quot;&gt;
+            Security
+        &lt;/button&gt;
+
+        &lt;button
+            class=&quot;tab&quot;
+            type=&quot;button&quot;
+            role=&quot;tab&quot;
+            aria-selected=&quot;false&quot;
+            id=&quot;tab-notifications&quot;&gt;
+            Notifications
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div
+        class=&quot;tab-panel&quot;
+        role=&quot;tabpanel&quot;
+        aria-labelledby=&quot;tab-profile&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Tabs with icons & badges</h2>
+                <p class="doc-block__summary">
+                    Tabs support inline icons and counters using
+                    <code>.tab__icon</code> and
+                    <code>.tab__badge</code>. These align with VDS icon and badge systems.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="tabs tabs--stretch tabs--c">
+                                <div class="tab-list" role="tablist" aria-label="Inbox filters">
+                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                        <span class="tab__icon">
+                                            <span class="icon icon--mask icon--inbox"></span>
+                                        </span>
+                                        Inbox
+                                        <span class="tab__badge">24</span>
+                                    </button>
+                                    <button class="tab" type="button" role="tab" aria-selected="false">
+                                        <span class="tab__icon">
+                                            <span class="icon icon--mask icon--star"></span>
+                                        </span>
+                                        Starred
+                                        <span class="tab__badge">6</span>
+                                    </button>
+                                    <button class="tab" type="button" role="tab" aria-selected="false">
+                                        <span class="tab__icon">
+                                            <span class="icon icon--mask icon--archive"></span>
+                                        </span>
+                                        Archived
+                                    </button>
+                                </div>
+                                <div class="tab-panel" role="tabpanel">
+                                    <p class="text-sm">
+                                        Icons and badges are optional and do not change the tab semantics. They are
+                                        purely visual hints.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;button class=&quot;tab tab--active&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;
+    &lt;span class=&quot;tab__icon&quot;&gt;
+        &lt;span class=&quot;icon icon--mask icon--inbox&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    Inbox
+    &lt;span class=&quot;tab__badge&quot;&gt;24&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;
+    &lt;span class=&quot;tab__icon&quot;&gt;
+        &lt;span class=&quot;icon icon--mask icon--star&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    Starred
+    &lt;span class=&quot;tab__badge&quot;&gt;6&lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Tabs inside a card (dashboard specimen)</h2>
+                <p class="doc-block__summary">
+                    A common SaaS pattern: tabs embedded into a card or panel header to switch between slices of data
+                    or different table views.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__header">
+                            <div>
+                                <h3 class="text-sm font-semibold">Revenue</h3>
+                                <p class="text-xs text-soft">
+                                    Track performance across different time windows.
+                                </p>
+                            </div>
+                            <div class="tabs tabs--c tabs--inline">
+                                <div class="tab-list" role="tablist" aria-label="Revenue window">
+                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                        7 days
+                                    </button>
+                                    <button class="tab" type="button" role="tab" aria-selected="false">
+                                        30 days
+                                    </button>
+                                    <button class="tab" type="button" role="tab" aria-selected="false">
+                                        12 months
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__body">
+                            <div class="tab-panel" role="tabpanel">
+                                <p class="text-sm">
+                                    Tab panels can host charts, metrics, or tables. The card layout remains unchanged;
+                                    tabs only
+                                    swap the active content.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;card-header card-header--split&quot;&gt;
+        &lt;div&gt;
+            &lt;h3 class=&quot;text-sm font-semibold&quot;&gt;Revenue&lt;/h3&gt;
+            &lt;p class=&quot;text-xs text-soft&quot;&gt;
+                Track performance across different time windows.
+            &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;tabs tabs--c tabs--inline&quot;&gt;
+            &lt;div class=&quot;tab-list&quot; role=&quot;tablist&quot; aria-label=&quot;Revenue window&quot;&gt;
+                &lt;button class=&quot;tab tab--active&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;7 days&lt;/button&gt;
+                &lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;30 days&lt;/button&gt;
+                &lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;12 months&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;card__body&quot;&gt;
+        &lt;div class=&quot;tab-panel&quot; role=&quot;tabpanel&quot;&gt;
+            &lt;p&gt;Chart, metrics, or table go here.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Class reference & ARIA hooks</h2>
+                <p class="doc-block__summary">
+                    Tabs are designed to be accessible with minimal ARIA attributes.
+                    JavaScript only needs to manage selected state and panel visibility.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h3 class="text-sm font-semibold mb-2">Core classes</h3>
+                            <table class="table table--b">
+                                <tbody>
+                                <tr>
+                                    <th scope="row"><code>.tabs</code></th>
+                                    <td>Root container for a tab set. Controls orientation and alignment.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tabs--a</code></th>
+                                    <td>Relaxed density (larger padding and font size).</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tabs--c</code></th>
+                                    <td>Compact density for high-density UIs.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tabs--stretch</code></th>
+                                    <td>Stretches child tabs to share available width equally.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tabs--vertical</code></th>
+                                    <td>Vertical orientation: tab list as a column with right-side indicator.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tabs--inline</code></th>
+                                    <td>Keeps <code>.tab-list</code> at auto width instead of 100%.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tabs--on-muted</code></th>
+                                    <td>Adjusts active indicator for muted surfaces (stronger accent).</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div>
+                            <h3 class="text-sm font-semibold mb-2">Elements</h3>
+                            <table class="table table--b">
+                                <tbody>
+                                <tr>
+                                    <th scope="row"><code>.tab-list</code></th>
+                                    <td>Container for tabs. Renders the baseline border and handles orientation.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tab</code></th>
+                                    <td>Interactive element (button/link) representing each tab.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tab--active</code></th>
+                                    <td>Marks the selected tab and draws the accent underline indicator.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tab--disabled</code></th>
+                                    <td>Marks a tab as disabled. Also supported via the <code>[disabled]</code>
+                                        attribute.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tab-panel</code></th>
+                                    <td>Content area for a single tab. Show/hide using <code
+                                            >[hidden]</code> or <code
+                                            >.is-hidden</code>.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tab-panel--padded</code></th>
+                                    <td>Adds extra top padding for panels inside cramped layouts.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tab-panels</code></th>
+                                    <td>Optional wrapper for multiple <code>.tab-panel</code>
+                                        elements.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tab__icon</code></th>
+                                    <td>Optional icon container aligned with label text.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><code>.tab__badge</code></th>
+                                    <td>Small badge/counter aligned to the right of the tab label.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6 mt-6">
+                        <div>
+                            <h3 class="text-sm font-semibold mb-2">ARIA roles</h3>
+                            <ul class="text-sm">
+                                <li><code>role="tablist"</code> on the <code>.tab-list</code>
+                                    container.
+                                </li>
+                                <li><code>role="tab"</code> on each interactive <code
+                                        >.tab</code>.
+                                </li>
+                                <li><code>role="tabpanel"</code> on each <code>.tab-panel</code>.
+                                </li>
+                                <li><code>aria-selected="true|false"</code> on each tab to reflect
+                                    selection.
+                                </li>
+                                <li><code>aria-labelledby</code> on each panel referencing the
+                                    corresponding tab <code>id</code>.
+                                </li>
+                                <li><code>aria-orientation="vertical"</code> on vertical <code
+                                        >.tab-list</code> containers.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="text-sm font-semibold mb-2">Keyboard behaviour</h3>
+                            <ul class="text-sm">
+                                <li><strong>ArrowLeft / ArrowRight</strong> — move focus between tabs in horizontal
+                                    lists.
+                                </li>
+                                <li><strong>ArrowUp / ArrowDown</strong> — move focus between tabs in vertical lists.
+                                </li>
+                                <li><strong>Home</strong> — focus the first tab in the list.</li>
+                                <li><strong>End</strong> — focus the last tab in the list.</li>
+                                <li><strong>Enter / Space</strong> — activate the focused tab.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Usage rules (Do / Don’t)</h2>
+                <p class="doc-block__summary">
+                    Patterns for correct use of tabs in application layouts.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-sm font-semibold mb-2">Do</h3>
+                        <ul class="text-sm">
+                            <li>
+                                <strong>Use tabs for closely related views.</strong>
+                                Overview / Activity / Settings of the same entity.
+                            </li>
+                            <li>
+                                <strong>Keep labels short and precise.</strong>
+                                Prefer 1–2 words; longer explanations live in the tab panel.
+                            </li>
+                            <li>
+                                <strong>Use compact tabs for dense toolbars.</strong>
+                                Combine <code>.tabs--c</code> with
+                                <code>.tabs--stretch</code> when space is tight.
+                            </li>
+                            <li>
+                                <strong>Respect focus-visible and ARIA semantics.</strong>
+                                Do not remove focus rings or omit <code>aria-selected</code>.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-semibold mb-2">Don’t</h3>
+                        <ul class="text-sm">
+                            <li>
+                                <strong>Do not use tabs for primary navigation.</strong>
+                                For app-level navigation between routes or pages, use header navigation and sidebar
+                                patterns.
+                            </li>
+                            <li>
+                                <strong>Avoid more than 6–7 tabs in a single list.</strong>
+                                If you need more, re-structure content or use nested navigation.
+                            </li>
+                            <li>
+                                <strong>Do not mix tabs and dropdowns for the same set of options.</strong>
+                                Choose one pattern; switching between them confuses users.
+                            </li>
+                            <li>
+                                <strong>Do not hide panels without updating ARIA.</strong>
+                                When a panel is hidden, ensure the active tab and <code
+                                    >aria-selected</code> are updated.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>

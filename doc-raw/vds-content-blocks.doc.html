@@ -1,0 +1,2575 @@
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <h1>Content Blocks</h1>
+
+        <p class="leading-relaxed text-soft">
+            Structural UI primitives: cards, media blocks, lists, callouts, stats, tags, avatars,
+            features, processes, highlights and fact blocks — all token-driven and theme-bound.
+        </p>
+
+        <p class="text-sm text-muted">
+            Source: <code>content-blocks.css</code> · Sits above
+            <code>primitives.css</code>,
+            <code>themes/*.css</code>,
+            <code>base.css</code> and
+            <code>typography.css</code>.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation & dependencies</h2>
+                <p class="doc-block__summary">
+                    Content blocks sit above the base and typography layers. They inherit spacing,
+                    radius, surface and motion tokens from the active theme and neutral primitives.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <ul class="text-sm">
+                        <li>Load neutral tokens: <code>primitives.css</code>.</li>
+                        <li>Load one active theme:
+                            <code>themes/slate.css</code>,
+                            <code>themes/navy.css</code>,
+                            or <code>themes/carbon.css</code>.
+                        </li>
+                        <li>Load core layers:
+                            <code>base.css</code>,
+                            <code>layout.css</code>,
+                            <code>typography.css</code>.
+                        </li>
+                        <li>Optionally load utilities, icons and buttons:
+                            <code>utilities.css</code>,
+                            <code>icons.css</code>,
+                            <code>buttons.css</code>.
+                        </li>
+                        <li>Load <code>content-blocks.css</code> as the content shell layer.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;link rel="stylesheet" href="../css/primitives.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="../css/themes/navy.css"&gt;
+&lt;link rel="stylesheet" href="../css/themes/carbon.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/base.css"&gt;
+&lt;link rel="stylesheet" href="../css/layout.css"&gt;
+&lt;link rel="stylesheet" href="../css/typography.css"&gt;
+&lt;link rel="stylesheet" href="../css/utilities.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/icons.css"&gt;
+&lt;link rel="stylesheet" href="../css/buttons.css"&gt;
+&lt;link rel="stylesheet" href="../css/content-blocks.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/doc-block.css"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Structural model</h2>
+                <p class="doc-block__summary">
+                    Content blocks are self-contained shells that compose with sections, tables,
+                    navigation and overlays. They never define page layout.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview grid grid-cols-3 grid-auto-fit-300 gap-10">
+                    <div>
+                        <h3 class="text-sm">Shell blocks</h3>
+                        <ul class="text-sm">
+                            <li><code>.card</code>, <code>.card-grid</code>
+                            </li>
+                            <li><code>.media</code></li>
+                            <li><code>.list-group</code></li>
+                            <li><code>.empty</code></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm">Semantic blocks</h3>
+                        <ul class="text-sm">
+                            <li><code>.callout</code> + <code
+                                    >.semantic-*</code></li>
+                            <li><code>.stats</code></li>
+                            <li><code>.metric-title</code></li>
+                            <li><code>.highlight</code></li>
+                            <li><code>.fact</code></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm">Inline blocks</h3>
+                        <ul class="text-sm">
+                            <li><code>.tag</code>, <code>.chip</code>, <code
+                                    >.badge</code></li>
+                            <li><code>.avatar</code></li>
+                            <li><code>.feature</code></li>
+                            <li><code>.process</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;section class="section"&gt;
+    &lt;div class="section__inner"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__header"&gt;
+                &lt;h2 class="text-sm"&gt;Overview&lt;/h2&gt;
+            &lt;/div&gt;
+            &lt;div class="card__body"&gt;
+                &lt;div class="stats stats--center"&gt;
+                    &lt;div class="stats__item"&gt;
+                        &lt;div class="stats__value"&gt;12&lt;/div&gt;
+                        &lt;div class="stats__label"&gt;Active items&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Cards & card grids</h2>
+                <p class="doc-block__summary">
+                    Cards are neutral containers with optional header/body/footer. Grids control
+                    density and wrapping.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview flex flex-column flex-wrap gap-6">
+                    <div class="card card--raised">
+                        <div class="card__header">
+                            <h3 class="text-sm">Basic card</h3>
+                        </div>
+                        <div class="card__body">
+                            <p class="text-sm">
+                                Simple container with header and body. No layout assumptions.
+                            </p>
+                        </div>
+                        <div class="card__footer text-sm text-muted">
+                            Footer actions or meta.
+                        </div>
+                    </div>
+
+                    <div class="card card--interactive">
+                        <div class="card__body">
+                            <h3 class="text-sm">Interactive card</h3>
+                            <p class="text-sm text-muted">
+                                Use <code>.card--interactive</code> for clickable cards.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card card--flat">
+                        <div class="card__body">
+                            <h3 class="text-sm">Flat card</h3>
+                            <p class="text-sm text-muted">
+                                Minimal elevation, suitable for dense dashboards.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card-grid card-grid--wide">
+                        <div class="card">
+                            <div class="card__body">
+                                <span class="metric-title">Pipeline</span>
+                                <div class="stats">
+                                    <div class="stats__item">
+                                        <div class="stats__value">8</div>
+                                        <div class="stats__label">Open</div>
+                                    </div>
+                                    <div class="stats__item">
+                                        <div class="stats__value">3</div>
+                                        <div class="stats__label">Blocked</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card--disabled">
+                            <div class="card__body">
+                                <p class="text-sm text-muted">Disabled card</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="card"&gt;
+    &lt;div class="card__header"&gt;
+        &lt;h3 class="text-sm"&gt;Basic card&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class="card__body"&gt;
+        &lt;p class="text-sm"&gt;Content goes here.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card__footer text-sm text-muted"&gt;
+        Footer meta
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="card-grid card-grid--compact"&gt;
+    &lt;div class="card card--raised"&gt;...&lt;/div&gt;
+    &lt;div class="card card--interactive"&gt;...&lt;/div&gt;
+    &lt;div class="card card--flat"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="card-grid card-grid--tight"&gt;...&lt;/div&gt;
+&lt;div class="card-grid card-grid--wide"&gt;...&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Media blocks</h2>
+                <p class="doc-block__summary">
+                    Media blocks align icons, images or thumbnails with textual bodies and meta.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview grid grid-cols-3 grid-auto-fit-300 gap-6">
+
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="media">
+                                <div class="media__icon">
+                                    <span class="icon icon--mask icon--info"></span>
+                                </div>
+                                <div class="media__body">
+                                    <div class="text-sm">System update available</div>
+                                    <div class="media__meta">Version 2.3 · 5 minutes ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="media media--stack">
+                                <div class="media__img">
+                                    <img src="https://picsum.photos/seed/vds/100" alt="Sample image"/>
+                                </div>
+                                <div class="media__body">
+                                    <div class="text-sm">Card with image</div>
+                                    <div class="media__meta">16:9 thumbnail · 320×180</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="media media--interactive">
+                                <div class="media__body">
+                                    <div class="text-sm">Interactive row</div>
+                                    <div class="media__meta text-muted">Tap anywhere to open</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="media"&gt;
+    &lt;div class="media__icon"&gt;
+        &lt;span class="icon icon--mask icon--info"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="media__body"&gt;
+        &lt;div class="text-sm"&gt;System update available&lt;/div&gt;
+        &lt;div class="media__meta"&gt;Version 2.3 · 5 minutes ago&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="media media--stack"&gt;
+    &lt;div class="media__img"&gt;
+        &lt;img src="https://picsum.photos/seed/vds/100" alt="Sample image"&gt;
+    &lt;/div&gt;
+    &lt;div class="media__body"&gt;
+        &lt;div class="text-sm"&gt;Card with image&lt;/div&gt;
+        &lt;div class="media__meta"&gt;16:9 thumbnail · 320×180&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="media media--interactive"&gt;
+    &lt;div class="media__body"&gt;
+        &lt;div class="text-sm"&gt;Interactive row&lt;/div&gt;
+        &lt;div class="media__meta text-muted"&gt;Tap anywhere to open&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">List groups</h2>
+                <p class="doc-block__summary">
+                    List groups provide structured rows with states for interactive and disabled items.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="list-group">
+                        <button class="list-group__item list-group__item--interactive" type="button">
+                            Project Alpha
+                        </button>
+                        <button class="list-group__item list-group__item--interactive list-group__item--selected"
+                                type="button">
+                            Project Beta
+                        </button>
+                        <button class="list-group__item list-group__item--disabled" type="button" disabled>
+                            Project Gamma (archived)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="list-group"&gt;
+    &lt;button class="list-group__item list-group__item--interactive" type="button"&gt;
+        Project Alpha
+    &lt;/button&gt;
+    &lt;button
+        class="list-group__item list-group__item--interactive list-group__item--selected"
+        type="button"&gt;
+        Project Beta
+    &lt;/button&gt;
+    &lt;button
+        class="list-group__item list-group__item--disabled"
+        type="button"
+        disabled&gt;
+        Project Gamma (archived)
+    &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Callouts & semantic variants</h2>
+                <p class="doc-block__summary">
+                    Callouts highlight important information. Semantic classes change colour system-wide.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview flex flex-column flex-wrap gap-3">
+                    <div class="callout semantic-info">
+                        <div class="callout__title">Information</div>
+                        <div class="callout__body">
+                            This environment is for testing only.
+                        </div>
+                    </div>
+
+                    <div class="callout semantic-success callout--compact">
+                        <div class="callout__body">
+                            Settings saved successfully.
+                        </div>
+                    </div>
+
+                    <div class="callout semantic-warning callout--outline">
+                        <div class="callout__body">
+                            You are approaching your plan limit.
+                        </div>
+                    </div>
+
+                    <div class="callout semantic-danger callout--interactive">
+                        <div class="callout__title">Critical</div>
+                        <div class="callout__body">
+                            This action cannot be undone.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="callout semantic-info"&gt;
+    &lt;div class="callout__title"&gt;Information&lt;/div&gt;
+    &lt;div class="callout__body"&gt;
+        This environment is for testing only.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="callout semantic-success callout--compact"&gt;
+    &lt;div class="callout__body"&gt;Settings saved successfully.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="callout semantic-warning callout--outline"&gt;
+    &lt;div class="callout__body"&gt;
+        You are approaching your plan limit.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="callout semantic-danger callout--interactive"&gt;
+    &lt;div class="callout__title"&gt;Critical&lt;/div&gt;
+    &lt;div class="callout__body"&gt;This action cannot be undone.&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Empty states</h2>
+                <p class="doc-block__summary">
+                    Empty states describe zero-data scenarios and recommended next actions.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview flex flex-column flex-wrap gap-6">
+
+                    <div class="empty">
+                        <div class="empty__icon">
+                            <span class="icon icon--mask icon--info"></span>
+                        </div>
+                        <p class="text-sm">No items yet</p>
+                        <p class="text-sm text-muted">
+                            Create your first item to get started.
+                        </p>
+                        <div class="empty__actions">
+                            <button class="button button--primary">New item</button>
+                            <button class="button button--ghost">Learn more</button>
+                        </div>
+                    </div>
+
+                    <div class="empty empty--inline">
+                        <div class="empty__icon">
+                            <span class="icon icon--mask icon--info"></span>
+                        </div>
+                        <div>
+                            <p class="text-sm">No filters applied.</p>
+                            <p class="text-xs text-muted">Adjust filters to refine your view.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="empty"&gt;
+    &lt;div class="empty__icon"&gt;
+        &lt;span class="icon icon--mask icon--info"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class="text-sm"&gt;No items yet&lt;/p&gt;
+    &lt;p class="text-sm text-muted"&gt;Create your first item to get started.&lt;/p&gt;
+    &lt;div class="empty__actions"&gt;
+        &lt;button class="button button--primary"&gt;New item&lt;/button&gt;
+        &lt;button class="button button--ghost"&gt;Learn more&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="empty empty--inline"&gt;
+    &lt;div class="empty__icon"&gt;
+        &lt;span class="icon icon--mask icon--info"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;p class="text-sm"&gt;No filters applied.&lt;/p&gt;
+        &lt;p class="text-xs text-muted"&gt;Adjust filters to refine your view.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Stats & metric titles</h2>
+                <p class="doc-block__summary">
+                    Stats present key numbers; metric titles provide compact labels above them.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <span class="metric-title">Performance</span>
+                            <div class="stats stats--center">
+                                <div class="stats__item">
+                                    <div class="stats__value">98%</div>
+                                    <div class="stats__label">Uptime</div>
+                                </div>
+                                <div class="stats__item">
+                                    <div class="stats__value">120 ms</div>
+                                    <div class="stats__label">Latency (p95)</div>
+                                </div>
+                                <div class="stats__item">
+                                    <div class="stats__value">32</div>
+                                    <div class="stats__label">Deploys / week</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;span class="metric-title"&gt;Performance&lt;/span&gt;
+
+&lt;div class="stats stats--center"&gt;
+    &lt;div class="stats__item"&gt;
+        &lt;div class="stats__value"&gt;98%&lt;/div&gt;
+        &lt;div class="stats__label"&gt;Uptime&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="stats__item"&gt;
+        &lt;div class="stats__value"&gt;120 ms&lt;/div&gt;
+        &lt;div class="stats__label"&gt;Latency (p95)&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="stats__item"&gt;
+        &lt;div class="stats__value"&gt;32&lt;/div&gt;
+        &lt;div class="stats__label"&gt;Deploys / week&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Tags, chips & badges</h2>
+                <p class="doc-block__summary">
+                    Inline labels for statuses, filters and small interactive elements.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview flex flex-row flex-wrap gap-6">
+                    <span class="tag semantic-danger">Default tag</span>
+                    <span class="tag tag--soft">Soft tag</span>
+                    <span class="tag tag--outline">Outline tag</span>
+                    <button class="tag tag--interactive" type="button">Filter</button>
+                    <span class="tag tag--disabled">Disabled tag</span>
+
+                    <span class="chip chip--sm semantic-success">Small chip</span>
+                    <button class="chip chip--interactive" type="button">
+                        <span class="icon icon--mask icon--close"></span>
+                        Removable chip
+                    </button>
+                    <span class="badge semantic-warning">Badge</span>
+                    <span class="badge badge--soft">Soft badge</span>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;span class="tag"&gt;Default tag&lt;/span&gt;
+&lt;span class="tag tag--soft"&gt;Soft tag&lt;/span&gt;
+&lt;span class="tag tag--outline"&gt;Outline tag&lt;/span&gt;
+&lt;button class="tag tag--interactive" type="button"&gt;Filter&lt;/button&gt;
+&lt;span class="tag tag--disabled"&gt;Disabled tag&lt;/span&gt;
+
+&lt;span class="chip chip--sm"&gt;Small chip&lt;/span&gt;
+&lt;button class="chip chip--interactive" type="button"&gt;
+    &lt;span class="icon icon--close"&gt;&lt;/span&gt;
+    Removable chip
+&lt;/button&gt;
+
+&lt;span class="badge"&gt;Badge&lt;/span&gt;
+&lt;span class="badge badge--soft"&gt;Soft badge&lt;/span&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Avatars</h2>
+                <p class="doc-block__summary">
+                    Circular identity blocks with size modifiers, often paired with tags or stats.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview grid grid-cols-3 sm:grid-cols-1 grid-justify-center items-center gap-6">
+                    <div class="avatar avatar--sm"></div>
+                    <div class="avatar"></div>
+                    <div class="avatar avatar--lg"></div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="avatar avatar--sm"&gt;&lt;/div&gt;
+&lt;div class="avatar"&gt;&lt;/div&gt;
+&lt;div class="avatar avatar--lg"&gt;&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Feature blocks</h2>
+                <p class="doc-block__summary">
+                    Feature blocks pair an icon with a concise heading and body text.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview flex flex-column flex-wrap gap-10">
+
+                    <div class="feature">
+                        <div class="feature__icon">
+                            <span class="icon icon--mask icon--success"></span>
+                        </div>
+                        <div>
+                            <div class="text-sm">Fast setup</div>
+                            <div class="text-sm text-muted">
+                                Start integrating VDS components in minutes with minimal wiring.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature feature--horizontal feature--interactive">
+                        <div class="feature__icon">
+                            <span class="icon icon--mask icon--info"></span>
+                        </div>
+                        <div>
+                            <div class="text-sm">Detailed documentation</div>
+                            <div class="text-sm text-muted">
+                                Every block has recipes, patterns and examples.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="feature"&gt;
+    &lt;div class="feature__icon"&gt;
+        &lt;span class="icon icon--mask icon--success"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div class="text-sm"&gt;Fast setup&lt;/div&gt;
+        &lt;div class="text-sm text-muted"&gt;
+            Start integrating VDS components in minutes.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="feature feature--horizontal feature--interactive"&gt;
+    &lt;div class="feature__icon"&gt;
+        &lt;span class="icon icon--mask icon--info"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div class="text-sm"&gt;Detailed documentation&lt;/div&gt;
+        &lt;div class="text-sm text-muted"&gt;
+            Every block has recipes, patterns and examples.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Process blocks</h2>
+                <p class="doc-block__summary">
+                    Process blocks visualise multi-step flows with active and completed states.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="process grid grid-cols-4 md:grid-cols-1">
+                        <div class="process__step process__step--complete">
+                            <div class="text-sm">1. Configure</div>
+                            <div class="text-xs text-muted">Set up tokens and themes.</div>
+                        </div>
+                        <div class="process__step process__step--active">
+                            <div class="text-sm">2. Integrate</div>
+                            <div class="text-xs text-muted">Connect to your application shell.</div>
+                        </div>
+                        <div class="process__step">
+                            <div class="text-sm">3. Iterate</div>
+                            <div class="text-xs text-muted">Ship, measure, refine.</div>
+                        </div>
+                        <div class="process__step process__step--disabled">
+                            <div class="text-sm">4. Reflect</div>
+                            <div class="text-xs text-muted">Think, asses, learn.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="process"&gt;
+    &lt;div class="process__step process__step--complete"&gt;
+        &lt;div class="text-sm"&gt;1. Configure&lt;/div&gt;
+        &lt;div class="text-xs text-muted"&gt;Set up tokens and themes.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="process__step process__step--active"&gt;
+        &lt;div class="text-sm"&gt;2. Integrate&lt;/div&gt;
+        &lt;div class="text-xs text-muted"&gt;Connect to your application shell.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="process__step"&gt;
+        &lt;div class="text-sm"&gt;3. Iterate&lt;/div&gt;
+        &lt;div class="text-xs text-muted"&gt;Ship, measure, refine.&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Highlight blocks</h2>
+                <p class="doc-block__summary">
+                    Highlights emphasise key information with stronger background contrast.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview grid grid-cols-1 gap-3">
+                    <div class="highlight highlight--info">
+                        <p class="text-sm">
+                            Documentation pages are not production layouts. They demonstrate composition only.
+                        </p>
+                    </div>
+
+                    <div class="highlight highlight--success highlight--compact">
+                        <p class="text-sm">
+                            All content blocks share the same token system and theme colours.
+                        </p>
+                    </div>
+
+                    <div class="highlight highlight--danger">
+                        <p class="text-sm">
+                            Do not override component spacing with ad-hoc CSS. Extend tokens instead.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="highlight highlight--info"&gt;
+    &lt;p class="text-sm"&gt;
+        Documentation pages are not production layouts.
+    &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="highlight highlight--success highlight--compact"&gt;...&lt;/div&gt;
+
+&lt;div class="highlight highlight--danger"&gt;...&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Fact blocks</h2>
+                <p class="doc-block__summary">
+                    Fact blocks present single, self-contained statements or metrics with optional
+                    interactive behaviour.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview grid grid-cols-1 gap-3">
+
+                    <div class="fact">
+                        <div class="text-sm">VDS v1.0</div>
+                        <div class="text-xs text-muted">Initial stable release</div>
+                    </div>
+
+                    <div class="fact fact--horizontal fact--interactive">
+                        <div>
+                            <div class="text-sm">Design tokens</div>
+                            <div class="text-xs text-muted">Single source of truth</div>
+                        </div>
+                    </div>
+
+                    <div class="fact fact--compact fact--disabled">
+                        <div class="text-sm">Deprecated pattern</div>
+                        <div class="text-xs text-muted">For reference only</div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="fact"&gt;
+    &lt;div class="text-sm"&gt;VDS v1.0&lt;/div&gt;
+    &lt;div class="text-xs text-muted"&gt;Initial stable release&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="fact fact--horizontal fact--interactive"&gt;...&lt;/div&gt;
+
+&lt;div class="fact fact--compact fact--disabled"&gt;...&lt;/div&gt;
+</code></pre>
+
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Content block primitives</h2>
+                <p class="doc-block__summary">
+                    A neutral, token-driven container family used for documentation surfaces,
+                    marketing layouts, structured bodies, and internal tools. Unlike cards or callouts,
+                    content blocks define no visual opinion—only spacing, structure and composition.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview grid grid-cols-3 grid-auto-fit-300 gap-8">
+                    <div class="content-block content-block--surface">
+                        <div class="content-block__header">
+                            <h3 class="text-sm">Surface block</h3>
+                        </div>
+                        <div class="content-block__body text-sm text-muted">
+                            Neutral elevated container using theme surface, borders and radii.
+                        </div>
+                        <div class="content-block__footer text-xs text-muted">
+                            Footer actions or meta
+                        </div>
+                    </div>
+
+                    <div class="content-block content-block--inset">
+                        <div class="content-block__header">
+                            <h3 class="text-sm">Inset block</h3>
+                        </div>
+                        <div class="content-block__body text-sm text-muted">
+                            Lower-contrast surface, tighter padding — ideal for nested content.
+                        </div>
+                    </div>
+
+                    <div class="content-block content-block--bordered">
+                        <div class="content-block__body text-sm">
+                            Strong-outline container emphasising separation without elevation.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview grid grid-cols-2 grid-auto-fit-300 gap-8">
+                    <div class="content-block content-block--surface content-block--compact">
+                        <div class="content-block__header">
+                            <h3 class="text-sm">Compact block</h3>
+                        </div>
+                        <div class="content-block__body text-sm text-muted">
+                            Reduced padding and gaps for dense UI surfaces.
+                        </div>
+                    </div>
+
+                    <div class="content-block content-block--inset">
+                        <div class="content-block__media">
+                            <img src="https://picsum.photos/seed/vds/160"
+                                 alt="Sample media" width="160" height="100">
+                        </div>
+                        <div class="content-block__body text-sm">
+                            Pairs images, diagrams or thumbnails with structured text.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__preview grid grid-cols-2 grid-auto-fit-300 gap-8">
+                    <button class="content-block content-block--surface content-block--interactive" type="button">
+                        <div class="content-block__body text-sm">
+                            Interactive variant with token-driven hover and focus-visible.
+                        </div>
+                    </button>
+
+                    <div class="content-block content-block--surface content-block--disabled">
+                        <div class="content-block__body text-sm">
+                            Disabled block with standardised opacity and inert behaviour.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="content-block content-block--surface"&gt;
+  &lt;div class="content-block__header"&gt;
+    &lt;h3 class="text-sm"&gt;Surface block&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class="content-block__body text-sm"&gt;
+    Neutral elevated container.
+  &lt;/div&gt;
+  &lt;div class="content-block__footer text-xs text-muted"&gt;
+    Footer area
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-block content-block--inset"&gt;
+  &lt;div class="content-block__body text-sm"&gt;
+    Lower-contrast inset surface.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-block content-block--bordered"&gt;
+  &lt;div class="content-block__body text-sm"&gt;
+    Strong outline variant.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-block content-block--surface content-block--compact"&gt;
+  &lt;div class="content-block__body text-sm"&gt;
+    Compact density.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-block content-block--inset"&gt;
+  &lt;div class="content-block__media"&gt;
+    &lt;img src="..." alt="..."&gt;
+  &lt;/div&gt;
+  &lt;div class="content-block__body text-sm"&gt;
+    Media + body.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button class="content-block content-block--surface content-block--interactive" type="button"&gt;
+  &lt;div class="content-block__body text-sm"&gt;
+    Interactive block
+  &lt;/div&gt;
+&lt;/button&gt;
+
+&lt;div class="content-block content-block--surface content-block--disabled"&gt;
+  &lt;div class="content-block__body text-sm"&gt;
+    Disabled block
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Content-block anatomy</h2>
+                <p class="doc-block__summary">
+                    The content-block component is a neutral structural shell composed of up to four
+                    optional regions: header, media, body and footer. Each region is independent,
+                    token-aligned, and safe to mix or omit depending on layout needs.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview content-block content-block--surface section__stack-sm">
+
+                    <div class="content-block__header">
+                        <div class="text-xs text-mono text-muted">content-block__header</div>
+                        <h3 class="text-sm">Header region</h3>
+                        <p class="text-xs text-muted">
+                            Optional. Use for block titles, microcopy or short intro text.
+                        </p>
+                    </div>
+
+                    <div class="content-block__media">
+                        <div class="text-xs text-mono text-muted mb-2">content-block__media</div>
+                        <img src="https://picsum.photos/seed/anatomy/320/160"
+                             alt="Sample media" width="320" height="160"
+                             style="border-radius: var(--radius-sm);">
+                    </div>
+
+                    <div class="content-block__body">
+                        <div class="text-xs text-mono text-muted">content-block__body</div>
+                        <p class="text-sm">
+                            The body is the primary content container. It defines vertical rhythm,
+                            respects typography scale, and adapts to all density modifiers.
+                        </p>
+                    </div>
+
+                    <div class="content-block__footer">
+                        <div class="text-xs text-mono text-muted">content-block__footer</div>
+                        <button class="button button--sm">Action</button>
+                        <button class="button button--ghost button--sm">Secondary</button>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Region definitions</h3>
+                    <ul class="text-sm">
+                        <li>
+                            <code>.content-block</code> — root wrapper; establishes
+                            stack, spacing and vertical rhythm.
+                        </li>
+                        <li>
+                            <code>.content-block__header</code> — optional top
+                            region for titles, meta, labels or short prose.
+                        </li>
+                        <li>
+                            <code>.content-block__media</code> — optional media
+                            container for images, charts or icons (auto-centred).
+                        </li>
+                        <li>
+                            <code>.content-block__body</code> — main content
+                            region; intended for prose, patterns, repeated blocks.
+                        </li>
+                        <li>
+                            <code>.content-block__footer</code> — optional region
+                            for actions, secondary controls or meta links.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Variant behaviour</h3>
+
+                    <div class="text-sm text-muted">
+                        <p>
+                            Content-block variants apply to the entire wrapper and affect padding,
+                            borders, radii and surface tone:
+                        </p>
+                        <ul>
+                            <li>
+                                <code>.content-block--surface</code> —
+                                elevated card-like surface with border and padding tokens.
+                            </li>
+                            <li>
+                                <code>.content-block--inset</code> —
+                                subtle surface with lower contrast and lighter padding.
+                            </li>
+                            <li>
+                                <code>.content-block--compact</code> —
+                                reduced spacing and tighter layout rhythm.
+                            </li>
+                            <li>
+                                <code>.content-block--bordered</code> —
+                                strong-outline variant for emphasis or separation.
+                            </li>
+                            <li>
+                                <code>.content-block--interactive</code> —
+                                hoverable/pressable shell with token-driven transitions.
+                            </li>
+                            <li>
+                                <code>.content-block--disabled</code> —
+                                non-interactive, lower-opacity state with pointer suppression.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="content-block content-block--surface"&gt;
+  &lt;div class="content-block__header"&gt;
+    &lt;h3 class="text-sm"&gt;Header&lt;/h3&gt;
+  &lt;/div&gt;
+
+  &lt;div class="content-block__media"&gt;
+    &lt;img src="..." alt="..." /&gt;
+  &lt;/div&gt;
+
+  &lt;div class="content-block__body text-sm"&gt;
+    Content body with consistent vertical rhythm.
+  &lt;/div&gt;
+
+  &lt;div class="content-block__footer"&gt;
+    &lt;button class="button button--sm"&gt;Action&lt;/button&gt;
+    &lt;button class="button button--ghost button--sm"&gt;Secondary&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Patterns: card vs content-block vs callout</h2>
+                <p class="doc-block__summary">
+                    Cards are opinionated UI surfaces, content-blocks are neutral structural shells,
+                    and callouts are communication primitives. Use each pattern deliberately depending
+                    on emphasis, purpose and visual semantics.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview grid grid-cols-3 grid-auto-fit-300 gap-8">
+                    <div class="card">
+                        <div class="card__header">
+                            <div class="text-xs text-mono text-muted">card</div>
+                            <h3 class="text-sm">Card</h3>
+                        </div>
+                        <div class="card__body text-sm text-muted">
+                            <p>
+                                Cards are opinionated components: fixed padding, rounded surface,
+                                elevation and consistent content rhythm.
+                            </p>
+                        </div>
+                        <div class="card__footer">
+                            <button class="button button--sm">Action</button>
+                        </div>
+                    </div>
+
+                    <div class="content-block content-block--surface">
+                        <div class="text-xs text-mono text-muted mb-2">content-block</div>
+                        <div class="content-block__body text-sm">
+                            <p>
+                                A content-block is a neutral structural wrapper. It defines regions
+                                but no visual opinion. Use for documentation bodies and tool surfaces.
+                            </p>
+                        </div>
+                        <div class="content-block__footer">
+                            <span class="text-xs text-muted">Flexible footer</span>
+                        </div>
+                    </div>
+
+                    <div class="highlight highlight--info">
+                        <div class="text-sm">
+                            <div class="text-xs text-mono text-muted mb-1">callout (highlight)</div>
+                            <strong>Callouts communicate.</strong>
+                            <p class="text-sm">
+                                Use callouts to draw attention to key information or warnings. They are
+                                stylistically strong and semantically expressive.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Role & usage</h3>
+                    <ul class="text-sm">
+                        <li>
+                            <strong>Card</strong> — UI component for product surfaces, dashboards,
+                            feeds, profile snippets, lists. Strong surface, fixed padding, structured regions.
+                        </li>
+                        <li>
+                            <strong>Content-block</strong> — unopinionated container used in docs,
+                            marketing content, or to group related information without forcing styling.
+                        </li>
+                        <li>
+                            <strong>Callout</strong> — communication element used to highlight,
+                            warn, or inform with semantic tone (info, success, warning, danger).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Comparison</h3>
+
+                    <div class="table text-sm">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Pattern</th>
+                                <th>Visual opinion</th>
+                                <th>Padding</th>
+                                <th>Structure</th>
+                                <th>Typical usage</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><code>card</code></td>
+                                <td>Strong</td>
+                                <td>Fixed, dense tokens</td>
+                                <td>Header, body, footer</td>
+                                <td>UI surfaces, dashboards, product blocks</td>
+                            </tr>
+                            <tr>
+                                <td><code>content-block</code></td>
+                                <td>Neutral</td>
+                                <td>Variable (surface/inset/compact)</td>
+                                <td>Header, media, body, footer</td>
+                                <td>Docs, guides, marketing content, flexible compositions</td>
+                            </tr>
+                            <tr>
+                                <td><code>callout / highlight</code></td>
+                                <td>High (semantic)</td>
+                                <td>Fixed</td>
+                                <td>Icon + body</td>
+                                <td>Communicating status or key information</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;!-- Card --&gt;
+&lt;div class="card"&gt;
+  &lt;div class="card__header"&gt;&lt;h3&gt;Title&lt;/h3&gt;&lt;/div&gt;
+  &lt;div class="card__body"&gt;Fixed padding, structured UI&lt;/div&gt;
+  &lt;div class="card__footer"&gt;&lt;button&gt;Action&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Content-block --&gt;
+&lt;div class="content-block content-block--surface"&gt;
+  &lt;div class="content-block__body"&gt;
+    Unopinionated structural shell.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Callout / Highlight --&gt;
+&lt;div class="highlight highlight--info"&gt;
+    &lt;strong&gt;Note:&lt;/strong&gt; For highlighting key information.
+&lt;/div&gt;
+</code></pre>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Recipes: marketing feature using content-blocks</h2>
+                <p class="doc-block__summary">
+                    Content-blocks are neutral, composable structures ideal for marketing features:
+                    icon + headline + supporting text, optional media, and clear call-to-action.
+                    They provide a flexible alternative to cards when you need structured but
+                    unopinionated blocks.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview grid grid-cols-3 grid-auto-fit-300 gap-8">
+                    <div class="content-block content-block--surface section__stack-sm">
+                        <div class="content-block__media">
+                            <span class="icon icon--mask icon--success icon--xl"></span>
+                        </div>
+                        <div class="content-block__header">
+                            <h3 class="text-md">Fast integration</h3>
+                        </div>
+                        <div class="content-block__body text-sm text-muted">
+                            Drop VDS into any site or app with minimal setup. Token-driven architecture
+                            ensures full consistency across every surface.
+                        </div>
+                        <div class="content-block__footer">
+                            <a href="#" class="button button--sm">Learn more</a>
+                        </div>
+                    </div>
+
+                    <div class="content-block content-block--inset section__stack-sm">
+                        <div class="content-block__media">
+                            <span class="icon icon--mask icon--info icon--xl"></span>
+                        </div>
+                        <div class="content-block__header">
+                            <h3 class="text-md">Design clarity</h3>
+                        </div>
+                        <div class="content-block__body text-sm text-muted">
+                            Clean patterns and predictable spacing create a strong visual foundation
+                            for product pages and documentation hubs.
+                        </div>
+                        <div class="content-block__footer">
+                            <a href="#" class="button button--ghost button--sm">View spec</a>
+                        </div>
+                    </div>
+
+                    <div class="content-block content-block--bordered section__stack-sm">
+                        <div class="content-block__media">
+                            <span class="icon icon--mask icon--warning icon--xl"></span>
+                        </div>
+                        <div class="content-block__header">
+                            <h3 class="text-md">Flexible structure</h3>
+                        </div>
+                        <div class="content-block__body text-sm text-muted">
+                            Combine header, media, body and footer in any order. Add or remove regions
+                            without breaking layout rhythm.
+                        </div>
+                        <div class="content-block__footer">
+                            <a href="#" class="button button--sm">Explore patterns</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Pattern structure</h3>
+                    <ul class="text-sm">
+                        <li>
+                            <strong>Media</strong> (optional): icons, thumbnails, diagrams or product imagery.
+                        </li>
+                        <li>
+                            <strong>Header</strong> (optional): headline or micro-title.
+                        </li>
+                        <li>
+                            <strong>Body</strong>: supporting text or short description.
+                        </li>
+                        <li>
+                            <strong>Footer</strong> (optional): call-to-action or secondary links.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Choosing variants</h3>
+                    <p class="text-sm text-muted">
+                        Use <code>--surface</code> for primary features,
+                        <code>--inset</code> for low-contrast content, and
+                        <code>--bordered</code> for emphasised sections.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="content-block content-block--surface"&gt;
+  &lt;div class="content-block__media"&gt;
+    &lt;span class="icon icon--mask icon--success icon--xl"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class="content-block__header"&gt;
+    &lt;h3 class="text-md"&gt;Fast integration&lt;/h3&gt;
+  &lt;/div&gt;
+
+  &lt;div class="content-block__body text-sm"&gt;
+    Drop VDS into any site or application quickly and consistently.
+  &lt;/div&gt;
+
+  &lt;div class="content-block__footer"&gt;
+    &lt;button class="button button--sm"&gt;Learn more&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Advanced marketing layouts</h2>
+                <p class="doc-block__summary">
+                    Content-blocks scale from simple grouped content to advanced marketing layouts.
+                    This section demonstrates three production-ready patterns: Z-pattern sections,
+                    feature grids, and media-left (or media-right) compositions for landing pages.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview section__stack">
+                    <h3 class="text-sm">Z-pattern (alternating media)</h3>
+
+                    <div class="section__stack grid grid-cols-1 gap-6">
+                        <div class="grid grid-cols-2 grid-auto-fit-400 gap-12">
+                            <div class="content-block  content-block--surface">
+                                <div class="content-block__media">
+                                    <img src="https://picsum.photos/seed/z-a/480/300" alt="">
+                                </div>
+                            </div>
+                            <div class="content-block content-block--inset section__stack-sm">
+                                <div class="content-block__header">
+                                    <h3 class="text-lg">Unified brand experience</h3>
+                                </div>
+                                <div class="content-block__body text-sm text-muted">
+                                    Build strong, consistent product narratives by applying shared
+                                    tokens and aligned spacing patterns across all surfaces.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 grid-auto-fit-400 gap-12">
+                            <div class="content-block content-block--inset section__stack-sm">
+                                <div class="content-block__header">
+                                    <h3 class="text-lg">Scalable patterns</h3>
+                                </div>
+                                <div class="content-block__body text-sm text-muted">
+                                    Use content-blocks as neutral wrappers so you can scale copy,
+                                    media, or interactive elements without visual lock-in.
+                                </div>
+                            </div>
+                            <div class="content-block  content-block--surface">
+                                <div class="content-block__media">
+                                    <img src="https://picsum.photos/seed/z-b/480/300" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="doc-block__preview section__stack">
+                    <h3 class="text-sm">Marketing feature grid</h3>
+
+                    <div class="grid grid-cols-3 grid-auto-fit-300 gap-8">
+
+                        <div class="content-block content-block--surface section__stack-sm">
+                            <div class="content-block__media">
+                                <span class="icon icon--mask icon--success icon--lg"></span>
+                            </div>
+                            <div class="content-block__header">
+                                <h4 class="text-md">Performance</h4>
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Fast, token-driven layouts ensure consistent spacing and visual rhythm.
+                            </div>
+                        </div>
+
+                        <div class="content-block content-block--surface section__stack-sm">
+                            <div class="content-block__media">
+                                <span class="icon icon--mask icon--info icon--lg"></span>
+                            </div>
+                            <div class="content-block__header">
+                                <h4 class="text-md">Clarity</h4>
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Neutral content blocks prevent style collisions on landing pages.
+                            </div>
+                        </div>
+
+                        <div class="content-block content-block--surface section__stack-sm">
+                            <div class="content-block__media">
+                                <span class="icon icon--mask icon--warning icon--lg"></span>
+                            </div>
+                            <div class="content-block__header">
+                                <h4 class="text-md">Flexibility</h4>
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Compose media, header, body, and footer in any order without breaking layout.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="doc-block__preview section__stack">
+                    <h3 class="text-sm">Media-left layout</h3>
+
+                    <div class="grid grid-cols-2 grid-auto-fit-400 gap-12">
+                        <div class="content-block  content-block--surface">
+                            <div class="content-block__media">
+                                <img src="https://picsum.photos/seed/medialeft/520/340" alt="">
+                            </div>
+                        </div>
+
+                        <div class="content-block section__stack-sm">
+                            <div class="content-block__header">
+                                <h3 class="text-lg">A layout for landing sections</h3>
+                            </div>
+
+                            <div class="content-block__body text-sm text-muted">
+                                Pair imagery with structured content to form a strong, high-impact layout
+                                for marketing pages. Media-left (or media-right) compositions work
+                                exceptionally well for hero-like introductions or feature overviews.
+                            </div>
+
+                            <div class="content-block__footer">
+                                <a href="#" class="button button--sm">Get started</a>
+                                <a href="#" class="button button--ghost button--sm">Learn more</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;!-- Z-pattern row --&gt;
+&lt;div class="grid grid-cols-2 grid-auto-fit-400 gap-12"&gt;
+
+  &lt;div class="content-block  content-block--surface"&gt;
+    &lt;div class="content-block__media"&gt;
+      &lt;img src="..." alt="" /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="content-block content-block--inset section__stack-sm"&gt;
+    &lt;div class="content-block__header"&gt;
+      &lt;h3 class="text-lg"&gt;Title&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class="content-block__body text-sm"&gt;
+      Supporting copy here.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!-- Media-left composition --&gt;
+&lt;div class="grid grid-cols-2 grid-auto-fit-400 gap-12"&gt;
+
+  &lt;div class="content-block  content-block--surface"&gt;
+    &lt;div class="content-block__media"&gt;
+      &lt;img src="..." alt="" /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="content-block section__stack-sm"&gt;
+    &lt;div class="content-block__header"&gt;
+      &lt;h3 class="text-lg"&gt;Landing headline&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class="content-block__body text-sm"&gt;
+      Supporting text for marketing layout.
+    &lt;/div&gt;
+    &lt;div class="content-block__footer"&gt;
+      &lt;a href="#" class="button button--sm"&gt;Primary&lt;/a&gt;
+      &lt;a href="#" class="button button--ghost button--sm"&gt;Secondary&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Landing page recipe</h2>
+                <p class="doc-block__summary">
+                    A production-grade landing page flow: hero → features → social proof → call to
+                    action. This pattern scales across marketing, documentation and product funnels,
+                    using existing VDS building blocks.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack-lg">
+                <div class="doc-block__preview">
+                    <div class="hero hero--with-media hero--a">
+                        <div class="hero__inner">
+                            <div class="hero__body section__stack">
+                                <div class="hero__eyebrow">Introducing VDS</div>
+                                <h1 class="hero__title">A design system built for clarity</h1>
+                                <p class="hero__desc text-md text-muted">
+                                    Ship consistent interfaces with a disciplined CSS architecture.
+                                    Fast, token-driven, scalable.
+                                </p>
+
+                                <div class="hero__actions">
+                                    <a class="button button--primary button--lg" href="#">Get started</a>
+                                    <a class="button button--ghost button--lg" href="#">Documentation</a>
+                                </div>
+                            </div>
+
+                            <div class="hero__media">
+                                <div class="hero__media-inner">
+                                    <img src="https://picsum.photos/seed/hero/960/720"
+                                         alt="Hero media">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview section__stack">
+                    <h3 class="text-sm">Feature grid</h3>
+
+                    <div class="grid grid-cols-3 grid-auto-fit-300 gap-8">
+                        <div class="content-block content-block--surface section__stack-sm">
+                            <div class="content-block__media">
+                                <span class="icon icon--mask icon--success icon--xl"></span>
+                            </div>
+                            <div class="content-block__header">
+                                <h4 class="text-md">Token-driven design</h4>
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Every decision—spacing, radii, colour—flows from shared tokens.
+                                Zero visual drift.
+                            </div>
+                        </div>
+
+                        <div class="content-block content-block--surface section__stack-sm">
+                            <div class="content-block__media">
+                                <span class="icon icon--mask icon--info icon--xl"></span>
+                            </div>
+                            <div class="content-block__header">
+                                <h4 class="text-md">Composable patterns</h4>
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Use neutral content-blocks to build landing sections, docs, and
+                                product surfaces.
+                            </div>
+                        </div>
+
+                        <div class="content-block content-block--surface section__stack-sm">
+                            <div class="content-block__media">
+                                <span class="icon icon--mask icon--warning icon--xl"></span>
+                            </div>
+                            <div class="content-block__header">
+                                <h4 class="text-md">Production-ready</h4>
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Pure CSS, no JS assumptions. Works with any framework or static
+                                site pipeline.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview section__stack">
+                    <h3 class="text-sm">Social proof</h3>
+
+                    <div class="section__stack-lg">
+                        <div class="flex justify-center items-center gap-8">
+                            <span class="text-mono text-sm">Logo A</span>
+                            <span class="text-mono text-sm">Logo B</span>
+                            <span class="text-mono text-sm">Logo C</span>
+                            <span class="text-mono text-sm">Logo D</span>
+                        </div>
+
+                        <div class="grid grid-cols-3 grid-auto-fit-300 gap-8">
+                            <div class="card">
+                                <div class="card__body text-sm text-muted">
+                                    “VDS gave us consistent layout patterns across marketing and
+                                    dashboard surfaces with zero visual fragmentation.”
+                                </div>
+                                <div class="card__footer text-xs text-muted">
+                                    — Product Designer
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card__body text-sm text-muted">
+                                    “We unified all docs and landing pages using content-blocks.
+                                    Simple and predictable.”
+                                </div>
+                                <div class="card__footer text-xs text-muted">
+                                    — Technical Writer
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card__body text-sm text-muted">
+                                    “Token-driven spacing saved us from CSS chaos in a multi-team
+                                    environment.”
+                                </div>
+                                <div class="card__footer text-xs text-muted">
+                                    — Front-end Lead
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero__metrics">
+                            <div class="hero__metric hero__metric--muted">
+                                <div class="hero__metric-value">98%</div>
+                                <div class="hero__metric-label text-sm">Design consistency</div>
+                            </div>
+                            <div class="hero__metric">
+                                <div class="hero__metric-value">3×</div>
+                                <div class="hero__metric-label text-sm">Faster page creation</div>
+                            </div>
+                            <div class="hero__metric hero__metric--error">
+                                <div class="hero__metric-value">0</div>
+                                <div class="hero__metric-label text-sm">Runtime dependencies</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="content-block content-block--surface section__stack">
+                        <div class="content-block__header">
+                            <h3 class="text-xl">Ready to build with VDS?</h3>
+                        </div>
+
+                        <div class="content-block__body text-sm text-muted">
+                            Start with the documentation or explore component recipes to integrate
+                            VDS into your site or application.
+                        </div>
+
+                        <div class="content-block__footer">
+                            <a href="#" class="button button--primary button--lg">Start now</a>
+                            <a href="#" class="button button--ghost button--lg">View components</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;!-- Hero --&gt;
+&lt;div class="hero hero--with-media hero--a"&gt;
+  &lt;div class="hero__inner"&gt;
+    &lt;div class="hero__body"&gt;
+      &lt;div class="hero__eyebrow"&gt;Introducing VDS&lt;/div&gt;
+      &lt;h1 class="hero__title"&gt;A design system built for clarity&lt;/h1&gt;
+      &lt;p class="hero__desc"&gt;Token-driven, scalable.&lt;/p&gt;
+      &lt;div class="hero__actions"&gt;
+        &lt;a class="button button--primary button--lg"&gt;Get started&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="hero__media"&gt;
+      &lt;div class="hero__media-inner"&gt;
+        &lt;img src="..." alt="" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Feature grid --&gt;
+&lt;div class="grid grid-cols-3 grid-auto-fit-300 gap-8"&gt;
+  &lt;div class="content-block content-block--surface"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Proof (logos + testimonials) --&gt;
+&lt;div class="flex justify-center gap-8"&gt;Logos...&lt;/div&gt;
+&lt;div class="grid grid-cols-3 grid-auto-fit-300 gap-8"&gt;Testimonials...&lt;/div&gt;
+&lt;div class="hero__metrics"&gt;Metrics...&lt;/div&gt;
+
+&lt;!-- CTA --&gt;
+&lt;div class="content-block content-block--surface"&gt;
+  &lt;h3&gt;Ready to build?&lt;/h3&gt;
+  &lt;div class="content-block__footer"&gt;
+    &lt;a class="button button--primary button--lg"&gt;Start now&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Content-block patterns & layout recipes</h2>
+                <p class="doc-block__summary">
+                    A unified overview of content-block usage: layout patterns, media grids, spacing
+                    systems, and comparisons with cards and callouts. This section demonstrates how
+                    to compose flexible, documentation-ready or marketing-ready typographic blocks.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack-lg">
+                <div class="doc-block__preview section__stack">
+                    <h3 class="text-sm">Content-block layout patterns</h3>
+                    <p class="text-sm text-muted">
+                        Layout patterns rely on composition of header, media, body, and footer.
+                        These patterns work for marketing features, documentation sections, and UI surfaces.
+                    </p>
+
+                    <div class="grid grid-cols-3 grid-auto-fit-300 gap-8 mt-6">
+                        <div class="content-block content-block--surface">
+                            <div class="content-block__body text-sm">
+                                A simple content-block with body-only content. Ideal for small facts,
+                                side notes, or inline documentation surfaces.
+                            </div>
+                        </div>
+
+                        <div class="content-block content-block--inset section__stack-sm">
+                            <div class="content-block__header">
+                                <h4 class="text-md">Header + body</h4>
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Common pattern for grouped information. Neutral and flexible.
+                            </div>
+                        </div>
+
+                        <div class="content-block content-block--surface section__stack-sm">
+                            <div class="content-block__header">
+                                <h4 class="text-md">Media-first block</h4>
+                            </div>
+                            <div class="content-block__media">
+                                <img src="https://picsum.photos/seed/m1/280/160" alt="">
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Use media-first content-blocks for feature presentations.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="doc-block__preview section__stack">
+                    <h3 class="text-sm">Content-block + media grids</h3>
+                    <p class="text-sm text-muted">
+                        Combine media regions and responsive grids to build product sections, feature
+                        listings, documentation sidebars or marketing showcases.
+                    </p>
+
+                    <div class="grid grid-cols-3 grid-auto-fit-300 gap-8 mt-6">
+                        <div class="content-block content-block--surface section__stack-sm">
+                            <div class="content-block__media">
+                                <img src="https://picsum.photos/seed/g1/280/160" alt="">
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Grid block with image + supporting text.
+                            </div>
+                        </div>
+
+                        <div class="content-block content-block--surface section__stack-sm">
+                            <div class="content-block__media">
+                                <img src="https://picsum.photos/seed/g2/280/160" alt="">
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Perfect for product thumbnails or feature descriptions.
+                            </div>
+                        </div>
+
+                        <div class="content-block content-block--surface section__stack-sm">
+                            <div class="content-block__media">
+                                <img src="https://picsum.photos/seed/g3/280/160" alt="">
+                            </div>
+                            <div class="content-block__body text-sm text-muted">
+                                Neutral surface helps media stand out without overpowering layout.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview section__stack">
+                    <h3 class="text-sm">Comparison: card vs content-block vs callout</h3>
+                    <p class="text-sm text-muted">
+                        Cards are opinionated UI surfaces. Content-blocks are neutral structural
+                        wrappers. Callouts highlight or communicate status. Choose based on
+                        purpose, emphasis and visual semantics.
+                    </p>
+
+                    <div class="grid grid-cols-3 grid-auto-fit-300 gap-8 mt-6">
+                        <div class="card">
+                            <div class="card__header">
+                                <h4 class="text-md">Card</h4>
+                            </div>
+                            <div class="card__body text-sm text-muted">
+                                Opinionated. Fixed padding, surface, and radii. Ideal for UI patterns,
+                                dashboard elements, snippet blocks.
+                            </div>
+                        </div>
+
+                        <div class="content-block content-block--surface">
+                            <div class="content-block__body text-sm text-muted">
+                                Neutral structural container. Define layout and rhythm without forcing
+                                a visual style. Suitable for docs and marketing.
+                            </div>
+                        </div>
+
+                        <div class="highlight highlight--info">
+                            <div class="text-sm text-muted">
+                                <strong>Callout.</strong> Semantic surface for emphasis. Use for
+                                warnings, notes, tips or important messages.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="table text-sm mt-6">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Pattern</th>
+                                <th>Visual opinion</th>
+                                <th>Padding</th>
+                                <th>Structure</th>
+                                <th>Usage</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><code>card</code></td>
+                                <td>Strong</td>
+                                <td>Fixed</td>
+                                <td>Header, body, footer</td>
+                                <td>UI surfaces, dashboards, product blocks</td>
+                            </tr>
+                            <tr>
+                                <td><code>content-block</code></td>
+                                <td>Neutral</td>
+                                <td>Variable</td>
+                                <td>Header, media, body, footer</td>
+                                <td>Docs, marketing, knowledge surfaces</td>
+                            </tr>
+                            <tr>
+                                <td><code>callout</code></td>
+                                <td>Semantic</td>
+                                <td>Fixed</td>
+                                <td>Icon + body</td>
+                                <td>Highlighting information or alerts</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview section__stack">
+                    <h3 class="text-sm">Spacing & responsive grid examples</h3>
+                    <p class="text-sm text-muted">
+                        Content-blocks rely on token spacing and respond naturally to grid modifiers.
+                        The examples below illustrate common patterns: 2-column, 3-column and
+                        auto-fit grids with adaptive spacing.
+                    </p>
+
+                    <div class="grid grid-cols-2 grid-auto-fit-400 gap-12 mt-6">
+                        <div class="content-block content-block--surface content-block--compact">
+                            <div class="content-block__body text-sm text-muted">
+                                Compact block. Reduced vertical rhythm for dense UI.
+                            </div>
+                        </div>
+                        <div class="content-block content-block--inset">
+                            <div class="content-block__body text-sm text-muted">
+                                Inset block. Softer surface for documentation or nested content.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 grid-auto-fit-300 gap-8 mt-6">
+                        <div class="content-block content-block--surface">
+                            <div class="content-block__body text-sm text-muted">
+                                Regular spacing.
+                            </div>
+                        </div>
+                        <div class="content-block content-block--surface">
+                            <div class="content-block__body text-sm text-muted">
+                                Grid adapts based on available width.
+                            </div>
+                        </div>
+                        <div class="content-block content-block--surface">
+                            <div class="content-block__body text-sm text-muted">
+                                Use <code>grid-auto-fit-*</code> utilities for fluid layouts.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="grid grid-cols-3 grid-auto-fit-300 gap-8"&gt;
+  &lt;div class="content-block content-block--surface"&gt;
+    &lt;div class="content-block__body"&gt;Neutral block&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+  &lt;div class="highlight highlight--info"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="grid grid-cols-2 grid-auto-fit-400 gap-12"&gt;
+  &lt;div class="content-block content-block--compact"&gt;...&lt;/div&gt;
+  &lt;div class="content-block content-block--inset"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Contract for safe, semantic composition of cards, media blocks,
+                    list groups, callouts, stats, tags, avatars, feature/process/highlight/fact
+                    blocks. Maintain native HTML semantics, rely on token-driven interaction
+                    states, and avoid overloading these blocks with layout responsibility.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+
+                        <li>Use native interactive elements (<code>&lt;button&gt;</code>,
+                            <code>&lt;a&gt;</code>) for interactive cards, list rows,
+                            chips and tags.
+                        </li>
+
+                        <li>Provide <strong>accessible names</strong> for interactive blocks:
+                            use inner text, <code>aria-label</code> or
+                            <code>aria-labelledby</code> when needed.
+                        </li>
+
+                        <li>Use <code>aria-current</code>,
+                            <code>--selected</code> variants and semantic tokens
+                            (<code>semantic-*</code>) to express state.
+                        </li>
+
+                        <li>Use block shells (<code>.card</code>,
+                            <code>.media</code>,
+                            <code>.list-group</code>,
+                            <code>.empty</code>) for structured content only —
+                            let utilities handle spacing, grid and flow.
+                        </li>
+
+                        <li>Use <strong>interactive variants</strong>
+                            (<code>--interactive</code>) only when the full block
+                            is intended to be actionable.
+                        </li>
+
+                        <li>Use status tokens for semantic meaning:
+                            <code>semantic-info</code>,
+                            <code>semantic-success</code>,
+                            <code>semantic-warning</code>,
+                            <code>semantic-danger</code>.
+                        </li>
+
+                        <li>Keep media blocks responsive by preserving structure:
+                            <code>media__icon</code>,
+                            <code>media__img</code>,
+                            <code>media__body</code>.
+                        </li>
+
+                        <li>Use chips/tags/badges for short, high-signal labels; keep them concise.</li>
+
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+
+                        <li>Don’t override block padding, radius, border or gaps per-instance —
+                            extend tokens, don’t break them.
+                        </li>
+
+                        <li>Don’t turn every card or media block into a clickable element
+                            without clear intent or accessible labelling.
+                        </li>
+
+                        <li>Don’t use content blocks to build page layout —
+                            they are <strong>layout-neutral shells</strong>.
+                        </li>
+
+                        <li>Don’t remove focus-visible styles from interactive variants.</li>
+
+                        <li>Don’t hard-code semantic colours for callouts, highlights,
+                            tags or chips — rely on theme-level semantic tokens.
+                        </li>
+
+                        <li>Don’t encode navigation semantics inside non-interactive blocks
+                            (e.g., clickable <code>&lt;div&gt;</code> without proper role).
+                        </li>
+
+                        <li>Don’t mix multiple interaction models inside a single block
+                            (e.g., nested <code>--interactive</code> regions).
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Use &lt;button&gt;/&lt;a&gt; for interactive cards, list items, chips and tags.
+2. Provide accessible names for all interactive surfaces.
+3. Apply semantic meaning via tokens (semantic-*) not custom colours.
+4. Keep blocks layout-neutral; use utilities for spacing/grid/stack.
+5. Preserve focus-visible for interactive variants (never remove).
+6. Use --selected and aria-current to expose selection state.
+7. Avoid per-instance overrides of spacing, borders, or radius.</code></pre>
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility rules for marketing blocks</h2>
+                <p class="doc-block__summary">
+                    Marketing layouts must remain accessible and perceivable regardless of their
+                    visual expressiveness. These rules ensure information remains usable, navigable,
+                    and compliant across media grids, feature sections, Z-pattern layouts and CTA
+                    blocks.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Core rules</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Provide descriptive <code>alt</code> text for all images
+                            used in feature grids, media blocks or testimonials.
+                        </li>
+                        <li>
+                            Maintain a minimum contrast ratio according to theme tokens. Marketing
+                            layouts must not reduce contrast for stylistic effect.
+                        </li>
+                        <li>
+                            Never use icon-only buttons in CTAs; pair icons with text labels.
+                        </li>
+                        <li>
+                            Ensure tab order respects document flow — do not reorder elements visually
+                            without updating DOM structure.
+                        </li>
+                        <li>
+                            Use semantic headings (<code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>)
+                            to define sections, not styling classes.
+                        </li>
+                        <li>
+                            Avoid conveying meaning solely through colour in feature blocks or hero
+                            metrics. Add text labels for clarity.
+                        </li>
+                        <li>
+                            When using Z-pattern layouts, ensure keyboard and screen reader order
+                            match the logical flow of content.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use descriptive headings inside marketing features.</li>
+                        <li>Label interactive elements clearly (“Learn more”, “Start now”).</li>
+                        <li>Provide alt text for product/feature illustrations.</li>
+                        <li>Keep paragraph line lengths readable (<strong>&lt;65ch</strong>).</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>Don’t rely on colour-only indicators in metrics or badges.</li>
+                        <li>Don’t place text on images unless contrast is guaranteed.</li>
+                        <li>Don’t insert decorative media into screen-reader flow (mark as
+                            <code>aria-hidden="true"</code> if needed).
+                        </li>
+                        <li>Don’t use heading tags purely for styling hierarchy.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Content-block accessibility & semantics</h2>
+                <p class="doc-block__summary">
+                    Content-blocks support documentation and marketing layouts, but accessibility
+                    must remain first-class. These guidelines ensure blocks remain readable,
+                    navigable and semantically correct across all screen sizes.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Semantic structure</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use semantic headings (<code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>)
+                            within <code>.content-block__header</code>.
+                        </li>
+                        <li>
+                            Use paragraphs (<code>&lt;p&gt;</code>) and lists (<code>&lt;ul&gt;</code>)
+                            inside <code>.content-block__body</code>.
+                        </li>
+                        <li>
+                            Mark decorative media as <code>aria-hidden="true"</code>.
+                        </li>
+                        <li>
+                            Always provide descriptive <code>alt</code> attributes for meaningful media.
+                        </li>
+                        <li>
+                            Prefer semantic tags (<code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>)
+                            when content-blocks represent standalone content.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Keyboard & interaction</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Make the entire block interactive only when using
+                            <code>.content-block--interactive</code>.
+                        </li>
+                        <li>
+                            Ensure focus-visible styles remain unobstructed by decoration.
+                        </li>
+                        <li>
+                            Do not trap focus inside a content-block.
+                        </li>
+                        <li>
+                            Footer buttons must be reachable in normal tab order.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Contrast & readability</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Maintain sufficient contrast between text and background, including inset variants.
+                        </li>
+                        <li>
+                            Keep paragraphs under <strong>65ch</strong> for optimal readability.
+                        </li>
+                        <li>
+                            Avoid placing text directly on complex imagery.
+                        </li>
+                        <li>
+                            When using compact blocks, keep text size at <code>var(--text-sm)</code> or larger.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Do / Don’t for advanced marketing layouts</h2>
+                <p class="doc-block__summary">
+                    Advanced layouts like Z-patterns, media-left sections, feature grids and
+                    hero-with-media blocks require clear architectural discipline. These rules
+                    define how to design high-impact layouts without breaking structure,
+                    rhythm or semantics.
+                </p>
+            </header>
+
+            <div class="doc-block__body grid grid-cols-2 grid-auto-fit-400 gap-12">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm text-mono text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use <code>grid-auto-fit-*</code> for responsive
+                            marketing grids that collapse naturally on mobile.
+                        </li>
+                        <li>
+                            Alternate media and body blocks in Z-pattern layouts for visual rhythm.
+                        </li>
+                        <li>
+                            Use <code>.content-block__media</code> for centered, well-contained media.
+                        </li>
+                        <li>
+                            Ensure CTA blocks have clear primary/secondary actions.
+                        </li>
+                        <li>
+                            Keep spacing consistent using section stacks or grid gaps (never manual margin hacks).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-sm text-mono text-muted">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t override padding or spacing inside content-blocks with manual
+                            margins — use density variants instead.
+                        </li>
+                        <li>
+                            Don’t mix cards, callouts and content-blocks in the same grid
+                            unless intentional for communication hierarchy.
+                        </li>
+                        <li>
+                            Don’t break grid flow by forcing fixed widths.
+                        </li>
+                        <li>
+                            Don’t reorder content visually without matching DOM order.
+                        </li>
+                        <li>
+                            Don’t pair unrelated media types (e.g., product photo + abstract pattern)
+                            in the same layout without intent.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Content-block Do / Don’t</h2>
+                <p class="doc-block__summary">
+                    Content-blocks are neutral containers for structured text, media and actions.
+                    They should remain visually consistent and lightweight. These rules ensure
+                    proper use across documentation, marketing and product layouts.
+                </p>
+            </header>
+
+            <div class="doc-block__body grid grid-cols-2 grid-auto-fit-400 gap-12">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use <code>.content-block--surface</code> for primary blocks.</li>
+                        <li>Use <code>.content-block--inset</code> for low-contrast nested areas.</li>
+                        <li>Use <code>.content-block--compact</code> for dense UI contexts.</li>
+                        <li>Use semantic tags inside blocks (headings, lists, paragraphs).</li>
+                        <li>Wrap images in <code>.content-block__media</code> for centered containment.</li>
+                        <li>Keep footer actions grouped via <code>.content-block__footer</code>.</li>
+                        <li>Let grid utilities handle layout — no manual margin hacks.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>Don’t use content-blocks as replacements for cards or callouts.</li>
+                        <li>Don’t mix padding utilities inside blocks — rely on variants.</li>
+                        <li>Don’t position media outside <code>.content-block__media</code>.</li>
+                        <li>Don’t insert unstructured HTML (loose divs with no semantic meaning).</li>
+                        <li>Don’t use content-blocks as interactive surfaces unless using <code>--interactive</code>.
+                        </li>
+                        <li>Don’t override border or shadow tokens with arbitrary values.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+</section>

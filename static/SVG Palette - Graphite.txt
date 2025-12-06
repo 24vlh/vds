@@ -1,0 +1,135 @@
+------------------------------------------------------------
+PALETTE D - GRAPHITE + BLUE STEEL
+------------------------------------------------------------
+Base
+Ink		#0E3D69
+Accent	#1371A3
+
+Extended Colour System - Primary / Core
+primary:	#0E3D69
+secondary:	#1371A3
+text:		#0E3D69 on light, #F7F9FC on dark
+background:	#F7F9FC
+accent:		#1371A3
+
+States
+
+success:	#5D9893
+success-bg:	#D9E7E6
+
+error:		#CE6870
+error-bg:	#F3DCDE
+
+warning:	#95825D
+warning-bg:	#E6E2D9
+
+info:		#7EA9D0
+info-bg:	#E1EBF4
+
+danger:		#CE6870
+danger-bg:	#F3DCDE
+
+Shadows / Depth
+
+shadow-1: rgba(14, 61, 105, 0.07)
+shadow-2: rgba(14, 61, 105, 0.12)
+shadow-3: rgba(14, 61, 105, 0.18)
+
+Palette - Swatch SVG (Light Mode)
+
+Token Mapping
+Primary		= --color-brand-ink
+Secondary	= --color-brand-accent
+Success		= --color-success
+Error		= --color-error
+Warning		= --color-warning
+Info		= --color-info
+Danger		= --color-danger
+Background	= --color-bg
+Accent		= --color-accent
+
+Resolved values:
+primary:	#0E3D69
+secondary:	#1371A3
+success:	#5D9893
+error:		#CE6870
+warning:	#95825D
+info:		#7EA9D0
+danger:		#CE6870
+background:	#F7F9FC
+accent:		#1371A3
+
+SVG - GRAPHITE LIGHT
+<svg width="760" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0"   y="0" width="80" height="60" fill="#0E3D69"/>
+  <rect x="80"  y="0" width="80" height="60" fill="#1371A3"/>
+  <rect x="160" y="0" width="80" height="60" fill="#5D9893"/>
+  <rect x="240" y="0" width="80" height="60" fill="#CE6870"/>
+  <rect x="320" y="0" width="80" height="60" fill="#95825D"/>
+  <rect x="400" y="0" width="80" height="60" fill="#7EA9D0"/>
+  <rect x="480" y="0" width="80" height="60" fill="#CE6870"/>
+  <rect x="560" y="0" width="80" height="60" fill="#F7F9FC"/>
+  <rect x="640" y="0" width="80" height="60" fill="#1371A3"/>
+
+  <text x="10"  y="85" font-size="12">Primary</text>
+  <text x="90"  y="85" font-size="12">Secondary</text>
+  <text x="165" y="85" font-size="12">Success</text>
+  <text x="250" y="85" font-size="12">Error</text>
+  <text x="330" y="85" font-size="12">Warning</text>
+  <text x="410" y="85" font-size="12">Info</text>
+  <text x="495" y="85" font-size="12">Danger</text>
+  <text x="560" y="85" font-size="12">Background</text>
+  <text x="650" y="85" font-size="12">Accent</text>
+</svg>
+
+Palette - Swatch SVG (Dark Mode)
+
+Token Mapping
+
+Primary-bg	= --color-bg
+Secondary	= --color-brand-accent
+Success		= --color-success
+Error		= --color-error
+Warning		= --color-warning
+Info		= --color-info
+Danger		= --color-danger
+Text-light	= --color-text
+Accent		= --color-accent
+
+Resolved values:
+primary-bg:	#0F1114
+secondary:	#1F3A4D
+success:	#066159
+error:		#B51823
+warning:	#5D4006
+info:		#3A7BB8
+danger:		#850610
+text-light:	#CACCCD
+accent:		#1371A3
+
+Base Interpretation:
+Ink		#0E3D69 - primary brand ink (anchors headings, strong text, and key lines)
+Accent	#1371A3 - highlight / CTA / brand signal
+
+SVG - GRAPHITE DARK
+<svg width="760" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0"   y="0" width="80" height="60" fill="#0F1114"/>
+  <rect x="80"  y="0" width="80" height="60" fill="#1F3A4D"/>
+  <rect x="160" y="0" width="80" height="60" fill="#066159"/>
+  <rect x="240" y="0" width="80" height="60" fill="#B51823"/>
+  <rect x="320" y="0" width="80" height="60" fill="#5D4006"/>
+  <rect x="400" y="0" width="80" height="60" fill="#3A7BB8"/>
+  <rect x="480" y="0" width="80" height="60" fill="#850610"/>
+  <rect x="560" y="0" width="80" height="60" fill="#CACCCD"/>
+  <rect x="640" y="0" width="80" height="60" fill="#1371A3"/>
+
+  <text x="10"  y="85" font-size="12">Primary</text>
+  <text x="90"  y="85" font-size="12">Secondary</text>
+  <text x="165" y="85" font-size="12">Success</text>
+  <text x="250" y="85" font-size="12">Error</text>
+  <text x="330" y="85" font-size="12">Warning</text>
+  <text x="410" y="85" font-size="12">Info</text>
+  <text x="495" y="85" font-size="12">Danger</text>
+  <text x="560" y="85" font-size="12">Text-light</text>
+  <text x="650" y="85" font-size="12">Accent</text>
+</svg>

@@ -1,0 +1,136 @@
+------------------------------------------------------------
+PALETTE C - CARBON + TEAL
+------------------------------------------------------------
+Base
+Ink		#0E1113
+Accent	#2BA6A6
+
+Extended Colour System - Primary / Core
+
+primary:	#0E1113
+secondary:	#2BA6A6
+text:		#0E1113 on light, #F5F7F7 on dark
+background:	#F5F7F7
+accent:		#2BA6A6
+
+States
+
+success:	#2E8F7A
+success-bg:	#E6F4F1
+
+error:		#912839
+error-bg:	#F8EBED
+
+warning:	#C69932
+warning-bg:	#FBF4E6
+
+info:		#2B7F9E
+info-bg:	#E6F1F7
+
+danger:		#912839
+danger-bg:	#F8EBED
+
+Shadows / Depth
+
+shadow-1: rgba(14, 17, 19, 0.07)
+shadow-2: rgba(14, 17, 19, 0.12)
+shadow-3: rgba(14, 17, 19, 0.18)
+
+Palette - Swatch SVG (Light Mode)
+
+Token Mapping
+Primary		= --color-brand-ink
+Secondary	= --color-brand-accent
+Success		= --color-success
+Error		= --color-error
+Warning		= --color-warning
+Info		= --color-info
+Danger		= --color-danger
+Background	= --color-bg
+Accent		= --color-accent
+
+Resolved values:
+primary:	#0E1113
+secondary:	#2BA6A6
+success:	#2E8F7A
+error:		#912839
+warning:	#C69932
+info:		#2B7F9E
+danger:		#912839
+background:	#F5F7F7
+accent:		#2BA6A6
+
+SVG - CARBON LIGHT
+<svg width="760" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0"   y="0" width="80" height="60" fill="#0E1113"/>
+  <rect x="80"  y="0" width="80" height="60" fill="#2BA6A6"/>
+  <rect x="160" y="0" width="80" height="60" fill="#2E8F7A"/>
+  <rect x="240" y="0" width="80" height="60" fill="#912839"/>
+  <rect x="320" y="0" width="80" height="60" fill="#C69932"/>
+  <rect x="400" y="0" width="80" height="60" fill="#2B7F9E"/>
+  <rect x="480" y="0" width="80" height="60" fill="#912839"/>
+  <rect x="560" y="0" width="80" height="60" fill="#F5F7F7"/>
+  <rect x="640" y="0" width="80" height="60" fill="#2BA6A6"/>
+
+  <text x="10"  y="85" font-size="12">Primary</text>
+  <text x="90"  y="85" font-size="12">Secondary</text>
+  <text x="165" y="85" font-size="12">Success</text>
+  <text x="250" y="85" font-size="12">Error</text>
+  <text x="330" y="85" font-size="12">Warning</text>
+  <text x="410" y="85" font-size="12">Info</text>
+  <text x="495" y="85" font-size="12">Danger</text>
+  <text x="560" y="85" font-size="12">Background</text>
+  <text x="650" y="85" font-size="12">Accent</text>
+</svg>
+
+Palette - Swatch SVG (Dark Mode)
+
+Token Mapping
+
+Primary-bg	= --color-bg
+Secondary	= --color-brand-accent
+Success		= --color-success
+Error		= --color-error
+Warning		= --color-warning
+Info		= --color-info
+Danger		= --color-danger
+Text-light	= --color-text
+Accent		= --color-accent
+
+Resolved values:
+primary-bg:	#0E1113
+secondary:	#2BA6A6
+success:	#39A88B
+error:		#A63A4A
+warning:	#D1A545
+info:		#3A8FB0
+danger:		#A63A4A
+text-light:	#F5F7F7
+accent:		#2BA6A6
+
+Base Interpretation:
+Ink		#0E1113 - primary brand ink (anchors headings, strong text, and key lines)
+Accent	#2BA6A6 - highlight / CTA / brand signal
+
+SVG - CARBON DARK
+<svg width="760" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0"   y="0" width="80" height="60" fill="#0E1113"/>
+  <rect x="80"  y="0" width="80" height="60" fill="#2BA6A6"/>
+  <rect x="160" y="0" width="80" height="60" fill="#39A88B"/>
+  <rect x="240" y="0" width="80" height="60" fill="#A63A4A"/>
+  <rect x="320" y="0" width="80" height="60" fill="#D1A545"/>
+  <rect x="400" y="0" width="80" height="60" fill="#3A8FB0"/>
+  <rect x="480" y="0" width="80" height="60" fill="#A63A4A"/>
+  <rect x="560" y="0" width="80" height="60" fill="#F5F7F7"/>
+  <rect x="640" y="0" width="80" height="60" fill="#2BA6A6"/>
+
+  <text x="10"  y="85" font-size="12">Primary</text>
+  <text x="90"  y="85" font-size="12">Secondary</text>
+  <text x="165" y="85" font-size="12">Success</text>
+  <text x="250" y="85" font-size="12">Error</text>
+  <text x="330" y="85" font-size="12">Warning</text>
+  <text x="410" y="85" font-size="12">Info</text>
+  <text x="495" y="85" font-size="12">Danger</text>
+  <text x="560" y="85" font-size="12">Text-light</text>
+  <text x="650" y="85" font-size="12">Accent</text>
+</svg>

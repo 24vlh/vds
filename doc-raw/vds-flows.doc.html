@@ -1,0 +1,1767 @@
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section">
+    <div class="section__inner section__stack">
+        <div class="section__stack">
+            <h1>Flows</h1>
+            <p>
+                System components for multi-step experiences, journeys, timelines, branching decisions
+                and progress indicators. Built on <code>flows.css</code>
+                (final version) :contentReference[oaicite:1]{index=1}.
+            </p>
+        </div>
+        <p>
+            Includes: Steps (horizontal/vertical), Progress bars, Minimal & Rich Timelines,
+            Journey Maps, Process Flows, State Flows, Form Flows, Branching Flows, and compact/upcoming
+            variants — all theme-aware and token-driven.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation & dependencies</h2>
+                <p class="doc-block__summary">
+                    The flows layer builds on primitives, theme, base, layout, utilities,
+                    content-blocks and doc-block layers. Load it after these.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2">
+                <div class="doc-block__preview">
+                    <ul>
+                        <li>Token foundation: <code>primitives.css</code></li>
+                        <li>Theme colours: <code>themes/slate.css</code></li>
+                        <li>Base + layout + typography</li>
+                        <li>Optional: <code>utilities.css</code></li>
+                        <li>Docs engine: <code>doc-block.css</code></li>
+                        <li>Finally: <code>flows.css</code></li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;link rel="stylesheet" href="./css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/slate.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/base.css"&gt;
+&lt;link rel="stylesheet" href="./css/layout.css"&gt;
+&lt;link rel="stylesheet" href="./css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/utilities.css"&gt;
+&lt;link rel="stylesheet" href="./css/doc-block.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/flows.css"&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Flow container</h2>
+                <p class="doc-block__summary">
+                    A structural wrapper for multi-step interactions: header, body, navigation.
+                    Used across all flows.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2">
+
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="flow">
+                        <div class="flow__header">
+                            <h3 class="flow__title">Account Setup</h3>
+                            <p class="flow__subtitle">3 steps total</p>
+                        </div>
+
+                        <div class="flow__body">
+                            <p>Content of the current step…</p>
+                        </div>
+
+                        <div class="flow__nav">
+                            <button class="button button--secondary">Back</button>
+                            <button class="button button--primary">Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="flow"&gt;
+  &lt;div class="flow__header"&gt;
+    &lt;h3 class="flow__title"&gt;Account Setup&lt;/h3&gt;
+    &lt;p class="flow__subtitle"&gt;3 steps total&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="flow__body"&gt;
+    …step content…
+  &lt;/div&gt;
+
+  &lt;div class="flow__nav"&gt;
+    &lt;button class="button button--secondary"&gt;Back&lt;/button&gt;
+    &lt;button class="button button--primary"&gt;Next&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block" id="steps">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Step Indicator</h2>
+                <p class="doc-block__summary">
+                    Horizontal and vertical multi-step indicators with active, complete, error,
+                    warning and clickable states. Supports bullet sizing, connectors and
+                    accessible current-step annotation.
+                </p>
+            </header>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Horizontal — basic example</h3>
+                <p class="doc-block__description">
+                    The base step indicator includes bullets, labels and optional connectors.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+                    <div class="doc-block__preview section__stack-sm">
+
+                        <div class="steps">
+                            <div class="steps__item steps__item--complete">
+                                <div class="steps__bullet">1</div>
+                                <div class="steps__label">Start</div>
+                            </div>
+
+                            <div class="steps__line"></div>
+
+                            <div class="steps__item steps__item--active" aria-current="step">
+                                <div class="steps__bullet">2</div>
+                                <div class="steps__label">Details</div>
+                            </div>
+
+                            <div class="steps__line"></div>
+
+                            <div class="steps__item">
+                                <div class="steps__bullet">3</div>
+                                <div class="steps__label">Confirm</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="steps"&gt;
+
+  &lt;div class="steps__item steps__item--complete"&gt;
+    &lt;div class="steps__bullet"&gt;1&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Start&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="steps__line"&gt;&lt;/div&gt;
+
+  &lt;div class="steps__item steps__item--active" aria-current="step"&gt;
+    &lt;div class="steps__bullet"&gt;2&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Details&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="steps__line"&gt;&lt;/div&gt;
+
+  &lt;div class="steps__item"&gt;
+    &lt;div class="steps__bullet"&gt;3&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Confirm&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Clickable steps</h3>
+                <p class="doc-block__description">
+                    Steps may be interactive using <code>.steps__item--clickable</code>.
+                    Hover and active states are included.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+                    <div class="doc-block__preview section__stack-sm">
+                        <div class="steps">
+                            <div class="steps__item steps__item--clickable steps__item--complete">
+                                <div class="steps__bullet">1</div>
+                                <div class="steps__label">Start</div>
+                            </div>
+
+                            <div class="steps__line"></div>
+
+                            <div class="steps__item steps__item--clickable steps__item--active">
+                                <div class="steps__bullet">2</div>
+                                <div class="steps__label">Billing</div>
+                            </div>
+
+                            <div class="steps__line"></div>
+
+                            <div class="steps__item steps__item--clickable">
+                                <div class="steps__bullet">3</div>
+                                <div class="steps__label">Review</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="steps"&gt;
+  &lt;div class="steps__item steps__item--clickable steps__item--complete"&gt;
+    &lt;div class="steps__bullet"&gt;1&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Start&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="steps__line"&gt;&lt;/div&gt;
+
+  &lt;div class="steps__item steps__item--clickable steps__item--active"&gt;
+    &lt;div class="steps__bullet"&gt;2&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Billing&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="steps__line"&gt;&lt;/div&gt;
+
+  &lt;div class="steps__item steps__item--clickable"&gt;
+    &lt;div class="steps__bullet"&gt;3&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Review&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Error &amp; warning states</h3>
+                <p class="doc-block__description">
+                    Use <code>.steps__item--error</code> and <code>.steps__item--warning</code>
+                    to flag invalid or attention-required steps.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+
+                    <div class="doc-block__preview section__stack-sm">
+
+                        <div class="steps">
+
+                            <div class="steps__item steps__item--complete">
+                                <div class="steps__bullet">1</div>
+                                <div class="steps__label">Start</div>
+                            </div>
+
+                            <div class="steps__line"></div>
+
+                            <div class="steps__item steps__item--warning">
+                                <div class="steps__bullet">2</div>
+                                <div class="steps__label">Address</div>
+                            </div>
+
+                            <div class="steps__line"></div>
+
+                            <div class="steps__item steps__item--error">
+                                <div class="steps__bullet">3</div>
+                                <div class="steps__label">Payment</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="steps"&gt;
+
+  &lt;div class="steps__item steps__item--complete"&gt;
+    &lt;div class="steps__bullet"&gt;1&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Start&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="steps__line"&gt;&lt;/div&gt;
+
+  &lt;div class="steps__item steps__item--warning"&gt;
+    &lt;div class="steps__bullet"&gt;2&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Address&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="steps__line"&gt;&lt;/div&gt;
+
+  &lt;div class="steps__item steps__item--error"&gt;
+    &lt;div class="steps__bullet"&gt;3&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Payment&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Bullet size variants</h3>
+                <p class="doc-block__description">
+                    Size presets: <code>.steps--a</code> (large) and <code>.steps--c</code> (small).
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+
+                    <div class="doc-block__preview section__stack-sm">
+
+                        <div class="steps steps--a">
+                            <div class="steps__item steps__item--complete">
+                                <div class="steps__bullet">1</div>
+                                <div class="steps__label">Large</div>
+                            </div>
+                            <div class="steps__line"></div>
+                            <div class="steps__item steps__item--active">
+                                <div class="steps__bullet">2</div>
+                                <div class="steps__label">Steps</div>
+                            </div>
+                        </div>
+
+                        <div class="steps">
+                            <div class="steps__item steps__item--complete">
+                                <div class="steps__bullet">1</div>
+                                <div class="steps__label">Normal</div>
+                            </div>
+                            <div class="steps__line"></div>
+                            <div class="steps__item steps__item--active">
+                                <div class="steps__bullet">2</div>
+                                <div class="steps__label">Steps</div>
+                            </div>
+                        </div>
+
+                        <div class="steps steps--c">
+                            <div class="steps__item steps__item--complete">
+                                <div class="steps__bullet">1</div>
+                                <div class="steps__label">Small</div>
+                            </div>
+                            <div class="steps__line"></div>
+                            <div class="steps__item steps__item--active">
+                                <div class="steps__bullet">2</div>
+                                <div class="steps__label">Steps</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="steps steps--a"&gt;
+  &lt;div class="steps__item steps__item--complete"&gt;
+    &lt;div class="steps__bullet"&gt;1&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Large&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="steps steps--c"&gt;
+  &lt;div class="steps__item steps__item--active"&gt;
+    &lt;div class="steps__bullet"&gt;2&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Steps&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Vertical steps</h3>
+                <p class="doc-block__description">
+                    Using <code>.steps--vertical</code>, steps stack vertically and connectors
+                    extend downward.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+
+                    <div class="doc-block__preview section__stack-sm">
+
+                        <div class="steps steps--vertical">
+
+                            <div class="steps__item steps__item--complete">
+                                <div class="steps__bullet">1</div>
+                                <div class="steps__label">Start</div>
+                            </div>
+
+                            <div class="steps__line"></div>
+
+                            <div class="steps__item steps__item--active">
+                                <div class="steps__bullet">2</div>
+                                <div class="steps__label">Process</div>
+                            </div>
+
+                            <div class="steps__line"></div>
+
+                            <div class="steps__item">
+                                <div class="steps__bullet">3</div>
+                                <div class="steps__label">Finish</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="steps steps--vertical"&gt;
+
+  &lt;div class="steps__item steps__item--complete"&gt;
+    &lt;div class="steps__bullet"&gt;1&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Start&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="steps__line"&gt;&lt;/div&gt;
+
+  &lt;div class="steps__item steps__item--active"&gt;
+    &lt;div class="steps__bullet"&gt;2&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Process&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="steps__line"&gt;&lt;/div&gt;
+
+  &lt;div class="steps__item"&gt;
+    &lt;div class="steps__bullet"&gt;3&lt;/div&gt;
+    &lt;div class="steps__label"&gt;Finish&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Progress bars</h2>
+                <p class="doc-block__summary">
+                    Simple, striped and segmented progress bars, colour-coded by result:
+                    success, warning, error.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3>Striped</h3>
+                    <div class="flow-progress flow-progress--striped">
+                        <div class="flow-progress__bar" style="width: 60%"></div>
+                    </div>
+                    <div class="flow-progress flow-progress--striped flow-progress--striped-right">
+                        <div class="flow-progress__bar flow-progress__bar--error" style="width: 90%"></div>
+                    </div>
+                    <div class="flow-progress flow-progress--striped flow-progress--striped-right">
+                        <div class="flow-progress__bar flow-progress__bar--warning" style="width: 90%"></div>
+                    </div>
+
+                    <h3>Segments</h3>
+                    <div class="flow-progress flow-progress--segments">
+                        <div class="flow-progress__segment flow-progress__segment--complete"></div>
+                        <div class="flow-progress__segment"></div>
+                        <div class="flow-progress__segment flow-progress__segment--warning"></div>
+                        <div class="flow-progress__segment"></div>
+                        <div class="flow-progress__segment flow-progress__segment--error"></div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class=&quot;flow-progress flow-progress--striped&quot;&gt;
+    &lt;div class=&quot;flow-progress__bar&quot; style=&quot;width: 60%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;flow-progress flow-progress--striped flow-progress--striped-right&quot;&gt;
+    &lt;div class=&quot;flow-progress__bar flow-progress__bar--error&quot; style=&quot;width: 90%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;flow-progress flow-progress--striped flow-progress--striped-right&quot;&gt;
+    &lt;div class=&quot;flow-progress__bar flow-progress__bar--warning&quot; style=&quot;width: 90%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="flow-progress flow-progress--segments"&gt;
+  &lt;div class="flow-progress__segment flow-progress__segment--complete"&gt;&lt;/div&gt;
+  &lt;div class="flow-progress__segment"&gt;&lt;/div&gt;
+  &lt;div class="flow-progress__segment flow-progress__segment--warning"&gt;&lt;/div&gt;
+  &lt;div class="flow-progress__segment"&gt;&lt;/div&gt;
+  &lt;div class="flow-progress__segment flow-progress__segment--error"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block" id="timeline-minimal">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Timeline (minimal)</h2>
+                <p class="doc-block__summary">
+                    A lightweight timeline with minimal chrome: points, vertical or horizontal
+                    connectors, optional icons, labels and notes. Suitable for compact or
+                    inline flows.
+                </p>
+            </header>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Basic example</h3>
+                <p class="doc-block__description">
+                    A vertical timeline with standard spacing, small points and optional note text.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+                    <div class="doc-block__preview section__stack-sm">
+                        <div class="timeline">
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Kickoff</div>
+                                    <div class="timeline__note">Project session opened</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point timeline__point--upcoming"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Review</div>
+                                    <div class="timeline__note">Pending approval</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Launch</div>
+                                    <div class="timeline__note">Go-live milestone</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="timeline"&gt;
+
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point"&gt;&lt;/div&gt;
+      &lt;div class="timeline__line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Kickoff&lt;/div&gt;
+      &lt;div class="timeline__note"&gt;Project session opened&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point timeline__point--upcoming"&gt;&lt;/div&gt;
+      &lt;div class="timeline__line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Review&lt;/div&gt;
+      &lt;div class="timeline__note"&gt;Pending approval&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Launch&lt;/div&gt;
+      &lt;div class="timeline__note"&gt;Go-live milestone&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">With icons</h3>
+                <p class="doc-block__description">
+                    Icons can be placed inline with labels using <code>.timeline__icon</code> and
+                    directional helpers.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+
+                    <div class="doc-block__preview section__stack-sm">
+                        <div class="timeline">
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">
+                                        <span class="icon icon--mask icon--bell icon-color--success timeline__icon--left"></span>
+                                        Design
+                                    </div>
+                                    <div class="timeline__note">Drafts completed</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point timeline__point--upcoming"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">
+                                        Release
+                                        <span class="icon icon--mask icon--bell icon-color--success timeline__icon--right"></span>
+                                    </div>
+                                    <div class="timeline__note">Awaiting QA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class=&quot;timeline&quot;&gt;
+&lt;div class=&quot;timeline__item&quot;&gt;
+    &lt;div class=&quot;timeline__point-wrap&quot;&gt;
+        &lt;div class=&quot;timeline__point&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;timeline__line&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;timeline__content&quot;&gt;
+        &lt;div class=&quot;timeline__label&quot;&gt;
+            &lt;span class=&quot;icon icon--mask icon--bell icon-color--success timeline__icon--left&quot;&gt;&lt;/span&gt;
+            Design
+        &lt;/div&gt;
+        &lt;div class=&quot;timeline__note&quot;&gt;Drafts completed&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;timeline__item&quot;&gt;
+    &lt;div class=&quot;timeline__point-wrap&quot;&gt;
+        &lt;div class=&quot;timeline__point timeline__point--upcoming&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;timeline__content&quot;&gt;
+        &lt;div class=&quot;timeline__label&quot;&gt;
+            Release
+            &lt;span class=&quot;icon icon--mask icon--bell icon-color--success timeline__icon--right&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;timeline__note&quot;&gt;Awaiting QA&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Horizontal timeline</h3>
+                <p class="doc-block__description">
+                    Using <code>.timeline--horizontal</code>, items stack vertically while
+                    connectors run horizontally.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+
+                    <div class="doc-block__preview section__stack-sm">
+                        <div class="timeline timeline--horizontal">
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Start</div>
+                                    <div class="timeline__note">Setup</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point timeline__point--upcoming"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Build</div>
+                                    <div class="timeline__note">In progress</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Finish</div>
+                                    <div class="timeline__note">Complete</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="timeline timeline--horizontal"&gt;
+
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point"&gt;&lt;/div&gt;
+      &lt;div class="timeline__line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Start&lt;/div&gt;
+      &lt;div class="timeline__note"&gt;Setup&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Compact</h3>
+                <p class="doc-block__description">
+                    For dense timelines, <code>.timeline--compact</code> reduces spacing and
+                    point/icon sizes.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+
+                    <div class="doc-block__preview section__stack-sm">
+                        <div class="timeline timeline--compact">
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Task 1</div>
+                                    <div class="timeline__note">Compact view</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point timeline__point--upcoming"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Task 2</div>
+                                    <div class="timeline__note">Pending</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="timeline timeline--compact"&gt;
+
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point"&gt;&lt;/div&gt;
+      &lt;div class="timeline__line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Task 1&lt;/div&gt;
+      &lt;div class="timeline__note"&gt;Compact view&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section">
+    <div class="section__inner">
+        <article class="doc-block" id="timeline-rich">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Timeline (rich)</h2>
+                <p class="doc-block__summary">
+                    A full-featured vertical timeline with zebra rows, metadata, timestamps,
+                    body text, semantic point states, nested events, and audit variants.
+                </p>
+            </header>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Basic example</h3>
+                <p class="doc-block__description">
+                    The rich timeline provides zebra rows, vertical connectors, timestamps,
+                    and descriptive body text.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+                    <div class="doc-block__preview section__stack-sm">
+                        <div class="timeline timeline--rich">
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Design</div>
+                                    <div class="timeline__timestamp">2025-01-02</div>
+                                    <div class="timeline__body">Initial UX patterns drafted.</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point timeline__point--upcoming"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Release</div>
+                                    <div class="timeline__timestamp">2025-03-01</div>
+                                    <div class="timeline__body">Target release window.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="timeline timeline--rich"&gt;
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point"&gt;&lt;/div&gt;
+      &lt;div class="timeline__line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Design&lt;/div&gt;
+      &lt;div class="timeline__timestamp"&gt;2025-01-02&lt;/div&gt;
+      &lt;div class="timeline__body"&gt;Initial UX patterns drafted.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point timeline__point--upcoming"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Release&lt;/div&gt;
+      &lt;div class="timeline__timestamp"&gt;2025-03-01&lt;/div&gt;
+      &lt;div class="timeline__body"&gt;Target release window.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Semantic states &amp; metadata</h3>
+                <p class="doc-block__description">
+                    Timelines can include warnings, errors, extended metadata, timestamps
+                    and long-form descriptions.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+                    <div class="doc-block__preview section__stack-sm">
+                        <div class="timeline timeline--rich">
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Planning</div>
+                                    <div class="timeline__timestamp">2025-01-01</div>
+                                    <div class="timeline__meta">Lead: Product Team</div>
+                                    <div class="timeline__body">
+                                        Requirements collected across stakeholders. Early feasibility reviewed.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point timeline__point--warning"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Risk Review</div>
+                                    <div class="timeline__timestamp">2025-01-10</div>
+                                    <div class="timeline__meta">Status: Pending</div>
+                                    <div class="timeline__body">
+                                        Identified constraints: legacy systems and testing capacity.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point timeline__point--error"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Blocker Found</div>
+                                    <div class="timeline__timestamp">2025-01-12</div>
+                                    <div class="timeline__meta">Critical dependency unavailable</div>
+                                    <div class="timeline__body">
+                                        API integration halted. Awaiting resolution from external vendor.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point timeline__point--upcoming"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Rescheduled Launch</div>
+                                    <div class="timeline__timestamp">2025-03-20</div>
+                                    <div class="timeline__body">Tentative launch window pending confirmation.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="timeline timeline--rich"&gt;
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point"&gt;&lt;/div&gt;
+      &lt;div class="timeline__line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Planning&lt;/div&gt;
+      &lt;div class="timeline__timestamp"&gt;2025-01-01&lt;/div&gt;
+      &lt;div class="timeline__meta"&gt;Lead: Product Team&lt;/div&gt;
+      &lt;div class="timeline__body"&gt;
+        Requirements collected across stakeholders.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point timeline__point--warning"&gt;&lt;/div&gt;
+      &lt;div class="timeline__line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Risk Review&lt;/div&gt;
+      &lt;div class="timeline__timestamp"&gt;2025-01-10&lt;/div&gt;
+      &lt;div class="timeline__meta"&gt;Status: Pending&lt;/div&gt;
+      &lt;div class="timeline__body"&gt;Identified constraints.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point timeline__point--error"&gt;&lt;/div&gt;
+      &lt;div class="timeline__line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Blocker Found&lt;/div&gt;
+      &lt;div class="timeline__timestamp"&gt;2025-01-12&lt;/div&gt;
+      &lt;div class="timeline__meta"&gt;Critical dependency unavailable&lt;/div&gt;
+      &lt;div class="timeline__body"&gt;API integration halted.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point timeline__point--upcoming"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Rescheduled Launch&lt;/div&gt;
+      &lt;div class="timeline__timestamp"&gt;2025-03-20&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Nested event groups</h3>
+                <p class="doc-block__description">
+                    Rich timelines can contain event clusters using <code>.timeline-events</code>.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+                    <div class="doc-block__preview section__stack-sm">
+                        <div class="timeline timeline--rich">
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+
+                                <div class="timeline__content">
+                                    <div class="timeline__label">Deployment Window</div>
+                                    <div class="timeline__timestamp">2025-04-01 → 2025-04-03</div>
+
+                                    <div class="timeline-events">
+                                        <div class="timeline__item">
+                                            <div class="timeline__label">Pre-checks</div>
+                                            <div class="timeline__timestamp">04-01 09:00</div>
+                                            <div class="timeline__body">System readiness validated.</div>
+                                        </div>
+
+                                        <div class="timeline__item">
+                                            <div class="timeline__label">Migration</div>
+                                            <div class="timeline__timestamp">04-02</div>
+                                            <div class="timeline__body">Database migration completed.</div>
+                                        </div>
+
+                                        <div class="timeline__item">
+                                            <div class="timeline__label">Smoke Tests</div>
+                                            <div class="timeline__timestamp">04-03 10:00</div>
+                                            <div class="timeline__body">Critical paths verified.</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="timeline timeline--rich"&gt;
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point"&gt;&lt;/div&gt;
+      &lt;div class="timeline__line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;Deployment Window&lt;/div&gt;
+      &lt;div class="timeline__timestamp"&gt;2025-04-01 → 2025-04-03&lt;/div&gt;
+
+      &lt;div class="timeline-events"&gt;
+
+        &lt;div class="timeline__item"&gt;
+          &lt;div class="timeline__label"&gt;Pre-checks&lt;/div&gt;
+          &lt;div class="timeline__timestamp"&gt;04-01 09:00&lt;/div&gt;
+          &lt;div class="timeline__body"&gt;System readiness validated.&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="timeline__item"&gt;
+          &lt;div class="timeline__label"&gt;Migration&lt;/div&gt;
+          &lt;div class="timeline__timestamp"&gt;04-02&lt;/div&gt;
+          &lt;div class="timeline__body"&gt;Database migration completed.&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="timeline__item"&gt;
+          &lt;div class="timeline__label"&gt;Smoke Tests&lt;/div&gt;
+          &lt;div class="timeline__timestamp"&gt;04-03 10:00&lt;/div&gt;
+          &lt;div class="timeline__body"&gt;Critical paths verified.&lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section data-vds-dock-block data-vds-content-block data-vds-flow class="doc-block__section">
+                <h3 class="doc-block__subtitle">Audit variant</h3>
+                <p class="doc-block__description">
+                    The <code>.timeline--audit</code> modifier uses compact body text and uppercase labels.
+                </p>
+
+                <div class="doc-block__body section__grid-2">
+                    <div class="doc-block__preview section__stack-sm">
+                        <div class="timeline timeline--rich timeline--audit">
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">RECORD CREATED</div>
+                                    <div class="timeline__timestamp">2025-02-01 08:31</div>
+                                    <div class="timeline__body">User registration event recorded via API v3.</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point"></div>
+                                    <div class="timeline__line"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">AUTH CHECK</div>
+                                    <div class="timeline__timestamp">2025-02-01 08:32</div>
+                                    <div class="timeline__body">Permissions evaluated (passed).</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline__item">
+                                <div class="timeline__point-wrap">
+                                    <div class="timeline__point timeline__point--warning"></div>
+                                </div>
+                                <div class="timeline__content">
+                                    <div class="timeline__label">RATE LIMIT WARN</div>
+                                    <div class="timeline__timestamp">2025-02-01 08:32</div>
+                                    <div class="timeline__body">User approaching rate limit for this endpoint.</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code">
+<pre><code>&lt;div class="timeline timeline--rich timeline--audit"&gt;
+  &lt;div class="timeline__item"&gt;
+    &lt;div class="timeline__point-wrap"&gt;
+      &lt;div class="timeline__point"&gt;&lt;/div&gt;
+      &lt;div class="timeline__line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline__content"&gt;
+      &lt;div class="timeline__label"&gt;RECORD CREATED&lt;/div&gt;
+      &lt;div class="timeline__timestamp"&gt;2025-02-01 08:31&lt;/div&gt;
+      &lt;div class="timeline__body"&gt;User registration event recorded via API v3.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Journey / Stages</h2>
+                <p class="doc-block__summary">
+                    A flexible multi-stage progress layout for onboarding, funnels, workflows or multi-step journeys.
+                    Supports semantic states (active, complete, error, warning), compact mode, clickability,
+                    disabled stages and responsive wrapping.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2">
+                <div class="doc-block__preview section__stack flex flex-column gap-6">
+                    <div class="journey">
+                        <div class="journey__stage journey__stage--active">
+                            <span class="icon icon--mask icon--info journey__icon"></span>
+                            <div class="journey__marker">Stage 1</div>
+                            <div class="journey__title">Planning</div>
+                            <div class="journey__details">Define goals, scope and constraints.</div>
+                        </div>
+
+                        <div class="journey__stage journey__stage--complete">
+                            <span class="icon icon--mask icon--success journey__icon"></span>
+                            <div class="journey__marker">Stage 2</div>
+                            <div class="journey__title">Design</div>
+                            <div class="journey__details">UX flows and component specifications.</div>
+                        </div>
+
+                        <div class="journey__stage journey__stage--warning">
+                            <span class="icon icon--mask icon--warning journey__icon"></span>
+                            <div class="journey__marker">Stage 3</div>
+                            <div class="journey__title">Implementation</div>
+                            <div class="journey__details">Development in progress. Requires review.</div>
+                        </div>
+
+                        <div class="journey__stage journey__stage--error">
+                            <span class="icon icon--mask icon--danger journey__icon"></span>
+                            <div class="journey__marker">Stage 4</div>
+                            <div class="journey__title">QA / Testing</div>
+                            <div class="journey__details">Blocking issue detected.</div>
+                        </div>
+
+                        <div class="journey__stage journey__stage--success">
+                            <span class="icon icon--mask icon--success journey__icon"></span>
+                            <div class="journey__marker">Stage 5</div>
+                            <div class="journey__title">QA / Testing</div>
+                            <div class="journey__details">Blocking issue resolved.</div>
+                        </div>
+
+                        <div class="journey__stage journey__stage--info">
+                            <span class="icon icon--mask icon--info journey__icon"></span>
+                            <div class="journey__marker">Stage 6</div>
+                            <div class="journey__title">QA / Testing</div>
+                            <div class="journey__details">Blocking issue approved.</div>
+                        </div>
+
+                        <div class="journey__stage journey__stage--disabled">
+                            <span class="icon icon--mask icon--lock journey__icon"></span>
+                            <div class="journey__marker">Stage 7</div>
+                            <div class="journey__title">Launch</div>
+                            <div class="journey__details">Locked until previous stages complete.</div>
+                        </div>
+
+                    </div>
+
+                    <div class="journey">
+                        <div class="journey__stage journey__stage--clickable">
+                            <span class="icon icon--mask icon--arrow-right journey__icon"></span>
+                            <div class="journey__marker">Entry</div>
+                            <div class="journey__title">Start</div>
+                            <div class="journey__details">Click to begin workflow.</div>
+                        </div>
+                        <div class="journey__stage journey__stage--clickable journey__stage--active">
+                            <span class="icon icon--mask icon--edit journey__icon"></span>
+                            <div class="journey__marker">Next</div>
+                            <div class="journey__title">Input Data</div>
+                            <div class="journey__details">Provide your core information.</div>
+                        </div>
+                    </div>
+
+                    <div class="journey journey--compact">
+                        <div class="journey__stage journey__stage--success">
+                            <div class="journey__marker">1</div>
+                            <div class="journey__title">Validated</div>
+                            <div class="journey__details">All fields verified.</div>
+                        </div>
+                        <div class="journey__stage">
+                            <div class="journey__marker">2</div>
+                            <div class="journey__title">Payment</div>
+                            <div class="journey__details">Complete checkout.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="journey"&gt;
+
+    &lt;div class="journey__stage journey__stage--active"&gt;
+        &lt;span class="icon icon--mask icon--flag journey__icon"&gt;&lt;/span&gt;
+        &lt;div class="journey__marker"&gt;Stage 1&lt;/div&gt;
+        &lt;div class="journey__title"&gt;Planning&lt;/div&gt;
+        &lt;div class="journey__details"&gt;Define goals, scope and constraints.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="journey__stage journey__stage--complete"&gt;
+        &lt;span class="icon icon--mask icon--check-circle journey__icon"&gt;&lt;/span&gt;
+        &lt;div class="journey__marker"&gt;Stage 2&lt;/div&gt;
+        &lt;div class="journey__title"&gt;Design&lt;/div&gt;
+        &lt;div class="journey__details"&gt;UX flows and component specifications.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="journey__stage journey__stage--warning"&gt;
+        &lt;span class="icon icon--mask icon--alert journey__icon"&gt;&lt;/span&gt;
+        &lt;div class="journey__marker"&gt;Stage 3&lt;/div&gt;
+        &lt;div class="journey__title"&gt;Implementation&lt;/div&gt;
+        &lt;div class="journey__details"&gt;Development in progress. Requires review.&lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Process Flow (Node-Based)</h2>
+                <p class="doc-block__summary">
+                    A flexible node-based flow for representing linear or branching processes.
+                    Supports semantic states, arrows, clickable behavior, compact spacing and a vertical layout variant.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2">
+
+                <div class="doc-block__preview section__stack flex flex-column gap-6">
+
+                    <div class="process-flow">
+
+                        <div class="process-flow__node process-flow__node--active">
+                            <span class="icon icon--mask icon--warning process-flow__icon"></span>
+                            Planning
+                        </div>
+
+                        <div class="process-flow__arrow"></div>
+
+                        <div class="process-flow__node process-flow__node--complete">
+                            <span class="icon icon--mask icon--success process-flow__icon"></span>
+                            Design
+                        </div>
+
+                        <div class="process-flow__arrow process-flow__arrow--warning"></div>
+
+                        <div class="process-flow__node process-flow__node--warning">
+                            <span class="icon icon--mask icon--warning process-flow__icon"></span>
+                            Implementation
+                        </div>
+
+                        <div class="process-flow__arrow process-flow__arrow--error"></div>
+
+                        <div class="process-flow__node process-flow__node--error">
+                            <span class="icon icon--mask icon--danger process-flow__icon"></span>
+                            QA / Testing
+                        </div>
+
+                        <div class="process-flow__arrow"></div>
+
+                        <div class="process-flow__node process-flow__node--disabled">
+                            <span class="icon icon--mask icon--lock process-flow__icon"></span>
+                            Launch
+                        </div>
+                    </div>
+
+                    <div class="process-flow">
+
+                        <div class="process-flow__node process-flow__node--clickable">
+                            Start
+                        </div>
+                        <div class="process-flow__arrow"></div>
+                        <div class="process-flow__node process-flow__node--clickable process-flow__node--active">
+                            Input Data
+                        </div>
+                    </div>
+
+                    <div class="process-flow process-flow--compact">
+                        <div class="process-flow__node process-flow__node--success">
+                            Verified
+                        </div>
+
+                        <div class="process-flow__arrow"></div>
+
+                        <div class="process-flow__node">
+                            Payment
+                        </div>
+                    </div>
+
+                    <div class="process-flow process-flow--vertical">
+                        <div class="process-flow__node process-flow__node--active">
+                            <span class="icon icon--mask icon--edit process-flow__icon"></span>
+                            Step 1
+                        </div>
+
+                        <div class="process-flow__arrow"></div>
+
+                        <div class="process-flow__node process-flow__node--complete">
+                            Step 2
+                        </div>
+
+                        <div class="process-flow__arrow process-flow__arrow--warning"></div>
+
+                        <div class="process-flow__node process-flow__node--warning">
+                            Step 3
+                        </div>
+
+                        <div class="process-flow__arrow process-flow__arrow--error"></div>
+
+                        <div class="process-flow__node process-flow__node--error">
+                            Step 4
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="process-flow"&gt;
+
+    &lt;div class="process-flow__node process-flow__node--active"&gt;
+        &lt;span class="icon icon--mask icon--flag process-flow__icon"&gt;&lt;/span&gt;
+        Planning
+    &lt;/div&gt;
+
+    &lt;div class="process-flow__arrow"&gt;&lt;/div&gt;
+
+    &lt;div class="process-flow__node process-flow__node--complete"&gt;
+        &lt;span class="icon icon--mask icon--check-circle process-flow__icon"&gt;&lt;/span&gt;
+        Design
+    &lt;/div&gt;
+
+    &lt;div class="process-flow__arrow process-flow__arrow--warning"&gt;&lt;/div&gt;
+
+    &lt;div class="process-flow__node process-flow__node--warning"&gt;
+        &lt;span class="icon icon--mask icon--alert process-flow__icon"&gt;&lt;/span&gt;
+        Implementation
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">State flow</h2>
+                <p class="doc-block__summary">
+                    Lightweight multi-state badges representing lifecycle: active,
+                    complete, warning, error, info and upcoming.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="state-flow">
+                        <div class="state-flow__item state-flow__item--complete">Imported</div>
+                        <div class="state-flow__item state-flow__item--active">Validating</div>
+                        <div class="state-flow__item state-flow__item--warning">Slow</div>
+                        <div class="state-flow__item state-flow__item--error">Failed</div>
+                        <div class="state-flow__item state-flow__item--info">Retry</div>
+                        <div class="state-flow__item state-flow__item--upcoming">Queued</div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="state-flow"&gt;
+  &lt;div class="state-flow__item state-flow__item--complete"&gt;Imported&lt;/div&gt;
+  &lt;div class="state-flow__item state-flow__item--active"&gt;Validating&lt;/div&gt;
+  &lt;div class="state-flow__item state-flow__item--warning"&gt;Slow&lt;/div&gt;
+  &lt;div class="state-flow__item state-flow__item--error"&gt;Failed&lt;/div&gt;
+  &lt;div class="state-flow__item state-flow__item--info"&gt;Retry&lt;/div&gt;
+  &lt;div class="state-flow__item state-flow__item--upcoming"&gt;Queued&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Form flow</h2>
+                <p class="doc-block__summary">
+                    Multi-step form scaffolding with semantic validation states.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2">
+
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="form-flow">
+                        <div class="form-flow__step form-flow__step--valid">
+                            Details completed.
+                        </div>
+                        <div class="form-flow__step form-flow__step--warning">
+                            Address looks incomplete.
+                        </div>
+                        <div class="form-flow__step form-flow__step--error">
+                            Email invalid.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="form-flow"&gt;
+  &lt;div class="form-flow__step form-flow__step--success"&gt;
+    Details completed.
+  &lt;/div&gt;
+
+  &lt;div class="form-flow__step form-flow__step--warning"&gt;
+    Address looks incomplete.
+  &lt;/div&gt;
+
+  &lt;div class="form-flow__step form-flow__step--error"&gt;
+    Email invalid.
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Flow Branch (Branching Options)</h2>
+                <p class="doc-block__summary">
+                    A branching flow layout for choosing between multiple paths.
+                    Supports clickable behavior, semantic option states, compact mode
+                    and arrows for indicating directional transitions.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2">
+                <div class="doc-block__preview section__stack flex flex-column gap-10">
+                    <div class="flow-branch">
+                        <div class="flow-branch__option flow-branch__option--active">
+                            <div class="icon icon--mask icon--warning flow-branch__icon"></div>
+                            <div class="flow-branch__title">Start</div>
+                            <div class="flow-branch__details">Initial option selected.</div>
+                        </div>
+
+                        <div class="flow-branch__option flow-branch__option--warning">
+                            <div class="icon icon--mask icon--info flow-branch__icon"></div>
+                            <div class="flow-branch__title">Review</div>
+                            <div class="flow-branch__details">
+                                Something requires your attention.
+                            </div>
+                        </div>
+
+                        <div class="flow-branch__option flow-branch__option--error">
+                            <div class="icon icon--mask icon--danger flow-branch__icon"></div>
+                            <div class="flow-branch__title">Blocked</div>
+                            <div class="flow-branch__details">
+                                A blocking issue prevents continuation.
+                            </div>
+                        </div>
+
+                        <div class="flow-branch__option flow-branch__option--success">
+                            <div class="icon icon--mask icon--success flow-branch__icon"></div>
+                            <div class="flow-branch__title">Approved</div>
+                            <div class="flow-branch__details">Everything is valid.</div>
+                        </div>
+                    </div>
+
+                    <div class="flow-branch">
+                        <div class="flow-branch__option flow-branch__option--clickable">
+                            <div class="flow-branch__title">Option A</div>
+                            <div class="flow-branch__details">Learn more →</div>
+                        </div>
+
+                        <div class="flow-branch__option flow-branch__option--clickable flow-branch__option--active">
+                            <div class="flow-branch__title">Option B</div>
+                            <div class="flow-branch__details">Currently selected.</div>
+                        </div>
+                    </div>
+
+                    <div class="flow-branch flow-branch--compact">
+                        <div class="flow-branch__option flow-branch__option--complete">
+                            <div class="flow-branch__title">Alpha</div>
+                            <div class="flow-branch__details">Done.</div>
+                        </div>
+
+                        <div class="flow-branch__option">
+                            <div class="flow-branch__title">Beta</div>
+                            <div class="flow-branch__details">Pending.</div>
+                        </div>
+                    </div>
+
+                    <div class="section__stack flex flex-column gap-10">
+                        <div class="flow-branch__option flow-branch__option--active">
+                            <div class="flow-branch__title">Input</div>
+                            <div class="flow-branch__details">User provides details.</div>
+                        </div>
+
+                        <div class="flow-branch__arrow"></div>
+
+                        <div class="flow-branch__option flow-branch__option--warning">
+                            <div class="flow-branch__title">Check</div>
+                            <div class="flow-branch__details">Requires manual review.</div>
+                        </div>
+
+                        <div class="flow-branch__arrow flow-branch__arrow--error"></div>
+
+                        <div class="flow-branch__option flow-branch__option--error">
+                            <div class="flow-branch__title">Blocked</div>
+                            <div class="flow-branch__details">Resolution needed.</div>
+                        </div>
+
+                        <div class="flow-branch__arrow flow-branch__arrow--warning"></div>
+
+                        <div class="flow-branch__option flow-branch__option--info">
+                            <div class="flow-branch__title">Blocked</div>
+                            <div class="flow-branch__details">Resolution needed.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="flow-branch"&gt;
+
+    &lt;div class="flow-branch__option flow-branch__option--active"&gt;
+        &lt;div class="flow-branch__title"&gt;Start&lt;/div&gt;
+        &lt;div class="flow-branch__details"&gt;Initial option selected.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="flow-branch__option flow-branch__option--warning"&gt;
+        &lt;div class="flow-branch__title"&gt;Review&lt;/div&gt;
+        &lt;div class="flow-branch__details"&gt;Something requires your attention.&lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Compact mode</h2>
+                <p class="doc-block__summary">
+                    Single modifier that compresses spacing across every flow type.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="flow flow--compact">
+                        <div class="flow__header">
+                            <h3 class="flow__title">Compact Layout</h3>
+                        </div>
+                        <div class="flow__body">
+                            <div class="steps steps--c">
+                                <div class="steps__item steps__item--active">
+                                    <div class="steps__bullet">1</div>
+                                    <div class="steps__label">Step</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="flow flow--compact"&gt;
+  …
+  &lt;div class="steps steps--c"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-flow class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Mandatory rules for ensuring semantic correctness, predictable keyboard behaviour,
+                    token-consistent contrast, and safe composability across all VDS environments.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__subsection">
+                    <h3 class="doc-block__subtitle">1. Semantics</h3>
+                    <ul>
+                        <li>Use the appropriate semantic element: buttons must use <code>&lt;button&gt;</code>, links
+                            use <code>&lt;a&gt;</code>, lists use <code>&lt;ul/li&gt;</code>, steps/timelines must
+                            reflect ordered flow.
+                        </li>
+                        <li>Avoid using <code>div</code>-only structures for interactive components.</li>
+                        <li>Headings follow a real document hierarchy (H1 → H2 → H3). Do not skip levels.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__subsection">
+                    <h3 class="doc-block__subtitle">2. Keyboard behaviour</h3>
+                    <ul>
+                        <li>All interactive elements require focus states derived from theme tokens.</li>
+                        <li>Clickable modifiers (<code>--clickable</code>) must wrap a focusable element (<code>&lt;button&gt;</code>,
+                            <code>&lt;a&gt;</code>, <code>tabindex="0"</code>).
+                        </li>
+                        <li>Never hide focus outlines; rely on <code>--focus-ring-* </code> tokens for consistency.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__subsection">
+                    <h3 class="doc-block__subtitle">3. Colour &amp; contrast</h3>
+                    <ul>
+                        <li>Text/foreground must meet WCAG AA minimum contrast against their background.</li>
+                        <li>State colours (success, warning, danger, info) must come from theme tokens:
+                            <code>--color-success-*</code>, <code>--color-warning-*</code>, etc.
+                        </li>
+                        <li>Never hardcode colours; components must remain theme-portable.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__subsection">
+                    <h3 class="doc-block__subtitle">4. Motion</h3>
+                    <ul>
+                        <li>Transitions must be token-based (<code>--motion-fast</code>, <code>--motion-base</code>).
+                        </li>
+                        <li>Avoid continuous animation unless meaningful (progress, loading indicators).</li>
+                        <li>Respect user preference: <code>@media (prefers-reduced-motion: reduce)</code>.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__subsection">
+                    <h3 class="doc-block__subtitle">5. Responsive rules</h3>
+                    <ul>
+                        <li>Layouts adapt using spacing tokens; do not introduce arbitrary pixel values.</li>
+                        <li>Flow components (steps, timelines, journeys) must stack vertically under narrow
+                            breakpoints.
+                        </li>
+                        <li>Grids use VDS layout breakpoints: <code>--bp-sm</code>, <code>--bp-md</code>,
+                            <code>--bp-lg</code>.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__subsection">
+                    <h3 class="doc-block__subtitle">6. Composability</h3>
+                    <ul>
+                        <li>Only combine components that are designed to nest (e.g. steps inside flows, badges inside
+                            tables).
+                        </li>
+                        <li>Do not manually override padding/margins; rely on <code>section__stack-*</code> utilities.
+                        </li>
+                        <li>Content blocks must remain theme-agnostic; avoid fixed-width or fixed-height patterns.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__subsection">
+                    <h3 class="doc-block__subtitle">7. State rules</h3>
+                    <ul>
+                        <li>Use state modifiers only as documented: <code>--active</code>, <code>--complete</code>,
+                            <code>--warning</code>, <code>--error</code>, <code>--disabled</code>,
+                            <code>--upcoming</code>.
+                        </li>
+                        <li>Disabled items must be non-interactive and excluded from tab order.</li>
+                        <li>Active states must be programmatically identifiable (e.g. <code>aria-current="step"</code>).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__subsection">
+                    <h3 class="doc-block__subtitle">8. Text rules</h3>
+                    <ul>
+                        <li>Avoid inline style overrides; only tokens or utility classes allowed.</li>
+                        <li>Icons must include <code>aria-hidden="true"</code> unless conveying meaning.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__subsection">
+                    <h3 class="doc-block__subtitle">9. Performance</h3>
+                    <ul>
+                        <li>No component may rely on heavy selectors (descendant chains, complex combinators).</li>
+                        <li>Limit DOM nesting; flows and timeline items should remain shallow.</li>
+                        <li>Transitions should be GPU-safe (opacity, transform).</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__subsection">
+                    <h3 class="doc-block__subtitle">10. Documentation alignment</h3>
+                    <ul>
+                        <li>Each component must declare its semantic role in its documentation page.</li>
+                        <li>Include ARIA attributes where needed (progress, steps, navigation).</li>
+                        <li>Examples must use real tokens, no hardcoded overrides.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

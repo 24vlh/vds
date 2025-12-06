@@ -1,0 +1,924 @@
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+    <div class="section__inner">
+        <h1>Charts &amp; data visualisation</h1>
+
+        <p class="leading-relaxed text-soft">
+            Token-driven chart shells for dashboards, reports and application metrics. Charts provide
+            containers, axes, legends and state handling for any SVG/canvas-based library without
+            locking you into a specific JS implementation.
+        </p>
+
+        <p class="text-sm text-muted">
+            Source: <code>charts.css</code> · Sits above
+            <code>primitives.css</code>,
+            <code>themes/*.css</code>,
+            <code>base.css</code>,
+            <code>layout.css</code>,
+            <code>typography.css</code> and
+            <code>content-blocks.css</code>.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation &amp; dependencies</h2>
+                <p class="doc-block__summary">
+                    Charts sit on top of the core VDS stack and reuse existing tokens for spacing,
+                    surfaces, typography and motion. They are theme-bound through the active identity
+                    file and neutral primitives.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <ul class="text-body">
+                        <li>Load neutral tokens:
+                            <code>primitives.css</code>.
+                        </li>
+                        <li>Load one active theme:
+                            <code>themes/slate.css</code>,
+                            <code>themes/navy.css</code> or
+                            <code>themes/carbon.css</code>.
+                        </li>
+                        <li>Load core layers:
+                            <code>base.css</code>,
+                            <code>layout.css</code>,
+                            <code>typography.css</code>,
+                            <code>utilities.css</code>.
+                        </li>
+                        <li>Load supporting layers as needed:
+                            <code>buttons.css</code>,
+                            <code>icons.css</code>,
+                            <code>content-blocks.css</code>,
+                            <code>tables.css</code>.
+                        </li>
+                        <li>Load <code>charts.css</code> for chart shells and
+                            data visualisation tokens.
+                        </li>
+                        <li>Load <code>doc-block.css</code> for documentation
+                            pages only (not required in production).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;link rel="stylesheet" href="../css/primitives.css"&gt;
+... unchanged ...
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Structural model</h2>
+                <p class="doc-block__summary">
+                    Charts provide layout-neutral shells for any SVG/canvas-rendered data. They can
+                    be embedded directly in sections or inside cards, stats and tables.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview grid grid-cols-3 grid-auto-fit-300 gap-10">
+                    <div>
+                        <h3 class="text-sm">Chart shells</h3>
+                        <ul class="text-sm">
+                            <li><code>.chart</code>,
+                                <code>.chart--sm</code>,
+                                <code>.chart--lg</code>
+                            </li>
+                            <li><code>.chart--bare</code></li>
+                            <li><code>.chart__header</code>,
+                                <code>.chart__body</code>,
+                                <code>.chart__canvas</code>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm">Meta &amp; legend</h3>
+                        <ul class="text-sm">
+                            <li><code>.chart__title</code>,
+                                <code>.chart__subtitle</code>
+                            </li>
+                            <li><code>.chart__meta</code>,
+                                <code>.chart__meta-item</code>
+                            </li>
+                            <li><code>.chart__legend</code>,
+                                <code>.chart-legend__item</code>,
+                                <code>.chart-legend__swatch--*</code>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm">Axes, series &amp; states</h3>
+                        <ul class="text-sm">
+                            <li><code>.chart-axis</code>,
+                                <code>.chart-grid</code>
+                            </li>
+                            <li><code>.chart-series--*</code>,
+                                <code>.chart-area--*</code>,
+                                <code>.chart-bar--*</code>
+                            </li>
+                            <li><code>.chart--empty</code>,
+                                <code>.chart--error</code>,
+                                <code>.chart--loading</code>
+                            </li>
+                            <li><code>.chart-state</code>,
+                                <code>.chart-state__icon</code>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="chart"&gt;
+    &lt;header class="chart__header"&gt;
+        &lt;div&gt;
+            &lt;h2 class="chart__title"&gt;Revenue&lt;/h2&gt;
+            &lt;p class="chart__subtitle"&gt;Last 12 months&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="chart__actions"&gt;
+            &lt;button class="button button--ghost button--sm"&gt;Last year&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;div class="chart__body"&gt;
+        &lt;div class="chart__canvas"&gt;
+            &lt;canvas id="revenue-chart"&gt;&lt;/canvas&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;footer class="chart__legend"&gt;
+        &lt;div class="chart-legend__item"&gt;
+            &lt;span class="chart-legend__swatch chart-legend__swatch--1"&gt;&lt;/span&gt;
+            &lt;span class="chart-legend__label"&gt;Actual&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="chart-legend__item"&gt;
+            &lt;span class="chart-legend__swatch chart-legend__swatch--2"&gt;&lt;/span&gt;
+            &lt;span class="chart-legend__label"&gt;Forecast&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Chart containers &amp; density</h2>
+                <p class="doc-block__summary">
+                    Use chart shells directly inside sections for standalone visualisations or nest
+                    them inside cards for dashboards. Density variants control padding and min-height.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview flex flex-column flex-wrap gap-6">
+
+                    <div class="chart chart--sm">
+                        <header class="chart__header">
+                            <div>
+                                <h3 class="chart__title">Sparkline (compact)</h3>
+                                <p class="chart__subtitle">Last 7 days</p>
+                            </div>
+                        </header>
+                        <div class="chart__body">
+                            <div class="chart__canvas">
+                                <canvas></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart">
+                        <header class="chart__header">
+                            <div>
+                                <h3 class="chart__title">Standard chart</h3>
+                                <p class="chart__subtitle">Default padding and height</p>
+                            </div>
+                            <div class="chart__meta">
+                                <span class="chart__meta-item">
+                                    <span class="chart__meta-dot"></span>
+                                    Auto-refresh: 5 min
+                                </span>
+                            </div>
+                        </header>
+                        <div class="chart__body">
+                            <div class="chart__canvas">
+                                <canvas></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card--raised">
+                        <div class="card__header">
+                            <span class="metric-title">Transactions</span>
+                        </div>
+
+                        <div class="card__body">
+                            <div class="chart chart--bare">
+                                <div class="chart__body">
+                                    <div class="chart__canvas">
+                                        <canvas></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card__footer text-xs text-muted">
+                            Data refreshes every 15 minutes.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="chart chart--sm"&gt;...&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Headers, meta &amp; actions</h2>
+                <p class="doc-block__summary">
+                    Use chart headers for titles, time range and compact controls. Meta rows provide
+                    quick-glance signals such as auto-refresh status or data source.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="chart chart--sm">
+                        <header class="chart__header">
+                            <div>
+                                <h3 class="chart__title">Requests per second</h3>
+                                <p class="chart__subtitle">Realtime · p95 latency</p>
+                            </div>
+                            <div class="chart__meta">
+                                <span class="chart__meta-item">
+                                    <span class="chart__meta-dot"></span>
+                                    Live
+                                </span>
+                                <span class="chart__meta-item">
+                                    Source: edge cluster
+                                </span>
+                            </div>
+                        </header>
+
+                        <div class="chart__body">
+                            <div class="chart__canvas">
+                                <canvas></canvas>
+                            </div>
+                        </div>
+
+                        <footer class="chart__legend chart__legend--right">
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__swatch chart-legend__swatch--1"></span>
+                                <span class="chart-legend__label">RPS</span>
+                            </div>
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__swatch chart-legend__swatch--2"></span>
+                                <span class="chart-legend__label">p95 latency</span>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="chart chart--sm"&gt;
+    &lt;header class="chart__header"&gt;
+        &lt;div&gt;
+            &lt;h3 class="chart__title"&gt;Requests per second&lt;/h3&gt;
+            &lt;p class="chart__subtitle"&gt;Realtime · p95 latency&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="chart__meta"&gt;
+            &lt;span class="chart__meta-item"&gt;
+                &lt;span class="chart__meta-dot"&gt;&lt;/span&gt;
+                Live
+            &lt;/span&gt;
+            &lt;span class="chart__meta-item"&gt;
+                Source: edge cluster
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div class="chart__body"&gt;...&lt;/div&gt;
+    &lt;footer class="chart__legend chart__legend--right"&gt;...&lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Legend &amp; series palette</h2>
+                <p class="doc-block__summary">
+                    Legend items bind human-readable labels to token-driven series colours. Series
+                    tokens are theme-aware and consistent across all dashboards.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview flex flex-column flex-wrap gap-6">
+
+                    <div class="chart chart--sm">
+                        <header class="chart__header">
+                            <h3 class="chart__title">MRR by plan</h3>
+                        </header>
+                        <div class="chart__body">
+                            <div class="chart__canvas">
+                                <canvas></canvas>
+                            </div>
+                        </div>
+                        <footer class="chart__legend">
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__swatch chart-legend__swatch--1"></span>
+                                <span class="chart-legend__label">Starter</span>
+                            </div>
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__swatch chart-legend__swatch--2"></span>
+                                <span class="chart-legend__label">Growth</span>
+                            </div>
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__swatch chart-legend__swatch--3"></span>
+                                <span class="chart-legend__label">Enterprise</span>
+                            </div>
+                        </footer>
+                    </div>
+
+                    <div class="chart chart--sm">
+                        <header class="chart__header">
+                            <h3 class="chart__title">Semantic legend</h3>
+                        </header>
+
+                        <div class="chart__body">
+                            <div class="chart__canvas">
+                                <canvas></canvas>
+                            </div>
+                        </div>
+
+                        <footer class="chart__legend">
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__swatch chart-bar--positive"></span>
+                                <span class="chart-legend__label">Positive variance</span>
+                            </div>
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__swatch chart-bar--negative"></span>
+                                <span class="chart-legend__label">Negative variance</span>
+                            </div>
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__swatch chart-bar--neutral"></span>
+                                <span class="chart-legend__label">Neutral</span>
+                            </div>
+                        </footer>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;footer class="chart__legend"&gt;...&lt;/footer&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Axes &amp; gridline hooks (SVG)</h2>
+                <p class="doc-block__summary">
+                    Axes and gridlines are styled via semantic classes applied to SVG groups. Chart
+                    libraries can map their internal structures to these classes for consistent
+                    theming across all charts.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="chart chart--sm">
+                        <header class="chart__header">
+                            <h3 class="chart__title">SVG line chart skeleton</h3>
+                        </header>
+                        <div class="chart__body">
+                            <div class="chart__canvas">
+                                <svg viewBox="0 0 400 220" role="img" aria-label="Example line chart">
+                                    <g class="chart-grid">
+                                        <line x1="40" y1="40" x2="380" y2="40" class="major"></line>
+                                        <line x1="40" y1="90" x2="380" y2="90"></line>
+                                        <line x1="40" y1="140" x2="380" y2="140" class="major"></line>
+                                        <line x1="40" y1="190" x2="380" y2="190"></line>
+                                    </g>
+
+                                    <g class="chart-axis chart-axis--x">
+                                        <line x1="40" y1="190" x2="380" y2="190"></line>
+                                        <text x="80" y="200">Q1</text>
+                                        <text x="160" y="200">Q2</text>
+                                        <text x="240" y="200">Q3</text>
+                                        <text x="320" y="200">Q4</text>
+                                    </g>
+
+                                    <g class="chart-axis chart-axis--y">
+                                        <line x1="40" y1="40" x2="40" y2="190"></line>
+                                        <text x="30" y="40">400k</text>
+                                        <text x="30" y="90">300k</text>
+                                        <text x="30" y="140">200k</text>
+                                        <text x="30" y="190">100k</text>
+                                    </g>
+
+                                    <g>
+                                        <polyline
+                                                class="chart-series--1"
+                                                points="40,170 120,150 200,120 280,80 360,70"
+                                                fill="none"
+                                                stroke-width="2"
+                                        ></polyline>
+                                        <path
+                                                class="chart-area--1"
+                                                d="M40,190 L40,170 L120,150 L200,120 L280,80 L360,70 L360,190 Z"
+                                        ></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">SVG</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="chart chart--sm"&gt;
+    &lt;div class="chart__body"&gt;
+        &lt;div class="chart__canvas"&gt;
+            &lt;svg viewBox="0 0 400 220" role="img" aria-label="Example line chart"&gt;
+                &lt;g class="chart-grid"&gt;
+                    &lt;line x1="40" y1="40" x2="380" y2="40" class="major"&gt;&lt;/line&gt;
+                    &lt;line x1="40" y1="90" x2="380" y2="90"&gt;&lt;/line&gt;
+                    &lt;line x1="40" y1="140" x2="380" y2="140" class="major"&gt;&lt;/line&gt;
+                    &lt;line x1="40" y1="190" x2="380" y2="190"&gt;&lt;/line&gt;
+                &lt;/g&gt;
+
+                &lt;g class="chart-axis chart-axis--x"&gt;
+                    &lt;line x1="40" y1="190" x2="380" y2="190"&gt;&lt;/line&gt;
+                    &lt;text x="80" y="200"&gt;Q1&lt;/text&gt;
+                    &lt;text x="160" y="200"&gt;Q2&lt;/text&gt;
+                    &lt;text x="240" y="200"&gt;Q3&lt;/text&gt;
+                    &lt;text x="320" y="200"&gt;Q4&lt;/text&gt;
+                &lt;/g&gt;
+
+                &lt;g class="chart-axis chart-axis--y"&gt;
+                    &lt;line x1="40" y1="40" x2="40" y2="190"&gt;&lt;/line&gt;
+                    &lt;text x="30" y="40"&gt;400k&lt;/text&gt;
+                    &lt;text x="30" y="90"&gt;300k&lt;/text&gt;
+                    &lt;text x="30" y="140"&gt;200k&lt;/text&gt;
+                    &lt;text x="30" y="190"&gt;100k&lt;/text&gt;
+                &lt;/g&gt;
+
+                &lt;g&gt;
+                    &lt;polyline
+                        class="chart-series--1"
+                        points="40,170 120,150 200,120 280,80 360,70"
+                        stroke-width="2"
+                    &gt;&lt;/polyline&gt;
+
+                    &lt;path
+                        class="chart-area--1"
+                        d="M40,190 L40,170 L120,150 L200,120 L280,80 L360,70 L360,190 Z"
+                    &gt;&lt;/path&gt;
+                &lt;/g&gt;
+            &lt;/svg&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Series hooks: lines, areas &amp; bars</h2>
+                <p class="doc-block__summary">
+                    Charts expose semantic series classes that can be applied to SVG shapes or
+                    HTML-based bar charts. Series tokens map to theme-aware colours and tints.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview grid grid-cols-2 grid-auto-fit-300 gap-6">
+
+                    <div class="chart chart--sm">
+                        <header class="chart__header">
+                            <h3 class="chart__title">Line series</h3>
+                        </header>
+                        <div class="chart__body">
+                            <div class="chart__canvas">
+                                <svg viewBox="0 0 200 100" aria-hidden="true">
+                                    <polyline
+                                            class="chart-series--1"
+                                            points="0,70 40,60 80,40 120,30 160,20 200,15"
+                                            stroke-width="2"
+                                    ></polyline>
+                                    <polyline
+                                            class="chart-series--2"
+                                            points="0,80 40,70 80,65 120,50 160,40 200,35"
+                                            stroke-width="2"
+                                    ></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart chart--sm">
+                        <header class="chart__header">
+                            <h3 class="chart__title">Bar series</h3>
+                        </header>
+
+                        <div class="chart__body">
+                            <div class="chart__canvas flex items-end gap-2" aria-hidden="true">
+                                <div class="flex-1 chart-bar--1" style="height: 40%;"></div>
+                                <div class="flex-1 chart-bar--2" style="height: 60%;"></div>
+                                <div class="flex-1 chart-bar--3" style="height: 30%;"></div>
+                                <div class="flex-1 chart-bar--4" style="height: 75%;"></div>
+                                <div class="flex-1 chart-bar--4" style="height: 20%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">SVG / HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;svg viewBox="0 0 200 100"&gt;...&lt;/svg&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">States: empty, error &amp; loading</h2>
+                <p class="doc-block__summary">
+                    Charts expose dedicated state modifiers and content shells for zero-data,
+                    transient errors and loading conditions. States are rendered inside the canvas
+                    area and keep layout stable.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview flex flex-column flex-wrap gap-6">
+                    <div class="chart chart--empty">
+                        <header class="chart__header">
+                            <h3 class="chart__title">No data yet</h3>
+                        </header>
+                        <div class="chart__body">
+                            <div class="chart__canvas">
+                                <div class="chart-state">
+                                    <div class="chart-state__icon">
+                                        <span class="icon icon--mask icon--info"></span>
+                                    </div>
+                                    <div class="chart-state__title">Nothing to show… yet</div>
+                                    <div class="chart-state__body text-sm">
+                                        Connect a data source or adjust your filters.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart chart--error">
+                        <header class="chart__header">
+                            <h3 class="chart__title">Failed to load</h3>
+                        </header>
+                        <div class="chart__body">
+                            <div class="chart__canvas">
+                                <div class="chart-state">
+                                    <div class="chart-state__icon">
+                                        <span class="icon icon--mask icon--danger"></span>
+                                    </div>
+                                    <div class="chart-state__title">Error fetching data</div>
+                                    <div class="chart-state__body text-sm">
+                                        Check your network connection or retry later.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart chart--loading">
+                        <header class="chart__header">
+                            <h3 class="chart__title">Loading metrics</h3>
+                        </header>
+                        <div class="chart__body">
+                            <div class="chart__canvas" aria-busy="true" aria-live="polite">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="chart chart--empty"&gt;
+    &lt;header class="chart__header"&gt;
+        &lt;h3 class="chart__title"&gt;No data yet&lt;/h3&gt;
+    &lt;/header&gt;
+    &lt;div class="chart__body"&gt;
+        &lt;div class="chart__canvas"&gt;
+            &lt;div class="chart-state"&gt;
+                &lt;div class="chart-state__icon"&gt;
+                    &lt;span class="icon icon--mask icon--info"&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="chart-state__title"&gt;Nothing to show… yet&lt;/div&gt;
+                &lt;div class="chart-state__body text-sm"&gt;
+                    Connect a data source or adjust your filters.
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="chart chart--error"&gt;...&lt;/div&gt;
+
+&lt;div class="chart chart--loading"&gt;
+    &lt;div class="chart__body"&gt;
+        &lt;div class="chart__canvas" aria-busy="true" aria-live="polite"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Dashboard composition</h2>
+                <p class="doc-block__summary">
+                    Charts compose with cards, stats and tables to form dashboards. Use cards for
+                    layout density and hierarchy; charts provide the visualisation core only.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview grid grid-cols-2 md:grid-cols-1 gap-6">
+
+                    <div class="card">
+                        <div class="card__body">
+                            <span class="metric-title">MRR</span>
+
+                            <div class="stats stats--center">
+                                <div class="stats__item">
+                                    <div class="stats__value">$84.2k</div>
+                                    <div class="stats__label">Current</div>
+                                </div>
+                                <div class="stats__item">
+                                    <div class="stats__value text-success">+12.4%</div>
+                                    <div class="stats__label">vs last month</div>
+                                </div>
+                            </div>
+
+                            <div class="chart chart--bare">
+                                <div class="chart__body">
+                                    <div class="chart__canvas">
+                                        <canvas></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card--flat">
+                        <div class="card__header">
+                            <h3 class="text-sm">Churn by segment</h3>
+                        </div>
+
+                        <div class="card__body">
+                            <div class="grid grid-cols-2 gap-4">
+
+                                <div class="chart chart--bare">
+                                    <div class="chart__body">
+                                        <div class="chart__canvas">
+                                            <canvas></canvas>
+                                        </div>
+                                    </div>
+
+                                    <footer class="chart__legend">
+                                        <div class="chart-legend__item">
+                                            <span class="chart-legend__swatch chart-legend__swatch--1"></span>
+                                            <span class="chart-legend__label">Self-serve</span>
+                                        </div>
+                                        <div class="chart-legend__item">
+                                            <span class="chart-legend__swatch chart-legend__swatch--2"></span>
+                                            <span class="chart-legend__label">Sales-led</span>
+                                        </div>
+                                    </footer>
+                                </div>
+
+                                <ul class="text-xs text-muted m-0 p-0">
+                                    <li>Lowest churn: Enterprise (1.1%)</li>
+                                    <li>Highest churn: Starter (5.4%)</li>
+                                    <li>Net revenue retention: 118%</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="card"&gt;…&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-chart class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Contract for safe, semantic composition of chart shells, legends, axes and
+                    states. Charts visualise data but do not own navigation or layout; assistive
+                    technology must always have an equivalent textual path to the same information.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Expose a textual summary for each chart using nearby body copy or
+                            <code>aria-label</code> /
+                            <code>aria-describedby</code> on the canvas/SVG container.
+                        </li>
+                        <li>Use <code>role="img"</code> and an accessible name for
+                            simple charts, or mark them <code>aria-hidden="true"</code>
+                            when a table or stat block already exposes the same information.
+                        </li>
+                        <li>Keep charts layout-neutral: use
+                            <code>.section</code>, grids and cards for layout and
+                            density, not custom chart margins.
+                        </li>
+                        <li>Use chart tokens (series, semantic positive/negative) instead of
+                            hard-coded colours for series, gridlines and axes.
+                        </li>
+                        <li>Provide explicit empty, error and loading states using
+                            <code>.chart--empty</code>,
+                            <code>.chart--error</code>,
+                            <code>.chart--loading</code> and
+                            <code>.chart-state</code>.
+                        </li>
+                        <li>Use legends for multi-series charts and keep labels short but
+                            meaningful; map labels to business terms users recognise.
+                        </li>
+                        <li>Align chart time ranges and metrics with surrounding stats and tables
+                            to avoid misinterpretation (e.g. same period, same segmentation).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>Don’t rely on colour alone to communicate critical meaning (good vs bad);
+                            combine colour with shape, labels or iconography.
+                        </li>
+                        <li>Don’t use charts as the only source of truth for important numbers;
+                            mirror key values in text, stats or tables.
+                        </li>
+                        <li>Don’t place interactive controls inside the canvas/SVG region without
+                            proper keyboard support and focus management.
+                        </li>
+                        <li>Don’t override chart padding, radius or borders per-instance; extend
+                            tokens globally if you need new densities.
+                        </li>
+                        <li>Don’t hijack chart titles or legends for navigation; use proper
+                            navigation components for filtering and routing.
+                        </li>
+                        <li>Don’t mix multiple interaction models in one chart (e.g. drag-to-zoom
+                            plus click-to-select plus hover tooltips) without clear affordances.
+                        </li>
+                        <li>Don’t turn charts into layout containers; never nest unrelated content
+                            or form controls inside <code>.chart__canvas</code>.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Provide a textual equivalent for all critical data shown in charts.
+2. Use chart shells (.chart, .chart__header/body/legend) as visual containers only.
+3. Style axes, gridlines and series via semantic classes, not ad-hoc colours.
+4. Use explicit empty/error/loading states instead of leaving blank canvases.
+5. Keep charts layout-neutral; rely on sections, grids and cards for page structure.
+6. Avoid chart-only navigation; keep routing and filters in dedicated components.
+7. Prefer tables or stats when exact values matter more than shape or trend.</code></pre>
+            </div>
+
+        </article>
+    </div>
+</section>

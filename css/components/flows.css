@@ -1,0 +1,1085 @@
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Flows & Timelines
+ *
+ *  Responsibilities:
+ *    - Provide multi-step flow architecture: horizontal/vertical steps,
+ *      state transitions, process nodes, journeys, branching flows,
+ *      form-flow scaffolding, and rich timelines
+ *    - Implement progress bars (solid, striped, reversed, segmented)
+ *      with CSS-only animation and semantic variants
+ *    - Expose interaction patterns: clickable, disabled, upcoming,
+ *      error/success/warning/info states, density modes, and icon variants
+ *    - Deliver layout scaffolding for complex journeys and workflows,
+ *      ensuring predictable spacing, sizing, and semantic signalling
+ *
+ *  System Notes:
+ *    - Fully token-driven: flow gaps, insets, radii, bullet sizes,
+ *      timeline points, stripe sizes, and animation speeds
+ *    - 100% CSS; reduced-motion fallbacks defined for animated stripes
+ *    - Composable: integrates with cards, content blocks, utilities,
+ *      and documentation previews without overrides
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   1. FLOW TOKEN DEFINITIONS
+--------------------------------------------------------- */
+[data-vds-flow],
+.vds-flow {
+    --flow-component-disabled-opacity: 0.48;
+
+    --flow-step-bullet-sm: var(--space-5);
+    --flow-step-bullet-md: var(--space-5_5);
+    --flow-step-bullet-lg: var(--space-6);
+
+    --flow-timeline-point-sm: var(--space-2);
+    --flow-timeline-point-md: var(--space-3);
+    --flow-timeline-point-xs: var(--space-1_5);
+
+    --flow-node-min-width: var(--space-40);
+    --flow-stage-min-width: var(--space-48);
+    --flow-grid-min-md: var(--flow-stage-min-width);
+
+    --flow-icon-size-sm: var(--space-3);
+    --flow-icon-size-md: var(--space-4);
+    --flow-icon-size-lg: var(--space-5);
+
+    --flow-gap-xs: var(--space-1);
+    --flow-gap-sm: var(--space-2);
+    --flow-gap-md: var(--space-3);
+    --flow-gap-lg: var(--space-4);
+    --flow-gap-xl: var(--space-8);
+
+    --flow-inset-xs: var(--space-2);
+    --flow-inset-sm: var(--space-3);
+    --flow-inset-md: var(--space-4);
+    --flow-inset-lg: var(--space-6);
+
+    --flow-progress-stripe-size: var(--space-3);
+    --flow-progress-stripe-speed: 1.2s;
+}
+
+/* ---------------------------------------------------------
+   2. GLOBAL FLOW MODIFIERS
+--------------------------------------------------------- */
+.flow--compact .flow {
+    gap: var(--flow-gap-lg);
+}
+
+.flow--compact .flow__body {
+    gap: var(--flow-gap-md);
+}
+
+.flow--compact .steps {
+    gap: var(--flow-gap-sm);
+}
+
+.flow--compact .timeline {
+    gap: var(--flow-gap-sm);
+}
+
+.flow--compact .journey {
+    gap: var(--flow-gap-md);
+}
+
+.flow--compact .process-flow {
+    gap: var(--flow-gap-sm);
+}
+
+.flow--compact .state-flow {
+    gap: var(--flow-gap-xs);
+}
+
+.flow--compact .form-flow {
+    gap: var(--flow-gap-md);
+}
+
+.steps__item--upcoming {
+    color: var(--color-text-soft);
+}
+
+.journey__stage--upcoming,
+.process-flow__node--upcoming,
+.flow-branch__option--upcoming,
+.state-flow__item--upcoming {
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-surface-subtle);
+    color: var(--color-text-muted);
+}
+
+.steps__item:focus-visible,
+.steps__item--clickable:focus-visible,
+.journey__stage--clickable:focus-visible,
+.process-flow__node--clickable:focus-visible,
+.flow-branch__option--clickable:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-accent);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.steps__item--disabled,
+.steps__item[aria-disabled="true"] {
+    opacity: var(--flow-component-disabled-opacity);
+    cursor: not-allowed;
+}
+
+.journey__stage--disabled,
+.journey__stage[aria-disabled="true"],
+.process-flow__node--disabled,
+.process-flow__node[aria-disabled="true"],
+.flow-branch__option--disabled,
+.flow-branch__option[aria-disabled="true"] {
+    opacity: var(--flow-component-disabled-opacity);
+    pointer-events: none;
+}
+
+/* ---------------------------------------------------------
+   3. FLOW CONTAINER / WIZARD
+--------------------------------------------------------- */
+.flow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.flow__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.flow__title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+}
+
+.flow__subtitle {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+.flow__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.flow__nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-4);
+}
+
+/* ---------------------------------------------------------
+   4. STEP INDICATOR (HORIZONTAL)
+--------------------------------------------------------- */
+.steps {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.steps__item {
+    display: flex;
+    align-items: center;
+    gap: var(--flow-gap-sm);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.steps__item--clickable {
+    cursor: pointer;
+}
+
+.steps__item--clickable:hover .steps__label {
+    color: var(--color-text);
+}
+
+.steps__item--clickable:active {
+    transform: translateY(1px);
+    opacity: 0.95;
+}
+
+.steps__item--error {
+    color: var(--color-danger-strong);
+}
+
+.steps__item--error .steps__bullet {
+    background-color: var(--danger-soft-surface, var(--color-danger-soft));
+    border-color: var(--danger-soft-border, var(--color-danger));
+    color: var(--danger-soft-on, var(--color-on-danger));
+}
+
+.steps__item--warning {
+    color: var(--color-warning-strong);
+}
+
+.steps__item--warning .steps__bullet {
+    background-color: var(--warning-soft-surface, var(--color-warning-soft));
+    border-color: var(--warning-soft-border, var(--color-warning));
+    color: var(--warning-soft-on, var(--color-on-warning));
+}
+
+.steps__item[aria-current="step"],
+.steps__item[aria-current="step"] .steps__label {
+    color: var(--color-text);
+}
+
+.steps__bullet {
+    width: var(--flow-step-bullet-md);
+    height: var(--flow-step-bullet-md);
+    border-radius: 999px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--color-surface-subtle);
+    color: var(--color-text-muted);
+
+    font-size: var(--text-xxs);
+    flex-shrink: 0;
+}
+
+.steps__label {
+    white-space: nowrap;
+}
+
+.steps__line {
+    flex: 1;
+    height: var(--border-width);
+    background-color: var(--color-border-subtle);
+}
+
+.steps__item--active .steps__bullet {
+    background-color: var(--accent-soft-surface, var(--color-accent-soft));
+    border-color: var(--accent-soft-border, var(--color-accent));
+    color: var(--accent-soft-on, var(--color-on-accent));
+}
+
+.steps__item--complete .steps__bullet {
+    background-color: var(--success-soft-surface, var(--color-success-soft));
+    border-color: var(--success-soft-border, var(--color-success));
+    color: var(--success-soft-on, var(--color-on-success));
+    opacity: 0.7;
+}
+
+.steps__item--active,
+.steps__item--complete {
+    color: var(--color-text);
+}
+
+.steps--a .steps__bullet {
+    width: var(--flow-step-bullet-lg);
+    height: var(--flow-step-bullet-lg);
+}
+
+.steps--c .steps__bullet {
+    width: var(--flow-step-bullet-sm);
+    height: var(--flow-step-bullet-sm);
+    font-size: var(--text-xxs);
+}
+
+/* ---------------------------------------------------------
+   5. STEP INDICATOR (VERTICAL)
+--------------------------------------------------------- */
+.steps--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.steps--vertical .steps__item {
+    align-items: flex-start;
+}
+
+.steps--vertical .steps__line {
+    width: var(--border-width);
+    min-height: var(--flow-gap-xl);
+    height: auto;
+    background-color: var(--color-border-subtle);
+    margin-left: calc(var(--flow-step-bullet-md) / 2 - var(--border-width) / 2);
+    flex: auto;
+}
+
+/* ---------------------------------------------------------
+   6. FLOW PROGRESS BARS
+--------------------------------------------------------- */
+.flow-progress {
+    width: 100%;
+    height: var(--border-width-strong);
+    background-color: var(--color-muted-bg);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.flow-progress__bar {
+    height: 100%;
+    width: 0;
+    background-color: var(--color-muted-bg);
+    transition: width 0.2s ease;
+}
+
+.flow-progress--striped .flow-progress__bar {
+    background-image: repeating-linear-gradient(
+            45deg,
+            var(--color-text-soft) 0,
+            var(--color-text-soft) var(--flow-progress-stripe-size),
+            var(--color-muted-bg) var(--flow-progress-stripe-size),
+            var(--color-muted-bg) calc(var(--flow-progress-stripe-size) * 2)
+    );
+    animation: flow-progress-stripes var(--flow-progress-stripe-speed) linear infinite;
+}
+
+.flow-progress--striped .flow-progress__bar--error {
+    background-image: repeating-linear-gradient(
+            45deg,
+            var(--color-danger) 0,
+            var(--color-danger) var(--flow-progress-stripe-size),
+            var(--color-danger-soft) var(--flow-progress-stripe-size),
+            var(--color-danger-soft) calc(var(--flow-progress-stripe-size) * 2)
+    );
+}
+
+.flow-progress--striped .flow-progress__bar--warning {
+    background-image: repeating-linear-gradient(
+            45deg,
+            var(--color-warning) 0,
+            var(--color-warning) var(--flow-progress-stripe-size),
+            var(--color-warning-soft) var(--flow-progress-stripe-size),
+            var(--color-warning-soft) calc(var(--flow-progress-stripe-size) * 2)
+    );
+}
+
+@keyframes flow-progress-stripes {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: calc(var(--flow-progress-stripe-size) * -2.828) 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flow-progress--striped .flow-progress__bar {
+        animation: none;
+        background-position: 0 0;
+    }
+}
+
+.flow-progress--striped-right .flow-progress__bar {
+    animation: flow-progress-stripes-right var(--flow-progress-stripe-speed) linear infinite;
+}
+
+@keyframes flow-progress-stripes-right {
+    from {
+        background-position: calc(var(--flow-progress-stripe-size) * -2.828) 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flow-progress--striped-right .flow-progress__bar {
+        animation: none;
+        background-position: 0 0;
+    }
+}
+
+.flow-progress--segments {
+    display: flex;
+    height: var(--border-width-strong);
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+}
+
+.flow-progress__segment {
+    flex: 1;
+    background-color: var(--color-muted-bg);
+}
+
+.flow-progress__segment--complete {
+    background-color: var(--color-success);
+}
+
+.flow-progress__segment--error {
+    background-color: var(--color-danger);
+}
+
+.flow-progress__segment--warning {
+    background-color: var(--color-warning);
+}
+
+/* ---------------------------------------------------------
+   7. MINIMAL TIMELINE (A)
+--------------------------------------------------------- */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--flow-gap-md);
+}
+
+.timeline__item {
+    display: flex;
+    align-items: stretch;
+    gap: var(--flow-gap-sm);
+}
+
+.timeline__point-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--flow-gap-xs);
+}
+
+.timeline__point {
+    width: var(--flow-timeline-point-sm);
+    height: var(--flow-timeline-point-sm);
+    border-radius: 999px;
+    border: var(--border-width-strong) solid var(--color-accent);
+    background-color: var(--color-surface);
+    flex-shrink: 0;
+}
+
+.timeline__point--upcoming {
+    border-color: var(--color-border-subtle);
+}
+
+.timeline__point--error {
+    border-color: var(--color-danger);
+    background-color: var(--color-danger-soft);
+}
+
+.timeline__point--warning {
+    border-color: var(--warning-soft-border, var(--color-warning));
+    background-color: var(--warning-soft-surface, var(--color-warning-soft));
+}
+
+.timeline__point--success {
+    border-color: var(--danger-soft-border, var(--color-danger));
+    background-color: var(--danger-soft-surface, var(--color-danger-soft));
+}
+
+.timeline__point--info {
+    border-color: var(--info-soft-border, var(--color-info));
+    background-color: var(--info-soft-surface, var(--color-info-soft));
+}
+
+.timeline__icon {
+    width: var(--flow-icon-size-md);
+    height: var(--flow-icon-size-md);
+    color: var(--color-icon-muted);
+}
+
+.timeline__icon--left {
+    margin-right: var(--flow-gap-xs);
+}
+
+.timeline__icon--right {
+    margin-left: var(--flow-gap-xs);
+}
+
+.timeline__icon--top {
+    margin-bottom: var(--flow-gap-xs);
+}
+
+.timeline__line {
+    flex: 1;
+    width: var(--border-width-strong);
+    background-color: var(--color-border-subtle);
+}
+
+.timeline__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--flow-gap-xs);
+}
+
+.timeline__label {
+    font-size: var(--text-sm);
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.timeline__note {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.timeline--horizontal {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.timeline--horizontal .timeline__item {
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline--horizontal .timeline__point-wrap {
+    flex-direction: row;
+}
+
+.timeline--horizontal .timeline__line {
+    width: var(--component-gap-xl);
+    height: var(--border-width-strong);
+}
+
+.timeline--compact .timeline__item {
+    gap: var(--flow-gap-xs);
+}
+
+.timeline--compact .timeline__note {
+    font-size: var(--text-xxs);
+}
+
+.timeline--compact .timeline__point {
+    width: var(--flow-timeline-point-xs);
+    height: var(--flow-timeline-point-xs);
+}
+
+.timeline--compact .timeline__icon {
+    width: var(--flow-icon-size-sm);
+    height: var(--flow-icon-size-sm);
+}
+
+/* ---------------------------------------------------------
+   8. RICH TIMELINE (B)
+--------------------------------------------------------- */
+.timeline--rich {
+    display: flex;
+    flex-direction: column;
+    gap: var(--flow-gap-lg);
+}
+
+.timeline--rich .timeline__item {
+    display: flex;
+    align-items: stretch;
+    gap: var(--flow-gap-md);
+    border-radius: var(--radius-sm);
+    padding: var(--flow-inset-sm);
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--flow-zebra-bg-alt);
+}
+
+.timeline--rich .timeline__item:nth-child(even) {
+    background-color: var(--flow-zebra-bg);
+}
+
+.timeline--rich .timeline__item:nth-child(odd) {
+    background-color: var(--flow-zebra-bg-alt);
+}
+
+.timeline--rich .timeline__point-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--flow-gap-xs);
+    flex-shrink: 0;
+}
+
+.timeline--rich .timeline__point {
+    width: var(--flow-timeline-point-md);
+    height: var(--flow-timeline-point-md);
+}
+
+.timeline--rich .timeline__line {
+    flex: 1;
+    width: var(--border-width-strong);
+    background-color: var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+}
+
+.timeline--rich .timeline__item:last-child .timeline__line {
+    display: none;
+}
+
+.timeline-events {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.timeline-events .timeline__item {
+    align-items: flex-start;
+    gap: var(--space-4);
+}
+
+.timeline__timestamp {
+    font-size: var(--text-xxs);
+    color: var(--color-text-soft);
+}
+
+.timeline__meta {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.timeline__body {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    margin-top: var(--flow-gap-xs);
+}
+
+.timeline--audit .timeline__label {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.timeline--audit .timeline__body {
+    font-size: var(--text-xs);
+}
+
+/* ---------------------------------------------------------
+   9. JOURNEY MAP (HIGH-LEVEL FLOWS)
+--------------------------------------------------------- */
+.journey {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--flow-gap-lg);
+}
+
+.journey--compact {
+    gap: var(--flow-gap-md);
+}
+
+.journey__stage {
+    flex: 1 1 var(--flow-stage-min-width);
+    min-width: var(--flow-stage-min-width);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--flow-gap-sm);
+
+    padding: var(--flow-inset-md);
+    border-radius: var(--radius-md);
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--color-surface);
+}
+
+.journey__stage--clickable {
+    cursor: pointer;
+}
+
+.journey__stage--clickable:hover {
+    border-color: var(--color-accent);
+}
+
+.journey__stage--clickable:active {
+    transform: translateY(1px);
+    opacity: 0.96;
+}
+
+.journey__stage--disabled {
+    opacity: var(--flow-component-disabled-opacity);
+    pointer-events: none;
+}
+
+.journey__stage--active {
+    border-color: var(--color-accent);
+    background-color: var(--accent-soft-surface, var(--color-accent-soft));
+    color: var(--accent-soft-on, var(--color-on-accent));
+}
+
+.journey__stage--complete,
+.journey__stage--success {
+    border-color: var(--color-success);
+    background-color: var(--success-soft-surface, var(--color-success-soft));
+    color: var(--success-soft-on, var(--color-on-success));
+}
+
+.journey__stage--error {
+    border-color: var(--color-danger);
+    background-color: var(--danger-soft-surface, var(--color-danger-soft));
+    color: var(--danger-soft-on, var(--color-on-danger));
+}
+
+.journey__stage--warning {
+    border-color: var(--color-warning);
+    background-color: var(--warning-soft-surface, var(--color-warning-soft));
+    color: var(--warning-soft-on, var(--color-on-warning));
+}
+
+.journey__stage--info {
+    border-color: var(--color-accent);
+    background-color: var(--info-soft-surface, var(--color-info-soft));
+    color: var(--info-soft-on, var(--color-on-info));
+}
+
+.journey__icon {
+    width: var(--flow-icon-size-lg);
+    height: var(--flow-icon-size-lg);
+    color: var(--color-icon-muted);
+}
+
+.journey__marker {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+}
+
+.journey__title {
+    font-size: var(--text-md);
+    font-weight: 600;
+}
+
+.journey__details {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+/* ---------------------------------------------------------
+   10. PROCESS FLOW (NODE-BASED)
+--------------------------------------------------------- */
+.process-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--flow-gap-md);
+}
+
+.process-flow--compact {
+    gap: var(--flow-gap-sm);
+}
+
+.process-flow__node {
+    min-width: var(--flow-node-min-width);
+    padding: var(--flow-inset-sm) var(--flow-inset-md);
+    border-radius: var(--radius-md);
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--color-surface);
+    font-size: var(--text-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--flow-gap-xs);
+}
+
+.process-flow__node--clickable {
+    cursor: pointer;
+}
+
+.process-flow__node--clickable:hover {
+    border-color: var(--color-accent);
+}
+
+.process-flow__node--clickable:active {
+    transform: translateY(1px);
+    opacity: 0.96;
+}
+
+.process-flow__node--disabled {
+    opacity: var(--flow-component-disabled-opacity);
+    pointer-events: none;
+}
+
+.process-flow__node--active {
+    border-color: var(--color-accent);
+    background-color: var(--accent-soft-surface, var(--color-accent-soft));
+}
+
+.process-flow__node--complete,
+.process-flow__node--success {
+    border-color: var(--color-success);
+    background-color: var(--success-soft-surface, var(--color-success-soft));
+}
+
+.process-flow__node--error {
+    border-color: var(--color-danger);
+    background-color: var(--danger-soft-surface, var(--color-danger-soft));
+}
+
+.process-flow__node--warning {
+    border-color: var(--color-warning);
+    background-color: var(--warning-soft-surface, var(--color-warning-soft));
+}
+
+.process-flow__node--info {
+    border-color: var(--color-accent);
+    background-color: var(--info-soft-surface, var(--color-info-soft));
+}
+
+.process-flow__icon {
+    width: var(--flow-icon-size-md);
+    height: var(--flow-icon-size-md);
+    color: var(--color-icon-muted);
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.process-flow__arrow {
+    width: var(--space-6);
+    height: var(--border-width);
+    background-color: var(--color-border-subtle);
+    flex-shrink: 0;
+}
+
+.process-flow__arrow--error {
+    background-color: var(--color-danger);
+}
+
+.process-flow__arrow--warning {
+    background-color: var(--color-warning);
+}
+
+.process-flow--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.process-flow--vertical .process-flow__arrow {
+    width: var(--border-width);
+    height: var(--space-6);
+    margin-left: calc(
+            var(--flow-node-min-width) / 2 - var(--border-width) / 2
+    );
+}
+
+/* ---------------------------------------------------------
+   11. STATE FLOW (STATUS STEPS)
+--------------------------------------------------------- */
+.state-flow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--flow-gap-sm);
+    flex-wrap: wrap;
+}
+
+.state-flow__item {
+    padding: var(--flow-inset-xs) var(--flow-inset-sm);
+    font-size: var(--text-xs);
+    border-radius: 999px;
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--color-surface-subtle);
+    color: var(--color-text-muted);
+}
+
+.state-flow__item--active {
+    border-color: var(--color-accent);
+    color: var(--accent-soft-on, var(--color-on-accent));
+    background-color: var(--accent-soft-surface, var(--color-accent-soft));
+}
+
+.state-flow__item--complete {
+    border-color: var(--color-success);
+    color: var(--success-soft-on, var(--color-on-success));
+    background-color: var(--success-soft-surface, var(--color-success-soft));
+}
+
+.state-flow__item--error {
+    border-color: var(--color-danger);
+    color: var(--danger-soft-on, var(--color-on-danger));
+    background-color: var(--danger-soft-surface, var(--color-danger-soft));
+}
+
+.state-flow__item--warning {
+    border-color: var(--color-warning);
+    color: var(--warning-soft-on, var(--color-on-warning));
+    background-color: var(--warning-soft-surface, var(--color-warning-soft));
+}
+
+.state-flow__item--info {
+    border-color: var(--color-accent);
+    color: var(--info-soft-on, var(--color-on-info));
+    background-color: var(--info-soft-surface, var(--color-info-soft));
+}
+
+/* ---------------------------------------------------------
+   12. MULTI-STEP FORM SCAFFOLDING
+--------------------------------------------------------- */
+.form-flow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--flow-gap-lg);
+}
+
+.form-flow__step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--flow-gap-md);
+}
+
+.form-flow__step--error {
+    border-left: var(--border-width-strong) solid var(--color-danger);
+    padding-left: var(--flow-inset-sm);
+    background-color: var(--color-danger-soft);
+}
+
+.form-flow__step--warning {
+    border-left: var(--border-width-strong) solid var(--color-warning);
+    padding-left: var(--flow-inset-sm);
+    background-color: var(--color-warning-soft);
+}
+
+.form-flow__step--valid,
+.form-flow__step--success {
+    border-left: var(--border-width-strong) solid var(--color-success);
+    padding-left: var(--flow-inset-sm);
+    background-color: var(--color-success-soft);
+}
+
+.form-flow__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--flow-gap-md);
+}
+
+.form-flow__actions-right {
+    margin-left: auto;
+    display: inline-flex;
+    gap: var(--flow-gap-md);
+}
+
+/* ---------------------------------------------------------
+   13. BRANCHING FLOW CALLOUTS
+--------------------------------------------------------- */
+.flow-branch {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--flow-grid-min-md), 1fr));
+    gap: var(--flow-gap-lg);
+}
+
+.flow-branch__icon {
+    width: var(--flow-icon-size-md);
+    height: var(--flow-icon-size-md);
+    color: var(--color-icon-muted);
+    flex-shrink: 0;
+}
+
+.flow-branch__title {
+    font-size: var(--text-md);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.flow-branch__details {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-normal);
+}
+
+.flow-branch--compact {
+    gap: var(--flow-gap-md);
+}
+
+.flow-branch--compact .flow-branch__title {
+    font-size: var(--text-sm);
+}
+
+.flow-branch--compact .flow-branch__details {
+    font-size: var(--text-xs);
+}
+
+.flow-branch__option {
+    border-radius: var(--radius-md);
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--color-surface);
+    padding: var(--flow-inset-md);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--flow-gap-sm);
+
+    font-size: var(--text-sm);
+}
+
+.flow-branch__option--clickable {
+    cursor: pointer;
+}
+
+.flow-branch__option--clickable:hover {
+    border-color: var(--color-accent);
+}
+
+.flow-branch__option--clickable:active {
+    transform: translateY(1px);
+    opacity: 0.96;
+}
+
+.flow-branch__option--disabled {
+    opacity: var(--flow-component-disabled-opacity);
+    pointer-events: none;
+}
+
+.flow-branch__option--active {
+    border-color: var(--color-accent);
+    background-color: var(--accent-soft-surface, var(--color-accent-soft));
+    color: var(--accent-soft-on, var(--color-on-accent));
+}
+
+.flow-branch__option--complete,
+.flow-branch__option--success {
+    border-color: var(--color-success);
+    background-color: var(--success-soft-surface, var(--color-success-soft));
+    color: var(--success-soft-on, var(--color-on-success));
+}
+
+.flow-branch__option--error {
+    border-color: var(--color-danger);
+    background-color: var(--danger-soft-surface, var(--color-danger-soft));
+    color: var(--danger-soft-on, var(--color-on-danger));
+}
+
+.flow-branch__option--warning {
+    border-color: var(--color-warning);
+    background-color: var(--warning-soft-surface, var(--color-warning-soft));
+    color: var(--warning-soft-on, var(--color-on-warning));
+}
+
+.flow-branch__option--info {
+    border-color: var(--color-accent);
+    background-color: var(--info-soft-surface, var(--color-info-soft));
+    color: var(--info-soft-on, var(--color-on-info));
+}
+
+.flow-branch__arrow {
+    width: var(--space-6);
+    height: var(--border-width);
+    background-color: var(--color-border-subtle);
+    margin-inline: auto;
+    flex-shrink: 0;
+}
+
+.flow-branch__arrow--error {
+    background-color: var(--color-danger);
+}
+
+.flow-branch__arrow--warning {
+    background-color: var(--color-warning);
+}
+
+/* ---------------------------------------------------------
+   14. RESPONSIVE
+--------------------------------------------------------- */
+@media (max-width: 768px) {
+
+    .steps {
+        flex-wrap: wrap;
+    }
+
+    .process-flow {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .process-flow__arrow {
+        width: var(--border-width);
+        height: var(--space-4);
+    }
+
+    .journey {
+        flex-direction: column;
+    }
+
+    .journey__stage {
+        width: 100%;
+    }
+}

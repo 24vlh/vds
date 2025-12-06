@@ -1,0 +1,304 @@
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Base Layer
+ *
+ *  Responsibilities:
+ *    - Set global primitives: type scale, spacing, radii, motion,
+ *      layout widths, and z-index hierarchy
+ *    - Apply a modern reset / normalize across all HTML elements
+ *    - Define structural layout primitives (page flex root, body flex)
+ *    - Provide default link, list, table, and code behaviours
+ *      consumed by all other VDS layers
+ *
+ *  System Notes:
+ *    - Pure CSS: no JS assumptions or behavioural dependencies
+ *    - Typography, layout utilities, and component styles live in
+ *      their own modules and layer on top of this
+ *    - Base must load before themes and before any component CSS
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   1. BASE TOKEN DEFINITIONS
+--------------------------------------------------------- */
+a {
+    --link-underline-thickness: 2px;
+}
+
+/* ---------------------------------------------------------
+   2. MODERN RESET / NORMALIZE
+--------------------------------------------------------- */
+html {
+    box-sizing: border-box;
+    line-height: var(--line-height-normal);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    min-inline-size: 0;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-subtle) transparent;
+    box-decoration-break: clone;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-family-sans), sans-serif;
+    font-size: var(--text-base);
+    text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+}
+
+button {
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+    cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="search"] {
+    -webkit-appearance: none;
+    outline-offset: -2px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input,
+select,
+textarea {
+    line-height: inherit;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+legend {
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+p,
+ul, ol,
+figure,
+blockquote,
+dl, dd {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    color: inherit;
+}
+
+p,
+ul, ol,
+figure,
+blockquote {
+    padding: 0;
+}
+
+ul, ol {
+    padding-inline-start: var(--space-6);
+}
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+    margin: 0;
+    padding-inline-start: var(--space-4);
+}
+
+b,
+strong {
+    font-weight: var(--font-weight-bold);
+}
+
+hr {
+    margin: var(--space-6) 0;
+    border: none;
+    border-top: var(--border-width) solid var(--color-border-subtle);
+}
+
+a {
+    color: var(--link-text);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+a:hover {
+    color: var(--link-text-hover);
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: var(--link-underline-thickness, 1px);
+}
+
+a:active {
+    color: var(--link-text-active);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+:focus {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+::selection {
+    background: var(--color-selection-bg);
+    color: var(--color-selection-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition-fast: var(--motion-none);
+        --transition-normal: var(--motion-none);
+        --transition-slow: var(--motion-none);
+
+        --ease-out: linear;
+        --ease-in: linear;
+        --ease-in-out: linear;
+    }
+
+    * {
+        animation-duration: 0ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+@media (forced-colors: active) {
+    * {
+        forced-color-adjust: none;
+    }
+}
+
+/* ---------------------------------------------------------
+   3. GLOBAL STRUCTURE
+--------------------------------------------------------- */
+html,
+body {
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------
+   4. CODE STYLES
+--------------------------------------------------------- */
+code {
+    font-family: var(--font-family-mono), monospace;
+    font-size: 0.875em;
+}
+
+pre {
+    font-family: var(--font-family-mono), monospace;
+    font-size: 0.875em;
+    background: var(--code-bg);
+    color: var(--color-text);
+    border: 1px solid var(--code-border);
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+pre, code {
+    tab-size: 4;
+}
+
+kbd,
+samp {
+    font-family: var(--font-family-mono), monospace;
+}
+
+#root, /* React, Vite */
+#app, /* Vue, Svelte, Solid */
+#__next, /* Next.js */
+#__nuxt, /* Nuxt */
+app-root, /* Angular */
+svelte-root, /* Some Svelte starter kits */
+astro-root, /* Astro hybrid apps */
+[qwik-root], /* Qwik */
+.app-root, /* Generic container */
+[data-app-root], /* Custom micro-frontend root */
+[data-spa-root] /* Universal custom attribute */
+{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}

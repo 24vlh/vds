@@ -1,0 +1,689 @@
+<section data-vds-dock-block data-vds-content-block data-vds-toast class="section">
+    <div class="section__inner section__stack">
+        <div class="section__stack">
+            <h1>Toast System</h1>
+            <p class="leading-relaxed text-soft">
+                The VDS Toast Layer provides ephemeral, system-level notifications: floating stacks,
+                inline toasts, semantic variants and auto-dismiss timers. Toasts complement alerts
+                and banners by confirming actions, surfacing background events and reporting
+                non-blocking errors without disrupting flow.
+            </p>
+            <p class="text-sm text-muted">
+                Source: <code>toasts.css</code> · Sits above
+                <code>primitives.css</code>,
+                <code>themes/slate.css</code>,
+                <code>base.css</code>,
+                <code>layout.css</code>,
+                <code>utilities.css</code>,
+                <code>doc-block.css</code> and
+                <code>feedback.css</code>.
+            </p>
+        </div>
+
+        <p class="text-sm text-muted">
+            This page documents all primitives exported by <code>toasts.css</code>.
+            Toasts come in floating and inline variants, support full semantic variants
+            (<strong>neutral</strong>, <strong>info</strong>, <strong>success</strong>,
+            <strong>warning</strong>, <strong>danger</strong>/<strong>error</strong>),
+            and are designed for keyboard-accessible, motion-aware, token-driven behaviour.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-toast class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Overview &amp; Dependencies</h2>
+                <p class="doc-block__summary">
+                    <code>toasts.css</code> is a component-layer extension of the
+                    Feedback System. It defines toast stacks, base toast anatomy, semantic variants,
+                    inline mode and motion hooks. All spacing, colors, border-radius, shadows and
+                    transitions are provided by core VDS tokens.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <ul>
+                        <li>Floating stacks use <code>.toast-stack</code> with
+                            positional modifiers such as
+                            <code>.toast-stack--top-right</code>.
+                        </li>
+                        <li>Each toast uses a consistent structure:
+                            <code>.toast</code>,
+                            <code>.toast__icon</code>,
+                            <code>.toast__body</code>,
+                            <code>.toast__title</code>,
+                            <code>.toast__message</code>,
+                            <code>.toast__close</code> and
+                            <code>.toast__progress</code>.
+                        </li>
+                        <li>Semantic variants are mapped with modifiers:
+                            <code>.toast--neutral</code>,
+                            <code>.toast--info</code>,
+                            <code>.toast--success</code>,
+                            <code>.toast--warning</code>,
+                            <code>.toast--danger</code>.
+                        </li>
+                        <li>Auto-dismiss timers are configured via the
+                            <code>--toast-duration</code> custom property.
+                        </li>
+                        <li>Animations respect <code>prefers-reduced-motion</code>
+                            and fall back to non-animated appearance.
+                        </li>
+                        <li>Toasts rely on the same focus-visible and semantic color contracts as
+                            alerts, banners and other feedback primitives.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;link rel="stylesheet" href="./css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/slate.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/base.css"&gt;
+&lt;link rel="stylesheet" href="./css/layout.css"&gt;
+&lt;link rel="stylesheet" href="./css/utilities.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/doc-block.css"&gt;
+&lt;link rel="stylesheet" href="./css/feedback.css"&gt;
+&lt;link rel="stylesheet" href="./css/toasts.css"&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-toast class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Toast Stacks (Floating Containers)</h2>
+                <p class="doc-block__summary">
+                    Floating toasts are rendered inside fixed-position stacks. Each stack controls
+                    placement (top/bottom, left/right/center) and vertical spacing. On small screens,
+                    stacks collapse into a full-width bottom position for better reachability.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="toast-stack toast-stack--top-right">
+                        <div class="toast toast--success toast--compact toast--in" role="status"
+                             aria-live="polite">
+                            <div class="toast__icon">
+                                <span class="icon icon--mask icon--check"></span>
+                            </div>
+                            <div class="toast__body">
+                                <div class="toast__message">Profile updated.</div>
+                            </div>
+                            <button class="toast__close" type="button" aria-label="Dismiss">
+                                &times;
+                            </button>
+                            <div class="toast__progress"></div>
+                        </div>
+
+                        <div class="toast toast--success toast--in" role="status" aria-live="polite">
+                            <div class="toast__icon">
+                                <span class="icon icon--mask icon--check"></span>
+                            </div>
+
+                            <div class="toast__body">
+                                <div class="toast__title">Saved</div>
+                                <div class="toast__message">Your changes were stored.</div>
+                            </div>
+
+                            <button class="toast__close" type="button" aria-label="Dismiss">×</button>
+
+                            <div class="toast__progress"></div>
+                        </div>
+
+                        <div class="toast toast--info toast--compact toast--in" role="status"
+                             aria-live="polite">
+                            <div class="toast__icon">
+                                <span class="icon icon--mask icon--info"></span>
+                            </div>
+                            <div class="toast__body">
+                                <div class="toast__message">New version available.</div>
+                            </div>
+                            <button class="toast__close" type="button" aria-label="Dismiss">
+                                &times;
+                            </button>
+                            <div class="toast__progress"></div>
+                        </div>
+
+                        <div class="toast toast--danger toast--compact toast--in" role="status"
+                             aria-live="polite">
+                            <div class="toast__icon">
+                                <span class="icon icon--mask icon--warning"></span>
+                            </div>
+                            <div class="toast__body">
+                                <div class="toast__message">New version available.</div>
+                            </div>
+                            <button class="toast__close" type="button" aria-label="Dismiss">
+                                &times;
+                            </button>
+                            <div class="toast__progress"></div>
+                        </div>
+
+                        <div class="toast toast--error toast--compact toast--in" role="status"
+                             aria-live="polite">
+                            <div class="toast__icon">
+                                <span class="icon icon--mask icon--blocked"></span>
+                            </div>
+                            <div class="toast__body">
+                                <div class="toast__message">New version available.</div>
+                            </div>
+                            <button class="toast__close" type="button" aria-label="Dismiss">
+                                &times;
+                            </button>
+                            <div class="toast__progress"></div>
+                        </div>
+
+                        <div class="toast toast--warning toast--compact toast--in" role="status"
+                             aria-live="polite">
+                            <div class="toast__icon">
+                                <span class="icon icon--mask icon--warning"></span>
+                            </div>
+                            <div class="toast__body">
+                                <div class="toast__message">New version available.</div>
+                            </div>
+                            <button class="toast__close" type="button" aria-label="Dismiss">
+                                &times;
+                            </button>
+                            <div class="toast__progress"></div>
+                        </div>
+
+                        <div class="toast toast--neutral toast--compact toast--in" role="status"
+                             aria-live="polite">
+                            <div class="toast__icon">
+                                <span class="icon icon--mask icon--tip"></span>
+                            </div>
+                            <div class="toast__body">
+                                <div class="toast__message">New version available.</div>
+                            </div>
+                            <button class="toast__close" type="button" aria-label="Dismiss">
+                                &times;
+                            </button>
+                            <div class="toast__progress"></div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        On mobile, positional modifiers collapse into a bottom, full-width stack.
+                    </p>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="toast-stack toast-stack--top-right"&gt;
+
+  &lt;div class="toast toast--success toast--compact" role="status" aria-live="polite"&gt;
+    &lt;div class="toast__icon"&gt;
+      &lt;span class="icon icon--check"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="toast__body"&gt;
+      &lt;div class="toast__message"&gt;Profile updated.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;button class="toast__close" type="button" aria-label="Dismiss"&gt;
+      &amp;times;
+    &lt;/button&gt;
+
+    &lt;div class="toast__progress"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="toast toast--info toast--compact" role="status" aria-live="polite"&gt;
+    ...
+  &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-toast class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Base Toast Anatomy</h2>
+                <p class="doc-block__summary">
+                    The base toast structure is layout-stable: slots for icon, content, close button
+                    and optional progress bar. Grid areas keep the icon, text and close control
+                    aligned while preserving small hit targets and succinct content.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="toast toast--neutral" role="status" aria-live="polite"
+                         style="--toast-duration: 6000ms;">
+                        <div class="toast__icon">
+                            <span class="icon icon--info"></span>
+                        </div>
+
+                        <div class="toast__body">
+                            <div class="toast__title">Profile saved</div>
+                            <div class="toast__message">
+                                Your profile settings have been successfully updated.
+                            </div>
+                        </div>
+
+                        <button class="toast__close" type="button" aria-label="Dismiss notification">
+                            &times;
+                        </button>
+
+                        <div class="toast__progress"></div>
+                    </div>
+
+                    <ul class="text-sm text-muted">
+                        <li>Use <code>role="status"</code> for non-blocking updates.</li>
+                        <li>Reserve <code>role="alert"</code> for critical errors that
+                            require immediate attention.
+                        </li>
+                        <li>Always provide an accessible label for the dismiss button.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="toast toast--neutral"
+     role="status"
+     aria-live="polite"
+     style="--toast-duration: 6000ms;"&gt;
+
+  &lt;div class="toast__icon"&gt;
+    &lt;span class="icon icon--info"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class="toast__body"&gt;
+    &lt;div class="toast__title"&gt;Profile saved&lt;/div&gt;
+    &lt;div class="toast__message"&gt;
+      Your profile settings have been successfully updated.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;button class="toast__close"
+          type="button"
+          aria-label="Dismiss notification"&gt;
+    &amp;times;
+  &lt;/button&gt;
+
+  &lt;div class="toast__progress"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-toast class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Semantic Variants</h2>
+                <p class="doc-block__summary">
+                    Toasts support semantic variants mirroring the Feedback System: neutral, info,
+                    success, warning and danger/error. Variants change background, border and text
+                    colors using theme-level semantic tokens.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="toast toast--neutral toast--compact" role="status" aria-live="polite">
+                        <div class="toast__body">
+                            <div class="toast__message">Draft saved locally.</div>
+                        </div>
+                        <button class="toast__close" type="button" aria-label="Dismiss">
+                            &times;
+                        </button>
+                        <div class="toast__progress"></div>
+                    </div>
+
+                    <div class="toast toast--info toast--compact" role="status" aria-live="polite">
+                        <div class="toast__body">
+                            <div class="toast__message">We&apos;ve queued your export.</div>
+                        </div>
+                        <button class="toast__close" type="button" aria-label="Dismiss">
+                            &times;
+                        </button>
+                        <div class="toast__progress"></div>
+                    </div>
+
+                    <div class="toast toast--success toast--compact" role="status" aria-live="polite">
+                        <div class="toast__body">
+                            <div class="toast__message">User invited.</div>
+                        </div>
+                        <button class="toast__close" type="button" aria-label="Dismiss">
+                            &times;
+                        </button>
+                        <div class="toast__progress"></div>
+                    </div>
+
+                    <div class="toast toast--warning toast--compact" role="status" aria-live="polite">
+                        <div class="toast__body">
+                            <div class="toast__message">Sync delayed: retrying in 30s.</div>
+                        </div>
+                        <button class="toast__close" type="button" aria-label="Dismiss">
+                            &times;
+                        </button>
+                        <div class="toast__progress"></div>
+                    </div>
+
+                    <div class="toast toast--danger toast--compact" role="alert" aria-live="assertive">
+                        <div class="toast__body">
+                            <div class="toast__message">Payment failed. Check your card.</div>
+                        </div>
+                        <button class="toast__close" type="button" aria-label="Dismiss error">
+                            &times;
+                        </button>
+                        <div class="toast__progress"></div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="toast toast--neutral"&gt;...&lt;/div&gt;
+&lt;div class="toast toast--info"&gt;...&lt;/div&gt;
+&lt;div class="toast toast--success"&gt;...&lt;/div&gt;
+&lt;div class="toast toast--warning"&gt;...&lt;/div&gt;
+
+&lt;div class="toast toast--danger"
+     role="alert"
+     aria-live="assertive"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-toast class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Inline vs Floating Toasts</h2>
+                <p class="doc-block__summary">
+                    The same component can be used as a floating toast inside a stack or as an inline
+                    block within a card or section. Inline toasts remove elevation and progress bar,
+                    aligning visually with surrounding content.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm authoring">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="card">
+                        <div class="card__body card__section-stack">
+                            <h3 class="text-sm font-semibold">Billing Settings</h3>
+                            <p class="text-sm text-muted">
+                                Changes to your billing details may take a few minutes to propagate.
+                            </p>
+
+                            <div class="toast toast--inline toast--info">
+                                <div class="toast__body">
+                                    <div class="toast__title">Heads up</div>
+                                    <div class="toast__message">
+                                        Your plan will renew on 1st of next month.
+                                    </div>
+                                </div>
+                                <button class="toast__close" type="button" aria-label="Dismiss">
+                                    &times;
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        Inline toasts sit inside the layout flow and use the same semantic variants
+                        as floating toasts, but with no elevation or progress bar.
+                    </p>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="toast-stack toast-stack--bottom-right"&gt;
+  &lt;div class="toast toast--success"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="card"&gt;
+  &lt;div class="card__body"&gt;
+
+    &lt;div class="toast toast--inline toast--info"&gt;
+      &lt;div class="toast__body"&gt;
+        &lt;div class="toast__title"&gt;Heads up&lt;/div&gt;
+        &lt;div class="toast__message"&gt;
+          Your plan will renew on 1st of next month.
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;button class="toast__close" type="button" aria-label="Dismiss"&gt;
+        &amp;times;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-toast class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split-right">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Auto-Dismiss &amp; Duration</h2>
+                <p class="doc-block__summary">
+                    Toasts expose a <code>--toast-duration</code> property used by
+                    the progress bar. JavaScript can read the same value to schedule auto-dismiss.
+                    Keep durations short, predictable and token-consistent.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="toast toast--success toast--compact" role="status" aria-live="polite"
+                         style="--toast-duration: 4000ms;">
+                        <div class="toast__body">
+                            <div class="toast__message">Checklist completed.</div>
+                        </div>
+                        <button class="toast__close" type="button" aria-label="Dismiss">
+                            &times;
+                        </button>
+                        <div class="toast__progress"></div>
+                    </div>
+
+                    <div class="toast toast--warning toast--compact" role="status" aria-live="polite"
+                         style="--toast-duration: 9000ms;">
+                        <div class="toast__body">
+                            <div class="toast__message">Connection unstable. Retrying…</div>
+                        </div>
+                        <button class="toast__close" type="button" aria-label="Dismiss">
+                            &times;
+                        </button>
+                        <div class="toast__progress"></div>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        Use shorter durations for success/info, slightly longer for warnings. Critical
+                        errors should remain visible until dismissed.
+                    </p>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;div class="toast toast--success"&gt;...&lt;/div&gt;
+
+&lt;div class="toast toast--success"
+     style="--toast-duration: 4000ms;"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;div class="toast toast--warning"
+     style="--toast-duration: 9000ms;"&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-toast class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Motion &amp; Reduced Motion</h2>
+                <p class="doc-block__summary">
+                    Toast animations use token-based easing and durations, with automatic fallbacks
+                    for users who prefer reduced motion. Enter and exit transitions are subtle by
+                    default and must not be overridden with aggressive effects.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <ul class="text-sm">
+                        <li>Entry uses a short slide-and-fade animation based on
+                            <code>var(--transition-normal)</code> and
+                            <code>var(--ease-out)</code>.
+                        </li>
+                        <li>Exit uses a slightly faster fade-out with
+                            <code>var(--transition-fast)</code> and
+                            <code>var(--ease-in)</code>.
+                        </li>
+                        <li><code>prefers-reduced-motion: reduce</code> disables
+                            animations and relies on opacity only.
+                        </li>
+                        <li>Do not chain additional JS-based animations on top of the core motion;
+                            instead, adjust tokens if needed.
+                        </li>
+                        <li>Progress bar animation uses the same duration as
+                            <code>--toast-duration</code> to stay in sync with
+                            auto-dismiss.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft">
+<pre><code>@keyframes toast-slide-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toast-slide-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(6px); }
+}
+
+@keyframes toast-progress {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast,
+  .toast--exiting {
+    animation: none;
+    transition: none;
+  }
+
+  .toast__progress::before {
+    animation-duration: var(--motion-none);
+  }
+}</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-toast class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; Usage Rules</h2>
+                <p class="doc-block__summary">
+                    Contract for accessible, semantic, token-driven toast notifications. Ensure
+                    toasts remain concise, dismissible, keyboard-accessible and correctly scoped to
+                    their semantic meaning and urgency.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use semantic modifiers
+                            (<code>.toast--info</code>,
+                            <code>.toast--success</code>,
+                            <code>.toast--warning</code>,
+                            <code>.toast--danger</code>,
+                            <code>.toast--neutral</code>) to convey real meaning.
+                        </li>
+                        <li>Set <code>role="status"</code> and
+                            <code>aria-live="polite"</code> for non-critical updates,
+                            reserving <code>role="alert"</code> for high-severity
+                            errors.
+                        </li>
+                        <li>Always provide accessible labels for dismiss buttons:
+                            <code>aria-label="Dismiss notification"</code>.
+                        </li>
+                        <li>Keep toast content short: one title or one sentence. Use dialogs or
+                            banners for complex messages.
+                        </li>
+                        <li>Ensure all toast dismissal controls are reachable via keyboard and expose
+                            visible focus states.
+                        </li>
+                        <li>Use inline toasts for contextual notices within cards; use floating stacks
+                            for global or cross-context events.
+                        </li>
+                        <li>Respect user motion preferences; rely on existing token-based animations
+                            rather than hard-coded custom effects.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>Don’t overload toasts with long paragraphs, lists or complex forms—this
+                            breaks the ephemeral contract.
+                        </li>
+                        <li>Don’t use <code>.toast--danger</code> for low-risk or
+                            informational events; reserve it for real problems.
+                        </li>
+                        <li>Don’t remove or override the dismiss button; every toast must be
+                            dismissible by the user.
+                        </li>
+                        <li>Don’t use multiple conflicting semantic variants on the same toast or mix
+                            conflicting messages in a single notification.
+                        </li>
+                        <li>Don’t trigger rapid sequences of toasts; batch or debounce where possible
+                            to avoid overwhelming the user.
+                        </li>
+                        <li>Don’t animate toasts with large translations, bounces or spins; keep
+                            motion subtle and token-consistent.
+                        </li>
+                        <li>Don’t hijack toast areas for persistent banners; use banners or alerts for
+                            long-lived feedback instead.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Use semantic modifiers (.toast--info/success/warning/danger/neutral) for real meaning.
+2. Use role="status" + aria-live="polite" for non-critical events; role="alert" only for failures.
+3. Provide aria-labels for all dismiss buttons and keep them keyboard accessible.
+4. Keep toasts short-lived, concise and dismissible; use banners/dialogs for complex content.
+5. Configure durations via --toast-duration and align JS auto-dismiss with the same value.
+6. Respect prefers-reduced-motion; never add aggressive or custom motion on top.
+7. Avoid flooding users with toasts; queue, debounce or aggregate events as needed.
+8. Use inline toasts for local context; use floating stacks for global or cross-context status.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

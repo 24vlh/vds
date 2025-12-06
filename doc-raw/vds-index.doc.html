@@ -1,0 +1,266 @@
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner section__stack-lg">
+        <div class="section__stack">
+            <h1>VLAH DESIGN SYSTEM (VDS)</h1>
+            <p class="leading-relaxed text-soft text-lg">
+                A modular, token-driven design system built for clarity,
+                durability, and production-grade engineering across all VLAH Group
+                digital properties. VDS provides identity, layout, components,
+                themes, utilities, and documentation tooling — all structured as
+                independent layers with strict contracts.
+            </p>
+            <p class="text-sm text-muted">
+                This landing page introduces the full architecture of VDS,
+                explains how to navigate this documentation, and outlines the
+                expectations, guarantees, and structure of each subsystem.
+            </p>
+        </div>
+
+        <p class="text-sm text-muted">
+            Everything here is built from first principles:
+            spacing tokens, color primitives, theme layers, structural layout rules,
+            semantic density, components, and documentation tooling.
+            VDS is deterministic: every file binds to a purpose,
+            exposes a clear contract, and extends the system without mutation.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">System Architecture</h2>
+                <p class="doc-block__summary">
+                    VDS is organised in layers. Each layer has a precise responsibility,
+                    guaranteed stability rules, and zero side-effects on adjacent layers.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm text-muted">Core Layers</h3>
+                    <ul class="text-sm section__stack">
+                        <li><strong>Primitives:</strong> spacing, typography scales, radii, borders, shadows,
+                            transitions.
+                        </li>
+                        <li><strong>Themes:</strong> slate, navy, carbon; semantic tokens; dark/light pairs.</li>
+                        <li><strong>Base Layer:</strong> canonical resets, base elements, accessibility defaults.</li>
+                        <li><strong>Identity Layer:</strong> VLAH brand, logo marks, color locks, symbolic rules.</li>
+                        <li><strong>Layout Layer:</strong> containers, grids, sections, responsive structure.</li>
+                    </ul>
+
+                    <h3 class="text-sm text-muted mt-6">Component Layers</h3>
+                    <ul class="text-sm section__stack">
+                        <li>Accordion, Buttons, Tables, Tabs</li>
+                        <li>Forms & Advanced Forms</li>
+                        <li>Navigation, Header & Footer</li>
+                        <li>Content Blocks, Sections, Skeleton, Hero</li>
+                        <li>Toasts, Tooltips, Popovers, Overlays</li>
+                        <li>Icons, Charts, Command Palette</li>
+                        <li>Feedback (alerts, messages, semantic feedback)</li>
+                    </ul>
+
+                    <h3 class="text-sm text-muted mt-6">Utility Layer</h3>
+                    <ul class="text-sm section__stack">
+                        <li>Spacing utilities</li>
+                        <li>Flex utilities</li>
+                        <li>Typography utilities</li>
+                        <li>Color & surface utilities</li>
+                        <li>Display, interactivity, density overrides</li>
+                    </ul>
+
+                    <h3 class="text-sm text-muted mt-6">Documentation Layer</h3>
+                    <ul class="text-sm section__stack">
+                        <li><strong>doc-block.css:</strong> documentation UI</li>
+                        <li><strong>authoring.css:</strong> prose-enhancement, footnotes, code blocks, callouts</li>
+                        <li><strong>examples + specimen:</strong> consistent block structure for demos</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+                    <pre class="doc-block__code"><code>
+primitives.css
+themes/*.css
+base.css
+identity.css
+layout.css
+
+components/*
+    accordion.css
+    authoring.css
+    buttons.css
+    charts.css
+    command.css
+    content-blocks.css
+    doc-block.css
+    ...
+    forms.css
+    ...
+    navigation.css
+    overlays.css
+    tables.css
+    tabs.css
+    toasts.css
+    tooltips-popovers.css
+    ...
+    utilities.css
+                    </code></pre>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Documentation Navigation</h2>
+                <p class="doc-block__summary">
+                    Documentation pages are loaded dynamically into <code>#doc-content</code>.
+                    Click any item in the left/right footer navigation to load the corresponding
+                    <code>vds-*.doc.html</code> specification.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">How to use this documentation</h3>
+                    <ul class="text-sm section__stack">
+                        <li><strong>Click a topic</strong> in the footer navigation.</li>
+                        <li><strong>doc-loader.js</strong> injects the requested file into <code>#doc-content</code>.
+                        </li>
+                        <li>Every topic is a self-contained file: examples + preview + code + rules.</li>
+                        <li>All examples follow the <strong>doc-block</strong> structure for consistency.</li>
+                        <li>Components never depend on documentation styles — production code stays clean.</li>
+                    </ul>
+
+                    <h3 class="text-sm mt-6">Structure of each doc page</h3>
+                    <ul class="text-sm section__stack">
+                        <li><strong>Introduction:</strong> what the component does.</li>
+                        <li><strong>Specimen:</strong> live UI examples.</li>
+                        <li><strong>Installation & dependencies:</strong> required CSS files.</li>
+                        <li><strong>Anatomy:</strong> exact class contract.</li>
+                        <li><strong>States & variants:</strong> semantic/density layers.</li>
+                        <li><strong>Usage rules:</strong> when to use, when not to use.</li>
+                        <li><strong>Accessibility:</strong> semantic behaviour & keyboard rules.</li>
+                    </ul>
+
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Documentation Index</h2>
+                <p class="doc-block__summary">
+                    Quick index of all available VDS documentation pages. Each page is loaded
+                    dynamically from the <code>/doc-raw/</code> folder.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-3 section__grid-md section__stack">
+                <div class="section__stack-sm">
+                    <h3 class="text-xs text-muted text-mono">Core</h3>
+                    <ul class="text-sm section__stack">
+                        <li>VDS Identity</li>
+                        <li>Base Layer</li>
+                        <li>Layout</li>
+                        <li>Authoring Layer</li>
+                        <li>Typography</li>
+                        <li>Utilities</li>
+                    </ul>
+                </div>
+
+                <div class="section__stack-sm">
+                    <h3 class="text-xs text-muted text-mono">Components</h3>
+                    <ul class="text-sm section__stack">
+                        <li>Accordion</li>
+                        <li>Buttons</li>
+                        <li>Charts</li>
+                        <li>Command Palette</li>
+                        <li>Content Blocks</li>
+                        <li>Feedback (alerts & messages)</li>
+                        <li>Forms / Advanced Forms</li>
+                        <li>Navigation</li>
+                        <li>Header & Footer</li>
+                        <li>Hero</li>
+                        <li>Sections</li>
+                        <li>Skeleton</li>
+                        <li>Tables</li>
+                        <li>Tabs</li>
+                        <li>Toasts</li>
+                        <li>Tooltips & Popovers</li>
+                    </ul>
+                </div>
+
+                <div class="section__stack-sm">
+                    <h3 class="text-xs text-muted text-mono">Patterns & Overlays</h3>
+                    <ul class="text-sm section__stack">
+                        <li>Overlays</li>
+                        <li>Flows</li>
+                        <li>Content Blocks</li>
+                        <li>Density Layers</li>
+                        <li>Semantic Surface Tokens</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Using VDS in Production</h2>
+                <p class="doc-block__summary">
+                    This section describes how to include VDS in real products:
+                    minimal bundles, theme selection, component imports, and semantic guarantees.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Production Principles</h3>
+                    <ul class="text-sm section__stack">
+                        <li>Load only the CSS files required for your features.</li>
+                        <li>Themes are interchangeable: slate, navy, carbon.</li>
+                        <li>Components never modify base elements.</li>
+                        <li>Utilities override locally — no global mutations.</li>
+                        <li>Density classes (<code>.density-a</code>, <code>.density-c</code>) are opt-in.</li>
+                    </ul>
+
+                    <h3 class="text-sm mt-6">Minimal viable bundle</h3>
+                    <pre><code>&lt;link rel="stylesheet" href="primitives.css"&gt;
+&lt;link rel="stylesheet" href="themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="base.css"&gt;
+&lt;link rel="stylesheet" href="layout.css"&gt;
+&lt;link rel="stylesheet" href="utilities.css"&gt;
+&lt;link rel="stylesheet" href="components/buttons.css"&gt;
+&lt;link rel="stylesheet" href="components/forms.css"&gt;</code></pre>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body section__stack-sm text-sm">
+                            <p class="text-muted text-xs text-mono">Theme switching</p>
+                            <p>You can toggle themes at runtime using the
+                                <code>data-theme</code> attribute on <code>&lt;html&gt;</code>:</p>
+                            <pre><code>&lt;html data-theme="navy-dark"&gt;</code></pre>
+                            <p>The theme-switcher UI included in this documentation is optional and not required in
+                                production.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

@@ -1,0 +1,10 @@
+{
+  "name": "vds",
+  "scripts": {
+    "doc": "node static/js/server.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "express": "^5.1.0"
+  }
+}

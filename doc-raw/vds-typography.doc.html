@@ -1,0 +1,911 @@
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section">
+    <div class="section__inner">
+        <header class="section__header">
+            <div class="section__eyebrow">Foundations</div>
+            <h1 class="section__title">VDS Typography</h1>
+            <p class="section__subtitle">
+                Token-driven type system for headings, body, metadata and long-form prose.
+                Components do not invent type; they compose this layer.
+            </p>
+            <p class="text-sm text-muted">
+                Source: <code>typography.css</code> · Depends on
+                <code>base.css</code>,
+                <code>primitives.css</code>,
+                and one active theme in <code>/themes/*.css</code>.
+            </p>
+        </header>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Layer stack</h2>
+                <p class="doc-block__summary">
+                    Typography operates on top of primitives, base and theme tokens.
+                    It does not define layout or utilities. Load in this order.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <ul class="text-sm">
+                        <li><code>primitives.css</code> — core scales (type, spacing, radii).</li>
+                        <li><code>base.css</code> — resets, body, generic text helpers.</li>
+                        <li><code>typography.css</code> — headings, paragraphs, prose layout.</li>
+                        <li><code>themes/slate.css</code> (or other) — colors and contrast.</li>
+                        <li><code>sections.css</code> / <code
+                                >content-blocks.css</code> — used here for documentation layout only.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="./css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="./css/base.css"&gt;
+&lt;link rel="stylesheet" href="./css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/navy.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/carbon.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/sections.css"&gt;
+&lt;link rel="stylesheet" href="./css/content-blocks.css"&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Type scale & tokens</h2>
+                <p class="doc-block__summary">
+                    All typography is driven by tokenised font sizes and line heights.
+                    Components refer to <code>--text-*</code> and <code>--line-height-*</code> rather than hard-coded
+                    values.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="typography">
+                        <p class="text-xs text-muted text-mono">Token preview</p>
+                        <p style="font-size: var(--text-xs); line-height: var(--line-height-snug);">
+                            XS · <code>--text-xs</code>
+                        </p>
+                        <p style="font-size: var(--text-sm); line-height: var(--line-height-snug);">
+                            SM · <code>--text-sm</code>
+                        </p>
+                        <p style="font-size: var(--text-base); line-height: var(--line-height-normal);">
+                            BASE · <code>--text-base</code>
+                        </p>
+                        <p style="font-size: var(--text-lg); line-height: var(--line-height-relaxed);">
+                            LG · <code>--text-lg</code>
+                        </p>
+                        <p style="font-size: var(--text-xl); line-height: var(--line-height-relaxed);">
+                            XL · <code>--text-xl</code>
+                        </p>
+                        <p style="font-size: var(--text-2xl); line-height: var(--line-height-tight);">
+                            2XL · <code>--text-2xl</code>
+                        </p>
+                        <p style="font-size: var(--text-3xl); line-height: var(--line-height-tight);">
+                            3XL · <code>--text-3xl</code>
+                        </p>
+                        <p style="font-size: var(--text-4xl); line-height: var(--line-height-tight);">
+                            4XL · <code>--text-4xl</code>
+                        </p>
+                        <p style="font-size: var(--text-5xl); line-height: var(--line-height-tight);">
+                            5XL · <code>--text-5xl</code>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>/* Examples (from primitives.css / base.css) */
+:root {
+    /* Font families */
+    --font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", sans-serif;
+    --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+    /* Type scale (example names) */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3.25rem;
+
+    /* Line heights */
+    --line-height-tight: 1.2;
+    --line-height-snug: 1.35;
+    --line-height-base: 1.5;
+    --line-height-relaxed: 1.7;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section section--b">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Heading hierarchy</h2>
+                <p class="doc-block__summary">
+                    Semantically correct headings (<code>h1–h6</code>) with tokenised sizes and consistent spacing.
+                    First heading inside <code>.typography</code> has its top margin collapsed.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="typography">
+                        <h1>H1 · Page / document title</h1>
+                        <p>Used once per page / document. Typically rendered by layout, not inline content.</p>
+
+                        <h2>H2 · Section title</h2>
+                        <p>Major sections of a page. Think “chapters” in documentation.</p>
+
+                        <h3>H3 · Subsection title</h3>
+                        <p>Use for important subtopics inside an H2 section.</p>
+
+                        <h4>H4 · Minor heading</h4>
+                        <p>Sub-headings within an H3 area, often used with smaller blocks.</p>
+
+                        <h5>H5 · Label heading</h5>
+                        <p>Useful for inline labels, sidebars, or metadata sections.</p>
+
+                        <h6>H6 · Small heading</h6>
+                        <p>Use sparingly. Often replaced by <code>.text-xs</code> labels instead.</p>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="typography"&gt;
+    &lt;h1&gt;H1 · Page / document title&lt;/h1&gt;
+    &lt;p&gt;Used once per page / document.&lt;/p&gt;
+
+    &lt;h2&gt;H2 · Section title&lt;/h2&gt;
+    &lt;p&gt;Major sections of a page.&lt;/p&gt;
+
+    &lt;h3&gt;H3 · Subsection title&lt;/h3&gt;
+    &lt;p&gt;Subtopics inside an H2 section.&lt;/p&gt;
+
+    &lt;h4&gt;H4 · Minor heading&lt;/h4&gt;
+    &lt;h5&gt;H5 · Label heading&lt;/h5&gt;
+    &lt;h6&gt;H6 · Small heading&lt;/h6&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Body text &amp; rhythm</h2>
+                <p class="doc-block__summary">
+                    Paragraphs use base font size and relaxed line height. Vertical rhythm
+                    is controlled via tokens rather than ad-hoc margins.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="typography">
+                        <p>
+                            This is a standard paragraph inside <code>.typography</code>.
+                            It uses the base font size, a balanced line height and tokenised vertical spacing.
+                        </p>
+                        <p>
+                            Subsequent paragraphs maintain consistent rhythm. Do not add manual
+                            margins between paragraphs; rely on the system spacing instead.
+                        </p>
+                        <p class="text-sm text-muted">
+                            Use <code>.text-sm</code> or <code>.text-xs</code>
+                            for metadata, labels or supporting descriptions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="typography"&gt;
+    &lt;p&gt;
+        This is a standard paragraph inside &lt;code&gt;.typography&lt;/code&gt;.
+        It uses the base font size and tokenised vertical rhythm.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        Subsequent paragraphs use the same spacing. Avoid manual margins.
+    &lt;/p&gt;
+
+    &lt;p class="text-sm text-muted"&gt;
+        Use smaller sizes for metadata or helper text.
+    &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section section--b">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Inline semantics</h2>
+                <p class="doc-block__summary">
+                    Semantic tags are styled minimally: <code>&lt;strong&gt;</code>,
+                    <code>&lt;em&gt;</code>, inline <code>&lt;code&gt;</code> and
+                    helper badges via <code>.badge*</code>.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="typography">
+                        <p>
+                            <strong>Strong text</strong> is used for emphasis,
+                            <em>emphasis text</em> for nuance. Combine them sparingly.
+                        </p>
+
+                        <p>
+                            Inline code like <code>npm run build</code> or
+                            <code>POST /api/v1/orders</code> uses the mono font
+                            and a subtle tokenised background.
+                        </p>
+
+                        <p>
+                            You can embed <span class="badge">beta</span>,
+                            <span class="badge semantic-info">info</span>,
+                            <span class="badge semantic-success">success</span>,
+                            <span class="badge semantic-warning">warning</span>,
+                            <span class="badge semantic-danger">danger</span>
+                            badges directly into prose.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="typography"&gt;
+    &lt;p&gt;
+        &lt;strong&gt;Strong&lt;/strong&gt; and &lt;em&gt;emphasis&lt;/em&gt; text.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        Inline code like &lt;code&gt;npm run build&lt;/code&gt; or
+        &lt;code&gt;POST /api/v1/orders&lt;/code&gt; uses mono font and
+        tokenised background / border.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        Badges:
+        &lt;span class="badge"&gt;beta&lt;/span&gt;
+        &lt;span class="badge semantic-info"&gt;info&lt;/span&gt;
+        &lt;span class="badge semantic-success"&gt;success&lt;/span&gt;
+        &lt;span class="badge semantic-warning"&gt;warning&lt;/span&gt;
+        &lt;span class="badge semantic-danger"&gt;danger&lt;/span&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Lists &amp; nested structure</h2>
+                <p class="doc-block__summary">
+                    Ordered and unordered lists use tokenised spacing, including nested
+                    lists and multi-paragraph list items.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="typography">
+                        <h3>Unordered list</h3>
+                        <ul>
+                            <li>Single-line item.</li>
+                            <li>
+                                Multi-line item with a paragraph:
+                                <p>Second paragraph inside the same list item.</p>
+                            </li>
+                            <li>
+                                Nested list:
+                                <ul>
+                                    <li>Nested item A</li>
+                                    <li>Nested item B</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h3>Ordered list</h3>
+                        <ol>
+                            <li>First step</li>
+                            <li>Second step</li>
+                            <li>Third step</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="typography"&gt;
+    &lt;h3&gt;Unordered list&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Single-line item.&lt;/li&gt;
+        &lt;li&gt;
+            Multi-line item with a paragraph:
+            &lt;p&gt;Second paragraph inside the same list item.&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            Nested list:
+            &lt;ul&gt;
+                &lt;li&gt;Nested item A&lt;/li&gt;
+                &lt;li&gt;Nested item B&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Ordered list&lt;/h3&gt;
+    &lt;ol&gt;
+        &lt;li&gt;First step&lt;/li&gt;
+        &lt;li&gt;Second step&lt;/li&gt;
+        &lt;li&gt;Third step&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section section--b">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Blockquotes &amp; pull quotes</h2>
+                <p class="doc-block__summary">
+                    Use <code>&lt;blockquote&gt;</code> for citations and
+                    <code>.pullquote</code> for highlighted, editorial quotes.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+
+                <div class="doc-block__preview">
+                    <div class="typography">
+                        <blockquote>
+                            “Good typography is invisible. It lets the content do the talking
+                            while keeping the reader oriented and comfortable.”
+                        </blockquote>
+
+                        <div class="pullquote">
+                            “Use pull quotes sparingly. They are design accents, not the primary
+                            way to structure content.”
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="typography"&gt;
+    &lt;blockquote&gt;
+        “Good typography is invisible. It lets the content do the talking.”
+    &lt;/blockquote&gt;
+
+    &lt;div class="pullquote"&gt;
+        “Use pull quotes sparingly.”
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Figures &amp; captions</h2>
+                <p class="doc-block__summary">
+                    Use <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>
+                    for images, diagrams and code samples that require a caption.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+
+                <div class="doc-block__preview">
+                    <div class="typography">
+                        <figure>
+                            <div class="content-block content-block--surface">
+                                <div class="content-block__body">
+                                    <div class="text-sm text-muted">
+                                        [Placeholder chart / image]
+                                    </div>
+                                </div>
+                            </div>
+                            <figcaption>
+                                Example figure caption explaining what the user is looking at.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="typography"&gt;
+    &lt;figure&gt;
+        &lt;img src="chart.png" alt="Monthly revenue chart"&gt;
+        &lt;figcaption&gt;
+            Monthly revenue by segment, FY 2025.
+        &lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Prose tables vs component tables</h2>
+                <p class="doc-block__summary">
+                    <code>.typography</code> styles only pure HTML tables
+                    (<code>table:not(.table)</code>). Component tables
+                    (<code>&lt;table class="table"&gt;</code>) are owned by
+                    <code>tables.css</code>.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="typography">
+                        <h3>Prose table (documentation, articles)</h3>
+                        <table>
+                            <caption>Feature comparison (prose table)</caption>
+                            <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Basic</th>
+                                <th>Pro</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>SSO</td>
+                                <td>–</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Audit log</td>
+                                <td>–</td>
+                                <td>Included</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Component table (UI / product surface)</h3>
+                        <div class="table-wrapper">
+                            <table class="table table--b table--striped">
+                                <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Alice</td>
+                                    <td>Admin</td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td>Bob</td>
+                                    <td>Viewer</td>
+                                    <td>Invited</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-xs text-muted">
+                            The component table is not styled by <code>typography.css</code>;
+                            it is owned by <code>tables.css</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="typography"&gt;
+    &lt;table&gt;
+        &lt;caption&gt;Feature comparison&lt;/caption&gt;
+        &lt;thead&gt;…&lt;/thead&gt;
+        &lt;tbody&gt;…&lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div class="table-wrapper"&gt;
+    &lt;table class="table table--b table--striped"&gt;
+        &lt;thead&gt;…&lt;/thead&gt;
+        &lt;tbody&gt;…&lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Code blocks</h2>
+                <p class="doc-block__summary">
+                    <code>&lt;pre&gt;&lt;code&gt;</code> blocks are styled for readability,
+                    with scrollable overflow and tokenised background / border.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="typography">
+                        <pre><code>// Example: simple API handler
+export async function handler(req, res) {
+  if (!req.user) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  const data = await loadDashboard(req.user.id);
+  return res.json(data);
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="typography"&gt;
+    &lt;pre&gt;&lt;code&gt;
+// Example: simple API handler
+export async function handler(req, res) {
+  if (!req.user) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  const data = await loadDashboard(req.user.id);
+  return res.json(data);
+}
+    &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section section--b">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Footnotes &amp; references</h2>
+                <p class="doc-block__summary">
+                    Footnotes live at the end of a <code>.typography</code> block using
+                    <code>.footnotes</code>, <code>.fn-ref</code> and
+                    <code>.fn-backref</code>. The implementation is token-driven and
+                    centralised in <code>typography.css</code>.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="typography">
+                        <p>
+                            This paragraph contains a fact with a footnote
+                            <sup class="fn-ref"><a href="#fn-1" id="fnRef-1">1</a></sup>.
+                        </p>
+
+                        <section data-vds-dock-block data-vds-content-block data-vds-typography class="footnotes" aria-label="Footnotes">
+                            <ol>
+                                <li id="fn-1">
+                                    <p>
+                                        Example footnote text, giving additional context or citation
+                                        for the statement above.
+                                        <a class="fn-backref" href="#fnRef-1" aria-label="Back to content">↩</a>
+                                    </p>
+                                </li>
+                            </ol>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="typography"&gt;
+    &lt;p&gt;
+        This paragraph contains a fact with a footnote
+        &lt;sup class="fn-ref"&gt;&lt;a href="#fn-1" id="fnRef-1"&gt;1&lt;/a&gt;&lt;/sup&gt;.
+    &lt;/p&gt;
+
+    &lt;section class="footnotes" aria-label="Footnotes"&gt;
+        &lt;ol&gt;
+            &lt;li id="fn-1"&gt;
+                &lt;p&gt;
+                    Example footnote text.
+                    &lt;a class="fn-backref" href="#fnRef-1" aria-label="Back to content"&gt;↩&lt;/a&gt;
+                &lt;/p&gt;
+            &lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/section&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Full specimen</h2>
+                <p class="doc-block__summary">
+                    A condensed page combining headings, paragraphs, lists, code, prose tables
+                    and footnotes inside a single <code>.typography</code> block.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="typography">
+                                <h1>Typography specimen</h1>
+                                <p>
+                                    This specimen demonstrates the default behaviour of
+                                    <code>typography.css</code> for product documentation
+                                    and long-form content.
+                                </p>
+
+                                <h2>Section heading</h2>
+                                <p>
+                                    Use headings to structure content hierarchically.
+                                    Body text remains simple, token-driven and readable.
+                                </p>
+
+                                <h3>Inline semantics</h3>
+                                <p>
+                                    Combine <strong>strong emphasis</strong>,
+                                    <em>italic emphasis</em> and inline code like
+                                    <code>GET /api/v1/example</code> when necessary.
+                                    Add inline badges such as
+                                    <span class="badge semantic-info">info</span>
+                                    or
+                                    <span class="badge semantic-success">stable</span>
+                                    to mark status.
+                                </p>
+
+                                <h3>Lists</h3>
+                                <ul>
+                                    <li>Token-driven rhythm for lists.</li>
+                                    <li>Nested lists are supported without custom spacing.</li>
+                                </ul>
+
+                                <h3>Prose table</h3>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Key</th>
+                                        <th>Value</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Version</td>
+                                        <td>2.1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Layer</td>
+                                        <td>Typography</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Code block</h3>
+                                <pre><code>// Pseudo-config
+{
+  "layer": "typography",
+  "version": "2.1",
+  "tokens": ["type-scale", "line-height", "prose"]
+}</code></pre>
+
+                                <p>
+                                    Footnotes are available for additional details
+                                    <sup class="fn-ref"><a href="#fn-specimen-1" id="fnRef-specimen-1">1</a></sup>.
+                                </p>
+
+                                <section data-vds-dock-block data-vds-content-block data-vds-typography class="footnotes" aria-label="Footnotes">
+                                    <ol>
+                                        <li id="fn-specimen-1">
+                                            <p>
+                                                Specimen footnote. In product documentation,
+                                                this might reference an external standard or
+                                                internal specification.
+                                                <a class="fn-backref"
+                                                   href="#fnRef-specimen-1"
+                                                   aria-label="Back to content">↩</a>
+                                            </p>
+                                        </li>
+                                    </ol>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="card"&gt;
+    &lt;div class="card__body"&gt;
+        &lt;div class="typography"&gt;
+            &lt;h1&gt;Typography specimen&lt;/h1&gt;
+            &lt;p&gt;...&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-typography class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Typography is semantic-first: headings, paragraphs, lists, tables and code blocks
+                    must use correct HTML elements. Appearance is token-driven; readability, rhythm
+                    and structure come from real semantics, not classes. Contrast and legibility are
+                    theme-controlled.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use semantic HTML: <code>&lt;h1–h6&gt;</code>, <code>&lt;p&gt;</code>,
+                            <code>&lt;ul/ol/li&gt;</code>, <code>&lt;blockquote&gt;</code>,
+                            <code>&lt;figure&gt;</code>, <code>&lt;figcaption&gt;</code>,
+                            <code>&lt;pre&gt;&lt;code&gt;</code>.
+                        </li>
+
+                        <li>
+                            Maintain heading hierarchy — one <code>&lt;h1&gt;</code> per document,
+                            <code>&lt;h2&gt;</code> for major sections, <code>&lt;h3&gt;</code> for subsections, etc.
+                            Typography tokens handle visual size; headings handle structure.
+                        </li>
+
+                        <li>
+                            Wrap long-form content in <code>.typography</code> to access spacing, list,
+                            prose-table, code block and footnote rules.
+                        </li>
+
+                        <li>
+                            Use <code>&lt;caption&gt;</code> for prose tables that require explanation or context.
+                        </li>
+
+                        <li>
+                            Keep inline code meaningful — short technical identifiers only.
+                            Rendering uses mono font + subtle background/border tokens.
+                        </li>
+
+                        <li>
+                            Use proper list semantics; nested lists inherit token-driven spacing automatically.
+                        </li>
+
+                        <li>
+                            Treat <code>&lt;blockquote&gt;</code> as quoted content with attribution; use
+                            <code>.pullquote</code> only for editorial emphasis.
+                        </li>
+
+                        <li>
+                            Keep figure captions tied to images and diagrams via <code>&lt;figcaption&gt;</code>.
+                        </li>
+
+                        <li>
+                            Maintain token-driven readability:
+                            <strong>no manual margins, font-sizes, or ad-hoc spacing</strong>.
+                        </li>
+
+                        <li>
+                            Use footnotes with <code>.fn-ref</code> and <code>.footnotes</code>;
+                            links must preserve bidirectional navigation.
+                        </li>
+
+                        <li>
+                            Ensure contrast tokens from active theme provide accessible text/background levels.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t use headings (<code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, …)
+                            to achieve visual size — respect document outline.
+                        </li>
+
+                        <li>
+                            Don’t place component tables (<code>&lt;table class="table"&gt;</code>) inside
+                            <code>.typography</code> expecting prose styling — they are owned by tables.css.
+                        </li>
+
+                        <li>
+                            Don’t style text with arbitrary inline CSS (font-size, color, margin).
+                            Use tokens and the existing classes.
+                        </li>
+
+                        <li>
+                            Don’t wrap code blocks in arbitrary containers that break scrolling or token padding.
+                        </li>
+
+                        <li>
+                            Don’t use blockquotes as layout tools — they imply quotation semantics.
+                        </li>
+
+                        <li>
+                            Don’t override inline code styles inside prose tables manually.
+                            Component tables already disable code formatting intentionally.
+                        </li>
+
+                        <li>
+                            Don’t fake footnotes by manually shrinking text; use the provided
+                            <code>.footnotes</code>, <code>.fn-ref</code>, and <code>.fn-backref</code> patterns.
+                        </li>
+
+                        <li>
+                            Don’t mix layout concerns (columns, grids, flex) inside
+                            <code>.typography</code>; keep layout in layout/sections layers.
+                        </li>
+
+                        <li>
+                            Don’t rely on colour alone for meaning — emphasize with text, badges,
+                            or structural elements.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Use semantic HTML for all text elements.
+2. Maintain a strict heading hierarchy; visual scale is token-driven.
+3. Wrap long-form content in .typography for rhythm & prose rules.
+4. Prose tables only: component tables belong to tables.css.
+5. Inline code = short identifiers; blocks = pre > code.
+6. Use figure/figcaption for media requiring explanation.
+7. Footnotes require fn-ref, footnotes, fn-backref.
+8. Never override typographic tokens manually.
+9. Typography layer contains no layout logic; keep structure semantic.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

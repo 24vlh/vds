@@ -1,0 +1,39 @@
+/* -------------------------------------------
+   FOOTER OVERRIDES - GRAPHITE LIGHT
+   ------------------------------------------- */
+[data-theme="graphite-light"] footer a {
+    color: #F7F9FC;
+    text-decoration-color: #F7F9FC;
+}
+
+[data-theme="graphite-light"] footer a:hover {
+    color: #F7F9FC;
+}
+
+[data-theme="graphite-light"] footer a:active {
+    color: #FFFFFF;
+}
+
+[data-theme="graphite-light"] footer a:visited {
+    color: #D9E7EF;
+}
+
+/* -------------------------------------------
+   FOOTER OVERRIDES - GRAPHITE DARK
+   ------------------------------------------- */
+[data-theme="graphite-dark"] footer a {
+    color: #F5F7FA;
+    text-decoration-color: #F5F7FA;
+}
+
+[data-theme="graphite-dark"] footer a:hover {
+    color: #F5F7FA;
+}
+
+[data-theme="graphite-dark"] footer a:active {
+    color: #FFFFFF;
+}
+
+[data-theme="graphite-dark"] footer a:visited {
+    color: #C7D0DA;
+}

@@ -1,0 +1,1918 @@
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
+            <header class="doc-block__header">
+                <h1 class="doc-block__title">Base Layer</h1>
+                <p class="doc-block__summary">
+                    <strong>base.css</strong> establishes the universal foundation for the
+                    Vlah Design System. It applies a modern hybrid reset, defines safe HTML
+                    defaults, installs the neutral token layer, and prepares the browser
+                    environment for consistent typography, layout, accessibility, and theme
+                    behaviour.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <p class="text-base">
+                    The base layer has <strong>no colours</strong>, <strong>no layout rules</strong>,
+                    and <strong>no component styling</strong>. It is an intentionally minimal,
+                    predictable surface that ensures every other CSS layer behaves consistently
+                    across browsers and devices.
+                </p>
+
+                <p>Required Load Order</p>
+
+                <ol>
+                    <li>primitives.css (neutral tokens)</li>
+                    <li>theme.css (slate / navy / carbon)</li>
+                    <li>base.css (consumes tokens)</li>
+                </ol>
+
+                <p>This ensures that all colour and typography tokens exist before the base layer references them.</p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Base Philosophy — Hybrid Reset</h2>
+                <p class="doc-block__summary">
+                    VDS does not use a full “reset.css” or a full “normalize.css”. Instead,
+                    it applies a <strong>hybrid reset</strong>: removing unsafe defaults while
+                    preserving useful, expected browser behaviour.
+                </p>
+
+                <p class="text-info">
+                    Note: base.css does not define colours but does consume theme-level colour tokens (e.g.,
+                    background,
+                    text, border). Themes must load before base.css so these tokens exist when used.
+                </p>
+
+                <p class="text-info">
+                    Note: The base layer applies minimal structural styling to &lt;pre&gt; elements — specifically
+                    background
+                    and border surfaces — using theme semantic tokens (<code>--code-bg</code>,
+                    <code>--code-border</code>). These are not aesthetic styles but foundational surfaces expected
+                    by
+                    documentation, monospace, and developer-focused components.
+                </p>
+
+                <p class="text-info">
+                    Note: Link colours are not defined by base.css; they are provided by the active theme. Base.css
+                    consumes these tokens to unify behaviour but does not impose visual design.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <h3 class="doc-block__subtitle">What Hybrid Reset means</h3>
+                <ul class="text-sm">
+                    <li><strong>Preserves natural HTML structure</strong> (headings, lists, form controls)</li>
+                    <li><strong>Normalizes cross-browser inconsistencies</strong> (line-height, box-model, focus)</li>
+                    <li><strong>Removes only unsafe defaults</strong> (margins, tap delays, inconsistent font
+                        inheritance)
+                    </li>
+                    <li><strong>Ensures predictable typography baseline</strong></li>
+                    <li><strong>Installs system tokens</strong> before any theme or component layer loads</li>
+                    <li><strong>Avoids opinionated visual styling</strong> — colours and layout belong elsewhere</li>
+                </ul>
+
+                <h3 class="doc-block__subtitle">Rationale</h3>
+                <p class="text-sm">
+                    An over-aggressive reset forces every design system to rebuild native
+                    behaviours from scratch. A full normalize is too passive. VDS occupies the
+                    middle ground: a surgical, modernized foundation designed specifically for
+                    token-driven UI systems.
+                </p>
+
+                <div class="doc-block__code doc-block__code--numbered">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* Example (curated excerpt) */
+/* 1. Border-box everywhere */
+html {
+    box-sizing: border-box;
+    line-height: var(--line-height-normal);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    min-inline-size: 0;
+}
+
+/* 2. Remove default margins */
+h1, h2, h3, h4, h5, h6,
+p,
+ul, ol,
+figure,
+blockquote,
+dl, dd {
+    margin: 0;
+}
+
+/* 3. Enable smooth, natural text rendering */
+html {
+    line-height: var(--line-height-normal);
+    -webkit-text-size-adjust: 100%;
+}</code></pre>
+                </div>
+                <p class="text-sm text-muted">
+                    Curated excerpts are shown throughout this document. Full source lives in
+                    <code>base.css</code>.
+                </p>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Browser Reset & Normalization</h2>
+                <p class="doc-block__summary">
+                    VDS applies a targeted hybrid reset: the goal is not to erase the browser,
+                    but to eliminate unpredictable behaviours that produce layout or typography
+                    inconsistencies. The reset focuses on margins, box-model, line-height,
+                    interaction defaults, system fonts, and inherited typography.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <h3 class="doc-block__subtitle">Reset summary</h3>
+
+                <div class="table-wrapper">
+                    <table class="table table--bordered table--b">
+                        <thead>
+                        <tr>
+                            <th>Area</th>
+                            <th>VDS Behaviour</th>
+                            <th>Reason</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Box model</td>
+                            <td><code>box-sizing: border-box</code> on all elements</td>
+                            <td>Predictable sizing across components and utilities</td>
+                        </tr>
+                        <tr>
+                            <td>Default margins</td>
+                            <td>Removed from all block elements</td>
+                            <td>Enables controlled vertical rhythm via sections & stacks</td>
+                        </tr>
+                        <tr>
+                            <td>Line height</td>
+                            <td>Normalized to <code>1.5</code> on <code>html</code></td>
+                            <td>Prevents inconsistent line-height&nbsp;inheritance</td>
+                        </tr>
+                        <tr>
+                            <td>Tap-highlight / text-size-adjust</td>
+                            <td>Disabled or normalized</td>
+                            <td>Improves mobile UX and cross-browser consistency</td>
+                        </tr>
+                        <tr>
+                            <td>Font inheritance</td>
+                            <td>Enforced on form controls</td>
+                            <td>Prevents mismatched fonts between inputs/buttons</td>
+                        </tr>
+                        <tr>
+                            <td>Pre/code/mono</td>
+                            <td>Baseline normalized without visual styling</td>
+                            <td>Allows typography layer to define mono behaviour</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="doc-block__code doc-block--compact">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* Curated reset excerpt */
+
+/* Box-model normalization */
+html {
+    box-sizing: border-box;
+    line-height: var(--line-height-normal);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    min-inline-size: 0;
+}
+
+/* Remove built-in block spacing */
+h1, h2, h3, h4, h5, h6,
+p,
+ul, ol,
+figure,
+blockquote,
+dl, dd {
+    margin: 0;
+}
+
+/* Baseline line-height + font normalization */
+html {
+    line-height: var(--line-height-normal);
+    -webkit-text-size-adjust: 100%;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">HTML Defaults</h2>
+                <p class="doc-block__summary">
+                    The base layer defines predictable defaults for <code>html</code>,
+                    <code>body</code>, typography inheritance, scroll behaviour, and
+                    interaction surfaces. These defaults ensure all components render consistently.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <h3 class="doc-block__subtitle">html</h3>
+                <p class="text-sm">
+                    The <code>html</code> element sets the global line-height, system
+                    font-smoothing, and the base font-family (inherited by everything unless
+                    overridden in typography).
+                </p>
+
+                <pre><code>html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}</code></pre>
+
+                <h3 class="doc-block__subtitle">body</h3>
+                <p class="text-sm">
+                    The body’s responsibility is environmental: overflow, default background,
+                    and removing built-in spacing.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-rendering: optimizeLegibility;
+}</code></pre>
+                    <p class="text-sm">
+                        VDS uses a body-as-flex-root model to guarantee a stable page shell, sticky footer behaviour,
+                        and
+                        consistent app-like layouts. This is a deliberate structural choice at the base layer.
+                    </p>
+                </div>
+
+                <h3 class="doc-block__subtitle">Lists</h3>
+                <p class="text-sm">
+                    Lists remain semantically intact. No bullets are removed; no padding is
+                    stripped. Components or utilities control appearance when needed.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>ul, ol {
+    padding-inline-start: var(--space-6);
+}</code></pre>
+
+                    <p class="text-sm">
+                        The native list indentation is preserved conceptually, but the value is normalized through the
+                        spacing token system rather than a browser default or static pixel/rem value.
+                    </p>
+                </div>
+
+                <h3 class="doc-block__subtitle">Images & media</h3>
+                <p class="text-sm">
+                    Images become responsive by default, preventing layout overflow without
+                    forcing aspect ratios.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}</code></pre>
+                </div>
+
+                <h3 class="doc-block__subtitle">Forms</h3>
+                <p class="text-sm">
+                    Form controls inherit typography but avoid opinionated styling.
+                    Interaction defaults are normalized across browsers.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>button,
+input,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Global Structure &amp; SPA Roots</h2>
+                <p class="doc-block__summary">
+                    Base installs a predictable page flex root for both traditional
+                    documents and single-page applications. Layout layers build
+                    on this; they do not redefine it.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <h3 class="doc-block__subtitle">Document flow</h3>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>html,
+body {
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}</code></pre>
+
+                    <p class="text-sm">
+                        The document body is a vertical flex container.
+                        <code>main</code> grows to fill the viewport, while
+                        <code>footer</code> remains pinned to the bottom without
+                        absolute positioning. This ensures predictable full-height
+                        layouts on every page.
+                    </p>
+                </div>
+
+                <h3 class="doc-block__subtitle">SPA root containers</h3>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>#root,          /* React, Vite */
+#app,           /* Vue, Svelte, Solid */
+#__next,        /* Next.js */
+#__nuxt,        /* Nuxt */
+app-root,       /* Angular */
+svelte-root,    /* Some Svelte starter kits */
+astro-root,     /* Astro hybrid apps */
+[qwik-root],    /* Qwik */
+.app-root,      /* Generic container */
+[data-app-root],/* Custom micro-frontend root */
+[data-spa-root] /* Universal custom attribute */
+{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}</code></pre>
+
+                    <p class="text-sm">
+                        All known SPA roots are normalized as flex column containers
+                        with <code>min-height: 100vh</code>. Framework shells can rely
+                        on this behaviour and avoid redefining “page-height” boilerplate
+                        in every project.
+                    </p>
+
+                    <p class="text-xs text-muted">
+                        <strong>Layout belongs to layout.css.</strong>
+                        Base only guarantees that the root containers behave like
+                        full-height flex pages. Sections, content max-widths and
+                        responsive grids live in the layout layer.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Interaction & Input Normalization</h2>
+                <p class="doc-block__summary">
+                    VDS normalizes interactive elements to avoid browser inconsistencies in
+                    focus rings, button appearance, and text rendering. Component layers
+                    provide the visual styling.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <h3 class="doc-block__subtitle">Buttons</h3>
+                <p class="text-sm">
+                    HTML buttons often have UA-specific padding and borders.
+                    The base layer removes these without touching the visual style.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>button {
+    border: none;
+    background: none;
+    padding: 0;
+}</code></pre>
+                </div>
+
+                <h3 class="doc-block__subtitle">Focus-visible</h3>
+                <p class="text-sm">
+                    Focus logic is unified across browsers. Visual styling is defined in utilities.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>:focus {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}</code></pre>
+                </div>
+
+                <h3 class="doc-block__subtitle">Selection</h3>
+                <p class="text-sm">
+                    Selection colour is not set by base.
+                    Themes may override if desired.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>::selection {
+    background: var(--color-selection-bg);
+    color: var(--color-selection-text);
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Root sizing model</h2>
+                <p class="doc-block__summary">
+                    VDS uses a <strong>root-based rem model</strong>. All spacing, typography
+                    and layout primitives are defined in <code>rem</code>, driven by the
+                    browser’s default font size. The base layer does not override the user’s
+                    root font-size preference.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <h3 class="doc-block__subtitle">Rem philosophy</h3>
+                <ul class="text-sm">
+                    <li><strong>1rem = browser default</strong> (usually 16px)</li>
+                    <li><strong>No hard-coded pixel sizes</strong> in base layer</li>
+                    <li><strong>Tokens express rem</strong> values; components consume tokens</li>
+                    <li><strong>User zoom & accessibility settings</strong> remain respected</li>
+                </ul>
+
+                <p class="text-sm">
+                    This means that any user who adjusts their browser default font-size
+                    automatically scales the entire system. No additional logic is needed
+                    in layout or typography.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* Base does NOT fix html font-size to 62.5% or similar.
+   It keeps the user’s default and lets tokens operate in rem. */
+
+html {
+    /* no explicit font-size here */
+}</code></pre>
+
+                    <p class="text-xs text-muted">
+                        Any explicit rem mapping (e.g. 0.25rem → 4px) is documented in the token
+                        layer, not enforced at the base level.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Typography baseline & inheritance</h2>
+                <p class="doc-block__summary">
+                    The typography system lives in its own file, but the base layer ensures that
+                    all elements inherit fonts and sizing predictably, without UA-specific
+                    deviations.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <h3 class="doc-block__subtitle">Body as typographic root</h3>
+                <p class="text-sm">
+                    <code>body</code> acts as the default typographic root for the document.
+                    Component layers and typography utilities build on this, never bypass it.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>
+    font-family: var(--font-family-sans), sans-serif;
+    font-size: var(--text-base);
+}</code></pre>
+
+                    <p class="text-sm">
+                        All headings, paragraphs, form controls and basic text elements inherit
+                        from <code>body</code> unless explicitly overridden by typography classes.
+                    </p>
+                </div>
+
+                <h3 class="doc-block__subtitle">Monospace &amp; code</h3>
+                <p class="text-sm">
+                    Monospace contexts are normalized to prevent user agent variations.
+                    The base layer sets a token-driven background, border and text colour
+                    for block code via <code>pre</code>, but leaves inline <code>code</code>
+                    visually neutral.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>code {
+    font-family: var(--font-family-mono), monospace;
+    font-size: 0.875em;
+}
+
+pre {
+    font-family: var(--font-family-mono), monospace;
+    font-size: 0.875em;
+    background: var(--code-bg);
+    color: var(--color-text);
+    border: 1px solid var(--code-border);
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+pre, code {
+    tab-size: 4;
+}
+
+kbd,
+samp {
+    font-family: var(--font-family-mono), monospace;
+}</code></pre>
+
+                    <p class="text-xs text-muted">
+                        Component and typography layers add any additional code styling
+                        (inline code backgrounds, padding, syntax themes). Base only establishes
+                        a predictable monospace baseline.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Box-model & inline normalization</h2>
+                <p class="doc-block__summary">
+                    Base ensures that both block and inline elements participate in layout
+                    in a predictable way: margins are neutralized, and the box-model is
+                    consistent across the tree.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <h3 class="doc-block__subtitle">Universal box-sizing</h3>
+                <p class="text-sm">
+                    All elements, including pseudo-elements, use <code>border-box</code>.
+                    This is a non-negotiable invariant for VDS.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>html {
+    box-sizing: border-box;
+    line-height: var(--line-height-normal);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    min-inline-size: 0;
+}</code></pre>
+                </div>
+
+                <h3 class="doc-block__subtitle">Block-level margin reset</h3>
+                <p class="text-sm">
+                    Legacy block margins are removed; spacing is applied explicitly via
+                    layout primitives and utilities.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>h1, h2, h3, h4, h5, h6,
+p,
+ul, ol,
+figure,
+blockquote,
+dl, dd {
+    margin: 0;
+}</code></pre>
+                </div>
+
+                <h3 class="doc-block__subtitle">Inline elements</h3>
+                <p class="text-sm">
+                    Inline elements such as <code>a</code>, <code>span</code>, and
+                    <code>strong</code> preserve their native baseline behaviour; only
+                    colour and decoration defaults are tuned slightly to fit design-system
+                    expectations.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>a {
+    color: var(--link-text, inherit);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+a:hover {
+    color: var(--link-text-hover, inherit);
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: var(--link-underline-thickness, 1px);
+}
+
+a:active {
+    color: var(--link-text-active, inherit);
+}</code></pre>
+
+                    <p class="text-xs text-muted">
+                        Link colours are theme-controlled; base only defines behaviour and
+                        decoration style.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Neutral Token Layer</h2>
+                <p class="doc-block__summary">
+                    <strong>Neutral tokens</strong> are foundational geometry and motion
+                    primitives defined in <code>primitives.css</code> and consumed by base.css; the base layer requires
+                    these tokens but does not declare them. They contain no colours and no component behaviour. These
+                    tokens are inherited by typography, layout, utilities, and components without exception.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <p class="text-sm">
+                    The base token layer ensures that spacing, radius, borders, and motion
+                    remain consistent across all components before themes or component
+                    styling are applied. These tokens represent the <em>non-negotiable
+                    core API</em> of the Vlah Design System.
+                </p>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h3 class="doc-block__title">Spacing Tokens</h3>
+                <p class="doc-block__summary">
+                    Spacing tokens define the vertical rhythm and padding/margin scale.
+                    All spacing in VDS uses these values — components, utilities, and layout.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <div class="table-wrapper">
+                    <table class="table table--bordered table--b">
+                        <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Value (rem)</th>
+                            <th>Usage</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>--space-1</code></td>
+                            <td>0.25rem</td>
+                            <td>tight gaps, icons, chips</td>
+                        </tr>
+                        <tr>
+                            <td><code>--space-2</code></td>
+                            <td>0.5rem</td>
+                            <td>most component internals</td>
+                        </tr>
+                        <tr>
+                            <td><code>--space-3</code></td>
+                            <td>0.75rem</td>
+                            <td>dense forms, compact UI</td>
+                        </tr>
+                        <tr>
+                            <td><code>--space-4</code></td>
+                            <td>1rem</td>
+                            <td>standard spacing</td>
+                        </tr>
+                        <tr>
+                            <td><code>--space-6</code></td>
+                            <td>1.5rem</td>
+                            <td>section internals</td>
+                        </tr>
+                        <tr>
+                            <td><code>--space-8</code></td>
+                            <td>2rem</td>
+                            <td>hero content, major blocks</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* Curated excerpt — spacing tokens */
+
+:root {
+    --space-0:  0;
+    --space-0_5: 0.125rem;
+    --space-1:  0.25rem;
+    --space-2:  0.5rem;
+    --space-3:  0.75rem;
+    --space-4:  1rem;
+    --space-5:  1.25rem;
+    --space-6:  1.5rem;
+    --space-7:  1.75rem;
+    --space-8:  2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-14: 3.5rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+    --space-40: 10rem;
+    --space-48: 12rem;
+    --space-64: 16rem;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h3 class="doc-block__title">Radius Tokens</h3>
+                <p class="doc-block__summary">
+                    Radii define rounded corners for components and layout surfaces.
+                    They remain neutral — themes do not override radius.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <div class="table-wrapper">
+                    <table class="table table--bordered table--b">
+                        <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Value</th>
+                            <th>Usage</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>--radius-xs</code></td>
+                            <td>2px</td>
+                            <td>chips, badges, tags</td>
+                        </tr>
+                        <tr>
+                            <td><code>--radius-sm</code></td>
+                            <td>4px</td>
+                            <td>buttons, inputs</td>
+                        </tr>
+                        <tr>
+                            <td><code>--radius-md</code></td>
+                            <td>8px</td>
+                            <td>cards, panels</td>
+                        </tr>
+                        <tr>
+                            <td><code>--radius-lg</code></td>
+                            <td>12px</td>
+                            <td>large surfaces, modals</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* Curated excerpt — radii */
+
+:root {
+    --radius-none: 0;
+    --radius-xs:   2px;
+    --radius-sm:   4px;
+    --radius-md:   8px;
+    --radius-lg:   12px;
+    --radius-xl:   18px;
+    --radius-full: 999px;
+    --radius-pill: 9999px;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h3 class="doc-block__title">Border Tokens</h3>
+                <p class="doc-block__summary">
+                    Border widths define the structural weight of interactive and static
+                    components. Border colour is theme-defined; width is neutral.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <div class="table-wrapper">
+                    <table class="table table--bordered table--b">
+                        <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Value</th>
+                            <th>Usage</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>--border-width</code></td>
+                            <td>1px</td>
+                            <td>default component border</td>
+                        </tr>
+                        <tr>
+                            <td><code>--border-width-strong</code></td>
+                            <td>2px</td>
+                            <td>focus rings, elevated surfaces</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* Border sizes */
+
+:root {
+    --border-width:        1px;
+    --border-width-strong: 2px;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h3 class="doc-block__title">Motion Tokens</h3>
+                <p class="doc-block__summary">
+                    Motion tokens define transition timing and easing curves across all components.
+                    They enforce consistency and respect reduced-motion preferences.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <ul class="text-sm">
+                    <li><code>--transition-fast</code>: interactive elements, buttons</li>
+                    <li><code>--transition-normal</code>: menus, overlays</li>
+                    <li><code>--transition-slow</code>: large panel transitions</li>
+                    <li><code>--motion-none</code>: standard easing curve</li>
+                </ul>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* Curated excerpt — motion */
+
+:root {
+    --transition-fast:   120ms ease-out;
+    --transition-normal: 180ms ease-out;
+    --transition-slow:   260ms ease-out;
+
+    --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in:     cubic-bezier(0.32, 0, 0.67, 0);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+    --motion-none: 0ms;
+}</code></pre>
+
+                    <p class="text-xs text-muted">
+                        The actual transitions appear in components. Base only defines the timing tokens.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h3 class="doc-block__title">Focus Tokens</h3>
+                <p class="doc-block__summary">
+                    Base layer standardizes the focus outline behaviour (width, offset, and outline mechanics), while
+                    themes supply the visual colour tokens.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <div class="table-wrapper">
+                    <table class="table table--bordered table--b">
+                        <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Value</th>
+                            <th>Usage</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>--focus-ring-width</code></td>
+                            <td>2px</td>
+                            <td>Standard focus halo</td>
+                        </tr>
+                        <tr>
+                            <td><code>focus-ring-offset</code></td>
+                            <td>2px</td>
+                            <td>Used around interactive controls</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* Focus-neutral tokens */
+
+:root {
+    --focus-ring-width:  2px;
+    --focus-ring-offset: 2px;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Links & Interaction Defaults</h2>
+                <p class="doc-block__summary">
+                    Links maintain semantic behaviour and accessibility, while their
+                    decoration rules are unified. Base does not assign colours — themes do.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <h3 class="doc-block__subtitle">Link behaviour</h3>
+                <p class="text-sm">
+                    By default, links preserve their underline and inherit text colour,
+                    ensuring consistency across themes. This is appearance-neutral.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>a {
+    color: var(--link-text, inherit);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+a:hover {
+    color: var(--link-text-hover, inherit);
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: var(--link-underline-thickness, 1px);
+}
+
+a:active {
+    color: var(--link-text-active, inherit);
+}</code></pre>
+
+                    <p class="text-xs text-muted">
+                        Hover only adjusts underline thickness; no colour changes occur in base.
+                    </p>
+                </div>
+
+                <h3 class="doc-block__subtitle">Active / visited states</h3>
+                <p class="text-sm">
+                    Base does not define explicit styles for <code>:visited</code> or
+                    <code>:active</code>. These states are theme-level responsibilities.
+                </p>
+
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Buttons</h2>
+                <p class="doc-block__summary">
+                    HTML buttons are normalized to remove UA-specific padding, border,
+                    background, and typography overrides. Components provide the
+                    full button system.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>button,
+input,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+}
+
+button {
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+    cursor: pointer;
+}</code></pre>
+
+                    <ul class="text-sm">
+                        <li>Removes Chromium, Safari, and Firefox button padding</li>
+                        <li>Ensures text matches surrounding typography</li>
+                        <li>Keeps <code>cursor: pointer</code> for semantic buttons only</li>
+                    </ul>
+
+                    <p class="text-xs text-muted">
+                        Disabled buttons (<code>button:disabled</code>) are handled in components.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Input Normalization</h2>
+                <p class="doc-block__summary">
+                    Inputs inherit typography and colour, lose UA borders/backgrounds,
+                    and rely on the Forms component layer for actual design.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>button,
+input,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+}
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+    cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="search"] {
+    -webkit-appearance: none;
+    outline-offset: -2px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input,
+select,
+textarea {
+    line-height: inherit;
+}</code></pre>
+
+                    <p class="text-sm">
+                        This prevents mismatched fonts, rogue borders, and cross-browser
+                        inconsistencies that would otherwise force component overrides.
+                    </p>
+                </div>
+
+                <h3 class="doc-block__subtitle">Input-specific fixes</h3>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+                    <pre><code>textarea {
+    resize: vertical;
+}</code></pre>
+
+                    <p class="text-sm">
+                        Textareas resize vertically only.
+                        Horizontal resize breaks fluid layout and responsive grid patterns.
+                    </p>
+                </div>
+
+                <h3 class="doc-block__subtitle">Number input corrections</h3>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}</code></pre>
+
+                    <p class="text-xs text-muted">
+                        Base does NOT hide spinners.
+                        Hiding is a component-level decision — not base.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility Primitives</h2>
+                <p class="doc-block__summary">
+                    The base layer installs predictable accessibility behaviour:
+                    focus-visible, reduced-motion, system-specific improvements,
+                    and scroll-behaviour logic.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <h3 class="doc-block__subtitle">Focus-visible</h3>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>:focus {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+:focus:not(:focus-visible) {
+    outline: none;
+}</code></pre>
+
+                    <p class="text-sm">
+                        Removes “always-on” outlines without removing keyboard focus indicator.
+                    </p>
+                </div>
+
+                <h3 class="doc-block__subtitle">Reduced motion</h3>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition-fast:   var(--motion-none);
+        --transition-normal: var(--motion-none);
+        --transition-slow:   var(--motion-none);
+
+        /* Optional: linear easing under reduced motion */
+        --ease-out:    linear;
+        --ease-in:     linear;
+        --ease-in-out: linear;
+    }
+
+    /* Safety-net for non-token transitions */
+    * {
+        animation-duration: 0ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}</code></pre>
+
+                    <p class="text-sm">
+                        This is a critical part of VDS accessibility:
+                        animation, transitions, and smooth scrolling are effectively disabled.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Text Selection Normalization</h2>
+                <p class="doc-block__summary">
+                    Selection colour is neutral by default. Themes may override it if required.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>::selection {
+    background: var(--color-selection-bg);
+    color: var(--color-selection-text);
+}</code></pre>
+
+                    <p class="text-sm">
+                        This fallback colour is intentionally subtle and neutral.
+                        It will be replaced by theme colour if
+                        <code>--color-selection-bg</code> is defined.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Native Element Corrections</h2>
+                <p class="doc-block__summary">
+                    Subtle UA behaviours are normalized to create predictable rendering.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <h3 class="doc-block__subtitle">Images, media, svg</h3>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}</code></pre>
+
+                    <p class="text-sm">
+                        Prevents overflow and ensures media is fluid by default.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Base-Layer Invariants</h2>
+                <p class="doc-block__summary">
+                    Base-layer invariants are rules that MUST NOT change.
+                    They ensure that typography, layout, utilities, and all components
+                    behave predictably across devices, browsers, and themes.
+                </p>
+            </header>
+
+            <div class="doc-block__body doc-block__body--compact">
+                <p><strong>1. The browser's root font-size is never overridden.</strong><br>
+                    VDS respects user accessibipty settings. All scapng uses rem.
+                </p>
+
+                <p><strong>2. box-sizing is border-box for every element.</strong><br>
+                    All layout, utipties, and components depend on this invariant.
+                </p>
+
+                <p><strong>3. The base layer defines NO colours.</strong><br>
+                    All colours come from themes.
+                    Base never includes background, text colours, borders, shadows.
+                </p>
+
+                <p><strong>4. No component stypng is allowed in base.</strong><br>
+                    Buttons, inputs, cards, navigation, overlays — all belong to their subsystems.
+                </p>
+
+                <p><strong>5. Headings inherit typography.</strong><br>
+                    No heading sizes are defined in base.
+                    Typography utipties control scale.
+                </p>
+
+                <p><strong>6. Form controls inherit font and colour.</strong><br>
+                    Base strips UA chrome but does not style inputs.
+                </p>
+
+                <p><strong>7. Margin reset is global and permanent.</strong><br>
+                    All vertical rhythm is driven by section/stack patterns.
+                </p>
+
+                <p><strong>8. Scroll behaviour is neutral by default.</strong><br>
+                    Base does not enforce smooth scrolling. It only forces
+                    <code>scroll-behavior: auto</code> under
+                    <code>prefers-reduced-motion: reduce</code> as an accessibility guarantee.
+                </p>
+
+                <p><strong>9. Reduced-motion overrides must remain strict.</strong><br>
+                    Accessibipty comes before animation.
+                </p>
+
+                <p><strong>10. No full reset, no normapze — hybrid reset only.</strong><br>
+                    VDS preserves semantics, corrects inconsistencies, and avoids destructive resets.
+                </p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Anti-Patterns</h2>
+                <p class="doc-block__summary">
+                    Incorrect uses of the base layer that destabilize the design system.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <h3 class="doc-block__subtitle">Anti-pattern 1 — Adding colour tokens to base</h3>
+                <p class="text-sm">
+                    Base must stay neutral. Adding colour variables here makes themes impossible
+                    to swap or extend.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* WRONG — DO NOT DO THIS */
+:root {
+    --color-brand: #00aaff;
+}</code></pre>
+                </div>
+
+                <h3 class="doc-block__subtitle">Anti-pattern 2 — Styling buttons or inputs in base</h3>
+                <p class="text-sm">
+                    Button/input visuals belong to <strong>Forms</strong> and <strong>Buttons</strong>.
+                    Base only removes UA chrome.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* WRONG — DO NOT DO THIS */
+button {
+    padding: 0.5rem 1rem;
+    background: #eee;
+}</code></pre>
+                </div>
+
+                <h3 class="doc-block__subtitle">Anti-pattern 3 — Heading size overrides</h3>
+                <p class="text-sm">
+                    Size and line-height belong to typography scale, not base.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* WRONG — DO NOT DO */
+h1 {
+    font-size: 3rem;
+}</code></pre>
+                </div>
+
+                <h3 class="doc-block__subtitle">Anti-pattern 4 — Reintroducing default margins</h3>
+                <p class="text-sm">
+                    Reintroducing `margin-bottom` on <code>p</code> or <code>h1</code>
+                    breaks the entire vertical-rhythm engine.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* WRONG — DO NOT DO */
+p {
+    margin-bottom: 1rem;
+}</code></pre>
+                </div>
+
+                <h3 class="doc-block__subtitle">Anti-pattern 5 — Overriding box-sizing</h3>
+                <p class="text-sm">
+                    The entire spacing and layout system depends on border-box.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* WRONG */
+* {
+    box-sizing: content-box;
+}</code></pre>
+                </div>
+
+                <h3 class="doc-block__subtitle">Anti-pattern 6 — Adding layout rules to base</h3>
+                <p class="text-sm">
+                    Layout belongs strictly to <code>layout.css</code> and utilities.
+                </p>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>/* WRONG */
+main {
+    max-width: 80rem;
+    margin: 0 auto;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Base Specimen (Foundation Only)</h2>
+                <p class="doc-block__summary">
+                    This specimen shows how a document appears when rendered with
+                    <strong>only</strong> <code>base.css</code> and <code>typography.css</code>.
+                    No layout, utilities, or components are used. It demonstrates the pure,
+                    neutral environment created by the base layer.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack-lg">
+                <h1>Heading Level 1</h1>
+                <p>
+                    This is a paragraph with no default margins, normalized line-height,
+                    and inherited typography settings. The spacing between elements is
+                    intentionally absent — vertical rhythm is handled by layout primitives,
+                    not the base layer.
+                </p>
+
+                <h2>Heading Level 2</h2>
+                <p>
+                    Lists preserve left padding. Inline elements such as
+                    <code>&lt;code&gt;</code> or <strong>&lt;strong&gt;</strong> behave
+                    semantically without visual interference.
+                </p>
+
+                <ul>
+                    <li>List item one</li>
+                    <li>List item two</li>
+                    <li>List item three</li>
+                </ul>
+
+                <h3>Inline / Media Elements</h3>
+                <p>Images, videos, and SVGs become block-level and fully responsive:</p>
+                <img src="https://picsum.photos/seed/vds/400/240" alt="Sample image">
+
+                <h3>Forms</h3>
+                <p>
+                    Form controls have no borders, chrome, or padding. They inherit typography:
+                </p>
+
+                <p><input type="text" placeholder="Input (unstyled base)"></p>
+                <p><textarea placeholder="Textarea (unstyled base)"></textarea></p>
+                <p>
+                    <button>Button (unstyled base)</button>
+                </p>
+
+                <h3>Links</h3>
+                <p>
+                    <a href="#">This is a link</a> with underline preserved and colour inherited.
+                </p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    The base layer establishes the non-negotiable accessibility contract of the VDS:
+                    predictable semantics, preserved user settings, reduced-motion enforcement,
+                    and safe HTML defaults. It must remain colour-neutral, layout-neutral,
+                    and free of component logic.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+
+                        <li>
+                            Preserve user font-size and zoom preferences: <code>html</code> must not
+                            set an explicit <code>font-size</code>.
+                        </li>
+
+                        <li>
+                            Respect <code>prefers-reduced-motion</code> — base.css already zeroes animation,
+                            transitions and smooth scrolling, and this behaviour must never be weakened.
+                        </li>
+
+                        <li>
+                            Keep <code>box-sizing: border-box</code> universal — the spacing and layout engines
+                            rely fully on this invariant.
+                        </li>
+
+                        <li>
+                            Maintain inherited typography for all form controls:
+                            buttons, inputs, selects, and textareas must use <code>font: inherit</code>.
+                        </li>
+
+                        <li>
+                            Treat block code (<code>&lt;pre&gt;</code>) as a foundational readability surface:
+                            its background and border are semantic surfaces, not design.
+                        </li>
+
+                        <li>
+                            Ensure link colour tokens exist in themes; base consumes them but does not define them.
+                        </li>
+
+                        <li>
+                            Preserve semantic HTML: native headings, lists, paragraphs and figures should not be
+                            visually
+                            styled at the base layer beyond reset/normalization.
+                        </li>
+
+                        <li>
+                            Rely on sections/stacks in layout.css for vertical rhythm — margins remain neutral in base.
+                        </li>
+
+                        <li>
+                            Ensure SPA roots (<code>#root</code>, <code>#app</code>, <code>#__next</code>, …)
+                            remain full-height flex containers capable of driving consistent shells.
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+
+                        <li>
+                            Don’t add colour variables to base.css — all colours belong strictly to theme layers.
+                        </li>
+
+                        <li>
+                            Don’t introduce padding, border, shadows, or component visuals — base must remain
+                            appearance-neutral.
+                        </li>
+
+                        <li>
+                            Don’t override headings, font-weight, line-height, or text sizes — typography.css controls
+                            scale.
+                        </li>
+
+                        <li>
+                            Don’t reintroduce margins on <code>h1</code>, <code>p</code>, <code>ul</code>,
+                            <code>ol</code>
+                            or other block elements. Vertical rhythm is not handled here.
+                        </li>
+
+                        <li>
+                            Don’t override UA behaviour that base normalizes — especially scrolling, interaction
+                            defaults,
+                            or <code>focus-visible</code>.
+                        </li>
+
+                        <li>
+                            Don’t hide number-input spinners or style search inputs — such decisions belong to the
+                            Forms/Buttons subsystems.
+                        </li>
+
+                        <li>
+                            Don’t attach layout rules to <code>main</code>, <code>footer</code>, or SPA roots —
+                            layout.css handles spacing and max-widths.
+                        </li>
+
+                        <li>
+                            Don’t weaken or remove reduced-motion enforcement — accessibility takes priority over
+                            animation fidelity.
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Never set html font-size (respect user scaling).
+2. Universal border-box is mandatory.
+3. Reset margins globally; layout primitives define rhythm.
+4. Form controls inherit typography and colour.
+5. Link colours come from themes; base is appearance-neutral.
+6. Code blocks (&lt;pre&gt;) get token-based surfaces only.
+7. Reduced-motion disables transitions/animations system-wide.
+8. No component visuals allowed in base.
+9. SPA roots must remain full-height flex containers.
+10. No colour tokens, no layout rules, no component logic in base.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

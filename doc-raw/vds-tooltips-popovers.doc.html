@@ -1,0 +1,687 @@
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <h1>Tooltips &amp; Popovers</h1>
+        <p class="leading-relaxed text-soft">
+            Token-driven micro-surfaces for contextual help, hints and interactive overlays
+            anchored to triggers without disrupting layout.
+        </p>
+        <p class="text-sm text-muted">
+            Source: <code>toasts-popovers.css</code> · Depends on
+            <code>base.css</code>,
+            <code>layout.css</code>,
+            <code>typography.css</code>,
+            theme tokens in <code>/themes/*.css</code>.:contentReference[oaicite:0]{index=0}
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation &amp; dependencies</h2>
+                <p class="doc-block__summary">
+                    Tooltips and popovers are surface-level components depending on base reset,
+                    layout, typography, tokens and the active theme. Include files in this order
+                    for predictable rendering and theming.:contentReference[oaicite:1]{index=1}
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <ul>
+                        <li>Load <code>base.css</code> and <code>layout.css</code>.
+                        </li>
+                        <li>Load <code>typography.css</code> and <code
+                                >icons.css</code>.
+                        </li>
+                        <li>
+                            Load active theme:
+                            <code>themes/slate.css</code>
+                            (or <code>navy.css</code>, <code>carbon.css</code>),
+                            which provides semantic surfaces and feedback tokens.:contentReference[oaicite:2]{index=2}
+                        </li>
+                        <li>
+                            Load <code>toasts-popovers.css</code> for tooltips and
+                            popovers.:contentReference[oaicite:3]{index=3}
+                        </li>
+                        <li>
+                            Load <code>doc-block.css</code> only for documentation
+                            pages.:contentReference[oaicite:4]{index=4}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/base.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/layout.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/typography.css&quot;&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/themes/slate.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/themes/navy.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/themes/carbon.css&quot;&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/icons.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/toasts-popovers.css&quot;&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/doc-block.css&quot;&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Anatomy: tooltip &amp; popover</h2>
+                <p class="doc-block__summary">
+                    The tooltip is a non-interactive micro-surface for short contextual help.
+                    The popover is an interactive micro-surface holding menus, forms or controls,
+                    anchored to a trigger without blocking the page.:contentReference[oaicite:5]{index=5}
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
+                            <button class="button button--ghost tooltip-trigger" aria-describedby="tt-save">
+                                Save
+                                <span
+                                        class="tooltip tooltip--top tooltip--c tooltip--visible"
+                                        id="tt-save"
+                                        role="tooltip"
+                                >
+                                    Save changes to the current record.
+                                    <span class="tooltip__arrow"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
+                            <div class="popover-anchor">
+                                <button
+                                        class="button button--ghost button--icon-only"
+                                        type="button"
+                                        aria-haspopup="dialog"
+                                        aria-expanded="true"
+                                        aria-controls="user-menu"
+                                        aria-label="Open user menu"
+                                >
+                                    <span class="icon icon--mask icon--user"></span>
+                                </button>
+
+                                <div
+                                        class="popover popover--bottom-right popover--c popover--open"
+                                        id="user-menu"
+                                        role="dialog"
+                                        aria-modal="false"
+                                        data-state="open"
+                                >
+                                    <header class="popover__header">
+                                        <h3 class="popover__title">Signed in as</h3>
+                                        <p class="text-xs text-muted">info@example.com</p>
+                                    </header>
+                                    <div class="popover__body">
+                                        <ul class="text-sm">
+                                            <li><a href="#">Profile</a></li>
+                                            <li><a href="#">Account settings</a></li>
+                                        </ul>
+                                    </div>
+                                    <footer class="popover__footer">
+                                        <button class="button button--ghost button--sm">Sign out</button>
+                                    </footer>
+                                    <span class="popover__arrow"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;button class=&quot;button button--ghost tooltip-trigger&quot; aria-describedby=&quot;tt-save&quot;&gt;
+    Save
+    &lt;span
+        class=&quot;tooltip tooltip--top tooltip--c&quot;
+        id=&quot;tt-save&quot;
+        role=&quot;tooltip&quot;&gt;
+        Save changes to the current record.
+        &lt;span class=&quot;tooltip__arrow&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;div class=&quot;popover-anchor&quot;&gt;
+    &lt;button
+        class=&quot;button button--ghost button--icon-only&quot;
+        type=&quot;button&quot;
+        aria-haspopup=&quot;dialog&quot;
+        aria-expanded=&quot;true&quot;
+        aria-controls=&quot;user-menu&quot;
+        aria-label=&quot;Open user menu&quot;&gt;
+        &lt;span class=&quot;icon icon--mask icon--user&quot;&gt;&lt;/span&gt;
+    &lt;/button&gt;
+
+    &lt;div
+        class=&quot;popover popover--bottom-right popover--c&quot;
+        id=&quot;user-menu&quot;
+        role=&quot;dialog&quot;
+        aria-modal=&quot;false&quot;
+        data-state=&quot;open&quot;&gt;
+
+        &lt;header class=&quot;popover__header&quot;&gt;
+            &lt;h3 class=&quot;popover__title&quot;&gt;Signed in as&lt;/h3&gt;
+            &lt;p class=&quot;text-xs text-muted&quot;&gt;info@example.com&lt;/p&gt;
+        &lt;/header&gt;
+
+        &lt;div class=&quot;popover__body&quot;&gt;
+            &lt;ul class=&quot;text-sm&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Profile&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Account settings&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+        &lt;footer class=&quot;popover__footer&quot;&gt;
+            &lt;button class=&quot;button button--ghost button--sm&quot;&gt;Sign out&lt;/button&gt;
+        &lt;/footer&gt;
+
+        &lt;span class=&quot;popover__arrow&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+                    <p class="text-sm text-muted">
+                        <strong>Tooltip:</strong> requires a positioned ancestor
+                        (<code>.tooltip-trigger</code>) and one of the
+                        position modifiers
+                        (<code>tooltip--top|bottom|left|right</code>).:contentReference[oaicite:6]{index=6}
+                        <br>
+                        <strong>Popover:</strong> uses
+                        <code>.popover-anchor</code> as positioning context and
+                        accepts placement modifiers such as
+                        <code>popover--bottom-right</code>.:contentReference[oaicite:7]{index=7}
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Tooltip positions &amp; semantic variants</h2>
+                <p class="doc-block__summary">
+                    Tooltips share motion, radius and shadow tokens. Position, density and
+                    semantic colour are all controlled by class modifiers.:contentReference[oaicite:8]{index=8}
+                </p>
+            </header>
+
+            <div class="doc-block__body doc-block__body--tight">
+                <div class="doc-block__preview">
+                    <div class="card mb-6">
+                        <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
+                            <button class="button button--ghost tooltip-trigger">
+                                Top
+                                <span class="tooltip tooltip--top tooltip--c tooltip--info tooltip--visible"
+                                      role="tooltip">
+                                    Top info tooltip
+                                    <span class="tooltip__arrow"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="card mb-6">
+                        <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
+                            <button class="button button--ghost tooltip-trigger">
+                                Right
+                                <span class="tooltip tooltip--right tooltip--c tooltip--success tooltip--visible"
+                                      role="tooltip">
+                                    Right success tooltip
+                                    <span class="tooltip__arrow"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="card mb-6">
+                        <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
+                            <button class="button button--ghost tooltip-trigger">
+                                Bottom
+                                <span class="tooltip tooltip--bottom tooltip--a tooltip--warning tooltip--visible"
+                                      role="tooltip">
+                                    Bottom warning tooltip
+                                    <span class="tooltip__arrow"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
+                            <button class="button button--ghost tooltip-trigger">
+                                Left
+                                <span class="tooltip tooltip--left tooltip--c tooltip--danger tooltip--visible"
+                                      role="tooltip">
+                                    Left danger tooltip
+                                    <span class="tooltip__arrow"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;button class=&quot;button button--ghost tooltip-trigger&quot;&gt;
+    Top
+    &lt;span
+        class=&quot;tooltip tooltip--top tooltip--c tooltip--info tooltip--visible&quot;
+        role=&quot;tooltip&quot;&gt;
+        Top info tooltip
+        &lt;span class=&quot;tooltip__arrow&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class=&quot;button button--ghost tooltip-trigger&quot;&gt;
+    Right
+    &lt;span
+        class=&quot;tooltip tooltip--right tooltip--c tooltip--success tooltip--visible&quot;
+        role=&quot;tooltip&quot;&gt;
+        Right success tooltip
+        &lt;span class=&quot;tooltip__arrow&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class=&quot;button button--ghost tooltip-trigger&quot;&gt;
+    Bottom
+    &lt;span
+        class=&quot;tooltip tooltip--bottom tooltip--a tooltip--warning tooltip--visible&quot;
+        role=&quot;tooltip&quot;&gt;
+        Bottom warning tooltip
+        &lt;span class=&quot;tooltip__arrow&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class=&quot;button button--ghost tooltip-trigger&quot;&gt;
+    Left
+    &lt;span
+        class=&quot;tooltip tooltip--left tooltip--c tooltip--danger tooltip--visible&quot;
+        role=&quot;tooltip&quot;&gt;
+        Left danger tooltip
+        &lt;span class=&quot;tooltip__arrow&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+
+                    <p class="text-sm text-muted">
+                        <strong>Density:</strong> use
+                        <code>tooltip--a</code> for more generous padding and
+                        <code>tooltip--c</code> for compact
+                        tooltips.:contentReference[oaicite:9]{index=9}
+                        <br>
+                        <strong>Semantics:</strong> use
+                        <code>tooltip--info|success|warning|danger</code> to map
+                        to semantic feedback colours, consistent with other feedback
+                        components.:contentReference[oaicite:10]{index=10}
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Popover menus &amp; filter panels</h2>
+                <p class="doc-block__summary">
+                    Popovers can render menus, compact forms or filter panels without invoking
+                    a full modal or drawer. Position and density are controlled by class
+                    modifiers; behaviour is owned by your JavaScript.:contentReference[oaicite:11]{index=11}
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card mb-6">
+                        <div class="card__body flex-row flex-wrap gap-4 items-center"
+                             style="padding-block: var(--space-12);">
+                            <div class="popover-anchor">
+                                <button
+                                        class="button button--secondary button--sm"
+                                        type="button"
+                                        aria-haspopup="menu"
+                                        aria-expanded="true"
+                                        aria-controls="table-columns"
+                                >
+                                    Columns
+                                </button>
+
+                                <div
+                                        class="popover popover--bottom-left popover--c popover--open"
+                                        id="table-columns"
+                                        role="menu"
+                                        aria-modal="false"
+                                        data-state="open"
+                                >
+                                    <header class="popover__header">
+                                        <h3 class="popover__title">Visible columns</h3>
+                                    </header>
+                                    <div class="popover__body">
+                                        <ul class="text-sm">
+                                            <li><label class="inline-flex items-center gap-2"><input type="checkbox"
+                                                                                                     checked>
+                                                Name</label></li>
+                                            <li><label class="inline-flex items-center gap-2"><input type="checkbox"
+                                                                                                     checked>
+                                                Status</label></li>
+                                            <li><label class="inline-flex items-center gap-2"><input type="checkbox">
+                                                Owner</label></li>
+                                            <li><label class="inline-flex items-center gap-2"><input type="checkbox">
+                                                Updated</label></li>
+                                        </ul>
+                                    </div>
+                                    <footer class="popover__footer">
+                                        <button class="button button--ghost button--sm">Reset</button>
+                                        <button class="button button--primary button--sm">Apply</button>
+                                    </footer>
+                                    <span class="popover__arrow"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body flex-row flex-wrap gap-4 items-center"
+                             style="padding-block: var(--space-12);">
+                            <div class="popover-anchor">
+                                <button
+                                        class="button button--ghost button--sm"
+                                        type="button"
+                                        aria-haspopup="dialog"
+                                        aria-expanded="true"
+                                        aria-controls="filters"
+                                >
+                                    Filters
+                                </button>
+
+                                <div
+                                        class="popover popover--bottom popover--a popover--info popover--open"
+                                        id="filters"
+                                        role="dialog"
+                                        aria-modal="false"
+                                        data-state="open"
+                                >
+                                    <header class="popover__header">
+                                        <h3 class="popover__title">Filters</h3>
+                                    </header>
+                                    <div class="popover__body">
+                                        <div class="form-field mb-3">
+                                            <label class="text-xs text-muted mb-1">Status</label>
+                                            <select>
+                                                <option>All</option>
+                                                <option>Active</option>
+                                                <option>Paused</option>
+                                                <option>Archived</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-field">
+                                            <label class="text-xs text-muted mb-1">Owner</label>
+                                            <input type="text" placeholder="Any owner">
+                                        </div>
+                                    </div>
+                                    <footer class="popover__footer">
+                                        <button class="button button--ghost button--sm">Clear</button>
+                                        <button class="button button--primary button--sm">Apply filters</button>
+                                    </footer>
+                                    <span class="popover__arrow"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class=&quot;popover-anchor&quot;&gt;
+    &lt;button
+        class=&quot;button button--secondary button--sm&quot;
+        type=&quot;button&quot;
+        aria-haspopup=&quot;menu&quot;
+        aria-expanded=&quot;true&quot;
+        aria-controls=&quot;table-columns&quot;&gt;
+        Columns
+    &lt;/button&gt;
+
+    &lt;div
+        class=&quot;popover popover--bottom-left popover--c popover--open&quot;
+        id=&quot;table-columns&quot;
+        role=&quot;menu&quot;
+        aria-modal=&quot;false&quot;
+        data-state=&quot;open&quot;&gt;
+
+        &lt;header class=&quot;popover__header&quot;&gt;
+            &lt;h3 class=&quot;popover__title&quot;&gt;Visible columns&lt;/h3&gt;
+        &lt;/header&gt;
+
+        &lt;div class=&quot;popover__body&quot;&gt;
+            &lt;ul class=&quot;text-sm&quot;&gt;
+                &lt;li&gt;&lt;label class=&quot;inline-flex items-center gap-2&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt; Name&lt;/label&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;label class=&quot;inline-flex items-center gap-2&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt; Status&lt;/label&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;label class=&quot;inline-flex items-center gap-2&quot;&gt;&lt;input type=&quot;checkbox&quot;&gt; Owner&lt;/label&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;label class=&quot;inline-flex items-center gap-2&quot;&gt;&lt;input type=&quot;checkbox&quot;&gt; Updated&lt;/label&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+        &lt;footer class=&quot;popover__footer&quot;&gt;
+            &lt;button class=&quot;button button--ghost button--sm&quot;&gt;Reset&lt;/button&gt;
+            &lt;button class=&quot;button button--primary button--sm&quot;&gt;Apply&lt;/button&gt;
+        &lt;/footer&gt;
+
+        &lt;span class=&quot;popover__arrow&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;popover-anchor&quot;&gt;
+    &lt;button
+        class=&quot;button button--ghost button--sm&quot;
+        type=&quot;button&quot;
+        aria-haspopup=&quot;dialog&quot;
+        aria-expanded=&quot;true&quot;
+        aria-controls=&quot;filters&quot;&gt;
+        Filters
+    &lt;/button&gt;
+
+    &lt;div
+        class=&quot;popover popover--bottom popover--a popover--info popover--open&quot;
+        id=&quot;filters&quot;
+        role=&quot;dialog&quot;
+        aria-modal=&quot;false&quot;
+        data-state=&quot;open&quot;&gt;
+
+        &lt;header class=&quot;popover__header&quot;&gt;
+            &lt;h3 class=&quot;popover__title&quot;&gt;Filters&lt;/h3&gt;
+        &lt;/header&gt;
+
+        &lt;div class=&quot;popover__body&quot;&gt;
+            &lt;div class=&quot;form-field mb-3&quot;&gt;
+                &lt;label class=&quot;text-xs text-muted mb-1&quot;&gt;Status&lt;/label&gt;
+                &lt;select&gt;
+                    &lt;option&gt;All&lt;/option&gt;
+                    &lt;option&gt;Active&lt;/option&gt;
+                    &lt;option&gt;Paused&lt;/option&gt;
+                    &lt;option&gt;Archived&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-field&quot;&gt;
+                &lt;label class=&quot;text-xs text-muted mb-1&quot;&gt;Owner&lt;/label&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Any owner&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;footer class=&quot;popover__footer&quot;&gt;
+            &lt;button class=&quot;button button--ghost button--sm&quot;&gt;Clear&lt;/button&gt;
+            &lt;button class=&quot;button button--primary button--sm&quot;&gt;Apply filters&lt;/button&gt;
+        &lt;/footer&gt;
+
+        &lt;span class=&quot;popover__arrow&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Contract for safe, semantic, token-driven tooltips and popovers. Maintain
+                    correct ARIA roles, connect triggers to surfaces, and rely on VDS tokens
+                    for motion, surfaces and focus instead of ad-hoc styling.:contentReference[oaicite:12]{index=12}
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use <code>role="tooltip"</code> with
+                            <code>aria-describedby</code> on the trigger to connect
+                            tooltips to their anchors.
+                        </li>
+                        <li>
+                            Use <code>role="dialog"</code> or
+                            <code>role="menu"</code> for popovers, depending on
+                            whether they behave as dialogs or menus.
+                        </li>
+                        <li>
+                            Manage open/close state via JavaScript by toggling
+                            <code>data-state="open"</code> or
+                            <code>.tooltip--visible</code> /
+                            <code>.popover--open</code>.:contentReference[oaicite:13]{index=13}
+                        </li>
+                        <li>
+                            Keep layout, shadow and colour decisions inside
+                            <code>toasts-popovers.css</code> using tokens for
+                            radii, borders, shadows and motion.:contentReference[oaicite:14]{index=14}
+                        </li>
+                        <li>
+                            Prefer concise, task-focused copy in tooltips; use popovers when the
+                            content becomes actionable (menus, forms, controls).
+                        </li>
+                        <li>
+                            Ensure triggers are keyboard focusable (buttons, links, or elements
+                            with <code>tabindex="0"</code> and correct roles).
+                        </li>
+                        <li>
+                            Use semantic variants (<code>--info</code>,
+                            <code>--success</code>,
+                            <code>--warning</code>,
+                            <code>--danger</code>) to express meaning
+                            consistently with other feedback components.:contentReference[oaicite:15]{index=15}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t place actionable controls (buttons, links, inputs) inside a
+                            tooltip. Use a popover for interactive content.
+                        </li>
+                        <li>
+                            Don’t hide critical information only in tooltips; treat tooltips as
+                            enhancements, not the sole source of requirements or warnings.
+                        </li>
+                        <li>
+                            Don’t suppress focus-visible outlines on triggers or rely exclusively
+                            on hover to reveal tooltips; keyboard users must be able to access the
+                            same information.
+                        </li>
+                        <li>
+                            Don’t animate tooltips or popovers with custom transitions that differ
+                            from token-driven motion. Use
+                            <code>--transition-fast</code> and
+                            <code>--ease-out</code> from
+                            primitives.:contentReference[oaicite:16]{index=16}
+                        </li>
+                        <li>
+                            Don’t mix multiple independent popovers open at once in dense UIs
+                            unless there is a clear, intentional UX reason.
+                        </li>
+                        <li>
+                            Don’t override popover width with arbitrary inline styles; rely on the
+                            min/max constraints in the component and design content
+                            accordingly.:contentReference[oaicite:17]{index=17}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Use role=&quot;tooltip&quot; with aria-describedby for tooltips.
+2. Use role=&quot;dialog&quot; or role=&quot;menu&quot; for popovers + aria-haspopup/expanded/controls.
+3. Toggle data-state=&quot;open&quot; (or .tooltip--visible / .popover--open) from JS; CSS never owns behaviour.
+4. Keep interactive controls out of tooltips; use popovers for menus/forms.
+5. Keep motion, radius, shadow and colours token-driven inside toasts-popovers.css.
+6. Preserve focus-visible outlines and keyboard reachability for all triggers.
+7. Use semantic variants consistently with other VDS feedback components.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

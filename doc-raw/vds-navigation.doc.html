@@ -1,0 +1,1396 @@
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <h1 class="">Navigation</h1>
+        <p class="leading-relaxed text-soft">
+            Primary navigation, sidebar, breadcrumbs, pagination and tabs — unified under a single
+            spacing, typography and interaction system.
+        </p>
+        <p class="text-sm text-muted">
+            Source: <code>navigation.css</code> · Depends on
+            <code>base.css</code>,
+            <code>typography.css</code>,
+            theme tokens in <code>/themes/*.css</code>.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation & dependencies</h2>
+                <p class="doc-block__summary">
+                    Navigation components depend on core layout, typography, icons and a theme layer.
+                    Load in this exact order.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <ul>
+                        <li><code>base.css</code> (reset + primitives)</li>
+                        <li><code>layout.css</code> (flex/grid + responsive tokens)</li>
+                        <li><code>typography.css</code> (type scale)</li>
+                        <li><code>icons.css</code> (mask icons)</li>
+                        <li><code>navigation.css</code> (this subsystem)</li>
+                        <li>An active theme file (<code>slate</code>, <code
+                                >navy</code>,
+                            <code>carbon</code>)
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="../css/base.css"&gt;
+&lt;link rel="stylesheet" href="../css/layout.css"&gt;
+&lt;link rel="stylesheet" href="../css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/themes/slate.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/icons.css"&gt;
+&lt;link rel="stylesheet" href="../css/navigation.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/doc-block.css"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Structural model</h2>
+                <p class="doc-block__summary">
+                    Each navigation subsystem has its own structural primitives and variants. They do
+                    not share markup — only tokens, typography and theming.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div>
+                                <h3 class="text-sm">Primary nav</h3>
+                                <ul class="text-sm">
+                                    <li><code>.nav</code></li>
+                                    <li><code>.nav-section</code></li>
+                                    <li><code>.nav__link</code></li>
+                                    <li><code>.nav__link--active</code></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-sm">Sidebar</h3>
+                                <ul class="text-sm">
+                                    <li><code>.sidebar</code></li>
+                                    <li><code>.sidebar__item</code></li>
+                                    <li><code>.sidebar__item--active</code></li>
+                                    <li><code>.sidebar__section</code></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-sm">Others</h3>
+                                <ul class="text-sm">
+                                    <li><code>.breadcrumbs</code> family</li>
+                                    <li><code>.pagination</code> family</li>
+                                    <li><code>.nav-tabs</code> family</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;header&gt;
+    &lt;nav class="nav"&gt;...&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;aside class="sidebar"&gt;...&lt;/aside&gt;
+
+&lt;main&gt;
+    &lt;nav class="breadcrumbs"&gt;...&lt;/nav&gt;
+
+    &lt;div class="nav-tabs"&gt;...&lt;/div&gt;
+
+    &lt;nav class="pagination"&gt;...&lt;/nav&gt;
+&lt;/main&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Primary navigation</h2>
+                <p class="doc-block__summary">
+                    Horizontal, sectioned navigation used in headers and feature bars. Responsive by
+                    design using VDS layout tokens.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <nav class="nav grid grid-cols-2 md:grid-cols-1">
+                                <div class="nav-section">
+                                    <a class="nav__link--active">Overview</a>
+                                    <a class="nav__link">Docs</a>
+                                    <a class="nav__link">Components</a>
+                                    <a class="nav__link">Changelog</a>
+                                </div>
+                                <div class="nav-section">
+                                    <a class="nav__link">Account</a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;nav class="nav"&gt;
+    &lt;div class="nav-section"&gt;
+        &lt;a class="nav__link--active"&gt;Overview&lt;/a&gt;
+        &lt;a class="nav__link"&gt;Docs&lt;/a&gt;
+        &lt;a class="nav__link"&gt;Components&lt;/a&gt;
+        &lt;a class="nav__link"&gt;Changelog&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="nav-section"&gt;
+        &lt;a class="nav__link"&gt;Account&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Sidebar navigation</h2>
+                <p class="doc-block__summary">
+                    Vertical, scrollable navigation surfaces used for dashboards, settings and
+                    high-density UIs. Supports sections and active states.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <aside class="sidebar">
+                                <div class="sidebar__section">GENERAL</div>
+
+                                <div class="sidebar__nav">
+                                    <a class="nav__item--active">Dashboard</a>
+                                    <a class="nav__item">Projects</a>
+                                    <a class="nav__item">Tasks</a>
+                                </div>
+
+                                <div class="sidebar__section">SETTINGS</div>
+
+                                <div class="sidebar__nav">
+                                    <a class="nav__item">Profile</a>
+                                    <a class="nav__item">Billing</a>
+                                    <a class="nav__item">Integrations</a>
+                                </div>
+                            </aside>
+
+                            <div>
+                                <p class="text-sm text-muted">Sidebar context preview area.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;aside class=&quot;sidebar&quot;&gt;
+    &lt;div class=&quot;sidebar__section&quot;&gt;GENERAL&lt;/div&gt;
+
+    &lt;div class=&quot;sidebar__nav&quot;&gt;
+        &lt;a class=&quot;nav__item--active&quot;&gt;Dashboard&lt;/a&gt;
+        &lt;a class=&quot;nav__item&quot;&gt;Projects&lt;/a&gt;
+        &lt;a class=&quot;nav__item&quot;&gt;Tasks&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;sidebar__section&quot;&gt;SETTINGS&lt;/div&gt;
+
+    &lt;div class=&quot;sidebar__nav&quot;&gt;
+        &lt;a class=&quot;nav__item&quot;&gt;Profile&lt;/a&gt;
+        &lt;a class=&quot;nav__item&quot;&gt;Billing&lt;/a&gt;
+        &lt;a class=&quot;nav__item&quot;&gt;Integrations&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/aside&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Breadcrumbs</h2>
+                <p class="doc-block__summary">
+                    Linear page hierarchy with separators and current-page state support.
+                </p>
+
+                <p>This version:</p>
+
+                <ul>
+                    <li>uses .breadcrumbs as the container</li>
+                    <li>uses .breadcrumbs__item per node</li>
+                    <li>uses .breadcrumbs__link for all but the current page</li>
+                    <li>uses .breadcrumbs__separator between items</li>
+                    <li>marks the current page with aria-current="page" (correct accessibility contract)</li>
+                    <li>respects ellipsis, truncation, max-width constraints from your CSS</li>
+                    <li>produces: Home / Projects / VDS Redesign</li>
+                </ul>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+
+                            <nav aria-label="Breadcrumb" class="breadcrumbs">
+                                <span class="breadcrumbs__item">
+                                    <a href="/" class="breadcrumbs__link">Home</a>
+                                </span>
+                                <span class="breadcrumbs__separator">/</span>
+                                <span class="breadcrumbs__item">
+                                    <a href="/projects" class="breadcrumbs__link">Projects</a>
+                                </span>
+                                <span class="breadcrumbs__separator">/</span>
+                                <span class="breadcrumbs__item">VDS Redesign</span>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;nav aria-label=&quot;Breadcrumb&quot; class=&quot;breadcrumbs&quot;&gt;
+    &lt;span class=&quot;breadcrumbs__item&quot;&gt;
+        &lt;a href=&quot;/&quot; class=&quot;breadcrumbs__link&quot;&gt;Home&lt;/a&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;breadcrumbs__separator&quot;&gt;/&lt;/span&gt;
+    &lt;span class=&quot;breadcrumbs__item&quot;&gt;
+        &lt;a href=&quot;/projects&quot; class=&quot;breadcrumbs__link&quot;&gt;Projects&lt;/a&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;breadcrumbs__separator&quot;&gt;/&lt;/span&gt;
+    &lt;span class=&quot;breadcrumbs__item&quot;&gt;VDS Redesign&lt;/span&gt;
+&lt;/nav&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Pagination</h2>
+                <p class="doc-block__summary">
+                    Page controls with active, disabled and interactive states.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <nav class="pagination">
+                                <button class="pagination__item pagination__item--disabled" disabled>
+                                    ← Prev
+                                </button>
+                                <button class="pagination__item pagination__item--active">1</button>
+                                <button class="pagination__item">2</button>
+                                <button class="pagination__item">3</button>
+                                <button class="pagination__item">Next →</button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;nav class="pagination"&gt;
+    &lt;button class="pagination__item pagination__item--disabled" disabled&gt;
+        ← Prev
+    &lt;/button&gt;
+
+    &lt;button class="pagination__item pagination__item--active"&gt;1&lt;/button&gt;
+    &lt;button class="pagination__item"&gt;2&lt;/button&gt;
+    &lt;button class="pagination__item"&gt;3&lt;/button&gt;
+
+    &lt;button class="pagination__item"&gt;Next →&lt;/button&gt;
+&lt;/nav&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Tabs</h2>
+                <p class="doc-block__summary">
+                    Horizontal switching control. Use for panels, content clusters or dashboard views.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="nav-tabs" role="tablist">
+                                <button role="tab" aria-selected="true" class="nav-tabs__item nav-tabs__item--active">
+                                    Overview
+                                </button>
+                                <button role="tab" aria-selected="false" class="nav-tabs__item">Activity</button>
+                                <button role="tab" aria-selected="false" class="nav-tabs__item">Settings</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-6">
+                        <div class="card__body">
+                            <div class="nav-tabs nav-tabs--compact" role="tablist">
+                                <button class="nav-tabs__item nav-tabs__item--active" role="tab" aria-selected="true">
+                                    Overview
+                                </button>
+                                <button class="nav-tabs__item" role="tab" aria-selected="false">Activity</button>
+                                <button class="nav-tabs__item" role="tab" aria-selected="false">Settings</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-6">
+                        <div class="card__body">
+                            <div class="nav-tabs" role="tablist">
+                                <button class="nav-tabs__item nav-tabs__item--active" role="tab" aria-selected="true">
+                                    <span class="icon icon--mask icon--search nav-tabs__icon"></span>
+                                    Overview
+                                </button>
+
+                                <button class="nav-tabs__item" role="tab" aria-selected="false">
+                                    <span class="icon icon--mask icon--calendar nav-tabs__icon"></span>
+                                    Activity
+                                </button>
+
+                                <button class="nav-tabs__item" role="tab" aria-selected="false">
+                                    <span class="icon icon--mask icon--settings nav-tabs__icon"></span>
+                                    Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-6">
+                        <div class="card__body">
+                            <div class="nav-tabs" role="tablist">
+                                <button class="nav-tabs__item nav-tabs__item--active" role="tab" aria-selected="true">
+                                    Overview
+                                    <span class="nav-tabs__badge">12</span>
+                                </button>
+
+                                <button class="nav-tabs__item" role="tab" aria-selected="false">
+                                    Activity
+                                    <span class="nav-tabs__badge">3</span>
+                                </button>
+
+                                <button class="nav-tabs__item" role="tab" aria-selected="false">
+                                    Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="nav-tabs"&gt;
+    &lt;button class="nav-tabs__item nav-tabs__item--active"&gt;Overview&lt;/button&gt;
+    &lt;button class="nav-tabs__item"&gt;Activity&lt;/button&gt;
+    &lt;button class="nav-tabs__item"&gt;Settings&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;nav-tabs nav-tabs--compact&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;nav-tabs__item nav-tabs__item--active&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot;&gt;Overview&lt;/button&gt;
+    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Activity&lt;/button&gt;
+    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Settings&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;nav-tabs&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;nav-tabs__item nav-tabs__item--active&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot;&gt;
+        &lt;span class=&quot;icon icon--mask icon--search nav-tabs__icon&quot;&gt;&lt;/span&gt;
+        Overview
+    &lt;/button&gt;
+
+    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
+        &lt;span class=&quot;icon icon--mask icon--calendar nav-tabs__icon&quot;&gt;&lt;/span&gt;
+        Activity
+    &lt;/button&gt;
+
+    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
+        &lt;span class=&quot;icon icon--mask icon--settings nav-tabs__icon&quot;&gt;&lt;/span&gt;
+        Settings
+    &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;nav-tabs&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;nav-tabs__item nav-tabs__item--active&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot;&gt;
+        Overview
+        &lt;span class=&quot;nav-tabs__badge&quot;&gt;12&lt;/span&gt;
+    &lt;/button&gt;
+
+    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
+        Activity
+        &lt;span class=&quot;nav-tabs__badge&quot;&gt;3&lt;/span&gt;
+    &lt;/button&gt;
+
+    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
+        Settings
+    &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Toolbar</h2>
+                <p class="doc-block__summary">
+                    A flexible horizontal control bar used for page headers, headers, actions,
+                    filters, batch operations and contextual commands. Toolbars support density
+                    modifiers, title blocks, and left/right action groups.
+                </p>
+            </header>
+
+            <div class="doc-block__preview">
+                <div class="toolbar">
+                    <div class="toolbar__section">
+                        <h3 class="toolbar__title">Users</h3>
+                    </div>
+                    <div class="toolbar__actions">
+                        <button class="button button--subtle">Export</button>
+                        <button class="button button--primary">Add User</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__body">
+                <h3 class="text-sm text-muted">Structure</h3>
+                <p class="text-sm">
+                    Toolbars provide a horizontal layout with smart spacing, allowing left and right
+                    sections to contain titles, filters, search inputs, tabs or buttons. They inherit
+                    full surface, border and radius tokens for use in dashboards and page headers.
+                </p>
+
+                <ul class="text-sm">
+                    <li><code>.toolbar</code> forms the container.</li>
+                    <li><code>.toolbar__section</code> groups content on the left side.</li>
+                    <li><code>.toolbar__actions</code> aligns interactive controls on the right.</li>
+                    <li><code>.toolbar__title</code> provides a semantic title area.</li>
+                    <li>Density modifiers: <code>.toolbar--dense</code>, <code>.toolbar--spacious</code>.</li>
+                </ul>
+
+                <h3 class="text-sm text-muted">Default</h3>
+
+                <div class="doc-block__preview">
+                    <div class="toolbar">
+                        <div class="toolbar__section">
+                            <h3 class="toolbar__title">Projects</h3>
+                        </div>
+                        <div class="toolbar__actions">
+                            <button class="button button--ghost">Filter</button>
+                            <button class="button button--primary">New Project</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="toolbar"&gt;
+    &lt;div class="toolbar__section"&gt;
+        &lt;h3 class="toolbar__title"&gt;Projects&lt;/h3&gt;
+    &lt;/div&gt;
+
+    &lt;div class="toolbar__actions"&gt;
+        &lt;button class="button button--ghost"&gt;Filter&lt;/button&gt;
+        &lt;button class="button button--primary"&gt;New Project&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Density</h3>
+
+                <p class="text-sm">Toolbars support compact and spacious variants depending on context.</p>
+
+                <div class="doc-block__preview">
+                    <div class="toolbar toolbar--dense">
+                        <div class="toolbar__section">
+                            <span class="toolbar__title">Dense</span>
+                        </div>
+                        <div class="toolbar__actions">
+                            <button class="button button--subtle">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="toolbar toolbar--dense"&gt;
+    &lt;div class="toolbar__section"&gt;
+        &lt;span class="toolbar__title"&gt;Dense&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="toolbar__actions"&gt;
+        &lt;button class="button button--subtle"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="toolbar toolbar--spacious">
+                        <div class="toolbar__section">
+                            <span class="toolbar__title">Spacious</span>
+                        </div>
+                        <div class="toolbar__actions">
+                            <button class="button button--primary">Create</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="toolbar toolbar--spacious"&gt;
+    &lt;div class="toolbar__section"&gt;
+        &lt;span class="toolbar__title"&gt;Spacious&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="toolbar__actions"&gt;
+        &lt;button class="button button--primary"&gt;Create&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Sections and Actions</h3>
+                <p class="text-sm">
+                    Toolbars may contain additional controls such as tabs, search inputs or dropdowns
+                    inside either <code>.toolbar__section</code> or <code>.toolbar__actions</code>.
+                </p>
+
+                <div class="doc-block__preview">
+                    <div class="toolbar">
+                        <div class="toolbar__section">
+                            <h3 class="toolbar__title">Analytics</h3>
+                            <div class="nav-tabs nav-tabs--compact" role="tablist">
+                                <button class="nav-tabs__item nav-tabs__item--active" aria-selected="true">Overview
+                                </button>
+                                <button class="nav-tabs__item">Traffic</button>
+                                <button class="nav-tabs__item">Events</button>
+                            </div>
+                        </div>
+
+                        <div class="toolbar__actions">
+                            <button class="button button--ghost">Refresh</button>
+                            <button class="button button--primary">Export</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="toolbar"&gt;
+    &lt;div class="toolbar__section"&gt;
+        &lt;h3 class="toolbar__title"&gt;Analytics&lt;/h3&gt;
+
+        &lt;div class="nav-tabs nav-tabs--compact" role="tablist"&gt;
+            &lt;button class="nav-tabs__item nav-tabs__item--active"&gt;Overview&lt;/button&gt;
+            &lt;button class="nav-tabs__item"&gt;Traffic&lt;/button&gt;
+            &lt;button class="nav-tabs__item"&gt;Events&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="toolbar__actions"&gt;
+        &lt;button class="button button--ghost"&gt;Refresh&lt;/button&gt;
+        &lt;button class="button button--primary"&gt;Export&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Footer Navigation</h2>
+                <p class="doc-block__summary">
+                    A simplified, low-emphasis navigation variant used in footers and auxiliary surfaces.
+                    Footer navigation uses muted colors, vertical layout and reduced spacing to provide
+                    unobtrusive access to informational pages, policies and secondary actions.
+                </p>
+            </header>
+
+            <div class="doc-block__preview">
+                <footer class="footer">
+                    <nav class="nav">
+                        <a class="nav__link">About</a>
+                        <a class="nav__link">Privacy</a>
+                        <a class="nav__link nav__link--active">Terms</a>
+                    </nav>
+                </footer>
+            </div>
+
+            <div class="doc-block__body">
+                <h3 class="text-sm text-muted">Structure</h3>
+                <p class="text-sm">
+                    Footer navigation reuses the core <code>.nav</code> and <code>.nav__link</code> patterns
+                    but applies footer-specific color tokens and vertical alignment. The reduced emphasis
+                    helps keep primary navigation distinct while providing accessible paths to secondary pages.
+                </p>
+
+                <ul class="text-sm">
+                    <li><code>.footer .nav</code> converts navigation into a stacked vertical layout.</li>
+                    <li><code>.footer .nav__link</code> uses footer text colors and reduced opacity.</li>
+                    <li><code>.nav--vertical</code> aligns items to the left for consistent reading flow.</li>
+                    <li>Active links gain full opacity and medium font-weight.</li>
+                </ul>
+
+                <h3 class="text-sm text-muted">Default</h3>
+                <div class="doc-block__preview">
+                    <footer class="footer">
+                        <nav class="nav">
+                            <a class="nav__link">FAQ</a>
+                            <a class="nav__link">Support</a>
+                            <a class="nav__link nav__link--active">Contact</a>
+                        </nav>
+                    </footer>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;footer class="footer"&gt;
+    &lt;nav class="nav"&gt;
+        &lt;a class="nav__link"&gt;FAQ&lt;/a&gt;
+        &lt;a class="nav__link"&gt;Support&lt;/a&gt;
+        &lt;a class="nav__link nav__link--active"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/footer&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Vertical Layout</h3>
+                <p class="text-sm">
+                    Vertical navigation is the default form in footers, enabling compact grouping and
+                    clear scanability across legal and informational pages.
+                </p>
+
+                <div class="doc-block__preview">
+                    <footer class="footer">
+                        <nav class="nav nav--vertical">
+                            <a class="nav__link">Company</a>
+                            <a class="nav__link">Blog</a>
+                            <a class="nav__link nav__link--active">Careers</a>
+                        </nav>
+                    </footer>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;footer class="footer"&gt;
+    &lt;nav class="nav nav--vertical"&gt;
+        &lt;a class="nav__link"&gt;Company&lt;/a&gt;
+        &lt;a class="nav__link"&gt;Blog&lt;/a&gt;
+        &lt;a class="nav__link nav__link--active"&gt;Careers&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/footer&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Behavior</h3>
+                <ul class="text-sm">
+                    <li>Footer links use <code>--color-footer-text</code> at 85% opacity.</li>
+                    <li>Hover removes opacity reduction for clarity.</li>
+                    <li>Active state uses full opacity and <code>font-weight: 500</code>.</li>
+                    <li>Horizontal footer nav is allowed but not recommended for dense menus.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Announcement</h2>
+                <p class="doc-block__summary">
+                    A full-width banner used for site-wide notices, version announcements,
+                    scheduled maintenance, product updates, legal information, or marketing messages.
+                    Announcements support icons, inline links, dismiss actions, and status variants.
+                </p>
+            </header>
+
+            <div class="doc-block__preview">
+                <div class="announcement">
+                    <div class="announcement__inner">
+                        <div class="announcement__content">
+                            <span class="announcement__icon icon icon--info icon--mask"></span>
+                            <span class="announcement__text">Welcome to the new VDS 3.0 release.</span>
+                            <a class="announcement__link" href="#">Learn more</a>
+                        </div>
+                        <button class="announcement__close">
+                            <span class="icon icon--mask icon--close"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__body">
+                <h3 class="text-sm text-muted">Structure</h3>
+                <p class="text-sm">
+                    Announcements are placed at the top of a layout and span the full viewport width.
+                    The inner container aligns content, icons, actions, and optional close controls.
+                </p>
+
+                <ul class="text-sm">
+                    <li><code>.announcement</code> creates the banner surface.</li>
+                    <li><code>.announcement__inner</code> constrains width and provides layout.</li>
+                    <li><code>.announcement__content</code> groups icon, text, and any inline links.</li>
+                    <li><code>.announcement__icon</code> allows any icon-mask usage.</li>
+                    <li><code>.announcement__text</code> contains the message.</li>
+                    <li><code>.announcement__link</code> styles inline links within the banner.</li>
+                    <li><code>.announcement__close</code> provides a dismiss action.</li>
+                    <li>Status variants: <code>.announcement--info</code>, <code>.announcement--success</code>, <code>.announcement--warning</code>,
+                        <code>.announcement--danger</code>.
+                    </li>
+                </ul>
+
+                <h3 class="text-sm text-muted">Default</h3>
+                <div class="doc-block__preview">
+                    <div class="announcement">
+                        <div class="announcement__inner">
+                            <div class="announcement__content">
+                                <span class="announcement__icon icon icon--mask icon--neutral"></span>
+                                <span class="announcement__text">We’ve updated our Terms of Service.</span>
+                                <a class="announcement__link" href="#">View changes</a>
+                            </div>
+                            <button class="announcement__close">
+                                <span class="icon icon--mask icon--close"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="announcement"&gt;
+    &lt;div class="announcement__inner"&gt;
+
+        &lt;div class="announcement__content"&gt;
+            &lt;span class="announcement__icon icon icon--mask icon--neutral"&gt;&lt;/span&gt;
+            &lt;span class="announcement__text"&gt;We’ve updated our Terms of Service.&lt;/span&gt;
+            &lt;a href="#" class="announcement__link"&gt;View changes&lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;button class="announcement__close"&gt;
+            &lt;span class="icon icon--mask icon--close"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Variants</h3>
+                <p class="text-sm">
+                    Announcements can communicate semantic states using soft background and strong text colors.
+                </p>
+
+                <div class="doc-block__preview">
+                    <div class="announcement announcement--info">
+                        <div class="announcement__inner">
+                            <div class="announcement__content">
+                                <span class="announcement__icon icon icon--mask icon--info"></span>
+                                <span class="announcement__text">System maintenance tonight at 01:00 UTC.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="announcement announcement--success">
+                        <div class="announcement__inner">
+                            <div class="announcement__content">
+                                <span class="announcement__icon icon icon--mask icon--success"></span>
+                                <span class="announcement__text">Your billing information was updated successfully.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="announcement announcement--warning">
+                        <div class="announcement__inner">
+                            <div class="announcement__content">
+                                <span class="announcement__icon icon icon--mask icon--warning"></span>
+                                <span class="announcement__text">Your trial expires in 3 days.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="announcement announcement--danger">
+                        <div class="announcement__inner">
+                            <div class="announcement__content">
+                                <span class="announcement__icon icon icon--mask icon--danger"></span>
+                                <span class="announcement__text">Service interruption detected in EU-West.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="announcement announcement--info"&gt;...&lt;/div&gt;
+&lt;div class="announcement announcement--success"&gt;...&lt;/div&gt;
+&lt;div class="announcement announcement--warning"&gt;...&lt;/div&gt;
+&lt;div class="announcement announcement--danger"&gt;...&lt;/div&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Behavior</h3>
+                <ul class="text-sm">
+                    <li>Full-width container with responsive inner layout.</li>
+                    <li>Supports icons, inline links, and dismiss controls.</li>
+                    <li>Safe for multiple stacked announcements.</li>
+                    <li>Structure remains stable across all breakpoints.</li>
+                    <li>Close button includes hover, focus-visible, and interactive affordances.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Navigation Brand & Actions</h2>
+                <p class="doc-block__summary">
+                    Brand and action areas define the left and right structural anchors inside top-level
+                    navigation bars. They group logos, product titles, buttons, account menus and other
+                    high-priority controls while maintaining alignment and spacing consistency.
+                </p>
+            </header>
+
+            <div class="doc-block__preview">
+                <nav class="nav">
+                    <div class="nav__brand">
+                        <span class="nav__logo">
+                            <span class="logo">VDS</span>
+                        </span>
+                        <span class="text-sm">Vlah Design System</span>
+                    </div>
+
+                    <div class="nav__actions">
+                        <button class="button button--subtle">Docs</button>
+                        <button class="button button--primary">Login</button>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="doc-block__body">
+                <h3 class="text-sm text-muted">Structure</h3>
+                <p class="text-sm">
+                    The brand area anchors the left side of the navigation bar and typically contains a logo
+                    and an optional product or section title. The actions area anchors the right side and holds
+                    important controls such as authentication buttons, account menus or theme toggles.
+                </p>
+
+                <ul class="text-sm">
+                    <li><code>.nav__brand</code> groups logo and name elements.</li>
+                    <li><code>.nav__brand--compact</code> reduces spacing for dense environments.</li>
+                    <li><code>.nav__logo</code> vertically centers any logo element.</li>
+                    <li><code>.nav__actions</code> positions button-like controls on the right.</li>
+                    <li>Spacing is controlled exclusively by layout tokens.</li>
+                </ul>
+
+                <h3 class="text-sm text-muted">Brand</h3>
+                <div class="doc-block__preview">
+                    <nav class="nav">
+                        <div class="nav__brand">
+                            <span class="nav__logo">
+                                <span class="logo">VDS</span>
+                            </span>
+                            <strong class="text-sm">Dashboard</strong>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;nav class="nav"&gt;
+    &lt;div class="nav__brand"&gt;
+        &lt;span class="nav__logo"&gt;
+            &lt;span class="logo"&gt;VDS&lt;/span&gt;
+        &lt;/span&gt;
+
+        &lt;strong class="text-sm"&gt;Dashboard&lt;/strong&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Compact Brand</h3>
+                <p class="text-sm">
+                    Use <code>.nav__brand--compact</code> in constrained environments or inside vertical navigation
+                    where spacing should be minimized.
+                </p>
+
+                <div class="doc-block__preview">
+                    <nav class="nav">
+                        <div class="nav__brand nav__brand--compact">
+                            <span class="nav__logo">
+                                <span class="logo">V</span>
+                            </span>
+                            <span class="text-sm">Docs</span>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="nav__brand nav__brand--compact"&gt;
+    &lt;span class="nav__logo"&gt;
+        &lt;span class="logo"&gt;V&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="text-sm"&gt;Docs&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Actions</h3>
+                <p class="text-sm">
+                    The actions area aligns navigation controls on the right side of the bar. Typical contents
+                    include authentication actions, user menus, search buttons or theme toggles.
+                </p>
+
+                <div class="doc-block__preview">
+                    <nav class="nav">
+                        <div class="nav__actions">
+                            <button class="button button--subtle">Help</button>
+                            <button class="button button--primary">Sign In</button>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="nav__actions"&gt;
+    &lt;button class="button button--subtle"&gt;Help&lt;/button&gt;
+    &lt;button class="button button--primary"&gt;Sign In&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Usage</h3>
+                <ul class="text-sm">
+                    <li>Brand area always aligns to the left edge of the navigation container.</li>
+                    <li>Actions appear right-aligned and follow interactive spacing rules.</li>
+                    <li>Logos inside <code>.nav__logo</code> retain natural dimensions and vertical centering.</li>
+                    <li>Product names, section identifiers or site titles may appear inside <code>.nav__brand</code>.
+                    </li>
+                    <li>Do not overload <code>.nav__actions</code> with large forms; keep it interactive and
+                        lightweight.
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Navigation Toggle</h2>
+                <p class="doc-block__summary">
+                    The navigation toggle provides a compact control for opening and closing mobile
+                    navigation menus. It supports hover, active and focus-visible states, as well as an
+                    <code>.nav__toggle--active</code> modifier for indicating the expanded menu state.
+                </p>
+            </header>
+
+            <div class="doc-block__preview">
+                <button class="nav__toggle">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
+                        <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
+                        <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="doc-block__body">
+                <h3 class="text-sm text-muted">Structure</h3>
+                <p class="text-sm">
+                    The toggle control is hidden by default in desktop navigation. At mobile breakpoints it
+                    becomes visible and triggers the display of the mobile menu or drawer. It uses tokens for
+                    radius, padding, transitions and focus-visible styling.
+                </p>
+
+                <ul class="text-sm">
+                    <li><code>.nav__toggle</code> is the interactive button.</li>
+                    <li>SVG icon inherits color from its parent (<code>currentColor</code>).</li>
+                    <li>Hover, active and focus-visible states follow button interaction rules.</li>
+                    <li><code>.nav__toggle--active</code> visually indicates an expanded or open menu.</li>
+                </ul>
+
+                <h3 class="text-sm text-muted">Basic</h3>
+                <div class="doc-block__preview">
+                    <button class="nav__toggle">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
+                            <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
+                            <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;button class="nav__toggle"&gt;
+    &lt;svg viewBox="0 0 24 24" fill="none"&gt;
+        &lt;line x1="3" y1="6"  x2="21" y2="6"  stroke-width="2" /&gt;
+        &lt;line x1="3" y1="12" x2="21" y2="12" stroke-width="2" /&gt;
+        &lt;line x1="3" y1="18" x2="21" y2="18" stroke-width="2" /&gt;
+    &lt;/svg&gt;
+&lt;/button&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Active State</h3>
+                <p class="text-sm">
+                    Apply <code>.nav__toggle--active</code> when the mobile navigation is open or expanded.
+                </p>
+
+                <div class="doc-block__preview">
+                    <button class="nav__toggle nav__toggle--active">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
+                            <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
+                            <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;button class="nav__toggle nav__toggle--active"&gt;
+    &lt;svg viewBox="0 0 24 24" fill="none"&gt;
+        &lt;line x1="3" y1="6"  x2="21" y2="6"  stroke-width="2" /&gt;
+        &lt;line x1="3" y1="12" x2="21" y2="12" stroke-width="2" /&gt;
+        &lt;line x1="3" y1="18" x2="21" y2="18" stroke-width="2" /&gt;
+    &lt;/svg&gt;
+&lt;/button&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Usage</h3>
+                <ul class="text-sm">
+                    <li>Toggle is hidden on desktop via media queries (see layout rules).</li>
+                    <li>SVG uses <code>stroke="currentColor"</code> so the toggle can be themed via CSS.</li>
+                    <li>Hover and active use subtle surface/background tokens for tactile feedback.</li>
+                    <li><code>.nav__toggle--active</code> maps directly to the expanded menu state.</li>
+                    <li>Must include a <code>focus-visible</code> style for accessibility compliance.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Primary & Contextual Navigation</h2>
+                <p class="doc-block__summary">
+                    These navigation patterns provide horizontal menu structures for primary pages,
+                    contextual sections, and segmented choices. They include primary navigation,
+                    sub-navigation (tabs), and pill navigation for segmented filters or mode switching.
+                </p>
+            </header>
+
+            <div class="doc-block__preview">
+                <nav class="nav nav--primary">
+                    <a class="nav__link nav__link--active">Home</a>
+                    <a class="nav__link">Projects</a>
+                    <a class="nav__link">Teams</a>
+                    <a class="nav__link">Billing</a>
+                </nav>
+            </div>
+
+            <div class="doc-block__body">
+                <h3 class="text-sm text-muted">Primary Navigation</h3>
+                <p class="text-sm">
+                    Primary navigation is used at the top-level of an application. It features padded,
+                    rounded items with subtle hover states and an accent background for active pages.
+                </p>
+
+                <ul class="text-sm">
+                    <li><code>.nav--primary</code> defines the horizontal layout.</li>
+                    <li>Items use padding and rounded corners.</li>
+                    <li>Hover triggers a subtle surface elevation.</li>
+                    <li>Active state uses <code>--color-accent-soft</code>.</li>
+                </ul>
+
+                <div class="doc-block__code">
+<pre><code>&lt;nav class="nav nav--primary"&gt;
+    &lt;a class="nav__link nav__link--active"&gt;Home&lt;/a&gt;
+    &lt;a class="nav__link"&gt;Projects&lt;/a&gt;
+    &lt;a class="nav__link"&gt;Teams&lt;/a&gt;
+&lt;/nav&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Sub Navigation (Tabs)</h3>
+                <p class="text-sm">
+                    Sub navigation is used for contextual page-level sections and behaves like a tab bar.
+                    It uses a bottom border with an accent indicator to mark the active section.
+                </p>
+
+                <div class="doc-block__preview">
+                    <nav class="nav nav--sub">
+                        <a class="nav__link nav__link--active">Overview</a>
+                        <a class="nav__link">Activity</a>
+                        <a class="nav__link">Integrations</a>
+                        <a class="nav__link nav__link--disabled">Settings</a>
+                    </nav>
+                </div>
+
+                <ul class="text-sm">
+                    <li><code>.nav--sub</code> creates a tab-like bar.</li>
+                    <li>Active tabs include an accent indicator via <code>::after</code>.</li>
+                    <li>Disabled items reduce opacity and remove interaction.</li>
+                    <li>Full <code>focus-visible</code> ring is supported.</li>
+                </ul>
+
+                <div class="doc-block__code">
+<pre><code>&lt;nav class="nav nav--sub"&gt;
+    &lt;a class="nav__link nav__link--active"&gt;Overview&lt;/a&gt;
+    &lt;a class="nav__link"&gt;Activity&lt;/a&gt;
+    &lt;a class="nav__link"&gt;Integrations&lt;/a&gt;
+    &lt;a class="nav__link nav__link--disabled"&gt;Settings&lt;/a&gt;
+&lt;/nav&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Pill Navigation</h3>
+                <p class="text-sm">
+                    Pill navigation provides lightweight segmented controls used for filtering, mode
+                    selection, or compact alternative to tabs. Pills support wrapping and small sizes.
+                </p>
+
+                <div class="doc-block__preview">
+                    <nav class="nav nav--pills">
+                        <a class="nav__link nav__link--active">All</a>
+                        <a class="nav__link">Open</a>
+                        <a class="nav__link">Closed</a>
+                        <a class="nav__link">Archived</a>
+                    </nav>
+                </div>
+
+                <ul class="text-sm">
+                    <li><code>.nav--pills</code> uses rounded pill shapes.</li>
+                    <li>Bordered and surface-backed by default.</li>
+                    <li>Active pills use accent border + soft accent background.</li>
+                    <li>Disabled pills reduce opacity and remove pointer events.</li>
+                </ul>
+
+                <div class="doc-block__code">
+<pre><code>&lt;nav class="nav nav--pills"&gt;
+    &lt;a class="nav__link nav__link--active"&gt;All&lt;/a&gt;
+    &lt;a class="nav__link"&gt;Open&lt;/a&gt;
+    &lt;a class="nav__link"&gt;Closed&lt;/a&gt;
+&lt;/nav&gt;
+</code></pre>
+                </div>
+
+                <h3 class="text-sm text-muted">Behavior</h3>
+                <ul class="text-sm">
+                    <li>Primary navigation is typically placed in top-level app bars.</li>
+                    <li>Sub navigation (tabs) is used for contextual sections within a page.</li>
+                    <li>Pill navigation is flexible and works across toolbars, cards and filters.</li>
+                    <li>All navigation items support <code>:hover</code> and <code>:focus-visible</code> states.</li>
+                    <li>Spacing and radii are token-driven and theme-consistent.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Navigation components must preserve semantic roles, keyboard-first operability,
+                    predictable ARIA states, and token-driven contrast. Horizontal nav, vertical
+                    nav, breadcrumbs, pagination, tabs and mobile panels all follow a single
+                    accessibility contract.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use the correct semantic container:
+                            <code>&lt;nav&gt;</code> for navigation regions,
+                            <code>&lt;ul&gt;</code>/<code>&lt;li&gt;</code> if using semantics,
+                            <code>&lt;button&gt;</code> for pagination and tab triggers.
+                        </li>
+
+                        <li>
+                            Mark the current page explicitly with
+                            <code>aria-current="page"</code> on
+                            <code>.nav__item--active</code>,
+                            <code>.sidebar__nav .nav__item--active</code>,
+                            <code>.breadcrumb__item--current</code>.
+                        </li>
+
+                        <li>
+                            Keep <code>:focus-visible</code> intact — navigation relies on token-driven
+                            focus rings for full keyboard operability.
+                        </li>
+
+                        <li>
+                            Provide accessible labels on icon-only items inside
+                            <code>.nav__item</code> or <code>.nav-tabs__item</code>.
+                        </li>
+
+                        <li>
+                            In mobile contexts, ensure:
+                            <code>.nav__toggle</code> includes
+                            <code>aria-controls</code> and
+                            <code>aria-expanded</code>,
+                            updated by the controlling script.
+                        </li>
+
+                        <li>
+                            For tabs:
+                            <code>role="tablist"</code> on the container,
+                            <code>role="tab"</code> on each item,
+                            and keyboard behaviour (Left/Right) if ARIA tabs are fully implemented.
+                        </li>
+
+                        <li>
+                            Use semantic separators in breadcrumbs and maintain linear order.
+                        </li>
+
+                        <li>
+                            Apply disabled state semantically:
+                            <code>disabled</code> + <code>.pagination__item--disabled</code>
+                            or <code>.nav__item--disabled</code>.
+                        </li>
+
+                        <li>
+                            Keep mobile panels (<code>.nav-panel</code>) paired with a backdrop
+                            (<code>.nav-backdrop</code>) to ensure proper focus trapping and dismiss behaviour.
+                        </li>
+
+                        <li>
+                            Use <code>.nav--vertical</code>, <code>.sidebar</code> and depth utilities
+                            (<code>--depth-2</code>, <code>--depth-3</code>) to expose hierarchy visually
+                            without altering DOM reading order.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t simulate links or triggers with <code>&lt;div&gt;</code> elements —
+                            use <code>&lt;a&gt;</code> for navigation, <code>&lt;button&gt;</code> for actions.
+                        </li>
+
+                        <li>
+                            Don’t hide focus-visible or replace it with non-token shadows.
+                        </li>
+
+                        <li>
+                            Don’t remove breadcrumb separators; they provide navigational clarity
+                            and assistive-tech parsing.
+                        </li>
+
+                        <li>
+                            Don’t mix navigation patterns (primary/tabs/pills/vertical) inside the
+                            same container. Use one pattern per context.
+                        </li>
+
+                        <li>
+                            Don’t reorder DOM items to produce visual hierarchy — use depth classes.
+                        </li>
+
+                        <li>
+                            Don’t override spacing, typography or radius with inline CSS; navigation
+                            must remain token-driven for consistency.
+                        </li>
+
+                        <li>
+                            Don’t expose mobile panels (<code>.nav-panel</code>) without controlling
+                            <code>aria-expanded</code> or without showing <code>.nav-backdrop</code>.
+                        </li>
+
+                        <li>
+                            Don’t apply multiple nav-level modifiers simultaneously
+                            (<code>.nav--primary</code> + <code>.nav--pills</code>, etc.).
+                        </li>
+
+                        <li>
+                            Don’t use disabled links (<code>&lt;a disabled&gt;</code>) — invalid HTML.
+                            Use <code>&lt;button disabled&gt;</code> or style with
+                            <code>.nav__item--disabled</code>.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Use &lt;nav&gt; semantics; links = &lt;a&gt;, triggers = &lt;button&gt;.
+2. Mark current page with aria-current="page".
+3. Never remove :focus-visible; token rings are mandatory.
+4. Tabs: role="tablist", each tab = role="tab".
+5. Mobile toggles: aria-controls + aria-expanded (JS-updated).
+6. Disabled state: disabled attribute or --disabled modifier.
+7. Don’t reorder DOM; use depth utilities for visual hierarchy.
+8. Mobile panel requires backdrop for dismissal & focus safety.
+9. One navigation pattern per surface (primary/pills/tabs/vertical).
+10. Breadcrumbs must retain separators + current-page marking.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

@@ -1,0 +1,1154 @@
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
+            <header class="doc-block__header">
+                <h1 class="doc-block__title">Utility Layer</h1>
+                <p class="doc-block__summary">
+                    Atomic utility classes for layout, spacing, typography, visuals, and interaction.
+                    This layer is system-level: no colours, no business logic, no component-specific
+                    behaviour. Utilities are used to compose exceptional cases and fast prototypes,
+                    not to replace components or layout primitives.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+<pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="../css/utilities.css"&gt;
+
+&lt;div class="flex justify-between items-center gap-4"&gt;
+  &lt;div class="flex items-center gap-2"&gt;
+    &lt;span class="text-sm uppercase tracking-wide"&gt;Project&lt;/span&gt;
+    &lt;span class="text-sm"&gt;Vlah Design System&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="flex gap-2"&gt;
+    &lt;button class="button button--ghost text-sm"&gt;Preview&lt;/button&gt;
+    &lt;button class="button button--primary text-sm"&gt;Publish&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Display & visibility</h2>
+                <p class="doc-block__summary">
+                    Control how elements participate in layout and when they are visible at different
+                    breakpoints. All responsive visibility helpers are based on the system breakpoints.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="stack">
+                        <div class="text-sm uppercase tracking-wide">Examples</div>
+
+                        <div class="flex gap-2">
+                                <span class="inline-block px-2 py-1 text-xs bg-surface-soft radius-sm">
+                                    .inline-block
+                                </span>
+                            <span class="block px-2 py-1 text-xs bg-surface-soft radius-sm">
+                                    .block
+                                </span>
+                            <span class="hidden px-2 py-1 text-xs bg-surface-soft radius-sm">
+                                    .hidden (not visible)
+                                </span>
+                        </div>
+
+                        <div class="grid gap-2">
+                            <div class="text-xs">
+                                Resize viewport to see:
+                            </div>
+                            <div class="flex gap-2">
+                                    <span class="show-mobile text-xs px-2 py-1 bg-soft radius-sm">
+                                        Visible on mobile (.show-mobile)
+                                    </span>
+                                <span class="hide-mobile text-xs px-2 py-1 bg-muted radius-sm">
+                                        Hidden on mobile (.hide-mobile)
+                                    </span>
+                            </div>
+                            <div class="flex gap-2">
+                                    <span class="show-desktop text-xs px-2 py-1 bg-soft radius-sm">
+                                        Visible on desktop (.show-desktop)
+                                    </span>
+                                <span class="hide-desktop text-xs px-2 py-1 bg-muted radius-sm">
+                                        Hidden on desktop (.hide-desktop)
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.block        { display: block !important; }
+.inline       { display: inline !important; }
+.inline-block { display: inline-block !important; }
+.flex         { display: flex !important; }
+.inline-flex  { display: inline-flex !important; }
+.grid         { display: grid !important; }
+.inline-grid  { display: inline-grid !important; }
+.hidden       { display: none !important; }
+
+@media (max-width: var(--bp-sm)) {
+  .hide-mobile { display: none !important; }
+  .show-mobile { display: block !important; }
+}
+
+@media (min-width: var(--bp-lg)) {
+  .hide-desktop { display: none !important; }
+  .show-desktop { display: block !important; }
+}</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Flexbox</h2>
+                <p class="doc-block__summary">
+                    Flex utilities handle one-dimensional layout: toolbars, button rows, meta bars,
+                    and simple responsive structures.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="flex justify-between items-center gap-4 bg-surface-soft px-4 py-3 radius-md">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs uppercase tracking-wide">Status</span>
+                            <span class="text-sm">Live</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="button button--ghost text-sm">Discard</button>
+                            <button class="button button--primary text-sm">Save changes</button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex flex-column gap-2 bg-surface-soft px-4 py-3 radius-md">
+                        <div class="text-xs uppercase tracking-wide">
+                            Vertical stack (.flex-column)
+                        </div>
+                        <div class="text-sm">Row 1</div>
+                        <div class="text-sm">Row 2</div>
+                        <div class="text-sm">Row 3</div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="flex justify-between items-center gap-4"&gt;…&lt;/div&gt;
+&lt;div class="flex flex-column gap-2"&gt;…&lt;/div&gt;
+
+.flex-row    { flex-direction: row !important; }
+.flex-column { flex-direction: column !important; }
+
+.flex-wrap   { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+
+.justify-start   { justify-content: flex-start !important; }
+.justify-center  { justify-content: center !important; }
+.justify-end     { justify-content: flex-end !important; }
+.justify-between { justify-content: space-between !important; }
+
+.items-start   { align-items: flex-start !important; }
+.items-center  { align-items: center !important; }
+.items-end     { align-items: flex-end !important; }
+
+.flex-1    { flex: 1 1 0 !important; }
+.flex-auto { flex: 0 0 auto !important; }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Grid (atomic)</h2>
+                <p class="doc-block__summary">
+                    Atomic grid utilities for simple multi-column layouts and span control. Complex
+                    patterns should use the layout/sections grid primitives instead.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="grid grid-cols-3 gap-4 bg-surface-soft px-4 py-4 radius-md">
+                        <div class="bg-surface px-3 py-3 radius-sm text-sm">
+                            .grid-cols-3
+                        </div>
+                        <div class="bg-surface px-3 py-3 radius-sm text-sm">
+                            Equal columns
+                        </div>
+                        <div class="bg-surface px-3 py-3 radius-sm text-sm">
+                            Responsive by container
+                        </div>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-4 gap-4">
+                        <div class="bg-surface-soft px-3 py-3 radius-sm text-sm">
+                            col 1
+                        </div>
+                        <div class="bg-surface-soft px-3 py-3 radius-sm text-sm col-span-2">
+                            col-span-2
+                        </div>
+                        <div class="bg-surface-soft px-3 py-3 radius-sm text-sm">
+                            col 4
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="grid grid-cols-3 gap-4"&gt;…&lt;/div&gt;
+&lt;div class="grid grid-cols-4 gap-4"&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div class="col-span-2"&gt;2–3&lt;/div&gt;
+  &lt;div&gt;4&lt;/div&gt;
+&lt;/div&gt;
+
+.grid        { display: grid !important; }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.col-span-1 { grid-column: span 1 / span 1; }
+.col-span-2 { grid-column: span 2 / span 2; }
+.col-span-3 { grid-column: span 3 / span 3; }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Spacing — margin & padding</h2>
+                <p class="doc-block__summary">
+                    Spacing follows the shared scale:
+                    <code>0,1,2,3,4,5,6,7,8,10,12,14,16,20,24,32,40,48,64</code> mapped onto
+                    <code>--space-*</code>. Negative margin utilities exist for controlled overlap.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="stack">
+                        <div class="bg-surface-soft px-4 py-3 radius-md">
+                            <div class="text-xs uppercase tracking-wide mb-2">
+                                Padding example
+                            </div>
+                            <div class="bg-surface px-4 py-4 radius-sm text-sm">
+                                .px-4 .py-4
+                            </div>
+                        </div>
+
+                        <div class="bg-surface-soft px-4 py-3 radius-md">
+                            <div class="text-xs uppercase tracking-wide mb-2">
+                                Margin example
+                            </div>
+                            <div class="bg-surface px-3 py-3 radius-sm text-sm mb-4">
+                                .mb-4
+                            </div>
+                            <div class="bg-surface px-3 py-3 radius-sm text-sm">
+                                Following block
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>/* Margins */
+.m-0  { margin: 0 !important; }
+.m-1  { margin: var(--space-1) !important; }
+/* … 2,3,4,5,6,7,8,10,12,14,16,20,24,32,40,48,64 */
+
+.mt-4 { margin-top: var(--space-4) !important; }
+.mb-4 { margin-bottom: var(--space-4) !important; }
+.mx-4 { margin-inline: var(--space-4) !important; }
+.my-4 { margin-block: var(--space-4) !important; }
+
+/* Padding */
+.p-4  { padding: var(--space-4) !important; }
+.px-4 { padding-inline: var(--space-4) !important; }
+.py-4 { padding-block: var(--space-4) !important; }
+
+/* Negative margin (selected scale) */
+.-m-1  { margin: calc(var(--space-1) * -1) !important; }
+.-mt-2 { margin-top: calc(var(--space-2) * -1) !important; }
+.-mx-4 { margin-inline: calc(var(--space-4) * -1) !important; }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Gap utilities</h2>
+                <p class="doc-block__summary">
+                    Gap utilities control spacing between flex or grid children without touching
+                    margins. Available in full spacing scale variants and axis-specific versions.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="flex gap-4 bg-surface-soft px-4 py-3 radius-md">
+                            <span class="text-sm bg-surface px-3 py-2 radius-sm">
+                                gap-4
+                            </span>
+                        <span class="text-sm bg-surface px-3 py-2 radius-sm">
+                                gap-4
+                            </span>
+                        <span class="text-sm bg-surface px-3 py-2 radius-sm">
+                                gap-4
+                            </span>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-2 gap-x-8 gap-y-2 bg-surface-soft px-4 py-3 radius-md">
+                        <div class="text-xs">gap-x-8</div>
+                        <div class="text-xs">gap-y-2</div>
+                        <div class="bg-surface px-2 py-2 radius-sm text-xs">
+                            Cell A
+                        </div>
+                        <div class="bg-surface px-2 py-2 radius-sm text-xs">
+                            Cell B
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.gap-0  { gap: 0; }
+.gap-1  { gap: var(--space-1); }
+/* … full spacing scale … */
+.gap-16 { gap: var(--space-16); }
+.gap-24 { gap: var(--space-24); }
+
+.gap-x-4 { column-gap: var(--space-4); }
+.gap-y-2 { row-gap: var(--space-2); }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Typography helpers</h2>
+                <p class="doc-block__summary">
+                    Utilities for alignment, size, transform, and semantic colour binding. They
+                    complement (not replace) the typography system.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="stack">
+                        <div class="text-xs uppercase tracking-wide">
+                            Alignment & size
+                        </div>
+                        <p class="text-left text-sm">
+                            .text-left .text-sm — left aligned helper text.
+                        </p>
+                        <p class="text-center text-lg font-semibold">
+                            .text-center .text-lg .font-semibold
+                        </p>
+                        <p class="text-right text-xs uppercase tracking-wide">
+                            Right aligned label (.text-right)
+                        </p>
+
+                        <div class="mt-4 text-sm">
+                            <span class="uppercase tracking-wide">Muted</span>
+                            &nbsp;·&nbsp;
+                            <span class="text-soft">Soft</span>
+                            &nbsp;·&nbsp;
+                            <span class="text-strong">Strong</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.text-left   { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right  { text-align: right !important; }
+
+.text-xs   { font-size: var(--text-xs); }
+.text-sm   { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg   { font-size: var(--text-lg); }
+.text-xl   { font-size: var(--text-xl); }
+.text-2xl  { font-size: var(--text-2xl); }
+.text-3xl  { font-size: var(--text-3xl); }
+
+.font-medium   { font-weight: 500 !important; }
+.font-semibold { font-weight: 600 !important; }
+.font-bold     { font-weight: 700 !important; }
+
+.uppercase  { text-transform: uppercase; }
+.lowercase  { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+
+.text-soft      { color: var(--color-text-soft) !important; }
+.text-strong    { color: var(--color-text) !important; }
+.text-on-soft   { color: var(--color-text-on-soft) !important; }
+.text-on-strong { color: var(--color-text-on-strong) !important; }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Width, height & aspect</h2>
+                <p class="doc-block__summary">
+                    Utilities for controlling sizing, including aspect ratio helpers and object-fit
+                    for media content.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="stack">
+                        <div class="text-xs uppercase tracking-wide">
+                            Max-width container
+                        </div>
+                        <div class="bg-surface-soft px-4 py-4 radius-md">
+                            <div class="max-w-md text-sm">
+                                This block is constrained with <code>.max-w-md</code> to keep
+                                line length readable within a wider layout.
+                            </div>
+                        </div>
+
+                        <div class="text-xs uppercase tracking-wide mt-4">
+                            Aspect ratio
+                        </div>
+                        <div class="bg-surface-soft px-4 py-4 radius-md">
+                            <div class="aspect-video bg-muted radius-md overflow-hidden">
+                                <img src="https://placehold.co/800x450"
+                                     alt="Video thumbnail"
+                                     class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.w-auto  { width: auto !important; }
+.w-full  { width: 100% !important; }
+.w-half  { width: 50% !important; }
+
+.max-w-xs { max-width: 20rem; }
+.max-w-sm { max-width: 28rem; }
+.max-w-md { max-width: 36rem; }
+.max-w-lg { max-width: 48rem; }
+.max-w-xl { max-width: 64rem; }
+
+.h-auto   { height: auto !important; }
+.h-full   { height: 100% !important; }
+.h-screen { height: 100vh !important; }
+
+.min-h-screen { min-height: 100vh !important; }
+
+.aspect-square { aspect-ratio: 1 / 1; }
+.aspect-video  { aspect-ratio: 16 / 9; }
+
+.object-cover { object-fit: cover !important; }
+.object-contain { object-fit: contain !important; }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Border, radius & shadow</h2>
+                <p class="doc-block__summary">
+                    Surface framing utilities for quick card-like blocks and emphasis containers.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="bg-surface px-4 py-4 border radius-lg shadow-1">
+                        <div class="text-xs uppercase tracking-wide mb-2">
+                            .border .radius-lg .shadow-1
+                        </div>
+                        <div class="text-sm">
+                            Utility-composed card with subtle border and elevation.
+                        </div>
+                    </div>
+
+                    <div class="mt-4 bg-soft px-4 py-3 border-strong radius-sm shadow-none">
+                        <div class="text-xs uppercase tracking-wide mb-1">
+                            .border-strong .shadow-none
+                        </div>
+                        <div class="text-sm">
+                            High-contrast container without shadow.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.border {
+  border: 1px solid var(--color-border-subtle) !important;
+}
+
+.border-strong {
+  border: 1px solid var(--color-border-strong) !important;
+}
+
+.radius-xs   { border-radius: var(--radius-xs) !important; }
+.radius-sm   { border-radius: var(--radius-sm) !important; }
+.radius-md   { border-radius: var(--radius-md) !important; }
+.radius-lg   { border-radius: var(--radius-lg) !important; }
+.radius-xl   { border-radius: var(--radius-xl) !important; }
+.radius-full { border-radius: var(--radius-full) !important; }
+
+.shadow-1    { box-shadow: var(--shadow-1) !important; }
+.shadow-2    { box-shadow: var(--shadow-2) !important; }
+.shadow-3    { box-shadow: var(--shadow-3) !important; }
+.shadow-none { box-shadow: none !important; }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Background & surface</h2>
+                <p class="doc-block__summary">
+                    Background utilities bind to theme tokens only, never hard-coded colours. Use
+                    them for simple surface differentiation and status states.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="grid gap-3">
+                        <div class="bg-surface px-4 py-3 radius-md text-sm">
+                            .bg-surface
+                        </div>
+                        <div class="bg-surface-soft px-4 py-3 radius-md text-sm">
+                            .bg-surface-soft
+                        </div>
+                        <div class="bg-muted px-4 py-3 radius-md text-sm">
+                            .bg-muted
+                        </div>
+                        <div class="bg-brand px-4 py-3 radius-md text-sm text-on-strong">
+                            .bg-brand .text-on-strong
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.bg-surface {
+  background-color: var(--color-surface) !important;
+}
+
+.bg-surface-soft {
+  background-color: var(--color-surface-subtle) !important;
+}
+
+.bg-muted {
+  background-color: var(--color-muted-bg) !important;
+}
+
+/* Semantic soft backgrounds */
+.bg-success-soft { background-color: var(--color-success-soft) !important; }
+.bg-warning-soft { background-color: var(--color-warning-soft) !important; }
+.bg-danger-soft  { background-color: var(--color-danger-soft) !important; }
+.bg-info-soft    { background-color: var(--color-info-soft) !important; }
+
+.bg-brand {
+  background-color: var(--color-brand-ink) !important;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Opacity, cursor & pointer-events</h2>
+                <p class="doc-block__summary">
+                    Micro-interaction utilities used for disabled states, affordances and layering
+                    behaviour.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="flex gap-3">
+                        <button class="button button--primary text-sm">
+                            Primary action
+                        </button>
+                        <button class="button button--ghost text-sm opacity-50 cursor-not-allowed">
+                            Disabled state
+                        </button>
+                    </div>
+                    <div class="mt-4 text-xs">
+                        Disabled button uses <code>.opacity-50 .cursor-not-allowed</code>.
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.opacity-0   { opacity: 0; }
+.opacity-25  { opacity: 0.25; }
+.opacity-50  { opacity: 0.5; }
+.opacity-75  { opacity: 0.75; }
+.opacity-100 { opacity: 1; }
+
+.cursor-default     { cursor: default; }
+.cursor-pointer     { cursor: pointer; }
+.cursor-not-allowed { cursor: not-allowed; }
+.cursor-wait        { cursor: wait; }
+.cursor-text        { cursor: text; }
+
+.pointer-events-none { pointer-events: none; }
+.pointer-events-auto { pointer-events: auto; }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Overflow & scroll</h2>
+                <p class="doc-block__summary">
+                    Control overflow and scrolling behaviour, including momentum-scrolling helpers
+                    for touch devices.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="overflow-x-auto scroll-x bg-surface-soft px-3 py-2 radius-md">
+                        <div class="flex gap-2 w-max">
+                            <button class="button button--ghost text-xs">Overview</button>
+                            <button class="button button--ghost text-xs">Content</button>
+                            <button class="button button--ghost text-xs">Tables</button>
+                            <button class="button button--ghost text-xs">Icons</button>
+                            <button class="button button--ghost text-xs">Feedback</button>
+                            <button class="button button--ghost text-xs">Flows</button>
+                            <button class="button button--ghost text-xs">Utilities</button>
+                        </div>
+                    </div>
+                    <div class="mt-3 text-xs">
+                        Container uses <code>.overflow-x-auto .scroll-x</code> to allow horizontal
+                        scrolling on small screens.
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.overflow-hidden { overflow: hidden !important; }
+.overflow-auto   { overflow: auto !important; }
+.overflow-x-auto { overflow-x: auto !important; }
+.overflow-y-auto { overflow-y: auto !important; }
+
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-y {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-smooth { scroll-behavior: smooth; }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Position & z-index</h2>
+                <p class="doc-block__summary">
+                    Utilities for anchoring elements (sticky headers, badges, overlays) without
+                    component-specific CSS.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="relative bg-surface-soft px-4 py-4 radius-md">
+                        <div class="absolute top-0 right-0 mt-2 mr-2 text-xs px-2 py-1 bg-brand text-on-strong radius-full">
+                            NEW
+                        </div>
+                        <div class="text-sm">
+                            Positioned badge using <code>.absolute .top-0 .right-0</code>.
+                        </div>
+                    </div>
+
+                    <div class="mt-4 sticky top-0 z-10 bg-surface px-4 py-2 border radius-md">
+                        <div class="text-xs">
+                            Sticky header using <code>.sticky .top-0 .z-10</code>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.relative { position: relative !important; }
+.absolute { position: absolute !important; }
+.fixed    { position: fixed !important; }
+.sticky   { position: sticky !important; }
+
+.top-0    { top: 0; }
+.bottom-0 { bottom: 0; }
+.left-0   { left: 0; }
+.right-0  { right: 0; }
+
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-50 { z-index: 50; }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Stack, cluster & gutters</h2>
+                <p class="doc-block__summary">
+                    Higher-level composition utilities for vertical stacks, inline clusters and
+                    consistent gutters between elements.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="stack bg-surface-soft px-4 py-4 radius-md">
+                        <div class="text-xs uppercase tracking-wide">
+                            Stack
+                        </div>
+                        <div class="text-sm">First block</div>
+                        <div class="text-sm">Second block</div>
+                        <div class="text-sm">Third block</div>
+                    </div>
+
+                    <div class="mt-4 cluster bg-surface-soft px-4 py-4 radius-md">
+                        <button class="button button--ghost text-xs">
+                            Tag A
+                        </button>
+                        <button class="button button--ghost text-xs">
+                            Tag B
+                        </button>
+                        <button class="button button--ghost text-xs">
+                            Tag C
+                        </button>
+                        <button class="button button--ghost text-xs">
+                            Tag D
+                        </button>
+                    </div>
+
+                    <div class="mt-4 button-row bg-surface-soft px-4 py-3 radius-md">
+                        <button class="button button--secondary text-sm">
+                            Cancel
+                        </button>
+                        <button class="button button--primary text-sm">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.stack-tight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.stack-loose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.inline-stack {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.gutter-none { gap: 0; }
+.gutter-sm   { gap: var(--space-2); }
+.gutter-md   { gap: var(--space-3); }
+.gutter-lg   { gap: var(--space-4); }
+.gutter-xl   { gap: var(--space-6); }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Text helpers — truncate & multiline</h2>
+                <p class="doc-block__summary">
+                    Helpers for truncation and multiline ellipsis in constrained layouts.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="bg-surface-soft px-4 py-4 radius-md max-w-md">
+                        <div class="text-xs uppercase tracking-wide mb-2">
+                            .truncate
+                        </div>
+                        <p class="truncate text-sm">
+                            This is a very long title that will be truncated after one line to
+                            prevent layout from breaking in tight containers.
+                        </p>
+
+                        <div class="text-xs uppercase tracking-wide mt-4 mb-2">
+                            .truncate-2
+                        </div>
+                        <p class="truncate-2 text-sm">
+                            This is a very long description that should only span two lines of text
+                            before being visually clipped with an ellipsis to maintain vertical
+                            rhythm and avoid noisy layouts in cards or tables.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.truncate-2,
+.truncate-3,
+.truncate-4 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.truncate-2 { -webkit-line-clamp: 2; }
+.truncate-3 { -webkit-line-clamp: 3; }
+.truncate-4 { -webkit-line-clamp: 4; }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Specimen — Marketing page (utilities only)</h2>
+                <p class="doc-block__summary">
+                    A full marketing page composed <strong>only</strong> from utilities:
+                    hero, features grid and CTA band. No layout or component classes are used
+                    beyond buttons.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+<pre class="doc-block__code"><code>&lt;main class="min-h-screen bg-surface"&gt;
+  &lt;section class="px-6 py-24 bg-surface-soft"&gt;
+    &lt;div class="flex justify-center"&gt;
+      &lt;div class="max-w-lg"&gt;
+        &lt;p class="text-xs uppercase tracking-wide mb-3"&gt;
+          Vlah Design System
+        &lt;/p&gt;
+        &lt;h1 class="text-3xl font-bold tracking-tight mb-4"&gt;
+          Ship consistent interfaces with utility-driven precision.
+        &lt;/h1&gt;
+        &lt;p class="text-base mb-6"&gt;
+          The VDS utility layer lets you compose marketing pages, dashboards
+          and documentation without leaking implementation details into your
+          components.
+        &lt;/p&gt;
+        &lt;div class="flex gap-3"&gt;
+          &lt;button class="button button--primary text-sm"&gt;
+            Get started
+          &lt;/button&gt;
+          &lt;button class="button button--ghost text-sm"&gt;
+            View components
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class="px-6 py-16 bg-surface"&gt;
+    &lt;div class="max-w-xl"&gt;
+      &lt;p class="text-xs uppercase tracking-wide mb-3"&gt;
+        Why utilities
+      &lt;/p&gt;
+      &lt;h2 class="text-2xl font-semibold mb-6"&gt;
+        Small vocabulary, infinite layouts.
+      &lt;/h2&gt;
+    &lt;/div&gt;
+
+    &lt;div class="max-w-xl grid grid-cols-1 gap-6"&gt;
+      &lt;div class="bg-surface-soft px-4 py-4 radius-md border"&gt;
+        &lt;h3 class="text-base font-semibold mb-2"&gt;
+          Container-first
+        &lt;/h3&gt;
+        &lt;p class="text-sm"&gt;
+          Utilities are designed to sit on top of a container-first layout,
+          not replace it. Line length, rhythm and breakpoints stay predictable.
+        &lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class="bg-surface-soft px-4 py-4 radius-md border"&gt;
+        &lt;h3 class="text-base font-semibold mb-2"&gt;
+          Token-driven
+        &lt;/h3&gt;
+        &lt;p class="text-sm"&gt;
+          All spacing, radius and colours are backed by system tokens, so
+          prototypes naturally converge to production-ready surfaces.
+        &lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class="bg-surface-soft px-4 py-4 radius-md border"&gt;
+        &lt;h3 class="text-base font-semibold mb-2"&gt;
+          Composable
+        &lt;/h3&gt;
+        &lt;p class="text-sm"&gt;
+          Stacks, clusters and button rows cover the majority of composition
+          use cases without ad-hoc CSS.
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class="px-6 py-16 bg-brand"&gt;
+    &lt;div class="flex justify-center"&gt;
+      &lt;div class="max-w-md text-on-strong"&gt;
+        &lt;h2 class="text-2xl font-semibold mb-4"&gt;
+          Add VDS utilities to your next page.
+        &lt;/h2&gt;
+        &lt;p class="text-sm opacity-75 mb-6"&gt;
+          Start with a container, add a stack, then layer in flex, grid and
+          spacing utilities only where you need them.
+        &lt;/p&gt;
+        &lt;div class="flex gap-3"&gt;
+          &lt;button class="button button--primary text-sm"&gt;
+            Install now
+          &lt;/button&gt;
+          &lt;button class="button button--ghost text-sm text-on-strong"&gt;
+            Read the spec
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    The utility layer provides atomic, theme-safe, layout-neutral building blocks.
+                    Every class applies a single visual or structural instruction and must never
+                    conflict with semantic HTML, component CSS, or layout primitives. All spacing,
+                    sizing and colour behaviours are token-driven.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Treat utilities as single-responsibility: one class = one effect.
+                            They can be freely composed without visual dependencies.
+                        </li>
+
+                        <li>
+                            Use spacing utilities only from the official token scale
+                            (<code>0,1,2,3,4,5,6,7,8,10,12,14,16,20,24,32,40,48,64</code>)
+                            defined in <code>--space-*</code>.
+                        </li>
+
+                        <li>
+                            Prefer utilities for micro-adjustments inside components or authored
+                            content; keep structural layout in <strong>layout.css</strong> and
+                            <strong>sections.css</strong>.
+                        </li>
+
+                        <li>
+                            Use <code>.flex</code>, <code>.grid</code>, <code>.cluster</code>,
+                            <code>.stack</code>, and <code>.layout-*</code> classes for controlled,
+                            predictable alignment patterns.
+                        </li>
+
+                        <li>
+                            Use responsive prefixes (<code>sm:</code>, <code>md:</code>,
+                            <code>lg:</code>, <code>xl:</code>) for mobile-first design
+                            without duplicating component rules.
+                        </li>
+
+                        <li>
+                            Use typography utilities (<code>.text-sm</code>, <code>.leading-tight</code>,
+                            <code>.text-mono</code>, etc.) strictly for inline scale or emphasis;
+                            long-form typography still belongs inside <code>.typography</code>.
+                        </li>
+
+                        <li>
+                            Use <code>.overflow-auto</code> or directional scroll helpers to enable
+                            accessibility-safe, keyboard-reachable scrolling.
+                        </li>
+
+                        <li>
+                            Use <code>.opacity-*</code> and <code>cursor-*</code> utilities
+                            to express state in conjunction with ARIA attributes.
+                        </li>
+
+                        <li>
+                            Use <code>.truncate</code> and multi-line truncation carefully:
+                            ensure full content remains accessible in tooltips or aria-labels.
+                        </li>
+
+                        <li>
+                            Treat inline <code>&lt;code&gt;</code> reset as global baseline:
+                            safe colours, mono typeface and subtle borders are guaranteed.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t override component or section-level layout using utilities:
+                            <code>.flex</code>, <code>.grid</code> or spacing utilities must not
+                            redefine shell, sidebar or section scaffolding.
+                        </li>
+
+                        <li>
+                            Don’t mix conflicting structural utilities on the same element:
+                            e.g., <code>.flex</code> + <code>.grid</code>, or display utilities
+                            that override each other.
+                        </li>
+
+                        <li>
+                            Don’t introduce colour not defined as theme tokens —
+                            utilities never hard-code colours.
+                        </li>
+
+                        <li>
+                            Don’t apply negative margins to major layout containers
+                            (<code>section</code>, <code>layout-grid</code>, wrappers).
+                            Negative utilities are allowed only inside components.
+                        </li>
+
+                        <li>
+                            Don’t rely on <code>.hidden</code> or <code>hide-*</code> classes
+                            for accessibility-critical content; hide only decorative material.
+                        </li>
+
+                        <li>
+                            Don’t use <code>.truncate-*</code> on interactive controls where
+                            full text is needed for comprehension.
+                        </li>
+
+                        <li>
+                            Don’t use <code>.position</code> + <code>.z-*</code> utilities to
+                            re-order modal/backdrop/overlay layers — those are controlled by
+                            overlays.css and should not be overridden.
+                        </li>
+
+                        <li>
+                            Don’t use width/height utilities to bypass responsive container
+                            constraints (content-width tokens or max-width wrappers).
+                        </li>
+
+                        <li>
+                            Don’t combine <code>.scroll-smooth</code> with reduced-motion system
+                            preferences; allow the browser to disable smooth scrolling.
+                        </li>
+
+                        <li>
+                            Don’t use utilities to simulate semantic meaning
+                            (e.g., colours instead of <code>aria-live</code>, <code>role</code>,
+                            or structural markup).
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Atomic only — one class = one rule.
+2. Theme tokens only (spacing, colour, radius, shadow).
+3. No component logic; no structural layout override.
+4. Responsive prefixes follow mobile-first behaviour.
+5. Negative margins allowed only inside components.
+6. Typography utilities = inline adjustments, not long-form.
+7. Overflow/scroll utilities must remain keyboard-accessible.
+8. Z-index utilities cannot override overlay/modal stack.
+9. Never mix conflicting display utilities on the same element.
+10. Inline code reset is global; block code belongs to typography.css.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

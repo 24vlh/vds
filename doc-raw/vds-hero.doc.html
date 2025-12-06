@@ -1,0 +1,873 @@
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section">
+    <div class="section__inner section__stack">
+        <h1>Hero</h1>
+        <p class="leading-relaxed text-soft">
+            Primary page-intro system: landing hero, overview hero, KPI hero, media hero, loading and error hero —
+            all token-driven and theme-bound.
+        </p>
+        <p class="text-sm text-muted">
+            Source: <code>hero.css</code> · Depends on
+            <code>primitives.css</code>,
+            <code>base.css</code>,
+            <code>layout.css</code>,
+            <code>typography.css</code>,
+            utilities and theme tokens in
+            <code>/css/themes/*.css</code>.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation &amp; dependencies</h2>
+                <p class="doc-block__summary">
+                    Hero relies on core layout, typography and theme tokens. Metrics, media and actions reuse buttons,
+                    icons and generic utilities.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <ul class="text-sm">
+                        <li><code>primitives.css</code> — design tokens (spacing, radius, z-index,
+                            etc.).
+                        </li>
+                        <li><code>base.css</code> — reset, base element styles.</li>
+                        <li><code>layout.css</code> — content width and page containers.</li>
+                        <li><code>typography.css</code> — type scale and text utilities.</li>
+                        <li><code>utilities.css</code> — small utility helpers for spacing, text, etc.
+                        </li>
+                        <li><code>buttons.css</code> — CTA buttons used in hero actions.</li>
+                        <li><code>icons.css</code> — inline icons for hero points and metrics.</li>
+                        <li><code>sections.css</code> — page sections and inner containers.</li>
+                        <li><code>hero.css</code> — this hero subsystem (all variants).</li>
+                        <li>One theme in <code>/css/themes/*.css</code> for colours and surfaces.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="./css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="./css/base.css"&gt;
+&lt;link rel="stylesheet" href="./css/layout.css"&gt;
+&lt;link rel="stylesheet" href="./css/typography.css"&gt;
+&lt;link rel="stylesheet" href="./css/utilities.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/navy.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/carbon.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/icons.css"&gt;
+&lt;link rel="stylesheet" href="./css/buttons.css"&gt;
+&lt;link rel="stylesheet" href="./css/sections.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/hero.css"&gt;
+&lt;link rel="stylesheet" href="./css/doc-block.css"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Base structure</h2>
+                <p class="doc-block__summary">
+                    Base hero is a padded band with an inner container, textual body and actions. All other variants
+                    extend this structure.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--b">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Product</div>
+                                <h1 class="hero__title">Base hero headline</h1>
+                                <p class="hero__subtitle">
+                                    Short supporting description. Keep this to 1–2 lines for most layouts.
+                                </p>
+                                <div class="hero__actions">
+                                    <button class="button button--primary">
+                                        Primary action
+                                    </button>
+                                    <button class="button button--ghost">
+                                        Secondary action
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--b"&gt;
+  &lt;div class="hero__inner"&gt;
+    &lt;div class="hero__body"&gt;
+      &lt;div class="hero__eyebrow"&gt;Section label&lt;/div&gt;
+      &lt;h1 class="hero__title"&gt;Hero headline&lt;/h1&gt;
+      &lt;p class="hero__subtitle"&gt;
+        Supporting copy. 1–2 lines describing what lives behind this surface.
+      &lt;/p&gt;
+      &lt;div class="hero__actions"&gt;
+        &lt;button class="button button--primary"&gt;Primary&lt;/button&gt;
+        &lt;button class="button button--ghost"&gt;Secondary&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Scale variants (A/B/C, minimal, compact)</h2>
+                <p class="doc-block__summary">
+                    Scale variants adjust padding, type size and visual weight. Use A for marketing, B for product
+                    overviews, C/minimal/compact for dashboards and tight views.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview grid gap-8 md:grid-cols-3">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--a">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Marketing</div>
+                                <h1 class="hero__title">Hero A — large landing hero</h1>
+                                <p class="hero__subtitle">
+                                    Maximum padding and display type. Reserved for top-level landings.
+                                </p>
+                                <div class="hero__actions">
+                                    <button class="button button--primary button--lg">
+                                        Get started
+                                    </button>
+                                    <button class="button button--ghost button--lg">
+                                        Talk to us
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--b">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Overview</div>
+                                <h1 class="hero__title">Hero B — default product hero</h1>
+                                <p class="hero__subtitle">
+                                    Default choice for product dashboards and hub pages.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--c">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Section</div>
+                                <h1 class="hero__title">Hero C — compact</h1>
+                                <p class="hero__subtitle">
+                                    Used when vertical space is constrained.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__preview mt-8">
+                    <div class="grid gap-6 md:grid-cols-2">
+                        <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--minimal">
+                            <div class="hero__inner">
+                                <div class="hero__body">
+                                    <h1 class="hero__title">Minimal hero</h1>
+                                    <p class="hero__subtitle">
+                                        No eyebrow, lightweight padding, optional actions.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--compact">
+                            <div class="hero__inner">
+                                <div class="hero__body">
+                                    <div class="hero__eyebrow">Compact</div>
+                                    <h1 class="hero__title">Compact hero</h1>
+                                    <p class="hero__subtitle">
+                                        Tighter padding and smaller type for dense layouts.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--a"&gt;...&lt;/section&gt;
+&lt;section class="hero hero--b"&gt;...&lt;/section&gt;
+&lt;section class="hero hero--c"&gt;...&lt;/section&gt;
+&lt;section class="hero hero--minimal"&gt;...&lt;/section&gt;
+&lt;section class="hero hero--compact"&gt;...&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Split hero (text + points)</h2>
+                <p class="doc-block__summary">
+                    Split hero places a narrative column on the left and a bullet point stack on the right.
+                    Ideal for product value propositions.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--split hero--b">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Platform</div>
+                                <h1 class="hero__title">Split hero headline</h1>
+                                <p class="hero__subtitle">
+                                    Left column handles narrative and CTAs. Right column lists 2–4 supporting points.
+                                </p>
+                                <div class="hero__actions">
+                                    <button class="button button--primary button--lg">
+                                        Explore platform
+                                    </button>
+                                    <button class="button button--ghost button--lg">
+                                        View docs
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="hero__points">
+                                <div class="hero__point">
+                                    <div class="hero__point-icon">
+                                        <span class="icon icon--shield"></span>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm">Security-first</div>
+                                        <div class="text-xs text-muted">
+                                            Built for regulated markets and audited environments.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="hero__point">
+                                    <div class="hero__point-icon">
+                                        <span class="icon icon--layers"></span>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm">Token-first architecture</div>
+                                        <div class="text-xs text-muted">
+                                            No inline hex; all colours flow from themes and primitives.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="hero__point">
+                                    <div class="hero__point-icon">
+                                        <span class="icon icon--sparkles"></span>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm">Theme-aware</div>
+                                        <div class="text-xs text-muted">
+                                            Slate, Navy and Carbon share the same layout and markup.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--split hero--b"&gt;
+  &lt;div class="hero__inner"&gt;
+
+    &lt;div class="hero__body"&gt;
+      &lt;div class="hero__eyebrow"&gt;Product&lt;/div&gt;
+      &lt;h1 class="hero__title"&gt;Split hero headline&lt;/h1&gt;
+      &lt;p class="hero__subtitle"&gt;
+        Left column: narrative + CTA. Right column: structured points.
+      &lt;/p&gt;
+      &lt;div class="hero__actions"&gt;
+        &lt;button class="button button--primary"&gt;Primary&lt;/button&gt;
+        &lt;button class="button button--ghost"&gt;Secondary&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="hero__points"&gt;
+      &lt;div class="hero__point"&gt;
+        &lt;div class="hero__point-icon"&gt;
+          &lt;span class="icon icon--check-circle"&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class="text-sm"&gt;Point title&lt;/div&gt;
+          &lt;div class="text-xs text-muted"&gt;Supporting copy&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Media hero (with illustration)</h2>
+                <p class="doc-block__summary">
+                    Media hero introduces a second column for imagery (product screenshots, diagrams, brand artwork).
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--with-media hero--b">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Analytics</div>
+                                <h1 class="hero__title">Media hero with chart</h1>
+                                <p class="hero__subtitle">
+                                    Use this pattern to highlight a core screen or visual asset alongside the pitch.
+                                </p>
+                                <div class="hero__actions">
+                                    <button class="button button--primary button--lg">
+                                        Open dashboard
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="hero__media">
+                                <div class="hero__media-inner">
+                                    <img src="https://placehold.co/800x450" alt="Placeholder chart">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--with-media hero--b"&gt;
+  &lt;div class="hero__inner"&gt;
+    &lt;div class="hero__body"&gt;...&lt;/div&gt;
+
+    &lt;div class="hero__media"&gt;
+      &lt;div class="hero__media-inner"&gt;
+        &lt;img src="screenshot.png" alt="Product screenshot"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Full &amp; inset surfaces</h2>
+                <p class="doc-block__summary">
+                    Full hero uses background imagery or strong colour across the band. Inset hero uses a card-like
+                    surface inside a neutral band.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--full hero--b"
+                             style="background-image: url('https://picsum.photos/seed/vds/1600/600');">
+                        <div class="hero__inner p-4">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow hero__text-pill">Campaign</div>
+                                <h1 class="hero__title">Full-bleed hero</h1>
+                                <p class="hero__subtitle hero__text-pill">
+                                    Overlay, contrast and type are managed by theme tokens and full-hero rules.
+                                </p>
+                                <div class="hero__actions">
+                                    <button class="button button--primary button--lg">
+                                        Join campaign
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--inset hero--b">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Docs</div>
+                                <h1 class="hero__title">Inset hero</h1>
+                                <p class="hero__subtitle">
+                                    Surface is elevated via card-style container, shadow and rounded corners.
+                                </p>
+                                <div class="hero__actions">
+                                    <button class="button button--primary button--sm">
+                                        View docs
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--full hero--b" style="background-image: url('hero.jpg');"&gt;
+  &lt;div class="hero__inner"&gt;...&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="hero hero--inset hero--b"&gt;
+  &lt;div class="hero__inner"&gt;...&lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Metric hero (KPI grid)</h2>
+                <p class="doc-block__summary">
+                    Metric hero exposes a KPI grid directly under the title. Metrics use dedicated
+                    value, label and trend elements with semantic variants.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--c">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Platform overview</div>
+                                <h1 class="hero__title">Key metrics (last 24 hours)</h1>
+                                <p class="hero__subtitle">
+                                    Surface-level KPIs with trend colour and semantic flags.
+                                </p>
+                            </div>
+
+                            <div class="hero__metrics">
+                                <div class="hero__metric">
+                                    <div class="hero__metric-label">Active users</div>
+                                    <div class="hero__metric-value">12,394</div>
+                                    <div class="hero__metric-trend hero__metric-trend--up">
+                                        +8.2%
+                                    </div>
+                                </div>
+
+                                <div class="hero__metric">
+                                    <div class="hero__metric-label">Error rate</div>
+                                    <div class="hero__metric-value">0.14%</div>
+                                    <div class="hero__metric-trend hero__metric-trend--down">
+                                        -0.03%
+                                    </div>
+                                </div>
+
+                                <div class="hero__metric hero__metric--error">
+                                    <div class="hero__metric-label">Incidents</div>
+                                    <div class="hero__metric-value">3</div>
+                                    <div class="hero__metric-trend hero__metric-trend--neutral">
+                                        needs review
+                                    </div>
+                                </div>
+
+                                <div class="hero__metric hero__metric--muted">
+                                    <div class="hero__metric-label">Experiments</div>
+                                    <div class="hero__metric-value">2</div>
+                                    <div class="hero__metric-trend hero__metric-trend--neutral">
+                                        unchanged
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--c"&gt;
+  &lt;div class="hero__inner"&gt;
+    &lt;div class="hero__body"&gt;
+      &lt;div class="hero__eyebrow"&gt;Overview&lt;/div&gt;
+      &lt;h1 class="hero__title"&gt;Key metrics&lt;/h1&gt;
+      &lt;p class="hero__subtitle"&gt;Short description.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="hero__metrics"&gt;
+      &lt;div class="hero__metric"&gt;
+        &lt;div class="hero__metric-label"&gt;Metric name&lt;/div&gt;
+        &lt;div class="hero__metric-value"&gt;42&lt;/div&gt;
+        &lt;div class="hero__metric-trend hero__metric-trend--up"&gt;
+          +3.4%
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class="hero__metric hero__metric--error"&gt;...&lt;/div&gt;
+      &lt;div class="hero__metric hero__metric--muted"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Loading &amp; error states</h2>
+                <p class="doc-block__summary">
+                    Loading state hides hero body and shows a skeleton shimmer. Error state overlays an inline error
+                    panel containing title and remediation actions.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--loading hero--c">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Loading</div>
+                                <h1 class="hero__title">Loading hero content…</h1>
+                                <p class="hero__subtitle">
+                                    Content will be replaced once data is ready.
+                                </p>
+                            </div>
+
+                            <div class="hero__skeleton">
+                                <div class="hero__skeleton-line"></div>
+                                <div class="hero__skeleton-line"></div>
+                                <div class="hero__skeleton-line"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--error hero--c">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Dashboard</div>
+                                <h1 class="hero__title">We could not load this hero.</h1>
+                                <p class="hero__subtitle">
+                                    When an error occurs, show a clear message and remediation path.
+                                </p>
+                            </div>
+
+                            <div class="hero__error">
+                                <div class="hero__error-title">Error loading overview</div>
+                                <p class="text-sm">
+                                    Something went wrong while fetching metrics. You can retry or open the incident
+                                    details.
+                                </p>
+                                <div class="hero__error-actions">
+                                    <button class="button button--danger button--sm">
+                                        Retry
+                                    </button>
+                                    <button class="button button--outline-danger button--sm button--contrast-hover">
+                                        View incident
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--loading hero--c"&gt;
+  &lt;div class="hero__inner"&gt;
+    &lt;div class="hero__body"&gt;...&lt;/div&gt;
+    &lt;div class="hero__skeleton"&gt;
+      &lt;div class="hero__skeleton-line"&gt;&lt;/div&gt;
+      &lt;div class="hero__skeleton-line"&gt;&lt;/div&gt;
+      &lt;div class="hero__skeleton-line"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="hero hero--error hero--c"&gt;
+  &lt;div class="hero__inner"&gt;
+    &lt;div class="hero__body"&gt;...&lt;/div&gt;
+    &lt;div class="hero__error"&gt;
+      &lt;div class="hero__error-title"&gt;Error title&lt;/div&gt;
+      &lt;p&gt;Explain what happened and how to fix it.&lt;/p&gt;
+      &lt;div class="hero__error-actions"&gt;
+        &lt;button class="button button--primary button--sm"&gt;Retry&lt;/button&gt;
+        &lt;button class="button button--ghost button--sm"&gt;View details&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accent line</h2>
+                <p class="doc-block__summary">
+                    Accent line adds a token-driven vertical accent beside the hero body, using
+                    <code>--hero-accent-line-thickness</code> and accent colour tokens.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--b">
+                        <div class="hero__inner">
+                            <div class="hero__body flex gap-4">
+                                <div class="hero__accent-line"></div>
+                                <div>
+                                    <div class="hero__eyebrow">Docs</div>
+                                    <h1 class="hero__title">Accent hero</h1>
+                                    <p class="hero__subtitle">
+                                        Use this when you need a subtle visual emphasis without changing surface
+                                        colour.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--b"&gt;
+  &lt;div class="hero__inner"&gt;
+    &lt;div class="hero__body"&gt;
+      &lt;div class="hero__accent-line"&gt;&lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class="hero__eyebrow"&gt;Docs&lt;/div&gt;
+        &lt;h1 class="hero__title"&gt;Accent hero&lt;/h1&gt;
+        &lt;p class="hero__subtitle"&gt;Short description.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Responsive behaviour</h2>
+                <p class="doc-block__summary">
+                    Layout adjusts at tablet and mobile breakpoints: split/media heroes collapse to a single column,
+                    metrics grid reduces columns, and padding scales down.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <p class="text-sm">
+                        Behaviour is fully controlled by <code>@media</code> rules in
+                        <code>hero.css</code>. No additional markup is required.
+                    </p>
+                    <ul class="text-sm">
+                        <li><code>.hero--split .hero__inner</code> → grid collapses to 1 column.</li>
+                        <li><code>.hero--with-media .hero__inner</code> → grid collapses to 1 column.</li>
+                        <li><code>.hero__metrics</code> → auto-fit grid, fewer columns on small screens.</li>
+                        <li>Padding scales down for <code>.hero--a/b/c</code> at smaller viewports.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>/* hero.css (excerpt – actual values use px breakpoints) */
+@media (max-width: 1024px) {
+  .hero--split .hero__inner,
+  .hero--with-media .hero__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-block: var(--space-10) var(--space-14);
+  }
+  .hero__title {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__title {
+    font-size: var(--text-2xl);
+  }
+
+  .hero__metrics {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(calc(var(--hero-metric-min-width) * 0.8), 1fr)
+    );
+  }
+}
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Hero surfaces are high-visibility entry points. They must preserve semantic heading
+                    hierarchy, expose readable metrics, guarantee contrast across variants and maintain
+                    predictable keyboard and screen-reader behaviour across all themes and densities.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use a real heading structure:
+                            <code>&lt;h1&gt;</code> for the primary hero title,
+                            <code>&lt;h2&gt;</code>/<code>&lt;h3&gt;</code> for
+                            subordinate sections below it.
+                        </li>
+                        <li>
+                            Provide clear, unambiguous button labels in <code>.hero__actions</code>;
+                            labels must communicate outcome (“View metrics”, not “Click”).
+                        </li>
+                        <li>
+                            Use <code>.hero__eyebrow</code> as a semantic category label (not
+                            decorative text).
+                            It is read by screen readers and styled via tokenised uppercase + letter-spacing.
+                        </li>
+                        <li>
+                            Ensure adequate contrast in <code>.hero--full</code>:
+                            colours derive from theme tokens and overlay handling must maintain AA contrast.
+                        </li>
+                        <li>
+                            In split / media heroes (<code>.hero--split</code>, <code
+                                >.hero--with-media</code>),
+                            provide <code>alt</code> text for images or mark decorative media with
+                            <code>alt=""</code>.
+                        </li>
+                        <li>
+                            For KPI surfaces (<code>.hero__metrics</code>), always pair:
+                            <code>.hero__metric-label</code> + <code>.hero__metric-value</code>.
+                            Trend indicators (<code>--up</code>, <code>--down</code>,
+                            <code>--neutral</code>)
+                            must use tokenised success/danger/soft colours and clear text.
+                        </li>
+                        <li>
+                            Keep loading state semantic:
+                            <code>.hero--loading</code> hides <code
+                                >.hero__body</code> visually and reveals a
+                            token-driven skeleton shimmer — assistive tech still reaches the underlying structure.
+                        </li>
+                        <li>
+                            Preserve spacing, radius and surface tokens; all variants (A/B/C/compact/minimal)
+                            inherit padding and text scale from design tokens.
+                        </li>
+                        <li>
+                            Ensure error state contains a clear <code>.hero__error-title</code> and
+                            actionable
+                            <code>.hero__error-actions</code> (retry, view incident, etc.).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t demote or promote heading levels to achieve visual size — typography tokens
+                            control scale; headings control semantics.
+                        </li>
+                        <li>
+                            Don’t place more than two primary CTAs in <code>.hero__actions</code>;
+                            excess actions break visual hierarchy and overwhelm screen-reader users.
+                        </li>
+                        <li>
+                            Don’t combine mutually exclusive layout variants
+                            (<code>.hero--split</code>, <code
+                                >.hero--with-media</code>,
+                            <code>.hero--full</code>, <code>.hero--inset</code>) on
+                            the same hero.
+                        </li>
+                        <li>
+                            Don’t rely solely on colour to communicate metric state —
+                            trend labels must include text (“+8.2% up”, “–0.3% down”, “unchanged”).
+                        </li>
+                        <li>
+                            Don’t override token-driven contrast, radius or shadows in
+                            <code>.hero--full</code> or <code>.hero--inset</code>.
+                        </li>
+                        <li>
+                            Don’t hide critical hero content behind decorative media or overlays.
+                        </li>
+                        <li>
+                            Don’t interfere with skeleton animation timing
+                            (<code>--hero-skeleton-speed</code>) or keyframes —
+                            loading state is part of the UX pattern.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. One h1 in the hero; all secondary headings demoted properly.
+2. .hero__actions must use real &lt;button&gt; / &lt;a&gt; labels with clear verbs.
+3. Metrics: always label (metric-label) + value (metric-value) + trend text.
+4. Media: provide meaningful alt text or mark as decorative (alt="").
+5. Full heroes must maintain token-driven contrast and overlay readability.
+6. Layout variants are mutually exclusive; do not combine them.
+7. Loading state: hide .hero__body visually but keep structure for AT.
+8. Error state: provide clear message + remediation path via .hero__error-title and .hero__error-actions.
+9. Never override spacing, colour or radius tokens in hero markup.
+</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

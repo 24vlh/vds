@@ -1,0 +1,508 @@
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <h1>Buttons</h1>
+
+        <p class="leading-relaxed text-soft">
+            Token-driven action triggers for primary, secondary, semantic, outline, ghost, link
+            and icon-only interactions across the VDS surface.
+        </p>
+
+        <p class="text-sm text-muted">
+            Source: <code>buttons.css</code> · Depends on
+            <code>base.css</code>,
+            <code>typography.css</code>,
+            theme tokens in <code>/themes/*.css</code>.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation & dependencies</h2>
+                <p class="doc-block__summary">
+                    Buttons are a surface-level component depending on base reset, typography,
+                    tokens, and active theme colours. Include files in this exact order.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <ul class="text-body">
+                        <li>Load <code>base.css</code> and <code>layout.css</code>
+                            first.
+                        </li>
+                        <li>Load <code>typography.css</code> and <code
+                                >icons.css</code>.
+                        </li>
+                        <li>Load active theme: <code>themes/slate.css</code>,
+                            <code>navy.css</code>,
+                            <code>carbon.css</code>.
+                        </li>
+                        <li>Load <code>buttons.css</code> as the dedicated button layer.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="../css/base.css"&gt;
+&lt;link rel="stylesheet" href="../css/layout.css"&gt;
+&lt;link rel="stylesheet" href="../css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="../css/themes/navy.css"&gt;
+&lt;link rel="stylesheet" href="../css/themes/carbon.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/icons.css"&gt;
+&lt;link rel="stylesheet" href="../css/buttons.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/doc-block.css"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Anatomy</h2>
+                <p class="doc-block__summary">
+                    The canonical button is a flex container with optional leading/trailing icon,
+                    label, and semantic modifier classes.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview doc-block__preview--inline">
+                    <button class="button button--primary">
+                        <span class="icon icon--mask icon--arrow-right"></span>
+                        <span>Primary action</span>
+                    </button>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;button class=&quot;button button--primary&quot;&gt;
+    &lt;span class=&quot;icon icon--mask icon--arrow-right&quot;&gt;&lt;/span&gt;
+    &lt;span&gt;Primary action&lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+
+                    <p class="text-sm text-muted">
+                        <strong>Required:</strong> <code>button</code> base class. &nbsp;
+                        <strong>Optional:</strong> semantic modifiers (<code>button--primary</code>,
+                        <code>button--secondary</code>, etc.), size modifiers
+                        (<code>button--sm</code>, <code>button--md</code>,
+                        <code>button--lg</code>), layout modifiers
+                        (<code>button--block</code>, <code>button--icon-only</code>).
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Variants</h2>
+                <p class="doc-block__summary">
+                    All visual variants share the same hit-area, typography and motion tokens.
+                    Only colour and border semantics change between variants.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="section__stack">
+                        <div class="card">
+                            <div class="card__body flex-row flex-wrap gap-3">
+                                <button class="button">Base</button>
+                                <button class="button button--primary">Primary</button>
+                                <button class="button button--secondary">Secondary</button>
+                                <button class="button button--soft">Soft</button>
+                                <button class="button button--ghost">Ghost</button>
+                                <button class="button button--subtle">Subtle</button>
+                                <button class="button button--link">Link</button>
+                            </div>
+                        </div>
+
+                        <div class="card mt-4">
+                            <div class="card__body flex-row flex-wrap gap-3">
+                                <button class="button button--success">Success</button>
+                                <button class="button button--warning">Warning</button>
+                                <button class="button button--danger">Danger</button>
+                                <button class="button button--info">Info</button>
+                                <button class="button button--outline">Outline</button>
+                                <button class="button button--outline-accent">Outline accent</button>
+                                <button class="button button--outline-danger">Outline danger</button>
+                                <button class="button button--outline-info">Outline info</button>
+                                <button class="button button--outline-success">Outline success</button>
+                                <button class="button button--outline-warning">Outline warning</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;button class="button"&gt;Base&lt;/button&gt;
+&lt;button class="button button--primary"&gt;Primary&lt;/button&gt;
+&lt;button class="button button--secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="button button--soft"&gt;Soft&lt;/button&gt;
+&lt;button class="button button--ghost"&gt;Ghost&lt;/button&gt;
+&lt;button class="button button--subtle"&gt;Subtle&lt;/button&gt;
+&lt;button class="button button--link"&gt;Link&lt;/button&gt;
+
+&lt;button class="button button--success"&gt;Success&lt;/button&gt;
+&lt;button class="button button--warning"&gt;Warning&lt;/button&gt;
+&lt;button class="button button--danger"&gt;Danger&lt;/button&gt;
+&lt;button class="button button--info"&gt;Info&lt;/button&gt;
+
+&lt;button class="button button--outline"&gt;Outline&lt;/button&gt;
+&lt;button class="button button--outline-accent"&gt;Outline accent&lt;/button&gt;
+&lt;button class="button button--outline-danger"&gt;Outline danger&lt;/button&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Sizes & layout</h2>
+                <p class="doc-block__summary">
+                    Size modifiers adjust padding and font-size. Block layout is the only width
+                    modifier and should be used sparingly for primary flows.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body flex-row flex-wrap gap-3">
+                            <button class="button button--primary button--sm">Small</button>
+                            <button class="button button--primary button--md">Medium</button>
+                            <button class="button button--primary button--lg">Large</button>
+
+                            <button class="button button--primary button--block">
+                                Block level primary
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;button class=&quot;button button--primary button--sm&quot;&gt;Small&lt;/button&gt;
+&lt;button class=&quot;button button--primary button--md&quot;&gt;Medium&lt;/button&gt;
+&lt;button class=&quot;button button--primary button--lg&quot;&gt;Large&lt;/button&gt;
+
+&lt;button class=&quot;button button--primary button--block&quot;&gt;
+    Block level primary
+&lt;/button&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Icons & loading</h2>
+                <p class="doc-block__summary">
+                    Icon-only buttons use <code>button--icon-only</code>. Loading
+                    state is a visual modifier that preserves layout and width.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <button class="button button--secondary">
+                                <span class="icon icon--mask icon--arrow-left"></span>
+                                <span>Back</span>
+                            </button>
+
+                            <button class="button button--primary">
+                                <span>Continue</span>
+                                <span class="icon icon--mask icon--arrow-right"></span>
+                            </button>
+
+                            <button class="button button--ghost button--icon-only" aria-label="More options">
+                                <span class="icon icon--mask icon--more-vertical"></span>
+                            </button>
+
+                            <button class="button button--primary button--loading">
+                                <span>Saving…</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;button class="button button--secondary"&gt;
+    &lt;span class="icon icon--mask icon--arrow-left"&gt;&lt;/span&gt;
+    &lt;span&gt;Back&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="button button--primary"&gt;
+    &lt;span&gt;Continue&lt;/span&gt;
+    &lt;span class="icon icon--mask icon--arrow-right"&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button
+    class="button button--ghost button--icon-only"
+    type="button"
+    aria-label="More options"&gt;
+    &lt;span class="icon icon--mask icon--more-vertical"&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="button button--primary button--loading" disabled&gt;
+    &lt;span&gt;Saving…&lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Button Variant Test Grid</h2>
+                <p class="doc-block__summary">
+                    Side-by-side comparison of every button variant rendered as both a native
+                    &lt;button&gt; element and as an &lt;a&gt; link. This grid is designed to confirm
+                    visual consistency, hover behaviour, focus states and token-driven color mapping
+                    following the link-button patch.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack-lg">
+
+                <div class="doc-block__preview grid grid-cols-2 sm:grid-cols-1 grid-auto-fit-300 gap-12">
+                    <div class="section__stack">
+                        <h3 class="text-sm">Native &lt;button&gt; elements</h3>
+
+                        <div class="section__stack flex flex-column gap-6">
+                            <button class="button button--primary">Primary</button>
+                            <button class="button button--secondary">Secondary</button>
+                            <button class="button button--ghost">Ghost</button>
+                            <button class="button button--subtle">Subtle</button>
+                            <button class="button button--neutral">Neutral</button>
+                            <button class="button button--success">Success</button>
+                            <button class="button button--info">Info</button>
+                            <button class="button button--warning">Warning</button>
+                            <button class="button button--danger">Danger</button>
+
+                            <button class="button button--primary" disabled>Disabled primary</button>
+                        </div>
+                    </div>
+
+                    <div class="section__stack">
+                        <h3 class="text-sm">&lt;a&gt; elements styled as buttons</h3>
+
+                        <div class="section__stack flex flex-column gap-6">
+                            <a href="#" class="button button--primary">Primary</a>
+                            <a href="#" class="button button--secondary">Secondary</a>
+                            <a href="#" class="button button--ghost">Ghost</a>
+                            <a href="#" class="button button--subtle">Subtle</a>
+                            <a href="#" class="button button--neutral">Neutral</a>
+                            <a href="#" class="button button--success">Success</a>
+                            <a href="#" class="button button--info">Info</a>
+                            <a href="#" class="button button--warning">Warning</a>
+                            <a href="#" class="button button--danger">Danger</a>
+
+                            <a href="#" class="button button--primary" aria-disabled="true">
+                                Disabled primary
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;!-- Native &lt;button&gt; elements --&gt;
+&lt;button class="button button--primary"&gt;Primary&lt;/button&gt;
+&lt;button class="button button--secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="button button--ghost"&gt;Ghost&lt;/button&gt;
+&lt;button class="button button--subtle"&gt;Subtle&lt;/button&gt;
+&lt;button class="button button--neutral"&gt;Neutral&lt;/button&gt;
+&lt;button class="button button--success"&gt;Success&lt;/button&gt;
+&lt;button class="button button--info"&gt;Info&lt;/button&gt;
+&lt;button class="button button--warning"&gt;Warning&lt;/button&gt;
+&lt;button class="button button--danger"&gt;Danger&lt;/button&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;button class="button button--primary" disabled&gt;Disabled primary&lt;/button&gt;
+
+&lt;!-- &lt;a&gt; elements styled as buttons --&gt;
+&lt;a href="#" class="button button--primary"&gt;Primary&lt;/a&gt;
+&lt;a href="#" class="button button--secondary"&gt;Secondary&lt;/a&gt;
+&lt;a href="#" class="button button--ghost"&gt;Ghost&lt;/a&gt;
+&lt;a href="#" class="button button--subtle"&gt;Subtle&lt;/a&gt;
+&lt;a href="#" class="button button--neutral"&gt;Neutral&lt;/a&gt;
+&lt;a href="#" class="button button--success"&gt;Success&lt;/a&gt;
+&lt;a href="#" class="button button--info"&gt;Info&lt;/a&gt;
+&lt;a href="#" class="button button--warning"&gt;Warning&lt;/a&gt;
+&lt;a href="#" class="button button--danger"&gt;Danger&lt;/a&gt;
+
+&lt;a href="#" class="button button--primary" aria-disabled="true"&gt;
+  Disabled primary
+&lt;/a&gt;</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Contract for safe, semantic, token-driven buttons. Maintain correct element
+                    semantics, provide accessible names, and rely on VDS colour, motion and focus
+                    tokens rather than ad-hoc styling.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use real <code>&lt;button&gt;</code> elements for actions; reserve
+                            <code>&lt;a&gt;</code> for navigation.
+                        </li>
+
+                        <li>Provide <code>aria-label</code> for icon-only buttons
+                            (<code>button--icon</code>, <code
+                                    >button--icon-only</code>).
+                        </li>
+
+                        <li>Use one clear primary action per page or workflow.</li>
+
+                        <li>Use size modifiers (<code>button--sm</code>,
+                            <code>button--md</code>, <code>button--lg</code>)
+                            instead of custom padding.
+                        </li>
+
+                        <li>Use semantic variants (<code>--success</code>,
+                            <code>--warning</code>,
+                            <code>--danger</code>,
+                            <code>--info</code>) to express meaning consistently.
+                        </li>
+
+                        <li>Keep disabled state using <code>disabled</code> or
+                            <code>aria-disabled="true"</code> to ensure proper assistive behaviour.
+                        </li>
+
+                        <li>Use <code>button--loading</code> to preserve layout width
+                            and avoid content shifts.
+                        </li>
+
+                        <li>Allow tokens to determine focus ring, colours, and transitions
+                            (do not override them in components).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+
+                        <li>Don’t remove focus-visible rings or replace them with non-token shadows.</li>
+
+                        <li>Don’t use colour alone to indicate destructive actions:
+                            rely on <code>button--danger</code> or outline-danger.
+                        </li>
+
+                        <li>Don’t nest block-level buttons inside inline-only containers.</li>
+
+                        <li>Don’t mix manual inline styles for padding, radius or borders.</li>
+
+                        <li>Don’t use <code>button--block</code> excessively;
+                            reserve it for primary, high-friction flows.
+                        </li>
+
+                        <li>Don’t create new ad-hoc variants; use semantic or outline APIs already provided.</li>
+
+                        <li>Don’t animate or spin content manually during loading; use the built-in spinner logic.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Use &lt;button&gt; for actions; provide aria-label for icon-only.
+2. Use one primary action per view; avoid colour-only meaning.
+3. Use size modifiers (button--sm/md/lg), never inline padding.
+4. Keep focus-visible ring from tokens; do not suppress it.
+5. Use semantic or outline variants for meaning (danger/warning/etc.).
+6. Preserve layout in loading state with .button--loading.
+7. Avoid overriding token-driven colours, borders, or motion.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

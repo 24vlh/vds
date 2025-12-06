@@ -1,0 +1,1212 @@
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <header class="section__header">
+            <div class="section__eyebrow">Glyph system</div>
+            <h1 class="section__title">VDS Icons System</h1>
+            <p class="section__subtitle">
+                Mask-based glyph icons, inline SVG support, semantic containers and loader
+                patterns — all driven by tokens and <code>currentColor</code>.
+            </p>
+        </header>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation & system model</h2>
+                <p class="doc-block__summary">
+                    Icons are a shared subsystem used across buttons, tables, navigation and
+                    feedback. They rely on sizing tokens, mask-based glyphs and semantic
+                    containers for backgrounds and colour.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Dependencies</h3>
+                    <ul class="text-sm">
+                        <li><code>icons.css</code> — base icon, mask glyphs, containers, utilities.
+                        </li>
+                        <li><code>base.css</code> — spacing, radius, motion tokens.</li>
+                        <li><code>typography.css</code> — text scale (for <code>currentColor</code>).
+                        </li>
+                        <li><code>themes/*.css</code> — semantic colours and surfaces.</li>
+                        <li>Optional: <code>buttons.css</code>, <code
+                        >tables.css</code>,
+                            <code>navigation.css</code> for integrated examples.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="../css/base.css"&gt;
+&lt;link rel="stylesheet" href="../css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/themes/slate.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/icons.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/buttons.css"&gt;
+&lt;link rel="stylesheet" href="../css/tables.css"&gt;
+&lt;link rel="stylesheet" href="../css/navigation.css"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Base icon & size scale</h2>
+                <p class="doc-block__summary">
+                    All icons are square boxes that inherit colour from <code>currentColor</code>.
+                    Sizes are token-driven (<code>--icon-*</code>) and are independent from
+                    containers.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="section__stack-sm">
+                        <div class="text-sm text-mono">Mask-based base</div>
+                        <div class="section__inline-sm">
+                            <div class="section__inline-sm mr-4">
+                                <span class="icon icon--mask icon--info icon--xxs"></span>
+                                <div class="text-xs text-mono text-nowrap">.icon--xss</div>
+                            </div>
+                            <div class="section__inline-sm mr-4">
+                                <span class="icon icon--mask icon--info icon--xs"></span>
+                                <div class="text-xs text-mono text-nowrap">.icon--xs</div>
+                            </div>
+                            <div class="section__inline-sm mr-4">
+                                <span class="icon icon--mask icon--info icon--sm"></span>
+                                <div class="text-xs text-mono text-nowrap">.icon--sm</div>
+                            </div>
+                            <div class="section__inline-sm mr-4">
+                                <span class="icon icon--mask icon--info icon--md"></span>
+                                <div class="text-xs text-mono text-nowrap">.icon--info</div>
+                            </div>
+                            <div class="section__inline-sm mr-4">
+                                <span class="icon icon--mask icon--info icon--lg"></span>
+                                <div class="text-xs text-mono text-nowrap">.icon--lg</div>
+                            </div>
+                            <div class="section__inline-sm">
+                                <span class="icon icon--mask icon--info icon--xl"></span>
+                                <div class="text-xs text-mono text-nowrap">.icon--xl</div>
+                            </div>
+                        </div>
+                        <p class="text-xs">
+                            All glyphs are applied via <code>mask-image</code> and use
+                            <code>background-color: currentColor</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;span class="icon icon--mask icon--info icon--xs"&gt;&lt;/span&gt;
+
+.icon {
+    display: inline-block;
+    width: var(--icon-md);
+    height: var(--icon-md);
+    color: currentColor;
+}
+
+.icon--xxs { width: var(--icon-xxs); height: var(--icon-xxs); }
+.icon--xs  { width: var(--icon-xs);  height: var(--icon-xs);  }
+.icon--sm  { width: var(--icon-sm);  height: var(--icon-sm);  }
+.icon--md  { width: var(--icon-md);  height: var(--icon-md);  }
+.icon--lg  { width: var(--icon-lg);  height: var(--icon-lg);  }
+.icon--xl  { width: var(--icon-xl);  height: var(--icon-xl);  }
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <header class="section__header">
+            <div class="section__eyebrow">Icon index</div>
+            <h1 class="section__title">All VDS Icons</h1>
+            <p class="section__subtitle">
+                Complete list of glyph classes available in <code>icons.css</code>.
+                Use with: <code>icon icon--mask icon--NAME</code>.
+            </p>
+        </header>
+
+        <div class="doc-block">
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="section__grid-auto gap-4">
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--info icon--sm"></span>
+                            <div class="text-xs text-mono">info</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--success icon--sm"></span>
+                            <div class="text-xs text-mono">success</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--warning icon--sm"></span>
+                            <div class="text-xs text-mono">warning</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--danger icon--sm"></span>
+                            <div class="text-xs text-mono">danger</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--help icon--sm"></span>
+                            <div class="text-xs text-mono">help</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--neutral icon--sm"></span>
+                            <div class="text-xs text-mono">neutral</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--pending icon--sm"></span>
+                            <div class="text-xs text-mono">pending</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--online icon--sm"></span>
+                            <div class="text-xs text-mono">online</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--offline icon--sm"></span>
+                            <div class="text-xs text-mono">offline</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--blocked icon--sm"></span>
+                            <div class="text-xs text-mono">blocked</div>
+                        </div>
+
+                        <div class="section__inline-sm"><span
+                                class="icon icon--mask icon--chevron-left icon--sm"></span>
+                            <div class="text-xs text-mono">chevron-left</div>
+                        </div>
+                        <div class="section__inline-sm"><span
+                                class="icon icon--mask icon--chevron-right icon--sm"></span>
+                            <div class="text-xs text-mono">chevron-right</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--chevron-up icon--sm"></span>
+                            <div class="text-xs text-mono">chevron-up</div>
+                        </div>
+                        <div class="section__inline-sm"><span
+                                class="icon icon--mask icon--chevron-down icon--sm"></span>
+                            <div class="text-xs text-mono">chevron-down</div>
+                        </div>
+
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--arrow-left icon--sm"></span>
+                            <div class="text-xs text-mono">arrow-left</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--arrow-right icon--sm"></span>
+                            <div class="text-xs text-mono">arrow-right</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--arrow-up icon--sm"></span>
+                            <div class="text-xs text-mono">arrow-up</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--arrow-down icon--sm"></span>
+                            <div class="text-xs text-mono">arrow-down</div>
+                        </div>
+
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--menu icon--sm"></span>
+                            <div class="text-xs text-mono">menu</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--close icon--sm"></span>
+                            <div class="text-xs text-mono">close</div>
+                        </div>
+                        <div class="section__inline-sm"><span
+                                class="icon icon--mask icon--more-horizontal icon--sm"></span>
+                            <div class="text-xs text-mono">more-horizontal</div>
+                        </div>
+                        <div class="section__inline-sm"><span
+                                class="icon icon--mask icon--more-vertical icon--sm"></span>
+                            <div class="text-xs text-mono">more-vertical</div>
+                        </div>
+
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--search icon--sm"></span>
+                            <div class="text-xs text-mono">search</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--edit icon--sm"></span>
+                            <div class="text-xs text-mono">edit</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--trash icon--sm"></span>
+                            <div class="text-xs text-mono">trash</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--plus icon--sm"></span>
+                            <div class="text-xs text-mono">plus</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--minus icon--sm"></span>
+                            <div class="text-xs text-mono">minus</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--filter icon--sm"></span>
+                            <div class="text-xs text-mono">filter</div>
+                        </div>
+
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--settings icon--sm"></span>
+                            <div class="text-xs text-mono">settings</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--user icon--sm"></span>
+                            <div class="text-xs text-mono">user</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--bell icon--sm"></span>
+                            <div class="text-xs text-mono">bell</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--download icon--sm"></span>
+                            <div class="text-xs text-mono">download</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--upload icon--sm"></span>
+                            <div class="text-xs text-mono">upload</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--file icon--sm"></span>
+                            <div class="text-xs text-mono">file</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--folder icon--sm"></span>
+                            <div class="text-xs text-mono">folder</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--lock icon--sm"></span>
+                            <div class="text-xs text-mono">lock</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--unlock icon--sm"></span>
+                            <div class="text-xs text-mono">unlock</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--refresh icon--sm"></span>
+                            <div class="text-xs text-mono">refresh</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--copy icon--sm"></span>
+                            <div class="text-xs text-mono">copy</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--share icon--sm"></span>
+                            <div class="text-xs text-mono">share</div>
+                        </div>
+
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--calendar icon--sm"></span>
+                            <div class="text-xs text-mono">calendar</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--clock icon--sm"></span>
+                            <div class="text-xs text-mono">clock</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--star icon--sm"></span>
+                            <div class="text-xs text-mono">star</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--sort icon--sm"></span>
+                            <div class="text-xs text-mono">sort</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--tag icon--sm"></span>
+                            <div class="text-xs text-mono">tag</div>
+                        </div>
+
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--play icon--sm"></span>
+                            <div class="text-xs text-mono">play</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--pause icon--sm"></span>
+                            <div class="text-xs text-mono">pause</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--stop icon--sm"></span>
+                            <div class="text-xs text-mono">stop</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--money icon--sm"></span>
+                            <div class="text-xs text-mono">money</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--coins icon--sm"></span>
+                            <div class="text-xs text-mono">coins</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--check icon--sm"></span>
+                            <div class="text-xs text-mono">check</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--alert icon--sm"></span>
+                            <div class="text-xs text-mono">alert</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--question icon--sm"></span>
+                            <div class="text-xs text-mono">question</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--tip icon--sm"></span>
+                            <div class="text-xs text-mono">tip</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--flag icon--sm"></span>
+                            <div class="text-xs text-mono">flag</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--shield icon--sm"></span>
+                            <div class="text-xs text-mono">shield</div>
+                        </div>
+                        <div class="section__inline-sm"><span
+                                class="icon icon--mask icon--shield-alert icon--sm"></span>
+                            <div class="text-xs text-mono">shield alert</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--ban icon--sm"></span>
+                            <div class="text-xs text-mono">ban</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--email icon--sm"></span>
+                            <div class="text-xs text-mono">email</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--archive icon--sm"></span>
+                            <div class="text-xs text-mono">archive</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--email-open icon--sm"></span>
+                            <div class="text-xs text-mono">email open</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--inbox icon--sm"></span>
+                            <div class="text-xs text-mono">inbox</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--send icon--sm"></span>
+                            <div class="text-xs text-mono">send</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--attachment icon--sm"></span>
+                            <div class="text-xs text-mono">attachment</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--hash icon--sm"></span>
+                            <div class="text-xs text-mono">hash</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--layers icon--sm"></span>
+                            <div class="text-xs text-mono">layers</div>
+                        </div>
+                        <div class="section__inline-sm"><span class="icon icon--mask icon--sparkles icon--sm"></span>
+                            <div class="text-xs text-mono">sparkles</div>
+                        </div>
+                    </div>
+
+                    <div class="section__grid-auto gap-4 mt-10">
+                        <div class="section__inline-sm"><span
+                                class="icon icon--mask icon--spinner icon--sm icon--spinning"></span>
+                            <div class="text-xs text-mono">spinner</div>
+                        </div>
+                        <div class="section__inline-sm"><span
+                                class="icon icon--mask icon--spinner-dots icon--sm icon--spinning"></span>
+                            <div class="text-xs text-mono">spinner-dots</div>
+                        </div>
+                        <div class="section__inline-sm"><span
+                                class="icon icon--mask icon--pulse icon--sm icon--pulsing"></span>
+                            <div class="text-xs text-mono">pulse</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">State icons</h2>
+                <p class="doc-block__summary">
+                    State icons represent semantic states such as information, success,
+                    warnings and errors, plus neutral and connection states.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="section__grid-5 section__grid-sm gap-4">
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--info icon--md"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--info</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--success icon--md"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--success</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--warning icon--md"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--warning</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--danger icon--md"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--danger</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--help icon--md"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--help</div>
+                        </div>
+                    </div>
+
+                    <div class="section__grid-5 section__grid-sm mt-4">
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--neutral icon--md"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--neutral</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--pending icon--md"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--pending</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--online icon--md"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--online</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--offline icon--md"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--offline</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--blocked icon--md"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--blocked</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;span class="icon icon--mask icon--pending icon--sm"
+      aria-hidden="true"&gt;&lt;/span&gt;
+&lt;span class="text-sm"&gt;In review&lt;/span&gt;
+
+.icon--mask {
+    background-color: currentColor;
+    mask-mode: luminance;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    stroke: none;
+    fill: none;
+}
+
+.icon--info    { /* mask-image: data URI */ }
+.icon--success { /* mask-image: data URI */ }
+.icon--warning { /* mask-image: data URI */ }
+.icon--danger  { /* mask-image: data URI */ }
+.icon--help    { /* mask-image: data URI */ }
+
+.icon--neutral { /* ... */ }
+.icon--pending { /* ... */ }
+.icon--online  { /* ... */ }
+.icon--offline { /* ... */ }
+.icon--blocked { /* ... */ }
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">UI icons</h2>
+                <p class="doc-block__summary">
+                    UI icons cover chevrons, menu and search controls, CRUD operations and
+                    a core set of interface affordances.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Navigation & disclosure</h3>
+                    <div class="section__grid-6 section__grid-sm mb-4">
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--chevron-left icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--chevron-left</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--chevron-right icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--chevron-right</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--chevron-up icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--chevron-up</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--chevron-down icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--chevron-down</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--arrow-left icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--arrow-left</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--arrow-right icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--arrow-right</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--arrow-up icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--arrow-up</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--arrow-down icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--arrow-down</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--menu icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--menu</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--close icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--close</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--more-horizontal icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--more-horizontal</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--more-vertical icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--more-vertical</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm">Search & CRUD</h3>
+                    <div class="section__grid-6 section__grid-sm mb-4">
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--search icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--search</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--edit icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--edit</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--trash icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--trash</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--plus icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--plus</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--minus icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--minus</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--filter icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--filter</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm">System & content</h3>
+                    <div class="section__grid-6 section__grid-sm">
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--settings icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--settings</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--user icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--user</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--bell icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--bell</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--download icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--download</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--upload icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--upload</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--file icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--file</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--folder icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--folder</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--lock icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--lock</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--unlock icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--unlock</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--refresh icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--refresh</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--copy icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--copy</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--share icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--share</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;button class="button button--secondary" type="button"&gt;
+    &lt;span class="icon icon--mask icon--search icon--sm"
+          aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span&gt;Search&lt;/span&gt;
+&lt;/button&gt;
+
+.icon--chevron-left  { /* ... */ }
+.icon--chevron-right { /* ... */ }
+.icon--chevron-up    { /* ... */ }
+.icon--chevron-down  { /* ... */ }
+.icon--menu          { /* ... */ }
+.icon--close         { /* ... */ }
+.icon--search        { /* ... */ }
+.icon--edit          { /* ... */ }
+.icon--trash         { /* ... */ }
+.icon--plus          { /* ... */ }
+.icon--minus         { /* ... */ }
+.icon--filter        { /* ... */ }
+.icon--settings      { /* ... */ }
+.icon--user          { /* ... */ }
+.icon--bell          { /* ... */ }
+.icon--download      { /* ... */ }
+.icon--upload        { /* ... */ }
+.icon--file          { /* ... */ }
+.icon--folder        { /* ... */ }
+.icon--lock          { /* ... */ }
+.icon--unlock        { /* ... */ }
+.icon--refresh       { /* ... */ }
+.icon--copy          { /* ... */ }
+.icon--share         { /* ... */ }
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Data & media icons</h2>
+                <p class="doc-block__summary">
+                    These icons support time, sorting, tagging and media playback in tables,
+                    dashboards and content blocks.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="section__grid-4 section__grid-sm">
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--calendar icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--calendar</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--clock icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--clock</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--star icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--star</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--sort icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--sort</div>
+                        </div>
+                    </div>
+
+                    <div class="section__grid-4 section__grid-sm mt-4">
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--tag icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--tag</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--play icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--play</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--pause icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--pause</div>
+                        </div>
+                        <div class="section__inline-sm">
+                            <span class="icon icon--mask icon--stop icon--sm"></span>
+                            <div class="text-xs text-mono text-nowrap">.icon--stop</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;button class="button button--ghost text-sm" type="button"&gt;
+    Date
+    &lt;span class="icon icon--mask icon--sort icon--xs"
+          aria-hidden="true"&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+.icon--calendar { /* date / schedule */ }
+.icon--clock    { /* time */ }
+.icon--star     { /* favourite / rating */ }
+.icon--sort     { /* sort indicator */ }
+.icon--tag      { /* labels / tags */ }
+.icon--play     { /* media control */ }
+.icon--pause    { /* media control */ }
+.icon--stop     { /* media control */ }
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Loader icons</h2>
+                <p class="doc-block__summary">
+                    Loader icons are specialised glyphs with motion: spinner, dotted spinner
+                    and pulse. They integrate with reduced-motion preferences.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+
+                <div class="doc-block__preview">
+                    <div class="section__grid-3 section__grid-sm">
+                        <div class="section__stack-sm">
+                            <span class="icon icon--mask icon--spinner icon--md icon--spinning"></span>
+                            <div class="text-xs text-mono">.icon--spinner.icon--spinning</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon icon--mask icon--spinner-dots icon--md icon--spinning"></span>
+                            <div class="text-xs text-mono">.icon--spinner-dots.icon--spinning</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon icon--mask icon--pulse icon--md icon--pulsing"></span>
+                            <div class="text-xs text-mono">.icon--pulse.icon--pulsing</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;span class="icon icon--mask icon--spinner icon--sm icon--spinning"
+      aria-hidden="true"&gt;&lt;/span&gt;
+&lt;span class="text-sm"&gt;Loading data…&lt;/span&gt;
+
+.icon--spinner       { /* circular spinner glyph */ }
+.icon--spinner-dots  { /* dotted spinner glyph */ }
+.icon--pulse         { /* pulsing dot glyph */ }
+
+.icon--spinning { /* rotation animation */ }
+.icon--pulsing  { /* pulse animation */ }
+
+.icon--loader.icon--spinner,
+.icon--loader.icon--spinner-dots { /* loader integration */ }
+
+@media (prefers-reduced-motion: reduce) {
+    .icon--spinning,
+    .icon--pulsing {
+        animation: none;
+    }
+}
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Icon containers</h2>
+                <p class="doc-block__summary">
+                    Containers provide background, padding and shape around glyphs. They are
+                    used heavily in tables, notifications and metrics.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Size & shape</h3>
+                    <div class="section__grid-4 section__grid-sm mb-4">
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--sm">
+                                <span class="icon icon--mask icon--info icon--xs"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container--sm</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container">
+                                <span class="icon icon--mask icon--info icon--sm"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--lg">
+                                <span class="icon icon--mask icon--info icon--md"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container--lg</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--xl icon-container--circle">
+                                <span class="icon icon--mask icon--info icon--lg"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container--xl.icon-container--circle</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm">Semantic containers</h3>
+                    <div class="section__grid-6 section__grid-sm">
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--accent">
+                                <span class="icon icon--mask icon--info icon--sm"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container--accent</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--accent-strong">
+                                <span class="icon icon--mask icon--info icon--sm"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container--accent-strong</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--success">
+                                <span class="icon icon--mask icon--success icon--sm"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container--success</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--info">
+                                <span class="icon icon--mask icon--info icon--sm"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container--info</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--warning">
+                                <span class="icon icon--mask icon--warning icon--sm"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container--warning</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--danger">
+                                <span class="icon icon--mask icon--danger icon--sm"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container--danger</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--muted">
+                                <span class="icon icon--mask icon--neutral icon--sm"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-container--muted</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;span class="icon-container icon-container--success"&gt;
+    &lt;span class="icon icon--mask icon--success icon--xs"
+          aria-hidden="true"&gt;&lt;/span&gt;
+&lt;/span&gt;
+&lt;span class="text-sm"&gt;Deployed&lt;/span&gt;
+
+.icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-container-md);
+    height: var(--icon-container-md);
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-subtle);
+}
+
+.icon-container--sm { width: var(--icon-container-sm); height: var(--icon-container-sm); }
+.icon-container--lg { width: var(--icon-container-lg); height: var(--icon-container-lg); }
+.icon-container--xl { width: var(--icon-container-xl); height: var(--icon-container-xl); }
+
+.icon-container--circle     { border-radius: 999px; }
+.icon-container--circle-sm  { /* small circle */ }
+.icon-container--circle-lg  { /* large circle */ }
+
+.icon-container--accent        { /* accent surface */ }
+.icon-container--accent-strong { /* strong accent */ }
+.icon-container--success       { /* success surface */ }
+.icon-container--info          { /* info surface */ }
+.icon-container--warning       { /* warning surface */ }
+.icon-container--danger        { /* danger surface */ }
+.icon-container--muted         { /* subtle muted */ }
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Integration: buttons & navigation</h2>
+                <p class="doc-block__summary">
+                    Icons are designed to drop into existing VDS components without extra
+                    alignment hacks.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Buttons</h3>
+                    <div class="section__stack-sm mb-4">
+                        <button class="button button--primary" type="button">
+                            <span class="icon icon--mask icon--plus icon--sm" aria-hidden="true"></span>
+                            <span>New project</span>
+                        </button>
+                        <button class="button button--secondary button--icon-only" type="button" aria-label="Search">
+                            <span class="icon icon--mask icon--search icon--sm" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                    <h3 class="text-sm">Navigation</h3>
+                    <nav class="nav nav--primary" aria-label="Sidebar">
+                        <a class="nav__item nav__item--active" href="#">
+                            <span class="icon icon--mask icon--home icon--sm" aria-hidden="true"></span>
+                            <span>Overview</span>
+                        </a>
+                        <a class="nav__item" href="#">
+                            <span class="icon icon--mask icon--calendar icon--sm" aria-hidden="true"></span>
+                            <span>Schedule</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;button class="button button--primary" type="button"&gt;
+    &lt;span class="icon icon--mask icon--plus icon--sm"
+          aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span&gt;New project&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="button button--secondary button--icon-only"
+        type="button" aria-label="Search"&gt;
+    &lt;span class="icon icon--mask icon--search icon--sm"
+          aria-hidden="true"&gt;&lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Transforms, weights & opacity</h2>
+                <p class="doc-block__summary">
+                    Utilities modify rotation, mirroring, stroke weight and opacity without
+                    requiring new glyphs.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Transforms</h3>
+                    <div class="section__grid-4 section__grid-sm mb-4">
+                        <span class="icon icon--mask icon--chevron-right icon--sm icon--rotate-90"></span>
+                        <span class="icon icon--mask icon--chevron-right icon--sm icon--rotate-180"></span>
+                        <span class="icon icon--mask icon--chevron-right icon--sm icon--rotate-270"></span>
+                        <span class="icon icon--mask icon--chevron-right icon--sm icon--flip-h"></span>
+                    </div>
+
+                    <h3 class="text-sm">Weights & opacity</h3>
+                    <div class="section__grid-4 section__grid-sm">
+                        <span class="icon icon--mask icon--info icon--sm icon--thin"></span>
+                        <span class="icon icon--mask icon--info icon--sm icon--regular"></span>
+                        <span class="icon icon--mask icon--info icon--sm icon--bold"></span>
+                        <span class="icon icon--mask icon--info icon--sm icon--outline"></span>
+                        <span class="icon icon--mask icon--info icon--sm icon--opacity-25"></span>
+                        <span class="icon icon--mask icon--info icon--sm icon--opacity-50"></span>
+                        <span class="icon icon--mask icon--info icon--sm icon--opacity-75"></span>
+                        <span class="icon icon--mask icon--info icon--sm icon--disabled"></span>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>/* icons.css (excerpt) */
+
+/* rotation / flip */
+.icon--rotate-90  { transform: rotate(90deg); }
+.icon--rotate-180 { transform: rotate(180deg); }
+.icon--rotate-270 { transform: rotate(270deg); }
+.icon--flip-h     { transform: scaleX(-1); }
+.icon--flip-v     { transform: scaleY(-1); }
+
+/* stroke weights */
+.icon--thin    { stroke-width: var(--icon-stroke-thin); }
+.icon--regular { stroke-width: var(--icon-stroke-regular); }
+.icon--bold    { stroke-width: var(--icon-stroke-bold);  }
+.icon--outline { fill: none; stroke: currentColor; }
+
+/* opacity & disabled */
+.icon--opacity-25 { opacity: 0.25; }
+.icon--opacity-50 { opacity: 0.50; }
+.icon--opacity-75 { opacity: 0.75; }
+.icon--disabled   { opacity: var(--opacity-disabled); }
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility</h2>
+                <p class="doc-block__summary">
+                    Icons are usually decorative and should be hidden from screen readers,
+                    except when they are the only affordance in a control.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Decorative icon</h3>
+                    <p class="text-sm">
+                        For icons that simply support the text label, hide them with
+                        <code>aria-hidden="true"</code> and ensure the label text is present.
+                    </p>
+                    <pre class="doc-block__code"><code>&lt;button class="button button--secondary" type="button"&gt;
+    &lt;span class="icon icon--mask icon--download icon--sm"
+          aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span&gt;Download report&lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+                </div>
+
+                <div>
+                    <h3 class="text-sm">Icon-only control</h3>
+                    <p class="text-sm">
+                        For icon-only buttons, give the control an accessible name via
+                        <code>aria-label</code> or visually hidden text.
+                    </p>
+                    <pre class="doc-block__code"><code>&lt;button class="button button--ghost button--icon-only"
+        type="button"
+        aria-label="Close dialog"&gt;
+    &lt;span class="icon icon--mask icon--close icon--sm"
+          aria-hidden="true"&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="button button--ghost button--icon-only" type="button"&gt;
+    &lt;span class="icon icon--mask icon--close icon--sm"
+          aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span&gt;Close dialog&lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Icon glyphs are mask-based, colour-agnostic and rely on <code>currentColor</code>.
+                    Accessibility requires clear naming for icon-only controls, consistent hiding of
+                    decorative glyphs, and full respect of reduced-motion preferences for loaders.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Hide decorative icons using
+                            <code>aria-hidden="true"</code> while keeping the text label visible.
+                        </li>
+
+                        <li>
+                            Provide <code>aria-label</code> or sr-only text for
+                            <strong>icon-only</strong> buttons, toggles or navigation items.
+                        </li>
+
+                        <li>
+                            Use size utilities (<code>icon--xxs</code> … <code>icon--xl</code>) instead of inline
+                            pixel dimensions.
+                        </li>
+
+                        <li>
+                            Use semantic <code>icon-container--*</code> for state surfaces
+                            (info/success/warning/danger/accent/muted).
+                        </li>
+
+                        <li>
+                            Respect user motion settings:
+                            loader classes <code>icon--spinning</code> and <code>icon--pulsing</code> automatically
+                            disable animation under <code>prefers-reduced-motion</code>.
+                        </li>
+
+                        <li>
+                            Use <code>currentColor</code> by changing the parent text colour rather than overriding
+                            icon colours directly.
+                        </li>
+
+                        <li>
+                            Keep containers large enough for touch targets — particularly
+                            <code>icon-container--lg</code> and <code>icon-container--xl</code>.
+                        </li>
+
+                        <li>
+                            Use rotation (<code>icon--rotate-90</code>, <code>icon--rotate-180</code>) only for
+                            directional UI, not to repurpose semantics.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t recolour icons using inline <code>style="color: …"</code>;
+                            use theme tokens on the surrounding element.
+                        </li>
+
+                        <li>
+                            Don’t depend on icon shape alone to convey meaning — include text for critical states.
+                        </li>
+
+                        <li>
+                            Don’t mix multiple <code>icon--size</code> classes on the same element.
+                        </li>
+
+                        <li>
+                            Don’t rotate icons to imply different semantics (e.g. “danger” → rotated “info”).
+                        </li>
+
+                        <li>
+                            Don’t use custom SVGs or altered mask-image values — the subsystem depends on the
+                            curated glyph set in <code>icons.css</code>.
+                        </li>
+
+                        <li>
+                            Don’t override spacing or radius inside <code>.icon-container</code>;
+                            containers must follow tokenised sizes.
+                        </li>
+
+                        <li>
+                            Don’t rely purely on colour in state containers — pair with a text label when used
+                            in status chips or actions.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Decorative icons → aria-hidden="true".
+2. Icon-only controls → aria-label or sr-only text.
+3. Use icon--SIZE tokens, not inline pixels.
+4. Use semantic containers (accent/success/info/…).
+5. Motion utilities obey prefers-reduced-motion – do not override.
+6. Do not override color: parent element sets currentColor.
+7. Do not modify mask-image; use provided glyph classes only.
+8. Pair icons with text for meaning-critical states.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

@@ -1,0 +1,1588 @@
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <h1>Skeleton loading system</h1>
+        <p class="leading-relaxed text-soft">
+            Token-driven skeleton surfaces for perceived-performance: lines, avatars, blocks and cards
+            that mirror real layouts while content is loading. Designed for dashboards, SaaS, forms,
+            tables and marketing surfaces.
+        </p>
+        <p class="text-sm text-muted">
+            Source: <code>skeleton.css</code> · Depends on
+            <code>primitives.css</code>,
+            <code>themes/*.css</code>,
+            <code>base.css</code>,
+            <code>layout.css</code>,
+            <code>typography.css</code>,
+            <code>utilities.css</code>,
+            <code>content-blocks.css</code>,
+            <code>forms.css</code> and
+            <code>tables.css</code>.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation & dependencies</h2>
+                <p class="doc-block__summary">
+                    <code>skeleton.css</code> is a thin presentation layer that reuses
+                    existing layout, content-block and form structures. Load it after core layout and
+                    components so it can target shared classes safely.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <ul>
+                        <li>Load neutral tokens: <code>primitives.css</code>.</li>
+                        <li>Load one active theme from <code>/themes/*.css</code>.</li>
+                        <li>Load core structural layers:
+                            <code>base.css</code>,
+                            <code>layout.css</code>,
+                            <code>typography.css</code>.
+                        </li>
+                        <li>Load primary components:
+                            <code>content-blocks.css</code>,
+                            <code>forms.css</code>,
+                            <code>tables.css</code>,
+                            <code>buttons.css</code> (optional).
+                        </li>
+                        <li>Load utilities:
+                            <code>utilities.css</code> for flex, gap, grid and spacing.
+                        </li>
+                        <li>Then load <code>skeleton.css</code> to enable skeleton
+                            states for cards, forms, lists and tables.
+                        </li>
+                        <li>For documentation pages, also load
+                            <code>doc-block.css</code>.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="/css/primitives.css"&gt;
+
+&lt;link rel="stylesheet" href="/css/themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="/css/themes/navy.css"&gt;
+&lt;link rel="stylesheet" href="/css/themes/carbon.css"&gt;
+
+&lt;link rel="stylesheet" href="/css/base.css"&gt;
+&lt;link rel="stylesheet" href="/css/layout.css"&gt;
+&lt;link rel="stylesheet" href="/css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="/css/content-blocks.css"&gt;
+&lt;link rel="stylesheet" href="/css/forms.css"&gt;
+&lt;link rel="stylesheet" href="/css/tables.css"&gt;
+&lt;link rel="stylesheet" href="/css/utilities.css"&gt;
+
+&lt;link rel="stylesheet" href="/css/skeleton.css"&gt;
+
+&lt;link rel="stylesheet" href="/css/doc-block.css"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section section--subtle">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Core concept & goals</h2>
+                <p class="doc-block__summary">
+                    Skeletons are layout-accurate placeholders that represent the structure of content
+                    while data is loading. They reduce perceived latency, avoid layout shift, and keep
+                    focus on the UI rather than on spinners.
+                </p>
+                <div class="doc-block__meta">
+                    <p class="doc-block__note--info">
+                        Use skeletons when content will appear in the same place (same card, same row,
+                        same column). Use spinners only for background tasks that do not change layout.
+                    </p>
+                </div>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <ul class="text-sm">
+                    <li><strong>Structure-first</strong> — mirror the real layout: avatar, title,
+                        meta, actions, body.
+                    </li>
+                    <li><strong>Token-driven</strong> — colours, radii, gaps and animation are
+                        sourced from theme and primitives.
+                    </li>
+                    <li><strong>Compositional</strong> — skeletons slot into cards, forms, tables and
+                        grids without dedicated wrappers.
+                    </li>
+                    <li><strong>Accessible</strong> — motion is optional, ARIA attributes keep
+                        assistive tech informed, contrast comes from surface tokens.
+                    </li>
+                </ul>
+
+                <pre class="doc-block__code"><code>&lt;div class="card"&gt;
+    &lt;div class="card__body"&gt;
+        &lt;div class="skeleton-avatar skeleton-avatar--md"&gt;&lt;/div&gt;
+        &lt;div class="stack gap-2 flex-1"&gt;
+            &lt;div class="skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+            &lt;div class="skeleton-line skeleton-line--short"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Anatomy & API overview</h2>
+                <p class="doc-block__summary">
+                    The skeleton system is built from a small vocabulary of primitives and modifiers.
+                    Each class has a clear structural role; variants are additive and token-driven.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Core primitives</h3>
+                    <dl class="text-sm">
+                        <dt><code>.skeleton</code></dt>
+                        <dd>Base surface; shared animation, colour and radius.</dd>
+
+                        <dt><code>.skeleton-line</code></dt>
+                        <dd>Horizontal bar for titles, text and metadata.</dd>
+
+                        <dt><code>.skeleton-avatar</code></dt>
+                        <dd>Circle or square avatar placeholder.</dd>
+
+                        <dt><code>.skeleton-block</code></dt>
+                        <dd>Generic rectangular block (media, charts, thumbnails).</dd>
+
+                        <dt><code>.skeleton-card</code></dt>
+                        <dd>Composite card layout mirroring real card content.</dd>
+                    </dl>
+
+                    <h3 class="text-sm">Modifiers</h3>
+                    <dl class="text-sm">
+                        <dt><code>--sm / --md / --lg</code></dt>
+                        <dd>Size modifiers for height / diameter.</dd>
+
+                        <dt><code>.skeleton-line--short</code>,
+                            <code>--medium</code>,
+                            <code>--long</code></dt>
+                        <dd>Width presets for textual lines.</dd>
+
+                        <dt><code>.skeleton--subtle</code>,
+                            <code>.skeleton--strong</code></dt>
+                        <dd>Colour intensity variants.</dd>
+
+                        <dt><code>.skeleton--static</code></dt>
+                        <dd>Disables animation for reduced-motion users or cheap surfaces.</dd>
+                    </dl>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;div class="skeleton skeleton-line"&gt;&lt;/div&gt;
+
+&lt;div class="skeleton skeleton-line skeleton-line--long"&gt;&lt;/div&gt;
+
+&lt;div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"&gt;&lt;/div&gt;
+
+&lt;div class="skeleton skeleton-avatar skeleton-avatar--md"&gt;&lt;/div&gt;
+
+&lt;div class="skeleton skeleton-block skeleton--static"&gt;&lt;/div&gt;
+
+&lt;div class="card skeleton-card"&gt;
+    &lt;div class="card__body flex gap-4"&gt;
+        &lt;div class="skeleton skeleton-avatar skeleton-avatar--md"&gt;&lt;/div&gt;
+        &lt;div class="flex-1 stack gap-2"&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--short"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Base skeleton surface</h2>
+                <p class="doc-block__summary">
+                    <code>.skeleton</code> defines the shared visual language:
+                    background, radius, border and optional animated shimmer. All other primitives
+                    extend this base.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body flex gap-4 items-center">
+                            <div class="skeleton skeleton-avatar skeleton-avatar--md"></div>
+                            <div class="flex-1 stack gap-2">
+                                <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="skeleton"&gt;&lt;/div&gt;
+
+&lt;div class="skeleton" style="width: 100%; height: 12px;"&gt;&lt;/div&gt;
+
+&lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-avatar skeleton-avatar--md"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-block"&gt;&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Lines, headings & text skeletons</h2>
+                <p class="doc-block__summary">
+                    <code>.skeleton-line</code> covers the full text spectrum:
+                    headings, multi-line body, captions and metadata. Width presets keep composition
+                    natural without inline styles.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body stack gap-4">
+                            <div class="stack gap-2">
+                                <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                            </div>
+
+                            <div class="stack gap-1">
+                                <div class="skeleton skeleton-line skeleton-line--long skeleton--subtle"></div>
+                                <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="skeleton skeleton-line skeleton-line--short"></div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="flex-1 stack gap-1">
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                </div>
+                                <div class="flex-1 stack gap-1">
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="stack gap-2"&gt;
+    &lt;div class="skeleton skeleton-line skeleton-line--long"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="flex gap-4"&gt;
+    &lt;div class="flex-1 stack gap-1"&gt;
+        &lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+        &lt;div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="flex-1 stack gap-1"&gt;
+        &lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+        &lt;div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Avatar & media skeletons</h2>
+                <p class="doc-block__summary">
+                    <code>.skeleton-avatar</code> and
+                    <code>.skeleton-block</code> mirror profile photos, icons,
+                    thumbnails and charts. Sizes and shapes are tokenised for consistent rhythm.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body stack gap-6">
+                            <div class="flex items-center gap-4">
+                                <div class="skeleton skeleton-avatar skeleton-avatar--sm"></div>
+                                <div class="skeleton skeleton-avatar skeleton-avatar--md"></div>
+                                <div class="skeleton skeleton-avatar skeleton-avatar--lg"></div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="skeleton skeleton-block" style="width: 96px; height: 64px;"></div>
+                                <div class="skeleton skeleton-block" style="width: 160px; height: 96px;"></div>
+                                <div class="skeleton skeleton-block skeleton--subtle"
+                                     style="width: 100%; height: 96px;"></div>
+                            </div>
+
+                            <div class="flex gap-4 items-center">
+                                <div class="skeleton skeleton-avatar skeleton-avatar--md"></div>
+                                <div class="flex-1 stack gap-2">
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="flex items-center gap-4"&gt;
+    &lt;div class="skeleton skeleton-avatar skeleton-avatar--sm"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-avatar skeleton-avatar--md"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-avatar skeleton-avatar--lg"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="flex gap-4"&gt;
+    &lt;div class="skeleton skeleton-block" style="width: 96px; height: 64px;"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-block" style="width: 160px; height: 96px;"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-block skeleton--subtle" style="width: 100%; height: 96px;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Card & list skeletons</h2>
+                <p class="doc-block__summary">
+                    <code>.skeleton-card</code> is a composition helper that pairs
+                    skeleton primitives with the card layout system for lists, feeds and dashboards.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="card skeleton-card">
+                            <div class="card__body flex gap-4">
+                                <div class="skeleton skeleton-avatar skeleton-avatar--md"></div>
+                                <div class="flex-1 stack gap-2">
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card skeleton-card">
+                            <div class="card__body stack gap-3">
+                                <div class="skeleton skeleton-block" style="width: 100%; height: 120px;"></div>
+                                <div class="stack gap-2">
+                                    <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card skeleton-card">
+                            <div class="card__body stack gap-3">
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="stack gap-2">
+                                    <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card skeleton-card">
+                            <div class="card__body stack gap-2">
+                                <div class="flex justify-between items-center">
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short"></div>
+                                </div>
+                                <div class="stack gap-1">
+                                    <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="card skeleton-card"&gt;
+    &lt;div class="card__body flex gap-4"&gt;
+        &lt;div class="skeleton skeleton-avatar skeleton-avatar--md"&gt;&lt;/div&gt;
+        &lt;div class="flex-1 stack gap-2"&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="card skeleton-card"&gt;
+    &lt;div class="card__body stack gap-3"&gt;
+        &lt;div class="skeleton skeleton-block" style="width: 100%; height: 120px;"&gt;&lt;/div&gt;
+        &lt;div class="stack gap-2"&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--long"&gt;&lt;/div&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Form loading states</h2>
+                <p class="doc-block__summary">
+                    Skeletons can replace or augment form controls during initial load. Use the
+                    existing <code>.form-field</code> structure and swap only the
+                    controls.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body stack gap-4">
+                            <div class="form-field">
+                                <label class="form-label">Full name</label>
+                                <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                <div class="form-help">Loading identity data…</div>
+                            </div>
+
+                            <div class="form-field">
+                                <label class="form-label">Role</label>
+                                <div class="skeleton skeleton-block" style="width: 100%; height: 38px;"></div>
+                                <div class="form-help">We’ll pre-fill this from your profile.</div>
+                            </div>
+
+                            <div class="form-field">
+                                <label class="form-label">Message</label>
+                                <div class="stack gap-1">
+                                    <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--medium skeleton--subtle"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-end">
+                                <div class="skeleton skeleton-block" style="width: 96px; height: 36px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;form class="stack gap-4"&gt;
+    &lt;div class="form-field"&gt;
+        &lt;label class="form-label"&gt;Full name&lt;/label&gt;
+        &lt;div class="skeleton skeleton-line skeleton-line--long"&gt;&lt;/div&gt;
+        &lt;div class="form-help"&gt;Loading identity data…&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-field"&gt;
+        &lt;label class="form-label"&gt;Role&lt;/label&gt;
+        &lt;div class="skeleton skeleton-block" style="width: 100%; height: 38px;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-field"&gt;
+        &lt;label class="form-label"&gt;Message&lt;/label&gt;
+        &lt;div class="stack gap-1"&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--long"&gt;&lt;/div&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--long"&gt;&lt;/div&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--medium skeleton--subtle"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="flex justify-end"&gt;
+        &lt;div class="skeleton skeleton-block" style="width: 96px; height: 36px;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Table & list loading states</h2>
+                <p class="doc-block__summary">
+                    Use skeleton lines to represent upcoming table rows or list items.
+                    Mirror column alignment and approximate cell width to ensure a seamless
+                    transition from loading to loaded data.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body section__stack">
+                            <div class="section__stack">
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                            </div>
+
+                            <div class="table-wrapper">
+                                <table class="table table--a table-loading">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-xs text-muted">Name</th>
+                                        <th class="text-xs text-muted">Status</th>
+                                        <th class="text-xs text-muted text-right">Amount</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="skeleton skeleton-line skeleton-line--short"></div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton skeleton-line skeleton-line--medium skeleton--subtle"></div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="skeleton skeleton-line skeleton-line--short"></div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="section__stack">
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;table class="table table--a table-loading"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th class="text-xs text-muted"&gt;Name&lt;/th&gt;
+            &lt;th class="text-xs text-muted"&gt;Status&lt;/th&gt;
+            &lt;th class="text-xs text-muted text-right"&gt;Amount&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;div class="skeleton skeleton-line skeleton-line--long"&gt;&lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td class="text-right"&gt;
+                &lt;div class="skeleton skeleton-line skeleton-line--short"&gt;&lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Dashboard & metric skeletons</h2>
+                <p class="doc-block__summary">
+                    Use skeletons in KPI cards, charts and filters to keep dashboards readable while
+                    expensive queries run. Focus on preserving layout and relative emphasis.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="card skeleton-card">
+                            <div class="card__body stack gap-2">
+                                <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="skeleton skeleton-line skeleton-line--short"></div>
+                            </div>
+                        </div>
+                        <div class="card skeleton-card">
+                            <div class="card__body stack gap-2">
+                                <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="skeleton skeleton-line skeleton-line--short"></div>
+                            </div>
+                        </div>
+                        <div class="card skeleton-card">
+                            <div class="card__body stack gap-2">
+                                <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="skeleton skeleton-line skeleton-line--short"></div>
+                            </div>
+                        </div>
+                        <div class="card skeleton-card">
+                            <div class="card__body stack gap-2">
+                                <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="skeleton skeleton-line skeleton-line--short"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card skeleton-card mt-6">
+                        <div class="card__body stack gap-3">
+                            <div class="flex justify-between gap-4">
+                                <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                <div class="skeleton skeleton-block" style="width: 96px; height: 32px;"></div>
+                            </div>
+                            <div class="skeleton skeleton-block" style="width: 100%; height: 180px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="grid grid-cols-1 md:grid-cols-4 gap-4"&gt;
+    &lt;div class="card skeleton-card"&gt;
+        &lt;div class="card__body stack gap-2"&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"&gt;&lt;/div&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--short"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="card skeleton-card mt-6"&gt;
+    &lt;div class="card__body stack gap-3"&gt;
+        &lt;div class="flex justify-between gap-4"&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+            &lt;div class="skeleton skeleton-block" style="width: 96px; height: 32px;"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="skeleton skeleton-block" style="width: 100%; height: 180px;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Variants, density & motion</h2>
+                <p class="doc-block__summary">
+                    Skeleton variants handle size, density and intensity without custom colours or
+                    inline spacing. Motion can be disabled globally or per element.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <header class="doc-block__subsection">
+                    <h3>Size & density</h3>
+                    <p class="doc-block__summary">
+                        Size modifiers align skeleton rhythm with form densities and card scales. Avoid
+                        arbitrary pixel overrides; prefer class-based presets.
+                    </p>
+                </header>
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body stack gap-4">
+                            <div class="stack gap-1">
+                                <div class="skeleton skeleton-line skeleton-line--long skeleton--subtle"></div>
+                                <div class="skeleton skeleton-line skeleton-line--long"></div>
+                            </div>
+
+                            <div class="flex gap-4 items-center">
+                                <div class="skeleton skeleton-avatar skeleton-avatar--sm"></div>
+                                <div class="stack gap-1 flex-1">
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4 items-center">
+                                <div class="skeleton skeleton-avatar skeleton-avatar--lg"></div>
+                                <div class="stack gap-2 flex-1">
+                                    <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="skeleton skeleton-avatar skeleton-avatar--sm"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-avatar skeleton-avatar--md"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-avatar skeleton-avatar--lg"&gt;&lt;/div&gt;
+
+&lt;div class="skeleton skeleton-line skeleton-line--short"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-line skeleton-line--long"&gt;&lt;/div&gt;
+</code></pre>
+                </div>
+
+                <header>
+                    <h3>Intensity & motion</h3>
+                    <p class="doc-block__summary">
+                        Use subtle variants for low-priority content and strong for primary surfaces.
+                        For reduced motion, switch to static skeletons rather than disabling the
+                        system completely.
+                    </p>
+                </header>
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="stack gap-2">
+                                <h4 class="text-xs text-muted text-mono">Subtle</h4>
+                                <div class="stack gap-1">
+                                    <div class="skeleton skeleton-line skeleton-line--long skeleton--subtle"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--medium skeleton--subtle"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                </div>
+                            </div>
+
+                            <div class="stack gap-2">
+                                <h4 class="text-xs text-muted text-mono">Strong</h4>
+                                <div class="stack gap-1">
+                                    <div class="skeleton skeleton-line skeleton-line--long skeleton--strong"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--medium skeleton--strong"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--short skeleton--strong"></div>
+                                </div>
+                            </div>
+
+                            <div class="stack gap-2">
+                                <h4 class="text-xs text-muted text-mono">Animated</h4>
+                                <div class="stack gap-1">
+                                    <div class="skeleton skeleton-line skeleton-line--long"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--medium"></div>
+                                </div>
+                            </div>
+
+                            <div class="stack gap-2">
+                                <h4 class="text-xs text-muted text-mono">Static</h4>
+                                <div class="stack gap-1">
+                                    <div class="skeleton skeleton-line skeleton-line--long skeleton--static"></div>
+                                    <div class="skeleton skeleton-line skeleton-line--medium skeleton--static"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="skeleton skeleton-line skeleton-line--long skeleton--subtle"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-line skeleton-line--long skeleton--strong"&gt;&lt;/div&gt;
+
+&lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-line skeleton-line--medium skeleton--static"&gt;&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Skeleton Examples: HERO-LIKE COMPOSITE (HEADER + BUTTONS)</h2>
+                <p class="doc-block__summary">
+                    Comprehensive examples of line, block, avatar, card, list and table loading
+                    states using the VDS Skeleton System. All patterns are token-driven,
+                    layout-safe and compatible with reduced-motion preferences.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack-lg">
+                <div class="card">
+                    <div class="card__body section__stack-lg">
+
+                        <div class="flex justify-between items-center">
+                            <div class="section__stack flex-1">
+                                <div class="skeleton-line skeleton-line--long"></div>
+                                <div class="skeleton-line skeleton-line--medium skeleton--subtle"></div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="skeleton-block" style="width:140px; height:36px;"></div>
+                                <div class="skeleton-block" style="width:100px; height:36px;"></div>
+                                <div class="skeleton-block" style="width:48px; height:36px;"></div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-auto-fit-300 gap-6">
+                            <div class="card skeleton-card">
+                                <div class="section__stack-sm">
+                                    <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton-line skeleton-line--short"></div>
+                                </div>
+                            </div>
+
+                            <div class="card skeleton-card">
+                                <div class="section__stack-sm">
+                                    <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton-line skeleton-line--short"></div>
+                                </div>
+                            </div>
+
+                            <div class="card skeleton-card">
+                                <div class="section__stack-sm">
+                                    <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton-line skeleton-line--short"></div>
+                                </div>
+                            </div>
+
+                            <div class="card skeleton-card">
+                                <div class="section__stack-sm">
+                                    <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton-line skeleton-line--short"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card skeleton-card">
+                            <div class="card__body section__stack">
+
+                                <div class="flex justify-between items-center">
+                                    <div class="section__stack">
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                        <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <div class="skeleton-block" style="width:120px; height:32px;"></div>
+                                        <div class="skeleton-block" style="width:48px; height:32px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skeleton-block" style="height:240px;"></div>
+
+                            </div>
+                        </div>
+
+                        <div class="card skeleton-card">
+                            <div class="card__body">
+                                <table class="table table--a table-loading">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-xs text-muted">Name</th>
+                                        <th class="text-xs text-muted">Status</th>
+                                        <th class="text-xs text-muted">Owner</th>
+                                        <th class="text-xs text-muted text-right">Value</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr class="skeleton-row">
+                                        <td>
+                                            <div class="skeleton-line skeleton-line--long"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton-inline">
+                                                <div class="skeleton-avatar skeleton-avatar--sm"></div>
+                                                <div class="skeleton-line skeleton-line--short"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="skeleton-line skeleton-line--short"></div>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="skeleton-row">
+                                        <td>
+                                            <div class="skeleton-line skeleton-line--long"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton-inline">
+                                                <div class="skeleton-avatar skeleton-avatar--sm"></div>
+                                                <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="skeleton-line skeleton-line--short"></div>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="skeleton-row">
+                                        <td>
+                                            <div class="skeleton-line skeleton-line--long"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                        </td>
+                                        <td>
+                                            <div class="skeleton-inline">
+                                                <div class="skeleton-avatar skeleton-avatar--sm"></div>
+                                                <div class="skeleton-line skeleton-line--short"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Skeleton Examples: LIST + CARD + FORM EXAMPLES (RIGHT COLUMN)</h2>
+                <p class="doc-block__summary">
+                    Comprehensive examples of line, block, avatar, card, list and table loading
+                    states using the VDS Skeleton System. All patterns are token-driven,
+                    layout-safe and compatible with reduced-motion preferences.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack-lg">
+                <div class="card">
+                    <div class="card__body section__stack-lg">
+                        <aside class="section__stack-lg">
+                            <div class="skeleton-line skeleton-line--long"></div>
+                            <div class="skeleton-line skeleton-line--medium"></div>
+                            <div class="skeleton-line skeleton-line--short"></div>
+
+                            <div class="section__stack-sm mt-6">
+                                <div class="skeleton-line skeleton-line--long"></div>
+                                <div class="section__stack pl-4">
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                </div>
+                            </div>
+
+                            <div class="section__stack-sm mt-6">
+                                <div class="skeleton-line skeleton-line--long"></div>
+                                <div class="section__stack pl-4">
+                                    <div class="skeleton-line skeleton-line--short"></div>
+                                    <div class="skeleton-line skeleton-line--short"></div>
+                                </div>
+                            </div>
+                        </aside>
+
+                        <div class="card skeleton-card">
+                            <div class="card__body section__stack-lg">
+
+                                <div class="flex items-center gap-4">
+                                    <div class="skeleton-avatar skeleton-avatar--lg"></div>
+                                    <div class="section__stack flex-1">
+                                        <div class="skeleton-line skeleton-line--long"></div>
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div class="section__stack">
+                                        <div class="skeleton-line skeleton-line--short"></div>
+                                        <div class="skeleton-block" style="height:40px;"></div>
+                                    </div>
+
+                                    <div class="section__stack">
+                                        <div class="skeleton-line skeleton-line--short"></div>
+                                        <div class="skeleton-block" style="height:40px;"></div>
+                                    </div>
+
+                                    <div class="section__stack grid-cols-2">
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                        <div class="skeleton-block" style="height:100px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-end">
+                                    <div class="skeleton-block" style="width:120px; height:36px;"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card skeleton-card">
+                            <div class="card__body section__stack">
+
+                                <div class="skeleton-line skeleton-line--long"></div>
+
+                                <div class="section__stack-sm">
+                                    <div class="flex justify-between items-center">
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                        <div class="skeleton-block" style="width:50px; height:28px;"></div>
+                                    </div>
+
+                                    <div class="flex justify-between items-center">
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                        <div class="skeleton-block" style="width:50px; height:28px;"></div>
+                                    </div>
+
+                                    <div class="flex justify-between items-center">
+                                        <div class="skeleton-line skeleton-line--long"></div>
+                                        <div class="skeleton-block" style="width:50px; height:28px;"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Skeleton Examples: GRID-HEAVY MARKETING / DASHBOARD SKELETONS</h2>
+                <p class="doc-block__summary">
+                    Comprehensive examples of line, block, avatar, card, list and table loading
+                    states using the VDS Skeleton System. All patterns are token-driven,
+                    layout-safe and compatible with reduced-motion preferences.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack-lg">
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="card">
+                        <div class="card__body">
+
+                            <div class="grid grid-cols-3 gap-10">
+                                <div class="grid grid-auto-fit-300 gap-6">
+
+                                    <div class="section__stack-sm">
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+
+                                        <div class="card skeleton-card">
+                                            <div class="section__stack-sm">
+                                                <div class="skeleton-line skeleton-line--long"></div>
+                                                <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                                <div class="flex items-center gap-2 pt-2">
+                                                    <div class="skeleton-avatar skeleton-avatar--sm"></div>
+                                                    <div class="section__stack flex-1">
+                                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card skeleton-card">
+                                            <div class="section__stack-sm">
+                                                <div class="skeleton-line skeleton-line--medium"></div>
+                                                <div class="section__stack">
+                                                    <div class="skeleton-line skeleton-line--long"></div>
+                                                    <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="section__stack-sm">
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                        <div class="card skeleton-card">
+                                            <div class="section__stack-sm">
+                                                <div class="skeleton-line skeleton-line--medium"></div>
+                                                <div class="skeleton-line skeleton-line--short"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="section__stack-sm">
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                        <div class="card skeleton-card">
+                                            <div class="section__stack-sm">
+                                                <div class="skeleton-line skeleton-line--long"></div>
+                                                <div class="skeleton-line skeleton-line--medium skeleton--subtle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <aside class="card skeleton-card">
+                                    <div class="card__body section__stack">
+
+                                        <div class="section__stack">
+                                            <div class="skeleton-line skeleton-line--long"></div>
+                                            <div class="skeleton-line skeleton-line--medium skeleton--subtle"></div>
+                                        </div>
+
+                                        <div class="section__stack-sm">
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                            <div class="section__stack">
+                                                <div class="skeleton-line skeleton-line--long"></div>
+                                                <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="section__stack">
+                                            <div class="flex gap-3">
+                                                <div class="skeleton-avatar skeleton-avatar--sm"></div>
+                                                <div class="section__stack flex-1">
+                                                    <div class="skeleton-line skeleton-line--long"></div>
+                                                    <div class="skeleton-line skeleton-line--short"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex gap-3">
+                                                <div class="skeleton-avatar skeleton-avatar--sm"></div>
+                                                <div class="section__stack flex-1">
+                                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                                    <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body section__stack-lg">
+
+                            <div class="flex justify-between items-center">
+                                <div class="section__stack flex-1">
+                                    <div class="skeleton-line skeleton-line--long"></div>
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="skeleton-block" style="width:120px; height:36px;"></div>
+                                    <div class="skeleton-block" style="width:36px; height:36px;"></div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-4 gap-6">
+                                <div class="skeleton-block skeleton-block--1-1"></div>
+                                <div class="skeleton-block skeleton-block--1-1"></div>
+                                <div class="skeleton-block skeleton-block--1-1 skeleton--subtle"></div>
+                                <div class="skeleton-block skeleton-block--1-1"></div>
+                                <div class="skeleton-block skeleton-block--1-1"></div>
+                                <div class="skeleton-block skeleton-block--1-1 skeleton--strong"></div>
+                                <div class="skeleton-block skeleton-block--1-1"></div>
+                                <div class="skeleton-block skeleton-block--1-1"></div>
+                            </div>
+
+                            <div class="card skeleton-card">
+                                <div class="section__stack">
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                    <div class="section__stack">
+                                        <div class="skeleton-block" style="height:200px;"></div>
+                                        <div class="section__stack">
+                                            <div class="skeleton-line skeleton-line--long"></div>
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                            <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <aside class="section__stack">
+
+                                <div class="card skeleton-card">
+                                    <div class="section__stack">
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                        <div class="section__stack">
+                                            <div class="skeleton-line skeleton-line--long"></div>
+                                            <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                        </div>
+                                        <div class="skeleton-block" style="height:120px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="card skeleton-card">
+                                    <div class="section__stack-sm">
+                                        <div class="skeleton-line skeleton-line--long"></div>
+                                        <div class="section__stack">
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                            <div class="skeleton-line skeleton-line--short"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </aside>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Skeleton Examples: FINAL LARGE GRID OF CARDS + AVATAR LIST</h2>
+                <p class="doc-block__summary">
+                    Comprehensive examples of line, block, avatar, card, list and table loading
+                    states using the VDS Skeleton System. All patterns are token-driven,
+                    layout-safe and compatible with reduced-motion preferences.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack-lg">
+                <div class="card">
+                    <div class="card__body section__stack-lg">
+
+                        <div class="flex justify-between items-center">
+                            <div class="section__stack flex-1">
+                                <div class="skeleton-line skeleton-line--long"></div>
+                                <div class="skeleton-line skeleton-line--medium"></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="skeleton-block" style="width:180px; height:36px;"></div>
+                                <div class="skeleton-block" style="width:120px; height:36px;"></div>
+                                <div class="skeleton-block" style="width:40px; height:36px;"></div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-8">
+                            <div class="card skeleton-card">
+                                <div class="section__stack-sm">
+                                    <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton-line skeleton-line--short"></div>
+                                </div>
+                            </div>
+
+                            <div class="card skeleton-card">
+                                <div class="section__stack-sm">
+                                    <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton-line skeleton-line--short"></div>
+                                </div>
+                            </div>
+
+                            <div class="card skeleton-card">
+                                <div class="section__stack-sm">
+                                    <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                    <div class="skeleton-line skeleton-line--short"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-12">
+
+                            <div class="section__stack-lg">
+                                <div class="card skeleton-card">
+                                    <div class="section__stack">
+                                        <div class="flex justify-between items-center">
+                                            <div class="skeleton-line skeleton-line--medium"></div>
+                                            <div class="skeleton-block" style="width:96px; height:32px;"></div>
+                                        </div>
+                                        <div class="skeleton-block" style="height:260px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="card skeleton-card">
+                                    <div class="section__stack">
+                                        <div class="section__stack">
+                                            <div class="skeleton-line skeleton-line--long"></div>
+                                            <div class="skeleton-line skeleton-line--short"></div>
+                                        </div>
+                                        <div class="skeleton-block" style="height:200px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card skeleton-card">
+                                <div class="card__body section__stack-lg">
+
+                                    <div class="section__stack">
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                        <div class="skeleton-line skeleton-line--long skeleton--subtle"></div>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="section__stack">
+                                            <div class="skeleton-line skeleton-line--short"></div>
+                                            <div class="skeleton-block" style="height:36px;"></div>
+                                        </div>
+                                        <div class="section__stack">
+                                            <div class="skeleton-line skeleton-line--short"></div>
+                                            <div class="skeleton-block" style="height:36px;"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="section__stack">
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+                                        <div class="skeleton-block" style="height:90px;"></div>
+                                    </div>
+
+                                    <div class="flex justify-end">
+                                        <div class="skeleton-block" style="width:120px; height:36px;"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="section__stack-lg">
+                                <div class="card skeleton-card">
+                                    <div class="section__stack-lg">
+
+                                        <div class="skeleton-line skeleton-line--medium"></div>
+
+                                        <div class="section__stack-lg">
+                                            <div class="flex gap-3">
+                                                <div class="skeleton-avatar skeleton-avatar--sm"></div>
+                                                <div class="section__stack flex-1">
+                                                    <div class="skeleton-line skeleton-line--long"></div>
+                                                    <div class="skeleton-line skeleton-line--short"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex gap-3">
+                                                <div class="skeleton-avatar skeleton-avatar--sm"></div>
+                                                <div class="section__stack flex-1">
+                                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                                    <div class="skeleton-line skeleton-line--short skeleton--subtle"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex gap-3">
+                                                <div class="skeleton-avatar skeleton-avatar--sm"></div>
+                                                <div class="section__stack flex-1">
+                                                    <div class="skeleton-line skeleton-line--long"></div>
+                                                    <div class="skeleton-line skeleton-line--medium"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-skeleton class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility & usage rules</h2>
+                <p class="doc-block__summary">
+                    Contract for accessible, predictable skeleton usage across VDS. Skeletons must
+                    respect user motion preferences, preserve focus order, and never hide critical
+                    state information.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use skeletons only while content is genuinely loading. As soon as data
+                            is available, replace the skeleton markup instead of layering content on
+                            top.
+                        </li>
+                        <li>
+                            Mirror real layouts: if the final card has avatar, title, meta and
+                            chart, the skeleton should have avatar + lines + block in the same
+                            positions.
+                        </li>
+                        <li>
+                            Respect <code>prefers-reduced-motion</code> by
+                            disabling shimmer globally or via <code>.skeleton--static</code>.
+                        </li>
+                        <li>
+                            Keep focusable elements out of skeleton surfaces. While loading, disable
+                            or remove interactive controls rather than letting users tab into emptiness.
+                        </li>
+                        <li>
+                            Use semantic wrappers (cards, form-field, table rows) and place skeletons
+                            inside them — this keeps the DOM stable and avoids layout jumps.
+                        </li>
+                        <li>
+                            Use token-driven colours and radii only; never hard-code skeleton
+                            palettes per page.
+                        </li>
+                        <li>
+                            Communicate loading state to assistive tech via container-level attributes
+                            (e.g. <code>aria-busy="true"</code> on the card or region).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t leave skeletons visible after content has loaded — this creates
+                            visual noise and suggests something is still loading.
+                        </li>
+                        <li>
+                            Don’t animate large surfaces aggressively. Prefer subtle, low-contrast
+                            motion or static skeletons, especially on dashboards with many items.
+                        </li>
+                        <li>
+                            Don’t change layout between skeleton and loaded states (different number
+                            of cards, different column count, etc.).
+                        </li>
+                        <li>
+                            Don’t override skeleton colours with arbitrary brand colours. Use theme
+                            tokens so light/dark modes remain consistent.
+                        </li>
+                        <li>
+                            Don’t hide critical error or empty states behind skeletons. If a request
+                            fails, switch to a clear error or retry surface instead of leaving the
+                            skeleton running.
+                        </li>
+                        <li>
+                            Don’t use skeletons for instantaneous operations (sub-100ms). In those
+                            cases, render the final UI without transition.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section aria-busy="true" aria-live="polite"&gt;
+    &lt;div class="card skeleton-card"&gt;
+        &lt;div class="card__body stack gap-3"&gt;
+            &lt;div class="skeleton skeleton-line skeleton-line--medium"&gt;&lt;/div&gt;
+            &lt;div class="skeleton skeleton-block" style="width: 100%; height: 160px;"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section aria-busy="false"&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card__body"&gt;
+            &lt;h3 class="text-sm text-muted"&gt;Revenue&lt;/h3&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

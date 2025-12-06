@@ -1,0 +1,1869 @@
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner section__stack">
+
+        <header class="section__header">
+            <p class="section__eyebrow">Command Palette</p>
+
+            <h1 class="section__title">
+                Command Menu / Spotlight — Global Action Surface
+            </h1>
+
+            <p class="section__subtitle">
+                A global, keyboard-first command surface for navigation, actions and search. The command palette
+                sits above the rest of the UI as a modal overlay, combining a search input, grouped result lists,
+                keyboard shortcuts and helper text.
+            </p>
+
+            <p class="section__subtitle text-sm text-muted">
+                Source: <code>command.css</code> · Depends on
+                <code>primitives.css</code>, <code>base.css</code>,
+                <code>layout.css</code>, <code>utilities.css</code>,
+                <code>typography.css</code>, active theme tokens (e.g.
+                <code>slate.css</code>), and optional
+                <code>icons.css</code>, <code>overlays.css</code>.
+            </p>
+        </header>
+
+        <article class="doc-block doc-block--concept">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation &amp; dependencies</h2>
+
+                <p class="doc-block__summary">
+                    Load <code>command.css</code> after base, layout and utilities.
+                    Use <code>data-target="__key"</code> on buttons, pair it with
+                    <code>.command.__key</code> panels, and toggle
+                    <code>command--open</code> on the root element to control visibility.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="section__stack-sm">
+                    <h3 class="doc-block__subtitle">CSS load order</h3>
+
+                    <ul class="section__list">
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">1. Tokens &amp; base</span>
+                            <span class="section__list-item-desc">
+                                <code>primitives.css</code>,
+                                <code>base.css</code>,
+                                theme file (e.g. <code>slate.css</code>)
+                            </span>
+                        </li>
+
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">2. Layout &amp; utilities</span>
+                            <span class="section__list-item-desc">
+                                <code>layout.css</code>,
+                                <code>utilities.css</code>,
+                                <code>typography.css</code>
+                            </span>
+                        </li>
+
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">3. Optional overlays</span>
+                            <span class="section__list-item-desc">
+                                <code>overlays.css</code>
+                                for shared z-index and overlay behaviour
+                            </span>
+                        </li>
+
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">4. Command palette</span>
+                            <span class="section__list-item-desc">
+                                <code>command.css</code>
+                                for panel, list and item styling
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="section__stack-sm">
+                    <h3 class="doc-block__subtitle">JavaScript contract (canonical)</h3>
+
+                    <p class="text-sm text-muted">
+                        Command palette visibility is controlled via:
+                        <code>data-target="__key"</code> on triggers,
+                        <code>.command.__key</code> on panels, and
+                        <code>.command--open</code> on the active panel.
+                    </p>
+
+                    <p class="text-xs text-muted">
+                        <strong>Contract:</strong>
+                        every button declares <code>data-target="__command-*"</code>.
+                        The matching panel declares the same
+                        <code>__command-*</code> class on the root
+                        <code>.command</code>.
+                        Open state is represented by
+                        <code>.command--open</code>.
+                    </p>
+                </div>
+
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--concept">
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Concept</p>
+                <h2 class="doc-block__title">What the Command Palette Is</h2>
+                <p class="doc-block__summary">
+                    The Command Palette is the central interaction surface of a modern application. It unifies
+                    navigation, action execution, search, shortcuts and context-switching into a single,
+                    keyboard-first interface that can be opened from anywhere within the product.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <section data-vds-dock-block data-vds-content-block data-vds-commands class="doc-block">
+                    <header class="doc-block__header">
+                        <h3 class="doc-block__title">1. A Universal Interface for the Entire Application</h3>
+                    </header>
+
+                    <div class="doc-block__body">
+                        <p>
+                            A Command Palette is a single panel—typically opened with
+                            <kbd>⌘</kbd><kbd>K</kbd> or <kbd>Ctrl</kbd><kbd>K</kbd>—that allows users to:
+                        </p>
+
+                        <ul class="section__list">
+                            <li class="section__list-item">Navigate anywhere in the product</li>
+                            <li class="section__list-item">Run actions and workflows</li>
+                            <li class="section__list-item">Open tools, settings or system panels</li>
+                            <li class="section__list-item">Search entities and content</li>
+                            <li class="section__list-item">Switch workspaces, accounts or contexts</li>
+                            <li class="section__list-item">Discover keyboard shortcuts</li>
+                        </ul>
+
+                        <p>
+                            It compresses the entire system’s capability into a single point of access.
+                            Instead of learning complex navigation trees, the user learns one shortcut and one surface.
+                        </p>
+                    </div>
+                </section>
+
+                <section data-vds-dock-block data-vds-content-block data-vds-commands class="doc-block">
+                    <header class="doc-block__header">
+                        <h3 class="doc-block__title">2. Why Modern SaaS Platforms Use It</h3>
+                    </header>
+
+                    <div class="doc-block__body">
+                        <p>
+                            As products grow, traditional navigation becomes slow and fragmented. A Command Palette
+                            solves four structural problems:
+                        </p>
+
+                        <ul class="section__list">
+                            <li class="section__list-item"><strong>Speed:</strong> reach anything in &lt;1 second.</li>
+                            <li class="section__list-item"><strong>Discoverability:</strong> reveal full product
+                                capability through search.
+                            </li>
+                            <li class="section__list-item"><strong>Consistency:</strong> one model—no relearning UI
+                                layouts.
+                            </li>
+                            <li class="section__list-item"><strong>Keyboard mastery:</strong> enables high-performance
+                                workflows.
+                            </li>
+                        </ul>
+
+                        <p>
+                            This is why systems like Linear, Raycast, VSCode, GitHub Spotlight and Notion treat the
+                            palette as a core feature, not an optional enhancement.
+                        </p>
+                    </div>
+                </section>
+
+                <section data-vds-dock-block data-vds-content-block data-vds-commands class="doc-block">
+                    <header class="doc-block__header">
+                        <h3 class="doc-block__title">3. How the User Interacts With It</h3>
+                    </header>
+
+                    <div class="doc-block__body">
+                        <div class="stack">
+                            <p><strong>1. Shortcut</strong><br>The palette opens and focuses the search input.</p>
+                            <p><strong>2. Type intent</strong><br>“billing”, “create project”, “invite”, “dark mode”.
+                            </p>
+                            <p><strong>3. Navigate</strong><br>Use ↑ ↓ to move results, <kbd>Enter</kbd> to run,
+                                <kbd>Tab</kbd> to switch groups, <kbd>Esc</kbd> to close.</p>
+                            <p><strong>4. Execute</strong><br>The app navigates, opens, switches or performs the action.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-vds-dock-block data-vds-content-block data-vds-commands class="doc-block">
+                    <header class="doc-block__header">
+                        <h3 class="doc-block__title">4. What the Command Palette Shows</h3>
+                    </header>
+
+                    <div class="doc-block__body">
+                        <ul class="section__list">
+                            <li class="section__list-item">Search input with live filtering</li>
+                            <li class="section__list-item">Recent commands or navigation targets</li>
+                            <li class="section__list-item">Grouped command categories</li>
+                            <li class="section__list-item">Keyboard shortcuts and hints</li>
+                            <li class="section__list-item">Workspace or account switchers</li>
+                            <li class="section__list-item">Empty state for unmatched queries</li>
+                            <li class="section__list-item">Footer with navigation hints</li>
+                        </ul>
+
+                        <p>This turns the palette into a unified search + navigation + action surface.</p>
+                    </div>
+                </section>
+
+                <section data-vds-dock-block data-vds-content-block data-vds-commands class="doc-block">
+                    <header class="doc-block__header">
+                        <h3 class="doc-block__title">5. Why It Is Not Just a Search Box</h3>
+                    </header>
+
+                    <div class="doc-block__body">
+                        <p>
+                            While it resembles a search bar or modal, its purpose is broader. A Command Palette is not:
+                        </p>
+
+                        <ul class="section__list">
+                            <li class="section__list-item">a dropdown</li>
+                            <li class="section__list-item">a simple search bar</li>
+                            <li class="section__list-item">a menu</li>
+                            <li class="section__list-item">a modal dialog</li>
+                        </ul>
+
+                        <p>
+                            It is the <strong>orchestration surface</strong> of the product—where navigation, actions,
+                            search and shortcuts converge.
+                        </p>
+                    </div>
+                </section>
+
+                <section data-vds-dock-block data-vds-content-block data-vds-commands class="doc-block">
+                    <header class="doc-block__header">
+                        <h3 class="doc-block__title">6. The Core Mental Model</h3>
+                    </header>
+
+                    <div class="doc-block__body">
+                        <p>
+                            The palette acts as a <strong>universal interface between intention and capability</strong>.
+                            Users express intent such as:
+                        </p>
+
+                        <ul class="section__list">
+                            <li class="section__list-item">“Go to billing”</li>
+                            <li class="section__list-item">“Create project”</li>
+                            <li class="section__list-item">“Switch workspace”</li>
+                            <li class="section__list-item">“Invite teammate”</li>
+                        </ul>
+
+                        <p>The palette interprets that intent and routes the system to the correct action.</p>
+                    </div>
+                </section>
+
+                <section data-vds-dock-block data-vds-content-block data-vds-commands class="doc-block">
+                    <header class="doc-block__header">
+                        <h3 class="doc-block__title">7. Core Responsibilities of the Palette</h3>
+                    </header>
+
+                    <div class="doc-block__body">
+                        <ul class="section__list">
+                            <li class="section__list-item"><strong>Global navigation</strong></li>
+                            <li class="section__list-item"><strong>Action execution</strong></li>
+                            <li class="section__list-item"><strong>Search and lookup</strong></li>
+                            <li class="section__list-item"><strong>Context switching</strong></li>
+                            <li class="section__list-item"><strong>Shortcut discovery</strong></li>
+                            <li class="section__list-item"><strong>Zero-state guidance</strong></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section data-vds-dock-block data-vds-content-block data-vds-commands class="doc-block">
+                    <header class="doc-block__header">
+                        <h3 class="doc-block__title">8. Why This Matters for VDS</h3>
+                    </header>
+
+                    <div class="doc-block__body">
+                        <p>The Command Palette is a first-class component in VDS because it offers:</p>
+
+                        <ul class="section__list">
+                            <li class="section__list-item">A single architectural point for commands</li>
+                            <li class="section__list-item">Horizontal scalability as features grow</li>
+                            <li class="section__list-item">A premium interaction pattern expected by modern users</li>
+                            <li class="section__list-item">High-speed, keyboard-driven workflows</li>
+                            <li class="section__list-item">Centralised discoverability</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section data-vds-dock-block data-vds-content-block data-vds-commands class="doc-block">
+                    <header class="doc-block__header">
+                        <h3 class="doc-block__title">9. Where It Lives in the UI</h3>
+                    </header>
+
+                    <div class="doc-block__body">
+                        <p>The palette always lives:</p>
+
+                        <ul class="section__list">
+                            <li class="section__list-item">globally, accessible from any page</li>
+                            <li class="section__list-item">above all other UI layers</li>
+                            <li class="section__list-item">keyboard accessible</li>
+                            <li class="section__list-item">dismissible via <kbd>Esc</kbd></li>
+                            <li class="section__list-item">vertically centered by default</li>
+                            <li class="section__list-item">triggerable from buttons or shortcuts</li>
+                        </ul>
+
+                        <p>It is the fastest path from user intent to system action.</p>
+                    </div>
+                </section>
+
+                <section data-vds-dock-block data-vds-content-block data-vds-commands class="doc-block">
+                    <header class="doc-block__header">
+                        <h3 class="doc-block__title">10. Summary</h3>
+                    </header>
+
+                    <div class="doc-block__body">
+                        <p>
+                            The Command Palette merges navigation, actions, search, context switching and shortcuts into
+                            one surface. Power users treat it as the primary workflow hub. New users use it to learn the
+                            system. In VDS, it defines how a user controls the entire product—efficiently and without
+                            friction.
+                        </p>
+                    </div>
+                </section>
+
+            </div>
+
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner section__stack">
+
+        <header class="section__header">
+            <p class="section__eyebrow">Live examples</p>
+
+            <h2 class="section__title">
+                Interactive command palette variants
+            </h2>
+
+            <p class="section__subtitle">
+                Recommended keyboard mapping and button hooks for the most common command palette
+                variants in a SaaS app: full palette, navigation-only, actions-only, empty-state
+                and compact density. All follow the same
+                <code>data-target="__key"</code> /
+                <code>.command.__key</code> /
+                <code>.command--open</code> contract.
+            </p>
+        </header>
+
+        <article class="doc-block doc-block--surface">
+            <header class="doc-block__header">
+                <h3 class="doc-block__title">Example triggers</h3>
+                <p class="doc-block__summary">
+                    Keyboard and button triggers mapped to specific palette instances.
+                    In production, one controller handles all keyboard shortcuts and
+                    <code>data-target</code> clicks.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack-sm">
+                <div class="section__grid-3 section__grid-md section__grid-sm text-sm">
+                    <div class="card">
+                        <div class="card__body section__stack-sm">
+                            <h4 class="text-xs text-soft tracking-wide uppercase">
+                                Full command palette
+                            </h4>
+                            <p class="text-sm text-muted">
+                                Keyboard: <kbd>⌘</kbd><kbd>K</kbd> (Mac) /
+                                <kbd>Ctrl</kbd><kbd>K</kbd> (Windows).
+                            </p>
+
+                            <button class="button button--ghost button--sm"
+                                    type="button"
+                                    data-target="__command-basic">
+                                Open full palette
+                            </button>
+
+                            <p class="text-xs text-muted">
+                                Target panel: <code>.command.__command-basic</code>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body section__stack-sm">
+                            <h4 class="text-xs text-soft tracking-wide uppercase">
+                                Navigation-only palette
+                            </h4>
+                            <p class="text-sm text-muted">
+                                Keyboard: <kbd>⌘</kbd><kbd>P</kbd> / <kbd>Ctrl</kbd><kbd>P</kbd>.
+                            </p>
+
+                            <button class="button button--ghost button--sm"
+                                    type="button"
+                                    data-target="__command-nav">
+                                Open navigation palette
+                            </button>
+
+                            <p class="text-xs text-muted">
+                                Target panel: <code>.command.__command-nav</code>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body section__stack-sm">
+                            <h4 class="text-xs text-soft tracking-wide uppercase">
+                                Actions-only palette
+                            </h4>
+                            <p class="text-sm text-muted">
+                                Keyboard: <kbd>⌘</kbd><kbd>Shift</kbd><kbd>P</kbd> /
+                                <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd>.
+                            </p>
+
+                            <button class="button button--ghost button--sm"
+                                    type="button"
+                                    data-target="__command-actions">
+                                Open actions palette
+                            </button>
+
+                            <p class="text-xs text-muted">
+                                Target panel: <code>.command.__command-actions</code>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body section__stack-sm">
+                            <h4 class="text-xs text-soft tracking-wide uppercase">Empty / no results</h4>
+                            <p class="text-sm text-muted">
+                                Keyboard: <kbd>/</kbd> while focused on main content.
+                            </p>
+
+                            <button class="button button--ghost button--sm"
+                                    type="button"
+                                    data-target="__command-empty">
+                                Open empty-state palette
+                            </button>
+
+                            <p class="text-xs text-muted">
+                                Target panel: <code>.command.__command-empty</code>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body section__stack-sm">
+                            <h4 class="text-xs text-soft tracking-wide uppercase">Compact density</h4>
+                            <p class="text-sm text-muted">
+                                Keyboard: <kbd>⌘</kbd><kbd>Shift</kbd><kbd>K</kbd> (power-user mode).
+                            </p>
+
+                            <button class="button button--ghost button--sm"
+                                    type="button"
+                                    data-target="__command-compact">
+                                Open compact palette
+                            </button>
+
+                            <p class="text-xs text-muted">
+                                Target panel: <code>.command.__command-compact</code>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body section__stack-sm">
+                            <h4 class="text-xs text-soft tracking-wide uppercase">Project / space switcher</h4>
+                            <p class="text-sm text-muted">
+                                Keyboard: <kbd>⌘</kbd><kbd>Shift</kbd><kbd>S</kbd> /
+                                <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>S</kbd>.
+                            </p>
+
+                            <button class="button button--ghost button--sm"
+                                    type="button"
+                                    data-target="__command-projects">
+                                Open project switcher
+                            </button>
+
+                            <p class="text-xs text-muted">
+                                Target panel: <code>.command.__command-projects</code>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="text-xs text-muted mt-4">
+                    In production, all buttons above and their keyboard counterparts route into a single controller
+                    that toggles <code>command--open</code> on the matching
+                    <code>.command.__command-*</code> instance.
+                </p>
+
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Full command palette specimen</h2>
+
+                <p class="doc-block__summary">
+                    A full command menu with search input, grouped results, keyboard shortcut hints,
+                    an empty state hook and footer helper text. This is the main v1 visual specimen,
+                    wired into the v3 trigger model via
+                    <code>data-target</code> and
+                    <code>command--open</code>.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+
+                <div class="doc-block__preview">
+
+                    <div class="card">
+                        <div class="card__body section__stack-sm">
+                            <div class="section__stack-sm mb-3">
+                                <p class="text-sm text-muted">
+                                    Trigger in app:
+                                    <code>data-target="__command-basic"</code> +
+                                    <kbd>⌘</kbd><kbd>K</kbd> / <kbd>Ctrl</kbd><kbd>K</kbd>.
+                                </p>
+
+                                <button class="button button--primary button--sm"
+                                        type="button"
+                                        data-target="__command-basic">
+                                    Open full command palette
+                                </button>
+                            </div>
+
+                            <div class="command command--center __command-basic">
+                                <div class="command__panel"
+                                     role="dialog"
+                                     aria-modal="true"
+                                     aria-label="Command menu">
+
+                                    <header class="command__header">
+                                        <div class="command__leading-icon">
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <circle cx="7" cy="7" r="4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"></circle>
+                                                <path d="M11 11l4 4"
+                                                      stroke="currentColor"
+                                                      stroke-width="2"
+                                                      stroke-linecap="round"></path>
+                                            </svg>
+                                        </div>
+
+                                        <input class="command__input"
+                                               type="search"
+                                               placeholder="Search commands or go to…">
+
+                                        <div class="command__hint">
+                                            <span class="command__hint-text">Shortcut</span>
+                                            <span class="command__shortcut">
+                                                <span class="command__kbd-key">⌘</span>
+                                                <span class="command__kbd-key">K</span>
+                                            </span>
+                                        </div>
+                                    </header>
+
+                                    <div class="command__body">
+
+                                        <div class="command__section">
+                                            <div class="command__section-label">Recent</div>
+
+                                            <ul class="command__list"
+                                                role="listbox"
+                                                aria-label="Recent commands">
+
+                                                <li class="command__item command__item--active"
+                                                    role="option"
+                                                    aria-selected="true">
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">Create project</span>
+                                                        <span class="command__item-description">
+                                                            Start a new workspace
+                                                        </span>
+                                                    </div>
+                                                    <div class="command__item-meta">
+                                                        <span class="command__kbd-key">N</span>
+                                                    </div>
+                                                </li>
+
+                                                <li class="command__item"
+                                                    role="option"
+                                                    aria-selected="false">
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">Go to dashboard</span>
+                                                        <span class="command__item-description">
+                                                            Switch to main overview
+                                                        </span>
+                                                    </div>
+                                                    <div class="command__item-meta">
+                                                        <span class="command__kbd-key">D</span>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                        <div class="command__section">
+                                            <div class="command__section-label">Navigation</div>
+
+                                            <ul class="command__list"
+                                                role="listbox"
+                                                aria-label="Navigation">
+
+                                                <li class="command__item" role="option" aria-selected="false">
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">Billing settings</span>
+                                                        <span class="command__item-description">
+                                                            Manage invoices and payment methods
+                                                        </span>
+                                                    </div>
+                                                    <div class="command__item-meta">
+                                                        <span class="command__kbd-key">B</span>
+                                                    </div>
+                                                </li>
+
+                                                <li class="command__item" role="option" aria-selected="false">
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">Team members</span>
+                                                        <span class="command__item-description">
+                                                            Invite and manage users
+                                                        </span>
+                                                    </div>
+                                                    <div class="command__item-meta">
+                                                        <span class="command__kbd-key">T</span>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+                                    <footer class="command__footer">
+                                        <span>↑↓ to navigate · Enter to run · Esc to close</span>
+
+                                        <span>
+                                            <span class="command__kbd-key">Tab</span>
+                                            cycle sections
+                                        </span>
+                                    </footer>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;button class="button button--primary button--sm"
+        type="button"
+        data-target="__command-basic"&gt;
+    Open full command palette
+&lt;/button&gt;
+
+&lt;div class="command command--center command--open __command-basic"&gt;
+    &lt;div class="command__panel" role="dialog" aria-modal="true" aria-label="Command menu"&gt;
+        &lt;header class="command__header"&gt;
+            ...
+        &lt;/header&gt;
+
+        &lt;div class="command__body"&gt;&lt;/div&gt;
+
+        &lt;footer class="command__footer"&gt;
+            ...
+        &lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                    <p class="text-sm text-muted">
+                        In static documentation, <code>command--open</code> is added so the panel
+                        renders visible. In application code, your controller toggles this class at runtime.
+                    </p>
+
+                </div>
+
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Layout &amp; structure</h2>
+                <p class="doc-block__summary">
+                    The command palette is a viewport overlay (<code>.command</code>) containing
+                    a panel (<code>.command__panel</code>) with a header, scrollable body and
+                    footer. Alignment and sizing are token-driven and responsive.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <ul class="text-body">
+                                <li>
+                                    <strong>Overlay:</strong>
+                                    <code>.command</code> covers the viewport, provides the
+                                    backdrop and controls open/closed state via
+                                    <code>.command--open</code>.
+                                    <span class="text-xs text-muted">
+                                        CSS also responds to
+                                        <code>[data-command-open="true"]</code> and
+                                        <code>[aria-hidden="false"]</code> for compatibility,
+                                        but the canonical hook in VDS is the class.
+                                    </span>
+                                </li>
+
+                                <li>
+                                    <strong>Panel:</strong>
+                                    <code>.command__panel</code> is the dialog surface,
+                                    constrained by <code>--command-panel-max-width</code> and
+                                    <code>--command-panel-max-height</code>.
+                                </li>
+
+                                <li>
+                                    <strong>Header:</strong>
+                                    Contains the search input, optional leading icon and shortcut hint block.
+                                </li>
+
+                                <li>
+                                    <strong>Body:</strong>
+                                    Holds multiple <code>.command__section</code> elements, each
+                                    containing a label and <code>.command__list</code>.
+                                </li>
+
+                                <li>
+                                    <strong>Footer:</strong>
+                                    Helper text and/or keyboard usage hints.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class="command command--center"&gt;
+    &lt;div class="command__panel" role="dialog" aria-modal="true"&gt;
+        &lt;header class="command__header"&gt;...input + shortcut...&lt;/header&gt;
+
+        &lt;div class="command__body"&gt;
+            &lt;div class="command__section"&gt;
+                &lt;div class="command__section-label"&gt;Section label&lt;/div&gt;
+                &lt;ul class="command__list" role="listbox"&gt;
+                    &lt;li class="command__item" role="option"&gt;...&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;footer class="command__footer"&gt;...helper text...&lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+                    <p class="text-sm text-muted">
+                        Use <code>.command--center</code> to vertically center the panel,
+                        or omit it to align to the top. On small screens the panel stretches closer to
+                        full width and height while preserving rounded corners.
+                    </p>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+
+        <article class="doc-block doc-block--split">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Header &amp; search input</h2>
+
+                <p class="doc-block__summary">
+                    The header row aligns an optional leading icon, the search input and keyboard shortcut hint.
+                    It uses native <code>&lt;input type="search"&gt;</code> semantics and
+                    inherits typography from the surrounding context.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+
+                            <button class="button button--primary"
+                                    data-target="__header-search">
+                                Click to open
+                            </button>
+
+                            <div class="command __header-search">
+                                <div class="command__panel" role="dialog" aria-modal="true">
+
+                                    <header class="command__header">
+
+                                        <div class="command__leading-icon">
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <circle cx="7" cy="7" r="4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"></circle>
+                                                <path d="M11 11l4 4"
+                                                      stroke="currentColor"
+                                                      stroke-width="2"
+                                                      stroke-linecap="round"></path>
+                                            </svg>
+                                        </div>
+
+                                        <input class="command__input"
+                                               type="search"
+                                               placeholder="Search or type a command…">
+
+                                        <div class="command__hint">
+                                            <span class="command__hint-text">Shortcut</span>
+                                            <span class="command__shortcut">
+                                                <span class="command__kbd-key">⌘</span>
+                                                <span class="command__kbd-key">K</span>
+                                            </span>
+                                        </div>
+
+                                    </header>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;header class="command__header"&gt;
+    &lt;div class="command__leading-icon"&gt;
+        &lt;svg viewBox="0 0 16 16" aria-hidden="true"&gt;...search icon...&lt;/svg&gt;
+    &lt;/div&gt;
+
+    &lt;input
+        class="command__input"
+        type="search"
+        placeholder="Search or type a command…" /&gt;
+
+    &lt;div class="command__hint"&gt;
+        &lt;span class="command__hint-text"&gt;Shortcut&lt;/span&gt;
+        &lt;span class="command__shortcut"&gt;
+            &lt;span class="command__kbd-key"&gt;⌘&lt;/span&gt;
+            &lt;span class="command__kbd-key"&gt;K&lt;/span&gt;
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+
+                    <p class="text-sm text-muted">
+                        The input uses <code>::placeholder</code> styling and inherits font size
+                        from the panel. This is the primary focus target when opening the command palette.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+
+        <article class="doc-block doc-block--split">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Sections, lists &amp; active item</h2>
+                <p class="doc-block__summary">
+                    Commands are grouped into labelled sections, each containing a list. Items expose label,
+                    optional description, an icon placeholder and a meta region for shortcuts or badges. Keyboard
+                    focus/selection is reflected via <code>.command__item--active</code> or
+                    <code>aria-selected="true"</code>.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+
+                            <button class="button button--primary"
+                                    data-target="__sections-lists">
+                                Click to open
+                            </button>
+
+                            <div class="command command--center __sections-lists">
+
+                                <div class="command__panel" role="dialog" aria-modal="true">
+
+                                    <div class="command__body">
+                                        <div class="command__section">
+                                            <div class="command__section-label">Navigation</div>
+
+                                            <ul class="command__list"
+                                                role="listbox"
+                                                aria-label="Navigation">
+
+                                                <li class="command__item command__item--active"
+                                                    role="option"
+                                                    aria-selected="true">
+
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">Home</span>
+                                                        <span class="command__item-description">
+                                                            Go to the main dashboard
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="command__item-meta">
+                                                        <span class="command__kbd-key">H</span>
+                                                    </div>
+
+                                                </li>
+
+                                                <li class="command__item"
+                                                    role="option"
+                                                    aria-selected="false">
+
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">Activity</span>
+                                                        <span class="command__item-description">
+                                                            View recent events
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="command__item-meta">
+                                                        <span class="command__kbd-key">A</span>
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                        <div class="command__section">
+                                            <div class="command__section-label">Actions</div>
+
+                                            <ul class="command__list"
+                                                role="listbox"
+                                                aria-label="Actions">
+
+                                                <li class="command__item"
+                                                    role="option"
+                                                    aria-selected="false">
+
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">
+                                                            Invite team member
+                                                        </span>
+                                                        <span class="command__item-description">
+                                                            Send an email invitation
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="command__item-meta">
+                                                        <span class="command__kbd-key">I</span>
+                                                    </div>
+
+                                                </li>
+
+                                                <li class="command__item"
+                                                    role="option"
+                                                    aria-selected="false">
+
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">
+                                                            Open documentation
+                                                        </span>
+                                                        <span class="command__item-description">
+                                                            View help centre
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="command__item-meta">
+                                                        <span class="command__kbd-key">?</span>
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+                                    <footer class="command__footer">
+                                        <span>↑↓ to move · Enter to select · Esc to close</span>
+                                    </footer>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class="command__section"&gt;
+    &lt;div class="command__section-label" id="section-nav"&gt;Navigation&lt;/div&gt;
+    &lt;ul class="command__list"
+        role="listbox"
+        aria-labelledby="section-nav"&gt;
+
+        &lt;li class="command__item command__item--active"
+            role="option"
+            aria-selected="true"&gt;
+            &lt;div class="command__item-main"&gt;
+                &lt;span class="command__item-label"&gt;Home&lt;/span&gt;
+                &lt;span class="command__item-description"&gt;Go to the main dashboard&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="command__item-meta"&gt;
+                &lt;span class="command__kbd-key"&gt;H&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+
+        &lt;li class="command__item"
+            role="option"
+            aria-selected="false"&gt;
+            &lt;div class="command__item-main"&gt;
+                &lt;span class="command__item-label"&gt;Activity&lt;/span&gt;
+                &lt;span class="command__item-description"&gt;View recent events&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="command__item-meta"&gt;
+                &lt;span class="command__kbd-key"&gt;A&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+
+                    <p class="text-sm text-muted">
+                        Your JavaScript should maintain a single active item at a time and keep
+                        <code>aria-selected</code> in sync with keyboard behaviour
+                        (e.g., <code>↑</code> / <code>↓</code> arrows).
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+
+        <article class="doc-block doc-block--split">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Empty state &amp; no results</h2>
+                <p class="doc-block__summary">
+                    Use <code>.command__empty</code> when a search query yields no results.
+                    This region replaces the section lists while maintaining consistent padding and typography.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="section__stack-sm mb-3">
+                                <p class="text-sm text-muted">
+                                    Trigger in app:
+                                    <kbd>/</kbd> or a dedicated “Search” icon mapped to
+                                    <code>data-target="__command-empty"</code>.
+                                </p>
+
+                                <button class="button button--ghost button--sm"
+                                        type="button"
+                                        data-target="__command-empty">
+                                    Open empty search palette
+                                </button>
+                            </div>
+
+                            <div class="command command--center __command-empty">
+                                <div class="command__panel" role="dialog" aria-modal="true">
+
+                                    <header class="command__header">
+                                        <div class="command__leading-icon">
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <circle cx="7" cy="7" r="4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"></circle>
+                                                <path d="M11 11l4 4"
+                                                      stroke="currentColor"
+                                                      stroke-width="2"
+                                                      stroke-linecap="round"></path>
+                                            </svg>
+                                        </div>
+
+                                        <input class="command__input"
+                                               type="search"
+                                               value="billing api"
+                                               aria-label="Search commands or go to…">
+
+                                        <div class="command__hint">
+                                            <span class="command__shortcut">
+                                                <span class="command__kbd-key">Esc</span>
+                                            </span>
+                                        </div>
+                                    </header>
+
+                                    <div class="command__body">
+                                        <div class="command__empty">
+                                            <p>No commands match <strong>"billing api"</strong>.</p>
+                                        </div>
+                                    </div>
+
+                                    <footer class="command__footer">
+                                        <span>Try a different keyword or clear the search.</span>
+                                    </footer>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class="command__body"&gt;
+    &lt;div class="command__empty"&gt;
+        &lt;p&gt;No commands match &lt;strong&gt;"billing api"&lt;/strong&gt;.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                    <p class="text-sm text-muted">
+                        When showing <code>.command__empty</code>, remove or hide the section lists
+                        from assistive technologies to avoid presenting both “no results” and irrelevant options.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Compact density variant</h2>
+                <p class="doc-block__summary">
+                    For dense, power-user environments, apply
+                    <code>.command--compact</code> on the root overlay to tighten item padding
+                    and reduce font size, while preserving hit targets and accessibility.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+
+                            <div class="section__stack-sm mb-3">
+                                <p class="text-sm text-muted">
+                                    Trigger in app:
+                                    <kbd>⌘</kbd><kbd>Shift</kbd><kbd>K</kbd> /
+                                    <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>K</kbd> mapped to
+                                    <code>__command-compact</code>.
+                                </p>
+
+                                <button class="button button--ghost button--sm"
+                                        type="button"
+                                        data-target="__command-compact">
+                                    Open compact palette
+                                </button>
+                            </div>
+
+                            <div class="command command--center command--compact __command-compact">
+                                <div class="command__panel" role="dialog" aria-modal="true">
+
+                                    <header class="command__header">
+                                        <input class="command__input"
+                                               type="search"
+                                               placeholder="Jump to…">
+                                        <div class="command__hint">
+                                            <span class="command__shortcut">
+                                                <span class="command__kbd-key">Ctrl</span>
+                                                <span class="command__kbd-key">K</span>
+                                            </span>
+                                        </div>
+                                    </header>
+
+                                    <div class="command__body">
+                                        <div class="command__section">
+                                            <ul class="command__list" role="listbox" aria-label="Projects">
+                                                <li class="command__item command__item--active"
+                                                    role="option"
+                                                    aria-selected="true">
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">
+                                                            VDS — Design system
+                                                        </span>
+                                                    </div>
+                                                </li>
+
+                                                <li class="command__item" role="option" aria-selected="false">
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">
+                                                            JetSet — Content pipeline
+                                                        </span>
+                                                    </div>
+                                                </li>
+
+                                                <li class="command__item" role="option" aria-selected="false">
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">
+                                                            DusterHouse — Trips
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <footer class="command__footer">
+                                        <span>Compact mode · designed for heavy keyboard usage.</span>
+                                    </footer>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class="command command--center command--compact command--open __command-compact"&gt;
+    &lt;div class="command__panel" role="dialog" aria-modal="true"&gt;
+        &lt;header class="command__header"&gt;...&lt;/header&gt;
+        &lt;div class="command__body"&gt;
+            &lt;div class="command__section"&gt;
+                &lt;ul class="command__list" role="listbox"&gt;
+                    &lt;li class="command__item command__item--active" role="option"
+                        aria-selected="true"&gt;...&lt;/li&gt;
+                    &lt;li class="command__item" role="option"&gt;...&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;footer class="command__footer"&gt;...&lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+
+        <article class="doc-block doc-block--split">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Keyboard shortcuts &amp; footer patterns</h2>
+                <p class="doc-block__summary">
+                    Use <code>.command__shortcut</code> and
+                    <code>.command__kbd-key</code> to render keycap hints. Every shortcut rendered
+                    should correspond to a real key handler in your app.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+
+                <div class="section__stack">
+
+                    <div class="card">
+                        <div class="card__body">
+
+                            <div class="command command--center __command-nav">
+                                <div class="command__panel" role="dialog" aria-modal="true">
+
+                                    <header class="command__header">
+                                        <input class="command__input"
+                                               type="search"
+                                               placeholder="Search or run a command…">
+
+                                        <div class="command__hint">
+                                            <span class="command__hint-text">Global</span>
+                                            <span class="command__shortcut">
+                                                <span class="command__kbd-key">⌘</span>
+                                                <span class="command__kbd-key">K</span>
+                                            </span>
+                                        </div>
+                                    </header>
+
+                                    <div class="command__body">
+                                        <div class="command__section">
+                                            <div class="command__section-label">Shortcuts</div>
+
+                                            <ul class="command__list" role="listbox">
+
+                                                <li class="command__item" role="option" aria-selected="false">
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">
+                                                            Open command palette
+                                                        </span>
+                                                    </div>
+                                                    <div class="command__item-meta">
+                                                        <span class="command__kbd-key">⌘</span>
+                                                        <span class="command__kbd-key">K</span>
+                                                    </div>
+                                                </li>
+
+                                                <li class="command__item" role="option" aria-selected="false">
+                                                    <div class="command__item-main">
+                                                        <span class="command__item-label">Go to dashboard</span>
+                                                    </div>
+                                                    <div class="command__item-meta">
+                                                        <span class="command__kbd-key">G</span>
+                                                        <span class="command__kbd-key">D</span>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <footer class="command__footer">
+                                        <span>↑↓ to navigate · Enter to run · Esc to close</span>
+
+                                        <span>
+                                            <span class="command__kbd-key">?</span>
+                                            <span class="text-xs text-muted">Show all shortcuts</span>
+                                        </span>
+                                    </footer>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>
+&lt;div class="command__hint"&gt;
+    &lt;span class="command__hint-text"&gt;Global&lt;/span&gt;
+    &lt;span class="command__shortcut"&gt;
+        &lt;span class="command__kbd-key"&gt;⌘&lt;/span&gt;
+        &lt;span class="command__kbd-key"&gt;K&lt;/span&gt;
+    &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="command__item-meta"&gt;
+    &lt;span class="command__kbd-key"&gt;G&lt;/span&gt;
+    &lt;span class="command__kbd-key"&gt;D&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;footer class="command__footer"&gt;
+    &lt;span&gt;↑↓ to navigate · Enter to run · Esc to close&lt;/span&gt;
+    &lt;span&gt;
+        &lt;span class="command__kbd-key"&gt;?&lt;/span&gt;
+        &lt;span class="text-xs text-muted"&gt;Show all shortcuts&lt;/span&gt;
+    &lt;/span&gt;
+&lt;/footer&gt;
+</code></pre>
+
+                    <p class="text-xs text-muted">
+                        Keycaps inside the palette use <code>.command__kbd-key</code> to keep the
+                        component self-contained and decoupled from any global <code
+                            >&lt;kbd&gt;</code>
+                        styling.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; ARIA hooks</h2>
+                <p class="doc-block__summary">
+                    The command palette is a modal dialog containing a keyboard-driven listbox. Styling preserves
+                    native semantics and focuses on predictable roles, labelling and focus management.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+
+                <div class="doc-block__preview">
+                    <ul class="text-sm">
+                        <li>
+                            <strong>Modal role:</strong>
+                            Use <code>role="dialog"</code> and
+                            <code>aria-modal="true"</code> on
+                            <code>.command__panel</code>. Provide
+                            <code>aria-label</code> or
+                            <code>aria-labelledby</code> for the panel.
+                        </li>
+
+                        <li>
+                            <strong>Single focus entry:</strong>
+                            When opening, move focus to the search input. The command palette should trap focus
+                            until closed.
+                        </li>
+
+                        <li>
+                            <strong>List semantics:</strong>
+                            <code>.command__list</code> uses
+                            <code>role="listbox"</code>, and
+                            <code>.command__item</code> uses
+                            <code>role="option"</code>.
+                            Maintain <code>aria-selected</code> on the active item.
+                        </li>
+
+                        <li>
+                            <strong>Keyboard navigation:</strong>
+                            Support <code>↑</code>/<code>↓</code> to move
+                            between items, <code>Enter</code> to run the selected command,
+                            <code>Esc</code> to close, and optionally
+                            <code>Tab</code> to move between sections.
+                        </li>
+
+                        <li>
+                            <strong>Backdrop semantics:</strong>
+                            The backdrop is decorative; do not assign interactive roles. The dialog itself handles
+                            interaction and focus.
+                        </li>
+
+                        <li>
+                            <strong>Announcements:</strong>
+                            When no results are available, replace list content with
+                            <code>.command__empty</code> and ensure screen readers perceive that
+                            the list contents changed (e.g., via aria-live region in your JS integration if
+                            necessary).
+                        </li>
+
+                        <li>
+                            <strong>Reduced motion:</strong>
+                            <code>command.css</code> honours
+                            <code>prefers-reduced-motion: reduce</code> by disabling transitions
+                            for users who opt out of motion.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class="command command--center __command-basic"&gt;
+    &lt;div class="command__panel"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Command menu"&gt;
+
+        &lt;header class="command__header"&gt;
+            &lt;input
+                class="command__input"
+                type="search"
+                aria-label="Search commands or go to…" /&gt;
+        &lt;/header&gt;
+
+        &lt;div class="command__body"&gt;
+            &lt;div class="command__section"&gt;
+                &lt;div class="command__section-label" id="section-nav"&gt;
+                    Navigation
+                &lt;/div&gt;
+
+                &lt;ul class="command__list"
+                    role="listbox"
+                    aria-labelledby="section-nav"&gt;
+
+                    &lt;li class="command__item command__item--active"
+                        role="option"
+                        aria-selected="true"&gt;...&lt;/li&gt;
+
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+                    <p class="text-sm text-muted">
+                        The JavaScript integration must manage focus trapping and keyboard event handling; the CSS
+                        layer is built to respect these semantics but does not implement them.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Integration rules &amp; recommendations</h2>
+                <p class="doc-block__summary">
+                    Combined guidance from v1’s ARIA notes and v2’s usage rules. Treat the command palette as a
+                    modal dialog with listbox semantics, fully navigable via keyboard, and wired into your app’s
+                    routing and action systems.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="section__stack-sm">
+                        <h3 class="doc-block__subtitle">ARIA &amp; keyboard</h3>
+
+                        <ul class="section__list">
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Dialog semantics</span>
+                                <span class="section__list-item-desc">
+                                    Root panel uses <code>role="dialog"</code> with
+                                    <code>aria-modal="true"</code> and a clear label via
+                                    <code>aria-label</code> or
+                                    <code>aria-labelledby</code>.
+                                </span>
+                            </li>
+
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Listbox semantics</span>
+                                <span class="section__list-item-desc">
+                                    Result lists use <code>role="listbox"</code> and items use
+                                    <code>role="option"</code> with
+                                    <code>aria-selected</code>.
+                                </span>
+                            </li>
+
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Keyboard navigation</span>
+                                <span class="section__list-item-desc">
+                                    <kbd>↑</kbd>/<kbd>↓</kbd> move the active option,
+                                    <kbd>Enter</kbd> runs it, <kbd>Esc</kbd> closes the palette.
+                                    Maintain the active state via an internal index or
+                                    <code>aria-activedescendant</code>.
+                                </span>
+                            </li>
+
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Focus management</span>
+                                <span class="section__list-item-desc">
+                                    When opening, move focus into the search input. When closing, return focus to
+                                    the element that triggered the palette.
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section__stack-sm">
+                        <h3 class="doc-block__subtitle">Integration &amp; usage</h3>
+
+                        <ul class="section__list">
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Single controller</span>
+                                <span class="section__list-item-desc">
+                                    Centralise all keyboard shortcuts and command-opening logic in one controller
+                                    instead of distributing listeners across components.
+                                </span>
+                            </li>
+
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Real commands, not placeholders</span>
+                                <span class="section__list-item-desc">
+                                    Each item must map to an actual navigation or action handler. The palette is
+                                    an execution surface, not a static menu.
+                                </span>
+                            </li>
+
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Context-aware variants</span>
+                                <span class="section__list-item-desc">
+                                    Use variant keys such as
+                                    <code>__command-basic</code>,
+                                    <code>__command-nav</code>
+                                    and other scope-specific identifiers for global vs. contextual palettes.
+                                </span>
+                            </li>
+
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Respect reduced motion</span>
+                                <span class="section__list-item-desc">
+                                    If you add animations on top of <code>command.css</code>,
+                                    honour <code>prefers-reduced-motion</code> and avoid
+                                    intensive transitions for users who prefer minimal motion.
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <p class="text-xs text-muted">
+                    The command palette is a primary interaction surface in modern SaaS products. Treat it as a
+                    first-class part of your shortcut map and information architecture, not a decorative overlay.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Contract for safe, semantic use of the command palette: modal dialog semantics,
+                    keyboard-driven listbox navigation, predictable focus management, and explicit
+                    state handling through <code>command--open</code> and ARIA attributes.
+                    Commands must be real, actionable items surfaced through the unified global
+                    interface, not cosmetic placeholders.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+
+                    <ul class="text-sm">
+
+                        <li>Use <strong>real dialog semantics</strong> on
+                            <code>.command__panel</code>:
+                            <code>role="dialog"</code> +
+                            <code>aria-modal="true"</code>.
+                            Provide a label via
+                            <code>aria-label</code> or
+                            <code>aria-labelledby</code>.
+                        </li>
+
+                        <li>Move focus into the
+                            <code>.command__input</code>
+                            the moment the palette opens.
+                            This defines the palette as a <strong>single-focus-entry</strong> modal.
+                        </li>
+
+                        <li>Use <code>role="listbox"</code> on
+                            <code>.command__list</code> and
+                            <code>role="option"</code> on
+                            <code>.command__item</code>.
+                            Maintain <code>aria-selected</code> on the active item.
+                        </li>
+
+                        <li>Reflect keyboard highlight using
+                            <code>.command__item--active</code> and keep it in sync
+                            with <code>aria-selected="true"</code>.
+                        </li>
+
+                        <li>Let the JS controller toggle open/closed state through
+                            <code>.command--open</code>.
+                            The CSS also supports
+                            <code>[data-command-open="true"]</code> and
+                            <code>[aria-hidden="false"]</code>.
+                        </li>
+
+                        <li>Use <code>.command__empty</code> on no-results
+                            and hide list sections from screen readers.
+                        </li>
+
+                        <li>Ensure full keyboard support:
+                            <kbd>↑</kbd>/<kbd>↓</kbd> navigate,
+                            <kbd>Enter</kbd> runs,
+                            <kbd>Esc</kbd> closes,
+                            <kbd>Tab</kbd> cycles sections (optional).
+                        </li>
+
+                        <li>Preserve <code>:focus-visible</code> outlines.
+                            They are part of the accessibility contract.
+                        </li>
+
+                        <li>Use <code>.command--compact</code> for dense UIs.
+                            Spacing tightens; hit targets remain accessible.
+                        </li>
+
+                        <li>Keep shortcuts and metadata inside
+                            <code>.command__item-meta</code>.
+                        </li>
+
+                        <li>Place the palette above the UI with
+                            <code>--z-modal</code>.
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+
+                    <ul class="text-sm">
+
+                        <li>Don’t fake interactivity with plain <code>&lt;div&gt;</code>.
+                            Use <code>role="option"</code> consistently.
+                        </li>
+
+                        <li>Don’t remove or suppress <code>:focus-visible</code>.
+                            The palette relies on it for navigation state.
+                        </li>
+
+                        <li>Don’t embed logic inside CSS.
+                            Behaviour belongs to your JS controller.
+                        </li>
+
+                        <li>Don’t allow more than one “active” item.
+                            Maintain a <strong>single active index</strong>.
+                        </li>
+
+                        <li>Don’t show <code>.command__empty</code>
+                            alongside list sections.
+                        </li>
+
+                        <li>Don’t close the modal without returning focus
+                            to the element that opened it.
+                        </li>
+
+                        <li>Don’t treat the backdrop as interactive.
+                            <code>.command::before</code> is decorative.
+                        </li>
+
+                        <li>Don’t rely on colour alone for meaning.
+                            Use labels + descriptions.
+                        </li>
+
+                        <li>Don’t nest another modal inside the command palette.
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. .command__panel uses role="dialog" and aria-modal="true".
+2. Focus moves to .command__input when opening.
+3. Lists use role="listbox"; items use role="option" + aria-selected.
+4. Visual state = .command__item--active kept in sync with aria-selected.
+5. Toggle open state via .command--open only.
+6. .command__empty replaces listbox in no-results mode.
+7. Keyboard: ↑↓ navigate · Enter run · Esc close · Tab cycle.
+8. Restore focus to trigger when closing.
+9. Never remove focus-visible outlines.</code></pre>
+            </div>
+
+        </article>
+
+    </div>
+</section>

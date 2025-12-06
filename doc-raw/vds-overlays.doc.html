@@ -1,0 +1,2039 @@
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--a">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Overlays</p>
+            <h2 class="section__title">Overlays, Modals & Drawers — System Overview</h2>
+            <p class="section__subtitle">
+                Token-driven overlay layer for backdrops, centered modals, mobile sheets,
+                drawers and inline overlay panels. Designed to be layout-neutral and wired
+                via JavaScript (or framework) for show/hide state.
+            </p>
+        </header>
+
+        <div class="doc-block doc-block--concept">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Load order & dependencies</h3>
+                <p class="doc-block__summary">
+                    The overlay system builds on global structure, utilities and content blocks.
+                    Use this file only for overlay chrome and interactions, not for content layout.
+                </p>
+            </div>
+            <div class="doc-block__body doc-block__body--tight">
+                <div class="doc-block__highlight">
+                    <p class="text-body-sm">
+                        Recommended load order:
+                    </p>
+                    <ul class="section__list mt-3">
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">1. Tokens & base</span>
+                            <span class="section__list-item-desc">primitives.css, base.css, theme (slate.css, etc.)</span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">2. Layout & utilities</span>
+                            <span class="section__list-item-desc">layout.css, utilities.css, typography/content blocks</span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">3. Overlays</span>
+                            <span class="section__list-item-desc">overlays.css (this file): backdrops, modals, drawers, overlay panels</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__stack-md">
+                    <div>
+                        <h4 class="doc-block__subtitle">Core concepts</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Backdrop</span>
+                                <span class="section__list-item-desc">
+                  Full-screen dim layer behind modals/drawers, with light & heavy variants.
+                </span>
+                            </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Modal</span>
+                                <span class="section__list-item-desc">
+                  Centered panel with header/body/footer, sizes (sm–full), densities (A/B/C)
+                  and semantic states.
+                </span>
+                            </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Drawer</span>
+                                <span class="section__list-item-desc">
+                  Left/right anchored panels with slide-in/out transitions and header/body/footer.
+                </span>
+                            </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Inline overlay</span>
+                                <span class="section__list-item-desc">
+                  In-flow overlay panels with semantic variants (info/success/warning/danger).
+                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="doc-block__subtitle">JavaScript contract (recommended)</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Visibility</span>
+                                <span class="section__list-item-desc">
+                  Toggle <code>backdrop--active</code>, <code>modal--active</code> and
+                  drawer <code>drawer--hidden</code> via JS only. CSS does not manage state.
+                </span>
+                            </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Scroll lock</span>
+                                <span class="section__list-item-desc">
+                  Apply/remove <code>body.modal-open</code> when any modal/sheet is open on mobile
+                  to prevent body scroll bleed.
+                </span>
+                            </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Accessibility</span>
+                                <span class="section__list-item-desc">
+                  Wire <code>role="dialog"</code>, <code>aria-modal="true"</code>, focus management
+                  and Escape key handlers at JS level.
+                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">CSS</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>.backdrop { /* full-screen dim layer behind modals & drawers */ }
+.modal    { /* centered modal container (flex, fixed) */ }
+.drawer   { /* left/right slide-in panels */ }</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Live Examples</p>
+            <h2 class="section__title">Interactive Overlay Demos</h2>
+            <p class="section__subtitle">
+                Click the buttons below to open VDS overlays. All overlays start hidden.
+            </p>
+        </header>
+
+        <div class="doc-block doc-block--surface overlay-inline-container">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Trigger Panel</h3>
+                <p class="doc-block__summary">
+                    Buttons wired via <code>data-target</code> attributes, matching
+                    overlay class keys (e.g. <code>__modal-basic</code>).
+                </p>
+            </div>
+
+            <div class="doc-block__body">
+                <div class="layout-inline">
+                    <button class="button button--primary" data-target="__modal-basic">Open Modal</button>
+                    <button class="button button--secondary" data-target="__modal-sheet">Open Bottom Sheet</button>
+                    <button class="button button--info" data-target="__modal-fullscreen-mobile">Open Fullscreen Mobile
+                    </button>
+                    <button class="button button--outline-accent" data-target="__drawer-left">Open Left Drawer</button>
+                    <button class="button button--outline-info" data-target="__drawer-right">Open Right Drawer</button>
+                    <button class="button button--warning" data-target="__backdrop-demo">Show Backdrop</button>
+                    <button class="button button--success" data-target="__inline-overlay">Show Inline Overlay</button>
+                </div>
+            </div>
+
+            <div class="overlay-inline overlay-inline--info __inline-overlay">
+                <div class="overlay-inline__header">
+                    <h3 class="text-sm">Inline Overlay</h3>
+                </div>
+                <div class="overlay-inline__body">
+                    <p>This panel appears inline.</p>
+                    <button class="button button--subtle" data-close="__inline-overlay">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="backdrop __backdrop-demo" data-close="__backdrop-demo"></div>
+
+        <div class="backdrop __modal-basic" data-close="__modal-basic"></div>
+        <div class="modal modal--md __modal-basic"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-basic-title">
+            <div class="modal__inner">
+                <header class="modal__header">
+                    <h3 class="modal__title" id="modal-basic-title">Basic Modal</h3>
+                    <button class="modal__close" data-close="__modal-basic">&times;</button>
+                </header>
+                <div class="modal__body">
+                    <p>This is a live modal example.</p>
+                </div>
+                <footer class="modal__footer">
+                    <button class="button button--secondary" data-close="__modal-basic">Close</button>
+                </footer>
+            </div>
+        </div>
+
+        <div class="backdrop __modal-fullscreen-mobile" data-close="__modal-fullscreen-mobile"></div>
+        <div class="modal modal--md modal--fullscreen-mobile __modal-fullscreen-mobile"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-fullscreen-title">
+            <div class="modal__inner">
+                <header class="modal__header">
+                    <h3 class="modal__title" id="modal-fullscreen-title">Fullscreen Mobile</h3>
+                    <button class="modal__close" data-close="__modal-fullscreen-mobile">&times;</button>
+                </header>
+                <div class="modal__body">
+                    <p>Becomes fullscreen on mobile screens.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="backdrop __drawer-left" data-close="__drawer-left"></div>
+        <div class="drawer drawer--left drawer--hidden __drawer-left"
+             role="complementary"
+             aria-label="Left drawer demo">
+            <header class="drawer__header">
+                <h3 class="text-sm">Left Drawer</h3>
+            </header>
+            <div class="drawer__body">
+                <p>This drawer slides from the left.</p>
+            </div>
+            <footer class="drawer__footer">
+                <button class="button button--secondary" data-close="__drawer-left">Close</button>
+            </footer>
+        </div>
+
+        <div class="backdrop __drawer-right" data-close="__drawer-right"></div>
+        <div class="drawer drawer--right drawer--hidden __drawer-right"
+             role="complementary"
+             aria-label="Right drawer demo">
+            <header class="drawer__header">
+                <h3 class="text-sm">Right Drawer</h3>
+            </header>
+            <div class="drawer__body">
+                <p>This drawer slides from the right.</p>
+            </div>
+            <footer class="drawer__footer">
+                <button class="button button--secondary" data-close="__drawer-right">Close</button>
+            </footer>
+        </div>
+
+        <div class="backdrop __modal-sheet" data-close="__modal-sheet"></div>
+        <div class="modal modal--md modal--sheet __modal-sheet"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-sheet-title">
+            <div class="modal__inner">
+                <header class="modal__header">
+                    <h3 class="modal__title" id="modal-sheet-title">Bottom Sheet</h3>
+                    <button class="modal__close" data-close="__modal-sheet">&times;</button>
+                </header>
+                <div class="modal__body">
+                    <p>Slides up from the bottom.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b section--divided">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Backdrops</p>
+            <h2 class="section__title">Backdrop system — levels, density & activation</h2>
+            <p class="section__subtitle">
+                Full-screen background dimming for modals and drawers, with light/heavy
+                opacity and multiple stacking levels for multi-modal flows.
+            </p>
+        </header>
+
+        <div class="doc-block">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Class reference</h3>
+                <p class="doc-block__summary">
+                    Backdrop classes define visual density and stacking only.
+                    Visibility is controlled via <code>backdrop--active</code>.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__preview doc-block__preview--transparent">
+                    <div class="section__grid-2">
+                        <div>
+                            <h4 class="doc-block__subtitle">Core</h4>
+                            <dl class="section__list">
+                                <div class="section__list-item">
+                                    <dt class="section__list-item-title">.backdrop</dt>
+                                    <dd class="section__list-item-desc">
+                                        Fixed, full-viewport layer. Default opacity via
+                                        <code>--overlay-backdrop-default</code>.
+                                    </dd>
+                                </div>
+                                <div class="section__list-item">
+                                    <dt class="section__list-item-title">.backdrop--light</dt>
+                                    <dd class="section__list-item-desc">
+                                        Uses <code>--overlay-backdrop-light</code> for softer dimming.
+                                    </dd>
+                                </div>
+                                <div class="section__list-item">
+                                    <dt class="section__list-item-title">.backdrop--heavy</dt>
+                                    <dd class="section__list-item-desc">
+                                        Uses <code>--overlay-backdrop-heavy</code> for strong blocking overlays.
+                                    </dd>
+                                </div>
+                                <div class="section__list-item">
+                                    <dt class="section__list-item-title">.backdrop--active</dt>
+                                    <dd class="section__list-item-desc">
+                                        Enables pointer events. Use this to toggle on/off via JS.
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <div>
+                            <h4 class="doc-block__subtitle">Stacking levels</h4>
+                            <dl class="section__list">
+                                <div class="section__list-item">
+                                    <dt class="section__list-item-title">.backdrop--level-2</dt>
+                                    <dd class="section__list-item-desc">
+                                        Places backdrop above default level using
+                                        <code>z-index: calc(var(--z-backdrop) + 10)</code>.
+                                    </dd>
+                                </div>
+                                <div class="section__list-item">
+                                    <dt class="section__list-item-title">.backdrop--level-3</dt>
+                                    <dd class="section__list-item-desc">
+                                        Highest overlay backdrop layer
+                                        <code>z-index: calc(var(--z-backdrop) + 20)</code>.
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">CSS (excerpt)</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--overlay-backdrop-default);
+  backdrop-filter: blur(2px);
+  z-index: var(--z-backdrop, 80);
+  pointer-events: none;
+}
+
+.backdrop--light  { background-color: var(--overlay-backdrop-light); }
+.backdrop--heavy  { background-color: var(--overlay-backdrop-heavy); }
+.backdrop--active { pointer-events: auto; }
+
+.backdrop--level-2 { z-index: calc(var(--z-backdrop, 80) + 10); }
+.backdrop--level-3 { z-index: calc(var(--z-backdrop, 80) + 20); }</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-block doc-block--example">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Usage examples</h3>
+                <p class="doc-block__summary">
+                    Typical wiring patterns for default, light and heavy backdrops,
+                    including multi-modal stacking.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="layout-stack">
+                        <div class="text-body-sm text-muted">
+                            Static preview — represented as small boxes for illustration.
+                        </div>
+                        <div class="layout-inline">
+                            <div class="card card--flat">
+                                <div class="text-xs text-muted mb-2">Default backdrop</div>
+                                <div class="backdrop backdrop--active"
+                                     style="position:relative; inset:auto; width:160px; height:80px; border-radius:var(--radius-md);"></div>
+                            </div>
+                            <div class="card card--flat">
+                                <div class="text-xs text-muted mb-2">Light backdrop</div>
+                                <div class="backdrop backdrop--light backdrop--active"
+                                     style="position:relative; inset:auto; width:160px; height:80px; border-radius:var(--radius-md);"></div>
+                            </div>
+                            <div class="card card--flat">
+                                <div class="text-xs text-muted mb-2">Heavy backdrop</div>
+                                <div class="backdrop backdrop--heavy backdrop--active"
+                                     style="position:relative; inset:auto; width:160px; height:80px; border-radius:var(--radius-md);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">HTML</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>&lt;div class="backdrop backdrop--active"&gt;&lt;/div&gt;
+
+&lt;div class="backdrop backdrop--light backdrop--active"&gt;&lt;/div&gt;
+
+&lt;div class="backdrop backdrop--heavy backdrop--active"&gt;&lt;/div&gt;
+
+&lt;div class="backdrop backdrop--active"&gt;&lt;/div&gt;
+&lt;div class="modal modal--active"&gt;…first modal…&lt;/div&gt;
+
+&lt;div class="backdrop backdrop--active backdrop--level-2"&gt;&lt;/div&gt;
+&lt;div class="modal modal--active modal--level-2"&gt;…second modal…&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b section--alt">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Modals</p>
+            <h2 class="section__title">Modal base — structure, header, body, footer</h2>
+            <p class="section__subtitle">
+                Centered modals are built from a fixed container (.modal) and an inner
+                panel (.modal__inner) with header, body and footer sections. Sizes,
+                densities and semantics are added via modifiers.
+            </p>
+        </header>
+
+        <div class="doc-block doc-block--split">
+            <div>
+                <div class="doc-block__header">
+                    <h3 class="doc-block__title">Anatomy</h3>
+                    <p class="doc-block__summary">
+                        The modal container handles centering and pointer event routing.
+                        The inner element acts as the actual panel, with a three-part chrome.
+                    </p>
+                </div>
+                <div class="doc-block__body doc-block__body--tight">
+                    <ul class="section__list">
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.modal</span>
+                            <span class="section__list-item-desc">
+                Fixed full-screen flex container, centers <code>.modal__inner</code>.
+                Pointer events disabled by default, enabled by <code>.modal--active</code>.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.modal__inner</span>
+                            <span class="section__list-item-desc">
+                Panel surface; width constraints, radius, border, shadow,
+                max-height and vertical overflow.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.modal__header</span>
+                            <span class="section__list-item-desc">
+                Top chrome with title + close button; semantic states modify background/border.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.modal__body</span>
+                            <span class="section__list-item-desc">
+                Scrollable main content area; flex:1 to fill height up to max-height.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.modal__footer</span>
+                            <span class="section__list-item-desc">
+                Action row; right-aligned button set by default.
+              </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="doc-block__preview">
+                    <div class="modal modal--active" style="position:relative; inset:auto; min-height:260px;">
+                        <div class="modal__inner">
+                            <header class="modal__header">
+                                <div class="layout-inline">
+                                    <h3 class="modal__title">Example modal</h3>
+                                </div>
+                                <button class="modal__close" type="button" aria-label="Close">
+                                    &times;
+                                </button>
+                            </header>
+                            <div class="modal__body">
+                                <p class="text-body-sm">
+                                    This is a centered modal using the base density (.modal--b)
+                                    and medium width. The body region scrolls independently if content overflows.
+                                </p>
+                            </div>
+                            <footer class="modal__footer">
+                                <div class="button-row">
+                                    <button type="button" class="button button--ghost">Cancel</button>
+                                    <button type="button" class="button button--primary">Confirm</button>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-block">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Base markup pattern</h3>
+                <p class="doc-block__summary">
+                    Canonical markup including backdrop, modal container, panel chrome,
+                    and a11y attributes. Use this as a starting point for all modal variants.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__code doc-block__code--numbered-soft">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">HTML</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>&lt;div class="backdrop backdrop--active"&gt;&lt;/div&gt;
+
+&lt;div class="modal modal--active" role="dialog" aria-modal="true"
+     aria-labelledby="example-modal-title"&gt;
+
+  &lt;div class="modal__inner"&gt;
+
+    &lt;header class="modal__header"&gt;
+      &lt;h2 class="modal__title" id="example-modal-title"&gt;
+        Example modal
+      &lt;/h2&gt;
+
+      &lt;button type="button"
+              class="modal__close"
+              aria-label="Close"&gt;
+        &amp;times;
+      &lt;/button&gt;
+    &lt;/header&gt;
+
+    &lt;div class="modal__body"&gt;
+      &lt;p&gt;
+        Body content. This area is scrollable and stretches to
+        fill the available height.
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;footer class="modal__footer"&gt;
+      &lt;div class="button-row"&gt;
+        &lt;button type="button"&gt;Cancel&lt;/button&gt;
+        &lt;button type="button"&gt;Confirm&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Modals</p>
+            <h2 class="section__title">Modal density & sizing system</h2>
+            <p class="section__subtitle">
+                Three density modes (A/B/C) and five width presets (sm, md, lg, xl, full)
+                enable consistent spacing and layout for simple confirms up to full-screen
+                workflows.
+            </p>
+        </header>
+
+        <div class="doc-block">
+            <div>
+                <div class="doc-block__header">
+                    <h3 class="doc-block__title">Densities (A/B/C)</h3>
+                    <p class="doc-block__summary">
+                        Density classes adjust padding on header/body/footer regions while
+                        keeping panel structure identical.
+                    </p>
+                </div>
+                <div class="doc-block__body doc-block__body--tight">
+                    <table class="section__list">
+                        <tbody>
+                        <tr class="section__list-item">
+                            <td class="section__list-item-title">.modal--a</td>
+                            <td class="section__list-item-desc">
+                                Largest padding; use for complex or long-form content.
+                            </td>
+                        </tr>
+                        <tr class="section__list-item">
+                            <td class="section__list-item-title">.modal--b</td>
+                            <td class="section__list-item-desc">
+                                Default density; balanced spacing for most dialogs.
+                            </td>
+                        </tr>
+                        <tr class="section__list-item">
+                            <td class="section__list-item-title">.modal--c</td>
+                            <td class="section__list-item-desc">
+                                Compact; use where vertical space is constrained.
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                        <div class="doc-block__toolbar">
+                            <div class="doc-block__lang">CSS (excerpt)</div>
+                            <div class="doc-block__actions">
+                                <button class="doc-block__action">Copy</button>
+                            </div>
+                        </div>
+                        <pre><code>.modal--a .modal__header,
+.modal--a .modal__footer { padding: var(--space-8) var(--space-10); }
+.modal--a .modal__body   { padding: var(--space-10); }
+
+.modal--b .modal__header,
+.modal--b .modal__footer { padding: var(--space-6) var(--space-8); }
+.modal--b .modal__body   { padding: var(--space-8); }
+
+.modal--c .modal__header,
+.modal--c .modal__footer { padding: var(--space-4) var(--space-6); }
+.modal--c .modal__body   { padding: var(--space-6); }</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="doc-block__preview">
+                    <div class="layout-stack">
+                        <div class="text-body-sm text-muted">
+                            Visual comparison: A (roomy) → B (default) → C (compact).
+                        </div>
+                        <div class="layout-grid-inner-3">
+                            <div class="modal modal--active modal--a" style="position:relative; inset:auto;">
+                                <div class="modal__inner">
+                                    <header class="modal__header">
+                                        <h3 class="modal__title text-xs">A / Spacious</h3>
+                                    </header>
+                                    <div class="modal__body">
+                                        <p class="text-xs text-muted">Large paddings on all regions.</p>
+                                    </div>
+                                    <footer class="modal__footer">
+                                        <button type="button" class="button button--primary">OK</button>
+                                    </footer>
+                                </div>
+                            </div>
+
+                            <div class="modal modal--active modal--b" style="position:relative; inset:auto;">
+                                <div class="modal__inner">
+                                    <header class="modal__header">
+                                        <h3 class="modal__title text-xs">B / Default</h3>
+                                    </header>
+                                    <div class="modal__body">
+                                        <p class="text-xs text-muted">Balanced spacing.</p>
+                                    </div>
+                                    <footer class="modal__footer">
+                                        <button type="button" class="button button--primary">OK</button>
+                                    </footer>
+                                </div>
+                            </div>
+
+                            <div class="modal modal--active modal--c" style="position:relative; inset:auto;">
+                                <div class="modal__inner">
+                                    <header class="modal__header">
+                                        <h3 class="modal__title text-xs">C / Compact</h3>
+                                    </header>
+                                    <div class="modal__body">
+                                        <p class="text-xs text-muted">Minimal paddings.</p>
+                                    </div>
+                                    <footer class="modal__footer">
+                                        <button type="button" class="button button--primary">OK</button>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-block">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Size presets</h3>
+                <p class="doc-block__summary">
+                    Size modifiers adjust <code>max-width</code> of <code>.modal__inner</code>.
+                    Height is still constrained by viewport height.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="layout-inline layout-inline-start">
+                        <ul class="section__list">
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">.modal--sm</span>
+                                <span class="section__list-item-desc">
+                  Small content, narrow flows — uses <code>--modal-width-sm</code>.
+                </span>
+                            </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">.modal--md</span>
+                                <span class="section__list-item-desc">
+                  Default size — <code>--modal-width-md</code>.
+                </span>
+                            </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">.modal--lg</span>
+                                <span class="section__list-item-desc">
+                  Wide content — <code>--modal-width-lg</code>.
+                </span>
+                            </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">.modal--xl</span>
+                                <span class="section__list-item-desc">
+                  Extra wide — <code>--modal-width-xl</code>.
+                </span>
+                            </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">.modal--full</span>
+                                <span class="section__list-item-desc">
+                  Full-screen panel: removes <code>max-width</code>, sets
+                  <code>width/height:100%</code> and radius 0.
+                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">HTML</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>&lt;div class="modal modal--active modal--sm"&gt;
+  &lt;div class="modal__inner"&gt;…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="modal modal--active modal--md"&gt;
+  &lt;div class="modal__inner"&gt;…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="modal modal--active modal--lg"&gt;
+  &lt;div class="modal__inner"&gt;…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="modal modal--active modal--xl"&gt;
+  &lt;div class="modal__inner"&gt;…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="modal modal--active modal--full"&gt;
+  &lt;div class="modal__inner"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b section--alt">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Responsive</p>
+            <h2 class="section__title">Mobile fullscreen modals & bottom sheets</h2>
+            <p class="section__subtitle">
+                On small viewports, modals can become full-screen experiences or bottom
+                sheets, while still using the same HTML structure.
+            </p>
+        </header>
+
+        <div class="doc-block doc-block--split">
+            <div>
+                <div class="doc-block__header">
+                    <h3 class="doc-block__title">Fullscreen mobile</h3>
+                    <p class="doc-block__summary">
+                        <code>.modal--fullscreen-mobile</code> makes the inner panel fill the entire
+                        viewport on screens up to 768px wide.
+                    </p>
+                </div>
+                <div class="doc-block__body">
+                    <div class="doc-block__preview">
+                        <div class="modal modal--active modal--fullscreen-mobile"
+                             style="position:relative; inset:auto; max-width:320px; height:220px;">
+                            <div class="modal__inner">
+                                <header class="modal__header">
+                                    <h3 class="modal__title text-sm">Mobile fullscreen</h3>
+                                </header>
+                                <div class="modal__body">
+                                    <p class="text-xs text-muted">
+                                        On mobile, this panel stretches to fill the screen with no radius.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                        <div class="doc-block__toolbar">
+                            <div class="doc-block__lang">CSS (excerpt)</div>
+                            <div class="doc-block__actions">
+                                <button class="doc-block__action">Copy</button>
+                            </div>
+                        </div>
+                        <pre><code>@media (max-width: 768px) {
+  .modal--fullscreen-mobile .modal__inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    max-width: none;
+    max-height: none;
+  }
+
+  body.modal-open {
+    overflow: hidden;
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="doc-block__header">
+                    <h3 class="doc-block__title">Bottom sheet</h3>
+                    <p class="doc-block__summary">
+                        <code>.modal--sheet</code> aligns the panel to the bottom edge and caps
+                        height at 80vh on mobile.
+                    </p>
+                </div>
+                <div class="doc-block__body">
+                    <div class="doc-block__preview">
+                        <div class="modal modal--active modal--sheet"
+                             style="position:relative; inset:auto; align-items:flex-end; min-height:160px;">
+                            <div class="modal__inner">
+                                <header class="modal__header">
+                                    <h3 class="modal__title text-sm">Bottom sheet</h3>
+                                </header>
+                                <div class="modal__body">
+                                    <p class="text-xs text-muted">
+                                        Ideal for quick pickers, filters, or small forms on mobile.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                        <div class="doc-block__toolbar">
+                            <div class="doc-block__lang">CSS (excerpt)</div>
+                            <div class="doc-block__actions">
+                                <button class="doc-block__action">Copy</button>
+                            </div>
+                        </div>
+                        <pre><code>@media (max-width: 768px) {
+  .modal--sheet {
+    align-items: flex-end;
+  }
+
+  .modal--sheet .modal__inner {
+    width: 100%;
+    max-width: none;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    max-height: 80vh;
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-block doc-block--compact">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Markup pattern (shared)</h3>
+                <p class="doc-block__summary">
+                    Both fullscreen and sheet variants reuse the same base modal markup
+                    with additional modifiers.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__code doc-block__code--numbered-soft">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">HTML</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>&lt;div class="backdrop backdrop--active"&gt;&lt;/div&gt;
+&lt;body class="modal-open"&gt;
+  &lt;div class="modal modal--active modal--fullscreen-mobile modal--md"&gt;
+    &lt;div class="modal__inner"&gt;…&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;div class="backdrop backdrop--active"&gt;&lt;/div&gt;
+&lt;body class="modal-open"&gt;
+  &lt;div class="modal modal--active modal--sheet modal--md"&gt;
+    &lt;div class="modal__inner"&gt;…&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Semantics</p>
+            <h2 class="section__title">Semantic modal states & loading overlays</h2>
+            <p class="section__subtitle">
+                Use state modifiers for contextual color-coding (success, danger, info,
+                warning) and temporary loading overlays inside modal content.
+            </p>
+        </header>
+
+        <div class="doc-block doc-block--example">
+            <div>
+                <div class="doc-block__header">
+                    <h3 class="doc-block__title">Semantic headers</h3>
+                    <p class="doc-block__summary">
+                        State classes adjust only the header colours; content styles remain neutral.
+                    </p>
+                </div>
+                <div class="doc-block__body">
+                    <div class="doc-block__preview">
+                        <div class="layout-grid-inner-2">
+                            <div class="modal modal--active modal--sm modal--success"
+                                 style="position:relative; inset:auto;">
+                                <div class="modal__inner">
+                                    <header class="modal__header">
+                                        <h3 class="modal__title text-sm">Success</h3>
+                                    </header>
+                                    <div class="modal__body">
+                                        <p class="text-xs">
+                                            Action completed successfully.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal modal--active modal--sm modal--danger"
+                                 style="position:relative; inset:auto;">
+                                <div class="modal__inner">
+                                    <header class="modal__header">
+                                        <h3 class="modal__title text-sm">Danger</h3>
+                                    </header>
+                                    <div class="modal__body">
+                                        <p class="text-xs">
+                                            Destructive or irreversible action confirmation.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal modal--active modal--sm modal--info"
+                                 style="position:relative; inset:auto;">
+                                <div class="modal__inner">
+                                    <header class="modal__header">
+                                        <h3 class="modal__title text-sm">Info</h3>
+                                    </header>
+                                    <div class="modal__body">
+                                        <p class="text-xs">
+                                            Informational or neutral system message.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal modal--active modal--sm modal--warning"
+                                 style="position:relative; inset:auto;">
+                                <div class="modal__inner">
+                                    <header class="modal__header">
+                                        <h3 class="modal__title text-sm">Warning</h3>
+                                    </header>
+                                    <div class="modal__body">
+                                        <p class="text-xs">
+                                            Risky or cautionary action requiring attention.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code doc-block__code--numbered-soft">
+                        <div class="doc-block__toolbar">
+                            <div class="doc-block__lang">CSS (excerpt)</div>
+                            <div class="doc-block__actions">
+                                <button class="doc-block__action">Copy</button>
+                            </div>
+                        </div>
+                        <pre><code>.modal--success .modal__header {
+  border-bottom-color: var(--color-success);
+  background-color: var(--color-success-soft);
+  color: var(--color-on-success);
+}
+
+.modal--danger .modal__header {
+  border-bottom-color: var(--color-danger);
+  background-color: var(--color-danger-soft);
+  color: var(--color-on-danger);
+}
+
+.modal--info .modal__header {
+  border-bottom-color: var(--color-info);
+  background-color: var(--color-info-soft);
+  color: var(--color-on-info);
+}
+
+.modal--warning .modal__header {
+  border-bottom-color: var(--color-warning);
+  background-color: var(--color-warning-soft);
+  color: var(--color-on-warning);
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Loading overlay</h3>
+                <p class="doc-block__summary">
+                    Use <code>.modal--loading</code> with <code>.modal__loader</code> and
+                    <code>.modal__loader-icon</code> for blocking inline loading.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="modal modal--active modal--md modal--loading"
+                         style="position:relative; inset:auto;">
+                        <div class="modal__inner">
+                            <header class="modal__header">
+                                <h3 class="modal__title text-sm">Saving changes…</h3>
+                            </header>
+                            <div class="modal__body">
+                                <p class="text-xs text-muted">
+                                    Content remains visible but interaction is blocked by a loading overlay.
+                                </p>
+                            </div>
+                            <div class="modal__loader">
+                                <svg class="modal__loader-icon" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke-width="2" stroke-linecap="round"></circle>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">HTML</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>&lt;div class="modal modal--active modal--md modal--loading"&gt;
+  &lt;div class="modal__inner"&gt;
+    &lt;header class="modal__header"&gt;…&lt;/header&gt;
+    &lt;div class="modal__body"&gt;…&lt;/div&gt;
+
+    &lt;div class="modal__loader"&gt;
+      &lt;svg class="modal__loader-icon" viewBox="0 0 24 24"&gt;
+        &lt;circle cx="12" cy="12" r="10"
+                stroke-width="2"
+                stroke-linecap="round"&gt;&lt;/circle&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-block doc-block--compact">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">State class matrix</h3>
+                <p class="doc-block__summary">
+                    Complete list of modal state and loading helpers.
+                </p>
+            </div>
+            <div class="doc-block__body doc-block__body--compact">
+                <ul class="section__list">
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">.modal--success</span>
+                        <span class="section__list-item-desc">Success header chrome.</span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">.modal--danger</span>
+                        <span class="section__list-item-desc">Danger/destructive header chrome.</span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">.modal--info</span>
+                        <span class="section__list-item-desc">Informational header chrome.</span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">.modal--warning</span>
+                        <span class="section__list-item-desc">Warning header chrome.</span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">.modal--loading</span>
+                        <span class="section__list-item-desc">
+              Enables inline loading overlay via <code>.modal__loader</code>.
+            </span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">.modal__loader</span>
+                        <span class="section__list-item-desc">
+              Full-panel overlay container.
+            </span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">.modal__loader-icon</span>
+                        <span class="section__list-item-desc">
+              Icon element sized via <code>--loader-size-lg</code>.
+            </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b section--alt">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Layouts</p>
+            <h2 class="section__title">Split modals & chrome removal</h2>
+            <p class="section__subtitle">
+                Use split layouts for side-by-side content and detachable chrome to
+                embed existing components as modals without double headers or footers.
+            </p>
+        </header>
+
+        <div class="doc-block doc-block--split">
+            <div>
+                <div class="doc-block__header">
+                    <h3 class="doc-block__title">Split modal layout</h3>
+                    <p class="doc-block__summary">
+                        <code>.modal--split</code> converts the panel into a 2-column grid
+                        with a side pane defined by <code>.modal__side</code>.
+                    </p>
+                </div>
+                <div class="doc-block__body">
+                    <div class="doc-block__preview">
+                        <div class="modal modal--active modal--lg modal--split" style="position:relative; inset:auto;">
+                            <div class="modal__inner">
+                                <div class="modal__body">
+                                    <p class="text-sm text-strong mb-2">Primary content</p>
+                                    <p class="text-xs text-muted">
+                                        This area is suitable for forms, editors, or dense content.
+                                    </p>
+                                </div>
+                                <aside class="modal__side">
+                                    <p class="text-sm text-strong mb-2">Side panel</p>
+                                    <p class="text-xs text-muted">
+                                        Use for summaries, help, or contextual info.
+                                    </p>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                        <div class="doc-block__toolbar">
+                            <div class="doc-block__lang">HTML</div>
+                            <div class="doc-block__actions">
+                                <button class="doc-block__action">Copy</button>
+                            </div>
+                        </div>
+                        <pre><code>&lt;div class="modal modal--active modal--lg modal--split"&gt;
+  &lt;div class="modal__inner"&gt;
+    &lt;div class="modal__body"&gt;
+      …main content…
+    &lt;/div&gt;
+    &lt;aside class="modal__side"&gt;
+      …secondary / contextual content…
+    &lt;/aside&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Chrome removal</h3>
+                <p class="doc-block__summary">
+                    <code>.modal--no-header</code> and <code>.modal--no-footer</code> hide
+                    the respective regions without affecting layout.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="layout-grid-inner-2">
+                        <div class="modal modal--active modal--no-header" style="position:relative; inset:auto;">
+                            <div class="modal__inner">
+                                <div class="modal__header">
+                                    <h3 class="modal__title">Hidden header</h3>
+                                </div>
+                                <div class="modal__body">
+                                    <p class="text-xs text-muted">
+                                        Useful for embedding components that already have their own header.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal modal--active modal--no-footer" style="position:relative; inset:auto;">
+                            <div class="modal__inner">
+                                <header class="modal__header">
+                                    <h3 class="modal__title text-sm">No footer</h3>
+                                </header>
+                                <div class="modal__body">
+                                    <p class="text-xs text-muted">
+                                        Use when actions live inside the component body instead of a global footer.
+                                    </p>
+                                </div>
+                                <footer class="modal__footer">
+                                    <button type="button">Hidden action</button>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">CSS (excerpt)</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>.modal--no-header .modal__header {
+  display: none;
+}
+
+.modal--no-footer .modal__footer {
+  display: none;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Drawers</p>
+            <h2 class="section__title">Left & right drawers with slide transitions</h2>
+            <p class="section__subtitle">
+                Drawers are anchored panels that slide from left or right, using the
+                same structural ideas as modals but with distinct layout and transitions.
+            </p>
+        </header>
+
+        <div class="doc-block">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Class reference</h3>
+                <p class="doc-block__summary">
+                    Drawer classes define position (left/right), visibility and panel structure.
+                </p>
+            </div>
+            <div class="doc-block__body doc-block__body--tight">
+                <div class="doc-block__columns-2">
+                    <ul class="section__list">
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.drawer</span>
+                            <span class="section__list-item-desc">
+                Base panel, fixed from top to bottom, with width
+                <code>--drawer-width</code>.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.drawer--left</span>
+                            <span class="section__list-item-desc">
+                Anchors drawer to left side of viewport.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.drawer--right</span>
+                            <span class="section__list-item-desc">
+                Anchors drawer to right side of viewport.
+              </span>
+                        </li>
+                    </ul>
+
+                    <ul class="section__list">
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.drawer--hidden</span>
+                            <span class="section__list-item-desc">
+                Slides drawer fully off-screen and disables pointer events.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.drawer__header</span>
+                            <span class="section__list-item-desc">
+                Top chrome; use for title and close button.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.drawer__body</span>
+                            <span class="section__list-item-desc">
+                Scrollable content region (flex:1).
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.drawer__footer</span>
+                            <span class="section__list-item-desc">
+                Bottom actions; border-top separates from body.
+              </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">CSS (excerpt)</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: var(--drawer-width);
+  max-width: 90vw;
+  background-color: var(--color-surface);
+  border-left: 1px solid var(--color-border-subtle);
+  border-right: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-3);
+  z-index: var(--z-drawer, 95);
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.drawer--left  { left: 0; }
+.drawer--right { right: 0; }
+
+.drawer--left.drawer--hidden {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.drawer--right.drawer--hidden {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-block doc-block--example">
+            <div>
+                <div class="doc-block__header">
+                    <h3 class="doc-block__title">Left drawer — navigation</h3>
+                    <p class="doc-block__summary">
+                        Typical pattern for app-wide navigation or multi-step side panels.
+                    </p>
+                </div>
+                <div class="doc-block__body">
+                    <div class="doc-block__preview">
+                        <div class="backdrop backdrop--active backdrop--light"
+                             style="position:relative; inset:auto; width:100%; height:100px;"></div>
+                        <div class="drawer drawer--left"
+                             style="position:relative; top:auto; bottom:auto; height:220px;">
+                            <header class="drawer__header">
+                                <p class="text-sm text-strong">Navigation</p>
+                            </header>
+                            <div class="drawer__body">
+                                <ul class="section__list">
+                                    <li class="section__list-item">
+                                        <span class="section__list-item-title">Dashboard</span>
+                                    </li>
+                                    <li class="section__list-item">
+                                        <span class="section__list-item-title">Reports</span>
+                                    </li>
+                                    <li class="section__list-item">
+                                        <span class="section__list-item-title">Settings</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <footer class="drawer__footer">
+                                <button type="button">Close</button>
+                            </footer>
+                        </div>
+                    </div>
+
+                    <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                        <div class="doc-block__toolbar">
+                            <div class="doc-block__lang">HTML</div>
+                            <div class="doc-block__actions">
+                                <button class="doc-block__action">Copy</button>
+                            </div>
+                        </div>
+                        <pre><code>&lt;div class="backdrop backdrop--active backdrop--light"&gt;&lt;/div&gt;
+
+&lt;div class="drawer drawer--left"&gt;
+  &lt;header class="drawer__header"&gt;
+    &lt;h2 class="text-sm"&gt;Navigation&lt;/h2&gt;
+  &lt;/header&gt;
+
+  &lt;div class="drawer__body"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Dashboard&lt;/li&gt;
+      &lt;li&gt;Reports&lt;/li&gt;
+      &lt;li&gt;Settings&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+
+  &lt;footer class="drawer__footer"&gt;
+    &lt;button type="button"&gt;Close&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Right drawer — details panel</h3>
+                <p class="doc-block__summary">
+                    Use right drawers for detail or inspector panels adjacent to main content.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="drawer drawer--right drawer--hidden"
+                         style="position:relative; top:auto; bottom:auto; height:180px;">
+                        <header class="drawer__header">
+                            <p class="text-sm text-strong">Hidden by default</p>
+                        </header>
+                        <div class="drawer__body">
+                            <p class="text-xs text-muted">
+                                Apply or remove <code>drawer--hidden</code> via JS to slide
+                                the drawer in/out.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">HTML</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>&lt;div class="drawer drawer--right drawer--hidden" role="complementary"
+     aria-label="Details panel"&gt;
+  &lt;header class="drawer__header"&gt;…&lt;/header&gt;
+  &lt;div class="drawer__body"&gt;…&lt;/div&gt;
+  &lt;footer class="drawer__footer"&gt;…&lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;div class="drawer drawer--right"&gt;…&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b section--alt">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Inline overlays</p>
+            <h2 class="section__title">Inline overlay panels & semantic variants</h2>
+            <p class="section__subtitle">
+                Use <code>.overlay-inline</code> for in-flow panels that still feel like
+                overlays — ideal for sidebars, highlighted blocks, or persistent callouts.
+            </p>
+        </header>
+
+        <div class="doc-block">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Class reference</h3>
+                <p class="doc-block__summary">
+                    Structural and semantic classes for inline overlays.
+                </p>
+            </div>
+            <div class="doc-block__body doc-block__body--tight">
+                <div class="doc-block__columns-2">
+                    <ul class="section__list">
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.overlay-inline</span>
+                            <span class="section__list-item-desc">
+                Base inline overlay with subtle border, surface and shadow.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.overlay-inline__header</span>
+                            <span class="section__list-item-desc">
+                Optional header region; mirrors modal header structure.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.overlay-inline__body</span>
+                            <span class="section__list-item-desc">
+                Body area; use layout utilities or content blocks inside.
+              </span>
+                        </li>
+                    </ul>
+
+                    <ul class="section__list">
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.overlay-inline--info</span>
+                            <span class="section__list-item-desc">
+                Info semantic palette (border/bg/text).
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.overlay-inline--success</span>
+                            <span class="section__list-item-desc">
+                Success semantic palette.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.overlay-inline--warning</span>
+                            <span class="section__list-item-desc">
+                Warning semantic palette.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.overlay-inline--danger</span>
+                            <span class="section__list-item-desc">
+                Danger semantic palette.
+              </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">CSS (excerpt)</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>.overlay-inline {
+  position: relative;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-1);
+}
+
+.overlay-inline__header {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.overlay-inline__body {
+  padding: var(--space-6);
+}
+
+.overlay-inline--info {
+  border-color: var(--semantic-info-border);
+  background-color: var(--semantic-info-bg);
+  color: var(--semantic-info-text);
+}
+
+/* …success / warning / danger variants… */</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-block doc-block--example">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Neutral overlay panel</h3>
+                <p class="doc-block__summary">
+                    Subtle surface overlay for secondary content or persistent filters.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="overlay-inline">
+                        <div class="overlay-inline__header">
+                            <p class="text-sm text-strong">Filters</p>
+                        </div>
+                        <div class="overlay-inline__body">
+                            <p class="text-xs text-muted">
+                                Place filters or settings here. The panel reads as elevated but
+                                does not block interaction with the rest of the page.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">HTML</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>&lt;aside class="overlay-inline"&gt;
+  &lt;div class="overlay-inline__header"&gt;
+    &lt;h2 class="text-sm"&gt;Filters&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class="overlay-inline__body"&gt;
+    …controls…
+  &lt;/div&gt;
+&lt;/aside&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Semantic overlays</h3>
+                <p class="doc-block__summary">
+                    Info / success / warning / danger overlays using semantic tokens.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="layout-grid-inner-2">
+                        <div class="overlay-inline overlay-inline--info">
+                            <div class="overlay-inline__body">
+                                <p class="text-sm text-strong mb-1">Info overlay</p>
+                                <p class="text-xs">
+                                    Use for non-blocking informational notices.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="overlay-inline overlay-inline--success">
+                            <div class="overlay-inline__body">
+                                <p class="text-sm text-strong mb-1">Success overlay</p>
+                                <p class="text-xs">
+                                    Use to highlight completed flows inside the page context.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="overlay-inline overlay-inline--warning">
+                            <div class="overlay-inline__body">
+                                <p class="text-sm text-strong mb-1">Warning overlay</p>
+                                <p class="text-xs">
+                                    Cautionary panels within dashboards or forms.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="overlay-inline overlay-inline--danger">
+                            <div class="overlay-inline__body">
+                                <p class="text-sm text-strong mb-1">Danger overlay</p>
+                                <p class="text-xs">
+                                    Use sparingly for serious issues inside primary content.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">HTML</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>&lt;div class="overlay-inline overlay-inline--info"&gt;…&lt;/div&gt;
+&lt;div class="overlay-inline overlay-inline--success"&gt;…&lt;/div&gt;
+&lt;div class="overlay-inline overlay-inline--warning"&gt;…&lt;/div&gt;
+&lt;div class="overlay-inline overlay-inline--danger"&gt;…&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--c">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">System</p>
+            <h2 class="section__title">Stacking levels, reduced motion & complete API</h2>
+            <p class="section__subtitle">
+                Overlay z-index hierarchy, motion-safe variants and a full list of
+                classes for reference and linting.
+            </p>
+        </header>
+
+        <div class="doc-block doc-block--compact">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Stacking & reduced motion</h3>
+                <p class="doc-block__summary">
+                    Overlays respect the global z-index scale and honour user motion
+                    preferences via <code>prefers-reduced-motion</code>.
+                </p>
+            </div>
+            <div class="doc-block__body doc-block__body--tight">
+                <div class="doc-block__highlight">
+                    <ul class="section__list">
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">Z-index tokens</span>
+                            <span class="section__list-item-desc">
+                <code>--z-backdrop</code>, <code>--z-modal</code>,
+                <code>--z-drawer</code> and <code>--z-toast</code> from the token set.
+              </span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">Modal/drawer transitions</span>
+                            <span class="section__list-item-desc">
+                Translate + opacity transitions disabled when
+                <code>prefers-reduced-motion: reduce</code>.
+              </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">CSS (excerpt)</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>.modal--level-2 {
+  z-index: calc(var(--z-modal, 90) + 10);
+}
+.modal--level-3 {
+  z-index: calc(var(--z-modal, 90) + 20);
+}
+
+.backdrop--level-2 {
+  z-index: calc(var(--z-backdrop, 80) + 10);
+}
+.backdrop--level-3 {
+  z-index: calc(var(--z-backdrop, 80) + 20);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .modal__inner {
+    transition: none;
+  }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-block doc-block--surface">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Complete class index (overlays.css)</h3>
+                <p class="doc-block__summary">
+                    Full list of exported classes for overlays, modals, drawers and inline panels.
+                    Use this section for QA, linting or documentation coverage checks.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__columns-3">
+                    <div>
+                        <h4 class="doc-block__subtitle">Backdrops</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item"><span class="section__list-item-title">.backdrop</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.backdrop--light</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.backdrop--heavy</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.backdrop--active</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.backdrop--level-2</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.backdrop--level-3</span></li>
+                        </ul>
+
+                        <h4 class="doc-block__subtitle">Base modal</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item"><span class="section__list-item-title">.modal</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--active</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal__inner</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal__header</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal__title</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal__close</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal__body</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal__footer</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="doc-block__subtitle">Modal densities & sizes</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--a</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--b</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--c</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--sm</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--md</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--lg</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--xl</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--full</span>
+                            </li>
+                        </ul>
+
+                        <h4 class="doc-block__subtitle">Modal semantics & loading</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--success</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--danger</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--info</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--warning</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--loading</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal__loader</span>
+                            </li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__loader-icon</span></li>
+                        </ul>
+
+                        <h4 class="doc-block__subtitle">Layout & chrome</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--split</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal__side</span>
+                            </li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal--no-header</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal--no-footer</span></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="doc-block__subtitle">Responsive & stacking</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--fullscreen-mobile</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--sheet</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--level-2</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--level-3</span>
+                            </li>
+                        </ul>
+
+                        <h4 class="doc-block__subtitle">Drawers</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item"><span class="section__list-item-title">.drawer</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.drawer--left</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.drawer--right</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.drawer--hidden</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.drawer__header</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.drawer__body</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.drawer__footer</span>
+                            </li>
+                        </ul>
+
+                        <h4 class="doc-block__subtitle">Inline overlays</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item"><span class="section__list-item-title">.overlay-inline</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.overlay-inline__header</span>
+                            </li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.overlay-inline__body</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.overlay-inline--info</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.overlay-inline--success</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.overlay-inline--warning</span>
+                            </li>
+                            <li class="section__list-item"><span class="section__list-item-title">.overlay-inline--danger</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="doc-block__meta">
+                    All classes above are defined exclusively in <code>overlays.css</code> and are
+                    layout-neutral. Content layout should be composed using <code>layout.css</code>,
+                    <code>utilities.css</code> and <code>content-blocks.css</code>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Overlay systems require strict control over focus, scroll locking, backdrop
+                    semantics, ARIA attributes, and keyboard behaviour. Because VDS overlays are
+                    zero-animation by design, accessibility relies on structural correctness and
+                    predictable interaction rather than motion cues.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use real semantic containers:
+                            <code>&lt;dialog&gt;</code> (if enhanced) or
+                            <code>div.modal</code> with explicit ARIA.
+                        </li>
+
+                        <li>
+                            Mark active modal states with:
+                            <code>.modal--active</code> and update
+                            <code>aria-modal="true"</code>,
+                            <code>role="dialog"</code>,
+                            and <code>aria-labelledby</code>.
+                        </li>
+
+                        <li>
+                            Always pair modals/drawers with a backdrop:
+                            <code>.backdrop--active</code> must be present whenever the modal is interactive.
+                        </li>
+
+                        <li>
+                            Ensure the close button is a real focusable element:
+                            <code>&lt;button class="modal__close"&gt;</code> with a proper
+                            <code aria-label="Close modal"></code>.
+                        </li>
+
+                        <li>
+                            Trap focus inside the active overlay (JS-controlled), cycling Back/Tab
+                            and releasing focus only when the modal closes.
+                        </li>
+
+                        <li>
+                            Use <code>body.modal-open</code> to prevent background scrolling during modal/drawer use.
+                        </li>
+
+                        <li>
+                            Maintain overflow behaviour:
+                            <code>.modal__body</code> and
+                            <code>.drawer__body</code> must keep
+                            <code>overflow-y: auto</code> and <code>flex: 1</code> for consistent screen reader
+                            traversal.
+                        </li>
+
+                        <li>
+                            Use state variants (<code>.modal--success</code>,
+                            <code>.modal--danger</code>, <code>.modal--info</code>,
+                            <code>.modal--warning</code>) only when content meaningfully matches the state.
+                        </li>
+
+                        <li>
+                            On mobile (<code>max-width: 768px</code>), allow modal-sheet behaviour
+                            (<code>.modal--sheet</code>) and ensure it remains fully reachable via keyboard.
+                        </li>
+
+                        <li>
+                            Provide accessible names for inline overlays:
+                            <code>.overlay-inline</code> + <code>aria-labelledby</code>
+                            or an internal heading.
+                        </li>
+
+                        <li>
+                            Maintain stacking rules using level modifiers:
+                            <code>.modal--level-2</code> / <code>.modal--level-3</code>,
+                            <code>.backdrop--level-2</code> / <code>.backdrop--level-3</code>.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t open a modal without also activating a backdrop.
+                        </li>
+
+                        <li>
+                            Don’t hide the close button or make it an icon-only <code>&lt;div&gt;</code>.
+                            It must be a true button with <code>aria-label</code>.
+                        </li>
+
+                        <li>
+                            Don’t disable focus-visible outlines — overlays require strong focus visibility.
+                        </li>
+
+                        <li>
+                            Don’t rely on visual position to imply semantics; drawers must always be
+                            <code>.drawer--left</code> or <code>.drawer--right</code> explicitly.
+                        </li>
+
+                        <li>
+                            Don’t allow background content to remain focusable while an overlay is open
+                            (must be JS-disabled).
+                        </li>
+
+                        <li>
+                            Don’t place interactive content behind a loading overlay
+                            (<code>.modal--loading</code>) — loaders block interaction intentionally.
+                        </li>
+
+                        <li>
+                            Don’t override token spacing in headers, footers, or density variants.
+                        </li>
+
+                        <li>
+                            Don’t mix animation utilities or transitional CSS;
+                            overlays.css is explicitly zero-animation for stability and accessibility.
+                        </li>
+
+                        <li>
+                            Don’t replace overlay surfaces with arbitrary shadows, blurs or filters —
+                            all surfaces must remain token-driven.
+                        </li>
+
+                        <li>
+                            Don’t rearrange DOM order in split modals — sidebar and body positions
+                            are semantically meaningful and only collapse via responsive rules.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. role="dialog" + aria-modal="true" + labelledby required for modals.
+2. Backdrop must activate with the modal; hide background interaction.
+3. Close button must be a real &lt;button&gt; with aria-label.
+4. Maintain focus trap while modal/drawer is active.
+5. body.modal-open → no background scroll.
+6. Overflow regions (modal__body, drawer__body) remain scrollable and flex:1.
+7. State variants (success/danger/info/warning) must reflect real meaning.
+8. Mobile sheets (modal--sheet) must remain keyboard reachable.
+9. Inline overlays require accessible labelling.
+10. No transitions, no blurs, no opacity animations — instant open/close only.
+11. Respect stacking levels with modal--level-* and backdrop--level-*.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

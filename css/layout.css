@@ -1,0 +1,236 @@
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Layout Layer
+ *
+ *  Responsibilities:
+ *    - Provide the global page-frame architecture (header, content, footer)
+ *    - Define reusable interior content regions for any block or module
+ *    - Implement the container system (narrow, normal, wide, tight, relaxed)
+ *    - Establish the page section vertical rhythm (XS–XL)
+ *    - Supply structural grid layouts (auto-fit, 2/3/4 column)
+ *    - Define high-level layouts: sidebar, right-sidebar, split, split-reverse
+ *
+ *  System Notes:
+ *    - 100% token-driven: widths, gaps, section spacing, sidebar widths
+ *    - Pure CSS; no JS positioning, no behavioural dependencies
+ *    - Intended to sit above base.css and before content-blocks/components
+ *    - Low-level spacing/flex utilities live in utilities.css, not here
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   1. PAGE FRAME SYSTEM  (single-instance)
+--------------------------------------------------------- */
+header.page-header {
+    width: 100%;
+    position: relative;
+    z-index: var(--z-header);
+}
+
+main.page-content {
+    width: 100%;
+    flex: 1 0 auto;
+}
+
+footer.page-footer {
+    width: 100%;
+    position: relative;
+    z-index: var(--z-base);
+}
+
+/* ---------------------------------------------------------
+   2. CONTENT REGIONS (multi-instance, reusable)
+--------------------------------------------------------- */
+.content-header {
+    width: 100%;
+}
+
+.content-body {
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.content-footer {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------
+   3. CONTAINER SYSTEM
+--------------------------------------------------------- */
+.container {
+    width: 100%;
+    max-width: var(--content-width-xl);
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+}
+
+.container-wide {
+    width: 100%;
+    max-width: var(--content-width-2xl);
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+}
+
+.container-narrow {
+    width: 100%;
+    max-width: var(--content-width-lg);
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+}
+
+.container-tight {
+    width: 100%;
+    max-width: var(--content-width-md);
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+}
+
+.container-relaxed {
+    width: 100%;
+    max-width: 90ch;
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+}
+
+@media (max-width: 768px) {
+    .container,
+    .container-wide,
+    .container-narrow,
+    .container-tight,
+    .container-relaxed {
+        padding-inline: var(--space-3);
+    }
+}
+
+.full-bleed {
+    width: 100%;
+    margin-inline: 0;
+    padding-inline: 0;
+}
+
+.section-bleed {
+    margin-inline: calc(-1 * var(--space-4));
+}
+
+@media (max-width: 768px) {
+    .section-bleed {
+        margin-inline: calc(-1 * var(--space-3));
+    }
+}
+
+/* ---------------------------------------------------------
+   4. SECTION SPACING (vertical rhythm)
+--------------------------------------------------------- */
+.section-none {
+    padding-block: 0;
+}
+
+.section-xs {
+    padding-block: var(--section-spacing-xs);
+}
+
+.section-sm {
+    padding-block: var(--section-spacing-sm);
+}
+
+.section {
+    padding-block: var(--section-spacing-md);
+}
+
+.section-lg {
+    padding-block: var(--section-spacing-lg);
+}
+
+.section-xl {
+    padding-block: var(--section-spacing-xl);
+}
+
+/* ---------------------------------------------------------
+   5. STRUCTURAL GRID LAYOUTS
+--------------------------------------------------------- */
+.layout-grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-min), 1fr));
+    gap: var(--gap-lg);
+}
+
+.layout-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-lg);
+}
+
+.layout-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap-lg);
+}
+
+.layout-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap-lg);
+}
+
+@media (max-width: 768px) {
+    .layout-grid-2,
+    .layout-grid-3,
+    .layout-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   6. HIGH-LEVEL SEMANTIC LAYOUTS
+--------------------------------------------------------- */
+.sidebar-layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width-md) 1fr;
+    gap: var(--gap-lg);
+}
+
+.sidebar-layout-right {
+    display: grid;
+    grid-template-columns: 1fr var(--sidebar-width-md);
+    gap: var(--gap-lg);
+}
+
+@media (max-width: 1024px) {
+    .sidebar-layout,
+    .sidebar-layout-right {
+        grid-template-columns: 1fr;
+    }
+}
+
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-lg);
+}
+
+.split-reverse {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-lg);
+}
+
+.split-reverse > *:first-child {
+    order: 2;
+}
+
+.split-reverse > *:last-child {
+    order: 1;
+}
+
+@media (max-width: 768px) {
+    .split,
+    .split-reverse {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) {
+    .split-reverse > * {
+        order: initial;
+    }
+}

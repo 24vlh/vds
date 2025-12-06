@@ -1,0 +1,733 @@
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Documentation Blocks
+ *
+ *  Responsibilities:
+ *    - Provide the full structural and stylistic engine of VDS documentation:
+ *      block shells, headers, bodies, sections, previews, and split layouts
+ *    - Define all code-block behaviours: inline code, long-form code, numbered
+ *      lines, soft-numbered lines, toolbar, actions, copy states, and diffs
+ *    - Support high-level documentation semantics: concept, pattern, api,
+ *      example, highlight, do/dont, steps, columns, stacks, pills, and metadata
+ *    - Enable compact, surface, elevated, and contrast variants with fully
+ *      tokenised padding, radii, borders, shadows, and background treatment
+ *
+ *  System Notes:
+ *    - Fully namespaced under `.doc-block*` to avoid collisions with content
+ *      components and layout primitives
+ *    - Pure CSS - no JS required for structure, interaction, or state styling
+ *    - Code theming is token-driven: inline, block, syntax, and diff tokens
+ *      come from primitives + theme
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   1. DOC BLOCK TOKEN DEFINITIONS
+--------------------------------------------------------- */
+[data-vds-dock-block],
+.vds-dock-block {
+    --doc-block-border: var(--color-border-subtle);
+
+    --doc-block-highlight-border-width: var(--border-width-strong);
+    --doc-block-highlight-pad: var(--space-6);
+}
+
+/* ---------------------------------------------------------
+   2. ROOT BLOCK
+--------------------------------------------------------- */
+.doc-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    padding-block: var(--space-14);
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.doc-block:last-child {
+    border-bottom: none;
+}
+
+.doc-block--surface {
+    background-color: var(--color-surface-subtle);
+    padding: var(--space-12);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-subtle);
+}
+
+.doc-block--elevated {
+    background-color: var(--color-surface);
+    padding: var(--space-12);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-subtle);
+    box-shadow: var(--shadow-1);
+}
+
+.doc-block--contrast {
+    background-color: var(--color-bg-soft);
+    padding: var(--space-14);
+    border-radius: var(--radius-lg);
+    border-left: var(--border-width-strong) solid var(--color-accent);
+}
+
+/* ---------------------------------------------------------
+   3. HEADER
+--------------------------------------------------------- */
+.doc-block__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.doc-block__title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-semibold);
+    margin: 0;
+    color: var(--color-text);
+}
+
+.doc-block__subtitle {
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-semibold);
+    margin: 0;
+    color: var(--color-text);
+}
+
+.doc-block__summary {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-normal);
+}
+
+.doc-block__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-block: var(--space-4);
+}
+
+.doc-block__subsection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-block: var(--space-2);
+}
+
+.doc-block__subsection--compact {
+    gap: var(--space-1);
+    margin-block: var(--space-1_5);
+}
+
+.doc-block__description {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-normal);
+    margin: 0;
+}
+
+/* ---------------------------------------------------------
+   4. BODY
+--------------------------------------------------------- */
+.doc-block__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.doc-block__body--tight {
+    gap: var(--space-3);
+}
+
+.doc-block__body--compact {
+    gap: var(--space-2);
+}
+
+/* ---------------------------------------------------------
+   5. PREVIEW AREA
+--------------------------------------------------------- */
+.doc-block__preview {
+    position: relative;
+    padding: var(--space-8);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-subtle);
+    background-color: var(--color-surface);
+}
+
+.doc-block__preview .card__body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--space-3);
+}
+
+.doc-block__preview--transparent {
+    background-color: transparent;
+}
+
+.doc-block__preview--inline {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+}
+
+.doc-block__preview code:not(pre code) {
+    background: var(--code-inline-bg);
+    border: 1px solid var(--code-inline-border);
+    color: var(--color-text);
+    padding: 0.04em 0.3em;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: var(--text-sm);
+}
+
+/* ---------------------------------------------------------
+   6. SPLIT LAYOUTS
+--------------------------------------------------------- */
+.doc-block--split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+}
+
+.doc-block--split-left {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-12);
+}
+
+.doc-block--split-right {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-12);
+}
+
+@media (max-width: 1024px) {
+    .doc-block--split,
+    .doc-block--split-left,
+    .doc-block--split-right {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   7. CODE BLOCK (core)
+--------------------------------------------------------- */
+.doc-block__code {
+    position: relative;
+
+    background: var(--code-block-bg);
+    border: 1px solid var(--doc-block-border);
+    border-radius: var(--radius-lg);
+
+    padding: var(--space-8);
+    padding-top: calc(var(--space-12) + var(--space-4));
+
+    overflow-x: auto;
+    overflow-y: visible;
+
+    font-family: var(--font-family-mono), monospace;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: var(--line-height-relaxed);
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.doc-block__code code,
+.doc-block__code pre {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* ---------------------------------------------------------
+   8. CODE TOOLBAR
+--------------------------------------------------------- */
+.doc-block__toolbar {
+    position: absolute;
+    top: var(--space-2);
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    padding-inline: var(--space-4);
+}
+
+.doc-block__lang {
+    pointer-events: auto;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xxs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    background-color: var(--color-surface-subtle);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+}
+
+.doc-block__actions {
+    pointer-events: auto;
+    display: flex;
+    gap: var(--space-2);
+}
+
+.doc-block__action {
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xxs);
+    font-weight: 600;
+    background-color: var(--color-surface-subtle);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color var(--transition-fast);
+    line-height: 1;
+}
+
+.doc-block__action:hover {
+    background-color: var(--doc-block-action-hover-bg);
+    border-color: var(--doc-block-action-hover-border);
+    color: var(--doc-block-action-hover-text);
+}
+
+.doc-block__action--active {
+    background-color: var(--color-accent-soft);
+    border-color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------
+   9. COLLAPSIBLE VARIANT
+--------------------------------------------------------- */
+.doc-block--collapsed .doc-block__code {
+    max-height: 12rem;
+    overflow: hidden;
+}
+
+.doc-block--collapsed .doc-block__code::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) 60%,
+            var(--code-block-bg) 100%
+    );
+    pointer-events: none;
+}
+
+/* ---------------------------------------------------------
+   10. META
+--------------------------------------------------------- */
+.doc-block__meta {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-top: var(--space-3);
+}
+
+.doc-block__note--danger {
+    color: var(--color-danger-strong);
+}
+
+.doc-block__note--warning {
+    color: var(--color-warning-strong);
+}
+
+.doc-block__note--info {
+    color: var(--color-info-strong);
+}
+
+/* ---------------------------------------------------------
+   11. RESPONSIVE TUNING
+--------------------------------------------------------- */
+@media (max-width: 768px) {
+
+    .doc-block {
+        gap: var(--space-10);
+        padding-block: var(--space-12);
+    }
+
+    .doc-block__title {
+        font-size: var(--text-lg);
+    }
+
+    .doc-block__preview {
+        padding: var(--space-6);
+    }
+
+    .doc-block__code {
+        padding: var(--space-6);
+        padding-top: calc(var(--space-10) + var(--space-2));
+    }
+}
+
+/* ---------------------------------------------------------
+   12. Syntax Highlighting
+--------------------------------------------------------- */
+.doc-block__code .token.keyword {
+    color: var(--code-syntax-keyword);
+}
+
+.doc-block__code .token.string {
+    color: var(--code-syntax-string);
+}
+
+.doc-block__code .token.number {
+    color: var(--code-syntax-number);
+}
+
+.doc-block__code .token.operator {
+    color: var(--code-syntax-operator);
+}
+
+.doc-block__code .token.comment {
+    color: var(--code-syntax-comment);
+    font-style: italic;
+}
+
+.doc-block__code .token.constant {
+    color: var(--code-syntax-constant);
+}
+
+.doc-block__code .token.func {
+    color: var(--code-syntax-function);
+}
+
+.doc-block__code .token.var {
+    color: var(--code-syntax-variable);
+}
+
+/* ---------------------------------------------------------
+   13. Line Numbered
+--------------------------------------------------------- */
+.doc-block__code--numbered {
+    position: relative;
+}
+
+.doc-block__code--numbered code {
+    counter-reset: line;
+    padding-inline-start: calc(var(--space-2) + 2ch);
+}
+
+.doc-block__code--numbered code > * {
+    counter-increment: line;
+    position: relative;
+    padding-left: var(--space-2);
+}
+
+.doc-block__code--numbered code > *::before {
+    content: counter(line);
+    position: absolute;
+    inset-inline-start: calc(-1 * (var(--space-6) + 2ch));
+    width: calc(var(--space-6) + 2ch);
+    text-align: right;
+    padding-inline-end: var(--space-2);
+    color: var(--color-text-soft, var(--color-text-muted));
+    font-size: var(--text-xxs, var(--text-xs));
+    user-select: none;
+}
+
+/* ---------------------------------------------------------
+   14. Compact Variant
+--------------------------------------------------------- */
+.doc-block--compact {
+    gap: var(--space-6);
+    padding-block: var(--space-8);
+}
+
+.doc-block--compact .doc-block__title {
+    font-size: var(--text-lg);
+}
+
+.doc-block--compact .doc-block__summary {
+    font-size: var(--text-xs);
+}
+
+.doc-block--compact .doc-block__code {
+    padding: var(--space-5);
+    padding-top: calc(var(--space-8) + var(--space-2));
+    font-size: var(--text-xs);
+    line-height: var(--line-height-snug);
+}
+
+/* ---------------------------------------------------------
+   15. Side-by-Side Diff Blocks
+   <div class="doc-block doc-block--diff">
+    <div class="doc-block__code">…old code…</div>
+    <div class="doc-block__code">…new code…</div>
+   </div>
+--------------------------------------------------------- */
+.doc-block--diff {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+}
+
+.doc-block--diff-added {
+    background-color: var(--semantic-success-bg);
+}
+
+.doc-block--diff-removed {
+    background-color: var(--semantic-danger-bg);
+}
+
+.doc-block--diff .doc-block__code {
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+}
+
+.doc-block--diff-line-add {
+    background-color: var(--semantic-success-bg);
+    border-left: 3px solid var(--semantic-success-border);
+}
+
+.doc-block--diff-line-remove {
+    background-color: var(--semantic-danger-bg);
+    border-left: 3px solid var(--semantic-danger-border);
+}
+
+@media (max-width: 1024px) {
+    .doc-block--diff {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   16. Copy on Select State
+--------------------------------------------------------- */
+.doc-block__code.is-copied {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    transition: outline var(--transition-fast);
+}
+
+/* ---------------------------------------------------------
+   17. HEADER EXTENSIONS (eyebrow, pills, subtitle)
+--------------------------------------------------------- */
+.doc-block__eyebrow {
+    font-size: var(--text-xxs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-soft);
+    margin-bottom: var(--space-2);
+}
+
+.doc-block__pills {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+
+.doc-block__pill {
+    font-size: var(--text-xxs);
+    font-weight: var(--font-weight-semibold);
+    padding: 0 var(--space-2);
+    line-height: var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface-subtle);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-muted);
+}
+
+/* ---------------------------------------------------------
+   18. AUTHORING HELPERS (stack, columns, grid)
+--------------------------------------------------------- */
+.doc-block__stack-sm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.doc-block__stack-md {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.doc-block__stack-lg {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+}
+
+.doc-block__columns-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+}
+
+.doc-block__columns-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+    .doc-block__columns-2,
+    .doc-block__columns-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   19. STEPS SYSTEM (tutorial / procedural)
+--------------------------------------------------------- */
+.doc-block__steps {
+    counter-reset: step-counter;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.doc-block__steps > li {
+    list-style: none;
+    counter-increment: step-counter;
+    position: relative;
+    padding-inline-start: var(--space-8);
+}
+
+.doc-block__steps > li::before {
+    content: counter(step-counter);
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.1em;
+    width: var(--space-6);
+    height: var(--space-6);
+    border-radius: var(--radius-full);
+    background: var(--color-accent-soft);
+    color: var(--color-on-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* ---------------------------------------------------------
+   20. CALLOUTS (highlight / do-dont)
+--------------------------------------------------------- */
+.doc-block__highlight {
+    border-left: var(--doc-block-highlight-border-width) solid var(--color-accent);
+    padding: var(--doc-block-highlight-pad);
+    background: var(--color-surface-subtle);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    margin-block: var(--space-3);
+}
+
+.doc-block__do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+}
+
+.doc-block__do,
+.doc-block__dont {
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border-subtle);
+}
+
+.doc-block__do {
+    background: var(--semantic-success-bg);
+    border-color: var(--semantic-success-border);
+    color: var(--semantic-success-text);
+}
+
+.doc-block__dont {
+    background: var(--semantic-danger-bg);
+    border-color: var(--semantic-danger-border);
+    color: var(--semantic-danger-text);
+}
+
+@media (max-width: 1024px) {
+    .doc-block__do-dont {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   21. SEMANTIC PRESETS (concept / pattern / api / example)
+   - Visual density & emphasis only. Non-destructive.
+--------------------------------------------------------- */
+.doc-block--concept .doc-block__body {
+    gap: var(--space-10);
+}
+
+.doc-block--pattern .doc-block__preview {
+    border-left: var(--border-width-strong) solid var(--color-accent);
+}
+
+.doc-block--api .doc-block__body {
+    gap: var(--space-8);
+}
+
+.doc-block--example {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+}
+
+@media (max-width: 1024px) {
+    .doc-block--example {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   22. LINE NUMBERING - SOFT VARIANT
+--------------------------------------------------------- */
+.doc-block__code--numbered-soft code {
+    counter-reset: line;
+    padding-inline-start: calc(var(--space-2) + 1.5ch);
+}
+
+.doc-block__code--numbered-soft code > * {
+    counter-increment: line;
+    position: relative;
+    padding-left: var(--space-2);
+}
+
+.doc-block__code--numbered-soft code > *::before {
+    content: counter(line);
+    position: absolute;
+    inset-inline-start: calc(-1 * (var(--space-5) + 1.5ch));
+    width: calc(var(--space-5) + 1.5ch);
+    text-align: right;
+    padding-inline-end: var(--space-2);
+    color: var(--color-text-soft);
+    font-size: var(--text-xxs);
+    user-select: none;
+}
+
+/* ---------------------------------------------------------
+   23. COLLAPSE / EXPAND HOOKS (additive)
+--------------------------------------------------------- */
+.doc-block--expanded .doc-block__code {
+    max-height: none;
+}
+
+.doc-block--expanded .doc-block__code::after {
+    display: none;
+}
+
+.doc-block__code-toggle {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   24. REDUCED MOTION (doc-block scoped)
+--------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .doc-block__action,
+    .doc-block__code.is-copied {
+        transition: none !important;
+    }
+}

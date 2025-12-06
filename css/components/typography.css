@@ -1,0 +1,236 @@
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Typography System
+ *
+ *  Responsibilities:
+ *    - Establish the full text scale, font stacks, weights, and line-heights
+ *    - Style headings, paragraphs, blockquotes, pullquotes, lists, code, pre,
+ *      tables, figures, captions, badges, and footnotes for rich prose
+ *    - Provide consistent spacing rhythm and vertical flow for long-form
+ *      documents and documentation environments
+ *    - Ensure inline elements (code, links, emphasis, badges, refs) integrate
+ *      cleanly inside the prose engine
+ *
+ *  System Notes:
+ *    - 100% token-driven: text sizes, weights, radii, colors, spacing
+ *    - Safe to embed within doc-block, authoring, and content-block systems
+ *    - Code theming inherited from code tokens; tables align with tables.css
+ *    - Designed for predictable behaviour across themes and reduced-motion
+ ************************************************************/
+
+[data-vds-typography],
+.vds-typography {
+    --typography-code-block-border: var(--color-border-subtle);
+    --prose-table-cell-padding: var(--space-2);
+
+    --blockquote-border-width: 3px;
+    --pullquote-border-width: 3px;
+}
+
+.typography {
+    color: var(--color-text);
+    font-size: var(--text-base);
+    line-height: var(--line-height-normal);
+}
+
+.typography h1,
+.typography h2,
+.typography h3,
+.typography h4,
+.typography h5,
+.typography h6 {
+    font-family: var(--font-family-sans), sans-serif;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-tight);
+}
+
+.typography h1:first-child,
+.typography h2:first-child,
+.typography h3:first-child,
+.typography h4:first-child,
+.typography h5:first-child,
+.typography h6:first-child {
+    margin-top: 0;
+}
+
+.typography h1 {
+    font-size: var(--text-4xl);
+}
+
+.typography h2 {
+    font-size: var(--text-3xl);
+}
+
+.typography h3 {
+    font-size: var(--text-2xl);
+}
+
+.typography h4 {
+    font-size: var(--text-xl);
+}
+
+.typography h5 {
+    font-size: var(--text-lg);
+}
+
+.typography h6 {
+    font-size: var(--text-base);
+}
+
+.typography p {
+    margin-block: var(--space-3);
+}
+
+.typography strong {
+    font-weight: 600;
+}
+
+.typography em {
+    font-style: italic;
+}
+
+.typography code {
+    font-family: var(--font-family-mono), monospace;
+    font-size: 0.875em;
+    padding-inline: var(--space-1);
+    padding-block: 0.1em;
+    border-radius: var(--radius-sm);
+    background: var(--code-inline-bg);
+    border: 1px solid var(--code-inline-border);
+}
+
+.table code {
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+}
+
+.typography pre {
+    font-family: var(--font-family-mono), monospace;
+    font-size: var(--text-sm);
+    background: var(--code-block-bg);
+    border: 1px solid var(--typography-code-block-border);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin-block: var(--space-4);
+}
+
+.typography pre code {
+    background: none !important;
+    border: none !important;
+    padding: 0;
+    border-radius: 0;
+}
+
+.typography ul,
+.typography ol {
+    margin-block: var(--space-3);
+    padding-left: var(--space-6);
+}
+
+.typography li {
+    margin-block: var(--space-1);
+}
+
+.typography ul ul,
+.typography ol ol,
+.typography ul ol,
+.typography ol ul {
+    margin-block: var(--space-1);
+}
+
+.typography blockquote {
+    margin-block: var(--space-6);
+    padding-left: var(--space-4);
+    border-left: var(--blockquote-border-width) solid var(--blockquote-text);
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+.typography .pullquote {
+    margin-block: var(--space-8);
+    padding: var(--space-4);
+    border-left: var(--pullquote-border-width) solid var(--blockquote-border);
+    font-size: var(--text-xl);
+    line-height: var(--line-height-tight);
+}
+
+.typography figure {
+    margin-block: var(--space-6);
+    text-align: center;
+}
+
+.typography figcaption {
+    margin-top: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+.typography img {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+}
+
+.typography table:not(.table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block: var(--space-4);
+    font-size: var(--text-sm);
+}
+
+.typography table:not(.table) th,
+.typography table:not(.table) td {
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding: var(--prose-table-cell-padding);
+    text-align: left;
+}
+
+.typography table:not(.table) th {
+    font-weight: 600;
+    background: var(--color-surface-subtle);
+    color: var(--color-text);
+}
+
+.typography table:not(.table) caption {
+    text-align: left;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+}
+
+.typography .badge-inline {
+    display: inline-block;
+    padding: 0 var(--space-2);
+    font-size: var(--text-xs);
+    background: var(--color-bg-soft);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+}
+
+.typography .footnotes {
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+    font-size: var(--footnote-font-size);
+    color: var(--footnote-color);
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+.typography .footnotes ol {
+    padding-left: var(--space-6);
+}
+
+.typography .fn-ref {
+    font-size: 0.75em;
+    vertical-align: super;
+}
+
+.typography .fn-backref {
+    margin-left: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}

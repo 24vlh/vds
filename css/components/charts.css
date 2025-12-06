@@ -1,0 +1,485 @@
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Charts / Data Visualization
+ *
+ *  Responsibilities:
+ *    - Provide a tokenised foundation for data-viz: chart palettes,
+ *      gridlines, axis styling, series families, loading patterns,
+ *      and structural layout containers
+ *    - Define chart containers (header, meta, actions, body, legend)
+ *      that reliably wrap SVG, canvas, or third-party chart libraries
+ *    - Expose semantic series tokens (1–6) and positive/negative/neutral
+ *      mappings aligned with VDS semantic color architecture
+ *    - Supply empty, error, and loading states for dashboard reliability
+ *
+ *  System Notes:
+ *    - Pure CSS; no assumptions about Chart.js, ECharts, Recharts, D3, or SVG
+ *    - Fully theme-driven: all colors flow from active theme tokens
+ *    - API-agnostic: classes apply to SVG <path>, <line>, <text>, and bars
+ *      regardless of rendering engine
+ *    - Loading shimmer and series-soft areas use `color-mix` for adaptive contrast
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   1. CHART TOKEN DEFINITIONS (extend root)
+--------------------------------------------------------- */
+[data-vds-chart],
+.vds-chart {
+    --chart-min-height-sm: 10rem;
+    --chart-min-height: 14rem;
+    --chart-min-height-lg: 18rem;
+
+    --chart-padding-sm: var(--space-3);
+    --chart-padding: var(--space-4);
+    --chart-padding-lg: var(--space-6);
+
+    --chart-gap: var(--space-3);
+    --chart-legend-gap: var(--space-2);
+
+    --chart-axis-color: var(--color-text-soft);
+    --chart-axis-text-color: var(--color-text-muted);
+    --chart-gridline-color: color-mix(in srgb, var(--color-border-subtle) 70%, transparent);
+    --chart-gridline-emph: color-mix(in srgb, var(--color-border-strong) 80%, transparent);
+
+    --chart-surface-bg: var(--color-surface);
+    --chart-surface-subtle: var(--color-surface-subtle);
+    --chart-border-color: var(--color-border-subtle);
+
+    --chart-series-1: var(--color-accent);
+    --chart-series-1-soft: color-mix(in srgb, var(--color-accent) 18%, transparent);
+    --chart-series-1-line: color-mix(in srgb, var(--color-accent) 80%, black 5%);
+
+    --chart-series-2: var(--color-success);
+    --chart-series-2-soft: color-mix(in srgb, var(--color-success) 18%, transparent);
+    --chart-series-2-line: color-mix(in srgb, var(--color-success) 80%, black 5%);
+
+    --chart-series-3: var(--color-info);
+    --chart-series-3-soft: color-mix(in srgb, var(--color-info) 18%, transparent);
+    --chart-series-3-line: color-mix(in srgb, var(--color-info) 80%, black 5%);
+
+    --chart-series-4: var(--color-warning);
+    --chart-series-4-soft: color-mix(in srgb, var(--color-warning) 18%, transparent);
+    --chart-series-4-line: color-mix(in srgb, var(--color-warning) 80%, black 5%);
+
+    --chart-series-5: var(--color-danger);
+    --chart-series-5-soft: color-mix(in srgb, var(--color-danger) 18%, transparent);
+    --chart-series-5-line: color-mix(in srgb, var(--color-danger) 80%, black 5%);
+
+    --chart-series-6: var(--color-text-muted, var(--color-text-soft));
+    --chart-series-6-soft: color-mix(in srgb, var(--chart-series-6) 18%, transparent);
+    --chart-series-6-line: color-mix(in srgb, var(--chart-series-6) 80%, black 5%);
+
+    --chart-series-positive: var(--color-success);
+    --chart-series-negative: var(--color-danger);
+    --chart-series-neutral: var(--color-muted-border);
+
+    --chart-loading-stripes: linear-gradient(
+            90deg,
+            var(--color-muted-bg),
+            var(--color-surface),
+            var(--color-muted-bg)
+    );
+}
+
+/* ---------------------------------------------------------
+   2. CHART CONTAINERS
+--------------------------------------------------------- */
+.chart {
+    display: flex;
+    flex-direction: column;
+    gap: var(--chart-gap);
+    padding: var(--chart-padding);
+    background-color: var(--chart-surface-bg);
+    border-radius: var(--radius-md);
+    border: var(--border-width) solid var(--chart-border-color);
+    min-height: var(--chart-min-height);
+}
+
+.chart--sm {
+    padding: var(--chart-padding-sm);
+    min-height: var(--chart-min-height-sm);
+}
+
+.chart--lg {
+    padding: var(--chart-padding-lg);
+    min-height: var(--chart-min-height-lg);
+}
+
+.chart--bare {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+.card .chart {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    min-height: var(--chart-min-height);
+}
+
+/* ---------------------------------------------------------
+   3. HEADER, META & ACTIONS
+--------------------------------------------------------- */
+.chart__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.chart__title {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+}
+
+.chart__subtitle {
+    margin-top: var(--space-1);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.chart__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.chart__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    white-space: nowrap;
+}
+
+.chart__meta-dot {
+    width: var(--space-1_5);
+    height: var(--space-1_5);
+    border-radius: var(--radius-full);
+    background-color: var(--color-border-subtle);
+}
+
+.chart__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* ---------------------------------------------------------
+   4. BODY & CANVAS WRAPPER
+--------------------------------------------------------- */
+.chart__body {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: var(--chart-min-height-sm);
+    display: flex;
+    align-items: stretch;
+}
+
+.chart__canvas {
+    flex: 1 1 auto;
+    min-height: inherit;
+    position: relative;
+}
+
+.chart__canvas canvas,
+.chart__canvas svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+/* ---------------------------------------------------------
+   5. LEGEND SYSTEM
+--------------------------------------------------------- */
+.chart__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--chart-legend-gap);
+    align-items: center;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.chart__legend--right {
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+.chart-legend__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1_5);
+}
+
+.chart-legend__swatch {
+    width: var(--space-2);
+    height: var(--space-2);
+    border-radius: var(--radius-full);
+    background-color: var(--chart-series-1);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-bg-soft) 70%, transparent);
+}
+
+.chart-legend__swatch--1 {
+    background-color: var(--chart-series-1);
+}
+
+.chart-legend__swatch--2 {
+    background-color: var(--chart-series-2);
+}
+
+.chart-legend__swatch--3 {
+    background-color: var(--chart-series-3);
+}
+
+.chart-legend__swatch--4 {
+    background-color: var(--chart-series-4);
+}
+
+.chart-legend__swatch--5 {
+    background-color: var(--chart-series-5);
+}
+
+.chart-legend__swatch--6 {
+    background-color: var(--chart-series-6);
+}
+
+.chart-legend__label {
+    white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   6. AXES & GRIDLINE HOOKS (SVG / Canvas wrappers)
+--------------------------------------------------------- */
+.chart-axis line,
+.chart-axis path {
+    stroke: var(--chart-axis-color);
+    stroke-width: 1;
+}
+
+.chart-axis text {
+    fill: var(--chart-axis-text-color);
+    font-size: var(--text-xxs);
+}
+
+.chart-axis--x text {
+    dominant-baseline: hanging;
+}
+
+.chart-axis--y text {
+    dominant-baseline: middle;
+}
+
+.chart-grid line {
+    stroke: var(--chart-gridline-color);
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.chart-grid line[data-major="true"],
+.chart-grid line.major {
+    stroke: var(--chart-gridline-emph);
+}
+
+/* ---------------------------------------------------------
+   7. SERIES HOOKS (lines, areas, bars)
+   Apply to SVG elements created by chart libs or custom D3.
+--------------------------------------------------------- */
+.chart-series--1 {
+    stroke: var(--chart-series-1-line);
+    fill: none;
+}
+
+.chart-series--2 {
+    stroke: var(--chart-series-2-line);
+    fill: none;
+}
+
+.chart-series--3 {
+    stroke: var(--chart-series-3-line);
+    fill: none;
+}
+
+.chart-series--4 {
+    stroke: var(--chart-series-4-line);
+    fill: none;
+}
+
+.chart-series--5 {
+    stroke: var(--chart-series-5-line);
+    fill: none;
+}
+
+.chart-series--6 {
+    stroke: var(--chart-series-6-line);
+    fill: none;
+}
+
+.chart-area--1 {
+    fill: var(--chart-series-1-soft);
+}
+
+.chart-area--2 {
+    fill: var(--chart-series-2-soft);
+}
+
+.chart-area--3 {
+    fill: var(--chart-series-3-soft);
+}
+
+.chart-area--4 {
+    fill: var(--chart-series-4-soft);
+}
+
+.chart-area--5 {
+    fill: var(--chart-series-5-soft);
+}
+
+.chart-area--6 {
+    fill: var(--chart-series-6-soft);
+}
+
+.chart-bar--1 {
+    background-color: var(--chart-series-1);
+    fill: var(--chart-series-1);
+}
+
+.chart-bar--2 {
+    background-color: var(--chart-series-2);
+    fill: var(--chart-series-2);
+}
+
+.chart-bar--3 {
+    background-color: var(--chart-series-3);
+    fill: var(--chart-series-3);
+}
+
+.chart-bar--4 {
+    background-color: var(--chart-series-4);
+    fill: var(--chart-series-4);
+}
+
+.chart-bar--5 {
+    background-color: var(--chart-series-5);
+    fill: var(--chart-series-5);
+}
+
+.chart-bar--6 {
+    background-color: var(--chart-series-6);
+    fill: var(--chart-series-6);
+}
+
+.chart-bar--positive {
+    background-color: var(--chart-series-positive);
+    fill: var(--chart-series-positive);
+}
+
+.chart-bar--negative {
+    background-color: var(--chart-series-negative);
+    fill: var(--chart-series-negative);
+}
+
+.chart-bar--neutral {
+    background-color: var(--chart-series-neutral);
+    fill: var(--chart-series-neutral);
+}
+
+/* ---------------------------------------------------------
+   8. EMPTY / ERROR / LOADING STATES
+--------------------------------------------------------- */
+.chart--empty .chart__canvas,
+.chart--error .chart__canvas,
+.chart--loading .chart__canvas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    text-align: center;
+    max-width: 26rem;
+}
+
+.chart-state__icon {
+    width: var(--icon-lg);
+    height: var(--icon-lg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-soft);
+}
+
+.chart-state__title {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+.chart-state__body {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.chart--empty .chart-state__icon {
+    color: var(--color-text-soft);
+}
+
+.chart--error .chart-state__icon {
+    color: var(--color-danger);
+}
+
+.chart--loading .chart__canvas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-md);
+    background-image: var(--chart-loading-stripes);
+    background-size: 200% 100%;
+    opacity: 0.55;
+    animation: chart-loading-shimmer 1.4s infinite;
+}
+
+/* ---------------------------------------------------------
+   9. RESPONSIVE TUNING
+--------------------------------------------------------- */
+@media (max-width: 768px) {
+    .chart {
+        padding: var(--chart-padding-sm);
+        min-height: var(--chart-min-height-sm);
+    }
+
+    .chart__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2);
+    }
+
+    .chart__actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .chart__legend {
+        width: 100%;
+    }
+}
+
+/* ---------------------------------------------------------
+   10. ANIMATIONS
+--------------------------------------------------------- */
+@keyframes chart-loading-shimmer {
+    0% {
+        background-position: -150% 0;
+    }
+    100% {
+        background-position: 150% 0;
+    }
+}

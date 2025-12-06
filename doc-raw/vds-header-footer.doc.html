@@ -1,0 +1,780 @@
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section">
+    <div class="section__inner">
+        <h1 class="">Header &amp; Footer</h1>
+        <p class="leading-relaxed text-soft">
+            Site-wide chrome: executive header, sticky elevation, integrated navigation, and
+            structured footers for legal, multi-column and compact layouts — all theme-driven.
+        </p>
+        <p class="text-sm text-muted">
+            Source: <code>header-footer.css</code> · Depends on
+            <code>base.css</code>,
+            <code>typography.css</code>,
+            <code>navigation.css</code>,
+            theme tokens in <code>/themes/*.css</code>.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Installation & dependencies</h2>
+                <p class="doc-block__summary">
+                    The header/footer frame sits on top of base layout, typography and navigation
+                    primitives. Load CSS in this order to avoid override conflicts.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <ul>
+                        <li><code>base.css</code> — reset, tokens, z-index hooks.</li>
+                        <li><code>layout.css</code> — page layout container helpers.</li>
+                        <li><code>typography.css</code> — type scale.</li>
+                        <li><code>navigation.css</code> — nav/tabs/pagination primitives.</li>
+                        <li><code>header-footer.css</code> — this subsystem.</li>
+                        <li>One active theme: <code>themes/slate.css</code>,
+                            <code>themes/navy.css</code>,
+                            <code>themes/carbon.css</code>.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="../css/base.css"&gt;
+&lt;link rel="stylesheet" href="../css/layout.css"&gt;
+&lt;link rel="stylesheet" href="../css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="../css/themes/navy.css"&gt;
+&lt;link rel="stylesheet" href="../css/themes/carbon.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/navigation.css"&gt;
+&lt;link rel="stylesheet" href="../css/header-footer.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/icons.css"&gt;
+&lt;link rel="stylesheet" href="../css/buttons.css"&gt;
+&lt;link rel="stylesheet" href="../css/content-blocks.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/doc-block.css"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Structural model</h2>
+                <p class="doc-block__summary">
+                    Header and footer are thin chrome layers around the content column. Both share
+                    the same token-driven layout principles and theme-bound colours.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div>
+                                <h3 class="text-sm">Header primitives</h3>
+                                <ul class="text-sm">
+                                    <li><code>.header</code> — global header container.</li>
+                                    <li><code>.header--sticky</code> — fixed to top, with background + border.</li>
+                                    <li><code>.header--elevated</code> — additional shadow/elevation.</li>
+                                    <li><code>.header__inner</code> — flex row for left/right regions.</li>
+                                    <li><code>.header__toggle</code> — mobile menu toggle button.</li>
+                                    <li><code>.header--nav-open .nav</code> — mobile nav expansion.</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-sm">Footer primitives</h3>
+                                <ul class="text-sm">
+                                    <li><code>.footer</code> — global footer container.</li>
+                                    <li><code>.footer__inner</code> — content layout row/stack.</li>
+                                    <li><code>.footer__col</code> — column blocks.</li>
+                                    <li><code>.footer__col-title</code> — column label text.</li>
+                                    <li><code>.footer__link</code> — footer navigation links.</li>
+                                    <li><code>.footer__meta</code> — legal / meta text block.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;header class="header header--sticky"&gt;
+    &lt;div class="header__inner"&gt;
+        &lt;div&gt;Logo / brand&lt;/div&gt;
+        &lt;div&gt;Nav / actions&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;main&gt;...&lt;/main&gt;
+
+&lt;footer class="footer"&gt;
+    &lt;div class="footer__inner"&gt;
+        &lt;div class="footer__col"&gt;...&lt;/div&gt;
+        &lt;div class="footer__col"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Header anatomy</h2>
+                <p class="doc-block__summary">
+                    Canonical header: logo/brand on the left, primary navigation and actions on the
+                    right, with optional sticky and elevated styles.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <header class="header">
+                                <div class="header__inner">
+                                    <a href="#" class="logo">
+                                        <span class="text-sm text-mono">VLAH</span>
+                                    </a>
+                                    <nav class="nav" aria-label="Main">
+                                        <a class="nav__link" href="#">Home</a>
+                                        <a class="nav__link nav__link--active" href="#">Docs</a>
+                                        <a class="nav__link" href="#">Components</a>
+                                        <a class="nav__link" href="#">Changelog</a>
+                                    </nav>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;header class="header"&gt;
+    &lt;div class="header__inner"&gt;
+        &lt;a href="/" class="logo" aria-label="Vlah Group"&gt;
+            VLAH
+        &lt;/a&gt;
+        &lt;nav class="nav" aria-label="Primary"&gt;
+            &lt;a class="nav__link nav__link--active" href="#"&gt;Docs&lt;/a&gt;
+            &lt;a class="nav__link" href="#"&gt;Components&lt;/a&gt;
+            &lt;a class="nav__link" href="#"&gt;Changelog&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Sticky & elevated header</h2>
+                <p class="doc-block__summary">
+                    Sticky headers pin to the top of the viewport. Elevation adds subtle shadow to
+                    distinguish page chrome from content.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <header class="header header--sticky header--elevated">
+                                <div class="header__inner">
+                                    <span class="text-sm text-muted">Sticky header</span>
+                                    <nav class="nav" aria-label="Example sticky nav">
+                                        <a class="nav__link" href="#">Section 1</a>
+                                        <a class="nav__link" href="#">Section 2</a>
+                                    </nav>
+                                </div>
+                            </header>
+                            <p class="text-xs text-muted">
+                                In a real page, <code>.header--sticky</code> uses
+                                <code>position: sticky</code> or
+                                <code>fixed</code> (per CSS) pinned to the top.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;header class="header header--sticky header--elevated"&gt;
+    &lt;div class="header__inner"&gt;...&lt;/div&gt;
+&lt;/header&gt;
+
+/* header-footer.css
+.header {
+    width: 100%;
+    background-color: var(--color-header-bg);
+    border-bottom: var(--border-width) solid var(--color-header-border);
+    position: relative;
+    z-index: var(--z-header);
+}
+
+.header--sticky {
+    position: sticky; /* or fixed per implementation */
+    top: 0;
+}
+
+.header--elevated {
+    box-shadow: var(--shadow-header);
+}
+*/
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Mobile header &amp; nav toggle</h2>
+                <p class="doc-block__summary">
+                    The header exposes a CSS-only nav toggle hook. A single class on
+                    <code>.header</code> controls whether the navigation is visible on
+                    small viewports.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <header class="header header--sticky header--nav-open">
+                                <div class="header__inner">
+                                    <button class="header__toggle" type="button" aria-label="Toggle navigation">
+                                        <span class="icon icon--menu"></span>
+                                    </button>
+                                    <span class="text-sm text-mono">
+                                                Brand
+                                            </span>
+                                    <nav class="nav" aria-label="Primary (desktop)">
+                                        <a class="nav__link" href="#">Home</a>
+                                        <a class="nav__link nav__link--active" href="#">Docs</a>
+                                    </nav>
+                                </div>
+
+                                <nav class="nav nav--mobile" aria-label="Primary (mobile)">
+                                    <a class="nav__link" href="#">Home</a>
+                                    <a class="nav__link nav__link--active" href="#">Docs</a>
+                                    <a class="nav__link" href="#">Components</a>
+                                </nav>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;header class="header"&gt;
+    &lt;div class="header__inner"&gt;
+        &lt;button class="header__toggle"
+                type="button"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="primary-nav-mobile"&gt;
+            &lt;span class="icon icon--menu"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;span class="text-sm text-mono"&gt;Brand&lt;/span&gt;
+        &lt;nav class="nav" aria-label="Primary"&gt;...&lt;/nav&gt;
+    &lt;/div&gt;
+
+    &lt;nav id="primary-nav-mobile"
+         class="nav nav--mobile"
+         aria-label="Primary"&gt;
+            &lt;a class="nav__link" href="#"&gt;Home&lt;/a&gt;
+            &lt;a class="nav__link nav__link--active" href="#"&gt;Docs&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+/* header-footer.css
+.header--nav-open .nav {
+    display: flex;
+    flex-direction: column;
+}
+.header--nav-open .nav__item {
+    ...
+}
+*/
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Skip-link &amp; access helpers</h2>
+                <p class="doc-block__summary">
+                    The header/footer layer includes a global skip-link pattern to jump straight to
+                    main content for keyboard and screen-reader users.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <p class="text-sm">
+                                Skip-links are visually hidden until focused, then presented clearly
+                                near the header.
+                            </p>
+                            <p class="text-xs text-muted">
+                                Header CSS defines <code>.skip-link</code> and
+                                <code>.skip-link:focus-visible</code> styles.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;body&gt;
+    &lt;a class="skip-link" href="#main"&gt;
+        Skip to main content
+    &lt;/a&gt;
+
+    &lt;header class="header"&gt;...&lt;/header&gt;
+    &lt;main id="main"&gt;...&lt;/main&gt;
+&lt;/body&gt;
+
+/* header-footer.css
+.skip-link {
+    position: absolute;
+    left: var(--space-4);
+    top: var(--space-4);
+    padding: var(--space-2) var(--space-3);
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+    transform: translateY(-200%);
+}
+.skip-link:focus-visible {
+    transform: translateY(0);
+}
+*/
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Footer anatomy — multi-column</h2>
+                <p class="doc-block__summary">
+                    Canonical site footer: multi-column layout with navigation links, support links
+                    and meta section.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <footer class="footer">
+                                <div class="footer__inner">
+                                    <div class="footer__col">
+                                        <div class="footer__col-title">Product</div>
+                                        <a class="footer__link" href="#">Overview</a>
+                                        <a class="footer__link" href="#">Components</a>
+                                        <a class="footer__link" href="#">Changelog</a>
+                                    </div>
+
+                                    <div class="footer__col">
+                                        <div class="footer__col-title">Company</div>
+                                        <a class="footer__link" href="#">About</a>
+                                        <a class="footer__link" href="#">Careers</a>
+                                        <a class="footer__link" href="#">Contact</a>
+                                    </div>
+
+                                    <div class="footer__col">
+                                        <div class="footer__col-title">Support</div>
+                                        <a class="footer__link" href="#">Docs</a>
+                                        <a class="footer__link" href="#">Status</a>
+                                        <a class="footer__link" href="#">Security</a>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;footer class="footer"&gt;
+    &lt;div class="footer__inner"&gt;
+
+        &lt;div class="footer__col"&gt;
+            &lt;div class="footer__col-title"&gt;Product&lt;/div&gt;
+            &lt;a class="footer__link" href="#"&gt;Overview&lt;/a&gt;
+            &lt;a class="footer__link" href="#"&gt;Components&lt;/a&gt;
+            &lt;a class="footer__link" href="#"&gt;Changelog&lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class="footer__col"&gt;
+            &lt;div class="footer__col-title"&gt;Company&lt;/div&gt;
+            &lt;a class="footer__link" href="#"&gt;About&lt;/a&gt;
+            &lt;a class="footer__link" href="#"&gt;Careers&lt;/a&gt;
+            &lt;a class="footer__link" href="#"&gt;Contact&lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class="footer__col"&gt;
+            &lt;div class="footer__col-title"&gt;Support&lt;/div&gt;
+            &lt;a class="footer__link" href="#"&gt;Docs&lt;/a&gt;
+            &lt;a class="footer__link" href="#"&gt;Status&lt;/a&gt;
+            &lt;a class="footer__link" href="#"&gt;Security&lt;/a&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/footer&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Legal footer variant</h2>
+                <p class="doc-block__summary">
+                    A compact legal/meta footer can be used alone or stacked under a multi-column
+                    footer for complex sites.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <footer class="footer">
+                                <div class="footer__inner">
+                                    <div class="footer__meta">
+                                        <p class="text-xs">
+                                            © 2025 Vlah Group Ltd. All rights reserved.
+                                        </p>
+                                        <p class="text-xs text-muted">
+                                            <a href="#">Privacy</a> · <a href="#">Terms</a> ·
+                                            <a href="#">Cookies</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;footer class="footer"&gt;
+    &lt;div class="footer__inner"&gt;
+        &lt;div class="footer__meta"&gt;
+            &lt;p&gt;© 2025 Vlah Group Ltd. All rights reserved.&lt;/p&gt;
+            &lt;p&gt;
+                &lt;a href="#"&gt;Privacy&lt;/a&gt; ·
+                &lt;a href="#"&gt;Terms&lt;/a&gt; ·
+                &lt;a href="#"&gt;Cookies&lt;/a&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+/* header-footer.css
+.footer__meta,
+.footer__meta p,
+.footer__meta a,
+.footer__meta span,
+.footer__meta small {
+    color: var(--color-footer-text);
+}
+.footer__meta a:focus-visible {
+    outline: var(--border-width) solid var(--focus-ring-color);
+    outline-offset: var(--space-1);
+}
+*/
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Compact footer variant</h2>
+                <p class="doc-block__summary">
+                    A minimal, single-row footer for app-like surfaces where vertical space is
+                    constrained.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <footer class="footer">
+                                <div class="footer__inner">
+                                    <div class="text-xs text-muted">
+                                        © 2025 Vlah Group Ltd.
+                                    </div>
+                                    <div class="text-xs">
+                                        <a class="footer__link" href="#">Status</a>
+                                        <a class="footer__link" href="#">Docs</a>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;footer class="footer"&gt;
+    &lt;div class="footer__inner"&gt;
+        &lt;div class="text-xs text-muted"&gt;
+            © 2025 Vlah Group Ltd.
+        &lt;/div&gt;
+        &lt;div class="text-xs"&gt;
+            &lt;a class="footer__link" href="#"&gt;Status&lt;/a&gt;
+            &lt;a class="footer__link" href="#"&gt;Docs&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Footer + logo / identity</h2>
+                <p class="doc-block__summary">
+                    Footer supports logo placement aligned with the identity system. Colour handling
+                    is fully delegated to theme variables.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <footer class="footer">
+                                <div class="footer__inner">
+                                    <div class="footer__col">
+                                        <a href="#" class="logo" aria-label="Vlah Group">
+                                            <span class="text-sm text-mono">VLAH</span>
+                                        </a>
+                                        <div class="footer__meta">
+                                                <span class="text-xs text-muted">
+                                                    Complex systems, simple surfaces.
+                                                </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="footer__col">
+                                        <div class="footer__col-title">Links</div>
+                                        <a class="footer__link" href="#">Docs</a>
+                                        <a class="footer__link" href="#">Source</a>
+                                        <a class="footer__link" href="#">Contact</a>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;footer class="footer"&gt;
+    &lt;div class="footer__inner"&gt;
+
+        &lt;div class="footer__col"&gt;
+            &lt;a href="/" class="logo" aria-label="Vlah Group"&gt;
+                VLAH
+            &lt;/a&gt;
+            &lt;div class="footer__meta"&gt;
+                &lt;span&gt;Complex systems, simple surfaces.&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="footer__col"&gt;
+            &lt;div class="footer__col-title"&gt;Links&lt;/div&gt;
+            &lt;a class="footer__link" href="#"&gt;Docs&lt;/a&gt;
+            &lt;a class="footer__link" href="#"&gt;Source&lt;/a&gt;
+            &lt;a class="footer__link" href="#"&gt;Contact&lt;/a&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+/* header-footer.css (excerpt)
+.footer .logo svg {
+    /* colours bound via theme tokens (identity layer) */
+}
+*/
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-header-footer class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Header and footer surfaces expose explicit landmarks, keyboard-first navigation,
+                    theme-driven contrast guarantees, and mobile-safe toggle mechanics. These rules
+                    ensure predictable behaviour across all layouts, themes and viewport ranges.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use semantic landmarks:
+                            <code>&lt;header role="banner"&gt;</code>,
+                            <code>&lt;main role="main"&gt;</code>,
+                            <code>&lt;footer role="contentinfo"&gt;</code>.
+                        </li>
+
+                        <li>
+                            Keep the skip-link active and focusable — the
+                            <code>.skip-link</code> pattern is part of the system and must
+                            resolve to <code>#main</code> or an equivalent main landmark.
+                        </li>
+
+                        <li>
+                            Provide <code>aria-label</code> and
+                            <code>aria-controls</code> on
+                            <code>.header__toggle</code> for mobile nav expansion; update
+                            <code>aria-expanded</code> when controlling via JS.
+                        </li>
+
+                        <li>
+                            Use <code>:focus-visible</code> outlines from theme tokens on
+                            header and footer links, navigation items, and toggles.
+                        </li>
+
+                        <li>
+                            Ensure navigation is operable entirely via keyboard:
+                            Tab → navigate items, Enter/Space → activate, Esc → close mobile menu (if using JS).
+                        </li>
+
+                        <li>
+                            Keep contrast at theme-safe levels via token-bound colours:
+                            <code>--color-header-bg</code>,
+                            <code>--color-footer-text</code>,
+                            <code>--color-accent</code>,
+                            <code>--focus-ring-color</code>.
+                        </li>
+
+                        <li>
+                            Maintain predictable reading order — header → skip-link → nav →
+                            content → footer. Avoid DOM reordering for visual layouts.
+                        </li>
+
+                        <li>
+                            Expose active navigation state via:
+                            <code>.nav__item--active</code> AND (optionally)
+                            <code>aria-current="page"</code> for screen readers.
+                        </li>
+
+                        <li>
+                            Collapse footer columns responsively:
+                            the system already defines a mobile breakpoint at 768px; do not override with fixed px.
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t remove <code>:focus-visible</code> outlines from links or
+                            toggles — accessibility fails and violates system rules.
+                        </li>
+
+                        <li>
+                            Don’t use custom colours, shadows or borders inside
+                            <code>.header</code> or <code>.footer</code>.
+                            These surfaces must remain 100% theme-controlled.
+                        </li>
+
+                        <li>
+                            Don’t hide navigation items at mobile breakpoints via <code>display:none</code>;
+                            rely on the <code>.header--nav-open</code> mechanism.
+                        </li>
+
+                        <li>
+                            Don’t place oversized interactive widgets in the header — maintain header
+                            height via <code>--header-height</code> and alignment rules.
+                        </li>
+
+                        <li>
+                            Don’t duplicate the same navigation tree across desktop/mobile without
+                            ensuring consistent labelling and ordering.
+                        </li>
+
+                        <li>
+                            Don’t inject role overrides (e.g. <code>role="navigation"</code>) on individual
+                            nav links; apply ARIA at container level only.
+                        </li>
+
+                        <li>
+                            Don’t compress footer link hit-areas below theme token spacing; maintain
+                            vertical rhythm and touch-safe padding.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Provide real landmarks: header (banner), main, footer (contentinfo).
+2. Keep .skip-link present, focusable, and pointing to #main.
+3. Header toggle: aria-label, aria-controls, aria-expanded (JS-updated).
+4. Preserve theme-driven focus-visible and contrast tokens everywhere.
+5. Use .nav__item--active + aria-current="page" for active nav state.
+6. Mobile nav: toggle via .header--nav-open (CSS) or aria-expanded (JS).
+7. Footer: maintain column/stack behaviour at 768px breakpoint.
+8. No custom colours, borders, or shadows; theme owns all visual tokens.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
