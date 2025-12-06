@@ -80,7 +80,8 @@
 }
 
 .typography p {
-    margin-block: var(--space-3);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-3);
 }
 
 .typography strong {
@@ -94,8 +95,10 @@
 .typography code {
     font-family: var(--font-family-mono), monospace;
     font-size: 0.875em;
-    padding-inline: var(--space-1);
-    padding-block: 0.1em;
+    padding-left: var(--space-1);
+    padding-right: var(--space-1);
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
     border-radius: var(--radius-sm);
     background: var(--code-inline-bg);
     border: 1px solid var(--code-inline-border);
@@ -117,35 +120,43 @@
     padding: var(--space-4);
     border-radius: var(--radius-md);
     overflow-x: auto;
-    margin-block: var(--space-4);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
 }
 
 .typography pre code {
     background: none !important;
     border: none !important;
+}
+
+.typography pre code {
     padding: 0;
     border-radius: 0;
 }
 
 .typography ul,
 .typography ol {
-    margin-block: var(--space-3);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-3);
     padding-left: var(--space-6);
 }
 
 .typography li {
-    margin-block: var(--space-1);
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-1);
 }
 
 .typography ul ul,
 .typography ol ol,
 .typography ul ol,
 .typography ol ul {
-    margin-block: var(--space-1);
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-1);
 }
 
 .typography blockquote {
-    margin-block: var(--space-6);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-6);
     padding-left: var(--space-4);
     border-left: var(--blockquote-border-width) solid var(--blockquote-text);
     color: var(--color-text-muted);
@@ -153,7 +164,8 @@
 }
 
 .typography .pullquote {
-    margin-block: var(--space-8);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-8);
     padding: var(--space-4);
     border-left: var(--pullquote-border-width) solid var(--blockquote-border);
     font-size: var(--text-xl);
@@ -161,7 +173,8 @@
 }
 
 .typography figure {
-    margin-block: var(--space-6);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-6);
     text-align: center;
 }
 
@@ -179,7 +192,8 @@
 .typography table:not(.table) {
     width: 100%;
     border-collapse: collapse;
-    margin-block: var(--space-4);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
     font-size: var(--text-sm);
 }
 
@@ -234,5 +248,3 @@
     font-size: var(--text-xs);
     color: var(--color-text-muted);
 }
-
-/*# sourceMappingURL=typography.css.map */

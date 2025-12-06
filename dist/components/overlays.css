@@ -19,6 +19,7 @@
 /* ---------------------------------------------------------
    1. OVERLAYS TOKEN DEFINITIONS
 --------------------------------------------------------- */
+
 [data-vds-overlay],
 .vds-overlay {
     --modal-width-sm: 26.25rem;
@@ -33,6 +34,7 @@
 /* ---------------------------------------------------------
    2. OVERLAY BACKDROP
 --------------------------------------------------------- */
+
 .backdrop {
     position: fixed;
     top: 0;
@@ -43,6 +45,8 @@
     background-color: var(--overlay-backdrop-default);
 
     backdrop-filter: none;
+
+    z-index: 80;
 
     z-index: var(--z-backdrop, 80);
 
@@ -66,6 +70,7 @@
 /* ---------------------------------------------------------
    3. BASE MODAL (NO ANIMATION)
 --------------------------------------------------------- */
+
 .modal {
     position: fixed;
     top: 0;
@@ -76,6 +81,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    z-index: 90;
 
     z-index: var(--z-modal, 90);
 
@@ -115,6 +122,7 @@
 /* ---------------------------------------------------------
    4. MODAL HEADER / BODY / FOOTER
 --------------------------------------------------------- */
+
 .modal__header {
     padding: var(--space-6) var(--space-8);
     border-bottom: 1px solid var(--color-border-subtle);
@@ -156,6 +164,7 @@
 /* ---------------------------------------------------------
    5. MODAL DENSITY VARIANTS
 --------------------------------------------------------- */
+
 .modal--a .modal__header,
 .modal--a .modal__footer {
     padding: var(--space-8) var(--space-10);
@@ -186,6 +195,7 @@
 /* ---------------------------------------------------------
    6. MODAL SIZES
 --------------------------------------------------------- */
+
 .modal--sm .modal__inner {
     max-width: var(--modal-width-sm);
 }
@@ -212,6 +222,7 @@
 /* ---------------------------------------------------------
    7. MOBILE FULL-SCREEN & BOTTOM-SHEET (NO ANIMATIONS)
 --------------------------------------------------------- */
+
 @media (max-width: 768px) {
 
     .modal--fullscreen-mobile .modal__inner {
@@ -241,6 +252,7 @@
 /* ---------------------------------------------------------
    8. MODAL STATES
 --------------------------------------------------------- */
+
 .modal--success .modal__header {
     border-bottom-color: var(--color-success);
     background-color: var(--color-success-soft);
@@ -268,13 +280,17 @@
 /* ---------------------------------------------------------
    9. LOADING OVERLAY (NO BLUR)
 --------------------------------------------------------- */
+
 .modal--loading .modal__inner {
     position: relative;
 }
 
 .modal--loading .modal__loader {
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
     backdrop-filter: none;
     background-color: var(--overlay-backdrop-loading);
@@ -296,6 +312,7 @@
 /* ---------------------------------------------------------
    10. DRAWERS (NO ANIMATIONS)
 --------------------------------------------------------- */
+
 .drawer {
     position: fixed;
     top: 0;
@@ -310,6 +327,8 @@
     border-right: 1px solid var(--color-border-subtle);
 
     box-shadow: var(--shadow-3);
+
+    z-index: 95;
 
     z-index: var(--z-drawer, 95);
 
@@ -355,6 +374,7 @@
 /* ---------------------------------------------------------
    11. INLINE OVERLAY PANEL
 --------------------------------------------------------- */
+
 .overlay-inline-container {
     position: relative;
 }
@@ -416,6 +436,7 @@
 /* ---------------------------------------------------------
    12. SPLIT MODAL
 --------------------------------------------------------- */
+
 .modal--split .modal__inner {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -442,6 +463,7 @@
 /* ---------------------------------------------------------
    13. OPTIONAL MODAL CHROME REMOVAL
 --------------------------------------------------------- */
+
 .modal--no-header .modal__header {
     display: none;
 }
@@ -453,21 +475,24 @@
 /* ---------------------------------------------------------
    14. STACKING LEVELS
 --------------------------------------------------------- */
+
 .modal--level-2 {
+    z-index: calc(90 + 10);
     z-index: calc(var(--z-modal, 90) + 10);
 }
 
 .modal--level-3 {
+    z-index: calc(90 + 20);
     z-index: calc(var(--z-modal, 90) + 20);
 }
 
 .backdrop--level-2 {
+    z-index: calc(80 + 10);
     z-index: calc(var(--z-backdrop, 80) + 10);
 }
 
 .backdrop--level-3 {
+    z-index: calc(80 + 20);
     z-index: calc(var(--z-backdrop, 80) + 20);
 }
 
-
-/*# sourceMappingURL=overlays.css.map */

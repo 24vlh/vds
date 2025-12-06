@@ -39,19 +39,26 @@
     "build:css:min": "npm run build:vds:min && npm run build:core:min && npm run build:identity:min && npm run build:components:min:tmp && npm run move:components:min && npm run build:themes:min:tmp && npm run move:themes:min",
     "build": "npm run clean && npm run build:css && npm run build:css:min && rimraf .tmp",
     "dev": "npm run build:css -- --watch",
-    "doc:serve": "node static/js/server.js"
+    "doc:serve": "node static/js/server.js",
+    "prepare": "husky"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/node": "^22.0.0",
     "autoprefixer": "^10.0.0",
     "cpy-cli": "^4.2.0",
     "cssnano": "^5.0.0",
     "express": "^5.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "postcss": "^8.0.0",
     "postcss-cli": "^9.0.0",
     "postcss-import": "^15.0.0",
     "postcss-preset-env": "^8.0.0",
     "rimraf": "^5.0.0"
+  },
+  "lint-staged": {
+    "src/**/*.css": [
+      "npm run build"
+    ]
   }
 }

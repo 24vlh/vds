@@ -22,6 +22,7 @@
 /* ---------------------------------------------------------
    1. DOC BLOCK TOKEN DEFINITIONS
 --------------------------------------------------------- */
+
 [data-vds-dock-block],
 .vds-dock-block {
     --doc-block-border: var(--color-border-subtle);
@@ -33,11 +34,13 @@
 /* ---------------------------------------------------------
    2. ROOT BLOCK
 --------------------------------------------------------- */
+
 .doc-block {
     display: flex;
     flex-direction: column;
     gap: var(--space-12);
-    padding-block: var(--space-14);
+    padding-top: var(--space-14);
+    padding-bottom: var(--space-14);
     border-bottom: 1px solid var(--color-border-subtle);
 }
 
@@ -70,6 +73,7 @@
 /* ---------------------------------------------------------
    3. HEADER
 --------------------------------------------------------- */
+
 .doc-block__header {
     display: flex;
     flex-direction: column;
@@ -100,19 +104,22 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    margin-block: var(--space-4);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
 }
 
 .doc-block__subsection {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
-    margin-block: var(--space-2);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
 }
 
 .doc-block__subsection--compact {
     gap: var(--space-1);
-    margin-block: var(--space-1_5);
+    margin-top: var(--space-1_5);
+    margin-bottom: var(--space-1_5);
 }
 
 .doc-block__description {
@@ -125,6 +132,7 @@
 /* ---------------------------------------------------------
    4. BODY
 --------------------------------------------------------- */
+
 .doc-block__body {
     display: flex;
     flex-direction: column;
@@ -142,6 +150,7 @@
 /* ---------------------------------------------------------
    5. PREVIEW AREA
 --------------------------------------------------------- */
+
 .doc-block__preview {
     position: relative;
     padding: var(--space-8);
@@ -182,21 +191,25 @@
 /* ---------------------------------------------------------
    6. SPLIT LAYOUTS
 --------------------------------------------------------- */
+
 .doc-block--split {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: var(--space-12);
     gap: var(--space-12);
 }
 
 .doc-block--split-left {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    grid-gap: var(--space-12);
     gap: var(--space-12);
 }
 
 .doc-block--split-right {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    grid-gap: var(--space-12);
     gap: var(--space-12);
 }
 
@@ -211,6 +224,7 @@
 /* ---------------------------------------------------------
    7. CODE BLOCK (core)
 --------------------------------------------------------- */
+
 .doc-block__code {
     position: relative;
 
@@ -242,6 +256,7 @@
 /* ---------------------------------------------------------
    8. CODE TOOLBAR
 --------------------------------------------------------- */
+
 .doc-block__toolbar {
     position: absolute;
     top: var(--space-2);
@@ -252,7 +267,8 @@
     justify-content: space-between;
     align-items: center;
     pointer-events: none;
-    padding-inline: var(--space-4);
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
 }
 
 .doc-block__lang {
@@ -283,7 +299,9 @@
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-sm);
     cursor: pointer;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
     transition: background-color var(--transition-fast);
     line-height: 1;
 }
@@ -302,6 +320,7 @@
 /* ---------------------------------------------------------
    9. COLLAPSIBLE VARIANT
 --------------------------------------------------------- */
+
 .doc-block--collapsed .doc-block__code {
     max-height: 12rem;
     overflow: hidden;
@@ -310,7 +329,10 @@
 .doc-block--collapsed .doc-block__code::after {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background: linear-gradient(
             to bottom,
             rgba(0, 0, 0, 0) 0%,
@@ -323,6 +345,7 @@
 /* ---------------------------------------------------------
    10. META
 --------------------------------------------------------- */
+
 .doc-block__meta {
     font-size: var(--text-xs);
     color: var(--color-text-muted);
@@ -344,11 +367,13 @@
 /* ---------------------------------------------------------
    11. RESPONSIVE TUNING
 --------------------------------------------------------- */
+
 @media (max-width: 768px) {
 
     .doc-block {
         gap: var(--space-10);
-        padding-block: var(--space-12);
+        padding-top: var(--space-12);
+        padding-bottom: var(--space-12);
     }
 
     .doc-block__title {
@@ -368,6 +393,7 @@
 /* ---------------------------------------------------------
    12. Syntax Highlighting
 --------------------------------------------------------- */
+
 .doc-block__code .token.keyword {
     color: var(--code-syntax-keyword);
 }
@@ -404,13 +430,14 @@
 /* ---------------------------------------------------------
    13. Line Numbered
 --------------------------------------------------------- */
+
 .doc-block__code--numbered {
     position: relative;
 }
 
 .doc-block__code--numbered code {
     counter-reset: line;
-    padding-inline-start: calc(var(--space-2) + 2ch);
+    padding-left: calc(var(--space-2) + 2ch);
 }
 
 .doc-block__code--numbered code > * {
@@ -422,21 +449,25 @@
 .doc-block__code--numbered code > *::before {
     content: counter(line);
     position: absolute;
-    inset-inline-start: calc(-1 * (var(--space-6) + 2ch));
+    left: calc(-1 * (var(--space-6) + 2ch));
     width: calc(var(--space-6) + 2ch);
     text-align: right;
-    padding-inline-end: var(--space-2);
+    padding-right: var(--space-2);
     color: var(--color-text-soft, var(--color-text-muted));
     font-size: var(--text-xxs, var(--text-xs));
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
 }
 
 /* ---------------------------------------------------------
    14. Compact Variant
 --------------------------------------------------------- */
+
 .doc-block--compact {
     gap: var(--space-6);
-    padding-block: var(--space-8);
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
 }
 
 .doc-block--compact .doc-block__title {
@@ -461,9 +492,11 @@
     <div class="doc-block__code">…new code…</div>
    </div>
 --------------------------------------------------------- */
+
 .doc-block--diff {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: var(--space-12);
     gap: var(--space-12);
 }
 
@@ -499,6 +532,7 @@
 /* ---------------------------------------------------------
    16. Copy on Select State
 --------------------------------------------------------- */
+
 .doc-block__code.is-copied {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
@@ -508,6 +542,7 @@
 /* ---------------------------------------------------------
    17. HEADER EXTENSIONS (eyebrow, pills, subtitle)
 --------------------------------------------------------- */
+
 .doc-block__eyebrow {
     font-size: var(--text-xxs);
     font-weight: var(--font-weight-semibold);
@@ -537,6 +572,7 @@
 /* ---------------------------------------------------------
    18. AUTHORING HELPERS (stack, columns, grid)
 --------------------------------------------------------- */
+
 .doc-block__stack-sm {
     display: flex;
     flex-direction: column;
@@ -558,12 +594,14 @@
 .doc-block__columns-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: var(--space-6);
     gap: var(--space-6);
 }
 
 .doc-block__columns-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--space-6);
     gap: var(--space-6);
 }
 
@@ -577,6 +615,7 @@
 /* ---------------------------------------------------------
    19. STEPS SYSTEM (tutorial / procedural)
 --------------------------------------------------------- */
+
 .doc-block__steps {
     counter-reset: step-counter;
     display: flex;
@@ -588,13 +627,13 @@
     list-style: none;
     counter-increment: step-counter;
     position: relative;
-    padding-inline-start: var(--space-8);
+    padding-left: var(--space-8);
 }
 
 .doc-block__steps > li::before {
     content: counter(step-counter);
     position: absolute;
-    inset-inline-start: 0;
+    left: 0;
     top: 0.1em;
     width: var(--space-6);
     height: var(--space-6);
@@ -611,18 +650,21 @@
 /* ---------------------------------------------------------
    20. CALLOUTS (highlight / do-dont)
 --------------------------------------------------------- */
+
 .doc-block__highlight {
     border-left: var(--doc-block-highlight-border-width) solid var(--color-accent);
     padding: var(--doc-block-highlight-pad);
     background: var(--color-surface-subtle);
     border-radius: var(--radius-md);
     color: var(--color-text);
-    margin-block: var(--space-3);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-3);
 }
 
 .doc-block__do-dont {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: var(--space-6);
     gap: var(--space-6);
 }
 
@@ -655,6 +697,7 @@
    21. SEMANTIC PRESETS (concept / pattern / api / example)
    - Visual density & emphasis only. Non-destructive.
 --------------------------------------------------------- */
+
 .doc-block--concept .doc-block__body {
     gap: var(--space-10);
 }
@@ -670,6 +713,7 @@
 .doc-block--example {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: var(--space-12);
     gap: var(--space-12);
 }
 
@@ -682,9 +726,10 @@
 /* ---------------------------------------------------------
    22. LINE NUMBERING - SOFT VARIANT
 --------------------------------------------------------- */
+
 .doc-block__code--numbered-soft code {
     counter-reset: line;
-    padding-inline-start: calc(var(--space-2) + 1.5ch);
+    padding-left: calc(var(--space-2) + 1.5ch);
 }
 
 .doc-block__code--numbered-soft code > * {
@@ -696,18 +741,21 @@
 .doc-block__code--numbered-soft code > *::before {
     content: counter(line);
     position: absolute;
-    inset-inline-start: calc(-1 * (var(--space-5) + 1.5ch));
+    left: calc(-1 * (var(--space-5) + 1.5ch));
     width: calc(var(--space-5) + 1.5ch);
     text-align: right;
-    padding-inline-end: var(--space-2);
+    padding-right: var(--space-2);
     color: var(--color-text-soft);
     font-size: var(--text-xxs);
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
 }
 
 /* ---------------------------------------------------------
    23. COLLAPSE / EXPAND HOOKS (additive)
 --------------------------------------------------------- */
+
 .doc-block--expanded .doc-block__code {
     max-height: none;
 }
@@ -725,11 +773,10 @@
 /* ---------------------------------------------------------
    24. REDUCED MOTION (doc-block scoped)
 --------------------------------------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
     .doc-block__action,
     .doc-block__code.is-copied {
         transition: none !important;
     }
 }
-
-/*# sourceMappingURL=doc-block.css.map */

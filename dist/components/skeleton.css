@@ -18,6 +18,7 @@
 /* ---------------------------------------------------------
    1. SKELETON TOKEN DEFINITIONS
 --------------------------------------------------------- */
+
 [data-vds-skeleton],
 .vds-skeleton {
     --skeleton-line-height: 1rem;
@@ -26,6 +27,7 @@
 /* ---------------------------------------------------------
    2. SHIMMER ANIMATION (Shared with forms)
 --------------------------------------------------------- */
+
 @keyframes vds-skeleton-shimmer {
     0% {
         transform: translateX(-150%);
@@ -38,6 +40,7 @@
 /* ---------------------------------------------------------
    3. BASE SKELETON
 --------------------------------------------------------- */
+
 .skeleton {
     position: relative;
     display: block;
@@ -54,7 +57,10 @@
 .skeleton::after {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
     transform: translateX(-150%);
     background: linear-gradient(
@@ -99,6 +105,7 @@
 /* ---------------------------------------------------------
    4. SKELETON LINE (Text simulation)
 --------------------------------------------------------- */
+
 .skeleton-line {
     display: block;
     width: 100%;
@@ -115,7 +122,10 @@
 .skeleton-line::after {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     transform: translateX(-150%);
     background: linear-gradient(
             90deg,
@@ -157,6 +167,7 @@
 /* ---------------------------------------------------------
    5. SKELETON AVATAR
 --------------------------------------------------------- */
+
 .skeleton-avatar {
     display: inline-block;
 
@@ -189,7 +200,10 @@
 .skeleton-avatar::after {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     transform: translateX(-150%);
     background: linear-gradient(
             90deg,
@@ -203,6 +217,7 @@
 /* ---------------------------------------------------------
    6. SKELETON BLOCK (Media / Images)
 --------------------------------------------------------- */
+
 .skeleton-block {
     width: 100%;
     background-color: var(--color-muted-bg);
@@ -242,7 +257,10 @@
 .skeleton-block::after {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     transform: translateX(-150%);
     background: linear-gradient(
             90deg,
@@ -256,6 +274,7 @@
 /* ---------------------------------------------------------
    7. SKELETON CARD (Composite pattern)
 --------------------------------------------------------- */
+
 .skeleton-card {
     display: flex;
     flex-direction: column;
@@ -294,6 +313,7 @@
 /* ---------------------------------------------------------
    8. SKELETON ROW (Table loading)
 --------------------------------------------------------- */
+
 .skeleton-row td {
     padding: var(--space-3) var(--space-4);
 }
@@ -309,6 +329,7 @@
 /* ---------------------------------------------------------
    9. SKELETON ITEM (List items)
 --------------------------------------------------------- */
+
 .skeleton-item {
     display: flex;
     align-items: center;
@@ -329,6 +350,7 @@
 /* ---------------------------------------------------------
    10. COMPOSITION HELPERS
 --------------------------------------------------------- */
+
 .skeleton-stack {
     display: flex;
     flex-direction: column;
@@ -352,6 +374,7 @@
 /* ---------------------------------------------------------
    11. REDUCED MOTION HANDLING
 --------------------------------------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
     .skeleton::after,
     .skeleton-line::after,
@@ -360,5 +383,3 @@
         animation: none !important;
     }
 }
-
-/*# sourceMappingURL=skeleton.css.map */

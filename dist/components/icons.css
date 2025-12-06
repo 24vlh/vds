@@ -20,6 +20,7 @@
 /* ---------------------------------------------------------
    1. BASE ICON (INLINE SVG)
 --------------------------------------------------------- */
+
 .icon {
     display: inline-block;
     width: var(--icon-md);
@@ -70,6 +71,7 @@
      - used together with .icon
      - colour driven by currentColor
 --------------------------------------------------------- */
+
 .icon--mask {
     background-color: currentColor;
     mask-mode: luminance;
@@ -93,6 +95,7 @@
    3. CORE STATE ICONS (GLYPHS)
    Usage: <span class="icon icon--mask icon--STATE"></span>
 --------------------------------------------------------- */
+
 .icon--info {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7' fill='white'/%3E%3Ccircle cx='8' cy='8' r='5.8' fill='black'/%3E%3Crect x='7.4' y='7.0' width='1.2' height='3.5' fill='white'/%3E%3Ccircle cx='8' cy='5.0' r='0.70' fill='white'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7' fill='white'/%3E%3Ccircle cx='8' cy='8' r='5.8' fill='black'/%3E%3Crect x='7.4' y='7.0' width='1.2' height='3.5' fill='white'/%3E%3Ccircle cx='8' cy='5.0' r='0.70' fill='white'/%3E%3C/svg%3E");
@@ -146,6 +149,7 @@
 /* ---------------------------------------------------------
    4. GENERAL UI ICONS (GLYPHS)
 --------------------------------------------------------- */
+
 .icon--chevron-left {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='10 3 5 8 10 13'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='10 3 5 8 10 13'/%3E%3C/svg%3E");
@@ -389,6 +393,7 @@
 /* ---------------------------------------------------------
    5. LOADER ICONS (GLYPHS ONLY)
 --------------------------------------------------------- */
+
 .icon--spinner {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M8 1.5a6.5 6.5 0 016.5 6.5h-2A4.5 4.5 0 008 3.5v-2z'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M8 1.5a6.5 6.5 0 016.5 6.5h-2A4.5 4.5 0 008 3.5v-2z'/%3E%3C/svg%3E");
@@ -407,6 +412,7 @@
 /* ---------------------------------------------------------
    5.1 MONEY
 --------------------------------------------------------- */
+
 .icon--money {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='4' width='12' height='8' rx='1.5' fill='white'/%3E%3Ccircle cx='8' cy='8' r='2.2' fill='white'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='4' width='12' height='8' rx='1.5' fill='white'/%3E%3Ccircle cx='8' cy='8' r='2.2' fill='white'/%3E%3C/svg%3E");
@@ -420,6 +426,7 @@
 /* ---------------------------------------------------------
    5.2 STATUS
 --------------------------------------------------------- */
+
 .icon--check {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='3 8 7 12 13 4' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='3 8 7 12 13 4' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -463,6 +470,7 @@
 /* ---------------------------------------------------------
    5.3 EMAIL
 --------------------------------------------------------- */
+
 .icon--email {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M4 4 H20 A2 2 0 0 1 22 6 V18 A2 2 0 0 1 20 20 H4 A2 2 0 0 1 2 18 V6 A2 2 0 0 1 4 4 Z M4.7 6 L12 12 L19.3 6 H4.7 Z M12 14 L4 7.5 V17.3 C4 17.7 4.3 18 4.7 18 H19.3 C19.7 18 20 17.7 20 17.3 V7.5 L12 14 Z'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M4 4 H20 A2 2 0 0 1 22 6 V18 A2 2 0 0 1 20 20 H4 A2 2 0 0 1 2 18 V6 A2 2 0 0 1 4 4 Z M4.7 6 L12 12 L19.3 6 H4.7 Z M12 14 L4 7.5 V17.3 C4 17.7 4.3 18 4.7 18 H19.3 C19.7 18 20 17.7 20 17.3 V7.5 L12 14 Z'/%3E%3C/svg%3E");
@@ -496,6 +504,7 @@
 /* ---------------------------------------------------------
    5A. LOADER ANIMATION - ROTATION (SPINNER)
 --------------------------------------------------------- */
+
 @keyframes icon-spin {
     from {
         transform: rotate(0deg);
@@ -512,6 +521,7 @@
 /* ---------------------------------------------------------
    5B. LOADER ANIMATION - PULSE (DOT / icon--pulse)
 --------------------------------------------------------- */
+
 @keyframes icon-pulse {
     0% {
         transform: scale(1);
@@ -534,6 +544,7 @@
 /* ---------------------------------------------------------
    5C. UNIFIED LOADER SYSTEM
 --------------------------------------------------------- */
+
 .icon--loader.icon--spinner,
 .icon--loader.icon--spinner-dots {
     animation: icon-spin 0.85s linear infinite;
@@ -564,6 +575,7 @@
 /* ---------------------------------------------------------
    6. ICON CONTAINERS
 --------------------------------------------------------- */
+
 .icon-container {
     display: inline-flex;
     align-items: center;
@@ -653,6 +665,7 @@
 /* ---------------------------------------------------------
    7. ICON COLOUR UTILITIES
 --------------------------------------------------------- */
+
 .icon-color--accent {
     color: var(--color-accent);
 }
@@ -696,6 +709,7 @@
 /* ---------------------------------------------------------
    8. ICON IN BUTTONS
 --------------------------------------------------------- */
+
 .button .icon,
 .button--icon .icon {
     width: var(--icon-sm);
@@ -733,6 +747,7 @@
 /* ---------------------------------------------------------
    9. ICON BADGES (NOTIFICATION DOTS)
 --------------------------------------------------------- */
+
 .icon-badge {
     position: relative;
     display: inline-flex;
@@ -778,6 +793,7 @@
 /* ---------------------------------------------------------
    10. ICON DENSITY LAYERS (A/B/C)
 --------------------------------------------------------- */
+
 .icon--a {
     width: var(--icon-lg);
     height: var(--icon-lg);
@@ -813,6 +829,7 @@
 /* ---------------------------------------------------------
    11. AUTO-CONTRAST ON DARK/LIGHT SURFACES
 --------------------------------------------------------- */
+
 .surface-on-dark .icon,
 .bg-dark .icon {
     color: var(--color-text-on-strong);
@@ -838,6 +855,7 @@
 /* ---------------------------------------------------------
    12. INTEGRATION WITH OTHER COMPONENTS
 --------------------------------------------------------- */
+
 .list-group__icon,
 .media__icon svg,
 .steps__bullet svg,
@@ -863,6 +881,7 @@
 /* ---------------------------------------------------------
    13. ICON UTILITIES
 --------------------------------------------------------- */
+
 .icon--rotate-90 {
     transform: rotate(90deg);
 }
@@ -916,5 +935,3 @@
     opacity: 0.4;
     pointer-events: none;
 }
-
-/*# sourceMappingURL=icons.css.map */

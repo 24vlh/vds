@@ -24,6 +24,7 @@
 /* ---------------------------------------------------------
    1. ROOT IDENTITY TOKEN DEFINITIONS
 --------------------------------------------------------- */
+
 [data-vds-identity],
 .vds-identity {
     --logo-stroke-primary: 2.75;
@@ -45,12 +46,14 @@
    2. BASE LOGO ARCHITECTURE
    Targeting inline SVG: <svg class="logo ...>
 --------------------------------------------------------- */
+
 .logo {
     display: inline-block;
     line-height: 1;
     vertical-align: middle;
     font-size: 1rem;
     padding: calc(var(--logo-clearspace) * 1em);
+    color: currentColor;
     color: var(--color-logo-ink, currentColor);
     height: var(--logo-size-sm);
     width: auto;
@@ -58,7 +61,14 @@
 }
 
 .logo-wordmark {
+    fill: currentColor;
     fill: var(--color-logo-ink, currentColor);
+}
+
+.logo-frame,
+.logo-rail,
+.logo-chevron {
+    fill: none !important;
 }
 
 .logo-frame,
@@ -68,15 +78,16 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
-    fill: none !important;
 }
 
 .logo-frame,
 .logo-rail {
+    stroke: currentColor;
     stroke: var(--color-logo-ink, currentColor);
 }
 
 .logo-chevron {
+    stroke: currentColor;
     stroke: var(--color-logo-accent, currentColor);
 }
 
@@ -92,6 +103,7 @@
 
 .logo-text-primary,
 .logo-text-secondary {
+    fill: currentColor;
     fill: var(--color-logo-ink, currentColor);
     font-family: var(--font-family-sans), sans-serif;
 }
@@ -99,6 +111,7 @@
 /* ---------------------------------------------------------
    3. VARIANTS
 --------------------------------------------------------- */
+
 .logo--mono .logo-frame,
 .logo--mono .logo-rail,
 .logo--mono .logo-chevron {
@@ -150,6 +163,7 @@
 /* ---------------------------------------------------------
    4. SIZING & LAYOUT
 --------------------------------------------------------- */
+
 .logo--horizontal {
     min-height: var(--logo-min-horizontal);
 }
@@ -193,7 +207,8 @@
 }
 
 .logo--center {
-    margin-inline: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .logo--left {
@@ -207,6 +222,7 @@
 /* ---------------------------------------------------------
    5. LOGO COLOR MODE UTILITIES
 --------------------------------------------------------- */
+
 .logo--ink svg .logo-frame,
 .logo--ink svg .logo-rail {
     stroke: var(--color-logo-ink);
@@ -228,6 +244,7 @@
 /* ---------------------------------------------------------
    6. LOGO CLEAR SPACE UTILITIES
 --------------------------------------------------------- */
+
 .logo--pad-xs {
     padding: var(--space-2);
 }
@@ -247,5 +264,3 @@
 .logo--pad-xl {
     padding: var(--space-8);
 }
-
-/*# sourceMappingURL=identity.css.map */

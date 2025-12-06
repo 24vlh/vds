@@ -22,6 +22,7 @@
 /* ---------------------------------------------------------
    1. FOUNDATION / RESET
 --------------------------------------------------------- */
+
 [data-vds-authoring],
 .vds-authoring {
     --highlight-border-width: var(--border-width-strong);
@@ -42,8 +43,10 @@
 /* ---------------------------------------------------------
     2. ADMONITION SYSTEM (GitHub-style)
 --------------------------------------------------------- */
+
 .admonition {
-    margin-block: var(--space-4);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
     padding: var(--admonition-pad-y) var(--admonition-pad-x);
 
     display: flex;
@@ -82,13 +85,16 @@
 }
 
 .admonition--compact {
-    padding-block: var(--space-2);
-    padding-inline: var(--space-3);
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
 }
 
 /* ---------------------------------------------------------
    2.1 ADMONITION VARIANTS
 --------------------------------------------------------- */
+
 .admonition--note,
 .admonition--info {
     background-color: var(--semantic-info-bg);
@@ -119,6 +125,7 @@
 /* ---------------------------------------------------------
    3. MDX / MARKDOWN CALLOUTS
 --------------------------------------------------------- */
+
 .md-note,
 .md-info,
 .md-tip,
@@ -126,7 +133,8 @@
 .md-warning,
 .md-danger,
 .md-important {
-    margin-block: var(--space-4);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
     padding: var(--space-3) var(--space-4);
     border-radius: var(--radius-md);
     border-left: var(--highlight-border-width) solid currentColor;
@@ -160,9 +168,11 @@
 /* ---------------------------------------------------------
    4. HEADING ANCHORS (Robust)
 --------------------------------------------------------- */
+
 .heading-anchor {
     margin-left: var(--space-1);
     font-size: 0.8em;
+    -webkit-text-decoration: none;
     text-decoration: none;
     opacity: 0;
     color: var(--color-text-soft);
@@ -191,10 +201,12 @@ h6:focus-within .heading-anchor {
 /* ---------------------------------------------------------
    5. FOOTNOTES
 --------------------------------------------------------- */
+
 .fn-ref {
     font-size: var(--footnote-size);
     vertical-align: super;
     color: var(--footnote-color);
+    -webkit-text-decoration: none;
     text-decoration: none;
     margin-left: 0.15em;
 }
@@ -205,6 +217,7 @@ h6:focus-within .heading-anchor {
 
 .fn-back {
     font-size: var(--footnote-size);
+    -webkit-text-decoration: none;
     text-decoration: none;
     color: var(--footnote-color);
 }
@@ -227,6 +240,7 @@ h6:focus-within .heading-anchor {
 /* ---------------------------------------------------------
    6. INLINE MARKERS (Highlight, warning, etc.)
 --------------------------------------------------------- */
+
 .inline-marker {
     display: inline-block;
     padding: 0 var(--space-1_5);
@@ -265,6 +279,7 @@ h6:focus-within .heading-anchor {
 /* ---------------------------------------------------------
    7. PROSE HELPERS (Authoring convenience)
 --------------------------------------------------------- */
+
 .prose-lead {
     font-size: var(--text-md);
     line-height: var(--line-height-relaxed);
@@ -286,6 +301,7 @@ h6:focus-within .heading-anchor {
 .prose-grid-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: var(--space-6);
     gap: var(--space-6);
 }
 
@@ -298,8 +314,10 @@ h6:focus-within .heading-anchor {
 /* ---------------------------------------------------------
    8. AUTHORING / DOC-BLOCK INTEGRATION
 --------------------------------------------------------- */
+
 .doc-block__body .admonition {
-    margin-block: var(--space-3);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-3);
 }
 
 .doc-block__body .md-note,
@@ -309,7 +327,6 @@ h6:focus-within .heading-anchor {
 .doc-block__body .md-warning,
 .doc-block__body .md-danger,
 .doc-block__body .md-important {
-    margin-block: var(--space-3);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-3);
 }
-
-/*# sourceMappingURL=authoring.css.map */

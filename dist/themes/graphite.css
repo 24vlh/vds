@@ -21,6 +21,7 @@
 /* ---------------------------------------------------------
    GRAPHITE - LIGHT THEME
 --------------------------------------------------------- */
+
 :root[data-theme="graphite-light"] {
     /* Core brand */
     --color-brand-ink: #0E3D69;
@@ -180,7 +181,7 @@
     --blockquote-text: #5F6B78;
 
     /* Selection */
-    --color-selection-bg: rgba(45, 65, 73, 11%);
+    --color-selection-bg: rgba(45, 65, 73, 0.11);
     --color-selection-text: #213d4f;
 
     /* Syntax highlight */
@@ -340,6 +341,7 @@
    GRAPHITE - DARK THEME
    Inverts background/text, preserves hierarchy.
 --------------------------------------------------------- */
+
 :root[data-theme="graphite-dark"] {
     /* Core brand */
     --color-brand-ink: #F5F7FA;
@@ -654,5 +656,3 @@
 
     --focus-ring-color: #1371A3;
 }
-
-/*# sourceMappingURL=graphite.css.map */

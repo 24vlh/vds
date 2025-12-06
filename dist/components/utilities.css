@@ -22,6 +22,7 @@
 /* ---------------------------------------------------------
    1. DISPLAY & VISIBILITY
 --------------------------------------------------------- */
+
 .block {
     display: block !important;
 }
@@ -87,6 +88,7 @@
 /* ---------------------------------------------------------
    2. FLEXBOX
 --------------------------------------------------------- */
+
 .flex-row {
     flex-direction: row !important;
 }
@@ -166,6 +168,7 @@
 /* ---------------------------------------------------------
    3. GRID (ATOMIC)
 --------------------------------------------------------- */
+
 .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -280,6 +283,7 @@
    Scale (mapped to --space-* tokens):
      0,1,2,3,4,5,6,7,8,10,12,14,16,20,24,32,40,48,64
 --------------------------------------------------------- */
+
 .m-0 {
     margin: 0 !important;
 }
@@ -357,159 +361,198 @@
 }
 
 .mx-auto {
-    margin-inline: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .mx-0 {
-    margin-inline: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .mx-1 {
-    margin-inline: var(--space-1) !important;
+    margin-left: var(--space-1) !important;
+    margin-right: var(--space-1) !important;
 }
 
 .mx-2 {
-    margin-inline: var(--space-2) !important;
+    margin-left: var(--space-2) !important;
+    margin-right: var(--space-2) !important;
 }
 
 .mx-3 {
-    margin-inline: var(--space-3) !important;
+    margin-left: var(--space-3) !important;
+    margin-right: var(--space-3) !important;
 }
 
 .mx-4 {
-    margin-inline: var(--space-4) !important;
+    margin-left: var(--space-4) !important;
+    margin-right: var(--space-4) !important;
 }
 
 .mx-5 {
-    margin-inline: var(--space-5) !important;
+    margin-left: var(--space-5) !important;
+    margin-right: var(--space-5) !important;
 }
 
 .mx-6 {
-    margin-inline: var(--space-6) !important;
+    margin-left: var(--space-6) !important;
+    margin-right: var(--space-6) !important;
 }
 
 .mx-7 {
-    margin-inline: var(--space-7) !important;
+    margin-left: var(--space-7) !important;
+    margin-right: var(--space-7) !important;
 }
 
 .mx-8 {
-    margin-inline: var(--space-8) !important;
+    margin-left: var(--space-8) !important;
+    margin-right: var(--space-8) !important;
 }
 
 .mx-10 {
-    margin-inline: var(--space-10) !important;
+    margin-left: var(--space-10) !important;
+    margin-right: var(--space-10) !important;
 }
 
 .mx-12 {
-    margin-inline: var(--space-12) !important;
+    margin-left: var(--space-12) !important;
+    margin-right: var(--space-12) !important;
 }
 
 .mx-14 {
-    margin-inline: var(--space-14) !important;
+    margin-left: var(--space-14) !important;
+    margin-right: var(--space-14) !important;
 }
 
 .mx-16 {
-    margin-inline: var(--space-16) !important;
+    margin-left: var(--space-16) !important;
+    margin-right: var(--space-16) !important;
 }
 
 .mx-20 {
-    margin-inline: var(--space-20) !important;
+    margin-left: var(--space-20) !important;
+    margin-right: var(--space-20) !important;
 }
 
 .mx-24 {
-    margin-inline: var(--space-24) !important;
+    margin-left: var(--space-24) !important;
+    margin-right: var(--space-24) !important;
 }
 
 .mx-32 {
-    margin-inline: var(--space-32) !important;
+    margin-left: var(--space-32) !important;
+    margin-right: var(--space-32) !important;
 }
 
 .mx-40 {
-    margin-inline: var(--space-40) !important;
+    margin-left: var(--space-40) !important;
+    margin-right: var(--space-40) !important;
 }
 
 .mx-48 {
-    margin-inline: var(--space-48) !important;
+    margin-left: var(--space-48) !important;
+    margin-right: var(--space-48) !important;
 }
 
 .mx-64 {
-    margin-inline: var(--space-64) !important;
+    margin-left: var(--space-64) !important;
+    margin-right: var(--space-64) !important;
 }
 
 .my-0 {
-    margin-block: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 .my-1 {
-    margin-block: var(--space-1) !important;
+    margin-top: var(--space-1) !important;
+    margin-bottom: var(--space-1) !important;
 }
 
 .my-2 {
-    margin-block: var(--space-2) !important;
+    margin-top: var(--space-2) !important;
+    margin-bottom: var(--space-2) !important;
 }
 
 .my-3 {
-    margin-block: var(--space-3) !important;
+    margin-top: var(--space-3) !important;
+    margin-bottom: var(--space-3) !important;
 }
 
 .my-4 {
-    margin-block: var(--space-4) !important;
+    margin-top: var(--space-4) !important;
+    margin-bottom: var(--space-4) !important;
 }
 
 .my-5 {
-    margin-block: var(--space-5) !important;
+    margin-top: var(--space-5) !important;
+    margin-bottom: var(--space-5) !important;
 }
 
 .my-6 {
-    margin-block: var(--space-6) !important;
+    margin-top: var(--space-6) !important;
+    margin-bottom: var(--space-6) !important;
 }
 
 .my-7 {
-    margin-block: var(--space-7) !important;
+    margin-top: var(--space-7) !important;
+    margin-bottom: var(--space-7) !important;
 }
 
 .my-8 {
-    margin-block: var(--space-8) !important;
+    margin-top: var(--space-8) !important;
+    margin-bottom: var(--space-8) !important;
 }
 
 .my-10 {
-    margin-block: var(--space-10) !important;
+    margin-top: var(--space-10) !important;
+    margin-bottom: var(--space-10) !important;
 }
 
 .my-12 {
-    margin-block: var(--space-12) !important;
+    margin-top: var(--space-12) !important;
+    margin-bottom: var(--space-12) !important;
 }
 
 .my-14 {
-    margin-block: var(--space-14) !important;
+    margin-top: var(--space-14) !important;
+    margin-bottom: var(--space-14) !important;
 }
 
 .my-16 {
-    margin-block: var(--space-16) !important;
+    margin-top: var(--space-16) !important;
+    margin-bottom: var(--space-16) !important;
 }
 
 .my-20 {
-    margin-block: var(--space-20) !important;
+    margin-top: var(--space-20) !important;
+    margin-bottom: var(--space-20) !important;
 }
 
 .my-24 {
-    margin-block: var(--space-24) !important;
+    margin-top: var(--space-24) !important;
+    margin-bottom: var(--space-24) !important;
 }
 
 .my-32 {
-    margin-block: var(--space-32) !important;
+    margin-top: var(--space-32) !important;
+    margin-bottom: var(--space-32) !important;
 }
 
 .my-40 {
-    margin-block: var(--space-40) !important;
+    margin-top: var(--space-40) !important;
+    margin-bottom: var(--space-40) !important;
 }
 
 .my-48 {
-    margin-block: var(--space-48) !important;
+    margin-top: var(--space-48) !important;
+    margin-bottom: var(--space-48) !important;
 }
 
 .my-64 {
-    margin-block: var(--space-64) !important;
+    margin-top: var(--space-64) !important;
+    margin-bottom: var(--space-64) !important;
 }
 
 .mt-0 {
@@ -909,59 +952,73 @@
 }
 
 .-mx-1 {
-    margin-inline: calc(var(--space-1) * -1) !important;
+    margin-left: calc(var(--space-1) * -1) !important;
+    margin-right: calc(var(--space-1) * -1) !important;
 }
 
 .-mx-2 {
-    margin-inline: calc(var(--space-2) * -1) !important;
+    margin-left: calc(var(--space-2) * -1) !important;
+    margin-right: calc(var(--space-2) * -1) !important;
 }
 
 .-mx-3 {
-    margin-inline: calc(var(--space-3) * -1) !important;
+    margin-left: calc(var(--space-3) * -1) !important;
+    margin-right: calc(var(--space-3) * -1) !important;
 }
 
 .-mx-4 {
-    margin-inline: calc(var(--space-4) * -1) !important;
+    margin-left: calc(var(--space-4) * -1) !important;
+    margin-right: calc(var(--space-4) * -1) !important;
 }
 
 .-mx-6 {
-    margin-inline: calc(var(--space-6) * -1) !important;
+    margin-left: calc(var(--space-6) * -1) !important;
+    margin-right: calc(var(--space-6) * -1) !important;
 }
 
 .-mx-8 {
-    margin-inline: calc(var(--space-8) * -1) !important;
+    margin-left: calc(var(--space-8) * -1) !important;
+    margin-right: calc(var(--space-8) * -1) !important;
 }
 
 .-mx-10 {
-    margin-inline: calc(var(--space-10) * -1) !important;
+    margin-left: calc(var(--space-10) * -1) !important;
+    margin-right: calc(var(--space-10) * -1) !important;
 }
 
 .-my-1 {
-    margin-block: calc(var(--space-1) * -1) !important;
+    margin-top: calc(var(--space-1) * -1) !important;
+    margin-bottom: calc(var(--space-1) * -1) !important;
 }
 
 .-my-2 {
-    margin-block: calc(var(--space-2) * -1) !important;
+    margin-top: calc(var(--space-2) * -1) !important;
+    margin-bottom: calc(var(--space-2) * -1) !important;
 }
 
 .-my-3 {
-    margin-block: calc(var(--space-3) * -1) !important;
+    margin-top: calc(var(--space-3) * -1) !important;
+    margin-bottom: calc(var(--space-3) * -1) !important;
 }
 
 .-my-4 {
-    margin-block: calc(var(--space-4) * -1) !important;
+    margin-top: calc(var(--space-4) * -1) !important;
+    margin-bottom: calc(var(--space-4) * -1) !important;
 }
 
 .-my-6 {
-    margin-block: calc(var(--space-6) * -1) !important;
+    margin-top: calc(var(--space-6) * -1) !important;
+    margin-bottom: calc(var(--space-6) * -1) !important;
 }
 
 .-my-8 {
-    margin-block: calc(var(--space-8) * -1) !important;
+    margin-top: calc(var(--space-8) * -1) !important;
+    margin-bottom: calc(var(--space-8) * -1) !important;
 }
 
 .-my-10 {
-    margin-block: calc(var(--space-10) * -1) !important;
+    margin-top: calc(var(--space-10) * -1) !important;
+    margin-bottom: calc(var(--space-10) * -1) !important;
 }
 
 .p-0 {
@@ -1041,155 +1098,193 @@
 }
 
 .px-0 {
-    padding-inline: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 .px-1 {
-    padding-inline: var(--space-1) !important;
+    padding-left: var(--space-1) !important;
+    padding-right: var(--space-1) !important;
 }
 
 .px-2 {
-    padding-inline: var(--space-2) !important;
+    padding-left: var(--space-2) !important;
+    padding-right: var(--space-2) !important;
 }
 
 .px-3 {
-    padding-inline: var(--space-3) !important;
+    padding-left: var(--space-3) !important;
+    padding-right: var(--space-3) !important;
 }
 
 .px-4 {
-    padding-inline: var(--space-4) !important;
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
 }
 
 .px-5 {
-    padding-inline: var(--space-5) !important;
+    padding-left: var(--space-5) !important;
+    padding-right: var(--space-5) !important;
 }
 
 .px-6 {
-    padding-inline: var(--space-6) !important;
+    padding-left: var(--space-6) !important;
+    padding-right: var(--space-6) !important;
 }
 
 .px-7 {
-    padding-inline: var(--space-7) !important;
+    padding-left: var(--space-7) !important;
+    padding-right: var(--space-7) !important;
 }
 
 .px-8 {
-    padding-inline: var(--space-8) !important;
+    padding-left: var(--space-8) !important;
+    padding-right: var(--space-8) !important;
 }
 
 .px-10 {
-    padding-inline: var(--space-10) !important;
+    padding-left: var(--space-10) !important;
+    padding-right: var(--space-10) !important;
 }
 
 .px-12 {
-    padding-inline: var(--space-12) !important;
+    padding-left: var(--space-12) !important;
+    padding-right: var(--space-12) !important;
 }
 
 .px-14 {
-    padding-inline: var(--space-14) !important;
+    padding-left: var(--space-14) !important;
+    padding-right: var(--space-14) !important;
 }
 
 .px-16 {
-    padding-inline: var(--space-16) !important;
+    padding-left: var(--space-16) !important;
+    padding-right: var(--space-16) !important;
 }
 
 .px-20 {
-    padding-inline: var(--space-20) !important;
+    padding-left: var(--space-20) !important;
+    padding-right: var(--space-20) !important;
 }
 
 .px-24 {
-    padding-inline: var(--space-24) !important;
+    padding-left: var(--space-24) !important;
+    padding-right: var(--space-24) !important;
 }
 
 .px-32 {
-    padding-inline: var(--space-32) !important;
+    padding-left: var(--space-32) !important;
+    padding-right: var(--space-32) !important;
 }
 
 .px-40 {
-    padding-inline: var(--space-40) !important;
+    padding-left: var(--space-40) !important;
+    padding-right: var(--space-40) !important;
 }
 
 .px-48 {
-    padding-inline: var(--space-48) !important;
+    padding-left: var(--space-48) !important;
+    padding-right: var(--space-48) !important;
 }
 
 .px-64 {
-    padding-inline: var(--space-64) !important;
+    padding-left: var(--space-64) !important;
+    padding-right: var(--space-64) !important;
 }
 
 .py-0 {
-    padding-block: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .py-1 {
-    padding-block: var(--space-1) !important;
+    padding-top: var(--space-1) !important;
+    padding-bottom: var(--space-1) !important;
 }
 
 .py-2 {
-    padding-block: var(--space-2) !important;
+    padding-top: var(--space-2) !important;
+    padding-bottom: var(--space-2) !important;
 }
 
 .py-3 {
-    padding-block: var(--space-3) !important;
+    padding-top: var(--space-3) !important;
+    padding-bottom: var(--space-3) !important;
 }
 
 .py-4 {
-    padding-block: var(--space-4) !important;
+    padding-top: var(--space-4) !important;
+    padding-bottom: var(--space-4) !important;
 }
 
 .py-5 {
-    padding-block: var(--space-5) !important;
+    padding-top: var(--space-5) !important;
+    padding-bottom: var(--space-5) !important;
 }
 
 .py-6 {
-    padding-block: var(--space-6) !important;
+    padding-top: var(--space-6) !important;
+    padding-bottom: var(--space-6) !important;
 }
 
 .py-7 {
-    padding-block: var(--space-7) !important;
+    padding-top: var(--space-7) !important;
+    padding-bottom: var(--space-7) !important;
 }
 
 .py-8 {
-    padding-block: var(--space-8) !important;
+    padding-top: var(--space-8) !important;
+    padding-bottom: var(--space-8) !important;
 }
 
 .py-10 {
-    padding-block: var(--space-10) !important;
+    padding-top: var(--space-10) !important;
+    padding-bottom: var(--space-10) !important;
 }
 
 .py-12 {
-    padding-block: var(--space-12) !important;
+    padding-top: var(--space-12) !important;
+    padding-bottom: var(--space-12) !important;
 }
 
 .py-14 {
-    padding-block: var(--space-14) !important;
+    padding-top: var(--space-14) !important;
+    padding-bottom: var(--space-14) !important;
 }
 
 .py-16 {
-    padding-block: var(--space-16) !important;
+    padding-top: var(--space-16) !important;
+    padding-bottom: var(--space-16) !important;
 }
 
 .py-20 {
-    padding-block: var(--space-20) !important;
+    padding-top: var(--space-20) !important;
+    padding-bottom: var(--space-20) !important;
 }
 
 .py-24 {
-    padding-block: var(--space-24) !important;
+    padding-top: var(--space-24) !important;
+    padding-bottom: var(--space-24) !important;
 }
 
 .py-32 {
-    padding-block: var(--space-32) !important;
+    padding-top: var(--space-32) !important;
+    padding-bottom: var(--space-32) !important;
 }
 
 .py-40 {
-    padding-block: var(--space-40) !important;
+    padding-top: var(--space-40) !important;
+    padding-bottom: var(--space-40) !important;
 }
 
 .py-48 {
-    padding-block: var(--space-48) !important;
+    padding-top: var(--space-48) !important;
+    padding-bottom: var(--space-48) !important;
 }
 
 .py-64 {
-    padding-block: var(--space-64) !important;
+    padding-top: var(--space-64) !important;
+    padding-bottom: var(--space-64) !important;
 }
 
 .pt-0 {
@@ -1499,6 +1594,7 @@
 /* ---------------------------------------------------------
    5. GAP UTILITIES - FULL SPACE SCALE
 --------------------------------------------------------- */
+
 .gap-0 {
     gap: 0;
 }
@@ -1576,79 +1672,98 @@
 }
 
 .gap-x-0 {
-    column-gap: 0;
+    -moz-column-gap: 0;
+         column-gap: 0;
 }
 
 .gap-x-1 {
-    column-gap: var(--space-1);
+    -moz-column-gap: var(--space-1);
+         column-gap: var(--space-1);
 }
 
 .gap-x-2 {
-    column-gap: var(--space-2);
+    -moz-column-gap: var(--space-2);
+         column-gap: var(--space-2);
 }
 
 .gap-x-3 {
-    column-gap: var(--space-3);
+    -moz-column-gap: var(--space-3);
+         column-gap: var(--space-3);
 }
 
 .gap-x-4 {
-    column-gap: var(--space-4);
+    -moz-column-gap: var(--space-4);
+         column-gap: var(--space-4);
 }
 
 .gap-x-5 {
-    column-gap: var(--space-5);
+    -moz-column-gap: var(--space-5);
+         column-gap: var(--space-5);
 }
 
 .gap-x-6 {
-    column-gap: var(--space-6);
+    -moz-column-gap: var(--space-6);
+         column-gap: var(--space-6);
 }
 
 .gap-x-7 {
-    column-gap: var(--space-7);
+    -moz-column-gap: var(--space-7);
+         column-gap: var(--space-7);
 }
 
 .gap-x-8 {
-    column-gap: var(--space-8);
+    -moz-column-gap: var(--space-8);
+         column-gap: var(--space-8);
 }
 
 .gap-x-10 {
-    column-gap: var(--space-10);
+    -moz-column-gap: var(--space-10);
+         column-gap: var(--space-10);
 }
 
 .gap-x-12 {
-    column-gap: var(--space-12);
+    -moz-column-gap: var(--space-12);
+         column-gap: var(--space-12);
 }
 
 .gap-x-14 {
-    column-gap: var(--space-14);
+    -moz-column-gap: var(--space-14);
+         column-gap: var(--space-14);
 }
 
 .gap-x-16 {
-    column-gap: var(--space-16);
+    -moz-column-gap: var(--space-16);
+         column-gap: var(--space-16);
 }
 
 .gap-x-20 {
-    column-gap: var(--space-20);
+    -moz-column-gap: var(--space-20);
+         column-gap: var(--space-20);
 }
 
 .gap-x-24 {
-    column-gap: var(--space-24);
+    -moz-column-gap: var(--space-24);
+         column-gap: var(--space-24);
 }
 
 .gap-x-32 {
-    column-gap: var(--space-32);
+    -moz-column-gap: var(--space-32);
+         column-gap: var(--space-32);
 }
 
 .gap-x-40 {
-    column-gap: var(--space-40);
+    -moz-column-gap: var(--space-40);
+         column-gap: var(--space-40);
 }
 
 .gap-x-48 {
-    column-gap: var(--space-48);
+    -moz-column-gap: var(--space-48);
+         column-gap: var(--space-48);
 }
 
 .gap-x-64 {
-    column-gap: var(--space-64);
+    -moz-column-gap: var(--space-64);
+         column-gap: var(--space-64);
 }
 
 .gap-y-0 {
@@ -1730,6 +1845,7 @@
 /* ---------------------------------------------------------
    6. TYPOGRAPHY & TEXT DECORATION
 --------------------------------------------------------- */
+
 .text-left {
     text-align: left !important;
 }
@@ -1867,14 +1983,17 @@
 }
 
 .underline {
+    -webkit-text-decoration: underline;
     text-decoration: underline;
 }
 
 .line-through {
+    -webkit-text-decoration: line-through;
     text-decoration: line-through;
 }
 
 .no-underline {
+    -webkit-text-decoration: none;
     text-decoration: none;
 }
 
@@ -1988,6 +2107,7 @@
 /* ---------------------------------------------------------
    7. WIDTH / HEIGHT / ASPECT RATIO / OBJECT-FIT
 --------------------------------------------------------- */
+
 .w-auto {
     width: auto !important;
 }
@@ -2001,14 +2121,17 @@
 }
 
 .w-min {
+    width: -moz-min-content !important;
     width: min-content !important;
 }
 
 .w-max {
+    width: -moz-max-content !important;
     width: max-content !important;
 }
 
 .w-fit {
+    width: -moz-fit-content !important;
     width: fit-content !important;
 }
 
@@ -2069,6 +2192,7 @@
 }
 
 .h-fit {
+    height: -moz-fit-content !important;
     height: fit-content !important;
 }
 
@@ -2101,28 +2225,34 @@
 }
 
 .object-contain {
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 .object-cover {
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 }
 
 .object-fill {
-    object-fit: fill;
+    -o-object-fit: fill;
+       object-fit: fill;
 }
 
 .object-none {
-    object-fit: none;
+    -o-object-fit: none;
+       object-fit: none;
 }
 
 .object-scale-down {
-    object-fit: scale-down;
+    -o-object-fit: scale-down;
+       object-fit: scale-down;
 }
 
 /* ---------------------------------------------------------
    8. BORDER / RADIUS / SHADOW
 --------------------------------------------------------- */
+
 .border {
     border: 1px solid var(--color-border-subtle) !important;
 }
@@ -2198,6 +2328,7 @@
 /* ---------------------------------------------------------
    9. BACKGROUND / SURFACE
 --------------------------------------------------------- */
+
 .bg-surface {
     background-color: var(--color-surface) !important;
 }
@@ -2241,6 +2372,7 @@
 /* ---------------------------------------------------------
    10. OPACITY, CURSOR, POINTER-EVENTS
 --------------------------------------------------------- */
+
 .opacity-0 {
     opacity: 0;
 }
@@ -2292,6 +2424,7 @@
 /* ---------------------------------------------------------
    11. OVERFLOW / SCROLL
 --------------------------------------------------------- */
+
 .overflow-hidden {
     overflow: hidden !important;
 }
@@ -2325,6 +2458,7 @@
 /* ---------------------------------------------------------
    12. POSITION / Z-INDEX
 --------------------------------------------------------- */
+
 .relative {
     position: relative !important;
 }
@@ -2419,6 +2553,7 @@
 /* ---------------------------------------------------------
    13. STACK / CLUSTER / BUTTON ROW / GUTTERS
 --------------------------------------------------------- */
+
 .stack {
     display: flex;
     flex-direction: column;
@@ -2503,6 +2638,7 @@
 /* ---------------------------------------------------------
    14. TEXT HELPERS (TRUNCATE / MULTILINE / MISC)
 --------------------------------------------------------- */
+
 .truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2539,6 +2675,7 @@
     </p>
 
 --------------------------------------------------------- */
+
 .text-info {
     color: var(--semantic-info-text) !important;
 }
@@ -2567,6 +2704,7 @@
    Safe baseline for all inline <code> elements.
    Does not apply to <pre><code> blocks.
 --------------------------------------------------------- */
+
 code:not(pre code) {
     font-family: var(--font-family-mono), monospace;
     font-size: 0.875em;
@@ -2587,6 +2725,7 @@ code:not(pre code) {
    These are local, composable layout patterns that complement
    the structural layouts in layout.css (sidebar, split, layout-grid-*)
 --------------------------------------------------------- */
+
 .layout-stack {
     display: flex;
     flex-direction: column;
@@ -2657,18 +2796,21 @@ code:not(pre code) {
 .layout-grid-inner {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--grid-min), 1fr));
+    grid-gap: var(--gap-md);
     gap: var(--gap-md);
 }
 
 .layout-grid-inner-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: var(--gap-md);
     gap: var(--gap-md);
 }
 
 .layout-grid-inner-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--gap-md);
     gap: var(--gap-md);
 }
 
@@ -2682,6 +2824,7 @@ code:not(pre code) {
 /* ---------------------------------------------------------
    18. GRID ALIGNMENT UTILITIES
 --------------------------------------------------------- */
+
 .grid-items-start {
     align-items: start;
 }
@@ -2715,18 +2858,26 @@ code:not(pre code) {
 }
 
 .grid-place-items-center {
+    align-items: center;
+    justify-items: center;
     place-items: center;
 }
 
 .grid-place-items-start {
+    align-items: start;
+    justify-items: start;
     place-items: start;
 }
 
 .grid-place-items-end {
+    align-items: end;
+    justify-items: end;
     place-items: end;
 }
 
 .grid-place-items-stretch {
+    align-items: stretch;
+    justify-items: stretch;
     place-items: stretch;
 }
 
@@ -2749,6 +2900,7 @@ code:not(pre code) {
 /* ---------------------------------------------------------
    19. RESPONSIVE GRID COLUMN UTILITIES
 --------------------------------------------------------- */
+
 @media (max-width: 640px) {
     .sm\:grid-cols-1 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -2872,6 +3024,7 @@ code:not(pre code) {
 /* ---------------------------------------------------------
    20. FLEX - BASE UTILITIES
 --------------------------------------------------------- */
+
 .flex-row-reverse {
     flex-direction: row-reverse;
 }
@@ -2931,6 +3084,7 @@ code:not(pre code) {
 /* ---------------------------------------------------------
    21. RESPONSIVE GRID COLUMN UTILITIES
 --------------------------------------------------------- */
+
 @media (max-width: 640px) {
 
     .sm\:flex {
@@ -3278,4 +3432,3 @@ code:not(pre code) {
         flex: none;
     }
 }
-/*# sourceMappingURL=utilities.css.map */

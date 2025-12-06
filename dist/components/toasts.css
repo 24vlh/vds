@@ -18,6 +18,7 @@
 /* ---------------------------------------------------------
    1. TOAST TOKEN DEFINITIONS (component-level)
 --------------------------------------------------------- */
+
 [data-vds-toast],
 .vds-toast {
     --toast-duration: 5000ms;
@@ -31,6 +32,7 @@
        <div class="toast toast--success">...</div>
      </div>
 --------------------------------------------------------- */
+
 .toast-stack {
     position: fixed;
     z-index: var(--z-toast);
@@ -87,7 +89,8 @@
 
 @media (max-width: 640px) {
     .toast-stack {
-        inset-inline: var(--space-2);
+        left: var(--space-2);
+        right: var(--space-2);
         max-width: none;
     }
 
@@ -122,6 +125,7 @@
        <div class="toast__progress"></div>
      </div>
 --------------------------------------------------------- */
+
 .toast {
     pointer-events: auto;
     display: grid;
@@ -130,7 +134,10 @@
     grid-template-areas:
         "icon body close"
         "progress progress progress";
-    column-gap: var(--space-3);
+    grid-column-gap: var(--space-3);
+    -moz-column-gap: var(--space-3);
+         column-gap: var(--space-3);
+    grid-row-gap: var(--space-1);
     row-gap: var(--space-1);
 
     padding: var(--toast-feedback-padding-md);
@@ -181,7 +188,11 @@
     top: var(--space-2);
     right: var(--space-2);
 
-    appearance: none;
+    -webkit-appearance: none;
+
+       -moz-appearance: none;
+
+            appearance: none;
     border: none;
     padding: var(--space-1);
     background: transparent;
@@ -204,10 +215,12 @@
 }
 
 .toast--in {
+    animation: toast-slide-in 180ms ease-out forwards;
     animation: toast-slide-in 180ms var(--ease-out, ease-out) forwards;
 }
 
 .toast--out {
+    animation: toast-slide-out 150ms ease-in forwards;
     animation: toast-slide-out 150ms var(--ease-in, ease-in) forwards;
 }
 
@@ -224,7 +237,10 @@
 .toast__progress::before {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     transform-origin: left center;
     transform: scaleX(1);
     background-color: currentColor;
@@ -254,11 +270,13 @@
    Usage:
      <div class="toast toast--inline toast--warning">...</div>
 --------------------------------------------------------- */
+
 .toast--inline {
     position: static;
     box-shadow: none;
     width: 100%;
-    margin-block: var(--space-2);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
 }
 
 .toast--inline .toast__progress {
@@ -268,6 +286,7 @@
 /* ---------------------------------------------------------
    5. SEMANTIC VARIANTS
 --------------------------------------------------------- */
+
 .toast--neutral {
     border-color: var(--color-muted-border);
     background-color: var(--color-muted-bg);
@@ -321,6 +340,7 @@
 /* ---------------------------------------------------------
    6. ANIMATION STATES (ENTER / EXIT)
 --------------------------------------------------------- */
+
 .toast--exiting {
     animation: toast-slide-out var(--transition-fast) var(--ease-in) forwards;
 }
@@ -381,6 +401,7 @@
 /* ---------------------------------------------------------
    7. REDUCED MOTION FALLBACKS
 --------------------------------------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
     .toast {
         animation: none;
@@ -398,5 +419,3 @@
         animation-duration: var(--motion-none);
     }
 }
-
-/*# sourceMappingURL=toasts.css.map */

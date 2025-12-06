@@ -23,6 +23,7 @@
 /* ---------------------------------------------------------
    1. FLOW TOKEN DEFINITIONS
 --------------------------------------------------------- */
+
 [data-vds-flow],
 .vds-flow {
     --flow-component-disabled-opacity: 0.48;
@@ -61,6 +62,7 @@
 /* ---------------------------------------------------------
    2. GLOBAL FLOW MODIFIERS
 --------------------------------------------------------- */
+
 .flow--compact .flow {
     gap: var(--flow-gap-lg);
 }
@@ -134,6 +136,7 @@
 /* ---------------------------------------------------------
    3. FLOW CONTAINER / WIZARD
 --------------------------------------------------------- */
+
 .flow {
     display: flex;
     flex-direction: column;
@@ -171,6 +174,7 @@
 /* ---------------------------------------------------------
    4. STEP INDICATOR (HORIZONTAL)
 --------------------------------------------------------- */
+
 .steps {
     display: flex;
     align-items: center;
@@ -282,6 +286,7 @@
 /* ---------------------------------------------------------
    5. STEP INDICATOR (VERTICAL)
 --------------------------------------------------------- */
+
 .steps--vertical {
     flex-direction: column;
     align-items: flex-start;
@@ -303,6 +308,7 @@
 /* ---------------------------------------------------------
    6. FLOW PROGRESS BARS
 --------------------------------------------------------- */
+
 .flow-progress {
     width: 100%;
     height: var(--border-width-strong);
@@ -412,6 +418,7 @@
 /* ---------------------------------------------------------
    7. MINIMAL TIMELINE (A)
 --------------------------------------------------------- */
+
 .timeline {
     display: flex;
     flex-direction: column;
@@ -549,6 +556,7 @@
 /* ---------------------------------------------------------
    8. RICH TIMELINE (B)
 --------------------------------------------------------- */
+
 .timeline--rich {
     display: flex;
     flex-direction: column;
@@ -637,6 +645,7 @@
 /* ---------------------------------------------------------
    9. JOURNEY MAP (HIGH-LEVEL FLOWS)
 --------------------------------------------------------- */
+
 .journey {
     display: flex;
     flex-wrap: wrap;
@@ -737,6 +746,7 @@
 /* ---------------------------------------------------------
    10. PROCESS FLOW (NODE-BASED)
 --------------------------------------------------------- */
+
 .process-flow {
     display: flex;
     flex-wrap: wrap;
@@ -845,6 +855,7 @@
 /* ---------------------------------------------------------
    11. STATE FLOW (STATUS STEPS)
 --------------------------------------------------------- */
+
 .state-flow {
     display: inline-flex;
     align-items: center;
@@ -894,6 +905,7 @@
 /* ---------------------------------------------------------
    12. MULTI-STEP FORM SCAFFOLDING
 --------------------------------------------------------- */
+
 .form-flow {
     display: flex;
     flex-direction: column;
@@ -941,9 +953,11 @@
 /* ---------------------------------------------------------
    13. BRANCHING FLOW CALLOUTS
 --------------------------------------------------------- */
+
 .flow-branch {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--flow-grid-min-md), 1fr));
+    grid-gap: var(--flow-gap-lg);
     gap: var(--flow-gap-lg);
 }
 
@@ -1044,7 +1058,8 @@
     width: var(--space-6);
     height: var(--border-width);
     background-color: var(--color-border-subtle);
-    margin-inline: auto;
+    margin-left: auto;
+    margin-right: auto;
     flex-shrink: 0;
 }
 
@@ -1059,6 +1074,7 @@
 /* ---------------------------------------------------------
    14. RESPONSIVE
 --------------------------------------------------------- */
+
 @media (max-width: 768px) {
 
     .steps {
@@ -1083,5 +1099,3 @@
         width: 100%;
     }
 }
-
-/*# sourceMappingURL=flows.css.map */

@@ -19,6 +19,7 @@
 /* ---------------------------------------------------------
    1. CORE NAV PRIMITIVES
 --------------------------------------------------------- */
+
 .nav {
     display: flex;
     align-items: center;
@@ -33,6 +34,7 @@
 
     font-size: var(--text-sm);
     color: var(--color-text);
+    -webkit-text-decoration: none;
     text-decoration: none;
 
     padding: var(--space-1) 0;
@@ -40,10 +42,7 @@
 
     cursor: pointer;
 
-    transition: color 0.15s ease,
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .nav__item:hover,
@@ -71,6 +70,7 @@
 .nav__link--active:hover {
     font-weight: 600;
     color: var(--link-text-hover);
+    -webkit-text-decoration: none;
     text-decoration: none;
 }
 
@@ -121,6 +121,7 @@
 /* ---------------------------------------------------------
    2. BRAND / LOGO / ACTION SLOTS
 --------------------------------------------------------- */
+
 .nav__brand {
     display: inline-flex;
     align-items: center;
@@ -150,6 +151,7 @@
 /* ---------------------------------------------------------
    3. NAV TOGGLE (MOBILE HAMBURGER)
 --------------------------------------------------------- */
+
 .nav__toggle {
     display: none;
     cursor: pointer;
@@ -160,9 +162,7 @@
     background-color: transparent;
     border: var(--border-width) solid transparent;
 
-    transition: background-color 0.15s ease,
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .nav__toggle svg {
@@ -195,6 +195,7 @@
 /* ---------------------------------------------------------
    4. HORIZONTAL / PRIMARY NAV
 --------------------------------------------------------- */
+
 .nav--primary {
     display: flex;
     align-items: center;
@@ -221,6 +222,7 @@
 /* ---------------------------------------------------------
    5. SUB NAV (TABS) + PILL NAV
 --------------------------------------------------------- */
+
 .nav--sub {
     display: flex;
     gap: var(--space-6);
@@ -303,6 +305,7 @@
 /* ---------------------------------------------------------
    6. VERTICAL NAV + SIDEBAR
 --------------------------------------------------------- */
+
 .nav--vertical {
     display: flex;
     flex-direction: column;
@@ -378,6 +381,7 @@
     padding: var(--space-1) 0;
     border-radius: var(--radius-sm);
     cursor: pointer;
+    -webkit-text-decoration: underline;
     text-decoration: underline;
     color: var(--color-text);
 }
@@ -386,6 +390,7 @@
 .sidebar__nav .nav__link:hover {
     background-color: var(--color-surface-subtle);
     color: var(--color-text-muted);
+    -webkit-text-decoration: none;
     text-decoration: none;
 }
 
@@ -408,6 +413,7 @@
 /* ---------------------------------------------------------
    7. ANNOUNCEMENT BAR
 --------------------------------------------------------- */
+
 .announcement {
     width: 100%;
     background-color: var(--color-muted-bg);
@@ -446,11 +452,13 @@
 
 .announcement__link {
     font-size: var(--text-xs);
+    -webkit-text-decoration: none;
     text-decoration: none;
     color: var(--color-text);
 }
 
 .announcement__link:hover {
+    -webkit-text-decoration: underline;
     text-decoration: underline;
 }
 
@@ -466,9 +474,7 @@
     border: var(--border-width) solid transparent;
     background-color: transparent;
 
-    transition: background-color 0.15s ease,
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .announcement__close:hover {
@@ -505,6 +511,7 @@
 /* ---------------------------------------------------------
    8. BREADCRUMBS
 --------------------------------------------------------- */
+
 .breadcrumbs {
     display: flex;
     align-items: center;
@@ -523,6 +530,7 @@
 
 .breadcrumbs__link {
     color: var(--color-text);
+    -webkit-text-decoration: underline;
     text-decoration: underline;
     max-width: 16rem;
     overflow: hidden;
@@ -548,6 +556,7 @@
 /* ---------------------------------------------------------
    9. PAGINATION
 --------------------------------------------------------- */
+
 .pagination {
     display: inline-flex;
     align-items: center;
@@ -570,12 +579,10 @@
     color: var(--color-text);
 
     cursor: pointer;
+    -webkit-text-decoration: none;
     text-decoration: none;
 
-    transition: background-color 0.15s ease,
-    border-color 0.15s ease,
-    color 0.15s ease,
-    box-shadow 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .pagination__item:hover {
@@ -622,6 +629,7 @@
 /* ---------------------------------------------------------
    10. TOOLBAR
 --------------------------------------------------------- */
+
 .toolbar {
     display: flex;
     align-items: center;
@@ -662,6 +670,7 @@
 /* ---------------------------------------------------------
    11. FOOTER NAV CONTEXT
 --------------------------------------------------------- */
+
 .footer .nav {
     display: flex;
     flex-direction: column;
@@ -696,6 +705,7 @@
 /* ---------------------------------------------------------
    12. MOBILE NAV (OVERLAY / PANEL PATTERN)
 --------------------------------------------------------- */
+
 .nav-panel {
     position: fixed;
     top: 0;
@@ -718,8 +728,7 @@
     gap: var(--space-4);
     padding: var(--space-4);
 
-    transition: transform 0.2s ease,
-    opacity 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
     z-index: 40;
 }
 
@@ -731,7 +740,10 @@
 
 .nav-backdrop {
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-color: var(--overlay-backdrop-default);
     opacity: 0;
     pointer-events: none;
@@ -766,6 +778,7 @@
 /* ---------------------------------------------------------
    TABS (Standalone Component)
 --------------------------------------------------------- */
+
 .nav-tabs {
     display: flex;
     align-items: center;
@@ -789,11 +802,10 @@
     cursor: pointer;
 
     color: var(--color-text);
+    -webkit-text-decoration: none;
     text-decoration: none;
 
-    transition: color 0.15s ease,
-    background-color 0.15s ease,
-    box-shadow 0.15s ease;
+    transition: color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .nav-tabs__item:hover {
@@ -865,7 +877,9 @@
     min-width: 1.25rem;
     height: 1.25rem;
 
-    padding-inline: var(--space-1);
+    padding-left: var(--space-1);
+
+    padding-right: var(--space-1);
 
     background-color: var(--accent-soft-surface, var(--color-accent-soft));
     color: var(--accent-soft-on, var(--color-on-accent));
@@ -884,5 +898,3 @@
     background-color: var(--accent-soft-surface-strong, var(--accent-soft-surface));
     color: var(--accent-soft-on, var(--color-on-accent));
 }
-
-/*# sourceMappingURL=navigation.css.map */

@@ -20,6 +20,7 @@
 /* ---------------------------------------------------------
    1. BASE SECTION CONTAINER
 --------------------------------------------------------- */
+
 .section {
     width: 100%;
     padding-top: var(--section-spacing-md);
@@ -41,6 +42,7 @@
 /* ---------------------------------------------------------
    2. LEGACY DENSITY SYSTEM (A / B / C / FLUSH)
 --------------------------------------------------------- */
+
 .section--a {
     padding-top: var(--space-20);
     padding-bottom: var(--space-20);
@@ -64,6 +66,7 @@
 /* ---------------------------------------------------------
    3. NEW UNIVERSAL SECTION RHYTHM (XS–XL)
 --------------------------------------------------------- */
+
 .section--xs {
     padding-top: var(--section-spacing-xs);
     padding-bottom: var(--section-spacing-xs);
@@ -92,6 +95,7 @@
 /* ---------------------------------------------------------
    4. SECTION HEADER SYSTEM
 --------------------------------------------------------- */
+
 .section__header {
     display: flex;
     flex-direction: column;
@@ -153,6 +157,7 @@
 /* ---------------------------------------------------------
    5. SECTION DIVIDERS
 --------------------------------------------------------- */
+
 .section--divided {
     border-top: 1px solid var(--color-border-subtle);
 }
@@ -170,6 +175,7 @@
 /* ---------------------------------------------------------
    6. SURFACES (surface / subtle / brand)
 --------------------------------------------------------- */
+
 .section--surface {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border-subtle);
@@ -196,6 +202,7 @@
 /* ---------------------------------------------------------
    7. ALTERNATE BACKGROUND
 --------------------------------------------------------- */
+
 .section--alt {
     background-color: var(--color-bg-soft);
 }
@@ -203,15 +210,18 @@
 /* ---------------------------------------------------------
    8. SPLIT SECTIONS - CLEAN GRID REVERSAL
 --------------------------------------------------------- */
+
 .section--split .section__inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: var(--space-12);
     gap: var(--space-12);
 }
 
 .section--split-reverse .section__inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: var(--space-12);
     gap: var(--space-12);
 }
 
@@ -226,6 +236,7 @@
 /* ---------------------------------------------------------
    9. INSET SECTIONS (Base + SM/LG)
 --------------------------------------------------------- */
+
 .section--inset .section__inner {
     background-color: var(--color-surface);
     border-radius: var(--radius-md);
@@ -244,6 +255,7 @@
 /* ---------------------------------------------------------
    10. COLUMN GRIDS (2/3/4/5/6/auto) + GAP VARIANTS
 --------------------------------------------------------- */
+
 .section__grid-2,
 .section__grid-3,
 .section__grid-4,
@@ -251,6 +263,7 @@
 .section__grid-6,
 .section__grid-auto {
     display: grid;
+    grid-gap: var(--space-10);
     gap: var(--space-10);
 }
 
@@ -293,6 +306,7 @@
 /* ---------------------------------------------------------
    11. CONTENT STACKS (VERTICAL)
 --------------------------------------------------------- */
+
 .section__stack {
     display: flex;
     flex-direction: column;
@@ -314,6 +328,7 @@
 /* ---------------------------------------------------------
    12. INLINE STACKS (HORIZONTAL)
 --------------------------------------------------------- */
+
 .section__inline {
     display: flex;
     flex-direction: row;
@@ -338,6 +353,7 @@
 /* ---------------------------------------------------------
    13. VALUE / LIST SECTIONS
 --------------------------------------------------------- */
+
 .section__list {
     display: flex;
     flex-direction: column;
@@ -373,6 +389,7 @@
 /* ---------------------------------------------------------
    14. RESPONSIVE BEHAVIOUR
 --------------------------------------------------------- */
+
 @media (max-width: 1280px) {
     .section__grid-2,
     .section__grid-3,
@@ -431,5 +448,3 @@
         padding: var(--space-6);
     }
 }
-
-/*# sourceMappingURL=sections.css.map */

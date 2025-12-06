@@ -19,6 +19,7 @@
    1. TOOLTIP TRIGGERS
    Attach this class to ensure proper positioning context.
 --------------------------------------------------------- */
+
 .tooltip-trigger {
     position: relative;
     display: inline-flex;
@@ -28,6 +29,7 @@
 /* ---------------------------------------------------------
    2. BASE TOOLTIP
 --------------------------------------------------------- */
+
 .tooltip {
     position: absolute;
     z-index: var(--z-tooltip);
@@ -49,8 +51,7 @@
     transform: translateY(0.25rem);
     pointer-events: none;
 
-    transition: opacity var(--transition-fast) var(--ease-out),
-    transform var(--transition-fast) var(--ease-out);
+    transition: opacity var(--transition-fast) var(--ease-out), transform var(--transition-fast) var(--ease-out);
 }
 
 .tooltip--visible,
@@ -63,6 +64,7 @@
 /* ---------------------------------------------------------
    3. TOOLTIP POSITIONS
 --------------------------------------------------------- */
+
 .tooltip--top {
     bottom: 100%;
     left: 50%;
@@ -110,6 +112,7 @@
 /* ---------------------------------------------------------
    4. TOOLTIP ARROW
 --------------------------------------------------------- */
+
 .tooltip__arrow {
     position: absolute;
     width: var(--space-3);
@@ -150,6 +153,7 @@
 /* ---------------------------------------------------------
    5. TOOLTIP DENSITY
 --------------------------------------------------------- */
+
 .tooltip--a {
     padding: var(--space-3) var(--space-4);
     font-size: var(--text-sm);
@@ -163,6 +167,7 @@
 /* ---------------------------------------------------------
    6. TOOLTIP SEMANTIC VARIANTS
 --------------------------------------------------------- */
+
 .tooltip--info {
     background-color: var(--semantic-info-bg);
     color: var(--semantic-info-text);
@@ -190,6 +195,7 @@
 /* ---------------------------------------------------------
    7. POPOVER ANCHOR
 --------------------------------------------------------- */
+
 .popover-anchor {
     position: relative;
     display: inline-block;
@@ -198,6 +204,7 @@
 /* ---------------------------------------------------------
    8. BASE POPOVER
 --------------------------------------------------------- */
+
 .popover {
     position: absolute;
     z-index: var(--z-tooltip);
@@ -218,8 +225,7 @@
     transform: translateY(0.25rem);
     pointer-events: none;
 
-    transition: opacity var(--transition-fast) var(--ease-out),
-    transform var(--transition-fast) var(--ease-out);
+    transition: opacity var(--transition-fast) var(--ease-out), transform var(--transition-fast) var(--ease-out);
 }
 
 .popover--open,
@@ -232,6 +238,7 @@
 /* ---------------------------------------------------------
    9. POPOVER POSITIONS
 --------------------------------------------------------- */
+
 .popover--top {
     bottom: 100%;
     left: 50%;
@@ -323,6 +330,7 @@
 /* ---------------------------------------------------------
    10. POPOVER ARROW
 --------------------------------------------------------- */
+
 .popover__arrow {
     position: absolute;
     width: var(--space-3);
@@ -367,6 +375,7 @@
 /* ---------------------------------------------------------
    11. POPOVER LAYOUT
 --------------------------------------------------------- */
+
 .popover__header,
 .popover__footer {
     padding: var(--space-3) var(--space-4);
@@ -393,6 +402,7 @@
 /* ---------------------------------------------------------
    12. POPOVER DENSITY
 --------------------------------------------------------- */
+
 .popover--a .popover__header,
 .popover--a .popover__footer,
 .popover--a .popover__body {
@@ -411,6 +421,7 @@
    13. POPOVER SEMANTICS
    (Aligns with overlay-inline semantics)
 --------------------------------------------------------- */
+
 .popover--info {
     background-color: var(--semantic-info-bg);
     color: var(--semantic-info-text);
@@ -434,5 +445,3 @@
     color: var(--semantic-danger-text);
     border-color: var(--semantic-danger-border);
 }
-
-/*# sourceMappingURL=tooltips-popovers.css.map */
