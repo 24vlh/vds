@@ -1,7 +1,17 @@
 {
-  "name": "vds",
+  "name": "@24vlh/vds",
   "version": "0.1.0",
   "description": "VDS — Vlah Design System CSS Framework",
+  "author": "@vlah.io",
+  "license": "Apache-2.0",
+  "keywords": [
+    "css",
+    "design-system",
+    "architecture",
+    "framework",
+    "vds",
+    "vlah"
+  ],
   "main": "dist/vds.css",
   "style": "dist/vds.css",
   "files": [
@@ -11,14 +21,6 @@
     "type": "git",
     "url": "https://github.com/24vlh/vds.git"
   },
-  "keywords": [
-    "css",
-    "design-system",
-    "architecture",
-    "framework",
-    "vds",
-    "vlah"
-  ],
   "scripts": {
     "clean": "rimraf dist .tmp",
     "build:vds": "postcss src/index.css -o dist/vds.css --map",
