@@ -35,10 +35,10 @@ jobs:
       - name: Prepare publish directory
         run: |
           mkdir publish
-          cp -R dist/* publish/
+          cp -R dist publish/dist
           cp package.json publish/
-          cp README.md publish/
-          cp LICENSE publish/
+          cp README.md publish/ || true
+          cp LICENSE publish/ || true
 
       - name: Upload publish artifact
         uses: actions/upload-artifact@v4
@@ -65,5 +65,5 @@ jobs:
         run: npm install -g npm@latest
 
       - name: Publish to npm (trusted publishing)
-        run: npm publish --access public
+        run: npm publish --access public --ignore-scripts
         working-directory: publish
