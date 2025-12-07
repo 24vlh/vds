@@ -1,4 +1,4 @@
-name: Publish Package
+name: Publish VDS
 
 on:
   push:
@@ -10,11 +10,46 @@ permissions:
   contents: read
 
 jobs:
-  publish-npm:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      # Build VDS
+      - run: npm run build
+
+      # Collect final publishable output
+      # For VDS, build output is usually dist/
+      - name: Prepare publish directory
+        run: |
+          mkdir publish
+          cp -R dist/* publish/
+          cp package.json publish/
+          cp README.md publish/
+          cp LICENSE publish/
+
+      - name: Upload publish artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vds-publish
+          path: publish/
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: vds-publish
+          path: publish/
 
       - uses: actions/setup-node@v4
         with:
@@ -24,7 +59,5 @@ jobs:
       - name: Update npm for trusted publishing
         run: npm install -g npm@latest
 
-      - run: npm ci
-      - run: npm run build
-
       - run: npm publish --access public
+        working-directory: publish
