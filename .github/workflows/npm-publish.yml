@@ -14,16 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
+          registry-url: https://registry.npmjs.org/
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
       # Build VDS
-      - run: npm run build
+      - name: Build (production)
+        run: npm run build:prod
 
       # Collect final publishable output
       # For VDS, build output is usually dist/
@@ -59,5 +64,6 @@ jobs:
       - name: Update npm for trusted publishing
         run: npm install -g npm@latest
 
-      - run: npm publish --access public
+      - name: Publish to npm (trusted publishing)
+        run: npm publish --access public
         working-directory: publish

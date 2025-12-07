@@ -22,39 +22,24 @@
     "url": "https://github.com/24vlh/vds.git"
   },
   "scripts": {
-    "clean": "rimraf dist .tmp",
-    "build:vds": "postcss src/index.css -o dist/vds.css --map",
-    "build:vds:min": "NODE_ENV=production postcss src/index.css -o dist/vds.min.css --map",
-    "build:core": "postcss src/core.css -o dist/core.css --map",
-    "build:core:min": "NODE_ENV=production postcss src/core.css -o dist/core.min.css --map",
-    "build:identity": "postcss src/identity.css -o dist/identity.css --map",
-    "build:identity:min": "NODE_ENV=production postcss src/identity.css -o dist/identity.min.css --map",
-    "build:components": "postcss \"src/components/**/*.css\" --dir dist/components --map",
-    "build:components:min:tmp": "NODE_ENV=production postcss \"src/components/**/*.css\" --dir .tmp/components --map",
-    "move:components:min": "for f in .tmp/components/*.css; do base=$(basename \"$f\" .css); mv \"$f\" \"dist/components/${base}.min.css\"; if [ -f \"${f}.map\" ]; then mv \"${f}.map\" \"dist/components/${base}.min.css.map\"; fi; done",
-    "build:themes": "postcss \"src/themes/**/*.css\" --dir dist/themes --map",
-    "build:themes:min:tmp": "NODE_ENV=production postcss \"src/themes/**/*.css\" --dir .tmp/themes --map",
-    "move:themes:min": "for f in .tmp/themes/*.css; do base=$(basename \"$f\" .css); mv \"$f\" \"dist/themes/${base}.min.css\"; if [ -f \"${f}.map\" ]; then mv \"${f}.map\" \"dist/themes/${base}.min.css.map\"; fi; done",
-    "build:css": "npm run build:vds && npm run build:core && npm run build:identity && npm run build:components && npm run build:themes",
-    "build:css:min": "npm run build:vds:min && npm run build:core:min && npm run build:identity:min && npm run build:components:min:tmp && npm run move:components:min && npm run build:themes:min:tmp && npm run move:themes:min",
-    "build": "npm run clean && npm run build:css && npm run build:css:min && rimraf .tmp",
-    "dev": "npm run build:css -- --watch",
+    "build": "NODE_ENV=development node static/js/build.js",
+    "build:prod": "NODE_ENV=production node static/js/build.js",
     "doc:serve": "node static/js/server.js",
     "prepare": "husky"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
-    "autoprefixer": "^10.0.0",
-    "cpy-cli": "^4.2.0",
-    "cssnano": "^5.0.0",
+    "autoprefixer": "^10.4.22",
+    "cssnano": "^5.1.15",
     "express": "^5.1.0",
+    "glob": "^13.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
-    "postcss": "^8.0.0",
-    "postcss-cli": "^9.0.0",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^9.1.0",
     "postcss-import": "^15.0.0",
     "postcss-preset-env": "^8.0.0",
-    "rimraf": "^5.0.0"
+    "rimraf": "^5.0.10"
   },
   "lint-staged": {
     "src/**/*.css": [
