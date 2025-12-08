@@ -1,1 +1,462 @@
-.vds-form-advanced,[data-vds-form-advanced]{--control-height-md:40px}.multi-select{position:relative;width:100%}.multi-select__control{background-color:var(--color-surface);border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md);cursor:pointer;display:flex;flex-wrap:wrap;gap:var(--space-2);min-height:2.5rem;min-height:var(--control-height-md,2.5rem);padding:var(--space-2) var(--space-3);transition:border-color .2s,background-color .2s,box-shadow .2s}.multi-select__control:hover{border-color:var(--color-border-strong)}.multi-select__control:focus-within{border-color:var(--focus-ring-color);box-shadow:0 0 0 var(--border-width-strong) var(--focus-ring-color)}.multi-select--disabled .multi-select__control{cursor:not-allowed;opacity:.6}.multi-select--error .multi-select__control{border-color:var(--color-danger)}.multi-select--loading .multi-select__control{animation:input-loading-shimmer 1.5s infinite;background-image:linear-gradient(90deg,var(--color-muted-bg),var(--color-surface),var(--color-muted-bg));background-size:200% 100%}.multi-select__input{background:transparent;border:none;color:inherit;font:inherit;min-width:6ch;outline:none;padding:0}.multi-select__chip{align-items:center;background-color:var(--color-surface-subtle);border-radius:var(--radius-sm);color:var(--color-text);display:inline-flex;font-size:var(--text-xs);gap:var(--space-1);padding:var(--space-1) var(--space-2)}.multi-select__chip-remove{align-items:center;color:var(--color-text-muted);cursor:pointer;display:inline-flex;height:var(--icon-xs);justify-content:center;width:var(--icon-xs)}.multi-select__chip-remove:hover{color:var(--color-text)}.multi-select__list{background-color:var(--color-surface);border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md);box-shadow:var(--shadow-md);display:none;left:0;overflow:hidden;position:absolute;top:calc(100% + var(--space-2));width:100%;z-index:20}.multi-select--open .multi-select__list{display:block}.multi-select__option{color:var(--color-text);cursor:pointer;padding:var(--space-3) var(--space-4);transition:background-color .15s}.multi-select__option:hover{background-color:var(--color-surface-subtle)}.multi-select__option--selected{background-color:var(--accent-soft-surface,var(--color-accent-soft));border-color:var(--accent-soft-border,var(--color-accent));box-shadow:0 0 0 1px var(--accent-soft-shadow);color:var(--accent-soft-on,var(--color-on-accent))}.multi-select__option--selected:hover{background-color:var(--accent-soft-surface-strong,var(--accent-soft-surface))}.tag-input{align-items:center;background-color:var(--color-surface);border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md);cursor:text;display:flex;flex-wrap:wrap;gap:var(--space-2);padding:var(--space-2) var(--space-3);transition:border-color .2s,background-color .2s,box-shadow .2s}.tag-input:hover{border-color:var(--color-border-strong)}.tag-input:focus-within{border-color:var(--focus-ring-color);box-shadow:0 0 0 var(--border-width-strong) var(--focus-ring-color)}.tag-input--disabled{cursor:not-allowed;opacity:.6}.tag-input--error{border-color:var(--color-danger)}.tag-input__chip{align-items:center;background-color:var(--color-surface-subtle);border-radius:var(--radius-sm);color:var(--color-text);display:inline-flex;font-size:var(--text-xs);gap:var(--space-1);padding:var(--space-1) var(--space-2)}.tag-input__chip-remove{align-items:center;color:var(--color-text-muted);cursor:pointer;display:inline-flex;height:var(--icon-xs);justify-content:center;width:var(--icon-xs)}.tag-input__chip-remove:hover{color:var(--color-text)}.tag-input__input{background:transparent;border:none;color:inherit;font:inherit;min-width:10ch;outline:none;padding:0}.stepper{background-color:var(--color-surface);border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md);display:inline-flex;overflow:hidden;transition:border-color .2s,box-shadow .2s;width:100%}.stepper:hover{border-color:var(--color-border-strong)}.stepper:focus-within{border-color:var(--focus-ring-color);box-shadow:0 0 0 var(--border-width-strong) var(--focus-ring-color)}.stepper--disabled{opacity:.6;pointer-events:none}.stepper--error{border-color:var(--color-danger)}.stepper__button{align-items:center;background-color:var(--color-surface);border:none;color:var(--color-text-muted);cursor:pointer;display:inline-flex;justify-content:center;transition:background-color .2s,color .2s;width:2.5rem}.stepper__button:hover{background-color:var(--color-surface-subtle);color:var(--color-text)}.stepper__button:focus-visible{box-shadow:inset 0 0 0 var(--border-width-strong) var(--focus-ring-color);outline:none}.stepper__input{background:transparent;border:none;color:inherit;flex:1;font:inherit;padding:var(--space-3);text-align:center}.stepper__input:focus{outline:none}.input[type=date],.input[type=datetime-local],.input[type=time]{padding-right:var(--space-7)}.input[type=date]::-webkit-calendar-picker-indicator{background:none;color:transparent;cursor:pointer}.calendar{background-color:var(--color-surface);border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md);overflow:hidden;-webkit-user-select:none;-moz-user-select:none;user-select:none;width:100%}.calendar--disabled{opacity:.6;pointer-events:none}.calendar--error{border-color:var(--color-danger)}.calendar__header{align-items:center;border-bottom:var(--border-width) solid var(--color-border-subtle);display:flex;justify-content:space-between;padding:var(--space-3) var(--space-4)}.calendar__nav{display:inline-flex;gap:var(--space-2)}.calendar__nav-button{align-items:center;border-radius:var(--radius-sm);color:var(--color-text-muted);cursor:pointer;display:inline-flex;height:2rem;justify-content:center;transition:background-color .2s,color .2s;width:2rem}.calendar__nav-button:hover{background-color:var(--color-surface-subtle);color:var(--color-text)}.calendar__grid{grid-gap:var(--space-1);display:grid;gap:var(--space-1);grid-template-columns:repeat(7,1fr);padding:var(--space-2)}.calendar__day{border-radius:var(--radius-sm);color:var(--color-text-soft);cursor:pointer;padding:var(--space-2);text-align:center;transition:background-color .15s,color .15s}.calendar__day:hover{background-color:var(--color-surface-subtle);color:var(--color-text)}.calendar__day--today{color:var(--color-accent);font-weight:600}.calendar__day--selected{background-color:var(--color-accent);color:var(--color-on-accent);font-weight:600}.calendar__day--range-end,.calendar__day--range-start{background-color:var(--color-accent-soft);color:var(--color-accent-strong)}.calendar__day--disabled{opacity:.4;pointer-events:none}.calendar__popover{background-color:var(--color-surface);border:var(--border-width) solid var(--color-border-subtle);border-radius:var(--radius-md);box-shadow:var(--shadow-md);min-width:16rem;padding:var(--space-3);position:absolute;width:-moz-max-content;width:max-content;z-index:20}.form--a .multi-select__control,.form--a .stepper,.form--a .tag-input{font-size:var(--text-md);padding:var(--space-4)}.form--c .multi-select__control,.form--c .stepper,.form--c .tag-input{font-size:var(--text-xs);padding:var(--space-1) var(--space-2)}.form--a .calendar__day,.form--a .multi-select__option{padding:var(--space-4)}.form--c .calendar__day,.form--c .multi-select__option{padding:var(--space-1)}
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Advanced Form Controls
+ *
+ *  Responsibilities:
+ *    - Provide advanced form patterns on top of the core form system:
+ *      multi-select with chips + dropdown, freeform tag-input, numeric
+ *      stepper controls, normalised native date/time inputs, and calendar
+ *      scaffolding for JS-driven date pickers
+ *    - Extend form density (A / default / C) to multi-select, tag-input,
+ *      stepper, and calendar day cells
+ *    - Maintain visual + behavioural consistency with core forms, feedback,
+ *      and layout primitives
+ *
+ *  System Notes:
+ *    - Depends on: base.css, typography.css, layout.css, forms.css
+ *    - All open/close behaviour is JS-controlled; CSS provides only structure
+ *      and visual states
+ *    - All colours, radii, borders, and motion are token-driven and align
+ *      with active theme + UFAL/legacy form systems
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   1. FORM CONTROL VARIABLES
+--------------------------------------------------------- */
+
+[data-vds-form-advanced],
+.vds-form-advanced {
+    --control-height-md: 40px;
+}
+
+/* ---------------------------------------------------------
+   2. MULTI-SELECT (chips + dropdown)
+--------------------------------------------------------- */
+
+.multi-select {
+    position: relative;
+    width: 100%;
+}
+
+.multi-select__control {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    min-height: 2.5rem;
+    min-height: var(--control-height-md, 2.5rem);
+
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.multi-select__control:hover {
+    border-color: var(--color-border-strong);
+}
+
+.multi-select__control:focus-within {
+    border-color: var(--focus-ring-color);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.multi-select--disabled .multi-select__control {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.multi-select--error .multi-select__control {
+    border-color: var(--color-danger);
+}
+
+.multi-select--loading .multi-select__control {
+    background-image: linear-gradient(
+            90deg,
+            var(--color-muted-bg),
+            var(--color-surface),
+            var(--color-muted-bg)
+    );
+    background-size: 200% 100%;
+    animation: input-loading-shimmer 1.5s infinite;
+}
+
+.multi-select__input {
+    border: none;
+    outline: none;
+    font: inherit;
+    color: inherit;
+    min-width: 6ch;
+    background: transparent;
+    padding: 0;
+}
+
+.multi-select__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-2);
+
+    background-color: var(--color-surface-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-size: var(--text-xs);
+}
+
+.multi-select__chip-remove {
+    cursor: pointer;
+    width: var(--icon-xs);
+    height: var(--icon-xs);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+}
+
+.multi-select__chip-remove:hover {
+    color: var(--color-text);
+}
+
+.multi-select__list {
+    position: absolute;
+    top: calc(100% + var(--space-2));
+    left: 0;
+    width: 100%;
+    z-index: 20;
+
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+
+    display: none;
+    overflow: hidden;
+}
+
+.multi-select--open .multi-select__list {
+    display: block;
+}
+
+.multi-select__option {
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+    color: var(--color-text);
+    transition: background-color 0.15s;
+}
+
+.multi-select__option:hover {
+    background-color: var(--color-surface-subtle);
+}
+
+.multi-select__option--selected {
+    background-color: var(--accent-soft-surface, var(--color-accent-soft));
+    border-color: var(--accent-soft-border, var(--color-accent));
+    box-shadow: 0 0 0 1px var(--accent-soft-shadow);
+    color: var(--accent-soft-on, var(--color-on-accent));
+}
+
+.multi-select__option--selected:hover {
+    background-color: var(--accent-soft-surface-strong, var(--accent-soft-surface));
+}
+
+/* ---------------------------------------------------------
+   3. TAG INPUT (chip builder)
+--------------------------------------------------------- */
+
+.tag-input {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    cursor: text;
+
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.tag-input:hover {
+    border-color: var(--color-border-strong);
+}
+
+.tag-input:focus-within {
+    border-color: var(--focus-ring-color);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.tag-input--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.tag-input--error {
+    border-color: var(--color-danger);
+}
+
+.tag-input__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-2);
+
+    background-color: var(--color-surface-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-size: var(--text-xs);
+}
+
+.tag-input__chip-remove {
+    cursor: pointer;
+    width: var(--icon-xs);
+    height: var(--icon-xs);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+}
+
+.tag-input__chip-remove:hover {
+    color: var(--color-text);
+}
+
+.tag-input__input {
+    border: none;
+    outline: none;
+    font: inherit;
+    color: inherit;
+    min-width: 10ch;
+    background: transparent;
+    padding: 0;
+}
+
+/* ---------------------------------------------------------
+   4. STEPPER CONTROL
+--------------------------------------------------------- */
+
+.stepper {
+    display: inline-flex;
+    width: 100%;
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.stepper:hover {
+    border-color: var(--color-border-strong);
+}
+
+.stepper:focus-within {
+    border-color: var(--focus-ring-color);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.stepper--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.stepper--error {
+    border-color: var(--color-danger);
+}
+
+.stepper__button {
+    width: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background-color: var(--color-surface);
+    color: var(--color-text-muted);
+    cursor: pointer;
+
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.stepper__button:hover {
+    background-color: var(--color-surface-subtle);
+    color: var(--color-text);
+}
+
+.stepper__button:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.stepper__input {
+    flex: 1;
+    border: none;
+    padding: var(--space-3);
+    text-align: center;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+}
+
+.stepper__input:focus {
+    outline: none;
+}
+
+/* ---------------------------------------------------------
+   5. NATIVE DATE/TIME INPUT NORMALIZATION
+--------------------------------------------------------- */
+
+.input[type="date"],
+.input[type="time"],
+.input[type="datetime-local"] {
+    padding-right: var(--space-7);
+}
+
+.input[type="date"]::-webkit-calendar-picker-indicator {
+    color: transparent;
+    background: none;
+    cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   6. CALENDAR BASE STRUCTURE (JS-driven scaffold)
+--------------------------------------------------------- */
+
+.calendar {
+    width: 100%;
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+}
+
+.calendar--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.calendar--error {
+    border-color: var(--color-danger);
+}
+
+.calendar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: var(--border-width) solid var(--color-border-subtle);
+}
+
+.calendar__nav {
+    display: inline-flex;
+    gap: var(--space-2);
+}
+
+.calendar__nav-button {
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--color-text-muted);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.calendar__nav-button:hover {
+    background-color: var(--color-surface-subtle);
+    color: var(--color-text);
+}
+
+.calendar__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: var(--space-2);
+    grid-gap: var(--space-1);
+    gap: var(--space-1);
+}
+
+.calendar__day {
+    padding: var(--space-2);
+    text-align: center;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--color-text-soft);
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.calendar__day:hover {
+    background-color: var(--color-surface-subtle);
+    color: var(--color-text);
+}
+
+.calendar__day--today {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.calendar__day--selected {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+    font-weight: 600;
+}
+
+.calendar__day--range-start,
+.calendar__day--range-end {
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+}
+
+.calendar__day--disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.calendar__popover {
+    position: absolute;
+    z-index: 20;
+    width: -moz-max-content;
+    width: max-content;
+    min-width: 16rem;
+
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+
+    padding: var(--space-3);
+}
+
+/* ---------------------------------------------------------
+   7. DENSITY LAYER OVERRIDES (A and C)
+--------------------------------------------------------- */
+
+.form--a .multi-select__control,
+.form--a .tag-input,
+.form--a .stepper {
+    padding: var(--space-4);
+    font-size: var(--text-md);
+}
+
+.form--c .multi-select__control,
+.form--c .tag-input,
+.form--c .stepper {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-xs);
+}
+
+.form--a .multi-select__option,
+.form--a .calendar__day {
+    padding: var(--space-4);
+}
+
+.form--c .multi-select__option,
+.form--c .calendar__day {
+    padding: var(--space-1);
+}

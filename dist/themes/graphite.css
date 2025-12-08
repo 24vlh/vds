@@ -1,1 +1,658 @@
-:root[data-theme=graphite-light]{--color-brand-ink:#0e3d69;--color-brand-accent:#1371a3;--color-bg:#f7f9fc;--color-bg-soft:#eff3f8;--color-bg-elevated:#fff;--color-surface:#fff;--color-surface-subtle:#eff3f8;--color-surface-hover:#e5ecf5;--color-border-subtle:#d2dae6;--color-border-strong:#a7b4c5;--color-text:#0e3d69;--color-text-muted:#4c6074;--color-text-soft:#7b8897;--color-text-on-soft:#0e3d69;--color-text-on-strong:#f7f9fc;--color-icon-muted:#4c6074;--color-icon-strong:#0e3d69;--color-icon-on-accent:#fff;--shadow-1:0 8px 20px rgba(14,61,105,.07);--shadow-2:0 10px 30px rgba(14,61,105,.12);--shadow-3:0 16px 40px rgba(14,61,105,.18);--color-accent:#1371a3;--color-accent-soft:#d2e3f3;--color-accent-strong:#0f567d;--color-on-accent:#fff;--color-accent-soft-hover:#c0d7ee;--color-mono:#505e65;--color-mono-soft:#274f65;--color-mono-strong:#080f14;--color-on-mono:#ddd;--color-mono-soft-hover:#142e3e;--color-success:#5d9893;--color-success-soft:#d9e7e6;--color-success-strong:#3c7c74;--color-on-success:#0e3d69;--color-info:#7ea9d0;--color-info-soft:#e1ebf4;--color-info-strong:#5e86ac;--color-on-info:#0e3d69;--color-warning:#95825d;--color-warning-soft:#e6e2d9;--color-warning-strong:#786649;--color-on-warning:#0e3d69;--color-danger:#ce6870;--color-danger-soft:#f3dcde;--color-danger-strong:#a55158;--color-on-danger:#0e3d69;--color-error:#ce6870;--color-error-soft:#f3dcde;--color-error-strong:#a55158;--color-on-error:#0e3d69;--color-muted-bg:#e3e8f2;--color-muted-border:#d2dae6;--color-header-bg:#f7f9fc;--color-header-border:#d2dae6;--color-footer-bg:#0e3d69;--color-footer-text:#f7f9fc;--color-logo-ink:#0e3d69;--color-logo-accent:#e31824;--color-logo-mono:#000;--color-logo-ink-inverse:#f7f9fc;--color-logo-accent-inverse:#1371a3;--color-logo-footer-ink:var(--color-footer-text);--color-logo-footer-accent:var(--color-brand-accent);--link-text:#1371a3;--link-text-hover:#0f567d;--link-text-active:#0e3d69;--color-surface-translucent-strong:hsla(0,0%,100%,.28);--color-placeholder:rgba(0,0,0,.3);--slider-track-bg:rgba(14,61,105,.18);--slider-thumb-bg:#1371a3;--overlay-backdrop-default:rgba(0,0,0,.45);--overlay-backdrop-light:rgba(0,0,0,.25);--overlay-backdrop-heavy:rgba(0,0,0,.6);--overlay-backdrop-loading:rgba(0,0,0,.25);--color-surface-soft:rgba(14,61,105,.05);--table-trend-up:#5d9893;--table-trend-down:#ce6870;--table-trend-flat:#7b8897;--table-row-good-bg:#d9e7e6;--table-row-bad-bg:#f3dcde;--table-row-warning-bg:#e6e2d9;--table-row-info-bg:#e1ebf4;--table-row-muted-bg:#e3e8f2;--table-row-strange-bg:#d9e3f4;--table-row-flagged-bg:#f3dcde;--table-row-curious-bg:#eff3f8;--table-row-good-text:#0e3d69;--table-row-bad-text:#0e3d69;--table-row-warning-text:#0e3d69;--table-row-info-text:#0e3d69;--table-row-muted-text:#4c6074;--table-row-strange-text:#0e3d69;--table-row-flagged-text:#0e3d69;--table-row-curious-text:#0e3d69;--table-row-flagged-border:#ce6870;--table-row-curious-border:#1371a3;--code-bg:#eff3f8;--code-border:#d2dae6;--code-inline-bg:rgba(14,61,105,.04);--code-inline-border:rgba(14,61,105,.18);--figure-caption-color:#4c6074;--code-block-bg:#eff3f8;--footnote-color:#8f979f;--blockquote-border:#d2dae6;--blockquote-text:#5f6b78;--color-selection-bg:rgba(45,65,73,.11);--color-selection-text:#213d4f;--code-syntax-keyword:#0f567d;--code-syntax-string:#3c7c74;--code-syntax-number:#3a7bb8;--code-syntax-operator:#0e3d69;--code-syntax-comment:#8f979f;--code-syntax-constant:#1371a3;--code-syntax-function:#0f567d;--code-syntax-variable:#0e3d69;--semantic-info-bg:#e1ebf4;--semantic-info-border:#7ea9d0;--semantic-info-text:#3a7bb8;--semantic-warning-bg:#e6e2d9;--semantic-warning-border:#95825d;--semantic-warning-text:#786649;--semantic-success-bg:#d9e7e6;--semantic-success-border:#5d9893;--semantic-success-text:#3c7c74;--semantic-danger-bg:#f3dcde;--semantic-danger-border:#ce6870;--semantic-danger-text:#a55158;--semantic-error-bg:#f3dcde;--semantic-error-border:#ce6870;--semantic-error-text:#a55158;--semantic-error-bg-strong:#eac7cb;--semantic-error-border-strong:#ce6870;--semantic-error-text-strong:#a55158;--semantic-warning-bg-strong:#ddd2c0;--semantic-warning-border-strong:#95825d;--semantic-warning-text-strong:#786649;--semantic-success-bg-strong:#cbddda;--semantic-success-border-strong:#5d9893;--semantic-success-text-strong:#3c7c74;--semantic-info-bg-strong:#d3e0ee;--semantic-info-border-strong:#7ea9d0;--semantic-info-text-strong:#3a7bb8;--hero-error-bg:#eff3f8;--hero-error-border:#ce6870;--hero-error-banner-bg:#eff3f8;--hero-error-banner-border:#ce6870;--hero-error-title:#ce6870;--hero-trend-up:#5d9893;--hero-trend-down:#ce6870;--hero-accent-line:#1371a3;--accent-soft-surface:#f4f7fb;--accent-soft-surface-strong:#dfe8f3;--accent-soft-border:#1371a3;--accent-soft-shadow:rgba(19,113,163,.25);--accent-soft-on:#0e3d69;--info-soft-surface:#e1ebf4;--info-soft-border:#7ea9d0;--info-soft-on:#0e3d69;--warning-soft-surface:#e6e2d9;--warning-soft-border:#95825d;--warning-soft-on:#0e3d69;--danger-soft-surface:#f3dcde;--danger-soft-border:#ce6870;--danger-soft-on:#0e3d69;--doc-block-action-hover-bg:#e0e5ee;--doc-block-action-hover-border:var(--color-border-strong);--doc-block-action-hover-text:var(--color-text);--button-soft-border:rgba(0,0,0,.06);--button-soft-border-hover:rgba(0,0,0,.12);--button-soft-text:var(--color-text);--button-outline-accent-hover-bg:rgba(19,113,163,.12);--button-outline-accent-hover-border:var(--color-accent-strong);--button-outline-danger-hover-bg:rgba(206,104,112,.1);--button-outline-danger-hover-border:var(--color-danger-strong);--button-outline-info-hover-bg:rgba(126,169,208,.1);--button-outline-info-hover-border:var(--color-info-strong);--button-outline-success-hover-bg:rgba(93,152,147,.12);--button-outline-success-hover-border:var(--color-success-strong);--button-outline-warning-hover-bg:rgba(149,130,93,.14);--button-outline-warning-hover-border:var(--color-warning-strong);--section-brand-eyebrow:#000;--section-brand-subtitle:#000;--section-brand-title:#0e3d69;--section-brand-body:#0e3d69;--section-brand-metric-label:#4c6074;--section-brand-metric-value:#0e3d69;--section-brand-accent-bg:radial-gradient(circle at top left,rgba(179,196,214,.25),transparent),radial-gradient(circle at bottom right,rgba(179,196,214,.35),transparent);--success-soft-surface-strong:#cbddda;--color-success-soft-hover:#cbddda;--success-soft-surface:#d9e7e6;--success-soft-border:#5d9893;--success-soft-on:#0e3d69;--warning-soft-surface-strong:#ddd2c0;--color-warning-soft-hover:#ddd2c0;--info-soft-surface-strong:#d3e0ee;--color-info-soft-hover:#d3e0ee;--danger-soft-surface-strong:#eac7cb;--color-danger-soft-hover:#eac7cb;--hero-trend-neutral:var(--color-text-muted);--hero-error-text:var(--semantic-error-text-strong,var(--color-danger-strong));--hero-metric-bg:var(--color-surface-subtle);--flow-zebra-bg:var(--color-surface-subtle);--flow-zebra-bg-alt:var(--color-muted-bg);--focus-ring-color:var(--color-accent)}:root[data-theme=graphite-dark]{--color-brand-ink:#f5f7fa;--color-brand-accent:#1f3a4d;--color-bg:#0f1114;--color-bg-soft:#1a1f26;--color-bg-elevated:#1c2127;--color-surface:#171a1e;--color-surface-subtle:#1a1e23;--color-surface-hover:#263038;--color-border-subtle:#5f656c;--color-border-strong:#6a7480;--color-text:#f5f7fa;--color-text-muted:#aeb4ba;--color-text-soft:#7a8a95;--color-text-on-soft:#f5f7fa;--color-text-on-strong:#f5f7fa;--color-icon-muted:#aeb4ba;--color-icon-strong:#f5f7fa;--color-icon-on-accent:#0f1114;--shadow-1:0 8px 20px rgba(14,61,105,.07);--shadow-2:0 10px 30px rgba(14,61,105,.12);--shadow-3:0 16px 40px rgba(14,61,105,.18);--color-accent:#1371a3;--color-accent-soft:#0a4f72;--color-accent-strong:#0d293d;--color-on-accent:#fff;--color-accent-soft-hover:#09405d;--color-mono:#505e65;--color-mono-soft:#0b1214;--color-mono-strong:#2d5a63;--color-on-mono:#e5e8eb;--color-mono-soft-hover:#1a2c30;--color-success:#066159;--color-success-soft:#002521;--color-success-strong:#247768;--color-on-success:#f5f7fa;--color-info:#3a7bb8;--color-info-soft:#0e232e;--color-info-strong:#2e6f9e;--color-on-info:#f5f7fa;--color-warning:#5d4006;--color-warning-soft:#241c08;--color-warning-strong:#a7832e;--color-on-warning:#f5f7fa;--color-danger:#850610;--color-danger-soft:#2a1518;--color-danger-strong:#b51823;--color-on-danger:#f5f7fa;--color-error:#b51823;--color-error-soft:#2a1518;--color-error-strong:#850610;--color-on-error:#f5f7fa;--color-muted-bg:#1f2427;--color-muted-border:#353a3c;--color-header-bg:#0f1114;--color-header-border:#353a3c;--color-footer-bg:#0a2d50;--color-footer-text:#f5f7fa;--color-logo-ink:#f5f7fa;--color-logo-accent:#1371a3;--color-logo-mono:#fff;--color-logo-ink-inverse:#0e3d69;--color-logo-accent-inverse:#1371a3;--color-logo-footer-ink:var(--color-footer-text);--color-logo-footer-accent:var(--color-brand-accent);--link-text:#3a7bb8;--link-text-hover:#4f9cd3;--link-text-active:#f5f7fa;--color-surface-translucent-strong:hsla(0,0%,100%,.28);--color-placeholder:rgba(245,247,250,.3);--slider-track-bg:rgba(245,247,250,.16);--slider-thumb-bg:#1371a3;--overlay-backdrop-default:rgba(0,0,0,.45);--overlay-backdrop-light:rgba(0,0,0,.25);--overlay-backdrop-heavy:rgba(0,0,0,.6);--overlay-backdrop-loading:rgba(0,0,0,.6);--color-surface-soft:hsla(0,0%,100%,.06);--table-trend-up:#066159;--table-trend-down:#850610;--table-trend-flat:#7a8a95;--table-row-good-bg:#0f2622;--table-row-bad-bg:#2a1518;--table-row-warning-bg:#32270a;--table-row-info-bg:#0e232e;--table-row-muted-bg:#1a1e20;--table-row-strange-bg:#2f1a1b;--table-row-flagged-bg:#2a1518;--table-row-curious-bg:#161a1c;--table-row-good-text:#f5f7fa;--table-row-bad-text:#f5f7fa;--table-row-warning-text:#f5f7fa;--table-row-info-text:#f5f7fa;--table-row-muted-text:#aeb4ba;--table-row-strange-text:#f5f7fa;--table-row-flagged-text:#f5f7fa;--table-row-curious-text:#f5f7fa;--table-row-flagged-border:#850610;--table-row-curious-border:#1371a3;--code-bg:#1f2426;--code-border:#2d3234;--code-inline-bg:hsla(0,0%,100%,.09);--code-inline-border:hsla(0,0%,100%,.18);--figure-caption-color:#c1c7c8;--code-block-bg:#141617;--footnote-color:#8f9798;--blockquote-border:#2d3234;--blockquote-text:#aeb4ba;--color-selection-bg:rgba(237,23,23,.4);--color-selection-text:#f5f7fa;--code-syntax-keyword:#4f9cd3;--code-syntax-string:#247768;--code-syntax-number:#3a7bb8;--code-syntax-operator:#f5f7fa;--code-syntax-comment:#7a8a95;--code-syntax-constant:#1371a3;--code-syntax-function:#4f9cd3;--code-syntax-variable:#f5f7fa;--semantic-info-bg:#022944;--semantic-info-border:#4e96dd;--semantic-info-text:#4f9cd3;--semantic-warning-bg:#241c08;--semantic-warning-border:#a7832e;--semantic-warning-text:#bfa364;--semantic-success-bg:#0f2622;--semantic-success-border:#39a88b;--semantic-success-text:#2e8f7a;--semantic-danger-bg:#2a1518;--semantic-danger-border:#b51823;--semantic-danger-text:#a33a43;--semantic-error-bg:#2a1518;--semantic-error-border:#b51823;--semantic-error-text:#a33a43;--semantic-error-bg-strong:#220f12;--semantic-error-border-strong:#b51823;--semantic-error-text-strong:#bc1425;--semantic-warning-bg-strong:#262012;--semantic-warning-border-strong:#a7832e;--semantic-warning-text-strong:#c7a96a;--semantic-success-bg-strong:#0a1e1b;--semantic-success-border-strong:#39a88b;--semantic-success-text-strong:#2e8f7a;--semantic-info-bg-strong:#0a1a24;--semantic-info-border-strong:#4e96dd;--semantic-info-text-strong:#4f9cd3;--hero-error-bg:#24090c;--hero-error-border:#7a1f2a;--hero-error-banner-bg:#24090c;--hero-error-banner-border:#8a2331;--hero-error-title:#bd444e;--hero-trend-up:#39a88b;--hero-trend-down:#b51823;--hero-accent-line:#1371a3;--accent-soft-surface:#0a3a55;--accent-soft-surface-strong:#123f57;--accent-soft-border:#1371a3;--accent-soft-shadow:rgba(19,113,163,.25);--accent-soft-on:#f5f7fa;--info-soft-surface:#0e232e;--info-soft-border:#3a7bb8;--info-soft-on:#2e6f9e;--warning-soft-surface:#241c08;--warning-soft-border:#a7832e;--warning-soft-on:#c7a96a;--danger-soft-surface:#2a1518;--danger-soft-border:#850610;--danger-soft-on:#d7515e;--doc-block-action-hover-bg:#2a2f31;--doc-block-action-hover-border:var(--color-border-strong);--doc-block-action-hover-text:var(--color-text);--button-soft-border:hsla(0,0%,100%,.04);--button-soft-border-hover:hsla(0,0%,100%,.12);--button-soft-text:var(--color-text);--button-outline-accent-hover-bg:rgba(19,113,163,.16);--button-outline-accent-hover-border:var(--color-accent-strong);--button-outline-danger-hover-bg:rgba(181,24,35,.16);--button-outline-danger-hover-border:var(--color-danger-strong);--button-outline-info-hover-bg:rgba(58,123,184,.16);--button-outline-info-hover-border:var(--color-info-strong);--button-outline-success-hover-bg:rgba(6,97,89,.16);--button-outline-success-hover-border:var(--color-success-strong);--button-outline-warning-hover-bg:rgba(93,64,6,.2);--button-outline-warning-hover-border:var(--color-warning-strong);--section-brand-eyebrow:#f5f7fa;--section-brand-subtitle:#c1c7c8;--section-brand-title:#fff;--section-brand-body:#c1c7c8;--section-brand-metric-label:#f5f7fa;--section-brand-metric-value:#fff;--section-brand-accent-bg:radial-gradient(circle at top left,rgba(19,113,163,.35),transparent),radial-gradient(circle at bottom right,rgba(19,113,163,.45),transparent);--success-soft-surface-strong:#0a1e1b;--color-success-soft-hover:#102e29;--success-soft-surface:#002521;--success-soft-border:#066159;--success-soft-on:#39a88b;--warning-soft-surface-strong:#262012;--color-warning-soft-hover:#322a16;--info-soft-surface-strong:#0a1a24;--color-info-soft-hover:#0e2a3a;--danger-soft-surface-strong:#220f12;--color-danger-soft-hover:#2d161b;--hero-trend-neutral:var(--color-text-muted);--hero-error-text:var(--semantic-error-text-strong,var(--color-danger-strong));--hero-metric-bg:var(--color-surface);--flow-zebra-bg:var(--color-surface);--flow-zebra-bg-alt:var(--color-surface-subtle);--focus-ring-color:#1371a3}
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Graphite Theme
+ *
+ *  Responsibilities:
+ *    - Provide full light and dark palettes for the Graphite identity
+ *    - Map brand, neutral, and semantic colours into VDS tokens
+ *      for text, surfaces, borders, icons, overlays, and states
+ *    - Supply extended theme tokens for tables, hero, typography,
+ *      code, focus rings, and selection behaviour
+ *    - Ensure structural parity between light and dark modes so
+ *      components can switch themes without changing logic
+ *
+ *  System Notes:
+ *    - Pure token layer: no layout or component rules
+ *    - Exposed under :root[data-theme="graphite-light" | "graphite-dark"]
+ *    - Must be loaded after primitives.css and before components
+ *    - All components are expected to consume these tokens only,
+ *      never hard-coded HEX values
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   GRAPHITE - LIGHT THEME
+--------------------------------------------------------- */
+
+:root[data-theme="graphite-light"] {
+    /* Core brand */
+    --color-brand-ink: #0E3D69;
+    --color-brand-accent: #1371A3;
+
+    /* Backgrounds */
+    --color-bg: #F7F9FC;
+    --color-bg-soft: #EFF3F8;
+    --color-bg-elevated: #FFFFFF;
+
+    /* Surfaces */
+    --color-surface: #FFFFFF;
+    --color-surface-subtle: #EFF3F8;
+    --color-surface-hover: #E5ECF5;
+
+    /* Borders */
+    --color-border-subtle: #D2DAE6;
+    --color-border-strong: #A7B4C5;
+
+    /* Text */
+    --color-text: #0E3D69;
+    --color-text-muted: #4C6074;
+    --color-text-soft: #7B8897;
+    --color-text-on-soft: #0E3D69;
+    --color-text-on-strong: #F7F9FC;
+
+    /* Icons */
+    --color-icon-muted: #4C6074;
+    --color-icon-strong: #0E3D69;
+    --color-icon-on-accent: #FFFFFF;
+
+    /* Shadows */
+    --shadow-1: 0 8px 20px rgba(14, 61, 105, 0.07);
+    --shadow-2: 0 10px 30px rgba(14, 61, 105, 0.12);
+    --shadow-3: 0 16px 40px rgba(14, 61, 105, 0.18);
+
+    /* Accent (Graphite) */
+    --color-accent: #1371A3;
+    --color-accent-soft: #D2E3F3;
+    --color-accent-strong: #0F567D;
+    --color-on-accent: #FFFFFF;
+    --color-accent-soft-hover: #C0D7EE;
+
+    /* Mono */
+    --color-mono: #505E65;
+    --color-mono-soft: #274F65;
+    --color-mono-strong: #080F14;
+    --color-on-mono: #DDDDDD;
+    --color-mono-soft-hover: #142E3E;
+
+    /* States (Graphite light) */
+    --color-success: #5D9893;
+    --color-success-soft: #D9E7E6;
+    --color-success-strong: #3C7C74;
+    --color-on-success: #0E3D69;
+
+    --color-info: #7EA9D0;
+    --color-info-soft: #E1EBF4;
+    --color-info-strong: #5E86AC;
+    --color-on-info: #0E3D69;
+
+    --color-warning: #95825D;
+    --color-warning-soft: #E6E2D9;
+    --color-warning-strong: #786649;
+    --color-on-warning: #0E3D69;
+
+    --color-danger: #CE6870;
+    --color-danger-soft: #F3DCDE;
+    --color-danger-strong: #A55158;
+    --color-on-danger: #0E3D69;
+
+    --color-error: #CE6870;
+    --color-error-soft: #F3DCDE;
+    --color-error-strong: #A55158;
+    --color-on-error: #0E3D69;
+
+    /* Neutral */
+    --color-muted-bg: #E3E8F2;
+    --color-muted-border: #D2DAE6;
+
+    /* Header / footer */
+    --color-header-bg: #F7F9FC;
+    --color-header-border: #D2DAE6;
+    --color-footer-bg: #0E3D69;
+    --color-footer-text: #F7F9FC;
+
+    /* Logo integration */
+    --color-logo-ink: #0E3D69;
+    --color-logo-accent: #e31824;
+    --color-logo-mono: #000000;
+    --color-logo-ink-inverse: #F7F9FC;
+    --color-logo-accent-inverse: #1371A3;
+    --color-logo-footer-ink: var(--color-footer-text);
+    --color-logo-footer-accent: var(--color-brand-accent);
+
+    /* Links */
+    --link-text: #1371A3;
+    --link-text-hover: #0F567D;
+    --link-text-active: #0E3D69;
+
+    /* Hero translucency */
+    --color-surface-translucent-strong: rgba(255, 255, 255, 0.28);
+
+    /* Forms */
+    --color-placeholder: rgba(0, 0, 0, 0.30);
+    --slider-track-bg: rgba(14, 61, 105, 0.18);
+    --slider-thumb-bg: #1371A3;
+
+    /* Overlay backdrops */
+    --overlay-backdrop-default: rgba(0, 0, 0, 0.45);
+    --overlay-backdrop-light: rgba(0, 0, 0, 0.25);
+    --overlay-backdrop-heavy: rgba(0, 0, 0, 0.60);
+    --overlay-backdrop-loading: rgba(0, 0, 0, 0.25);
+
+    /* Tables */
+    --color-surface-soft: rgba(14, 61, 105, 0.05);
+
+    /* Table trend + rows */
+    --table-trend-up: #5D9893;
+    --table-trend-down: #CE6870;
+    --table-trend-flat: #7B8897;
+
+    --table-row-good-bg: #D9E7E6;
+    --table-row-bad-bg: #F3DCDE;
+    --table-row-warning-bg: #E6E2D9;
+    --table-row-info-bg: #E1EBF4;
+    --table-row-muted-bg: #E3E8F2;
+    --table-row-strange-bg: #D9E3F4;
+    --table-row-flagged-bg: #F3DCDE;
+    --table-row-curious-bg: #EFF3F8;
+
+    --table-row-good-text: #0E3D69;
+    --table-row-bad-text: #0E3D69;
+    --table-row-warning-text: #0E3D69;
+    --table-row-info-text: #0E3D69;
+    --table-row-muted-text: #4C6074;
+    --table-row-strange-text: #0E3D69;
+    --table-row-flagged-text: #0E3D69;
+    --table-row-curious-text: #0E3D69;
+
+    --table-row-flagged-border: #CE6870;
+    --table-row-curious-border: #1371A3;
+
+    /* Code */
+    --code-bg: #EFF3F8;
+    --code-border: #D2DAE6;
+    --code-inline-bg: rgba(14, 61, 105, 0.04);
+    --code-inline-border: rgba(14, 61, 105, 0.18);
+
+    /* Typography */
+    --figure-caption-color: #4C6074;
+    --code-block-bg: #EFF3F8;
+    --footnote-color: #8F979F;
+
+    /* Blockquote */
+    --blockquote-border: #D2DAE6;
+    --blockquote-text: #5F6B78;
+
+    /* Selection */
+    --color-selection-bg: rgba(45, 65, 73, 0.11);
+    --color-selection-text: #213d4f;
+
+    /* Syntax highlight */
+    --code-syntax-keyword: #0F567D;
+    --code-syntax-string: #3C7C74;
+    --code-syntax-number: #3A7BB8;
+    --code-syntax-operator: #0E3D69;
+    --code-syntax-comment: #8F979F;
+    --code-syntax-constant: #1371A3;
+    --code-syntax-function: #0F567D;
+    --code-syntax-variable: #0E3D69;
+
+    /* Semantic stacks */
+    --semantic-info-bg: #E1EBF4;
+    --semantic-info-border: #7EA9D0;
+    --semantic-info-text: #3A7BB8;
+
+    --semantic-warning-bg: #E6E2D9;
+    --semantic-warning-border: #95825D;
+    --semantic-warning-text: #786649;
+
+    --semantic-success-bg: #D9E7E6;
+    --semantic-success-border: #5D9893;
+    --semantic-success-text: #3C7C74;
+
+    --semantic-danger-bg: #F3DCDE;
+    --semantic-danger-border: #CE6870;
+    --semantic-danger-text: #A55158;
+
+    --semantic-error-bg: #F3DCDE;
+    --semantic-error-border: #CE6870;
+    --semantic-error-text: #A55158;
+
+    /* Strong variants */
+    --semantic-error-bg-strong: #EAC7CB;
+    --semantic-error-border-strong: #CE6870;
+    --semantic-error-text-strong: #A55158;
+
+    --semantic-warning-bg-strong: #DDD2C0;
+    --semantic-warning-border-strong: #95825D;
+    --semantic-warning-text-strong: #786649;
+
+    --semantic-success-bg-strong: #CBDDDA;
+    --semantic-success-border-strong: #5D9893;
+    --semantic-success-text-strong: #3C7C74;
+
+    --semantic-info-bg-strong: #D3E0EE;
+    --semantic-info-border-strong: #7EA9D0;
+    --semantic-info-text-strong: #3A7BB8;
+
+    /* HERO ERROR */
+    --hero-error-bg: #EFF3F8;
+    --hero-error-border: #CE6870;
+    --hero-error-banner-bg: #EFF3F8;
+    --hero-error-banner-border: #CE6870;
+    --hero-error-title: #CE6870;
+
+    --hero-trend-up: #5D9893;
+    --hero-trend-down: #CE6870;
+    --hero-accent-line: #1371A3;
+
+    /* ACCENT SURFACES */
+    --accent-soft-surface: #F4F7FB;
+    --accent-soft-surface-strong: #DFE8F3;
+    --accent-soft-border: #1371A3;
+    --accent-soft-shadow: rgba(19, 113, 163, 0.25);
+    --accent-soft-on: #0E3D69;
+
+    /* INFO SURFACES */
+    --info-soft-surface: #E1EBF4;
+    --info-soft-border: #7EA9D0;
+    --info-soft-on: #0E3D69;
+
+    /* WARNING SURFACES */
+    --warning-soft-surface: #E6E2D9;
+    --warning-soft-border: #95825D;
+    --warning-soft-on: #0E3D69;
+
+    /* DANGER SURFACES */
+    --danger-soft-surface: #F3DCDE;
+    --danger-soft-border: #CE6870;
+    --danger-soft-on: #0E3D69;
+
+    /* DOC BLOCK */
+    --doc-block-action-hover-bg: #E0E5EE;
+    --doc-block-action-hover-border: var(--color-border-strong);
+    --doc-block-action-hover-text: var(--color-text);
+
+    /* BUTTON SOFT */
+    --button-soft-border: rgba(0, 0, 0, 0.06);
+    --button-soft-border-hover: rgba(0, 0, 0, 0.12);
+    --button-soft-text: var(--color-text);
+
+    /* OUTLINE BUTTON HOVERS */
+    --button-outline-accent-hover-bg: rgba(19, 113, 163, 0.12);
+    --button-outline-accent-hover-border: var(--color-accent-strong);
+
+    --button-outline-danger-hover-bg: rgba(206, 104, 112, 0.10);
+    --button-outline-danger-hover-border: var(--color-danger-strong);
+
+    --button-outline-info-hover-bg: rgba(126, 169, 208, 0.10);
+    --button-outline-info-hover-border: var(--color-info-strong);
+
+    --button-outline-success-hover-bg: rgba(93, 152, 147, 0.12);
+    --button-outline-success-hover-border: var(--color-success-strong);
+
+    --button-outline-warning-hover-bg: rgba(149, 130, 93, 0.14);
+    --button-outline-warning-hover-border: var(--color-warning-strong);
+
+    /* BRAND SECTIONS */
+    --section-brand-eyebrow: #000000;
+    --section-brand-subtitle: #000000;
+    --section-brand-title: #0E3D69;
+    --section-brand-body: #0E3D69;
+    --section-brand-metric-label: #4C6074;
+    --section-brand-metric-value: #0E3D69;
+
+    --section-brand-accent-bg: radial-gradient(circle at top left,
+    rgba(179, 196, 214, 0.25),
+    transparent),
+    radial-gradient(circle at bottom right,
+            rgba(179, 196, 214, 0.35),
+            transparent);
+
+    /* Success extended */
+    --success-soft-surface-strong: #CBDDDA;
+    --color-success-soft-hover: #CBDDDA;
+    --success-soft-surface: #D9E7E6;
+    --success-soft-border: #5D9893;
+    --success-soft-on: #0E3D69;
+
+    /* Warning extended */
+    --warning-soft-surface-strong: #DDD2C0;
+    --color-warning-soft-hover: #DDD2C0;
+
+    /* Info extended */
+    --info-soft-surface-strong: #D3E0EE;
+    --color-info-soft-hover: #D3E0EE;
+
+    /* Danger extended */
+    --danger-soft-surface-strong: #EAC7CB;
+    --color-danger-soft-hover: #EAC7CB;
+
+    /* Hero */
+    --hero-trend-neutral: var(--color-text-muted);
+    --hero-error-text: var(--semantic-error-text-strong, var(--color-danger-strong));
+
+    --hero-metric-bg: var(--color-surface-subtle);
+
+    --flow-zebra-bg: var(--color-surface-subtle);
+    --flow-zebra-bg-alt: var(--color-muted-bg);
+
+    --focus-ring-color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------
+   GRAPHITE - DARK THEME
+   Inverts background/text, preserves hierarchy.
+--------------------------------------------------------- */
+
+:root[data-theme="graphite-dark"] {
+    /* Core brand */
+    --color-brand-ink: #F5F7FA;
+    --color-brand-accent: #1F3A4D;
+
+    /* Backgrounds */
+    --color-bg: #0F1114;
+    --color-bg-soft: #1A1F26;
+    --color-bg-elevated: #1C2127;
+
+    /* Surfaces */
+    --color-surface: #171A1E;
+    --color-surface-subtle: #1A1E23;
+    --color-surface-hover: #263038;
+
+    /* Borders */
+    --color-border-subtle: #5F656C;
+    --color-border-strong: #6A7480;
+
+    /* Text */
+    --color-text: #F5F7FA;
+    --color-text-muted: #AEB4BA;
+    --color-text-soft: #7A8A95;
+    --color-text-on-soft: #F5F7FA;
+    --color-text-on-strong: #F5F7FA;
+
+    /* Icons */
+    --color-icon-muted: #AEB4BA;
+    --color-icon-strong: #F5F7FA;
+    --color-icon-on-accent: #0F1114;
+
+    /* Shadows */
+    --shadow-1: 0 8px 20px rgba(14, 61, 105, 0.07);
+    --shadow-2: 0 10px 30px rgba(14, 61, 105, 0.12);
+    --shadow-3: 0 16px 40px rgba(14, 61, 105, 0.18);
+
+    /* Accent */
+    --color-accent: #1371A3;
+    --color-accent-soft: #0A4F72;
+    --color-accent-strong: #0D293D;
+    --color-on-accent: #FFFFFF;
+    --color-accent-soft-hover: #09405D;
+
+    /* Mono */
+    --color-mono: #505E65;
+    --color-mono-soft: #0B1214;
+    --color-mono-strong: #2D5A63;
+    --color-on-mono: #E5E8EB;
+    --color-mono-soft-hover: #1A2C30;
+
+    /* States */
+    --color-success: #066159;
+    --color-success-soft: #002521;
+    --color-success-strong: #247768;
+    --color-on-success: #F5F7FA;
+
+    --color-info: #3A7BB8;
+    --color-info-soft: #0E232E;
+    --color-info-strong: #2E6F9E;
+    --color-on-info: #F5F7FA;
+
+    --color-warning: #5D4006;
+    --color-warning-soft: #241C08;
+    --color-warning-strong: #A7832E;
+    --color-on-warning: #F5F7FA;
+
+    --color-danger: #850610;
+    --color-danger-soft: #2A1518;
+    --color-danger-strong: #B51823;
+    --color-on-danger: #F5F7FA;
+
+    --color-error: #B51823;
+    --color-error-soft: #2A1518;
+    --color-error-strong: #850610;
+    --color-on-error: #F5F7FA;
+
+    /* Neutral */
+    --color-muted-bg: #1f2427;
+    --color-muted-border: #353A3C;
+
+    /* Header / footer */
+    --color-header-bg: #0F1114;
+    --color-header-border: #353A3C;
+    --color-footer-bg: #0A2D50;
+    --color-footer-text: #F5F7FA;
+
+    /* Logo integration */
+    --color-logo-ink: #F5F7FA;
+    --color-logo-accent: #1371A3;
+    --color-logo-mono: #FFFFFF;
+    --color-logo-ink-inverse: #0E3D69;
+    --color-logo-accent-inverse: #1371A3;
+    --color-logo-footer-ink: var(--color-footer-text);
+    --color-logo-footer-accent: var(--color-brand-accent);
+
+    /* Links */
+    --link-text: #3A7BB8;
+    --link-text-hover: #4F9CD3;
+    --link-text-active: #F5F7FA;
+
+    /* Translucent translucency */
+    --color-surface-translucent-strong: rgba(255, 255, 255, 0.28);
+
+    /* Forms */
+    --color-placeholder: rgba(245, 247, 250, 0.30);
+    --slider-track-bg: rgba(245, 247, 250, 0.16);
+    --slider-thumb-bg: #1371A3;
+
+    /* Overlay backdrops */
+    --overlay-backdrop-default: rgba(0, 0, 0, 0.45);
+    --overlay-backdrop-light: rgba(0, 0, 0, 0.25);
+    --overlay-backdrop-heavy: rgba(0, 0, 0, 0.60);
+    --overlay-backdrop-loading: rgba(0, 0, 0, 0.60);
+
+    /* Tables */
+    --color-surface-soft: rgba(255, 255, 255, 0.06);
+
+    /* Table trend + rows */
+    --table-trend-up: #066159;
+    --table-trend-down: #850610;
+    --table-trend-flat: #7A8A95;
+
+    --table-row-good-bg: #0F2622;
+    --table-row-bad-bg: #2A1518;
+    --table-row-warning-bg: #32270A;
+    --table-row-info-bg: #0E232E;
+    --table-row-muted-bg: #1A1E20;
+    --table-row-strange-bg: #2F1A1B;
+    --table-row-flagged-bg: #2A1518;
+    --table-row-curious-bg: #161A1C;
+
+    --table-row-good-text: #F5F7FA;
+    --table-row-bad-text: #F5F7FA;
+    --table-row-warning-text: #F5F7FA;
+    --table-row-info-text: #F5F7FA;
+    --table-row-muted-text: #AEB4BA;
+    --table-row-strange-text: #F5F7FA;
+    --table-row-flagged-text: #F5F7FA;
+    --table-row-curious-text: #F5F7FA;
+
+    --table-row-flagged-border: #850610;
+    --table-row-curious-border: #1371A3;
+
+    /* Code */
+    --code-bg: #1F2426;
+    --code-border: #2D3234;
+    --code-inline-bg: rgba(255, 255, 255, 0.09);
+    --code-inline-border: rgba(255, 255, 255, 0.18);
+
+    /* Typography */
+    --figure-caption-color: #C1C7C8;
+    --code-block-bg: #141617;
+    --footnote-color: #8F9798;
+
+    /* Blockquote */
+    --blockquote-border: #2D3234;
+    --blockquote-text: #AEB4BA;
+
+    /* Selection */
+    --color-selection-bg: rgba(237, 23, 23, 0.40);
+    --color-selection-text: #F5F7FA;
+
+    /* Syntax highlight */
+    --code-syntax-keyword: #4F9CD3;
+    --code-syntax-string: #247768;
+    --code-syntax-number: #3A7BB8;
+    --code-syntax-operator: #F5F7FA;
+    --code-syntax-comment: #7A8A95;
+    --code-syntax-constant: #1371A3;
+    --code-syntax-function: #4F9CD3;
+    --code-syntax-variable: #F5F7FA;
+
+    /* Semantic stacks */
+    --semantic-info-bg: #022944;
+    --semantic-info-border: #4E96DD;
+    --semantic-info-text: #4F9CD3;
+
+    --semantic-warning-bg: #241C08;
+    --semantic-warning-border: #A7832E;
+    --semantic-warning-text: #BFA364;
+
+    --semantic-success-bg: #0F2622;
+    --semantic-success-border: #39A88B;
+    --semantic-success-text: #2E8F7A;
+
+    --semantic-danger-bg: #2A1518;
+    --semantic-danger-border: #B51823;
+    --semantic-danger-text: #a33a43;
+
+    --semantic-error-bg: #2A1518;
+    --semantic-error-border: #B51823;
+    --semantic-error-text: #a33a43;
+
+    /* Strong variants */
+    --semantic-error-bg-strong: #220F12;
+    --semantic-error-border-strong: #B51823;
+    --semantic-error-text-strong: #bc1425;
+
+    --semantic-warning-bg-strong: #262012;
+    --semantic-warning-border-strong: #A7832E;
+    --semantic-warning-text-strong: #C7A96A;
+
+    --semantic-success-bg-strong: #0A1E1B;
+    --semantic-success-border-strong: #39A88B;
+    --semantic-success-text-strong: #2E8F7A;
+
+    --semantic-info-bg-strong: #0A1A24;
+    --semantic-info-border-strong: #4E96DD;
+    --semantic-info-text-strong: #4F9CD3;
+
+    /* HERO ERROR */
+    --hero-error-bg: #24090C;
+    --hero-error-border: #7A1F2A;
+    --hero-error-banner-bg: #24090C;
+    --hero-error-banner-border: #8A2331;
+    --hero-error-title: #bd444e;
+
+    --hero-trend-up: #39A88B;
+    --hero-trend-down: #B51823;
+    --hero-accent-line: #1371A3;
+
+    /* ACCENT SURFACES */
+    --accent-soft-surface: #0A3A55;
+    --accent-soft-surface-strong: #123F57;
+    --accent-soft-border: #1371A3;
+    --accent-soft-shadow: rgba(19, 113, 163, 0.25);
+    --accent-soft-on: #F5F7FA;
+
+    /* INFO SURFACES */
+    --info-soft-surface: #0E232E;
+    --info-soft-border: #3A7BB8;
+    --info-soft-on: #2E6F9E;
+
+    /* WARNING SURFACES */
+    --warning-soft-surface: #241C08;
+    --warning-soft-border: #A7832E;
+    --warning-soft-on: #C7A96A;
+
+    /* DANGER SURFACES */
+    --danger-soft-surface: #2A1518;
+    --danger-soft-border: #850610;
+    --danger-soft-on: #d7515e;
+
+    /* DOC BLOCK */
+    --doc-block-action-hover-bg: #2A2F31;
+    --doc-block-action-hover-border: var(--color-border-strong);
+    --doc-block-action-hover-text: var(--color-text);
+
+    /* BUTTON SOFT */
+    --button-soft-border: rgba(255, 255, 255, 0.04);
+    --button-soft-border-hover: rgba(255, 255, 255, 0.12);
+    --button-soft-text: var(--color-text);
+
+    /* OUTLINE BUTTON HOVERS */
+    --button-outline-accent-hover-bg: rgba(19, 113, 163, 0.16);
+    --button-outline-accent-hover-border: var(--color-accent-strong);
+
+    --button-outline-danger-hover-bg: rgba(181, 24, 35, 0.16);
+    --button-outline-danger-hover-border: var(--color-danger-strong);
+
+    --button-outline-info-hover-bg: rgba(58, 123, 184, 0.16);
+    --button-outline-info-hover-border: var(--color-info-strong);
+
+    --button-outline-success-hover-bg: rgba(6, 97, 89, 0.16);
+    --button-outline-success-hover-border: var(--color-success-strong);
+
+    --button-outline-warning-hover-bg: rgba(93, 64, 6, 0.20);
+    --button-outline-warning-hover-border: var(--color-warning-strong);
+
+    /* BRAND SECTIONS */
+    --section-brand-eyebrow: #F5F7FA;
+    --section-brand-subtitle: #C1C7C8;
+    --section-brand-title: #FFFFFF;
+    --section-brand-body: #C1C7C8;
+    --section-brand-metric-label: #F5F7FA;
+    --section-brand-metric-value: #FFFFFF;
+
+    --section-brand-accent-bg: radial-gradient(circle at top left,
+    rgba(19, 113, 163, 0.35),
+    transparent),
+    radial-gradient(circle at bottom right,
+            rgba(19, 113, 163, 0.45),
+            transparent);
+
+    /* Success extended */
+    --success-soft-surface-strong: #0A1E1B;
+    --color-success-soft-hover: #102E29;
+    --success-soft-surface: #002521;
+    --success-soft-border: #066159;
+    --success-soft-on: #39A88B;
+
+    /* Warning extended */
+    --warning-soft-surface-strong: #262012;
+    --color-warning-soft-hover: #322A16;
+
+    /* Info extended */
+    --info-soft-surface-strong: #0A1A24;
+    --color-info-soft-hover: #0E2A3A;
+
+    /* Danger extended */
+    --danger-soft-surface-strong: #220F12;
+    --color-danger-soft-hover: #2D161B;
+
+    /* Hero */
+    --hero-trend-neutral: var(--color-text-muted);
+    --hero-error-text: var(--semantic-error-text-strong, var(--color-danger-strong));
+
+    --hero-metric-bg: var(--color-surface);
+
+    --flow-zebra-bg: var(--color-surface);
+    --flow-zebra-bg-alt: var(--color-surface-subtle);
+
+    --focus-ring-color: #1371A3;
+}

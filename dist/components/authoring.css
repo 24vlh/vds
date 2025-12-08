@@ -1,1 +1,332 @@
-.vds-authoring,[data-vds-authoring]{--highlight-border-width:var(--border-width-strong);--admonition-radius:var(--radius-md);--admonition-border:var(--highlight-border-width);--admonition-gap:var(--space-3);--admonition-pad-y:var(--space-3);--admonition-pad-x:var(--space-4);--footnote-size:var(--text-xs);--footnote-color:var(--footnote-color,var(--color-text-muted));--marker-bg:var(--color-muted-bg);--marker-border:var(--color-muted-border)}.admonition{align-items:flex-start;background-color:var(--color-surface-subtle);border-left:var(--admonition-border) solid var(--color-border-subtle);border-radius:var(--admonition-radius);color:var(--color-text);display:flex;gap:var(--admonition-gap);margin-bottom:var(--space-4);margin-top:var(--space-4);padding:var(--admonition-pad-y) var(--admonition-pad-x)}.admonition__icon{flex-shrink:0;font-size:var(--text-lg);margin-top:.15em;opacity:.85}.admonition__content{flex:1 1 auto;min-width:0}.admonition__title{font-size:var(--text-sm);font-weight:600;letter-spacing:.06em;margin-bottom:var(--space-1);text-transform:uppercase}.admonition__body{font-size:var(--text-sm);line-height:var(--line-height-relaxed)}.admonition--compact{padding:var(--space-2) var(--space-3)}.admonition--info,.admonition--note{background-color:var(--semantic-info-bg);border-color:var(--semantic-info-border);color:var(--semantic-info-text)}.admonition--success,.admonition--tip{background-color:var(--semantic-success-bg);border-color:var(--semantic-success-border);color:var(--semantic-success-text)}.admonition--warning{background-color:var(--semantic-warning-bg);border-color:var(--semantic-warning-border);color:var(--semantic-warning-text)}.admonition--danger,.admonition--important{background-color:var(--semantic-danger-bg);border-color:var(--semantic-danger-border);color:var(--semantic-danger-text)}.md-danger,.md-important,.md-info,.md-note,.md-success,.md-tip,.md-warning{border-left:var(--highlight-border-width) solid;border-radius:var(--radius-md);font-size:var(--text-sm);line-height:var(--line-height-relaxed);margin-bottom:var(--space-4);margin-top:var(--space-4);padding:var(--space-3) var(--space-4)}.md-info,.md-note{background-color:var(--semantic-info-bg);color:var(--semantic-info-text)}.md-success,.md-tip{background-color:var(--semantic-success-bg);color:var(--semantic-success-text)}.md-warning{background-color:var(--semantic-warning-bg);color:var(--semantic-warning-text)}.md-danger,.md-important{background-color:var(--semantic-danger-bg);color:var(--semantic-danger-text)}.heading-anchor{color:var(--color-text-soft);font-size:.8em;margin-left:var(--space-1);opacity:0;-webkit-text-decoration:none;text-decoration:none;transition:opacity var(--transition-fast)}.heading-anchor:hover{color:var(--link-text-hover)}h1:focus-within .heading-anchor,h1:hover .heading-anchor,h2:focus-within .heading-anchor,h2:hover .heading-anchor,h3:focus-within .heading-anchor,h3:hover .heading-anchor,h4:focus-within .heading-anchor,h4:hover .heading-anchor,h5:focus-within .heading-anchor,h5:hover .heading-anchor,h6:focus-within .heading-anchor,h6:hover .heading-anchor{opacity:1}.fn-ref{color:var(--footnote-color);font-size:var(--footnote-size);margin-left:.15em;-webkit-text-decoration:none;text-decoration:none;vertical-align:super}.fn-ref:hover{color:var(--link-text-hover)}.fn-back{color:var(--footnote-color);-webkit-text-decoration:none;text-decoration:none}.fn-back,.footnotes{font-size:var(--footnote-size)}.footnotes{border-top:1px solid var(--color-border-subtle);margin-top:var(--space-8);padding-top:var(--space-6)}.footnotes ol{padding-left:var(--space-6)}.footnotes li{margin-bottom:var(--space-3)}.inline-marker{background:var(--marker-bg);border:1px solid var(--marker-border);border-radius:var(--radius-sm);color:var(--color-text);display:inline-block;font-size:var(--text-xs);line-height:1.3;padding:0 var(--space-1_5)}.inline-marker--info{background:var(--semantic-info-bg);border-color:var(--semantic-info-border);color:var(--semantic-info-text)}.inline-marker--success{background:var(--semantic-success-bg);border-color:var(--semantic-success-border);color:var(--semantic-success-text)}.inline-marker--warning{background:var(--semantic-warning-bg);border-color:var(--semantic-warning-border);color:var(--semantic-warning-text)}.inline-marker--danger{background:var(--semantic-danger-bg);border-color:var(--semantic-danger-border);color:var(--semantic-danger-text)}.prose-lead{color:var(--color-text);font-size:var(--text-md);line-height:var(--line-height-relaxed)}.prose-muted{color:var(--color-text-muted)}.prose-tight>*+*{margin-top:var(--space-2)}.prose-relaxed>*+*{margin-top:var(--space-6)}.prose-grid-2{grid-gap:var(--space-6);display:grid;gap:var(--space-6);grid-template-columns:repeat(2,1fr)}@media (max-width:1024px){.prose-grid-2{grid-template-columns:1fr}}.doc-block__body .admonition,.doc-block__body .md-danger,.doc-block__body .md-important,.doc-block__body .md-info,.doc-block__body .md-note,.doc-block__body .md-success,.doc-block__body .md-tip,.doc-block__body .md-warning{margin-bottom:var(--space-3);margin-top:var(--space-3)}
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Authoring Layer
+ *
+ *  Responsibilities:
+ *    - Provide the semantic toolbox for documentation: admonitions,
+ *      MDX-style callouts, inline markers, footnotes, anchors, and prose helpers
+ *    - Define consistent spacing, radii, typography, and borders for long-form
+ *      content blocks across all VDS documentation pages
+ *    - Supply robust heading-anchor behaviour and fully tokenised footnote
+ *      structures for accessible technical writing
+ *    - Integrate seamlessly with doc-block containers to unify documentation
+ *      styling and preserve system-wide hierarchy
+ *
+ *  System Notes:
+ *    - Pure CSS; no JavaScript dependencies or behavioural assumptions
+ *    - Consumes tokens from primitives + active theme (Carbon/Graphite/Navy/Slate/Titanium)
+ *    - Safe to compose inside doc-blocks, MDX content, and VDS specification pages
+ *    - All variants are token-driven: info/success/warning/danger map directly
+ *      to semantic-* tokens defined in the active theme
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   1. FOUNDATION / RESET
+--------------------------------------------------------- */
+
+[data-vds-authoring],
+.vds-authoring {
+    --highlight-border-width: var(--border-width-strong);
+
+    --admonition-radius: var(--radius-md);
+    --admonition-border: var(--highlight-border-width);
+    --admonition-gap: var(--space-3);
+    --admonition-pad-y: var(--space-3);
+    --admonition-pad-x: var(--space-4);
+
+    --footnote-size: var(--text-xs);
+    --footnote-color: var(--footnote-color, var(--color-text-muted));
+
+    --marker-bg: var(--color-muted-bg);
+    --marker-border: var(--color-muted-border);
+}
+
+/* ---------------------------------------------------------
+    2. ADMONITION SYSTEM (GitHub-style)
+--------------------------------------------------------- */
+
+.admonition {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
+    padding: var(--admonition-pad-y) var(--admonition-pad-x);
+
+    display: flex;
+    align-items: flex-start;
+    gap: var(--admonition-gap);
+
+    border-radius: var(--admonition-radius);
+    border-left: var(--admonition-border) solid var(--color-border-subtle);
+    background-color: var(--color-surface-subtle);
+    color: var(--color-text);
+}
+
+.admonition__icon {
+    flex-shrink: 0;
+    margin-top: 0.15em;
+    font-size: var(--text-lg);
+    opacity: 0.85;
+}
+
+.admonition__content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.admonition__title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-1);
+}
+
+.admonition__body {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-relaxed);
+}
+
+.admonition--compact {
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+}
+
+/* ---------------------------------------------------------
+   2.1 ADMONITION VARIANTS
+--------------------------------------------------------- */
+
+.admonition--note,
+.admonition--info {
+    background-color: var(--semantic-info-bg);
+    border-color: var(--semantic-info-border);
+    color: var(--semantic-info-text);
+}
+
+.admonition--tip,
+.admonition--success {
+    background-color: var(--semantic-success-bg);
+    border-color: var(--semantic-success-border);
+    color: var(--semantic-success-text);
+}
+
+.admonition--warning {
+    background-color: var(--semantic-warning-bg);
+    border-color: var(--semantic-warning-border);
+    color: var(--semantic-warning-text);
+}
+
+.admonition--danger,
+.admonition--important {
+    background-color: var(--semantic-danger-bg);
+    border-color: var(--semantic-danger-border);
+    color: var(--semantic-danger-text);
+}
+
+/* ---------------------------------------------------------
+   3. MDX / MARKDOWN CALLOUTS
+--------------------------------------------------------- */
+
+.md-note,
+.md-info,
+.md-tip,
+.md-success,
+.md-warning,
+.md-danger,
+.md-important {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    border-left: var(--highlight-border-width) solid currentColor;
+    font-size: var(--text-sm);
+    line-height: var(--line-height-relaxed);
+}
+
+.md-note,
+.md-info {
+    background-color: var(--semantic-info-bg);
+    color: var(--semantic-info-text);
+}
+
+.md-tip,
+.md-success {
+    background-color: var(--semantic-success-bg);
+    color: var(--semantic-success-text);
+}
+
+.md-warning {
+    background-color: var(--semantic-warning-bg);
+    color: var(--semantic-warning-text);
+}
+
+.md-danger,
+.md-important {
+    background-color: var(--semantic-danger-bg);
+    color: var(--semantic-danger-text);
+}
+
+/* ---------------------------------------------------------
+   4. HEADING ANCHORS (Robust)
+--------------------------------------------------------- */
+
+.heading-anchor {
+    margin-left: var(--space-1);
+    font-size: 0.8em;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    opacity: 0;
+    color: var(--color-text-soft);
+    transition: opacity var(--transition-fast);
+}
+
+.heading-anchor:hover {
+    color: var(--link-text-hover);
+}
+
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor,
+h1:focus-within .heading-anchor,
+h2:focus-within .heading-anchor,
+h3:focus-within .heading-anchor,
+h4:focus-within .heading-anchor,
+h5:focus-within .heading-anchor,
+h6:focus-within .heading-anchor {
+    opacity: 1;
+}
+
+/* ---------------------------------------------------------
+   5. FOOTNOTES
+--------------------------------------------------------- */
+
+.fn-ref {
+    font-size: var(--footnote-size);
+    vertical-align: super;
+    color: var(--footnote-color);
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    margin-left: 0.15em;
+}
+
+.fn-ref:hover {
+    color: var(--link-text-hover);
+}
+
+.fn-back {
+    font-size: var(--footnote-size);
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    color: var(--footnote-color);
+}
+
+.footnotes {
+    border-top: 1px solid var(--color-border-subtle);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    font-size: var(--footnote-size);
+}
+
+.footnotes ol {
+    padding-left: var(--space-6);
+}
+
+.footnotes li {
+    margin-bottom: var(--space-3);
+}
+
+/* ---------------------------------------------------------
+   6. INLINE MARKERS (Highlight, warning, etc.)
+--------------------------------------------------------- */
+
+.inline-marker {
+    display: inline-block;
+    padding: 0 var(--space-1_5);
+    border-radius: var(--radius-sm);
+    background: var(--marker-bg);
+    border: 1px solid var(--marker-border);
+    font-size: var(--text-xs);
+    line-height: 1.3;
+    color: var(--color-text);
+}
+
+.inline-marker--info {
+    background: var(--semantic-info-bg);
+    border-color: var(--semantic-info-border);
+    color: var(--semantic-info-text);
+}
+
+.inline-marker--success {
+    background: var(--semantic-success-bg);
+    border-color: var(--semantic-success-border);
+    color: var(--semantic-success-text);
+}
+
+.inline-marker--warning {
+    background: var(--semantic-warning-bg);
+    border-color: var(--semantic-warning-border);
+    color: var(--semantic-warning-text);
+}
+
+.inline-marker--danger {
+    background: var(--semantic-danger-bg);
+    border-color: var(--semantic-danger-border);
+    color: var(--semantic-danger-text);
+}
+
+/* ---------------------------------------------------------
+   7. PROSE HELPERS (Authoring convenience)
+--------------------------------------------------------- */
+
+.prose-lead {
+    font-size: var(--text-md);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text);
+}
+
+.prose-muted {
+    color: var(--color-text-muted);
+}
+
+.prose-tight > * + * {
+    margin-top: var(--space-2);
+}
+
+.prose-relaxed > * + * {
+    margin-top: var(--space-6);
+}
+
+.prose-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: var(--space-6);
+    gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+    .prose-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   8. AUTHORING / DOC-BLOCK INTEGRATION
+--------------------------------------------------------- */
+
+.doc-block__body .admonition {
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.doc-block__body .md-note,
+.doc-block__body .md-info,
+.doc-block__body .md-tip,
+.doc-block__body .md-success,
+.doc-block__body .md-warning,
+.doc-block__body .md-danger,
+.doc-block__body .md-important {
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-3);
+}

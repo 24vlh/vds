@@ -37,7 +37,7 @@ function runPostCSS(inputRel, outputRel, minify = false) {
     const mapFlag = minify || IS_PROD ? "--no-map" : "--map";
     const plugins = [
         ...PLUGINS,
-        ...(minify || IS_PROD ? ["--use cssnano"] : [])
+        ...(minify ? ["--use cssnano"] : [])
     ];
 
     const cmd = [
@@ -84,7 +84,7 @@ function runPostCSSBatch(patternRel, outDirRel, minify = false) {
     const mapFlag = minify || IS_PROD ? "--no-map" : "--map";
     const plugins = [
         ...PLUGINS,
-        ...(minify || IS_PROD ? ["--use cssnano"] : [])
+        ...(minify ? ["--use cssnano"] : [])
     ];
 
     const cmd = [
