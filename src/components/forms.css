@@ -125,6 +125,7 @@ select.form-control:not([multiple]):not([size]) {
 
 .form-control-wrapper > .form-control {
     flex: 1 1 auto;
+    width: auto;
 }
 
 /* ---------------------------------------------------------
@@ -224,11 +225,13 @@ select.form-control:not([multiple]):not([size]) {
 /* Prefix / suffix */
 .form-control-prefix,
 .form-control-suffix {
+    position: static;
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
     color: var(--color-text-muted);
     font-size: var(--text-sm);
+    pointer-events: none;
 }
 
 .form-control-prefix {
@@ -241,7 +244,13 @@ select.form-control:not([multiple]):not([size]) {
     margin-right: var(--space-3);
 }
 
-/* Grouped controls */
+/* ---------------------------------------------------------
+   5A. GROUPED CONTROLS (FIXED, ORDER-INDEPENDENT)
+   - Group owns the outer border + radius
+   - Children have no outer borders (prevents double border)
+   - Group draws internal dividers (always present, any child type)
+   - Works for: .form-control, .form-control-wrapper (icons), .button
+--------------------------------------------------------- */
 .form-control-group {
     position: relative;
     display: flex;
@@ -253,81 +262,73 @@ select.form-control:not([multiple]):not([size]) {
     background-color: var(--color-surface);
 }
 
-.form-control-group > .form-control {
-    border-radius: 0;
+/* Outer rounding is applied to slots, to preserve radius even when children are wrappers */
+.form-control-group > * {
     position: relative;
+    border-radius: 0;
+    background: transparent;
 }
 
-.form-control-group > .form-control:first-child {
+/* Default flex behavior: controls/wrappers flex, buttons stay auto-sized below */
+.form-control-group > .form-control,
+.form-control-group > .form-control-wrapper {
+    flex: 1 1 auto;
+}
+
+.form-control-group > .button {
+    flex: 0 0 auto;
+}
+
+/* Edge radii */
+.form-control-group > :first-child {
     border-top-left-radius: var(--radius-md);
     border-bottom-left-radius: var(--radius-md);
 }
 
-.form-control-group > .form-control:last-child {
+.form-control-group > :last-child {
     border-top-right-radius: var(--radius-md);
     border-bottom-right-radius: var(--radius-md);
 }
 
-.form-control-group > .form-control + .form-control {
-    margin-left: calc(var(--border-width) * -1);
+/* Internal divider (single source of truth) */
+.form-control-group > * + * {
+    box-shadow: inset var(--border-width) 0 0 var(--color-border-subtle);
 }
 
-.form-control-group > .form-control:focus,
-.form-control-group > .form-control:focus-visible {
-    z-index: 1;
+/* Suppress per-control focus ring inside groups (prevents double focus visuals) */
+.form-control-group .form-control:focus-visible {
+    border-color: var(--focus-ring-color);
+    box-shadow: inset var(--border-width) 0 0 var(--color-border-subtle),
+    0 0 0 var(--border-width-strong) var(--focus-ring-color);
 }
 
-/* Action button integration */
+/* Children inside group should not draw their own outer borders */
+.form-control-group > .form-control {
+    border: none;
+    background: transparent;
+    border-radius: 0;
+}
+
+.form-control-group > .form-control-wrapper > .form-control {
+    border: none;
+    background: transparent;
+    border-radius: 0;
+}
+
+/* Action button integration inside groups */
 .form-control-group > .button {
-    background-color: var(--color-surface);
+    border: none;
+    background: transparent;
     color: var(--color-text);
+
     height: var(--control-min-height);
     line-height: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     padding: 0 var(--space-3);
     box-sizing: border-box;
-}
-
-.form-control-group > .form-control + .button {
-    border-left: none;
-    margin-left: calc(var(--border-width) * -1);
-}
-
-.form-control-group > .button:last-child {
-    border-top-right-radius: var(--radius-md);
-    border-bottom-right-radius: var(--radius-md);
-}
-
-.form-control-group > .button + .form-control {
-    margin-left: calc(var(--border-width) * -1);
-}
-
-.form-control-group > .button:first-child {
-    border-top-left-radius: var(--radius-md);
-    border-bottom-left-radius: var(--radius-md);
-}
-
-.form-control-group > .button:first-child {
-    border-right: none;
-}
-
-.form-control-group > .form-control + .button,
-.form-control-group > .button + .form-control {
-    margin-left: calc(var(--border-width) * -1);
-}
-
-.form-control-group > .form-control + .form-control,
-.form-control-group > .form-control + .button,
-.form-control-group > .button + .form-control {
-    border-left: none;
-}
-
-.form-control-group > .form-control,
-.form-control-group > .button {
-    border: none;
-    border-radius: 0;
 }
 
 /* ---------------------------------------------------------
