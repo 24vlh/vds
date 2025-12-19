@@ -303,16 +303,10 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Children inside group should not draw their own outer borders */
-.form-control-group > .form-control {
-    border: none;
-    background: transparent;
-    border-radius: 0;
-}
-
+.form-control-group > .form-control,
 .form-control-group > .form-control-wrapper > .form-control {
     border: none;
     background: transparent;
-    border-radius: 0;
 }
 
 /* Action button integration inside groups */
