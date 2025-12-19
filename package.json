@@ -25,6 +25,7 @@
     "build": "NODE_ENV=development node static/js/build.js",
     "build:prod": "NODE_ENV=production node static/js/build.js",
     "doc:serve": "node static/js/server.js",
+    "lint-staged": "lint-staged",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -43,7 +44,7 @@
   },
   "lint-staged": {
     "src/**/*.css": [
-      "npm run build"
+      "npm-safe run build"
     ]
   }
 }
