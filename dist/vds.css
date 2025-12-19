@@ -7108,57 +7108,30 @@ a.button:hover {
 }
 
 /************************************************************
- * VLAH DESIGN SYSTEM (VDS) - Forms
+ * VLAH DESIGN SYSTEM (VDS) - Forms (UFAL)
  *
- *  Responsibilities:
- *    - Provide two parallel form architectures:
- *         A) Legacy VDS form controls: input, textarea, select,
- *            segmented controls, toggles, switches, radio/checkbox, input groups
- *         B) UFAL (Unified Form Abstraction Layer): form-control,
- *            wrapper elements, adaptive surfaces, loading/error states,
- *            prefix/suffix architecture, file/drop zones, and layout primitives
+ * Responsibilities:
+ *   - Provide the Unified Form Abstraction Layer (UFAL)
+ *   - Define a single, token-driven form system:
+ *       controls, wrappers, icons, prefixes/suffixes,
+ *       semantic states, file surfaces, layout primitives,
+ *       and form-level messaging
  *
- *    - Supply semantic/interactive states:
- *         focus, hover, disabled, readonly, error, success, warning, info,
- *         dirty, loading, validated, invalidated
- *
- *    - Define full visual contract for:
- *         control sizing tokens, label/caption hierarchy,
- *         density modes, inline/stack layouts, and responsive adaptations
- *
- *  System Notes:
- *    - 100% token-driven: spacing, radii, borders, typography, motion
- *    - No JS assumptions; all behaviours (loading shimmer, validation highlights)
- *      are CSS-based
- *    - Legacy and UFAL architectures MUST co-exist in v1; no cross-overwrites
+ * System Notes:
+ *   - Token-driven (spacing, radii, borders, typography, motion)
+ *   - No JS assumptions; JS may toggle state classes only
+ *   - UFAL is the sole form system in the VDS library
  ************************************************************/
 
 /* ---------------------------------------------------------
-   1. FORM TOKEN DEFINITIONS
+   1. TOKENS & SHARED ANIMATIONS
 --------------------------------------------------------- */
 
 [data-vds-form],
 .vds-form {
-    --form-flow-gap-xs: var(--space-1);
     --form-flow-textarea-min-height: 5rem;
-
-    --size-9: 2.75rem;
     --size-10: 3.00rem;
-    --size-11: 3.25rem;
-
     --control-min-height: var(--size-10);
-
-    --control-height-md: 40px;
-}
-
-[data-vds-form] .form--a .form-control,
-.vds-form .form--a .form-control {
-    --control-min-height: var(--size-11);
-}
-
-[data-vds-form] .form--c .form-control,
-.vds-form .form--c .form-control {
-    --control-min-height: var(--size-9);
 }
 
 @keyframes input-loading-shimmer {
@@ -7171,133 +7144,108 @@ a.button:hover {
 }
 
 /* ---------------------------------------------------------
-   18. FORM-LEVEL MESSAGES (top of form)
+   2. BASE CONTROL PRIMITIVE
 --------------------------------------------------------- */
 
-.form-message {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    padding: var(--space-4) var(--space-6);
-    border-radius: 8px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border-subtle);
-    border: var(--border-width) solid var(--color-border-subtle);
-    background-color: var(--color-surface-subtle);
-    font-size: 0.875rem;
-    font-size: var(--text-sm);
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    gap: var(--space-3);
-}
-
-.form-message__icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    flex-shrink: 0;
-    stroke: currentColor;
-    fill: none;
-}
-
-.form-message__content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    gap: var(--space-1);
-}
-
-.form-message--neutral {
-    border-color: var(--color-muted-border);
-    background-color: var(--color-muted-bg);
-    color: var(--color-text-muted);
-}
-
-.form-message--error {
-    background-color: var(--semantic-error-bg-strong, var(--color-danger-soft));
-    border-color: var(--semantic-error-border-strong, var(--color-danger));
-    color: var(--semantic-error-text-strong, var(--color-danger-strong));
-}
-
-.form-message--info {
-    background-color: var(--semantic-info-bg-strong, var(--color-info-soft));
-    border-color: var(--semantic-info-border-strong, var(--color-info));
-    color: var(--semantic-info-text-strong, var(--color-info-strong));
-}
-
-.form-message--success {
-    background-color: var(--semantic-success-bg-strong, var(--color-success-soft));
-    border-color: var(--semantic-success-border-strong, var(--color-success));
-    color: var(--semantic-success-text-strong, var(--color-success-strong));
-}
-
-.form-message--warning {
-    background-color: var(--semantic-warning-bg-strong, var(--color-warning-soft));
-    border-color: var(--semantic-warning-border-strong, var(--color-warning));
-    color: var(--semantic-warning-text-strong, var(--color-warning-strong));
-}
-
-/* -----------------------------------------------
-   21. FORM SECTION STATES
-   Add semantic state styling for entire sections.
-   Intended for wrapping form-row or form-grid.
------------------------------------------------- */
-
-.form-section--error {
-    padding: 0.75rem;
-    padding: var(--space-3);
-    border-left: 3px solid var(--semantic-error-border-strong, var(--color-danger));
-    border-left: var(--border-width-strong) solid var(--semantic-error-border-strong, var(--color-danger));
-    background-color: transparent;
-    background-color: var(--semantic-error-bg-strong, transparent);
-}
-
-.form-section--warning {
-    padding: 0.75rem;
-    padding: var(--space-3);
-    border-left: 3px solid var(--semantic-warning-border-strong, var(--color-warning));
-    border-left: var(--border-width-strong) solid var(--semantic-warning-border-strong, var(--color-warning));
-    background-color: transparent;
-    background-color: var(--semantic-warning-bg-strong, transparent);
-}
-
-.form-section--success {
-    padding: 0.75rem;
-    padding: var(--space-3);
-    border-left: 3px solid var(--semantic-success-border-strong, var(--color-success));
-    border-left: var(--border-width-strong) solid var(--semantic-success-border-strong, var(--color-success));
-    background-color: transparent;
-    background-color: var(--semantic-success-bg-strong, transparent);
-}
-
-.form-section--info {
-    padding: 0.75rem;
-    padding: var(--space-3);
-    border-left: 3px solid var(--semantic-info-border-strong, var(--color-info));
-    border-left: var(--border-width-strong) solid var(--semantic-info-border-strong, var(--color-info));
-    background-color: transparent;
-    background-color: var(--semantic-info-bg-strong, transparent);
-}
-
-.form-section--error:not(:last-child),
-.form-section--warning:not(:last-child),
-.form-section--success:not(:last-child),
-.form-section--info:not(:last-child) {
-    margin-bottom: 1rem;
-    margin-bottom: var(--space-4);
-}
-
-/* ----------------------------------------------------------
-   23. Base form control primitive (UFAL)
-   ---------------------------------------------------------- */
-
 .form-control {
+    position: relative;
+    z-index: 0;
     display: block;
     width: 100%;
     min-height: var(--control-min-height);
 
     margin: 0;
     box-sizing: border-box;
+
+    padding: 0.75rem;
+
+    padding: var(--space-3);
+    border: 1px solid var(--color-border-subtle);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: 8px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+
+    transition: border-color .2s, background-color .2s, box-shadow .2s;
 }
+
+/* Native control normalization (only when used as UFAL control) */
+
+input.form-control,
+select.form-control,
+textarea.form-control {
+    font: inherit;
+    line-height: inherit;
+    background-clip: padding-box;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: var(--form-flow-textarea-min-height);
+}
+
+select.form-control {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+/* Select dropdown affordance */
+
+select.form-control:not([multiple]):not([size]) {
+    padding-right: calc(1.75rem + 0.5rem);
+    padding-right: calc(var(--space-7) + var(--space-2));
+    background-image: linear-gradient(45deg, transparent 50%, var(--color-text-muted) 50%),
+    linear-gradient(135deg, var(--color-text-muted) 50%, transparent 50%);
+    background-position: calc(100% - 0.75rem) 50%,
+    calc(100% - 0.5rem) 50%;
+    background-position: calc(100% - var(--space-3)) 50%,
+    calc(100% - var(--space-2)) 50%;
+    background-size: 0.4rem 0.4rem;
+    background-repeat: no-repeat;
+}
+
+.form-control::-moz-placeholder {
+    color: var(--color-placeholder);
+    opacity: 1;
+}
+
+.form-control::placeholder {
+    color: var(--color-placeholder);
+    opacity: 1;
+}
+
+.form-control:hover {
+    border-color: var(--color-border-strong);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.form-control:focus-visible {
+    outline: none;
+    border-color: var(--focus-ring-color);
+    box-shadow: 0 0 0 3px var(--focus-ring-color);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+/* ARIA validation */
+
+.form-control[aria-invalid="true"] {
+    border-color: var(--color-danger);
+}
+
+.form-control[aria-invalid="true"]:focus-visible {
+    box-shadow: 0 0 0 3px var(--color-danger-soft);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--color-danger-soft);
+}
+
+/* ---------------------------------------------------------
+   3. WRAPPERS & GROUPING
+--------------------------------------------------------- */
 
 .form-control-wrapper {
     position: relative;
@@ -7310,23 +7258,23 @@ a.button:hover {
     flex: 1 1 auto;
 }
 
-/* ----------------------------------------------------------
-   23A. State modifiers
-   ---------------------------------------------------------- */
+/* ---------------------------------------------------------
+   4. STATE MODIFIERS
+--------------------------------------------------------- */
 
 .form-control--loading {
     cursor: progress;
-    opacity: 0.55;
+    opacity: .55;
     pointer-events: none;
 }
 
 .form-control--disabled {
-    opacity: 0.45;
+    opacity: .45;
     pointer-events: none;
 }
 
 .form-control--readonly {
-    opacity: 0.75;
+    opacity: .75;
     cursor: default;
 }
 
@@ -7350,43 +7298,33 @@ a.button:hover {
     box-shadow: 0 0 0 var(--border-width-strong) var(--color-info);
 }
 
-.form-control--password {
-    padding-right: calc(2rem + 0.5rem);
-    padding-right: calc(var(--space-8) + var(--space-2));
+/* Native disabled / readonly */
+
+.form-control:disabled,
+.form-control[disabled] {
+    background-color: var(--color-muted-bg);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
 }
 
-.form-control-wrapper[data-icon="right"] .form-control--password {
-    padding-right: calc(2rem + 0.5rem);
-    padding-right: calc(var(--space-8) + var(--space-2));
+.form-control[readonly] {
+    background-color: var(--color-surface-subtle);
+    color: var(--color-text-muted);
+    border-style: dashed;
 }
 
-.form-control--password:focus {
-    border-color: var(--color-accent);
+.form-control--error:focus-visible {
+    box-shadow: 0 0 0 3px var(--semantic-error-border-strong, var(--color-danger));
+    box-shadow: 0 0 0 var(--border-width-strong) var(--semantic-error-border-strong, var(--color-danger));
 }
 
-.form-control--password::-moz-placeholder {
-    color: var(--color-placeholder);
-}
-
-.form-control--password::placeholder {
-    color: var(--color-placeholder);
-}
-
-/* ----------------------------------------------------------
-   23B. Icon-inside-input patterns
-   ---------------------------------------------------------- */
+/* ---------------------------------------------------------
+   5. ICONS / PREFIX / SUFFIX
+--------------------------------------------------------- */
 
 .form-control-wrapper[data-icon="left"] .form-control {
     padding-left: calc(1.75rem + 0.5rem);
     padding-left: calc(var(--space-7) + var(--space-2));
-}
-
-.form-control-wrapper[data-icon="left"] .form-control-icon {
-    position: absolute;
-    left: 0.5rem;
-    left: var(--space-2);
-    display: flex;
-    align-items: center;
 }
 
 .form-control-wrapper[data-icon="right"] .form-control {
@@ -7394,24 +7332,173 @@ a.button:hover {
     padding-right: calc(var(--space-7) + var(--space-2));
 }
 
+.form-control-wrapper[data-icon="left"] .form-control-icon,
 .form-control-wrapper[data-icon="right"] .form-control-icon {
     position: absolute;
-    right: 0.5rem;
-    right: var(--space-2);
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
+    pointer-events: none;
+}
+
+.form-control-wrapper[data-icon="left"] .form-control-icon {
+    left: 0.5rem;
+    left: var(--space-2);
+}
+
+.form-control-wrapper[data-icon="right"] .form-control-icon {
+    right: 0.5rem;
+    right: var(--space-2);
 }
 
 .form-control-icon {
     font-size: 1.0625rem;
     font-size: var(--text-md);
     color: var(--color-text-muted);
-    pointer-events: none;
 }
 
-/* ----------------------------------------------------------
-   23C. Loading overlay animation
-   ---------------------------------------------------------- */
+.form-control-icon,
+.form-control-prefix,
+.form-control-suffix {
+    position: absolute;
+    z-index: 1;
+}
+
+/* Prefix / suffix */
+
+.form-control-prefix,
+.form-control-suffix {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    font-size: var(--text-sm);
+}
+
+.form-control-prefix {
+    margin-left: 0.75rem;
+    margin-left: var(--space-3);
+    margin-right: 0.5rem;
+    margin-right: var(--space-2);
+}
+
+.form-control-suffix {
+    margin-left: 0.5rem;
+    margin-left: var(--space-2);
+    margin-right: 0.75rem;
+    margin-right: var(--space-3);
+}
+
+/* Grouped controls */
+
+.form-control-group {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    position: relative;
+    border: 1px solid var(--color-border-subtle);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: 8px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+}
+
+.form-control-group > .form-control {
+    border-radius: 0;
+    position: relative;
+}
+
+.form-control-group > .form-control:first-child {
+    border-top-left-radius: 8px;
+    border-top-left-radius: var(--radius-md);
+    border-bottom-left-radius: 8px;
+    border-bottom-left-radius: var(--radius-md);
+}
+
+.form-control-group > .form-control:last-child {
+    border-top-right-radius: 8px;
+    border-top-right-radius: var(--radius-md);
+    border-bottom-right-radius: 8px;
+    border-bottom-right-radius: var(--radius-md);
+}
+
+.form-control-group > .form-control + .form-control {
+    margin-left: calc(1px * -1);
+    margin-left: calc(var(--border-width) * -1);
+}
+
+.form-control-group > .form-control:focus,
+.form-control-group > .form-control:focus-visible {
+    z-index: 1;
+}
+
+/* Action button integration */
+
+.form-control-group > .button {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    height: var(--control-min-height);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.75rem;
+    padding: 0 var(--space-3);
+    box-sizing: border-box;
+}
+
+.form-control-group > .form-control + .button {
+    border-left: none;
+    margin-left: calc(1px * -1);
+    margin-left: calc(var(--border-width) * -1);
+}
+
+.form-control-group > .button:last-child {
+    border-top-right-radius: 8px;
+    border-top-right-radius: var(--radius-md);
+    border-bottom-right-radius: 8px;
+    border-bottom-right-radius: var(--radius-md);
+}
+
+.form-control-group > .button + .form-control {
+    margin-left: calc(1px * -1);
+    margin-left: calc(var(--border-width) * -1);
+}
+
+.form-control-group > .button:first-child {
+    border-top-left-radius: 8px;
+    border-top-left-radius: var(--radius-md);
+    border-bottom-left-radius: 8px;
+    border-bottom-left-radius: var(--radius-md);
+}
+
+.form-control-group > .button:first-child {
+    border-right: none;
+}
+
+.form-control-group > .form-control + .button,
+.form-control-group > .button + .form-control {
+    margin-left: calc(1px * -1);
+    margin-left: calc(var(--border-width) * -1);
+}
+
+.form-control-group > .form-control + .form-control,
+.form-control-group > .form-control + .button,
+.form-control-group > .button + .form-control {
+    border-left: none;
+}
+
+.form-control-group > .form-control,
+.form-control-group > .button {
+    border: none;
+    border-radius: 0;
+}
+
+/* ---------------------------------------------------------
+   6. LOADING OVERLAYS
+--------------------------------------------------------- */
 
 .form-control--loading::after {
     content: "";
@@ -7423,6 +7510,7 @@ a.button:hover {
     border-radius: inherit;
     background: var(--color-surface-subtle);
     animation: formControlLoading 1.5s ease-in-out infinite;
+    pointer-events: none;
 }
 
 @keyframes formControlLoading {
@@ -7437,11 +7525,9 @@ a.button:hover {
     }
 }
 
-/* ----------------------------------------------------------
-   23D. File upload primitives (UFAL)
-   ---------------------------------------------------------- */
-
-/* Base dashed file control (rarely exposed directly; internal primitive) */
+/* ---------------------------------------------------------
+   7. FILE UPLOAD PRIMITIVES
+--------------------------------------------------------- */
 
 .form-control--file {
     position: relative;
@@ -7454,7 +7540,6 @@ a.button:hover {
     background-color: var(--color-surface);
     color: var(--color-text-muted);
     cursor: pointer;
-    transition: border-color .2s, background-color .2s;
 }
 
 .form-control--file[type="file"] {
@@ -7462,15 +7547,12 @@ a.button:hover {
     border: none;
     background: none;
     position: static;
-    opacity: 1;
 }
 
-/* ----------------------------------------------------------
-   23E. UFAL Drop Surface (corrected)
-   ---------------------------------------------------------- */
+/* Drop surface */
 
 .form-control-file-surface {
-    position: relative; /* ★ FIX: contain absolute input */
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -7487,8 +7569,6 @@ a.button:hover {
     border-radius: var(--radius-md);
     background-color: var(--color-surface);
     cursor: pointer;
-
-    transition: border-color .2s, background-color .2s;
 }
 
 .form-control-file-surface input[type="file"] {
@@ -7506,14 +7586,16 @@ a.button:hover {
     background-color: var(--color-surface-subtle);
 }
 
-.form-control-file-surface--dragover {
-    border-color: var(--color-accent);
-    background-color: var(--color-accent-soft);
+.form-control-file-surface:focus-within {
+    box-shadow: 0 0 0 3px var(--focus-ring-color);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+    border-color: var(--focus-ring-color);
 }
 
 .form-control-file-surface--disabled {
     opacity: .65;
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 .form-control-file-surface--error {
@@ -7536,9 +7618,7 @@ a.button:hover {
     background-color: var(--color-info-soft);
 }
 
-/* ----------------------------------------------------------
-   23F. Inline “button-as-trigger” upload
-   ---------------------------------------------------------- */
+/* Inline upload */
 
 .file-upload-inline {
     display: inline-flex;
@@ -7551,24 +7631,15 @@ a.button:hover {
     position: absolute;
     width: 1px;
     height: 1px;
-    padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
 }
 
 .file-upload-inline__label {
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 }
 
-/* ----------------------------------------------------------
-   23G. Shared inner patterns
-   ---------------------------------------------------------- */
+/* Loading shimmer on surface */
 
 .form-control-file-surface.form-control--loading::after {
     content: "";
@@ -7588,27 +7659,139 @@ a.button:hover {
     animation: input-loading-shimmer 1.5s infinite;
 }
 
-.form-control-file-icon {
-    font-size: 1.125rem;
-    font-size: var(--text-lg);
-    color: var(--color-text-muted);
+/* ---------------------------------------------------------
+   8. LAYOUT PRIMITIVES
+--------------------------------------------------------- */
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    gap: var(--space-4);
 }
 
-.form-control-file-label {
+.form-grid {
+    display: grid;
+    grid-gap: 1rem;
+    grid-gap: var(--space-4);
+    gap: 1rem;
+    gap: var(--space-4);
+}
+
+.form-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.form-grid--four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 768px) {
+    .form-grid--two,
+    .form-grid--three,
+    .form-grid--four {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   9. FORM-LEVEL MESSAGES
+--------------------------------------------------------- */
+
+.form-message {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    padding: var(--space-4) var(--space-6);
+    border-radius: 8px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-subtle);
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--color-surface-subtle);
     font-size: 0.875rem;
     font-size: var(--text-sm);
-    color: var(--color-text);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    gap: var(--space-3);
 }
 
-.form-control-file-hint {
-    font-size: 0.8125rem;
-    font-size: var(--text-xs);
+.form-message__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+
+.form-message__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    gap: var(--space-1);
+}
+
+.form-message--neutral {
     color: var(--color-text-muted);
 }
 
-.form-control--error:focus-visible {
-    box-shadow: 0 0 0 3px var(--semantic-error-border-strong, var(--color-danger));
-    box-shadow: 0 0 0 var(--border-width-strong) var(--semantic-error-border-strong, var(--color-danger));
+.form-message--error {
+    background-color: var(--color-danger-soft);
+    border-color: var(--color-danger);
+}
+
+.form-message--warning {
+    background-color: var(--color-warning-soft);
+    border-color: var(--color-warning);
+}
+
+.form-message--success {
+    background-color: var(--color-success-soft);
+    border-color: var(--color-success);
+}
+
+.form-message--info {
+    background-color: var(--color-info-soft);
+    border-color: var(--color-info);
+}
+
+/* ---------------------------------------------------------
+   10. FORM SECTION STATES
+--------------------------------------------------------- */
+
+.form-section--error,
+.form-section--warning,
+.form-section--success,
+.form-section--info {
+    padding: 0.75rem;
+    padding: var(--space-3);
+    border-left: 3px solid;
+    border-left: var(--border-width-strong) solid;
+}
+
+.form-section--error {
+    border-color: var(--color-danger);
+}
+
+.form-section--warning {
+    border-color: var(--color-warning);
+}
+
+.form-section--success {
+    border-color: var(--color-success);
+}
+
+.form-section--info {
+    border-color: var(--color-info);
+}
+
+.form-section--error:not(:last-child),
+.form-section--warning:not(:last-child),
+.form-section--success:not(:last-child),
+.form-section--info:not(:last-child) {
+    margin-bottom: 1rem;
+    margin-bottom: var(--space-4);
 }
 
 /************************************************************
@@ -9397,8 +9580,8 @@ a.button:hover {
 }
 
 .icon--check-circle {
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7'/%3E%3Cpolyline points='4.5 8 7 10.5 11.5 5.5'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7'/%3E%3Cpolyline points='4.5 8 7 10.5 11.5 5.5'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpolyline points='4.5 8 7 10.5 11.5 5.5' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpolyline points='4.5 8 7 10.5 11.5 5.5' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 .icon--x-circle {

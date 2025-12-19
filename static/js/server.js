@@ -6,7 +6,7 @@ const app = express();
 const PORT = 8000;
 
 // Root of the VDS site: parent of /js
-const ROOT = path.resolve(__dirname, "..");
+const ROOT = path.resolve(__dirname, "../../");
 
 // 1) Serve all static files from ROOT
 app.use(

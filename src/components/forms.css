@@ -1,16 +1,17 @@
 /************************************************************
- * VLAH DESIGN SYSTEM (VDS) - Forms (UFAL Core)
+ * VLAH DESIGN SYSTEM (VDS) - Forms (UFAL)
  *
  * Responsibilities:
- *   - Define the UFAL (Unified Form Abstraction Layer) primitives:
- *       .form-control, wrapper patterns, icon/prefix/suffix architecture,
- *       semantic states (loading/disabled/readonly/error/success/warning/info),
- *       file/drop surfaces, and form-level messaging/section semantics
+ *   - Provide the Unified Form Abstraction Layer (UFAL)
+ *   - Define a single, token-driven form system:
+ *       controls, wrappers, icons, prefixes/suffixes,
+ *       semantic states, file surfaces, layout primitives,
+ *       and form-level messaging
  *
  * System Notes:
- *   - Token-driven: spacing, radii, borders, typography, motion
+ *   - Token-driven (spacing, radii, borders, typography, motion)
  *   - No JS assumptions; JS may toggle state classes only
- *   - Legacy controls are isolated to forms-legacy.css (not referenced here)
+ *   - UFAL is the sole form system in the VDS library
  ************************************************************/
 
 /* ---------------------------------------------------------
@@ -18,26 +19,9 @@
 --------------------------------------------------------- */
 [data-vds-form],
 .vds-form {
-    --form-flow-gap-xs: var(--space-1);
     --form-flow-textarea-min-height: 5rem;
-
-    --size-9: 2.75rem;
     --size-10: 3.00rem;
-    --size-11: 3.25rem;
-
     --control-min-height: var(--size-10);
-
-    --control-height-md: 40px;
-}
-
-[data-vds-form] .form--a .form-control,
-.vds-form .form--a .form-control {
-    --control-min-height: var(--size-11);
-}
-
-[data-vds-form] .form--c .form-control,
-.vds-form .form--c .form-control {
-    --control-min-height: var(--size-9);
 }
 
 @keyframes input-loading-shimmer {
@@ -50,10 +34,11 @@
 }
 
 /* ---------------------------------------------------------
-   2. UFAL BASE CONTROL PRIMITIVE
+   2. BASE CONTROL PRIMITIVE
 --------------------------------------------------------- */
 .form-control {
-    position: relative; /* ensures ::after overlays are contained */
+    position: relative;
+    z-index: 0;
     display: block;
     width: 100%;
     min-height: var(--control-min-height);
@@ -67,9 +52,10 @@
     background-color: var(--color-surface);
     color: var(--color-text);
 
-    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+    transition: border-color .2s, background-color .2s, box-shadow .2s;
 }
 
+/* Native control normalization (only when used as UFAL control) */
 input.form-control,
 select.form-control,
 textarea.form-control {
@@ -85,6 +71,17 @@ textarea.form-control {
 
 select.form-control {
     appearance: none;
+}
+
+/* Select dropdown affordance */
+select.form-control:not([multiple]):not([size]) {
+    padding-right: calc(var(--space-7) + var(--space-2));
+    background-image: linear-gradient(45deg, transparent 50%, var(--color-text-muted) 50%),
+    linear-gradient(135deg, var(--color-text-muted) 50%, transparent 50%);
+    background-position: calc(100% - var(--space-3)) 50%,
+    calc(100% - var(--space-2)) 50%;
+    background-size: 0.4rem 0.4rem;
+    background-repeat: no-repeat;
 }
 
 .form-control::placeholder {
@@ -107,7 +104,7 @@ select.form-control {
     box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
 }
 
-/* ARIA validation hook (UFAL-owned) */
+/* ARIA validation */
 .form-control[aria-invalid="true"] {
     border-color: var(--color-danger);
 }
@@ -117,7 +114,7 @@ select.form-control {
 }
 
 /* ---------------------------------------------------------
-   3. UFAL WRAPPERS (ICON / PREFIX / SUFFIX / GROUPING)
+   3. WRAPPERS & GROUPING
 --------------------------------------------------------- */
 .form-control-wrapper {
     position: relative;
@@ -131,21 +128,21 @@ select.form-control {
 }
 
 /* ---------------------------------------------------------
-   4. UFAL STATE MODIFIERS
+   4. STATE MODIFIERS
 --------------------------------------------------------- */
 .form-control--loading {
     cursor: progress;
-    opacity: 0.55;
+    opacity: .55;
     pointer-events: none;
 }
 
 .form-control--disabled {
-    opacity: 0.45;
+    opacity: .45;
     pointer-events: none;
 }
 
 .form-control--readonly {
-    opacity: 0.75;
+    opacity: .75;
     cursor: default;
 }
 
@@ -165,34 +162,18 @@ select.form-control {
     box-shadow: 0 0 0 var(--border-width-strong) var(--color-info);
 }
 
-/* Disabled styling (native + class) */
+/* Native disabled / readonly */
 .form-control:disabled,
-.form-control[disabled],
-.form-control--disabled {
+.form-control[disabled] {
     background-color: var(--color-muted-bg);
     color: var(--color-text-muted);
     cursor: not-allowed;
 }
 
-/* Readonly styling (native + class) */
-.form-control[readonly],
-.form-control--readonly {
+.form-control[readonly] {
     background-color: var(--color-surface-subtle);
     color: var(--color-text-muted);
     border-style: dashed;
-}
-
-/* Password affordance */
-.form-control--password {
-    padding-right: calc(var(--space-8) + var(--space-2));
-}
-
-.form-control-wrapper[data-icon="right"] .form-control--password {
-    padding-right: calc(var(--space-8) + var(--space-2));
-}
-
-.form-control--password::placeholder {
-    color: var(--color-placeholder);
 }
 
 .form-control--error:focus-visible {
@@ -200,34 +181,153 @@ select.form-control {
 }
 
 /* ---------------------------------------------------------
-   5. ICON INSIDE CONTROL (WRAPPER-DRIVEN)
+   5. ICONS / PREFIX / SUFFIX
 --------------------------------------------------------- */
 .form-control-wrapper[data-icon="left"] .form-control {
     padding-left: calc(var(--space-7) + var(--space-2));
-}
-
-.form-control-wrapper[data-icon="left"] .form-control-icon {
-    position: absolute;
-    left: var(--space-2);
-    display: flex;
-    align-items: center;
 }
 
 .form-control-wrapper[data-icon="right"] .form-control {
     padding-right: calc(var(--space-7) + var(--space-2));
 }
 
+.form-control-wrapper[data-icon="left"] .form-control-icon,
 .form-control-wrapper[data-icon="right"] .form-control-icon {
     position: absolute;
-    right: var(--space-2);
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
+    pointer-events: none;
+}
+
+.form-control-wrapper[data-icon="left"] .form-control-icon {
+    left: var(--space-2);
+}
+
+.form-control-wrapper[data-icon="right"] .form-control-icon {
+    right: var(--space-2);
 }
 
 .form-control-icon {
     font-size: var(--text-md);
     color: var(--color-text-muted);
-    pointer-events: none;
+}
+
+.form-control-icon,
+.form-control-prefix,
+.form-control-suffix {
+    position: absolute;
+    z-index: 1;
+}
+
+/* Prefix / suffix */
+.form-control-prefix,
+.form-control-suffix {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+}
+
+.form-control-prefix {
+    margin-left: var(--space-3);
+    margin-right: var(--space-2);
+}
+
+.form-control-suffix {
+    margin-left: var(--space-2);
+    margin-right: var(--space-3);
+}
+
+/* Grouped controls */
+.form-control-group {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+}
+
+.form-control-group > .form-control {
+    border-radius: 0;
+    position: relative;
+}
+
+.form-control-group > .form-control:first-child {
+    border-top-left-radius: var(--radius-md);
+    border-bottom-left-radius: var(--radius-md);
+}
+
+.form-control-group > .form-control:last-child {
+    border-top-right-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+}
+
+.form-control-group > .form-control + .form-control {
+    margin-left: calc(var(--border-width) * -1);
+}
+
+.form-control-group > .form-control:focus,
+.form-control-group > .form-control:focus-visible {
+    z-index: 1;
+}
+
+/* Action button integration */
+.form-control-group > .button {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    height: var(--control-min-height);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-3);
+    box-sizing: border-box;
+}
+
+.form-control-group > .form-control + .button {
+    border-left: none;
+    margin-left: calc(var(--border-width) * -1);
+}
+
+.form-control-group > .button:last-child {
+    border-top-right-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+}
+
+.form-control-group > .button + .form-control {
+    margin-left: calc(var(--border-width) * -1);
+}
+
+.form-control-group > .button:first-child {
+    border-top-left-radius: var(--radius-md);
+    border-bottom-left-radius: var(--radius-md);
+}
+
+.form-control-group > .button:first-child {
+    border-right: none;
+}
+
+.form-control-group > .form-control + .button,
+.form-control-group > .button + .form-control {
+    margin-left: calc(var(--border-width) * -1);
+}
+
+.form-control-group > .form-control + .form-control,
+.form-control-group > .form-control + .button,
+.form-control-group > .button + .form-control {
+    border-left: none;
+}
+
+.form-control-group > .form-control,
+.form-control-group > .button {
+    border: none;
+    border-radius: 0;
 }
 
 /* ---------------------------------------------------------
@@ -240,6 +340,7 @@ select.form-control {
     border-radius: inherit;
     background: var(--color-surface-subtle);
     animation: formControlLoading 1.5s ease-in-out infinite;
+    pointer-events: none;
 }
 
 @keyframes formControlLoading {
@@ -255,10 +356,8 @@ select.form-control {
 }
 
 /* ---------------------------------------------------------
-   7. FILE UPLOAD (UFAL PRIMITIVES)
+   7. FILE UPLOAD PRIMITIVES
 --------------------------------------------------------- */
-
-/* Base dashed file control (rarely exposed directly; internal primitive) */
 .form-control--file {
     position: relative;
     padding: var(--space-3);
@@ -267,7 +366,6 @@ select.form-control {
     background-color: var(--color-surface);
     color: var(--color-text-muted);
     cursor: pointer;
-    transition: border-color .2s, background-color .2s;
 }
 
 .form-control--file[type="file"] {
@@ -275,12 +373,11 @@ select.form-control {
     border: none;
     background: none;
     position: static;
-    opacity: 1;
 }
 
-/* UFAL Drop Surface */
+/* Drop surface */
 .form-control-file-surface {
-    position: relative; /* contain absolute input */
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
@@ -292,8 +389,6 @@ select.form-control {
     border-radius: var(--radius-md);
     background-color: var(--color-surface);
     cursor: pointer;
-
-    transition: border-color .2s, background-color .2s;
 }
 
 .form-control-file-surface input[type="file"] {
@@ -308,14 +403,15 @@ select.form-control {
     background-color: var(--color-surface-subtle);
 }
 
-.form-control-file-surface--dragover {
-    border-color: var(--color-accent);
-    background-color: var(--color-accent-soft);
+.form-control-file-surface:focus-within {
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+    border-color: var(--focus-ring-color);
 }
 
 .form-control-file-surface--disabled {
     opacity: .65;
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 .form-control-file-surface--error {
@@ -338,7 +434,7 @@ select.form-control {
     background-color: var(--color-info-soft);
 }
 
-/* Inline “button-as-trigger” upload */
+/* Inline upload */
 .file-upload-inline {
     display: inline-flex;
     align-items: center;
@@ -349,22 +445,15 @@ select.form-control {
     position: absolute;
     width: 1px;
     height: 1px;
-    padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
 }
 
 .file-upload-inline__label {
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 }
 
-/* Loading shimmer on drop surface */
+/* Loading shimmer on surface */
 .form-control-file-surface.form-control--loading::after {
     content: "";
     position: absolute;
@@ -380,23 +469,8 @@ select.form-control {
     animation: input-loading-shimmer 1.5s infinite;
 }
 
-.form-control-file-icon {
-    font-size: var(--text-lg);
-    color: var(--color-text-muted);
-}
-
-.form-control-file-label {
-    font-size: var(--text-sm);
-    color: var(--color-text);
-}
-
-.form-control-file-hint {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-}
-
 /* ---------------------------------------------------------
-   8. LAYOUT PRIMITIVES (UFAL-NEUTRAL)
+   8. LAYOUT PRIMITIVES
 --------------------------------------------------------- */
 .form-row {
     display: flex;
@@ -448,8 +522,6 @@ select.form-control {
     width: 1.25rem;
     height: 1.25rem;
     flex-shrink: 0;
-    stroke: currentColor;
-    fill: none;
 }
 
 .form-message__content {
@@ -459,60 +531,54 @@ select.form-control {
 }
 
 .form-message--neutral {
-    border-color: var(--color-muted-border);
-    background-color: var(--color-muted-bg);
     color: var(--color-text-muted);
 }
 
 .form-message--error {
-    background-color: var(--semantic-error-bg-strong, var(--color-danger-soft));
-    border-color: var(--semantic-error-border-strong, var(--color-danger));
-    color: var(--semantic-error-text-strong, var(--color-danger-strong));
-}
-
-.form-message--info {
-    background-color: var(--semantic-info-bg-strong, var(--color-info-soft));
-    border-color: var(--semantic-info-border-strong, var(--color-info));
-    color: var(--semantic-info-text-strong, var(--color-info-strong));
-}
-
-.form-message--success {
-    background-color: var(--semantic-success-bg-strong, var(--color-success-soft));
-    border-color: var(--semantic-success-border-strong, var(--color-success));
-    color: var(--semantic-success-text-strong, var(--color-success-strong));
+    background-color: var(--color-danger-soft);
+    border-color: var(--color-danger);
 }
 
 .form-message--warning {
-    background-color: var(--semantic-warning-bg-strong, var(--color-warning-soft));
-    border-color: var(--semantic-warning-border-strong, var(--color-warning));
-    color: var(--semantic-warning-text-strong, var(--color-warning-strong));
+    background-color: var(--color-warning-soft);
+    border-color: var(--color-warning);
+}
+
+.form-message--success {
+    background-color: var(--color-success-soft);
+    border-color: var(--color-success);
+}
+
+.form-message--info {
+    background-color: var(--color-info-soft);
+    border-color: var(--color-info);
 }
 
 /* ---------------------------------------------------------
    10. FORM SECTION STATES
 --------------------------------------------------------- */
-.form-section--error {
+.form-section--error,
+.form-section--warning,
+.form-section--success,
+.form-section--info {
     padding: var(--space-3);
-    border-left: var(--border-width-strong) solid var(--semantic-error-border-strong, var(--color-danger));
-    background-color: var(--semantic-error-bg-strong, transparent);
+    border-left: var(--border-width-strong) solid;
+}
+
+.form-section--error {
+    border-color: var(--color-danger);
 }
 
 .form-section--warning {
-    padding: var(--space-3);
-    border-left: var(--border-width-strong) solid var(--semantic-warning-border-strong, var(--color-warning));
-    background-color: var(--semantic-warning-bg-strong, transparent);
+    border-color: var(--color-warning);
 }
 
 .form-section--success {
-    padding: var(--space-3);
-    border-left: var(--border-width-strong) solid var(--semantic-success-border-strong, var(--color-success));
-    background-color: var(--semantic-success-bg-strong, transparent);
+    border-color: var(--color-success);
 }
 
 .form-section--info {
-    padding: var(--space-3);
-    border-left: var(--border-width-strong) solid var(--semantic-info-border-strong, var(--color-info));
-    background-color: var(--semantic-info-bg-strong, transparent);
+    border-color: var(--color-info);
 }
 
 .form-section--error:not(:last-child),
