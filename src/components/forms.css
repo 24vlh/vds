@@ -1,31 +1,20 @@
 /************************************************************
- * VLAH DESIGN SYSTEM (VDS) - Forms
+ * VLAH DESIGN SYSTEM (VDS) - Forms (UFAL Core)
  *
- *  Responsibilities:
- *    - Provide two parallel form architectures:
- *         A) Legacy VDS form controls: input, textarea, select,
- *            segmented controls, toggles, switches, radio/checkbox, input groups
- *         B) UFAL (Unified Form Abstraction Layer): form-control,
- *            wrapper elements, adaptive surfaces, loading/error states,
- *            prefix/suffix architecture, file/drop zones, and layout primitives
+ * Responsibilities:
+ *   - Define the UFAL (Unified Form Abstraction Layer) primitives:
+ *       .form-control, wrapper patterns, icon/prefix/suffix architecture,
+ *       semantic states (loading/disabled/readonly/error/success/warning/info),
+ *       file/drop surfaces, and form-level messaging/section semantics
  *
- *    - Supply semantic/interactive states:
- *         focus, hover, disabled, readonly, error, success, warning, info,
- *         dirty, loading, validated, invalidated
- *
- *    - Define full visual contract for:
- *         control sizing tokens, label/caption hierarchy,
- *         density modes, inline/stack layouts, and responsive adaptations
- *
- *  System Notes:
- *    - 100% token-driven: spacing, radii, borders, typography, motion
- *    - No JS assumptions; all behaviours (loading shimmer, validation highlights)
- *      are CSS-based
- *    - Legacy and UFAL architectures MUST co-exist in v1; no cross-overwrites
+ * System Notes:
+ *   - Token-driven: spacing, radii, borders, typography, motion
+ *   - No JS assumptions; JS may toggle state classes only
+ *   - Legacy controls are isolated to forms-legacy.css (not referenced here)
  ************************************************************/
 
 /* ---------------------------------------------------------
-   1. FORM TOKEN DEFINITIONS
+   1. TOKENS & SHARED ANIMATIONS
 --------------------------------------------------------- */
 [data-vds-form],
 .vds-form {
@@ -61,112 +50,75 @@
 }
 
 /* ---------------------------------------------------------
-   18. FORM-LEVEL MESSAGES (top of form)
+   2. UFAL BASE CONTROL PRIMITIVE
 --------------------------------------------------------- */
-.form-message {
-    width: 100%;
-    padding: var(--space-4) var(--space-6);
-    border-radius: var(--radius-md);
-    border: var(--border-width) solid var(--color-border-subtle);
-    background-color: var(--color-surface-subtle);
-    font-size: var(--text-sm);
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
-}
-
-.form-message__icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    flex-shrink: 0;
-    stroke: currentColor;
-    fill: none;
-}
-
-.form-message__content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-}
-
-.form-message--neutral {
-    border-color: var(--color-muted-border);
-    background-color: var(--color-muted-bg);
-    color: var(--color-text-muted);
-}
-
-.form-message--error {
-    background-color: var(--semantic-error-bg-strong, var(--color-danger-soft));
-    border-color: var(--semantic-error-border-strong, var(--color-danger));
-    color: var(--semantic-error-text-strong, var(--color-danger-strong));
-}
-
-.form-message--info {
-    background-color: var(--semantic-info-bg-strong, var(--color-info-soft));
-    border-color: var(--semantic-info-border-strong, var(--color-info));
-    color: var(--semantic-info-text-strong, var(--color-info-strong));
-}
-
-.form-message--success {
-    background-color: var(--semantic-success-bg-strong, var(--color-success-soft));
-    border-color: var(--semantic-success-border-strong, var(--color-success));
-    color: var(--semantic-success-text-strong, var(--color-success-strong));
-}
-
-.form-message--warning {
-    background-color: var(--semantic-warning-bg-strong, var(--color-warning-soft));
-    border-color: var(--semantic-warning-border-strong, var(--color-warning));
-    color: var(--semantic-warning-text-strong, var(--color-warning-strong));
-}
-
-/* -----------------------------------------------
-   21. FORM SECTION STATES
-   Add semantic state styling for entire sections.
-   Intended for wrapping form-row or form-grid.
------------------------------------------------- */
-.form-section--error {
-    padding: var(--space-3);
-    border-left: var(--border-width-strong) solid var(--semantic-error-border-strong, var(--color-danger));
-    background-color: var(--semantic-error-bg-strong, transparent);
-}
-
-.form-section--warning {
-    padding: var(--space-3);
-    border-left: var(--border-width-strong) solid var(--semantic-warning-border-strong, var(--color-warning));
-    background-color: var(--semantic-warning-bg-strong, transparent);
-}
-
-.form-section--success {
-    padding: var(--space-3);
-    border-left: var(--border-width-strong) solid var(--semantic-success-border-strong, var(--color-success));
-    background-color: var(--semantic-success-bg-strong, transparent);
-}
-
-.form-section--info {
-    padding: var(--space-3);
-    border-left: var(--border-width-strong) solid var(--semantic-info-border-strong, var(--color-info));
-    background-color: var(--semantic-info-bg-strong, transparent);
-}
-
-.form-section--error:not(:last-child),
-.form-section--warning:not(:last-child),
-.form-section--success:not(:last-child),
-.form-section--info:not(:last-child) {
-    margin-bottom: var(--space-4);
-}
-
-/* ----------------------------------------------------------
-   23. Base form control primitive (UFAL)
-   ---------------------------------------------------------- */
 .form-control {
+    position: relative; /* ensures ::after overlays are contained */
     display: block;
     width: 100%;
     min-height: var(--control-min-height);
 
     margin: 0;
     box-sizing: border-box;
+
+    padding: var(--space-3);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
 
+input.form-control,
+select.form-control,
+textarea.form-control {
+    font: inherit;
+    line-height: inherit;
+    background-clip: padding-box;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: var(--form-flow-textarea-min-height);
+}
+
+select.form-control {
+    appearance: none;
+}
+
+.form-control::placeholder {
+    color: var(--color-placeholder);
+    opacity: 1;
+}
+
+.form-control:hover {
+    border-color: var(--color-border-strong);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.form-control:focus-visible {
+    outline: none;
+    border-color: var(--focus-ring-color);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+/* ARIA validation hook (UFAL-owned) */
+.form-control[aria-invalid="true"] {
+    border-color: var(--color-danger);
+}
+
+.form-control[aria-invalid="true"]:focus-visible {
+    box-shadow: 0 0 0 var(--border-width-strong) var(--color-danger-soft);
+}
+
+/* ---------------------------------------------------------
+   3. UFAL WRAPPERS (ICON / PREFIX / SUFFIX / GROUPING)
+--------------------------------------------------------- */
 .form-control-wrapper {
     position: relative;
     width: 100%;
@@ -178,9 +130,9 @@
     flex: 1 1 auto;
 }
 
-/* ----------------------------------------------------------
-   23A. State modifiers
-   ---------------------------------------------------------- */
+/* ---------------------------------------------------------
+   4. UFAL STATE MODIFIERS
+--------------------------------------------------------- */
 .form-control--loading {
     cursor: progress;
     opacity: 0.55;
@@ -213,6 +165,24 @@
     box-shadow: 0 0 0 var(--border-width-strong) var(--color-info);
 }
 
+/* Disabled styling (native + class) */
+.form-control:disabled,
+.form-control[disabled],
+.form-control--disabled {
+    background-color: var(--color-muted-bg);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}
+
+/* Readonly styling (native + class) */
+.form-control[readonly],
+.form-control--readonly {
+    background-color: var(--color-surface-subtle);
+    color: var(--color-text-muted);
+    border-style: dashed;
+}
+
+/* Password affordance */
 .form-control--password {
     padding-right: calc(var(--space-8) + var(--space-2));
 }
@@ -221,17 +191,17 @@
     padding-right: calc(var(--space-8) + var(--space-2));
 }
 
-.form-control--password:focus {
-    border-color: var(--color-accent);
-}
-
 .form-control--password::placeholder {
     color: var(--color-placeholder);
 }
 
-/* ----------------------------------------------------------
-   23B. Icon-inside-input patterns
-   ---------------------------------------------------------- */
+.form-control--error:focus-visible {
+    box-shadow: 0 0 0 var(--border-width-strong) var(--semantic-error-border-strong, var(--color-danger));
+}
+
+/* ---------------------------------------------------------
+   5. ICON INSIDE CONTROL (WRAPPER-DRIVEN)
+--------------------------------------------------------- */
 .form-control-wrapper[data-icon="left"] .form-control {
     padding-left: calc(var(--space-7) + var(--space-2));
 }
@@ -260,9 +230,9 @@
     pointer-events: none;
 }
 
-/* ----------------------------------------------------------
-   23C. Loading overlay animation
-   ---------------------------------------------------------- */
+/* ---------------------------------------------------------
+   6. LOADING OVERLAYS
+--------------------------------------------------------- */
 .form-control--loading::after {
     content: "";
     position: absolute;
@@ -284,9 +254,9 @@
     }
 }
 
-/* ----------------------------------------------------------
-   23D. File upload primitives (UFAL)
-   ---------------------------------------------------------- */
+/* ---------------------------------------------------------
+   7. FILE UPLOAD (UFAL PRIMITIVES)
+--------------------------------------------------------- */
 
 /* Base dashed file control (rarely exposed directly; internal primitive) */
 .form-control--file {
@@ -308,11 +278,9 @@
     opacity: 1;
 }
 
-/* ----------------------------------------------------------
-   23E. UFAL Drop Surface (corrected)
-   ---------------------------------------------------------- */
+/* UFAL Drop Surface */
 .form-control-file-surface {
-    position: relative; /* ★ FIX: contain absolute input */
+    position: relative; /* contain absolute input */
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
@@ -370,9 +338,7 @@
     background-color: var(--color-info-soft);
 }
 
-/* ----------------------------------------------------------
-   23F. Inline “button-as-trigger” upload
-   ---------------------------------------------------------- */
+/* Inline “button-as-trigger” upload */
 .file-upload-inline {
     display: inline-flex;
     align-items: center;
@@ -398,9 +364,7 @@
     justify-content: center;
 }
 
-/* ----------------------------------------------------------
-   23G. Shared inner patterns
-   ---------------------------------------------------------- */
+/* Loading shimmer on drop surface */
 .form-control-file-surface.form-control--loading::after {
     content: "";
     position: absolute;
@@ -431,6 +395,129 @@
     color: var(--color-text-muted);
 }
 
-.form-control--error:focus-visible {
-    box-shadow: 0 0 0 var(--border-width-strong) var(--semantic-error-border-strong, var(--color-danger));
+/* ---------------------------------------------------------
+   8. LAYOUT PRIMITIVES (UFAL-NEUTRAL)
+--------------------------------------------------------- */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.form-grid {
+    display: grid;
+    gap: var(--space-4);
+}
+
+.form-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.form-grid--four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 768px) {
+    .form-grid--two,
+    .form-grid--three,
+    .form-grid--four {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   9. FORM-LEVEL MESSAGES
+--------------------------------------------------------- */
+.form-message {
+    width: 100%;
+    padding: var(--space-4) var(--space-6);
+    border-radius: var(--radius-md);
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--color-surface-subtle);
+    font-size: var(--text-sm);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+}
+
+.form-message__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    stroke: currentColor;
+    fill: none;
+}
+
+.form-message__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.form-message--neutral {
+    border-color: var(--color-muted-border);
+    background-color: var(--color-muted-bg);
+    color: var(--color-text-muted);
+}
+
+.form-message--error {
+    background-color: var(--semantic-error-bg-strong, var(--color-danger-soft));
+    border-color: var(--semantic-error-border-strong, var(--color-danger));
+    color: var(--semantic-error-text-strong, var(--color-danger-strong));
+}
+
+.form-message--info {
+    background-color: var(--semantic-info-bg-strong, var(--color-info-soft));
+    border-color: var(--semantic-info-border-strong, var(--color-info));
+    color: var(--semantic-info-text-strong, var(--color-info-strong));
+}
+
+.form-message--success {
+    background-color: var(--semantic-success-bg-strong, var(--color-success-soft));
+    border-color: var(--semantic-success-border-strong, var(--color-success));
+    color: var(--semantic-success-text-strong, var(--color-success-strong));
+}
+
+.form-message--warning {
+    background-color: var(--semantic-warning-bg-strong, var(--color-warning-soft));
+    border-color: var(--semantic-warning-border-strong, var(--color-warning));
+    color: var(--semantic-warning-text-strong, var(--color-warning-strong));
+}
+
+/* ---------------------------------------------------------
+   10. FORM SECTION STATES
+--------------------------------------------------------- */
+.form-section--error {
+    padding: var(--space-3);
+    border-left: var(--border-width-strong) solid var(--semantic-error-border-strong, var(--color-danger));
+    background-color: var(--semantic-error-bg-strong, transparent);
+}
+
+.form-section--warning {
+    padding: var(--space-3);
+    border-left: var(--border-width-strong) solid var(--semantic-warning-border-strong, var(--color-warning));
+    background-color: var(--semantic-warning-bg-strong, transparent);
+}
+
+.form-section--success {
+    padding: var(--space-3);
+    border-left: var(--border-width-strong) solid var(--semantic-success-border-strong, var(--color-success));
+    background-color: var(--semantic-success-bg-strong, transparent);
+}
+
+.form-section--info {
+    padding: var(--space-3);
+    border-left: var(--border-width-strong) solid var(--semantic-info-border-strong, var(--color-info));
+    background-color: var(--semantic-info-bg-strong, transparent);
+}
+
+.form-section--error:not(:last-child),
+.form-section--warning:not(:last-child),
+.form-section--success:not(:last-child),
+.form-section--info:not(:last-child) {
+    margin-bottom: var(--space-4);
 }
