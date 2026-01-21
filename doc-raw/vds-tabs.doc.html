@@ -562,21 +562,36 @@
                             <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
-                    <pre class="doc-block__code"><code>&lt;button class=&quot;tab tab--active&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;
-    &lt;span class=&quot;tab__icon&quot;&gt;
-        &lt;span class=&quot;icon icon--mask icon--inbox&quot;&gt;&lt;/span&gt;
-    &lt;/span&gt;
-    Inbox
-    &lt;span class=&quot;tab__badge&quot;&gt;24&lt;/span&gt;
-&lt;/button&gt;
-
-&lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot;&gt;
-    &lt;span class=&quot;tab__icon&quot;&gt;
-        &lt;span class=&quot;icon icon--mask icon--star&quot;&gt;&lt;/span&gt;
-    &lt;/span&gt;
-    Starred
-    &lt;span class=&quot;tab__badge&quot;&gt;6&lt;/span&gt;
-&lt;/button&gt;
+                    <pre class="doc-block__code"><code>&lt;div class=&quot;tabs tabs--stretch tabs--c&quot;&gt;
+    &lt;div class=&quot;tab-list&quot; role=&quot;tablist&quot; aria-label=&quot;Inbox filters&quot;&gt;
+        &lt;button class=&quot;tab tab--active&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot;&gt;
+            &lt;span class=&quot;tab__icon&quot;&gt;
+                &lt;span class=&quot;icon icon--mask icon--inbox&quot;&gt;&lt;/span&gt;
+            &lt;/span&gt;
+            Inbox
+            &lt;span class=&quot;tab__badge&quot;&gt;24&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
+            &lt;span class=&quot;tab__icon&quot;&gt;
+                &lt;span class=&quot;icon icon--mask icon--star&quot;&gt;&lt;/span&gt;
+            &lt;/span&gt;
+            Starred
+            &lt;span class=&quot;tab__badge&quot;&gt;6&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
+            &lt;span class=&quot;tab__icon&quot;&gt;
+                &lt;span class=&quot;icon icon--mask icon--archive&quot;&gt;&lt;/span&gt;
+            &lt;/span&gt;
+            Archived
+        &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tab-panel&quot; role=&quot;tabpanel&quot;&gt;
+        &lt;p class=&quot;text-sm&quot;&gt;
+            Icons and badges are optional and do not change the tab semantics. They are
+            purely visual hints.
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
                 </div>
             </div>
@@ -746,8 +761,8 @@
                                 <tr>
                                     <th scope="row"><code>.tab-panel</code></th>
                                     <td>Content area for a single tab. Show/hide using <code
-                                            >[hidden]</code> or <code
-                                            >.is-hidden</code>.
+                                    >[hidden]</code> or <code
+                                    >.is-hidden</code>.
                                     </td>
                                 </tr>
                                 <tr>
@@ -781,7 +796,7 @@
                                     container.
                                 </li>
                                 <li><code>role="tab"</code> on each interactive <code
-                                        >.tab</code>.
+                                >.tab</code>.
                                 </li>
                                 <li><code>role="tabpanel"</code> on each <code>.tab-panel</code>.
                                 </li>
@@ -792,7 +807,7 @@
                                     corresponding tab <code>id</code>.
                                 </li>
                                 <li><code>aria-orientation="vertical"</code> on vertical <code
-                                        >.tab-list</code> containers.
+                                >.tab-list</code> containers.
                                 </li>
                             </ul>
                         </div>
@@ -872,7 +887,7 @@
                             <li>
                                 <strong>Do not hide panels without updating ARIA.</strong>
                                 When a panel is hidden, ensure the active tab and <code
-                                    >aria-selected</code> are updated.
+                            >aria-selected</code> are updated.
                             </li>
                         </ul>
                     </div>

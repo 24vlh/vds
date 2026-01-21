@@ -1,0 +1,1047 @@
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Inbox List Component
+ *
+ *  File: vds-inbox.css
+ *
+ *  Responsibilities:
+ *    - Row-based list pattern for inbox workflows:
+ *        title, glance, badges, labels, status icons, actions
+ *    - Responsive action reflow (right -> below on small screens)
+ *    - Row variants: minimal / normal / rich / mega
+ *    - Flag colors (5 options) for fast scanning
+ *    - Expandable-row helpers (open state only; no JS)
+ *    - Top navigation bar (search + tabs + optional left/right action slots)
+ *    - Flat list variant (table-like separators) + rounded card variant
+ *    - Action style variants (flat vs rich) using tokens only
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   0. ROOT (tokens + component defaults)
+--------------------------------------------------------- */
+[data-vds-inbox],
+.vds-inbox {
+    --inbox-row-radius: var(--radius-lg, var(--radius-md));
+    --inbox-row-border: var(--color-border-subtle);
+    --inbox-row-bg: var(--color-surface);
+    --inbox-row-bg-hover: var(--color-surface-subtle, var(--color-surface-hover));
+    --inbox-row-shadow: none;
+
+    --inbox-title-size: var(--text-sm);
+    --inbox-desc-size: var(--text-xs);
+
+    --inbox-icon-size: var(--icon-sm);
+    --inbox-icon-muted: var(--color-icon-muted, var(--color-text-soft));
+    --inbox-icon-strong: var(--color-icon-strong, var(--color-text));
+
+    --inbox-action-gap: var(--space-2);
+    --inbox-badge-gap: var(--space-2);
+
+    --inbox-row-pad-x: var(--space-4);
+    --inbox-row-pad-y: var(--space-4);
+
+    --inbox-actions-min-width: 0;
+    --inbox-actions-justify: flex-end; /* right rail on wide screens */
+
+    width: 100%;
+}
+
+/* Optional: make the whole surface slightly denser */
+.vds-inbox--dense {
+    --inbox-row-pad-x: var(--space-3);
+    --inbox-row-pad-y: var(--space-3);
+    --inbox-title-size: var(--text-xs);
+    --inbox-desc-size: var(--text-xxs, var(--text-xs));
+}
+
+/* ---------------------------------------------------------
+   1. TOP NAV (search + tabs + actions)
+--------------------------------------------------------- */
+.vds-inbox-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.vds-inbox-nav__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+}
+
+/* left / right rails */
+.vds-inbox-nav__left,
+.vds-inbox-nav__right {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 0 0 auto;
+}
+
+/* bottom rail (optional helper row under tabs/search) */
+.vds-inbox-nav__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.vds-inbox-nav__bottom-left,
+.vds-inbox-nav__bottom-right {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.vds-inbox-nav__bottom-left:empty,
+.vds-inbox-nav__bottom-right:empty {
+    display: none;
+}
+
+/* bottom alignment helpers */
+.vds-inbox-nav__bottom--left {
+    justify-content: flex-start;
+}
+
+.vds-inbox-nav__bottom--center {
+    justify-content: center;
+}
+
+.vds-inbox-nav__bottom--right {
+    justify-content: flex-end;
+}
+
+.vds-inbox-nav__bottom--split {
+    justify-content: space-between;
+}
+
+/* Tabs */
+.vds-inbox-tabs {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-surface-subtle);
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+}
+
+.vds-inbox-tab {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-sm);
+    line-height: 1;
+
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.vds-inbox-tab:hover {
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+.vds-inbox-tab[aria-selected="true"],
+.vds-inbox-tab.is-active {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border-subtle);
+}
+
+.vds-inbox-tab:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+/* Optional tab badge */
+.vds-inbox-tab__count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    padding: 0 var(--space-2);
+
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-surface-subtle);
+    color: var(--color-text-muted);
+
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* --- Search (icon -> expanding field) --- */
+.vds-inbox-search {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+}
+
+.vds-inbox-search__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--icon-container-md, 2.25rem);
+    height: var(--icon-container-md, 2.25rem);
+
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-surface);
+
+    color: var(--color-text);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.vds-inbox-search__toggle:hover {
+    background: var(--color-surface-subtle, var(--color-surface-hover));
+    border-color: var(--color-border-strong, var(--color-border-subtle));
+}
+
+.vds-inbox-search__toggle svg {
+    width: var(--icon-xs, 1rem);
+    height: var(--icon-xs, 1rem);
+    color: currentColor;
+}
+
+/* Field wrapper starts collapsed */
+.vds-inbox-search__field {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+
+    transition: width var(--transition-normal), opacity var(--transition-fast);
+}
+
+.vds-inbox-search__input {
+    width: 100%;
+    min-width: 10rem;
+    max-width: 32rem;
+
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-surface);
+    color: var(--color-text);
+
+    font-size: var(--text-sm);
+    line-height: var(--line-height-normal);
+}
+
+/* Open state: set on .vds-inbox-search or on toggle via aria-expanded */
+.vds-inbox-search.is-open .vds-inbox-search__field,
+.vds-inbox-search__toggle[aria-expanded="true"] + .vds-inbox-search__field {
+    width: min(36rem, 52vw);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Full-width search helper (mobile or on demand) */
+.vds-inbox-search--full {
+    width: 100%;
+}
+
+.vds-inbox-search--full .vds-inbox-search__field {
+    width: 100%;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ---------------------------------------------------------
+   2. LIST (rounded vs flat)
+--------------------------------------------------------- */
+.vds-inbox__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+/* Flat list: separators + list border, no side borders on rows */
+.vds-inbox--flat .vds-inbox__list {
+    gap: 0;
+    border-top: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.vds-inbox--flat .vds-inbox-row {
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-radius: 0;
+}
+
+.vds-inbox--flat .vds-inbox-row + .vds-inbox-row {
+    border-top: 1px solid var(--color-border-subtle);
+}
+
+/* ---------------------------------------------------------
+   3. ROW BASE
+--------------------------------------------------------- */
+.vds-inbox-row {
+    position: relative;
+    width: 100%;
+    background: var(--inbox-row-bg);
+    border: 1px solid var(--inbox-row-border);
+    border-radius: var(--inbox-row-radius);
+    box-shadow: var(--inbox-row-shadow);
+    overflow: clip;
+
+    transition: background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.vds-inbox-row:hover {
+    background: var(--inbox-row-bg-hover);
+    border-color: var(--color-border-strong, var(--color-border-subtle));
+}
+
+.vds-inbox-row:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+/* Recommended clickable wrapper: <button> or <a> */
+.vds-inbox-row__main {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    text-align: left;
+    color: inherit;
+}
+
+/* Core grid: meta left + actions right */
+.vds-inbox-row__inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-4);
+    align-items: start;
+    padding: var(--inbox-row-pad-y) var(--inbox-row-pad-x);
+}
+
+/* ---------------------------------------------------------
+   4. ROW VARIANTS (minimal / normal / rich / mega)
+--------------------------------------------------------- */
+/* Minimalistic: title + status + tiny actions (no extra vertical air) */
+.vds-inbox-row--minimal .vds-inbox-row__inner {
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-3);
+}
+
+.vds-inbox-row--minimal {
+    --inbox-title-size: var(--text-xs);
+    --inbox-desc-size: var(--text-xxs, var(--text-xs));
+}
+
+/* Normal: default */
+.vds-inbox-row--normal .vds-inbox-row__inner {
+    padding: var(--space-4) var(--space-4);
+    gap: var(--space-4);
+}
+
+/* Rich: more air + larger typography */
+.vds-inbox-row--rich .vds-inbox-row__inner {
+    padding: var(--space-5) var(--space-5);
+    gap: var(--space-5);
+}
+
+.vds-inbox-row--rich {
+    --inbox-title-size: var(--text-md, var(--text-sm));
+    --inbox-desc-size: var(--text-sm);
+}
+
+/* Mega: “data-heavy” row */
+.vds-inbox-row--mega .vds-inbox-row__inner {
+    padding: var(--space-6) var(--space-6);
+    gap: var(--space-6);
+}
+
+.vds-inbox-row--mega {
+    --inbox-title-size: var(--text-lg, var(--text-md, var(--text-sm)));
+    --inbox-desc-size: var(--text-sm);
+}
+
+/* ---------------------------------------------------------
+   5. BADGES ROW (FULL WIDTH)
+--------------------------------------------------------- */
+.vds-inbox-row__badges {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--inbox-badge-gap);
+    margin-bottom: var(--space-3);
+}
+
+.vds-inbox-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1_5);
+    padding: var(--space-1) var(--space-2_5);
+
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-border-subtle);
+
+    font-size: var(--text-xxs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+
+    background: var(--color-surface-subtle);
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+.vds-inbox-badge svg {
+    width: var(--icon-xxs);
+    height: var(--icon-xxs);
+    color: currentColor;
+}
+
+.vds-inbox-badge--accent {
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent);
+    color: var(--color-text);
+}
+
+.vds-inbox-badge--info {
+    background: var(--semantic-info-bg, var(--color-info-soft));
+    border-color: var(--semantic-info-border, var(--color-info));
+    color: var(--semantic-info-text, var(--color-text));
+}
+
+.vds-inbox-badge--success {
+    background: var(--semantic-success-bg, var(--color-success-soft));
+    border-color: var(--semantic-success-border, var(--color-success));
+    color: var(--semantic-success-text, var(--color-text));
+}
+
+.vds-inbox-badge--warning {
+    background: var(--semantic-warning-bg, var(--color-warning-soft));
+    border-color: var(--semantic-warning-border, var(--color-warning));
+    color: var(--semantic-warning-text, var(--color-text));
+}
+
+.vds-inbox-badge--danger {
+    background: var(--semantic-danger-bg, var(--color-danger-soft));
+    border-color: var(--semantic-danger-border, var(--color-danger));
+    color: var(--semantic-danger-text, var(--color-text));
+}
+
+/* ---------------------------------------------------------
+   6. META AREA
+--------------------------------------------------------- */
+.vds-inbox-row__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: 0;
+}
+
+.vds-inbox-row__titleline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+}
+
+/* Status icons cluster (bookmark/star/flag) */
+.vds-inbox-row__status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1_5);
+    flex: 0 0 auto;
+}
+
+.vds-inbox-row__status-icon {
+    width: var(--inbox-icon-size);
+    height: var(--inbox-icon-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--inbox-icon-muted);
+}
+
+.vds-inbox-row__status-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* state toggles (apply on row) */
+.vds-inbox-row.is-bookmarked .vds-inbox-row__status-icon--bookmark,
+.vds-inbox-row.is-starred .vds-inbox-row__status-icon--star {
+    color: var(--color-accent);
+}
+
+.vds-inbox-row.is-flagged .vds-inbox-row__status-icon--flag {
+    color: var(--color-danger-strong, var(--color-danger));
+}
+
+.vds-inbox-row__title {
+    font-size: var(--inbox-title-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-snug);
+    color: var(--color-text);
+    letter-spacing: var(--letter-tight, 0);
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    flex: 1 1 auto; /* take leftover width, shrink when needed */
+    min-width: 16ch; /* hard floor so it never disappears */
+    max-width: 100%; /* prevents weird overflow interactions */
+}
+
+/* Inline labels next to title (wide); reflow rules below */
+.vds-inbox-row__labels {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1_5);
+    flex: 0 0 auto;
+    min-width: 0;
+}
+
+.vds-inbox-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 var(--space-2);
+    height: 1.4rem;
+
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-border-subtle);
+
+    font-size: var(--text-xxs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    background: transparent;
+    white-space: nowrap;
+}
+
+.vds-inbox-label--accent {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
+}
+
+.vds-inbox-label--muted {
+    color: var(--color-text-muted);
+    border-color: var(--color-border-subtle);
+    background: var(--color-surface-subtle);
+}
+
+/* Glance / description (clamped by default) */
+.vds-inbox-row__glance {
+    font-size: var(--inbox-desc-size);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-muted);
+    min-width: 0;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+/* Rich/mega can show more lines (still clamped unless row open) */
+.vds-inbox-row--rich .vds-inbox-row__glance {
+    -webkit-line-clamp: 3;
+}
+
+.vds-inbox-row--mega .vds-inbox-row__glance {
+    -webkit-line-clamp: 4;
+}
+
+/* Optional metadata footer */
+.vds-inbox-row__metafoot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+    font-size: var(--text-xxs, var(--text-xs));
+    color: var(--color-text-soft, var(--color-text-muted));
+}
+
+.vds-inbox-row__metafoot strong {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+}
+
+/* Optional “detail chips row” (horizontal list of small metadata items) */
+.vds-inbox-row__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.vds-inbox-row__details-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1_5);
+    padding: var(--space-1) var(--space-2);
+
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-surface-subtle);
+
+    line-height: 1.1;
+}
+
+.vds-inbox-row__details-item svg {
+    width: var(--icon-xxs);
+    height: var(--icon-xxs);
+    color: currentColor;
+}
+
+/* ---------------------------------------------------------
+   7. ACTIONS (right rail; can reflow below)
+--------------------------------------------------------- */
+.vds-inbox-row__actions {
+    display: flex;
+    align-items: flex-start;
+    justify-content: var(--inbox-actions-justify);
+    gap: var(--inbox-action-gap);
+    flex-wrap: wrap;
+    padding-top: var(--space-0_5);
+    min-width: var(--inbox-actions-min-width);
+}
+
+/* Force actions below even on wide screens */
+.vds-inbox-row--actions-below .vds-inbox-row__inner {
+    grid-template-columns: 1fr;
+}
+
+.vds-inbox-row--actions-below .vds-inbox-row__actions {
+    justify-content: flex-start;
+    padding-top: 0;
+}
+
+/* Force actions to occupy a full row (even when grid is 2 cols) */
+.vds-inbox-row--actions-full .vds-inbox-row__actions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    padding-top: 0;
+}
+
+/* Actions alignment helpers (useful on mobile / below layout) */
+.vds-inbox-row__actions--left {
+    justify-content: flex-start;
+}
+
+.vds-inbox-row__actions--center {
+    justify-content: center;
+}
+
+.vds-inbox-row__actions--right {
+    justify-content: flex-end;
+}
+
+/* Action button */
+.vds-inbox-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1_5);
+
+    padding: var(--space-1_5) var(--space-2_5);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-subtle);
+
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+
+    color: var(--color-text);
+    background: var(--color-surface);
+
+    transition: background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+a.vds-inbox-action {
+    text-decoration: none;
+}
+
+.vds-inbox-action svg {
+    width: var(--icon-xxs);
+    height: var(--icon-xxs);
+    color: currentColor;
+}
+
+.vds-inbox-action:hover {
+    background: var(--color-surface-subtle, var(--color-surface-hover));
+    border-color: var(--color-border-strong, var(--color-border-subtle));
+    transform: translateY(-1px);
+}
+
+.vds-inbox-action:active {
+    transform: translateY(0);
+}
+
+.vds-inbox-action--danger {
+    color: var(--color-danger-strong, var(--color-danger));
+    border-color: var(--color-danger, var(--color-border-strong));
+}
+
+.vds-inbox-action--accent {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
+}
+
+/* icon-only action */
+.vds-inbox-action--icon {
+    width: var(--icon-container-md, 2.25rem);
+    height: var(--icon-container-md, 2.25rem);
+    padding: 0;
+}
+
+/* “Flat” action style (no border, lighter affordance) */
+.vds-inbox-action--flat {
+    border-color: transparent;
+    background: transparent;
+    color: var(--color-text-muted);
+}
+
+.vds-inbox-action--flat:hover {
+    background: var(--color-surface-subtle);
+    border-color: transparent;
+    color: var(--color-text);
+    transform: none;
+}
+
+/* Global switch: make all actions flat within an inbox */
+.vds-inbox--actions-flat .vds-inbox-action {
+    border-color: transparent;
+    background: transparent;
+    color: var(--color-text-muted);
+    transform: none;
+}
+
+.vds-inbox--actions-flat .vds-inbox-action:hover {
+    background: var(--color-surface-subtle);
+    border-color: transparent;
+    color: var(--color-text);
+}
+
+/* ---------------------------------------------------------
+   8. EXPANDED CONTENT (OPEN STATE HELPERS)
+--------------------------------------------------------- */
+.vds-inbox-row__expanded {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--color-border-subtle);
+    padding: var(--space-4);
+    background: var(--color-bg-soft, var(--color-surface-subtle));
+    color: var(--color-text);
+    display: none;
+}
+
+.vds-inbox-row--open .vds-inbox-row__expanded {
+    display: block;
+}
+
+.vds-inbox-row--open .vds-inbox-row__glance {
+    -webkit-line-clamp: initial;
+    overflow: visible;
+}
+
+/* Expanded content can be made “flush” in flat list mode */
+.vds-inbox--flat .vds-inbox-row__expanded {
+    background: var(--color-surface-subtle);
+}
+
+/* ---------------------------------------------------------
+   9. FLAGS (5 COLORS)
+--------------------------------------------------------- */
+.vds-inbox-row.is-flagged::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 6px;
+    background: var(--inbox-flag-color, var(--color-danger));
+}
+
+.vds-inbox-row--flag-1 { /* danger / red */
+    --inbox-flag-color: var(--color-danger);
+    --inbox-flag-surface: var(--semantic-danger-bg, var(--color-danger-soft));
+}
+
+.vds-icon-flag--1 {
+    color: var(--color-danger);
+}
+
+.vds-inbox-row--flag-2 { /* warning / amber */
+    --inbox-flag-color: var(--color-warning);
+    --inbox-flag-surface: var(--semantic-warning-bg, var(--color-warning-soft));
+}
+
+.vds-icon-flag--2 {
+    color: var(--color-warning);
+}
+
+.vds-inbox-row--flag-3 { /* info / blue */
+    --inbox-flag-color: var(--color-info);
+    --inbox-flag-surface: var(--semantic-info-bg, var(--color-info-soft));
+}
+
+.vds-icon-flag--3 {
+    color: var(--color-info);
+}
+
+.vds-inbox-row--flag-4 { /* success / green */
+    --inbox-flag-color: var(--color-success);
+    --inbox-flag-surface: var(--semantic-success-bg, var(--color-success-soft));
+}
+
+.vds-icon-flag--4 {
+    color: var(--color-success);
+}
+
+.vds-inbox-row--flag-5 { /* accent */
+    --inbox-flag-color: var(--color-accent);
+    --inbox-flag-surface: var(--color-accent-soft);
+}
+
+.vds-icon-flag--5 {
+    color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------
+   10. FILTER TEMPLATE (lightweight)
+--------------------------------------------------------- */
+.vds-inbox-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+}
+
+.vds-inbox-filter__group {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+}
+
+.vds-inbox-filter__label {
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.vds-inbox-filter__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1_5);
+    padding: var(--space-1_5) var(--space-2_5);
+
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-surface-subtle);
+    color: var(--color-text);
+
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.vds-inbox-filter__chip--active {
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
+}
+
+.vds-inbox-filter__actions {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* ---------------------------------------------------------
+   11. BOTTOM CORNER ACTION BAR (one/two buttons)
+--------------------------------------------------------- */
+.vds-inbox-cornerbar {
+    position: fixed;
+    inset: auto var(--space-6) var(--space-6) auto;
+    z-index: 40;
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    pointer-events: none; /* buttons re-enable */
+}
+
+.vds-inbox-cornerbar--left {
+    inset: auto auto var(--space-6) var(--space-6);
+}
+
+.vds-inbox-cornerbar__inner {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    padding: var(--space-2);
+    border-radius: var(--radius-xl, var(--radius-lg));
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md, none);
+}
+
+/* ---------------------------------------------------------
+   12. RESPONSIVE
+--------------------------------------------------------- */
+@media (max-width: 768px) {
+    .vds-inbox-row__inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+
+    /* Actions move below by default */
+    .vds-inbox-row__actions {
+        justify-content: flex-start;
+        padding-top: 0;
+    }
+
+    /* Title wraps; labels become their own row on the left */
+    .vds-inbox-row__titleline {
+        flex-wrap: wrap;
+        row-gap: var(--space-1_5);
+    }
+
+    .vds-inbox-row__title {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        flex-basis: 100%;
+    }
+
+    .vds-inbox-row__labels {
+        flex-basis: 100%;
+        justify-content: flex-start;
+    }
+
+    /* Nav bar: stack into multiple rows */
+    .vds-inbox-nav__bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-3);
+    }
+
+    .vds-inbox-tabs {
+        order: 1;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .vds-inbox-nav__left {
+        order: 0;
+    }
+
+    .vds-inbox-nav__right {
+        order: 2;
+    }
+
+    .vds-inbox-nav__bottom {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .vds-inbox-nav__bottom-left,
+    .vds-inbox-nav__bottom-right {
+        justify-content: flex-start;
+    }
+
+    /* Search: expand wider on small screens */
+    .vds-inbox-search.is-open .vds-inbox-search__field,
+    .vds-inbox-search__toggle[aria-expanded="true"] + .vds-inbox-search__field {
+        width: min(100%, 40rem);
+    }
+}
+
+/* ---------------------------------------------------------
+   13. RESPONSIVE VISIBILITY HELPERS (COMPONENT-LOCAL)
+   (useful for hiding icons/actions/labels by breakpoint)
+--------------------------------------------------------- */
+@media (max-width: 768px) {
+    .vds-inbox__hide-sm {
+        display: none !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .vds-inbox__show-sm {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .vds-inbox__hide-md {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1025px) {
+    .vds-inbox__show-md {
+        display: none !important;
+    }
+}
+
+/* ---------------------------------------------------------
+   14. SMALL UTILITIES (COMPONENT-LOCAL)
+--------------------------------------------------------- */
+.vds-inbox__truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.vds-inbox__sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
