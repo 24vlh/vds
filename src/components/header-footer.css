@@ -332,3 +332,21 @@
     outline-offset: var(--space-1);
     border-radius: var(--radius-sm);
 }
+
+/* ---------------------------------------------------------
+   11. APP SHELL (STICKY FOOTER LAYOUT)
+--------------------------------------------------------- */
+
+.vds-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.vds-shell__main {
+    flex: 1 0 auto;
+}
+
+.vds-shell__footer {
+    margin-top: auto;
+}

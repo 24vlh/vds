@@ -625,5 +625,3 @@ select.form-control:not([multiple]):not([size]) {
 .form-section--info:not(:last-child) {
     margin-bottom: var(--space-4);
 }
-
-/*# sourceMappingURL=forms.css.map */
