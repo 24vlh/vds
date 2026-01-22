@@ -74,19 +74,19 @@ function loadFiles(pattern) {
 // ========================
 function main() {
     const htmlFiles = loadFiles("doc-raw/**/*.html");
-    const cssFiles = loadFiles("css/**/*.css");
+    const cssFiles = loadFiles("src/**/*.css");
 
     // Extract CSS-defined classes once
     const definedClasses = new Set();
 
-    for (const { content } of cssFiles) {
+    for (const {content} of cssFiles) {
         extractClassesFromCSS(content).forEach(c => definedClasses.add(c));
     }
 
     // Track missing classes per file
     const missingByFile = {};
 
-    for (const { file, content } of htmlFiles) {
+    for (const {file, content} of htmlFiles) {
         const used = extractClassesFromHTML(content);
         const missing = [...used].filter(c => !definedClasses.has(c));
 

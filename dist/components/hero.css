@@ -496,5 +496,3 @@
         grid-template-columns: repeat(auto-fit, minmax(calc(var(--hero-metric-min-width) * 0.8), 1fr));
     }
 }
-
-/*# sourceMappingURL=hero.css.map */
