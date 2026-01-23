@@ -383,9 +383,9 @@ Sections:
                 <p class="doc-block__summary">
                     To demonstrate behaviour without JavaScript: apply <code>.is-open</code> on
                     <code>.vds-inbox-search</code>
-                    or set <code>aria-expanded="true"</code> on the toggle button. For full-width search (mobile or
-                    “search mode”),
-                    add <code>.vds-inbox-search--full</code>.
+                    or set <code>aria-expanded="true"</code> on the toggle button. For full-width search across the
+                    entire toolbar, add <code>.vds-inbox-nav__bar--search-full</code> on the nav bar while the search
+                    is open (and focused), and keep <code>.is-open</code> on the search.
                 </p>
             </header>
 
@@ -393,10 +393,10 @@ Sections:
                 <div class="doc-block__preview">
 
                     <div class="vds-inbox-nav">
-                        <div class="vds-inbox-nav__bar">
+                        <div class="vds-inbox-nav__bar vds-inbox-nav__bar--search-full">
 
-                            <div class="vds-inbox-nav__left" style="width:100%;">
-                                <div class="vds-inbox-search vds-inbox-search--full is-open"
+                            <div class="vds-inbox-nav__left">
+                                <div class="vds-inbox-search is-open"
                                      aria-label="Search (full width)">
                                     <button class="vds-inbox-search__toggle" type="button" aria-label="Close search"
                                             aria-expanded="true">
@@ -417,6 +417,36 @@ Sections:
                                 </div>
                             </div>
 
+                            <div class="vds-inbox-tabs" role="tablist" aria-label="Inbox views">
+                                <button class="vds-inbox-tab is-active" type="button" role="tab" aria-selected="true">
+                                    <span>Messages</span>
+                                    <span class="vds-inbox-tab__count" aria-label="Messages count">12</span>
+                                </button>
+                                <button class="vds-inbox-tab" type="button" role="tab" aria-selected="false">
+                                    <span>Emails</span>
+                                    <span class="vds-inbox-tab__count" aria-label="Emails count">4</span>
+                                </button>
+                            </div>
+
+                            <div class="vds-inbox-nav__right">
+                                <a class="vds-inbox-action vds-inbox-action--icon" href="#" aria-label="Refresh">
+                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
+                                              stroke-width="1.6"
+                                              stroke-linecap="round"/>
+                                        <path d="M3 8a5 5 0 0 1 9.2-2.6" fill="none" stroke="currentColor"
+                                              stroke-width="1.6"
+                                              stroke-linecap="round"/>
+                                        <path d="M3.1 11.4H4.7V9.8" fill="none" stroke="currentColor" stroke-width="1.6"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12.9 4.6H11.3V6.2" fill="none" stroke="currentColor"
+                                              stroke-width="1.6"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                                <a class="vds-inbox-action vds-inbox-action--accent" href="#">New</a>
+                            </div>
+
                         </div>
                     </div>
 
@@ -430,8 +460,14 @@ Sections:
     &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- full width variant --&gt;
-&lt;div class="vds-inbox-search vds-inbox-search--full is-open"&gt;...&lt;/div&gt;
+&lt;!-- full toolbar takeover --&gt;
+&lt;div class="vds-inbox-nav__bar vds-inbox-nav__bar--search-full"&gt;
+    &lt;div class="vds-inbox-nav__left"&gt;
+        &lt;div class="vds-inbox-search is-open"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="vds-inbox-tabs"&gt;...&lt;/div&gt;
+    &lt;div class="vds-inbox-nav__right"&gt;...&lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
                 </div>
             </div>

@@ -273,6 +273,32 @@
     pointer-events: auto;
 }
 
+/* Toolbar takeover: search spans the entire nav bar */
+.vds-inbox-nav__bar--search-full .vds-inbox-nav__left {
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+.vds-inbox-nav__bar--search-full .vds-inbox-search {
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+.vds-inbox-nav__bar--search-full .vds-inbox-search__field {
+    width: 100%;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.vds-inbox-nav__bar--search-full .vds-inbox-search__input {
+    max-width: none;
+}
+
+.vds-inbox-nav__bar--search-full .vds-inbox-tabs,
+.vds-inbox-nav__bar--search-full .vds-inbox-nav__right {
+    display: none;
+}
+
 /* ---------------------------------------------------------
    2. LIST (rounded vs flat)
 --------------------------------------------------------- */
