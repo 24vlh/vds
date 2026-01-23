@@ -70,6 +70,12 @@
     gap: var(--space-4);
 
     padding: var(--space-3) var(--space-4);
+    min-height: calc(
+        (var(--space-3) * 2) +
+        (var(--space-1) * 2) +
+        (var(--space-2) * 2) +
+        var(--text-sm)
+    );
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-lg);
     background: var(--color-surface);
@@ -231,6 +237,8 @@
     align-items: center;
     gap: var(--space-2);
 
+    flex: 1 1 auto;
+    min-width: 0;
     width: 0;
     opacity: 0;
     overflow: hidden;
@@ -242,7 +250,8 @@
 .vds-inbox-search__input {
     width: 100%;
     min-width: 10rem;
-    max-width: 32rem;
+    max-width: none;
+    flex: 1 1 auto;
 
     padding: var(--space-2) var(--space-3);
     border-radius: var(--radius-md);
@@ -257,17 +266,6 @@
 /* Open state: set on .vds-inbox-search or on toggle via aria-expanded */
 .vds-inbox-search.is-open .vds-inbox-search__field,
 .vds-inbox-search__toggle[aria-expanded="true"] + .vds-inbox-search__field {
-    width: min(36rem, 52vw);
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Full-width search helper (mobile or on demand) */
-.vds-inbox-search--full {
-    width: 100%;
-}
-
-.vds-inbox-search--full .vds-inbox-search__field {
     width: 100%;
     opacity: 1;
     pointer-events: auto;
@@ -858,6 +856,14 @@ a.vds-inbox-action {
     color: var(--color-text-muted);
 }
 
+.vds-inbox-action--borderless {
+    border-color: transparent;
+}
+
+.vds-inbox-action--borderless:hover {
+    border-color: transparent;
+}
+
 .vds-inbox-action--flat:hover {
     background: var(--color-surface-subtle);
     border-color: transparent;
@@ -1127,7 +1133,7 @@ a.vds-inbox-action {
     /* Search: expand wider on small screens */
     .vds-inbox-search.is-open .vds-inbox-search__field,
     .vds-inbox-search__toggle[aria-expanded="true"] + .vds-inbox-search__field {
-        width: min(100%, 40rem);
+        width: 100%;
     }
 }
 

@@ -10691,6 +10691,18 @@ select.form-control:not([multiple]):not([size]) {
     padding: 0.75rem 1rem;
 
     padding: var(--space-3) var(--space-4);
+    min-height: calc(
+        (0.75rem * 2) +
+        (0.25rem * 2) +
+        (0.5rem * 2) +
+        0.875rem
+    );
+    min-height: calc(
+        (var(--space-3) * 2) +
+        (var(--space-1) * 2) +
+        (var(--space-2) * 2) +
+        var(--text-sm)
+    );
     border: 1px solid var(--color-border-subtle);
     border-radius: 12px;
     border-radius: var(--radius-lg);
@@ -10894,6 +10906,8 @@ select.form-control:not([multiple]):not([size]) {
     gap: 0.5rem;
     gap: var(--space-2);
 
+    flex: 1 1 auto;
+    min-width: 0;
     width: 0;
     opacity: 0;
     overflow: hidden;
@@ -10907,7 +10921,8 @@ select.form-control:not([multiple]):not([size]) {
 .vds-inbox-search__input {
     width: 100%;
     min-width: 10rem;
-    max-width: 32rem;
+    max-width: none;
+    flex: 1 1 auto;
 
     padding: 0.5rem 0.75rem;
 
@@ -10929,21 +10944,36 @@ select.form-control:not([multiple]):not([size]) {
 
 .vds-inbox-search.is-open .vds-inbox-search__field,
 .vds-inbox-search__toggle[aria-expanded="true"] + .vds-inbox-search__field {
-    width: min(36rem, 52vw);
+    width: 100%;
     opacity: 1;
     pointer-events: auto;
 }
 
-/* Full-width search helper (mobile or on demand) */
+/* Toolbar takeover: search spans the entire nav bar */
 
-.vds-inbox-search--full {
+.vds-inbox-nav__bar--search-full .vds-inbox-nav__left {
+    flex: 1 1 auto;
     width: 100%;
 }
 
-.vds-inbox-search--full .vds-inbox-search__field {
+.vds-inbox-nav__bar--search-full .vds-inbox-search {
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+.vds-inbox-nav__bar--search-full .vds-inbox-search__field {
     width: 100%;
     opacity: 1;
     pointer-events: auto;
+}
+
+.vds-inbox-nav__bar--search-full .vds-inbox-search__input {
+    max-width: none;
+}
+
+.vds-inbox-nav__bar--search-full .vds-inbox-tabs,
+.vds-inbox-nav__bar--search-full .vds-inbox-nav__right {
+    display: none;
 }
 
 /* ---------------------------------------------------------
@@ -11600,6 +11630,14 @@ a.vds-inbox-action {
     color: var(--color-text-muted);
 }
 
+.vds-inbox-action--borderless {
+    border-color: transparent;
+}
+
+.vds-inbox-action--borderless:hover {
+    border-color: transparent;
+}
+
 .vds-inbox-action--flat:hover {
     background: var(--color-surface-subtle);
     border-color: transparent;
@@ -11914,7 +11952,7 @@ a.vds-inbox-action {
     /* Search: expand wider on small screens */
     .vds-inbox-search.is-open .vds-inbox-search__field,
     .vds-inbox-search__toggle[aria-expanded="true"] + .vds-inbox-search__field {
-        width: min(100%, 40rem);
+        width: 100%;
     }
 }
 
