@@ -284,7 +284,123 @@
                 </section>
 
                 <!-- ========================================================= -->
-                <!-- 9. FORM MESSAGES                                          -->
+                <!-- 9. FIELD SHELL                                           -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Field shell</h3>
+
+                    <div class="form-grid form-grid--two">
+                        <div class="form-field">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-name">Name</label>
+                                <span class="form-label-meta">Optional</span>
+                            </div>
+                            <input class="form-control" id="field-name" placeholder="e.g. Alex">
+                            <p class="form-help">Shown on your profile.</p>
+                        </div>
+
+                        <div class="form-field">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-email">Email</label>
+                                <span class="form-label-meta form-label-meta--required">Required</span>
+                            </div>
+                            <input class="form-control" id="field-email" placeholder="alex@example.com">
+                            <p class="form-help form-help--error">Please enter a valid address.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-field form-field--inline">
+                        <div class="form-label-row">
+                            <label class="form-label" for="field-inline-title">Title</label>
+                            <span class="form-label-meta">Optional</span>
+                        </div>
+                        <input class="form-control" id="field-inline-title" placeholder="Inline layout">
+                        <p class="form-help">Use inline fields for compact layouts.</p>
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 10. CHOICE CONTROLS                                      -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Choice controls</h3>
+
+                    <div class="choice-group">
+                        <label class="choice choice--checkbox">
+                            <input class="choice__input" type="checkbox" checked>
+                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Send notifications</span>
+                                <span class="choice__hint">Weekly summaries and alerts.</span>
+                            </span>
+                        </label>
+                        <label class="choice choice--checkbox">
+                            <input class="choice__input" type="checkbox">
+                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Auto-archive completed items</span>
+                                <span class="choice__hint">Moves them into archive after 30 days.</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="choice-group choice-group--inline">
+                        <label class="choice choice--radio">
+                            <input class="choice__input" type="radio" name="plan" checked>
+                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Basic</span>
+                                <span class="choice__hint">For drafts</span>
+                            </span>
+                        </label>
+                        <label class="choice choice--radio">
+                            <input class="choice__input" type="radio" name="plan">
+                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Pro</span>
+                                <span class="choice__hint">For teams</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="choice-group choice-group--grid">
+                        <label class="choice choice--checkbox choice--success">
+                            <input class="choice__input" type="checkbox" checked>
+                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Auto-sync</span>
+                                <span class="choice__hint">Keeps devices updated.</span>
+                            </span>
+                        </label>
+                        <label class="choice choice--checkbox choice--warning">
+                            <input class="choice__input" type="checkbox">
+                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Experimental mode</span>
+                                <span class="choice__hint">May change without notice.</span>
+                            </span>
+                        </label>
+                        <label class="choice choice--checkbox choice--error">
+                            <input class="choice__input" type="checkbox">
+                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">High-risk actions</span>
+                                <span class="choice__hint">Requires confirmation.</span>
+                            </span>
+                        </label>
+                        <label class="choice choice--checkbox choice--disabled">
+                            <input class="choice__input" type="checkbox" disabled>
+                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Disabled option</span>
+                                <span class="choice__hint">Unavailable in this plan.</span>
+                            </span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 11. FORM MESSAGES                                         -->
                 <!-- ========================================================= -->
                 <section class="section__stack">
                     <h3 class="text-sm">Form messages</h3>
@@ -321,7 +437,7 @@
                 </section>
 
                 <!-- ========================================================= -->
-                <!-- 10. FORM SECTIONS                                         -->
+                <!-- 12. FORM SECTIONS                                         -->
                 <!-- ========================================================= -->
                 <section class="section__stack">
                     <h3 class="text-sm">Form section states</h3>
@@ -730,6 +846,114 @@
   &lt;input class="file-upload-inline__input" type="file"&gt;
   &lt;span class="file-upload-inline__label"&gt;Upload file&lt;/span&gt;
 &lt;/label&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="doc-block__grid">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Field shell</h3>
+                        <div class="form-field">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-shell-name">Name</label>
+                                <span class="form-label-meta">Optional</span>
+                            </div>
+                            <input class="form-control" id="field-shell-name" placeholder="e.g. Alex"/>
+                            <p class="form-help">Shown on your profile.</p>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-field"&gt;
+  &lt;div class="form-label-row"&gt;
+    &lt;label class="form-label" for="field-shell-name"&gt;Name&lt;/label&gt;
+    &lt;span class="form-label-meta"&gt;Optional&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;input class="form-control" id="field-shell-name" placeholder="e.g. Alex"&gt;
+  &lt;p class="form-help"&gt;Shown on your profile.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="doc-block__grid">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Field shell (inline)</h3>
+                        <div class="form-field form-field--inline">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-shell-inline">Title</label>
+                                <span class="form-label-meta">Optional</span>
+                            </div>
+                            <input class="form-control" id="field-shell-inline" placeholder="Inline layout"/>
+                            <p class="form-help">Compact label/control layout.</p>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-field form-field--inline"&gt;
+  &lt;div class="form-label-row"&gt;
+    &lt;label class="form-label" for="field-shell-inline"&gt;Title&lt;/label&gt;
+    &lt;span class="form-label-meta"&gt;Optional&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;input class="form-control" id="field-shell-inline" placeholder="Inline layout"&gt;
+  &lt;p class="form-help"&gt;Compact label/control layout.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="doc-block__grid">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Choice controls</h3>
+                        <div class="choice-group">
+                            <label class="choice choice--checkbox">
+                                <input class="choice__input" type="checkbox" checked/>
+                                <span class="choice__indicator" aria-hidden="true"></span>
+                                <span class="choice__label">
+                                    <span class="choice__label-text">Send notifications</span>
+                                    <span class="choice__hint">Weekly summaries and alerts.</span>
+                                </span>
+                            </label>
+                            <label class="choice choice--checkbox">
+                                <input class="choice__input" type="checkbox"/>
+                                <span class="choice__indicator" aria-hidden="true"></span>
+                                <span class="choice__label">
+                                    <span class="choice__label-text">Auto-archive completed items</span>
+                                    <span class="choice__hint">Moves them into archive after 30 days.</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="choice-group"&gt;
+  &lt;label class="choice choice--checkbox"&gt;
+    &lt;input class="choice__input" type="checkbox" checked&gt;
+    &lt;span class="choice__indicator" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span class="choice__label"&gt;
+      &lt;span class="choice__label-text"&gt;Send notifications&lt;/span&gt;
+      &lt;span class="choice__hint"&gt;Weekly summaries and alerts.&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="doc-block__grid">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Choice grid</h3>
+                        <div class="choice-group choice-group--grid">
+                            <label class="choice choice--checkbox choice--success">
+                                <input class="choice__input" type="checkbox" checked/>
+                                <span class="choice__indicator" aria-hidden="true"></span>
+                                <span class="choice__label">
+                                    <span class="choice__label-text">Auto-sync</span>
+                                    <span class="choice__hint">Keeps devices updated.</span>
+                                </span>
+                            </label>
+                            <label class="choice choice--checkbox choice--warning">
+                                <input class="choice__input" type="checkbox"/>
+                                <span class="choice__indicator" aria-hidden="true"></span>
+                                <span class="choice__label">
+                                    <span class="choice__label-text">Experimental mode</span>
+                                    <span class="choice__hint">May change without notice.</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="choice-group choice-group--grid"&gt;
+  &lt;label class="choice choice--checkbox choice--success"&gt;
+    &lt;input class="choice__input" type="checkbox" checked&gt;
+    &lt;span class="choice__indicator" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span class="choice__label"&gt;
+      &lt;span class="choice__label-text"&gt;Auto-sync&lt;/span&gt;
+      &lt;span class="choice__hint"&gt;Keeps devices updated.&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
                     </div>
                 </div>
                 <div class="doc-block__grid">

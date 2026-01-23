@@ -231,7 +231,328 @@
 }
 
 /* ---------------------------------------------------------
-   4. STEPPER CONTROL
+   4. CHOICE BUTTON GROUPS
+--------------------------------------------------------- */
+.choice-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.choice-button {
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.choice-button__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    pointer-events: none;
+}
+
+.choice-button__surface {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-size: var(--text-sm);
+
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s, color 0.2s;
+}
+
+.choice-button:hover .choice-button__surface {
+    border-color: var(--color-border-strong);
+}
+
+.choice-button__input:focus-visible + .choice-button__surface {
+    border-color: var(--focus-ring-color);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.choice-button__input:checked + .choice-button__surface {
+    border-color: var(--accent-soft-border, var(--color-accent));
+    background-color: var(--accent-soft-surface, var(--color-accent-soft));
+    color: var(--accent-soft-on, var(--color-on-accent));
+    box-shadow: 0 0 0 1px var(--accent-soft-shadow);
+}
+
+.choice-button__input:disabled + .choice-button__surface {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--color-muted-bg);
+}
+
+/* ---------------------------------------------------------
+   5. CHOICE CHIPS (CHECKBOX / RADIO)
+--------------------------------------------------------- */
+.choice-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.choice-chip {
+    --choice-chip-accent: var(--color-accent);
+    --choice-chip-on: var(--color-on-accent);
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-size: var(--text-xs);
+
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s, color 0.2s;
+}
+
+.choice-chip__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    pointer-events: none;
+}
+
+.choice-chip__indicator {
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: var(--radius-sm);
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--color-surface);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.choice-chip__indicator::after {
+    content: "";
+    position: absolute;
+    top: 30%;
+    width: 0.3rem;
+    height: 0.55rem;
+    border-right: 2px solid var(--choice-chip-on);
+    border-bottom: 2px solid var(--choice-chip-on);
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.choice-chip__label {
+    color: inherit;
+}
+
+.choice-chip__input:focus-visible + .choice-chip__indicator {
+    border-color: var(--focus-ring-color);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.choice-chip__input:checked + .choice-chip__indicator {
+    border-color: var(--choice-chip-accent);
+    background-color: var(--choice-chip-accent);
+}
+
+.choice-chip__input:checked + .choice-chip__indicator::after {
+    opacity: 1;
+}
+
+.choice-chip__input:checked ~ .choice-chip__label {
+    color: var(--choice-chip-accent);
+}
+
+.choice-chip--radio .choice-chip__indicator {
+    border-radius: var(--radius-full);
+    position: relative;
+}
+
+.choice-chip--radio .choice-chip__indicator::after {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: var(--radius-full);
+    border: none;
+    background-color: var(--choice-chip-accent);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.choice-chip--radio .choice-chip__input:checked + .choice-chip__indicator {
+    background-color: var(--color-surface);
+}
+
+.choice-chip:hover {
+    border-color: var(--color-border-strong);
+}
+
+.choice-chip__input:disabled ~ .choice-chip__label,
+.choice-chip__input:disabled + .choice-chip__indicator {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.choice-chip--success {
+    --choice-chip-accent: var(--color-success);
+    --choice-chip-on: var(--color-on-success);
+}
+
+.choice-chip--warning {
+    --choice-chip-accent: var(--color-warning);
+    --choice-chip-on: var(--color-on-warning);
+}
+
+.choice-chip--danger {
+    --choice-chip-accent: var(--color-danger);
+    --choice-chip-on: var(--color-on-danger);
+}
+
+.choice-chip--info {
+    --choice-chip-accent: var(--color-info);
+    --choice-chip-on: var(--color-on-accent);
+}
+
+/* ---------------------------------------------------------
+   6. SEGMENTED CONTROL
+--------------------------------------------------------- */
+.segmented-control {
+    display: inline-flex;
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    overflow: hidden;
+}
+
+.segmented-control__option {
+    position: relative;
+    display: inline-flex;
+}
+
+.segmented-control__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    pointer-events: none;
+}
+
+.segmented-control__label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.segmented-control__option + .segmented-control__option {
+    border-left: var(--border-width) solid var(--color-border-subtle);
+}
+
+.segmented-control__input:checked + .segmented-control__label {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+}
+
+.segmented-control__input:focus-visible + .segmented-control__label {
+    box-shadow: inset 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+/* ---------------------------------------------------------
+   7. TOGGLE SWITCH
+--------------------------------------------------------- */
+.toggle {
+    --toggle-width: 2.75rem;
+    --toggle-height: 1.5rem;
+    --toggle-thumb: 1.1rem;
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+}
+
+.toggle--sm {
+    --toggle-width: 2.25rem;
+    --toggle-height: 1.25rem;
+    --toggle-thumb: 0.9rem;
+}
+
+.toggle__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    pointer-events: none;
+}
+
+.toggle__track {
+    width: var(--toggle-width);
+    height: var(--toggle-height);
+    border-radius: var(--radius-full);
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--color-muted-bg);
+
+    display: inline-flex;
+    align-items: center;
+    padding: 0 var(--space-0_5);
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.toggle__thumb {
+    width: var(--toggle-thumb);
+    height: var(--toggle-thumb);
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-xs);
+    transform: translateX(0);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.toggle__input:checked + .toggle__track {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+}
+
+.toggle__input:checked + .toggle__track .toggle__thumb {
+    transform: translateX(calc(var(--toggle-width) - var(--toggle-thumb) - var(--space-1)));
+    background-color: var(--color-on-accent);
+}
+
+.toggle__input:focus-visible + .toggle__track {
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.toggle__input:disabled + .toggle__track {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ---------------------------------------------------------
+   8. STEPPER CONTROL
 --------------------------------------------------------- */
 .stepper {
     display: inline-flex;
@@ -300,7 +621,7 @@
 }
 
 /* ---------------------------------------------------------
-   5. NATIVE DATE/TIME INPUT NORMALIZATION
+   9. NATIVE DATE/TIME INPUT NORMALIZATION
 --------------------------------------------------------- */
 .input[type="date"],
 .input[type="time"],
@@ -315,7 +636,7 @@
 }
 
 /* ---------------------------------------------------------
-   6. CALENDAR BASE STRUCTURE (JS-driven scaffold)
+   10. CALENDAR BASE STRUCTURE (JS-driven scaffold)
 --------------------------------------------------------- */
 .calendar {
     width: 100%;
@@ -424,7 +745,7 @@
 }
 
 /* ---------------------------------------------------------
-   7. DENSITY LAYER OVERRIDES (A and C)
+   11. DENSITY LAYER OVERRIDES (A and C)
 --------------------------------------------------------- */
 .form--a .multi-select__control,
 .form--a .tag-input,
@@ -433,11 +754,55 @@
     font-size: var(--text-md);
 }
 
+.form--a .choice-buttons,
+.form--a .choice-chips {
+    gap: var(--space-3);
+}
+
+.form--a .choice-button__surface,
+.form--a .segmented-control__label {
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--text-md);
+}
+
+.form--a .choice-chip {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+}
+
+.form--a .toggle {
+    --toggle-width: 3rem;
+    --toggle-height: 1.7rem;
+    --toggle-thumb: 1.2rem;
+}
+
 .form--c .multi-select__control,
 .form--c .tag-input,
 .form--c .stepper {
     padding: var(--space-1) var(--space-2);
     font-size: var(--text-xs);
+}
+
+.form--c .choice-buttons,
+.form--c .choice-chips {
+    gap: var(--space-1);
+}
+
+.form--c .choice-button__surface,
+.form--c .segmented-control__label {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-xs);
+}
+
+.form--c .choice-chip {
+    padding: var(--space-0_5) var(--space-2);
+    font-size: var(--text-xxs);
+}
+
+.form--c .toggle {
+    --toggle-width: 2.25rem;
+    --toggle-height: 1.2rem;
+    --toggle-thumb: 0.85rem;
 }
 
 .form--a .multi-select__option,
@@ -449,3 +814,4 @@
 .form--c .calendar__day {
     padding: var(--space-1);
 }
+

@@ -22,6 +22,8 @@
     --form-flow-textarea-min-height: 5rem;
     --size-10: 3.00rem;
     --control-min-height: var(--size-10);
+    --choice-size: var(--space-4);
+    --choice-gap: var(--space-2);
 }
 
 @keyframes input-loading-shimmer {
@@ -111,6 +113,241 @@ select.form-control:not([multiple]):not([size]) {
 
 .form-control[aria-invalid="true"]:focus-visible {
     box-shadow: 0 0 0 var(--border-width-strong) var(--color-danger-soft);
+}
+
+/* ---------------------------------------------------------
+   2A. FIELD SHELL (LABEL + HELP)
+--------------------------------------------------------- */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.form-field--inline {
+    display: grid;
+    grid-template-columns: minmax(10rem, 14rem) 1fr;
+    gap: var(--space-4);
+    align-items: start;
+}
+
+.form-field--inline .form-label-row {
+    justify-content: flex-start;
+}
+
+.form-field--inline .form-help {
+    grid-column: 2;
+}
+
+.form-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+}
+
+.form-label {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+}
+
+.form-label-meta {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.form-label-meta--required {
+    color: var(--color-danger);
+    font-weight: var(--font-weight-semibold);
+}
+
+.form-help {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.form-help--error {
+    color: var(--color-danger);
+}
+
+.form-help--warning {
+    color: var(--color-warning);
+}
+
+.form-help--success {
+    color: var(--color-success);
+}
+
+.form-help--info {
+    color: var(--color-info);
+}
+
+/* ---------------------------------------------------------
+   2B. CHOICE CONTROLS (CHECKBOX / RADIO)
+--------------------------------------------------------- */
+.choice-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.choice-group--inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.choice-group--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--space-3);
+}
+
+.choice {
+    --choice-accent: var(--color-accent);
+    --choice-on-accent: var(--color-on-accent);
+
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--choice-gap);
+    cursor: pointer;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    user-select: none;
+}
+
+.choice--success {
+    --choice-accent: var(--color-success);
+    --choice-on-accent: var(--color-on-success);
+}
+
+.choice--warning {
+    --choice-accent: var(--color-warning);
+    --choice-on-accent: var(--color-on-warning);
+}
+
+.choice--error {
+    --choice-accent: var(--color-danger);
+    --choice-on-accent: var(--color-on-danger);
+}
+
+.choice--info {
+    --choice-accent: var(--color-info);
+    --choice-on-accent: var(--color-on-accent);
+}
+
+.choice__input {
+    position: absolute;
+    opacity: 0;
+    width: var(--choice-size);
+    height: var(--choice-size);
+    margin: 0;
+    pointer-events: none;
+}
+
+.choice__indicator {
+    width: var(--choice-size);
+    height: var(--choice-size);
+    margin-top: var(--space-0_5);
+    flex-shrink: 0;
+
+    position: relative;
+    border-radius: var(--radius-sm);
+    border: var(--border-width) solid var(--color-border-subtle);
+    background-color: var(--color-surface);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color .2s, background-color .2s, box-shadow .2s;
+}
+
+.choice__indicator::after {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 0.45rem;
+    height: 0.75rem;
+    border-right: 2.5px solid var(--choice-on-accent);
+    border-bottom: 2.5px solid var(--choice-on-accent);
+    transform: translate(-50%, -40%) rotate(45deg);
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+.choice__input:focus-visible + .choice__indicator {
+    border-color: var(--focus-ring-color);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.choice__input:checked + .choice__indicator {
+    border-color: var(--choice-accent);
+    background-color: var(--choice-accent);
+}
+
+.choice__input:checked + .choice__indicator::after {
+    opacity: 1;
+}
+
+.choice--checkbox .choice__indicator {
+    border-radius: var(--radius-sm);
+}
+
+.choice--radio .choice__indicator {
+    border-radius: var(--radius-full);
+}
+
+.choice--radio .choice__indicator::after {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--radius-full);
+    border: none;
+    background-color: var(--choice-accent);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.choice--radio .choice__input:checked + .choice__indicator {
+    background-color: var(--color-surface);
+}
+
+.choice:hover .choice__indicator {
+    border-color: var(--color-border-strong);
+}
+
+.choice__input:disabled + .choice__indicator,
+.choice--disabled .choice__indicator {
+    background-color: var(--color-muted-bg);
+    border-color: var(--color-border-subtle);
+    box-shadow: none;
+    opacity: .7;
+}
+
+.choice__input:disabled + .choice__indicator::after,
+.choice--disabled .choice__indicator::after {
+    border-color: var(--color-text-muted);
+    background-color: var(--color-text-muted);
+}
+
+.choice__label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.choice__label-text {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+}
+
+.choice__hint {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
 }
 
 /* ---------------------------------------------------------
@@ -582,3 +819,4 @@ select.form-control:not([multiple]):not([size]) {
 .form-section--info:not(:last-child) {
     margin-bottom: var(--space-4);
 }
+

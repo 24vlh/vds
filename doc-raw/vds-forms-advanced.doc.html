@@ -3,8 +3,9 @@
         <h1>Advanced Form Controls</h1>
         <p class="leading-relaxed text-soft">
             Extended input patterns for complex SaaS interfaces:
-            multi-select chips, tag inputs, numeric steppers, native date/time normalisation,
-            and a flexible calendar scaffold for custom JS-driven pickers.
+            multi-select chips, tag inputs, choice buttons, choice chips, segmented controls, toggles,
+            numeric steppers, native date/time normalisation, and a flexible calendar scaffold for custom
+            JS-driven pickers.
         </p>
         <p class="text-sm text-muted">
             Source: <code>forms-advanced.css</code> · Depends on
@@ -13,6 +14,265 @@
             <code>typography.css</code>,
             <code>icons.css</code>.
         </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-form-advanced class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Choice buttons</h2>
+                <p class="doc-block__summary">
+                    Button-like radio and checkbox groups. Works with native inputs and keyboard focus.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body section__stack-sm">
+                            <div class="form-field">
+                                <label class="form-label">Status (single)</label>
+                                <div class="choice-buttons">
+                                    <label class="choice-button">
+                                        <input class="choice-button__input" type="radio" name="status" checked>
+                                        <span class="choice-button__surface">Planned</span>
+                                    </label>
+                                    <label class="choice-button">
+                                        <input class="choice-button__input" type="radio" name="status">
+                                        <span class="choice-button__surface">Recording</span>
+                                    </label>
+                                    <label class="choice-button">
+                                        <input class="choice-button__input" type="radio" name="status">
+                                        <span class="choice-button__surface">Ready</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label class="form-label">Signals (multi)</label>
+                                <div class="choice-buttons">
+                                    <label class="choice-button">
+                                        <input class="choice-button__input" type="checkbox" checked>
+                                        <span class="choice-button__surface">Calm</span>
+                                    </label>
+                                    <label class="choice-button">
+                                        <input class="choice-button__input" type="checkbox">
+                                        <span class="choice-button__surface">Restraint</span>
+                                    </label>
+                                    <label class="choice-button">
+                                        <input class="choice-button__input" type="checkbox">
+                                        <span class="choice-button__surface">Integrity</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;div class="choice-buttons"&gt;
+  &lt;label class="choice-button"&gt;
+    &lt;input class="choice-button__input" type="radio" name="status" checked&gt;
+    &lt;span class="choice-button__surface"&gt;Planned&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-form-advanced class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Choice chips</h2>
+                <p class="doc-block__summary">
+                    Compact chip selectors for dense, multi-signal selection.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body section__stack-sm">
+                            <div class="choice-chips">
+                                <label class="choice-chip choice-chip--success">
+                                    <input class="choice-chip__input" type="checkbox" checked>
+                                    <span class="choice-chip__indicator" aria-hidden="true"></span>
+                                    <span class="choice-chip__label">Calm Presence</span>
+                                </label>
+                                <label class="choice-chip">
+                                    <input class="choice-chip__input" type="checkbox">
+                                    <span class="choice-chip__indicator" aria-hidden="true"></span>
+                                    <span class="choice-chip__label">Restraint</span>
+                                </label>
+                                <label class="choice-chip choice-chip--warning">
+                                    <input class="choice-chip__input" type="checkbox">
+                                    <span class="choice-chip__indicator" aria-hidden="true"></span>
+                                    <span class="choice-chip__label">Risk Literacy</span>
+                                </label>
+                                <label class="choice-chip choice-chip--danger">
+                                    <input class="choice-chip__input" type="checkbox">
+                                    <span class="choice-chip__indicator" aria-hidden="true"></span>
+                                    <span class="choice-chip__label">High-Risk</span>
+                                </label>
+                            </div>
+
+                            <div class="choice-chips">
+                                <label class="choice-chip choice-chip--radio">
+                                    <input class="choice-chip__input" type="radio" name="tone" checked>
+                                    <span class="choice-chip__indicator" aria-hidden="true"></span>
+                                    <span class="choice-chip__label">Measured</span>
+                                </label>
+                                <label class="choice-chip choice-chip--radio">
+                                    <input class="choice-chip__input" type="radio" name="tone">
+                                    <span class="choice-chip__indicator" aria-hidden="true"></span>
+                                    <span class="choice-chip__label">Direct</span>
+                                </label>
+                                <label class="choice-chip choice-chip--radio">
+                                    <input class="choice-chip__input" type="radio" name="tone">
+                                    <span class="choice-chip__indicator" aria-hidden="true"></span>
+                                    <span class="choice-chip__label">Reflective</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;label class="choice-chip"&gt;
+  &lt;input class="choice-chip__input" type="checkbox"&gt;
+&lt;span class="choice-chip__indicator" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="choice-chip__label"&gt;Restraint&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-form-advanced class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Segmented control</h2>
+                <p class="doc-block__summary">
+                    Radio-based segmented control for quick, compact selections.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="form-field">
+                                <label class="form-label">Density</label>
+                                <div class="segmented-control" role="group" aria-label="Density">
+                                    <label class="segmented-control__option">
+                                        <input class="segmented-control__input" type="radio" name="density" checked>
+                                        <span class="segmented-control__label">Compact</span>
+                                    </label>
+                                    <label class="segmented-control__option">
+                                        <input class="segmented-control__input" type="radio" name="density">
+                                        <span class="segmented-control__label">Default</span>
+                                    </label>
+                                    <label class="segmented-control__option">
+                                        <input class="segmented-control__input" type="radio" name="density">
+                                        <span class="segmented-control__label">Comfort</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;div class="segmented-control" role="group" aria-label="Density"&gt;
+  &lt;label class="segmented-control__option"&gt;
+    &lt;input class="segmented-control__input" type="radio" name="density" checked&gt;
+    &lt;span class="segmented-control__label"&gt;Compact&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-form-advanced class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Toggle switch</h2>
+                <p class="doc-block__summary">
+                    A binary switch for on/off states with size variants.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body section__stack-sm">
+                            <label class="toggle">
+                                <input class="toggle__input" type="checkbox" checked>
+                                <span class="toggle__track">
+                                    <span class="toggle__thumb"></span>
+                                </span>
+                                <span class="text-sm">Auto sync</span>
+                            </label>
+
+                            <label class="toggle toggle--sm">
+                                <input class="toggle__input" type="checkbox">
+                                <span class="toggle__track">
+                                    <span class="toggle__thumb"></span>
+                                </span>
+                                <span class="text-sm">Focus mode</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;label class="toggle"&gt;
+  &lt;input class="toggle__input" type="checkbox" checked&gt;
+  &lt;span class="toggle__track"&gt;
+    &lt;span class="toggle__thumb"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="text-sm"&gt;Auto sync&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                </div>
+            </div>
+        </article>
     </div>
 </section>
 
