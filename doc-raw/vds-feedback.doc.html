@@ -89,6 +89,7 @@
                     <li><strong>Alerts</strong> – inline, dismissible, semantic variants.</li>
                     <li><strong>Banners</strong> – full-width horizontal notifications.</li>
                     <li><strong>feedback-toasts</strong> – ephemeral notifications with animation + stack.</li>
+                    <li><strong>Guidance Blocks</strong> – do/don't/how panels for instruction-heavy flows.</li>
                     <li><strong>Info Blocks</strong> – informational panels with left-border accent.</li>
                     <li><strong>Status Indicators</strong> – inline pills, outline mode, and dot mode.</li>
                     <li><strong>Progress Bars</strong> – striped / animated options.</li>
@@ -373,6 +374,76 @@
 &lt;/div&gt;</code></pre>
                 </div>
 
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-feedback class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Guidance Blocks</h2>
+                <p class="doc-block__summary">
+                    Lightweight instructional panels for do/don't/how guidance that sit next to forms
+                    without adding visual weight.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="guidance guidance--do">
+                        <div class="guidance__header">
+                            <span class="guidance__icon"><span class="icon icon--mask icon--check"></span></span>
+                            <div class="guidance__title">Do</div>
+                        </div>
+                        <ul class="guidance__list">
+                            <li>Lead with the hook in one sentence.</li>
+                            <li>Keep beats to 3–6 clear steps.</li>
+                        </ul>
+                    </div>
+
+                    <div class="guidance guidance--dont">
+                        <div class="guidance__header">
+                            <span class="guidance__icon"><span class="icon icon--mask icon--close"></span></span>
+                            <div class="guidance__title">Don't</div>
+                        </div>
+                        <ul class="guidance__list">
+                            <li>Avoid long preambles.</li>
+                            <li>Don't merge unrelated ideas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="guidance guidance--how guidance--compact">
+                        <div class="guidance__header">
+                            <span class="guidance__icon"><span class="icon icon--mask icon--info"></span></span>
+                            <div class="guidance__title">How</div>
+                        </div>
+                        <div class="guidance__body">
+                            Write beats as short verbs: "Name, explain, prove, recap."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class="guidance guidance--do"&gt;
+  &lt;div class="guidance__header"&gt;
+    &lt;span class="guidance__icon"&gt;&lt;span class="icon icon--mask icon--check"&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;div class="guidance__title"&gt;Do&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;ul class="guidance__list"&gt;
+    &lt;li&gt;Lead with the hook in one sentence.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                </div>
             </div>
         </article>
     </div>

@@ -1,0 +1,942 @@
+/**
+ * VLAH DESIGN SYSTEM (VDS) - Guidance
+ *
+ * Responsibilities:
+ *   - Provide education + instruction blocks for scanning and comprehension
+ *   - Keep guidance tone light, structured, and easy to skim
+ *   - Offer flexible layouts: panels, strips, cards, steps, scope, checklists
+ *
+ * System Notes:
+ *   - Token-driven (spacing, radii, borders, typography, motion)
+ *   - Theme-aware; semantic variants supported
+ *   - No JS assumptions; structure is fully HTML + CSS
+ */
+
+/* ---------------------------------------------------------
+   1. TOKENS
+--------------------------------------------------------- */
+[data-vds-guidance],
+.vds-guidance {
+    --guidance-padding-sm: var(--space-3);
+    --guidance-padding-md: var(--space-4);
+    --guidance-padding-lg: var(--space-6);
+    --guidance-gap: var(--space-3);
+    --guidance-radius: var(--radius-md);
+    --guidance-border-width: var(--border-width-strong);
+    --guidance-shadow: var(--shadow-xs);
+}
+
+:where(.guidance,
+.guidance-card,
+.guidance-strip,
+.guidance-step,
+.guidance-field,
+.guidance-scope__item,
+.guidance-brief,
+.guidance-row,
+.guidance-compare__item,
+.guidance-stat) {
+    --guidance-bg: var(--color-surface);
+    --guidance-outline: var(--color-border-subtle);
+    --guidance-rail: var(--color-accent);
+    --guidance-tint: var(--color-surface-subtle);
+    --guidance-text: var(--color-text);
+    --guidance-title: var(--color-text);
+    --guidance-muted: var(--color-text-muted);
+    --guidance-icon: var(--color-accent);
+    --guidance-on: var(--color-on-accent);
+    color: var(--guidance-text);
+}
+
+/* Semantic variants (shared) */
+:where(.guidance,
+.guidance-card,
+.guidance-strip,
+.guidance-step,
+.guidance-field,
+.guidance-scope__item,
+.guidance-brief,
+.guidance-row,
+.guidance-compare__item,
+.guidance-stat)[data-variant="info"] {
+    --guidance-rail: var(--semantic-info-border-strong, var(--color-info));
+    --guidance-icon: var(--semantic-info-border-strong, var(--color-info));
+    --guidance-tint: var(--semantic-info-bg-strong, var(--color-info-soft));
+}
+
+:where(.guidance,
+.guidance-card,
+.guidance-strip,
+.guidance-step,
+.guidance-field,
+.guidance-scope__item,
+.guidance-brief,
+.guidance-row,
+.guidance-compare__item,
+.guidance-stat)[data-variant="success"] {
+    --guidance-rail: var(--semantic-success-border-strong, var(--color-success));
+    --guidance-icon: var(--semantic-success-border-strong, var(--color-success));
+    --guidance-tint: var(--semantic-success-bg-strong, var(--color-success-soft));
+}
+
+:where(.guidance,
+.guidance-card,
+.guidance-strip,
+.guidance-step,
+.guidance-field,
+.guidance-scope__item,
+.guidance-brief,
+.guidance-row,
+.guidance-compare__item,
+.guidance-stat)[data-variant="warning"] {
+    --guidance-rail: var(--semantic-warning-border-strong, var(--color-warning));
+    --guidance-icon: var(--semantic-warning-border-strong, var(--color-warning));
+    --guidance-tint: var(--semantic-warning-bg-strong, var(--color-warning-soft));
+}
+
+:where(.guidance,
+.guidance-card,
+.guidance-strip,
+.guidance-step,
+.guidance-field,
+.guidance-scope__item,
+.guidance-brief,
+.guidance-row,
+.guidance-compare__item,
+.guidance-stat)[data-variant="danger"] {
+    --guidance-rail: var(--semantic-error-border-strong, var(--color-danger));
+    --guidance-icon: var(--semantic-error-border-strong, var(--color-danger));
+    --guidance-tint: var(--semantic-error-bg-strong, var(--color-danger-soft));
+}
+
+:where(.guidance,
+.guidance-card,
+.guidance-strip,
+.guidance-step,
+.guidance-field,
+.guidance-scope__item,
+.guidance-brief,
+.guidance-row,
+.guidance-compare__item,
+.guidance-stat)[data-variant="accent"] {
+    --guidance-rail: var(--color-accent);
+    --guidance-icon: var(--color-accent);
+    --guidance-tint: var(--color-accent-soft);
+}
+
+:where(.guidance,
+.guidance-card,
+.guidance-strip,
+.guidance-step,
+.guidance-field,
+.guidance-scope__item,
+.guidance-brief,
+.guidance-row,
+.guidance-compare__item,
+.guidance-stat)[data-variant="neutral"] {
+    --guidance-rail: var(--color-border-strong);
+    --guidance-icon: var(--color-text-muted);
+    --guidance-tint: var(--color-muted-bg);
+}
+
+/* ---------------------------------------------------------
+   2. GUIDANCE PANEL (DO / DO NOT / HOW / WHY)
+--------------------------------------------------------- */
+.guidance {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+
+    padding: var(--guidance-padding-md, var(--space-4)) var(--guidance-padding-lg, var(--space-6));
+    border: 1px solid var(--guidance-outline);
+    border-left: var(--guidance-border-width) solid var(--guidance-rail);
+    border-radius: var(--radius-md);
+    background-color: var(--guidance-bg);
+    box-shadow: var(--guidance-shadow);
+    font-size: var(--text-sm);
+    line-height: var(--line-height-relaxed, 1.4);
+}
+
+.guidance--compact {
+    padding: var(--guidance-padding-sm, var(--space-3)) var(--guidance-padding-md, var(--space-4));
+}
+
+.guidance--tint {
+    background-color: var(--guidance-tint);
+}
+
+.guidance__header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+}
+
+.guidance__icon {
+    width: var(--space-5);
+    height: var(--space-5);
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--guidance-icon);
+}
+
+.guidance__title {
+    font-weight: 600;
+    font-size: var(--text-md);
+    line-height: var(--line-height-tight, 1.2);
+    color: var(--guidance-title);
+}
+
+.guidance__meta {
+    font-size: var(--text-xs);
+    color: var(--guidance-muted);
+}
+
+.guidance__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0 var(--space-2);
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--guidance-outline);
+    background: var(--color-surface-subtle);
+    color: var(--guidance-muted);
+    font-size: var(--text-xxs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+.guidance__body {
+    font-size: var(--text-sm);
+    color: var(--guidance-text);
+}
+
+.guidance__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-1);
+}
+
+.guidance__list li {
+    position: relative;
+    padding-left: var(--space-4);
+}
+
+.guidance__list li::before {
+    content: "";
+    position: absolute;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: var(--radius-full);
+    background-color: var(--guidance-rail);
+    left: 0;
+    top: 0.35rem;
+}
+
+.guidance__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
+}
+
+.guidance--do {
+    --guidance-rail: var(--semantic-success-border-strong, var(--color-success));
+    --guidance-icon: var(--semantic-success-border-strong, var(--color-success));
+    --guidance-tint: var(--semantic-success-bg-strong, var(--color-success-soft));
+}
+
+.guidance--dont {
+    --guidance-rail: var(--semantic-error-border-strong, var(--color-danger));
+    --guidance-icon: var(--semantic-error-border-strong, var(--color-danger));
+    --guidance-tint: var(--semantic-error-bg-strong, var(--color-danger-soft));
+}
+
+.guidance--how {
+    --guidance-rail: var(--semantic-info-border-strong, var(--color-info));
+    --guidance-icon: var(--semantic-info-border-strong, var(--color-info));
+    --guidance-tint: var(--semantic-info-bg-strong, var(--color-info-soft));
+}
+
+.guidance--why {
+    --guidance-rail: var(--color-accent);
+    --guidance-icon: var(--color-accent);
+    --guidance-tint: var(--color-accent-soft);
+}
+
+.guidance--expect {
+    --guidance-rail: var(--semantic-warning-border-strong, var(--color-warning));
+    --guidance-icon: var(--semantic-warning-border-strong, var(--color-warning));
+    --guidance-tint: var(--semantic-warning-bg-strong, var(--color-warning-soft));
+}
+
+.guidance--recommend {
+    --guidance-rail: var(--color-border-strong);
+    --guidance-icon: var(--color-text);
+    --guidance-tint: var(--color-surface-subtle);
+}
+
+/* ---------------------------------------------------------
+   3. GUIDANCE GRID
+--------------------------------------------------------- */
+.guidance-grid {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+/* ---------------------------------------------------------
+   4. GUIDANCE CARD (EDUCATION BLOCK)
+--------------------------------------------------------- */
+.guidance-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--guidance-padding-md, var(--space-4));
+    border: 1px solid var(--guidance-outline);
+    border-radius: var(--guidance-radius);
+    background-color: var(--guidance-bg);
+    box-shadow: var(--guidance-shadow);
+}
+
+.guidance-card--tint {
+    background-color: var(--guidance-tint);
+}
+
+.guidance-card--rail {
+    border-left: var(--guidance-border-width) solid var(--guidance-rail);
+}
+
+.guidance-card__eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--guidance-muted);
+}
+
+.guidance-card__title {
+    font-weight: 600;
+    font-size: var(--text-md);
+    color: var(--guidance-title);
+}
+
+.guidance-card__body {
+    font-size: var(--text-sm);
+}
+
+.guidance-card__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--guidance-muted);
+    font-size: var(--text-xs);
+}
+
+/* ---------------------------------------------------------
+   5. GUIDANCE STRIP (INLINE CALLOUT)
+--------------------------------------------------------- */
+.guidance-strip {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--space-3);
+    align-items: start;
+    padding: var(--guidance-padding-sm, var(--space-3)) var(--guidance-padding-md, var(--space-4));
+    padding-left: calc(var(--guidance-padding-md, var(--space-4)) + var(--space-1));
+    border: 1px solid var(--guidance-outline);
+    border-radius: var(--radius-md);
+    background-color: var(--guidance-bg);
+}
+
+.guidance-strip::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: var(--guidance-rail);
+}
+
+.guidance-strip--tint {
+    background-color: var(--guidance-tint);
+}
+
+.guidance-strip__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0 var(--space-2);
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--guidance-rail);
+    background-color: var(--color-surface);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--guidance-title);
+}
+
+.guidance-strip__body {
+    font-size: var(--text-sm);
+    color: var(--guidance-text);
+}
+
+.guidance-strip__actions {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
+}
+
+@media (max-width: 720px) {
+    .guidance-strip {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   6. GUIDANCE STEPS (INSTRUCTION)
+--------------------------------------------------------- */
+.guidance-steps {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+}
+
+.guidance-step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3);
+    padding: var(--guidance-padding-md, var(--space-4));
+    border: 1px solid var(--guidance-outline);
+    border-radius: var(--guidance-radius);
+    background-color: var(--guidance-bg);
+}
+
+.guidance-step--tint {
+    background-color: var(--guidance-tint);
+}
+
+.guidance-step--rail {
+    border-left: var(--guidance-border-width) solid var(--guidance-rail);
+}
+
+.guidance-step__index {
+    width: var(--space-7);
+    height: var(--space-7);
+    border-radius: var(--radius-full);
+    background-color: var(--guidance-rail);
+    color: var(--guidance-on);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.guidance-step__title {
+    font-weight: 600;
+    font-size: var(--text-sm);
+    color: var(--guidance-title);
+}
+
+.guidance-step__body {
+    font-size: var(--text-sm);
+    color: var(--guidance-text);
+}
+
+/* ---------------------------------------------------------
+   7. GUIDANCE BRIEF (DECISION SUMMARY)
+--------------------------------------------------------- */
+.guidance-brief {
+    position: relative;
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--guidance-padding-lg, var(--space-6));
+    border: 1px solid var(--guidance-outline);
+    border-radius: var(--radius-lg);
+    background-color: var(--guidance-bg);
+    box-shadow: var(--guidance-shadow);
+}
+
+.guidance-brief--tint {
+    background-color: var(--guidance-tint);
+}
+
+.guidance-brief--rail {
+    border-left: var(--guidance-border-width) solid var(--guidance-rail);
+}
+
+.guidance-brief__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+}
+
+.guidance-brief__kicker {
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--guidance-muted);
+}
+
+.guidance-brief__title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--guidance-title);
+}
+
+.guidance-brief__meta {
+    font-size: var(--text-sm);
+    color: var(--guidance-muted);
+}
+
+.guidance-brief__grid {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.guidance-brief__block {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    border: 1px solid var(--guidance-outline);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-subtle);
+}
+
+.guidance-brief__label {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--guidance-muted);
+}
+
+.guidance-brief__text {
+    font-size: var(--text-sm);
+    color: var(--guidance-text);
+}
+
+.guidance-brief__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-1);
+}
+
+.guidance-brief__list li {
+    position: relative;
+    padding-left: var(--space-4);
+    font-size: var(--text-sm);
+}
+
+.guidance-brief__list li::before {
+    content: "";
+    position: absolute;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: var(--radius-full);
+    background-color: var(--guidance-rail);
+    left: 0;
+    top: 0.35rem;
+}
+
+.guidance-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.guidance-stat {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--guidance-outline);
+    border-radius: var(--radius-md);
+    background-color: var(--guidance-bg);
+}
+
+.guidance-stat--tint {
+    background-color: var(--guidance-tint);
+}
+
+.guidance-stat__value {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--guidance-title);
+}
+
+.guidance-stat__label {
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--guidance-muted);
+}
+
+/* ---------------------------------------------------------
+   8. GUIDANCE COMPARE (CONTRAST)
+--------------------------------------------------------- */
+.guidance-compare {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.guidance-compare__item {
+    position: relative;
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--guidance-padding-md, var(--space-4));
+    border: 1px solid var(--guidance-outline);
+    border-radius: var(--radius-md);
+    background-color: var(--guidance-bg);
+    box-shadow: var(--guidance-shadow);
+    overflow: hidden;
+}
+
+.guidance-compare__item::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: var(--guidance-rail);
+}
+
+.guidance-compare__label {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--guidance-muted);
+}
+
+.guidance-compare__title {
+    font-weight: 600;
+    font-size: var(--text-md);
+    color: var(--guidance-title);
+}
+
+.guidance-compare__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-1);
+}
+
+.guidance-compare__list li {
+    position: relative;
+    padding-left: var(--space-4);
+    font-size: var(--text-sm);
+}
+
+.guidance-compare__list li::before {
+    content: "";
+    position: absolute;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: var(--radius-full);
+    background-color: var(--guidance-rail);
+    left: 0;
+    top: 0.35rem;
+}
+
+/* ---------------------------------------------------------
+   9. GUIDANCE ROW (INBOX STYLE)
+--------------------------------------------------------- */
+.guidance-row {
+    position: relative;
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--guidance-padding-md, var(--space-4));
+    border: 1px solid var(--guidance-outline);
+    border-radius: var(--radius-lg);
+    background-color: var(--guidance-bg);
+    box-shadow: var(--guidance-shadow);
+    overflow: hidden;
+}
+
+.guidance-row::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: var(--guidance-rail);
+}
+
+.guidance-row--tint {
+    background-color: var(--guidance-tint);
+}
+
+.guidance-row__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+}
+
+.guidance-row__title {
+    font-size: var(--text-md);
+    font-weight: 600;
+    color: var(--guidance-title);
+}
+
+.guidance-row__meta {
+    font-size: var(--text-xs);
+    color: var(--guidance-muted);
+}
+
+.guidance-row__labels {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.guidance-row__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0 var(--space-2);
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--guidance-outline);
+    background: var(--color-surface-subtle);
+    font-size: var(--text-xxs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--guidance-muted);
+}
+
+.guidance-row__glance {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-relaxed, 1.4);
+    color: var(--guidance-muted);
+}
+
+.guidance-row__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.guidance-row__detail {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--guidance-outline);
+    background: var(--color-surface);
+    font-size: var(--text-xs);
+    color: var(--guidance-text);
+}
+
+.guidance-row__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* ---------------------------------------------------------
+   10. GUIDANCE FIELD (FORM EDUCATION)
+--------------------------------------------------------- */
+.guidance-field {
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--guidance-outline);
+    border-left: var(--guidance-border-width) solid var(--guidance-rail);
+    border-radius: var(--guidance-radius);
+    background-color: var(--guidance-bg);
+    box-shadow: var(--guidance-shadow);
+    overflow: hidden;
+}
+
+.guidance-field--plain {
+    border-left: 1px solid var(--guidance-outline);
+}
+
+.guidance-field__hint,
+.guidance-field__frame {
+    padding: var(--guidance-padding-md, var(--space-4));
+}
+
+.guidance-field__frame {
+    background-color: var(--guidance-bg);
+}
+
+.guidance-field__hint {
+    display: grid;
+    gap: var(--space-2);
+    background-color: var(--guidance-tint);
+}
+
+.guidance-field__hint--plain {
+    background-color: var(--guidance-bg);
+}
+
+.guidance-field__hint + .guidance-field__frame,
+.guidance-field__frame + .guidance-field__hint {
+    border-top: 1px solid var(--guidance-outline);
+}
+
+.guidance-field__kicker {
+    font-size: var(--text-xxs);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--guidance-muted);
+}
+
+.guidance-field__title {
+    font-weight: 600;
+    font-size: var(--text-md);
+    line-height: var(--line-height-tight, 1.2);
+    color: var(--guidance-title);
+}
+
+.guidance-field__text {
+    font-size: var(--text-sm);
+    color: var(--guidance-text);
+}
+
+.guidance-field__meta {
+    font-size: var(--text-xs);
+    color: var(--guidance-muted);
+}
+
+.guidance-field__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-1);
+}
+
+.guidance-field__list li {
+    position: relative;
+    padding-left: var(--space-4);
+}
+
+.guidance-field__list li::before {
+    content: "";
+    position: absolute;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: var(--radius-full);
+    background-color: var(--guidance-rail);
+    left: 0;
+    top: 0.35rem;
+}
+
+/* ---------------------------------------------------------
+   11. GUIDANCE SCOPE (IN / OUT)
+--------------------------------------------------------- */
+.guidance-scope {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.guidance-scope__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--guidance-padding-md, var(--space-4));
+    border: 1px solid var(--guidance-outline);
+    border-radius: var(--guidance-radius);
+    background-color: var(--guidance-bg);
+}
+
+.guidance-scope__item--tint {
+    background-color: var(--guidance-tint);
+}
+
+.guidance-scope__item--rail {
+    border-left: var(--guidance-border-width) solid var(--guidance-rail);
+}
+
+.guidance-scope__label {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--guidance-muted);
+}
+
+.guidance-scope__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-1);
+}
+
+.guidance-scope__list li {
+    position: relative;
+    padding-left: var(--space-4);
+}
+
+.guidance-scope__list li::before {
+    content: "";
+    position: absolute;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: var(--radius-full);
+    background-color: var(--guidance-rail);
+    left: 0;
+    top: 0.35rem;
+}
+
+/* ---------------------------------------------------------
+   12. GUIDANCE CHECKLIST
+--------------------------------------------------------- */
+.guidance-checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+}
+
+.guidance-checklist li {
+    position: relative;
+    padding-left: var(--space-5);
+    font-size: var(--text-sm);
+}
+
+.guidance-checklist li::before {
+    content: "";
+    position: absolute;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: var(--radius-xs);
+    border: var(--border-width) solid var(--guidance-rail);
+    background-color: var(--color-surface);
+    left: 0;
+    top: 0.2rem;
+}
+
+.guidance-checklist li.is-done::before {
+    background-color: var(--guidance-rail);
+    box-shadow: inset 0 0 0 2px var(--color-surface);
+}
+
+/* ---------------------------------------------------------
+   12. DENSITY
+--------------------------------------------------------- */
+[data-density="compact"] .guidance,
+[data-density="compact"] .guidance-card,
+[data-density="compact"] .guidance-strip,
+[data-density="compact"] .guidance-step,
+[data-density="compact"] .guidance-brief,
+[data-density="compact"] .guidance-field,
+[data-density="compact"] .guidance-compare__item,
+[data-density="compact"] .guidance-row,
+[data-density="compact"] .guidance-stat,
+[data-density="compact"] .guidance-scope__item {
+    padding: var(--guidance-padding-sm, var(--space-3)) !important;
+}

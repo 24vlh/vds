@@ -1,0 +1,830 @@
+
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section">
+    <div class="section__inner section__stack">
+        <div class="section__stack-sm">
+            <h1>Guidance Blocks</h1>
+
+            <p class="leading-relaxed text-soft">
+                Guidance blocks help users scan, understand intent, and act with confidence.
+                Use them to explain what is expected, why it matters, what to avoid, and how
+                to move forward without adding visual weight.
+            </p>
+
+            <p class="text-sm text-muted">
+                Source: <code>guidance.css</code> - Depends on
+                <code>primitives.css</code>,
+                <code>themes/graphite.css</code>,
+                <code>base.css</code>,
+                <code>layout.css</code>,
+                <code>typography.css</code>,
+                <code>icons.css</code>.
+            </p>
+        </div>
+
+        <p class="text-sm text-muted">
+            Guidance blocks are not alerts. They are calm, structured explanations that
+            clarify intent and improve task accuracy. Keep them short, structured, and paired
+            with the area they explain.
+        </p>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Overview and dependencies</h2>
+                <p class="doc-block__summary">
+                    Guidance blocks are fully token-driven and theme-aware. They rely on
+                    spacing, border, radius, and semantic color tokens. No JS required.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <ul class="text-body">
+                        <li>Use guidance to explain intent, not to report system state.</li>
+                        <li>Prefer short lists and one sentence body text.</li>
+                        <li>Pair guidance with form sections or decision points.</li>
+                        <li>Use semantic variants sparingly and consistently.</li>
+                        <li>Keep icons consistent with the tone of the block.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered">
+<pre><code>&lt;link rel="stylesheet" href="./css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/graphite.css"&gt;
+&lt;link rel="stylesheet" href="./css/base.css"&gt;
+&lt;link rel="stylesheet" href="./css/layout.css"&gt;
+&lt;link rel="stylesheet" href="./css/typography.css"&gt;
+&lt;link rel="stylesheet" href="./css/icons.css"&gt;
+&lt;link rel="stylesheet" href="./css/guidance.css"&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Guidance panels</h2>
+                <p class="doc-block__summary">
+                    The core guidance panel supports do, do not, how, why, expect, and recommend
+                    messaging. Use short lists for scan-ability.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="guidance guidance--do">
+                        <div class="guidance__header">
+                            <span class="guidance__icon"><span class="icon icon--mask icon--success"></span></span>
+                            <div>
+                                <div class="guidance__title">Do</div>
+                                <div class="guidance__meta">High impact actions</div>
+                            </div>
+                        </div>
+                        <ul class="guidance__list">
+                            <li>Lead with a one sentence hook.</li>
+                            <li>Keep beats to 3 or 6 steps.</li>
+                            <li>State the decision the viewer must make.</li>
+                        </ul>
+                        <div class="guidance__footer">
+                            <span class="guidance__tag">Outcome</span>
+                            <span class="text-xs text-muted">Clear promise, faster comprehension.</span>
+                        </div>
+                    </div>
+
+                    <div class="guidance guidance--dont">
+                        <div class="guidance__header">
+                            <span class="guidance__icon"><span class="icon icon--mask icon--danger"></span></span>
+                            <div>
+                                <div class="guidance__title">Do not</div>
+                                <div class="guidance__meta">Accuracy killers</div>
+                            </div>
+                        </div>
+                        <ul class="guidance__list">
+                            <li>Do not explain every edge case.</li>
+                            <li>Avoid switching topics mid section.</li>
+                            <li>Do not hide the decision behind context.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="guidance guidance--why">
+                        <div class="guidance__header">
+                            <span class="guidance__icon"><span class="icon icon--mask icon--help"></span></span>
+                            <div>
+                                <div class="guidance__title">Why</div>
+                                <div class="guidance__meta">Reasoning</div>
+                            </div>
+                        </div>
+                        <div class="guidance__body">
+                            A clear promise builds trust and keeps the viewer focused on the decision.
+                        </div>
+                    </div>
+
+                    <div class="guidance guidance--expect">
+                        <div class="guidance__header">
+                            <span class="guidance__icon"><span class="icon icon--mask icon--warning"></span></span>
+                            <div>
+                                <div class="guidance__title">Expect</div>
+                                <div class="guidance__meta">Completion criteria</div>
+                            </div>
+                        </div>
+                        <div class="guidance__body">
+                            You should have a draft title, hook, and beats before moving to video draft.
+                        </div>
+                    </div>
+
+                    <div class="guidance guidance--recommend guidance--compact guidance--tint">
+                        <div class="guidance__header">
+                            <span class="guidance__icon"><span class="icon icon--mask icon--info"></span></span>
+                            <div>
+                                <div class="guidance__title">Recommended</div>
+                                <div class="guidance__meta">Optional but strong</div>
+                            </div>
+                        </div>
+                        <div class="guidance__body">
+                            Keep the notes short. Long notes belong in a separate document.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+                <div class="doc-block__toolbar">
+                    <span class="doc-block__lang">HTML</span>
+                    <div class="doc-block__actions">
+                        <button class="doc-block__action">Copy</button>
+                        <button class="doc-block__action">Expand</button>
+                    </div>
+                </div>
+                <pre class="doc-block__code"><code>&lt;div class="guidance guidance--do"&gt;
+  &lt;div class="guidance__header"&gt;
+    &lt;span class="guidance__icon"&gt;
+      &lt;span class="icon icon--mask icon--success"&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;div class="guidance__title"&gt;Do&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;ul class="guidance__list"&gt;
+    &lt;li&gt;Lead with a one sentence hook.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Form guidance blocks</h2>
+                <p class="doc-block__summary">
+                    Pair guidance with a field to explain intent, quality bars, and what to avoid.
+                    Use top, bottom, or wrapped layouts depending on how critical the instruction is.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="guidance-field" data-variant="info">
+                        <div class="guidance-field__hint">
+                            <div class="guidance-field__kicker">Hook</div>
+                            <div class="guidance-field__title">Promise in one line</div>
+                            <div class="guidance-field__text">
+                                State the payoff in 8 to 12 words. Lead with a verb.
+                            </div>
+                            <ul class="guidance-field__list">
+                                <li>One outcome</li>
+                                <li>Verb first</li>
+                                <li>No qualifiers</li>
+                            </ul>
+                        </div>
+                        <div class="guidance-field__frame">
+                            <div class="form-field">
+                                <div class="form-label-row">
+                                    <label class="form-label" for="guidance-hook">Hook</label>
+                                    <span class="form-label-meta form-label-meta--required">Required</span>
+                                </div>
+                                <input class="form-control" id="guidance-hook" type="text"
+                                       placeholder="Teach a 30 second lighting trick">
+                                <div class="form-help">Keep it under 12 words.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guidance-field guidance-field--plain" data-variant="warning">
+                        <div class="guidance-field__frame">
+                            <div class="form-field">
+                                <div class="form-label-row">
+                                    <label class="form-label" for="guidance-notes">Notes</label>
+                                    <span class="form-label-meta">Optional</span>
+                                </div>
+                                <textarea class="form-control" id="guidance-notes" rows="5"
+                                          placeholder="Add constraints, sources, or examples"></textarea>
+                                <div class="form-help">Use bullets or short sentences.</div>
+                            </div>
+                        </div>
+                        <div class="guidance-field__hint guidance-field__hint--plain">
+                            <div class="guidance-field__kicker">What not to do</div>
+                            <div class="guidance-field__title">Avoid production notes</div>
+                            <div class="guidance-field__text">
+                                Save editing and publishing steps for later stages.
+                            </div>
+                            <ul class="guidance-field__list">
+                                <li>No script paragraphs</li>
+                                <li>No camera setup details</li>
+                                <li>No timestamps</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="guidance-field" data-variant="success">
+                        <div class="guidance-field__hint">
+                            <div class="guidance-field__kicker">Brainstorming</div>
+                            <div class="guidance-field__title">Capture intent first</div>
+                            <div class="guidance-field__text">
+                                Write the thesis and beats as short, teachable actions.
+                            </div>
+                        </div>
+                        <div class="guidance-field__frame">
+                            <div class="form-field">
+                                <div class="form-label-row">
+                                    <label class="form-label" for="guidance-brainstorm">Brainstorming</label>
+                                    <span class="form-label-meta form-label-meta--required">Required</span>
+                                </div>
+                                <textarea class="form-control" id="guidance-brainstorm" rows="6"
+                                          placeholder="Hook, thesis, beats"></textarea>
+                                <div class="form-help">Use 3 to 6 beats, one action each.</div>
+                            </div>
+                        </div>
+                        <div class="guidance-field__hint guidance-field__hint--plain">
+                            <div class="guidance-field__kicker">Quality bar</div>
+                            <div class="guidance-field__title">Each beat should be teachable</div>
+                            <div class="guidance-field__text">
+                                If a beat needs context, split it into two beats.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+                <div class="doc-block__toolbar">
+                    <span class="doc-block__lang">HTML</span>
+                    <div class="doc-block__actions">
+                        <button class="doc-block__action">Copy</button>
+                        <button class="doc-block__action">Expand</button>
+                    </div>
+                </div>
+                <pre class="doc-block__code"><code>&lt;div class="guidance-field" data-variant="info"&gt;
+  &lt;div class="guidance-field__hint"&gt;
+    &lt;div class="guidance-field__title"&gt;Promise in one line&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="guidance-field__frame"&gt;
+    &lt;input class="form-control" type="text"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="guidance-field guidance-field--plain" data-variant="warning"&gt;
+  &lt;div class="guidance-field__frame"&gt;
+    &lt;textarea class="form-control"&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;div class="guidance-field__hint guidance-field__hint--plain"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="guidance-field" data-variant="success"&gt;
+  &lt;div class="guidance-field__hint"&gt;...&lt;/div&gt;
+  &lt;div class="guidance-field__frame"&gt;...&lt;/div&gt;
+  &lt;div class="guidance-field__hint guidance-field__hint--plain"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Decision brief</h2>
+                <p class="doc-block__summary">
+                    A structured brief that explains the goal, expected output, and the risks of missing it.
+                    Ideal for high leverage sections where precision matters.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview">
+                    <div class="guidance-brief guidance-brief--rail" data-variant="info">
+                        <div class="guidance-brief__header">
+                            <div class="guidance-brief__kicker">Decision brief</div>
+                            <div class="guidance-brief__title">Hook in one sentence</div>
+                            <div class="guidance-brief__meta">Primary decision: is this video relevant?</div>
+                        </div>
+
+                        <div class="guidance-stats">
+                            <div class="guidance-stat" data-variant="accent">
+                                <div class="guidance-stat__value">3 to 6</div>
+                                <div class="guidance-stat__label">Beats</div>
+                            </div>
+                            <div class="guidance-stat" data-variant="success">
+                                <div class="guidance-stat__value">45 sec</div>
+                                <div class="guidance-stat__label">Read time</div>
+                            </div>
+                            <div class="guidance-stat" data-variant="warning">
+                                <div class="guidance-stat__value">1</div>
+                                <div class="guidance-stat__label">Decision</div>
+                            </div>
+                        </div>
+
+                        <div class="guidance-brief__grid">
+                            <div class="guidance-brief__block">
+                                <div class="guidance-brief__label">Why it matters</div>
+                                <div class="guidance-brief__text">
+                                    The hook anchors attention. Without it, the thesis is ignored.
+                                </div>
+                            </div>
+                            <div class="guidance-brief__block">
+                                <div class="guidance-brief__label">Deliver</div>
+                                <ul class="guidance-brief__list">
+                                    <li>One sentence promise</li>
+                                    <li>Clear audience signal</li>
+                                    <li>Immediate relevance</li>
+                                </ul>
+                            </div>
+                            <div class="guidance-brief__block">
+                                <div class="guidance-brief__label">Risks</div>
+                                <ul class="guidance-brief__list">
+                                    <li>Too much context first</li>
+                                    <li>Multiple hooks at once</li>
+                                    <li>Undefined decision</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+                <div class="doc-block__toolbar">
+                    <span class="doc-block__lang">HTML</span>
+                    <div class="doc-block__actions">
+                        <button class="doc-block__action">Copy</button>
+                        <button class="doc-block__action">Expand</button>
+                    </div>
+                </div>
+                <pre class="doc-block__code"><code>&lt;div class="guidance-brief guidance-brief--rail" data-variant="info"&gt;
+  &lt;div class="guidance-brief__header"&gt;
+    &lt;div class="guidance-brief__kicker"&gt;Decision brief&lt;/div&gt;
+    &lt;div class="guidance-brief__title"&gt;Hook in one sentence&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="guidance-brief__grid"&gt;
+    &lt;div class="guidance-brief__block"&gt;
+      &lt;div class="guidance-brief__label"&gt;Deliver&lt;/div&gt;
+      &lt;ul class="guidance-brief__list"&gt;
+        &lt;li&gt;One sentence promise&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Definition, evidence, anti-patterns</h2>
+                <p class="doc-block__summary">
+                    Use contrast blocks to show expertise. Define the idea, list evidence, and warn
+                    against common misreads.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview">
+                    <div class="guidance-compare">
+                        <div class="guidance-compare__item" data-variant="info">
+                            <div class="guidance-compare__label">Definition</div>
+                            <div class="guidance-compare__title">Calm Presence</div>
+                            <ul class="guidance-compare__list">
+                                <li>Visible composure under pressure</li>
+                                <li>Controlled pace and deliberate pauses</li>
+                            </ul>
+                        </div>
+                        <div class="guidance-compare__item" data-variant="success">
+                            <div class="guidance-compare__label">Evidence</div>
+                            <div class="guidance-compare__title">Signals to show</div>
+                            <ul class="guidance-compare__list">
+                                <li>Steady movement and voice</li>
+                                <li>Decisions without apology</li>
+                            </ul>
+                        </div>
+                        <div class="guidance-compare__item" data-variant="danger">
+                            <div class="guidance-compare__label">Anti-patterns</div>
+                            <div class="guidance-compare__title">What to avoid</div>
+                            <ul class="guidance-compare__list">
+                                <li>Rushing delivery</li>
+                                <li>Over-explaining to calm nerves</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+                <div class="doc-block__toolbar">
+                    <span class="doc-block__lang">HTML</span>
+                    <div class="doc-block__actions">
+                        <button class="doc-block__action">Copy</button>
+                        <button class="doc-block__action">Expand</button>
+                    </div>
+                </div>
+                <pre class="doc-block__code"><code>&lt;div class="guidance-compare"&gt;
+  &lt;div class="guidance-compare__item" data-variant="info"&gt;
+    &lt;div class="guidance-compare__label"&gt;Definition&lt;/div&gt;
+    &lt;div class="guidance-compare__title"&gt;Calm Presence&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Guidance strip (inline callout)</h2>
+                <p class="doc-block__summary">
+                    An inline callout for short expectations, reminders, and recommended actions.
+                    Use these inside dense forms or next to decision groups.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview">
+                    <div class="guidance-strip" data-variant="info">
+                        <div class="guidance-strip__label">
+                            <span class="icon icon--mask icon--info"></span>
+                            Expected
+                        </div>
+                        <div class="guidance-strip__body">
+                            Use a short title and one sentence hook before moving forward.
+                        </div>
+                        <div class="guidance-strip__actions">
+                            <button class="button button--ghost">View example</button>
+                            <button class="button button--secondary">Dismiss</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+                <div class="doc-block__toolbar">
+                    <span class="doc-block__lang">HTML</span>
+                    <div class="doc-block__actions">
+                        <button class="doc-block__action">Copy</button>
+                        <button class="doc-block__action">Expand</button>
+                    </div>
+                </div>
+                <pre class="doc-block__code"><code>&lt;div class="guidance-strip" data-variant="info"&gt;
+  &lt;div class="guidance-strip__label"&gt;
+    &lt;span class="icon icon--mask icon--info"&gt;&lt;/span&gt;
+    Expected
+  &lt;/div&gt;
+  &lt;div class="guidance-strip__body"&gt;
+    Use a short title and one sentence hook before moving forward.
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Education cards</h2>
+                <p class="doc-block__summary">
+                    Education blocks explain intent and recommended behavior without interrupting flow.
+                    Use them as grouped tiles or a single card near a form section.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview">
+                    <div class="guidance-grid">
+                        <article class="guidance-card guidance-card--rail" data-variant="accent">
+                            <div class="guidance-card__eyebrow">Why</div>
+                            <div class="guidance-card__title">Clear promise</div>
+                            <div class="guidance-card__body">
+                                A strong promise helps the viewer decide if the video is relevant.
+                            </div>
+                            <div class="guidance-card__footer">
+                                <span class="icon icon--mask icon--help"></span>
+                                Explain what changes for the viewer.
+                            </div>
+                        </article>
+
+                        <article class="guidance-card guidance-card--rail" data-variant="success">
+                            <div class="guidance-card__eyebrow">Recommended</div>
+                            <div class="guidance-card__title">Short beats</div>
+                            <div class="guidance-card__body">
+                                Keep each beat to one action or decision. Use verbs.
+                            </div>
+                            <div class="guidance-card__footer">
+                                <span class="icon icon--mask icon--success"></span>
+                                3 to 6 beats is ideal.
+                            </div>
+                        </article>
+
+                        <article class="guidance-card guidance-card--rail" data-variant="warning">
+                            <div class="guidance-card__eyebrow">Watch</div>
+                            <div class="guidance-card__title">Overloading details</div>
+                            <div class="guidance-card__body">
+                                Excess detail hides the main decision. Keep the core visible.
+                            </div>
+                            <div class="guidance-card__footer">
+                                <span class="icon icon--mask icon--warning"></span>
+                                Move details to notes.
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+                <div class="doc-block__toolbar">
+                    <span class="doc-block__lang">HTML</span>
+                    <div class="doc-block__actions">
+                        <button class="doc-block__action">Copy</button>
+                        <button class="doc-block__action">Expand</button>
+                    </div>
+                </div>
+                <pre class="doc-block__code"><code>&lt;div class="guidance-grid"&gt;
+  &lt;article class="guidance-card guidance-card--rail" data-variant="accent"&gt;
+    &lt;div class="guidance-card__eyebrow"&gt;Why&lt;/div&gt;
+    &lt;div class="guidance-card__title"&gt;Clear promise&lt;/div&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Instruction steps</h2>
+                <p class="doc-block__summary">
+                    A numbered flow for describing how to complete a section. Each step stays
+                    short and focuses on a single action.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview">
+                    <div class="guidance-steps">
+                        <div class="guidance-step guidance-step--rail" data-variant="info">
+                            <div class="guidance-step__index">1</div>
+                            <div class="section__stack-sm">
+                                <div class="guidance-step__title">Capture the idea</div>
+                                <div class="guidance-step__body">Write the title and a one sentence idea.</div>
+                            </div>
+                        </div>
+                        <div class="guidance-step guidance-step--rail" data-variant="accent">
+                            <div class="guidance-step__index">2</div>
+                            <div class="section__stack-sm">
+                                <div class="guidance-step__title">Brainstorm hook and thesis</div>
+                                <div class="guidance-step__body">Use verbs and keep the tone consistent.</div>
+                            </div>
+                        </div>
+                        <div class="guidance-step guidance-step--rail" data-variant="success">
+                            <div class="guidance-step__index">3</div>
+                            <div class="section__stack-sm">
+                                <div class="guidance-step__title">Select labels and tags</div>
+                                <div class="guidance-step__body">Pick system labels first, then add custom tags.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+                <div class="doc-block__toolbar">
+                    <span class="doc-block__lang">HTML</span>
+                    <div class="doc-block__actions">
+                        <button class="doc-block__action">Copy</button>
+                        <button class="doc-block__action">Expand</button>
+                    </div>
+                </div>
+                <pre class="doc-block__code"><code>&lt;div class="guidance-steps"&gt;
+  &lt;div class="guidance-step guidance-step--rail" data-variant="info"&gt;
+    &lt;div class="guidance-step__index"&gt;1&lt;/div&gt;
+    &lt;div&gt;
+      &lt;div class="guidance-step__title"&gt;Capture the idea&lt;/div&gt;
+      &lt;div class="guidance-step__body"&gt;Write the title and a one sentence idea.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Guidance rows (inbox style)</h2>
+                <p class="doc-block__summary">
+                    Use rows when you have multiple instruction items that need scanning. This is
+                    the guidance equivalent of an inbox list.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview section__stack-sm">
+                    <article class="guidance-row" data-variant="info">
+                        <div class="guidance-row__header">
+                            <div>
+                                <div class="guidance-row__title">Hook quality check</div>
+                                <div class="guidance-row__meta">If this fails, the rest is ignored.</div>
+                            </div>
+                            <div class="guidance-row__labels">
+                                <span class="guidance-row__label">Primary</span>
+                                <span class="guidance-row__label">Decision</span>
+                            </div>
+                        </div>
+                        <div class="guidance-row__glance">
+                            The hook must state the promise and remove ambiguity in under 12 words.
+                        </div>
+                        <div class="guidance-row__details">
+                            <span class="guidance-row__detail">12 words max</span>
+                            <span class="guidance-row__detail">1 decision</span>
+                            <span class="guidance-row__detail">No qualifiers</span>
+                        </div>
+                        <div class="guidance-row__actions">
+                            <button class="button button--ghost">View examples</button>
+                            <button class="button button--secondary">Mark done</button>
+                        </div>
+                    </article>
+
+                    <article class="guidance-row" data-variant="success">
+                        <div class="guidance-row__header">
+                            <div>
+                                <div class="guidance-row__title">Beats structure</div>
+                                <div class="guidance-row__meta">Beats should teach in order.</div>
+                            </div>
+                            <div class="guidance-row__labels">
+                                <span class="guidance-row__label">Recommended</span>
+                            </div>
+                        </div>
+                        <div class="guidance-row__glance">
+                            Each beat is one action. If two actions appear, split into two beats.
+                        </div>
+                        <div class="guidance-row__details">
+                            <span class="guidance-row__detail">Verb first</span>
+                            <span class="guidance-row__detail">3 to 6 beats</span>
+                            <span class="guidance-row__detail">No tangents</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+                <div class="doc-block__toolbar">
+                    <span class="doc-block__lang">HTML</span>
+                    <div class="doc-block__actions">
+                        <button class="doc-block__action">Copy</button>
+                        <button class="doc-block__action">Expand</button>
+                    </div>
+                </div>
+                <pre class="doc-block__code"><code>&lt;article class="guidance-row" data-variant="info"&gt;
+  &lt;div class="guidance-row__header"&gt;
+    &lt;div class="guidance-row__title"&gt;Hook quality check&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="guidance-row__glance"&gt;The hook must state the promise.&lt;/div&gt;
+&lt;/article&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Scope and checklist</h2>
+                <p class="doc-block__summary">
+                    Use scope blocks for in or out boundaries. Add checklists to confirm readiness.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="guidance-scope">
+                        <div class="guidance-scope__item guidance-scope__item--rail" data-variant="success">
+                            <div class="guidance-scope__label">In scope</div>
+                            <ul class="guidance-scope__list">
+                                <li>Working title</li>
+                                <li>One sentence hook</li>
+                                <li>Template selection</li>
+                            </ul>
+                        </div>
+                        <div class="guidance-scope__item guidance-scope__item--rail" data-variant="danger">
+                            <div class="guidance-scope__label">Out of scope</div>
+                            <ul class="guidance-scope__list">
+                                <li>Full script</li>
+                                <li>Editing notes</li>
+                                <li>Publishing steps</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <ul class="guidance-checklist">
+                        <li class="is-done">Title written</li>
+                        <li class="is-done">Hook drafted</li>
+                        <li>Labels selected</li>
+                        <li>Tags added</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+                <div class="doc-block__toolbar">
+                    <span class="doc-block__lang">HTML</span>
+                    <div class="doc-block__actions">
+                        <button class="doc-block__action">Copy</button>
+                        <button class="doc-block__action">Expand</button>
+                    </div>
+                </div>
+                <pre class="doc-block__code"><code>&lt;div class="guidance-scope"&gt;
+  &lt;div class="guidance-scope__item guidance-scope__item--rail" data-variant="success"&gt;
+    &lt;div class="guidance-scope__label"&gt;In scope&lt;/div&gt;
+    &lt;ul class="guidance-scope__list"&gt;
+      &lt;li&gt;Working title&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul class="guidance-checklist"&gt;
+  &lt;li class="is-done"&gt;Title written&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-guidance class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Usage rules</h2>
+                <p class="doc-block__summary">
+                    Keep guidance blocks direct and calm. Pair them with the exact section they explain.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Wrap guidance in <code>[data-vds-guidance]</code> or <code>.vds-guidance</code>.</li>
+                        <li>Use guidance for intent, constraints, or expected output.</li>
+                        <li>Keep titles short and body text under two lines.</li>
+                        <li>Prefer lists over paragraphs in dense forms.</li>
+                        <li>Use <code>data-variant</code> only when meaning changes.</li>
+                        <li>Place guidance next to the form section it describes.</li>
+                    </ul>
+                </div>
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not use guidance for error or system state.</li>
+                        <li>Do not stack multiple long guidance blocks together.</li>
+                        <li>Avoid vague instructions without concrete examples.</li>
+                        <li>Do not hide critical steps inside optional guidance text.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+                <div class="doc-block__toolbar">
+                    <span class="doc-block__lang">Notes</span>
+                    <div class="doc-block__actions">
+                        <button class="doc-block__action">Copy</button>
+                        <button class="doc-block__action">Expand</button>
+                    </div>
+                </div>
+                <pre class="doc-block__code"><code>1. Keep guidance short: title + one sentence or list.
+2. Use data-variant only when meaning changes.
+3. Place guidance next to the form section it describes.
+4. Avoid using guidance to report errors or system status.
+5. Do not overload users with multiple guidance blocks in a row.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>

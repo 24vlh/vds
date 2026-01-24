@@ -239,6 +239,16 @@
     gap: var(--space-2);
 }
 
+.choice-buttons--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: var(--space-2);
+}
+
+.choice-buttons--grid .choice-button__surface {
+    width: 100%;
+}
+
 .choice-button {
     position: relative;
     display: inline-flex;
@@ -293,7 +303,78 @@
 }
 
 /* ---------------------------------------------------------
-   5. CHOICE CHIPS (CHECKBOX / RADIO)
+   5. CHOICE CARDS
+--------------------------------------------------------- */
+.choice-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: var(--space-3);
+}
+
+.choice-card {
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.choice-card__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    pointer-events: none;
+}
+
+.choice-card__surface {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-3) var(--space-4);
+
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s, color 0.2s;
+}
+
+.choice-card:hover .choice-card__surface {
+    border-color: var(--color-border-strong);
+}
+
+.choice-card__input:focus-visible + .choice-card__surface {
+    border-color: var(--focus-ring-color);
+    box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.choice-card__input:checked + .choice-card__surface {
+    border-color: var(--accent-soft-border, var(--color-accent));
+    background-color: var(--accent-soft-surface, var(--color-accent-soft));
+    color: var(--accent-soft-on, var(--color-on-accent));
+    box-shadow: 0 0 0 1px var(--accent-soft-shadow);
+}
+
+.choice-card__input:disabled + .choice-card__surface {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--color-muted-bg);
+}
+
+.choice-card__title {
+    font-weight: 600;
+    font-size: var(--text-sm);
+}
+
+.choice-card__meta {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+/* ---------------------------------------------------------
+   6. CHOICE CHIPS (CHECKBOX / RADIO)
 --------------------------------------------------------- */
 .choice-chips {
     display: flex;
@@ -431,7 +512,99 @@
 }
 
 /* ---------------------------------------------------------
-   6. SEGMENTED CONTROL
+   7. CHIP CHOICE (SELECTED)
+--------------------------------------------------------- */
+.chip-choice {
+    --chip-choice-bg: var(--color-surface);
+    --chip-choice-border: var(--color-border-subtle);
+    --chip-choice-text: var(--color-text);
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+
+    border: var(--border-width) solid var(--chip-choice-border);
+    border-radius: var(--radius-pill);
+    background-color: var(--chip-choice-bg);
+    color: var(--chip-choice-text);
+    font-size: var(--text-xs);
+
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.2s, background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.chip-choice:hover {
+    border-color: var(--color-border-strong);
+}
+
+.chip-choice--selected {
+    --chip-choice-bg: var(--accent-soft-surface, var(--color-accent-soft));
+    --chip-choice-border: var(--accent-soft-border, var(--color-accent));
+    --chip-choice-text: var(--accent-soft-on, var(--color-on-accent));
+    box-shadow: 0 0 0 1px var(--accent-soft-shadow);
+}
+
+.chip-choice--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.chip-choice__check,
+.chip-choice__remove {
+    width: var(--icon-xs);
+    height: var(--icon-xs);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+}
+
+.chip-choice__remove {
+    margin-left: var(--space-1);
+}
+
+.chip-choice--transfer .chip-choice__check {
+    display: none;
+}
+
+.chip-choice__label {
+    color: inherit;
+}
+
+/* ---------------------------------------------------------
+   8. CHIP FIELD LAYOUT
+--------------------------------------------------------- */
+.chip-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.chip-field__row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.chip-field__label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.chip-field__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.chip-field__input {
+    width: 100%;
+}
+
+/* ---------------------------------------------------------
+   9. SEGMENTED CONTROL
 --------------------------------------------------------- */
 .segmented-control {
     display: inline-flex;
@@ -480,7 +653,7 @@
 }
 
 /* ---------------------------------------------------------
-   7. TOGGLE SWITCH
+   10. TOGGLE SWITCH
 --------------------------------------------------------- */
 .toggle {
     --toggle-width: 2.75rem;
@@ -552,7 +725,7 @@
 }
 
 /* ---------------------------------------------------------
-   8. STEPPER CONTROL
+   11. STEPPER CONTROL
 --------------------------------------------------------- */
 .stepper {
     display: inline-flex;
@@ -621,7 +794,7 @@
 }
 
 /* ---------------------------------------------------------
-   9. NATIVE DATE/TIME INPUT NORMALIZATION
+   12. NATIVE DATE/TIME INPUT NORMALIZATION
 --------------------------------------------------------- */
 .input[type="date"],
 .input[type="time"],
@@ -636,7 +809,7 @@
 }
 
 /* ---------------------------------------------------------
-   10. CALENDAR BASE STRUCTURE (JS-driven scaffold)
+   13. CALENDAR BASE STRUCTURE (JS-driven scaffold)
 --------------------------------------------------------- */
 .calendar {
     width: 100%;
@@ -745,7 +918,7 @@
 }
 
 /* ---------------------------------------------------------
-   11. DENSITY LAYER OVERRIDES (A and C)
+   14. DENSITY LAYER OVERRIDES (A and C)
 --------------------------------------------------------- */
 .form--a .multi-select__control,
 .form--a .tag-input,
@@ -765,7 +938,16 @@
     font-size: var(--text-md);
 }
 
+.form--a .choice-card__surface {
+    padding: var(--space-4) var(--space-5);
+}
+
 .form--a .choice-chip {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+}
+
+.form--a .chip-choice {
     padding: var(--space-2) var(--space-4);
     font-size: var(--text-sm);
 }
@@ -794,7 +976,16 @@
     font-size: var(--text-xs);
 }
 
+.form--c .choice-card__surface {
+    padding: var(--space-2) var(--space-3);
+}
+
 .form--c .choice-chip {
+    padding: var(--space-0_5) var(--space-2);
+    font-size: var(--text-xxs);
+}
+
+.form--c .chip-choice {
     padding: var(--space-0_5) var(--space-2);
     font-size: var(--text-xxs);
 }
@@ -814,4 +1005,5 @@
 .form--c .calendar__day {
     padding: var(--space-1);
 }
+
 
