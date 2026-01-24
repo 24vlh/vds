@@ -21,76 +21,138 @@
    1. BASE SECTION CONTAINER
 --------------------------------------------------------- */
 .section {
+    --section-pad-top: var(--section-spacing-md);
+    --section-pad-bottom: var(--section-spacing-md);
+    --section-inner-max: var(--layout-max-width);
+    --section-inner-pad: var(--space-6);
+    --section-inner-gap: var(--space-6);
+
     width: 100%;
-    padding-top: var(--section-spacing-md);
-    padding-bottom: var(--section-spacing-md);
+    padding-top: var(--section-pad-top);
+    padding-bottom: var(--section-pad-bottom);
     position: relative;
     background-color: var(--color-bg);
 }
 
 .section__inner {
-    max-width: var(--layout-max-width);
+    width: 100%;
+    max-width: var(--section-inner-max);
     margin: 0 auto;
-    padding: 0 var(--space-6);
+    padding: 0 var(--section-inner-pad);
 
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
+    gap: var(--section-inner-gap);
 }
 
 /* ---------------------------------------------------------
-   2. LEGACY DENSITY SYSTEM (A / B / C / FLUSH)
+   2. INNER WIDTH + EDGE CONTROL
+--------------------------------------------------------- */
+.section--tight {
+    --section-inner-max: var(--content-width-md);
+}
+
+.section--narrow {
+    --section-inner-max: var(--content-width-lg);
+}
+
+.section--relaxed {
+    --section-inner-max: 90ch;
+}
+
+.section--wide {
+    --section-inner-max: var(--content-width-2xl);
+}
+
+.section--full {
+    --section-inner-max: none;
+}
+
+.section--pad-x-sm {
+    --section-inner-pad: var(--space-4);
+}
+
+.section--pad-x-md {
+    --section-inner-pad: var(--space-6);
+}
+
+.section--pad-x-lg {
+    --section-inner-pad: var(--space-8);
+}
+
+.section--pad-x-xl {
+    --section-inner-pad: var(--space-10);
+}
+
+.section--edge {
+    --section-inner-pad: 0;
+}
+
+.section--gap-sm {
+    --section-inner-gap: var(--space-4);
+}
+
+.section--gap-lg {
+    --section-inner-gap: var(--space-10);
+}
+
+.section--gap-xl {
+    --section-inner-gap: var(--space-14);
+}
+
+/* ---------------------------------------------------------
+   3. LEGACY DENSITY SYSTEM (A / B / C / FLUSH)
 --------------------------------------------------------- */
 .section--a {
-    padding-top: var(--space-20);
-    padding-bottom: var(--space-20);
+    --section-pad-top: var(--space-20);
+    --section-pad-bottom: var(--space-20);
 }
 
 .section--b {
-    padding-top: var(--space-14);
-    padding-bottom: var(--space-14);
+    --section-pad-top: var(--space-14);
+    --section-pad-bottom: var(--space-14);
 }
 
 .section--c {
-    padding-top: var(--space-10);
-    padding-bottom: var(--space-10);
+    --section-pad-top: var(--space-10);
+    --section-pad-bottom: var(--space-10);
 }
 
 .section--flush {
-    padding-top: 0;
-    padding-bottom: 0;
+    --section-pad-top: 0;
+    --section-pad-bottom: 0;
 }
 
 /* ---------------------------------------------------------
-   3. NEW UNIVERSAL SECTION RHYTHM (XS–XL)
+   4. NEW UNIVERSAL SECTION RHYTHM (XS–XL)
 --------------------------------------------------------- */
 .section--xs {
-    padding-top: var(--section-spacing-xs);
-    padding-bottom: var(--section-spacing-xs);
+    --section-pad-top: var(--section-spacing-xs);
+    --section-pad-bottom: var(--section-spacing-xs);
 }
 
 .section--sm {
-    padding-top: var(--section-spacing-sm);
-    padding-bottom: var(--section-spacing-sm);
+    --section-pad-top: var(--section-spacing-sm);
+    --section-pad-bottom: var(--section-spacing-sm);
 }
 
 .section--md {
-    padding-top: var(--section-spacing-md);
-    padding-bottom: var(--section-spacing-md);
+    --section-pad-top: var(--section-spacing-md);
+    --section-pad-bottom: var(--section-spacing-md);
 }
 
 .section--lg {
-    padding-top: var(--section-spacing-lg);
-    padding-bottom: var(--section-spacing-lg);
+    --section-pad-top: var(--section-spacing-lg);
+    --section-pad-bottom: var(--section-spacing-lg);
 }
 
 .section--xl {
-    padding-top: var(--section-spacing-xl);
-    padding-bottom: var(--section-spacing-xl);
+    --section-pad-top: var(--section-spacing-xl);
+    --section-pad-bottom: var(--section-spacing-xl);
 }
 
 /* ---------------------------------------------------------
-   4. SECTION HEADER SYSTEM
+   5. SECTION HEADER SYSTEM
 --------------------------------------------------------- */
 .section__header {
     display: flex;
@@ -151,7 +213,7 @@
 }
 
 /* ---------------------------------------------------------
-   5. SECTION DIVIDERS
+   6. SECTION DIVIDERS
 --------------------------------------------------------- */
 .section--divided {
     border-top: 1px solid var(--color-border-subtle);
@@ -168,15 +230,15 @@
 }
 
 /* ---------------------------------------------------------
-   6. SURFACES (surface / subtle / brand)
+   7. SURFACES (surface / subtle / brand)
 --------------------------------------------------------- */
 .section--surface {
+    --section-pad-top: var(--section-spacing-lg);
+    --section-pad-bottom: var(--section-spacing-lg);
+
     background-color: var(--color-surface);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-md);
-
-    padding-top: var(--section-spacing-lg);
-    padding-bottom: var(--section-spacing-lg);
 
     transition: background-color 0.15s ease;
 }
@@ -194,14 +256,14 @@
 }
 
 /* ---------------------------------------------------------
-   7. ALTERNATE BACKGROUND
+   8. ALTERNATE BACKGROUND
 --------------------------------------------------------- */
 .section--alt {
     background-color: var(--color-bg-soft);
 }
 
 /* ---------------------------------------------------------
-   8. SPLIT SECTIONS - CLEAN GRID REVERSAL
+   9. SPLIT SECTIONS - CLEAN GRID REVERSAL
 --------------------------------------------------------- */
 .section--split .section__inner {
     display: grid;
@@ -224,7 +286,7 @@
 }
 
 /* ---------------------------------------------------------
-   9. INSET SECTIONS (Base + SM/LG)
+   10. INSET SECTIONS (Base + SM/LG)
 --------------------------------------------------------- */
 .section--inset .section__inner {
     background-color: var(--color-surface);
@@ -242,7 +304,7 @@
 }
 
 /* ---------------------------------------------------------
-   10. COLUMN GRIDS (2/3/4/5/6/auto) + GAP VARIANTS
+   11. COLUMN GRIDS (2/3/4/5/6/auto) + GAP VARIANTS
 --------------------------------------------------------- */
 .section__grid-2,
 .section__grid-3,
@@ -291,7 +353,7 @@
 }
 
 /* ---------------------------------------------------------
-   11. CONTENT STACKS (VERTICAL)
+   12. CONTENT STACKS (VERTICAL)
 --------------------------------------------------------- */
 .section__stack {
     display: flex;
@@ -312,7 +374,7 @@
 }
 
 /* ---------------------------------------------------------
-   12. INLINE STACKS (HORIZONTAL)
+   13. INLINE STACKS (HORIZONTAL)
 --------------------------------------------------------- */
 .section__inline {
     display: flex;
@@ -336,7 +398,7 @@
 }
 
 /* ---------------------------------------------------------
-   13. VALUE / LIST SECTIONS
+   14. VALUE / LIST SECTIONS
 --------------------------------------------------------- */
 .section__list {
     display: flex;
@@ -371,7 +433,7 @@
 }
 
 /* ---------------------------------------------------------
-   14. RESPONSIVE BEHAVIOUR
+   15. RESPONSIVE BEHAVIOUR
 --------------------------------------------------------- */
 @media (max-width: 1280px) {
     .section__grid-2,
@@ -406,8 +468,33 @@
     .section--a,
     .section--b,
     .section--c {
-        padding-top: var(--space-10);
-        padding-bottom: var(--space-10);
+        --section-pad-top: var(--space-10);
+        --section-pad-bottom: var(--space-10);
+    }
+
+    .section--xs {
+        --section-pad-top: var(--section-spacing-xs);
+        --section-pad-bottom: var(--section-spacing-xs);
+    }
+
+    .section--sm {
+        --section-pad-top: var(--section-spacing-sm);
+        --section-pad-bottom: var(--section-spacing-sm);
+    }
+
+    .section--md {
+        --section-pad-top: var(--section-spacing-md);
+        --section-pad-bottom: var(--section-spacing-md);
+    }
+
+    .section--lg {
+        --section-pad-top: var(--section-spacing-lg);
+        --section-pad-bottom: var(--section-spacing-lg);
+    }
+
+    .section--xl {
+        --section-pad-top: var(--section-spacing-xl);
+        --section-pad-bottom: var(--section-spacing-xl);
     }
 
     .section__grid-2,
@@ -430,4 +517,55 @@
     .section--inset .section__inner {
         padding: var(--space-6);
     }
+}
+
+/* ---------------------------------------------------------
+   16. PADDING OVERRIDES (TOP / BOTTOM)
+--------------------------------------------------------- */
+.section--pad-top-none {
+    --section-pad-top: 0;
+}
+
+.section--pad-top-xs {
+    --section-pad-top: var(--section-spacing-xs);
+}
+
+.section--pad-top-sm {
+    --section-pad-top: var(--section-spacing-sm);
+}
+
+.section--pad-top-md {
+    --section-pad-top: var(--section-spacing-md);
+}
+
+.section--pad-top-lg {
+    --section-pad-top: var(--section-spacing-lg);
+}
+
+.section--pad-top-xl {
+    --section-pad-top: var(--section-spacing-xl);
+}
+
+.section--pad-bottom-none {
+    --section-pad-bottom: 0;
+}
+
+.section--pad-bottom-xs {
+    --section-pad-bottom: var(--section-spacing-xs);
+}
+
+.section--pad-bottom-sm {
+    --section-pad-bottom: var(--section-spacing-sm);
+}
+
+.section--pad-bottom-md {
+    --section-pad-bottom: var(--section-spacing-md);
+}
+
+.section--pad-bottom-lg {
+    --section-pad-bottom: var(--section-spacing-lg);
+}
+
+.section--pad-bottom-xl {
+    --section-pad-bottom: var(--section-spacing-xl);
 }

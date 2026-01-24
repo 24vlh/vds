@@ -5,8 +5,9 @@
             <h1 class="section__title">Sections System (V2)</h1>
             <p class="section__subtitle">
                 Structural building blocks for page-level content. V2 keeps legacy densities (A/B/C)
-                and adds universal rhythm (XS–XL), clean split reversal, inset variants, grid gaps,
-                stacks, inline stacks, and value lists — all token-driven.
+                and adds universal rhythm (XS–XL), inner width + edge controls, per-edge padding,
+                clean split reversal, inset variants, grid gaps, stacks, inline stacks, and value lists —
+                all token-driven.
             </p>
         </header>
 
@@ -151,8 +152,8 @@
                                     </div>
                                     <div class="card__body">
                                         <p class="text-sm">
-                                            Width constrained to <code>--layout-max-width</code> and padded
-                                            horizontally.
+                                            Width constrained by <code>--section-inner-max</code> and padded
+                                            with <code>--section-inner-pad</code>.
                                         </p>
                                     </div>
                                 </article>
@@ -185,6 +186,59 @@
 <section data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Inner width & edge control</h2>
+                <p class="doc-block__summary">
+                    Adjust the constrained width without changing the outer band. Use edge and pad-x
+                    modifiers to control side padding, or go edge-to-edge with full + edge.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview section__stack-sm">
+                    <section data-vds-dock-block data-vds-content-block class="section section--subtle section--wide section--sm">
+                        <div class="section__inner section__stack-sm">
+                            <div class="section__eyebrow">Wide inner</div>
+                            <h3 class="section__title">Extra room for dashboards</h3>
+                            <p class="section__subtitle">Uses <code>content-width-2xl</code>.</p>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block class="section section--surface section--tight section--pad-x-lg section--gap-sm section--sm">
+                        <div class="section__inner section__stack-sm">
+                            <div class="section__eyebrow">Tight + padded</div>
+                            <h3 class="section__title">Narrow content with breathing room</h3>
+                            <p class="section__subtitle">Combine width + pad-x + gap.</p>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block class="section section--alt section--full section--edge section--sm">
+                        <div class="section__inner section__stack-sm">
+                            <div class="section__eyebrow">Full + edge</div>
+                            <h3 class="section__title">Edge-to-edge band</h3>
+                            <p class="section__subtitle">Ideal for media strips or charts.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section section--wide"&gt;
+  &lt;div class="section__inner"&gt;...&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="section section--tight section--pad-x-lg section--gap-sm"&gt;...&lt;/section&gt;
+
+&lt;section class="section section--full section--edge"&gt;...&lt;/section&gt;
+</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Legacy density (A / B / C) + header alignment</h2>
                 <p class="doc-block__summary">
@@ -317,9 +371,49 @@
                 <div class="doc-block__preview">
                     <p class="text-sm">
                         These can be combined with any other section modifier (surface, split, alt, etc.).
-                        If both A/B/C and XS–XL are used, the *later class wins* in normal CSS order.
+                        If both A/B/C and XS–XL are used, the later class wins. Use per-edge pad modifiers
+                        when you need explicit overrides.
                     </p>
                 </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Per-edge padding control</h2>
+                <p class="doc-block__summary">
+                    Tune top and bottom spacing independently when sections feel too tall or too tight.
+                    Overrides work alongside any density or surface modifier.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <section data-vds-dock-block data-vds-content-block class="section section--surface section--pad-top-sm section--pad-bottom-xl">
+                        <div class="section__inner section__stack-sm">
+                            <div class="section__eyebrow">Pad top / bottom</div>
+                            <h3 class="section__title">Short intro, long outro</h3>
+                            <p class="section__subtitle">Top trims, bottom expands for call to action.</p>
+                        </div>
+                    </section>
+
+                    <section data-vds-dock-block data-vds-content-block class="section section--subtle section--pad-top-none section--pad-bottom-sm">
+                        <div class="section__inner section__stack-sm">
+                            <div class="section__eyebrow">Pad overrides</div>
+                            <h3 class="section__title">Flush header band</h3>
+                            <p class="section__subtitle">Use when the previous section already ends with padding.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section section--pad-top-sm section--pad-bottom-xl"&gt;...&lt;/section&gt;
+&lt;section class="section section--pad-top-none section--pad-bottom-sm"&gt;...&lt;/section&gt;</code></pre>
             </div>
         </article>
     </div>
@@ -398,7 +492,7 @@
 
             <div class="doc-block__body">
                 <div class="doc-block__preview section__grid-4 section__grid-sm">
-                    <section data-vds-dock-block data-vds-content-block class="section section--surface section--sm">
+                    <section data-vds-dock-block data-vds-content-block class="section section--surface section--pad-top-sm section--pad-bottom-sm">
                         <div class="section__inner">
                             <header class="section__header">
                                 <div class="section__eyebrow">Surface</div>
@@ -408,7 +502,7 @@
                         </div>
                     </section>
 
-                    <section data-vds-dock-block data-vds-content-block class="section section--subtle section--sm">
+                    <section data-vds-dock-block data-vds-content-block class="section section--subtle section--pad-top-sm section--pad-bottom-sm">
                         <div class="section__inner">
                             <header class="section__header">
                                 <div class="section__eyebrow">Subtle</div>
@@ -418,7 +512,7 @@
                         </div>
                     </section>
 
-                    <section data-vds-dock-block data-vds-content-block class="section section--alt section--sm">
+                    <section data-vds-dock-block data-vds-content-block class="section section--alt section--pad-top-sm section--pad-bottom-sm">
                         <div class="section__inner">
                             <header class="section__header">
                                 <div class="section__eyebrow">Alt</div>
@@ -428,7 +522,7 @@
                         </div>
                     </section>
 
-                    <section data-vds-dock-block data-vds-content-block class="section section--brand section--sm">
+                    <section data-vds-dock-block data-vds-content-block class="section section--brand section--pad-top-sm section--pad-bottom-sm">
                         <div class="section__inner">
                             <header class="section__header">
                                 <div class="section__eyebrow">Brand</div>
@@ -449,7 +543,8 @@
 
                 <div class="doc-block__preview">
                     <p class="text-sm">
-                        Surface sections default to LG padding in V2. Combine with XS–XL or A/B/C to override.
+                        Surface sections default to LG padding. Combine with XS–XL or per-edge pad modifiers
+                        to dial the rhythm in.
                     </p>
                 </div>
             </div>
