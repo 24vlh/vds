@@ -875,7 +875,6 @@ a.inbox-action {
 .inbox-action--flat {
     border-color: transparent;
     background: transparent;
-    color: var(--color-text-muted);
 }
 
 .inbox-action--borderless {
@@ -889,7 +888,6 @@ a.inbox-action {
 .inbox-action--flat:hover:not(:disabled):not([aria-disabled="true"]):not(.is-disabled) {
     background: var(--color-surface-subtle);
     border-color: transparent;
-    color: var(--color-text);
     transform: none;
 }
 
@@ -897,14 +895,12 @@ a.inbox-action {
 .inbox--actions-flat .inbox-action {
     border-color: transparent;
     background: transparent;
-    color: var(--color-text-muted);
     transform: none;
 }
 
 .inbox--actions-flat .inbox-action:hover:not(:disabled):not([aria-disabled="true"]):not(.is-disabled) {
     background: var(--color-surface-subtle);
     border-color: transparent;
-    color: var(--color-text);
 }
 
 .inbox-action:disabled,
