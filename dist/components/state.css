@@ -1,0 +1,172 @@
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Empty / Zero States
+ *
+ *  Responsibilities:
+ *    - Provide empty-state shells for lists, dashboards, and setups
+ *    - Support inline, centered, and compact presentations
+ *    - Provide consistent icon, title, body, and action slots
+ *
+ *  System Notes:
+ *    - Pure CSS; use buttons and links for actions
+ *    - Token-driven spacing, surfaces, and typography
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   1. STATE TOKENS
+--------------------------------------------------------- */
+
+[data-vds-state],
+.vds-state {
+    --state-gap: var(--space-4);
+    --state-padding: var(--space-8);
+    --state-radius: var(--radius-lg);
+    --state-surface: var(--color-surface);
+    --state-border: var(--color-border-subtle);
+    --state-icon-size: 2.75rem;
+    --state-icon-bg: var(--color-surface-subtle);
+    --state-icon-color: var(--color-accent);
+    --state-title-size: var(--text-md);
+    --state-eyebrow-color: var(--color-text-muted);
+    --state-media-size: 3.5rem;
+    --state-media-bg: var(--color-surface-subtle);
+    --state-media-color: var(--color-text);
+    --state-border-style: dashed;
+}
+
+/* ---------------------------------------------------------
+   2. BASE STATE
+--------------------------------------------------------- */
+
+.state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--state-gap);
+    padding: var(--state-padding);
+    border-radius: var(--state-radius);
+    border: 1px var(--state-border-style) var(--state-border);
+    background: var(--state-surface);
+    text-align: center;
+}
+
+.state__eyebrow {
+    font-size: var(--text-xxs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--state-eyebrow-color);
+}
+
+.state__icon {
+    width: var(--state-icon-size);
+    height: var(--state-icon-size);
+    border-radius: var(--radius-md);
+    background: var(--state-icon-bg);
+    color: var(--state-icon-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-md);
+}
+
+.state__media {
+    width: var(--state-media-size);
+    height: var(--state-media-size);
+    border-radius: var(--radius-lg);
+    background: var(--state-media-bg);
+    color: var(--state-media-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-lg);
+}
+
+.state__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.state__title {
+    font-size: var(--state-title-size);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.state__text {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+.state__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+}
+
+.state__meta {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+/* ---------------------------------------------------------
+   3. VARIANTS
+--------------------------------------------------------- */
+
+.state--left {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.state--soft {
+    --state-surface: var(--color-surface-subtle);
+    --state-border-style: solid;
+}
+
+.state--inline {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.state--split {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+}
+
+.state--left .state__actions,
+.state--inline .state__actions,
+.state--split .state__actions {
+    justify-content: flex-start;
+}
+
+.state--compact {
+    --state-padding: var(--space-5);
+    --state-gap: var(--space-3);
+}
+
+.state--plain {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.state--center {
+    align-items: center;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .state--inline {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .state--split {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}

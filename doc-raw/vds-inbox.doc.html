@@ -489,6 +489,107 @@ Sections:
     </div>
 </section>
 
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Disabled buttons</h2>
+                <p class="doc-block__summary">
+                    Use <code>disabled</code> on buttons and <code>aria-disabled="true"</code> with
+                    <code>tabindex="-1"</code> on links to indicate unavailable actions.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="inbox-nav">
+                        <div class="inbox-nav__bar">
+                            <div class="inbox-nav__left">
+                                <div class="inbox-search" aria-label="Search (disabled)">
+                                    <button class="inbox-search__toggle" type="button"
+                                            aria-label="Search disabled" disabled>
+                                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                                            <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor"
+                                                    stroke-width="1.6"/>
+                                            <path d="M10.7 10.7 13.5 13.5" fill="none" stroke="currentColor"
+                                                  stroke-width="1.6"
+                                                  stroke-linecap="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="inbox-tabs" role="tablist" aria-label="Disabled inbox views">
+                                <button class="inbox-tab" type="button" role="tab" aria-selected="false" disabled>
+                                    <span>Archived</span>
+                                </button>
+                                <button class="inbox-tab" type="button" role="tab" aria-selected="false"
+                                        aria-disabled="true" tabindex="-1">
+                                    <span>Locked</span>
+                                </button>
+                            </div>
+
+                            <div class="inbox-nav__right">
+                                <button class="inbox-action inbox-action--icon" type="button" disabled
+                                        aria-label="Refresh disabled">
+                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
+                                              stroke-width="1.6"
+                                              stroke-linecap="round"/>
+                                        <path d="M3 8a5 5 0 0 1 9.2-2.6" fill="none" stroke="currentColor"
+                                              stroke-width="1.6"
+                                              stroke-linecap="round"/>
+                                        <path d="M3.1 11.4H4.7V9.8" fill="none" stroke="currentColor" stroke-width="1.6"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12.9 4.6H11.3V6.2" fill="none" stroke="currentColor"
+                                              stroke-width="1.6"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="inbox-action inbox-action--accent" type="button" disabled>New</button>
+                            </div>
+
+                        </div>
+
+                        <div class="inbox-nav__bottom inbox-nav__bottom--left">
+                            <button class="inbox-action" type="button" disabled>Default</button>
+                            <button class="inbox-action inbox-action--danger" type="button" disabled>Delete</button>
+                            <a class="inbox-action inbox-action--flat" href="#" aria-disabled="true"
+                               tabindex="-1">Filter</a>
+                            <button class="inbox-action inbox-action--icon inbox-action--borderless" type="button"
+                                    disabled aria-label="Close disabled">
+                                <svg viewBox="0 0 16 16" aria-hidden="true">
+                                    <path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor"
+                                          stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;button class="inbox-search__toggle" type="button" disabled&gt;...&lt;/button&gt;
+
+&lt;button class="inbox-tab" type="button" role="tab" disabled&gt;Archived&lt;/button&gt;
+&lt;button class="inbox-tab" type="button" role="tab" aria-disabled="true" tabindex="-1"&gt;Locked&lt;/button&gt;
+
+&lt;button class="inbox-action inbox-action--icon" type="button" disabled
+  aria-label="Refresh"&gt;...&lt;/button&gt;
+&lt;button class="inbox-action inbox-action--accent" type="button" disabled&gt;New&lt;/button&gt;
+&lt;button class="inbox-action" type="button" disabled&gt;Default&lt;/button&gt;
+&lt;button class="inbox-action inbox-action--danger" type="button" disabled&gt;Delete&lt;/button&gt;
+
+&lt;a class="inbox-action inbox-action--flat" href="#" aria-disabled="true"
+  tabindex="-1"&gt;Filter&lt;/a&gt;
+&lt;button class="inbox-action inbox-action--icon inbox-action--borderless"
+  type="button" disabled aria-label="Close"&gt;...&lt;/button&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
 <!-- =========================================================
 VDS — INBOX (DOC) — CHUNK 3/5
 Section:
