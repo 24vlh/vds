@@ -42,6 +42,7 @@
 
     --hero-accent-line-thickness: 3px;
     --hero-body-gap: var(--space-4);
+    --hero-padding-inline: var(--space-6);
     --hero-actions-gap: var(--space-4);
     --hero-actions-margin-top: var(--space-6);
     --hero-meta-gap: var(--space-3);

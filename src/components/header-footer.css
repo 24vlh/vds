@@ -32,6 +32,8 @@
     --header-panel-bg: var(--color-surface);
     --header-panel-border: var(--color-border-subtle);
     --header-panel-shadow: var(--shadow-1);
+    --header-shadow: var(--shadow-1);
+    --header-sticky-offset: 0;
 
     --footer-logo-height: var(--space-8);
     --footer-col-min-width: var(--space-40);
@@ -491,7 +493,7 @@
    11. APP SHELL (STICKY FOOTER LAYOUT)
 --------------------------------------------------------- */
 
-.vds-shell {
+.shell {
     min-height: 100vh;
     min-height: 100svh;
     min-height: 100dvh;
@@ -500,11 +502,11 @@
     width: 100%;
 }
 
-.vds-shell__main {
+.shell__main {
     flex: 1 1 auto;
     min-width: 0;
 }
 
-.vds-shell__footer {
+.shell__footer {
     margin-top: auto;
 }

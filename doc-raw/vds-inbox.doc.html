@@ -8,7 +8,7 @@ Sections:
 <!-- =========================================================
 1) OVERVIEW & STRUCTURE
 ========================================================= -->
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <header class="section__header">
             <div class="section__eyebrow">List surfaces</div>
@@ -60,7 +60,7 @@ Sections:
                 <div>
                     <div class="section__list-item-title">Expandable details (CSS helpers)</div>
                     <div class="section__list-item-desc">
-                        Use <code>.vds-inbox-row--open</code> to reveal a details container. JS can toggle the class;
+                        Use <code>.inbox-row--open</code> to reveal a details container. JS can toggle the class;
                         docs include open-state markup.
                     </div>
                 </div>
@@ -69,7 +69,7 @@ Sections:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section section--inset">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -89,7 +89,7 @@ Sections:
                         <li><code>layout.css</code> — page layout helpers used by docs pages.</li>
                         <li>One active theme (<code>slate.css</code> / others) for colours.</li>
                         <li><code>icon.css</code> — icon sizing helpers (used by action buttons + status icons).</li>
-                        <li><code>vds-inbox.css</code> — this component.</li>
+                        <li><code>inbox.css</code> — this component.</li>
                         <li><code>sections.css</code> — documentation layout (for this page).</li>
                         <li><code>doc-block.css</code> — documentation blocks (for this page).</li>
                     </ul>
@@ -104,7 +104,7 @@ Sections:
 &lt;link rel="stylesheet" href="../css/themes/slate.css"&gt;
 
 &lt;link rel="stylesheet" href="../css/icon.css"&gt;
-&lt;link rel="stylesheet" href="../css/vds-inbox.css"&gt;
+&lt;link rel="stylesheet" href="../css/inbox.css"&gt;
 
 &lt;!-- docs only --&gt;
 &lt;link rel="stylesheet" href="../css/sections.css"&gt;
@@ -116,7 +116,7 @@ Sections:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -130,102 +130,98 @@ Sections:
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
-                    <div class="vds-inbox">
+                    <div class="inbox__list">
 
-                        <div class="vds-inbox__list">
+                        <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
+                             aria-label="Inbox row">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
 
-                            <div class="vds-inbox-row vds-inbox-row--normal" tabindex="0" role="group"
-                                 aria-label="Inbox row">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--bookmark"
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--bookmark"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
                                                             <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
                                                         </svg>
                                                     </span>
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--star"
-                                                          aria-hidden="true">
+                                                <span class="inbox-row__status-icon inbox-row__status-icon--star"
+                                                      aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
                                                             <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
                                                         </svg>
                                                     </span>
-                                                </div>
-
-                                                <div class="vds-inbox-row__title">Row title</div>
-
-                                                <div class="vds-inbox-row__labels vds-inbox__hide-sm">
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Work</span>
-                                                    <span class="vds-inbox-label vds-inbox-label--accent">Urgent</span>
-                                                </div>
                                             </div>
 
-                                            <div class="vds-inbox-row__labels vds-inbox__show-sm">
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Work</span>
-                                                <span class="vds-inbox-label vds-inbox-label--accent">Urgent</span>
+                                            <div class="inbox-row__title">Row title</div>
+
+                                            <div class="inbox-row__labels inbox__hide-sm">
+                                                <span class="inbox-label inbox-label--muted">Work</span>
+                                                <span class="inbox-label inbox-label--accent">Urgent</span>
                                             </div>
                                         </div>
 
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--icon" href="#"
-                                               aria-label="Edit">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                     stroke-width="1.8">
-                                                    <path d="M4 20h4l10-10-4-4L4 16v4z"/>
-                                                    <path d="M13 7l4 4"/>
-                                                </svg>
-                                            </a>
-                                            <a class="vds-inbox-action vds-inbox-action--icon vds-inbox-action--danger"
-                                               href="#" aria-label="Delete">
-                                                <svg viewBox="0 0 16 16" aria-hidden="true">
-                                                    <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
-                                                    <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linecap="round"/>
-                                                    <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                            </a>
+                                        <div class="inbox-row__labels inbox__show-sm">
+                                            <span class="inbox-label inbox-label--muted">Work</span>
+                                            <span class="inbox-label inbox-label--accent">Urgent</span>
                                         </div>
-
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                Description / glance text. A short preview fragment of larger content.
-                                            </div>
-                                        </div>
-
                                     </div>
+
+                                    <div class="inbox-row__actions">
+                                        <a class="inbox-action inbox-action--icon" href="#"
+                                           aria-label="Edit">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="1.8">
+                                                <path d="M4 20h4l10-10-4-4L4 16v4z"/>
+                                                <path d="M13 7l4 4"/>
+                                            </svg>
+                                        </a>
+                                        <a class="inbox-action inbox-action--icon inbox-action--danger"
+                                           href="#" aria-label="Delete">
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linecap="round"/>
+                                                <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">
+                                            Description / glance text. A short preview fragment of larger content.
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
                         </div>
 
                     </div>
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox"&gt;
+<pre class="doc-block__code"><code>&lt;div data-vds-inbox&gt;
 
     &lt;!-- optional nav --&gt;
-    &lt;div class="vds-inbox-nav"&gt;...&lt;/div&gt;
+    &lt;div class="inbox-nav"&gt;...&lt;/div&gt;
 
-    &lt;div class="vds-inbox__list"&gt;
+    &lt;div class="inbox__list"&gt;
 
-        &lt;div class="vds-inbox-row vds-inbox-row--normal" tabindex="0"&gt;
-            &lt;button class="vds-inbox-row__main" type="button"&gt;
-                &lt;div class="vds-inbox-row__inner"&gt;
+        &lt;div class="inbox-row inbox-row--normal" tabindex="0"&gt;
+            &lt;button class="inbox-row__main" type="button"&gt;
+                &lt;div class="inbox-row__inner"&gt;
 
-                    &lt;div class="vds-inbox-row__meta"&gt;...&lt;/div&gt;
-                    &lt;div class="vds-inbox-row__actions"&gt;...&lt;/div&gt;
+                    &lt;div class="inbox-row__meta"&gt;...&lt;/div&gt;
+                    &lt;div class="inbox-row__actions"&gt;...&lt;/div&gt;
 
                 &lt;/div&gt;
             &lt;/button&gt;
@@ -243,7 +239,7 @@ Sections:
 <!-- =========================================================
 2) TOP NAVIGATION BAR (SEARCH + TABS + ACTION SLOTS)
 ========================================================= -->
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -258,12 +254,12 @@ Sections:
             <div class="doc-block__body">
                 <div class="doc-block__preview">
 
-                    <div class="vds-inbox-nav">
-                        <div class="vds-inbox-nav__bar">
+                    <div class="inbox-nav">
+                        <div class="inbox-nav__bar">
 
-                            <div class="vds-inbox-nav__left">
-                                <div class="vds-inbox-search" aria-label="Search">
-                                    <button class="vds-inbox-search__toggle" type="button" aria-label="Open search"
+                            <div class="inbox-nav__left">
+                                <div class="inbox-search" aria-label="Search">
+                                    <button class="inbox-search__toggle" type="button" aria-label="Open search"
                                             aria-expanded="false">
                                         <svg viewBox="0 0 16 16" aria-hidden="true">
                                             <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor"
@@ -274,11 +270,11 @@ Sections:
                                         </svg>
                                     </button>
 
-                                    <div class="vds-inbox-search__field">
-                                        <label class="vds-inbox__sr-only" for="inbox-search-1">Search</label>
-                                        <input id="inbox-search-1" class="vds-inbox-search__input" type="text"
+                                    <div class="inbox-search__field">
+                                        <label class="inbox__sr-only" for="inbox-search-1">Search</label>
+                                        <input id="inbox-search-1" class="inbox-search__input" type="text"
                                                placeholder="Search…"/>
-                                        <button class="vds-inbox-action vds-inbox-action--icon vds-inbox-action--borderless"
+                                        <button class="inbox-action inbox-action--icon inbox-action--borderless"
                                                 type="button" aria-label="Close search">
                                             <svg viewBox="0 0 16 16" aria-hidden="true">
                                                 <path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor"
@@ -289,24 +285,24 @@ Sections:
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-tabs" role="tablist" aria-label="Inbox views">
-                                <button class="vds-inbox-tab is-active" type="button" role="tab" aria-selected="true">
+                            <div class="inbox-tabs" role="tablist" aria-label="Inbox views">
+                                <button class="inbox-tab is-active" type="button" role="tab" aria-selected="true">
                                     <span>Messages</span>
-                                    <span class="vds-inbox-tab__count" aria-label="Messages count">12</span>
+                                    <span class="inbox-tab__count" aria-label="Messages count">12</span>
                                 </button>
-                                <button class="vds-inbox-tab" type="button" role="tab" aria-selected="false">
+                                <button class="inbox-tab" type="button" role="tab" aria-selected="false">
                                     <span>Emails</span>
-                                    <span class="vds-inbox-tab__count" aria-label="Emails count">4</span>
+                                    <span class="inbox-tab__count" aria-label="Emails count">4</span>
                                 </button>
-                                <button class="vds-inbox-tab vds-inbox__hide-sm" type="button" role="tab"
+                                <button class="inbox-tab inbox__hide-sm" type="button" role="tab"
                                         aria-selected="false">
                                     <span>Ideas</span>
-                                    <span class="vds-inbox-tab__count" aria-label="Ideas count">31</span>
+                                    <span class="inbox-tab__count" aria-label="Ideas count">31</span>
                                 </button>
                             </div>
 
-                            <div class="vds-inbox-nav__right">
-                                <a class="vds-inbox-action vds-inbox-action--icon" href="#" aria-label="Refresh">
+                            <div class="inbox-nav__right">
+                                <a class="inbox-action inbox-action--icon" href="#" aria-label="Refresh">
                                     <svg viewBox="0 0 16 16" aria-hidden="true">
                                         <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
                                               stroke-width="1.6"
@@ -321,19 +317,19 @@ Sections:
                                               stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
-                                <a class="vds-inbox-action vds-inbox-action--accent" href="#">New</a>
+                                <a class="inbox-action inbox-action--accent" href="#">New</a>
                             </div>
 
                         </div>
 
-                        <div class="vds-inbox-nav__bottom vds-inbox-nav__bottom--split">
-                            <div class="vds-inbox-nav__bottom-left">
-                                <a class="vds-inbox-action vds-inbox-action--flat" href="#">Filter</a>
-                                <a class="vds-inbox-action vds-inbox-action--flat vds-inbox__hide-sm" href="#">Bulk
+                        <div class="inbox-nav__bottom inbox-nav__bottom--split">
+                            <div class="inbox-nav__bottom-left">
+                                <a class="inbox-action inbox-action--flat" href="#">Filter</a>
+                                <a class="inbox-action inbox-action--flat inbox__hide-sm" href="#">Bulk
                                     select</a>
                             </div>
-                            <div class="vds-inbox-nav__bottom-right">
-                                <a class="vds-inbox-action vds-inbox-action--flat" href="#">Clear</a>
+                            <div class="inbox-nav__bottom-right">
+                                <a class="inbox-action inbox-action--flat" href="#">Clear</a>
                             </div>
                         </div>
                     </div>
@@ -341,39 +337,39 @@ Sections:
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-nav"&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox-nav"&gt;
 
-    &lt;div class="vds-inbox-nav__bar"&gt;
+    &lt;div class="inbox-nav__bar"&gt;
 
-        &lt;div class="vds-inbox-nav__left"&gt;
-            &lt;div class="vds-inbox-search"&gt;
-                &lt;button class="vds-inbox-search__toggle" aria-expanded="false"&gt;...&lt;/button&gt;
-                &lt;div class="vds-inbox-search__field"&gt;
-                    &lt;input class="vds-inbox-search__input" type="text" placeholder="Search…" /&gt;
-                    &lt;button class="vds-inbox-action vds-inbox-action--icon vds-inbox-action--borderless"
+        &lt;div class="inbox-nav__left"&gt;
+            &lt;div class="inbox-search"&gt;
+                &lt;button class="inbox-search__toggle" aria-expanded="false"&gt;...&lt;/button&gt;
+                &lt;div class="inbox-search__field"&gt;
+                    &lt;input class="inbox-search__input" type="text" placeholder="Search…" /&gt;
+                    &lt;button class="inbox-action inbox-action--icon inbox-action--borderless"
                         aria-label="Close search"&gt;...&lt;/button&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
 
-        &lt;div class="vds-inbox-tabs" role="tablist"&gt;
-            &lt;button class="vds-inbox-tab is-active" role="tab" aria-selected="true"&gt;
+        &lt;div class="inbox-tabs" role="tablist"&gt;
+            &lt;button class="inbox-tab is-active" role="tab" aria-selected="true"&gt;
                 &lt;span&gt;Messages&lt;/span&gt;
-                &lt;span class="vds-inbox-tab__count"&gt;12&lt;/span&gt;
+                &lt;span class="inbox-tab__count"&gt;12&lt;/span&gt;
             &lt;/button&gt;
-            &lt;button class="vds-inbox-tab" role="tab" aria-selected="false"&gt;...&lt;/button&gt;
+            &lt;button class="inbox-tab" role="tab" aria-selected="false"&gt;...&lt;/button&gt;
         &lt;/div&gt;
 
-        &lt;div class="vds-inbox-nav__right"&gt;
-            &lt;a class="vds-inbox-action vds-inbox-action--icon" href="#"&gt;...&lt;/a&gt;
-            &lt;a class="vds-inbox-action vds-inbox-action--accent" href="#"&gt;New&lt;/a&gt;
+        &lt;div class="inbox-nav__right"&gt;
+            &lt;a class="inbox-action inbox-action--icon" href="#"&gt;...&lt;/a&gt;
+            &lt;a class="inbox-action inbox-action--accent" href="#"&gt;New&lt;/a&gt;
         &lt;/div&gt;
 
     &lt;/div&gt;
 
-    &lt;div class="vds-inbox-nav__bottom vds-inbox-nav__bottom--split"&gt;
-        &lt;div class="vds-inbox-nav__bottom-left"&gt;...&lt;/div&gt;
-        &lt;div class="vds-inbox-nav__bottom-right"&gt;...&lt;/div&gt;
+    &lt;div class="inbox-nav__bottom inbox-nav__bottom--split"&gt;
+        &lt;div class="inbox-nav__bottom-left"&gt;...&lt;/div&gt;
+        &lt;div class="inbox-nav__bottom-right"&gt;...&lt;/div&gt;
     &lt;/div&gt;
 
 &lt;/div&gt;
@@ -384,16 +380,16 @@ Sections:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Search open state + full-width search</h2>
                 <p class="doc-block__summary">
                     To demonstrate behaviour without JavaScript: apply <code>.is-open</code> on
-                    <code>.vds-inbox-search</code>
+                    <code>.inbox-search</code>
                     or set <code>aria-expanded="true"</code> on the toggle button. For full-width search across the
-                    entire toolbar, add <code>.vds-inbox-nav__bar--search-full</code> on the nav bar while the search
+                    entire toolbar, add <code>.inbox-nav__bar--search-full</code> on the nav bar while the search
                     is open (and focused), and keep <code>.is-open</code> on the search.
                 </p>
             </header>
@@ -401,13 +397,13 @@ Sections:
             <div class="doc-block__body">
                 <div class="doc-block__preview">
 
-                    <div class="vds-inbox-nav">
-                        <div class="vds-inbox-nav__bar vds-inbox-nav__bar--search-full">
+                    <div class="inbox-nav">
+                        <div class="inbox-nav__bar inbox-nav__bar--search-full">
 
-                            <div class="vds-inbox-nav__left">
-                                <div class="vds-inbox-search is-open"
+                            <div class="inbox-nav__left">
+                                <div class="inbox-search is-open"
                                      aria-label="Search (full width)">
-                                    <button class="vds-inbox-search__toggle" type="button" aria-label="Close search"
+                                    <button class="inbox-search__toggle" type="button" aria-label="Close search"
                                             aria-expanded="true">
                                         <svg viewBox="0 0 16 16" aria-hidden="true">
                                             <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor"
@@ -418,11 +414,11 @@ Sections:
                                         </svg>
                                     </button>
 
-                                    <div class="vds-inbox-search__field">
-                                        <label class="vds-inbox__sr-only" for="inbox-search-2">Search</label>
-                                        <input id="inbox-search-2" class="vds-inbox-search__input" type="text"
+                                    <div class="inbox-search__field">
+                                        <label class="inbox__sr-only" for="inbox-search-2">Search</label>
+                                        <input id="inbox-search-2" class="inbox-search__input" type="text"
                                                placeholder="Search all…"/>
-                                        <button class="vds-inbox-action vds-inbox-action--icon vds-inbox-action--borderless"
+                                        <button class="inbox-action inbox-action--icon inbox-action--borderless"
                                                 type="button" aria-label="Close search">
                                             <svg viewBox="0 0 16 16" aria-hidden="true">
                                                 <path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor"
@@ -433,19 +429,19 @@ Sections:
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-tabs" role="tablist" aria-label="Inbox views">
-                                <button class="vds-inbox-tab is-active" type="button" role="tab" aria-selected="true">
+                            <div class="inbox-tabs" role="tablist" aria-label="Inbox views">
+                                <button class="inbox-tab is-active" type="button" role="tab" aria-selected="true">
                                     <span>Messages</span>
-                                    <span class="vds-inbox-tab__count" aria-label="Messages count">12</span>
+                                    <span class="inbox-tab__count" aria-label="Messages count">12</span>
                                 </button>
-                                <button class="vds-inbox-tab" type="button" role="tab" aria-selected="false">
+                                <button class="inbox-tab" type="button" role="tab" aria-selected="false">
                                     <span>Emails</span>
-                                    <span class="vds-inbox-tab__count" aria-label="Emails count">4</span>
+                                    <span class="inbox-tab__count" aria-label="Emails count">4</span>
                                 </button>
                             </div>
 
-                            <div class="vds-inbox-nav__right">
-                                <a class="vds-inbox-action vds-inbox-action--icon" href="#" aria-label="Refresh">
+                            <div class="inbox-nav__right">
+                                <a class="inbox-action inbox-action--icon" href="#" aria-label="Refresh">
                                     <svg viewBox="0 0 16 16" aria-hidden="true">
                                         <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
                                               stroke-width="1.6"
@@ -460,7 +456,7 @@ Sections:
                                               stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
-                                <a class="vds-inbox-action vds-inbox-action--accent" href="#">New</a>
+                                <a class="inbox-action inbox-action--accent" href="#">New</a>
                             </div>
 
                         </div>
@@ -469,22 +465,22 @@ Sections:
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-search is-open"&gt;
-    &lt;button class="vds-inbox-search__toggle" aria-expanded="true"&gt;...&lt;/button&gt;
-    &lt;div class="vds-inbox-search__field"&gt;
-        &lt;input class="vds-inbox-search__input" /&gt;
-        &lt;button class="vds-inbox-action vds-inbox-action--icon vds-inbox-action--borderless"
+<pre class="doc-block__code"><code>&lt;div class="inbox-search is-open"&gt;
+    &lt;button class="inbox-search__toggle" aria-expanded="true"&gt;...&lt;/button&gt;
+    &lt;div class="inbox-search__field"&gt;
+        &lt;input class="inbox-search__input" /&gt;
+        &lt;button class="inbox-action inbox-action--icon inbox-action--borderless"
             aria-label="Close search"&gt;...&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- full toolbar takeover --&gt;
-&lt;div class="vds-inbox-nav__bar vds-inbox-nav__bar--search-full"&gt;
-    &lt;div class="vds-inbox-nav__left"&gt;
-        &lt;div class="vds-inbox-search is-open"&gt;...&lt;/div&gt;
+&lt;div class="inbox-nav__bar inbox-nav__bar--search-full"&gt;
+    &lt;div class="inbox-nav__left"&gt;
+        &lt;div class="inbox-search is-open"&gt;...&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="vds-inbox-tabs"&gt;...&lt;/div&gt;
-    &lt;div class="vds-inbox-nav__right"&gt;...&lt;/div&gt;
+    &lt;div class="inbox-tabs"&gt;...&lt;/div&gt;
+    &lt;div class="inbox-nav__right"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
                 </div>
@@ -499,92 +495,89 @@ Section:
 3) Row Variants (minimal / normal / rich / mega) + flat vs rounded list
 ========================================================= -->
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Row variants (4 densities)</h2>
                 <p class="doc-block__summary">
-                    Use one of: <code>.vds-inbox-row--minimal</code>, <code>.vds-inbox-row--normal</code>,
-                    <code>.vds-inbox-row--rich</code>, <code>.vds-inbox-row--mega</code>.
+                    Use one of: <code>.inbox-row--minimal</code>, <code>.inbox-row--normal</code>,
+                    <code>.inbox-row--rich</code>, <code>.inbox-row--mega</code>.
                     Each variant changes padding and typography, while preserving the same structure and reflow rules.
                 </p>
             </header>
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
-
-                    <div class="vds-inbox">
-
-                        <div class="vds-inbox__list">
-                            <!-- 1) MINIMAL -->
-                            <div class="vds-inbox-row vds-inbox-row--minimal is-bookmarked" tabindex="0" role="group"
-                                 aria-label="Minimal row">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--bookmark"
+                    <div class="inbox__list">
+                        <!-- 1) MINIMAL -->
+                        <div class="inbox-row inbox-row--minimal is-bookmarked" tabindex="0" role="group"
+                             aria-label="Minimal row">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--bookmark"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
                                                             <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
                                                         </svg>
                                                     </span>
-                                                </div>
-
-                                                <div class="vds-inbox-row__title">Minimal: title only (plus flags + 2
-                                                    actions)
-                                                </div>
-
-                                                <div class="vds-inbox-row__labels vds-inbox__hide-sm">
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Quick</span>
-                                                </div>
                                             </div>
 
-                                            <div class="vds-inbox-row__labels vds-inbox__show-sm">
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Quick</span>
+                                            <div class="inbox-row__title">Minimal: title only (plus flags + 2
+                                                actions)
+                                            </div>
+
+                                            <div class="inbox-row__labels inbox__hide-sm">
+                                                <span class="inbox-label inbox-label--muted">Quick</span>
                                             </div>
                                         </div>
 
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--icon vds-inbox-action--flat"
-                                               href="#" aria-label="Edit">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                     stroke-width="1.8">
-                                                    <path d="M4 20h4l10-10-4-4L4 16v4z"/>
-                                                    <path d="M13 7l4 4"/>
-                                                </svg>
-                                            </a>
-                                            <a class="vds-inbox-action vds-inbox-action--icon vds-inbox-action--danger vds-inbox-action--flat"
-                                               href="#" aria-label="Delete">
-                                                <svg viewBox="0 0 16 16" aria-hidden="true">
-                                                    <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
-                                                    <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linecap="round"/>
-                                                    <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                            </a>
+                                        <div class="inbox-row__labels inbox__show-sm">
+                                            <span class="inbox-label inbox-label--muted">Quick</span>
                                         </div>
-
                                     </div>
+
+                                    <div class="inbox-row__actions">
+                                        <a class="inbox-action inbox-action--icon inbox-action--flat"
+                                           href="#" aria-label="Edit">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="1.8">
+                                                <path d="M4 20h4l10-10-4-4L4 16v4z"/>
+                                                <path d="M13 7l4 4"/>
+                                            </svg>
+                                        </a>
+                                        <a class="inbox-action inbox-action--icon inbox-action--danger inbox-action--flat"
+                                           href="#" aria-label="Delete">
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linecap="round"/>
+                                                <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- 2) NORMAL -->
-                            <div class="vds-inbox-row vds-inbox-row--normal is-starred" tabindex="0" role="group"
-                                 aria-label="Normal row">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__badges">
-                                                <span class="vds-inbox-badge vds-inbox-badge--info">
+                        <!-- 2) NORMAL -->
+                        <div class="inbox-row inbox-row--normal is-starred" tabindex="0" role="group"
+                             aria-label="Normal row">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__badges">
+                                                <span class="inbox-badge inbox-badge--info">
                                                     <span aria-hidden="true">
                                                         <svg viewBox="0 0 16 16">
                                                             <circle cx="8" cy="8" r="6.5" fill="none"
@@ -597,158 +590,158 @@ Section:
                                                     </span>
                                                     New
                                                 </span>
-                                                <span class="vds-inbox-badge">Due today</span>
-                                                <span class="vds-inbox-badge vds-inbox__hide-sm">Team</span>
-                                            </div>
+                                            <span class="inbox-badge">Due today</span>
+                                            <span class="inbox-badge inbox__hide-sm">Team</span>
+                                        </div>
 
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--star"
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--star"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
                                                             <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
                                                         </svg>
                                                     </span>
-                                                </div>
-
-                                                <div class="vds-inbox-row__title">Normal: title + glance + optional
-                                                    badges
-                                                </div>
-
-                                                <div class="vds-inbox-row__labels vds-inbox__hide-sm">
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Email</span>
-                                                    <span class="vds-inbox-label vds-inbox-label--accent">Important</span>
-                                                </div>
                                             </div>
 
-                                            <div class="vds-inbox-row__labels vds-inbox__show-sm">
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Email</span>
-                                                <span class="vds-inbox-label vds-inbox-label--accent">Important</span>
+                                            <div class="inbox-row__title">Normal: title + glance + optional
+                                                badges
+                                            </div>
+
+                                            <div class="inbox-row__labels inbox__hide-sm">
+                                                <span class="inbox-label inbox-label--muted">Email</span>
+                                                <span class="inbox-label inbox-label--accent">Important</span>
                                             </div>
                                         </div>
 
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--icon" href="#"
-                                               aria-label="Open">
-                                                <svg viewBox="0 0 16 16" aria-hidden="true">
-                                                    <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
-                                                    <path d="M3.5 8h7" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linecap="round"/>
-                                                    <path d="M7 5.5 10.5 8 7 10.5" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </a>
-                                            <a class="vds-inbox-action vds-inbox-action--icon" href="#"
-                                               aria-label="Edit">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                     stroke-width="1.8">
-                                                    <path d="M4 20h4l10-10-4-4L4 16v4z"/>
-                                                    <path d="M13 7l4 4"/>
-                                                </svg>
-                                            </a>
-                                            <a class="vds-inbox-action vds-inbox-action--icon vds-inbox-action--danger"
-                                               href="#" aria-label="Delete">
-                                                <svg viewBox="0 0 16 16" aria-hidden="true">
-                                                    <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
-                                                    <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linecap="round"/>
-                                                    <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                            </a>
+                                        <div class="inbox-row__labels inbox__show-sm">
+                                            <span class="inbox-label inbox-label--muted">Email</span>
+                                            <span class="inbox-label inbox-label--accent">Important</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="inbox-row__actions">
+                                        <a class="inbox-action inbox-action--icon" href="#"
+                                           aria-label="Open">
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M3.5 8h7" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linecap="round"/>
+                                                <path d="M7 5.5 10.5 8 7 10.5" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+                                        <a class="inbox-action inbox-action--icon" href="#"
+                                           aria-label="Edit">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="1.8">
+                                                <path d="M4 20h4l10-10-4-4L4 16v4z"/>
+                                                <path d="M13 7l4 4"/>
+                                            </svg>
+                                        </a>
+                                        <a class="inbox-action inbox-action--icon inbox-action--danger"
+                                           href="#" aria-label="Delete">
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linecap="round"/>
+                                                <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">
+                                            Short preview fragment. Keep this line concise so lists remain
+                                            scannable.
+                                            On rich/mega rows this will show more lines by default.
                                         </div>
 
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                Short preview fragment. Keep this line concise so lists remain
-                                                scannable.
-                                                On rich/mega rows this will show more lines by default.
-                                            </div>
-
-                                            <div class="vds-inbox-row__metafoot vds-inbox__hide-sm">
-                                                <span><strong>From</strong> Alex</span>
-                                                <span><strong>Updated</strong> 10:42</span>
-                                                <span><strong>ID</strong> #4821</span>
-                                            </div>
+                                        <div class="inbox-row__metafoot inbox__hide-sm">
+                                            <span><strong>From</strong> Alex</span>
+                                            <span><strong>Updated</strong> 10:42</span>
+                                            <span><strong>ID</strong> #4821</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- 3) RICH -->
-                            <div class="vds-inbox-row vds-inbox-row--rich is-flagged vds-inbox-row--flag-3" tabindex="0"
-                                 role="group" aria-label="Rich row (flagged)">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
+                        <!-- 3) RICH -->
+                        <div class="inbox-row inbox-row--rich is-flagged inbox-row--flag-3" tabindex="0"
+                             role="group" aria-label="Rich row (flagged)">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
 
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__badges">
-                                                <span class="vds-inbox-badge vds-inbox-badge--success">Verified</span>
-                                                <span class="vds-inbox-badge vds-inbox-badge--info">Needs review</span>
-                                                <span class="vds-inbox-badge vds-inbox__hide-sm vds-inbox__hide-md">Pinned</span>
-                                            </div>
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__badges">
+                                            <span class="inbox-badge inbox-badge--success">Verified</span>
+                                            <span class="inbox-badge inbox-badge--info">Needs review</span>
+                                            <span class="inbox-badge inbox__hide-sm inbox__hide-md">Pinned</span>
+                                        </div>
 
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--bookmark vds-inbox__hide-sm"
-                                                          aria-hidden="true">
+                                                <span class="inbox-row__status-icon inbox-row__status-icon--bookmark inbox__hide-sm"
+                                                      aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
                                                             <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
                                                         </svg>
                                                     </span>
-                                                </div>
-
-                                                <div class="vds-inbox-row__title">Rich: multi-line glance + details
-                                                    chips
-                                                </div>
-
-                                                <div class="vds-inbox-row__labels vds-inbox__hide-sm">
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Project</span>
-                                                    <span class="vds-inbox-label vds-inbox-label--accent">Client</span>
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Internal</span>
-                                                </div>
                                             </div>
 
-                                            <div class="vds-inbox-row__labels vds-inbox__show-sm">
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Project</span>
-                                                <span class="vds-inbox-label vds-inbox-label--accent">Client</span>
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Internal</span>
+                                            <div class="inbox-row__title">Rich: multi-line glance + details
+                                                chips
+                                            </div>
+
+                                            <div class="inbox-row__labels inbox__hide-sm">
+                                                <span class="inbox-label inbox-label--muted">Project</span>
+                                                <span class="inbox-label inbox-label--accent">Client</span>
+                                                <span class="inbox-label inbox-label--muted">Internal</span>
                                             </div>
                                         </div>
 
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action" href="#">Open</a>
-                                            <a class="vds-inbox-action" href="#">Edit</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox__hide-sm"
-                                               href="#">Duplicate</a>
-                                            <a class="vds-inbox-action vds-inbox-action--danger" href="#">Delete</a>
+                                        <div class="inbox-row__labels inbox__show-sm">
+                                            <span class="inbox-label inbox-label--muted">Project</span>
+                                            <span class="inbox-label inbox-label--accent">Client</span>
+                                            <span class="inbox-label inbox-label--muted">Internal</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="inbox-row__actions">
+                                        <a class="inbox-action" href="#">Open</a>
+                                        <a class="inbox-action" href="#">Edit</a>
+                                        <a class="inbox-action inbox-action--flat inbox__hide-sm"
+                                           href="#">Duplicate</a>
+                                        <a class="inbox-action inbox-action--danger" href="#">Delete</a>
+                                    </div>
+
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">
+                                            Rich rows are intended for “inbox plus context”. Still keep scanability.
+                                            The glance is clamped by default and expands when the row becomes open.
                                         </div>
 
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                Rich rows are intended for “inbox plus context”. Still keep scanability.
-                                                The glance is clamped by default and expands when the row becomes open.
-                                            </div>
-
-                                            <div class="vds-inbox-row__details">
-                                                <span class="vds-inbox-row__details-item">
+                                        <div class="inbox-row__details">
+                                                <span class="inbox-row__details-item">
                                                     <svg viewBox="0 0 16 16" aria-hidden="true">
                                                         <path d="M3.5 5.5h9v7h-9z" fill="none" stroke="currentColor"
                                                               stroke-width="1.6" stroke-linejoin="round"/>
@@ -757,7 +750,7 @@ Section:
                                                     </svg>
                                                     3 attachments
                                                 </span>
-                                                <span class="vds-inbox-row__details-item">
+                                            <span class="inbox-row__details-item">
                                                     <svg viewBox="0 0 16 16" aria-hidden="true">
                                                         <path d="M8 3v5l3 2" fill="none" stroke="currentColor"
                                                               stroke-width="1.6"
@@ -767,7 +760,7 @@ Section:
                                                     </svg>
                                                     Updated 2h ago
                                                 </span>
-                                                <span class="vds-inbox-row__details-item vds-inbox__hide-sm">
+                                            <span class="inbox-row__details-item inbox__hide-sm">
                                                     <svg viewBox="0 0 16 16" aria-hidden="true">
                                                         <path d="M3.5 8h9" fill="none" stroke="currentColor"
                                                               stroke-width="1.6" stroke-linecap="round"/>
@@ -776,118 +769,116 @@ Section:
                                                     </svg>
                                                     +2 fields
                                                 </span>
-                                            </div>
                                         </div>
-
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- 4) MEGA -->
-                            <div class="vds-inbox-row vds-inbox-row--mega is-flagged vds-inbox-row--flag-5 is-bookmarked is-starred"
-                                 tabindex="0" role="group" aria-label="Mega row">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
+                        <!-- 4) MEGA -->
+                        <div class="inbox-row inbox-row--mega is-flagged inbox-row--flag-5 is-bookmarked is-starred"
+                             tabindex="0" role="group" aria-label="Mega row">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
 
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__badges">
-                                                <span class="vds-inbox-badge vds-inbox-badge--accent">Priority</span>
-                                                <span class="vds-inbox-badge">Client: ACME</span>
-                                                <span class="vds-inbox-badge vds-inbox__hide-sm">Pipeline</span>
-                                                <span class="vds-inbox-badge vds-inbox__hide-sm">3 tags</span>
-                                            </div>
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__badges">
+                                            <span class="inbox-badge inbox-badge--accent">Priority</span>
+                                            <span class="inbox-badge">Client: ACME</span>
+                                            <span class="inbox-badge inbox__hide-sm">Pipeline</span>
+                                            <span class="inbox-badge inbox__hide-sm">3 tags</span>
+                                        </div>
 
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--bookmark"
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--bookmark"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
                                                             <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
                                                         </svg>
                                                     </span>
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--star"
-                                                          aria-hidden="true">
+                                                <span class="inbox-row__status-icon inbox-row__status-icon--star"
+                                                      aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
                                                             <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
                                                         </svg>
                                                     </span>
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
-                                                          aria-hidden="true">
+                                                <span class="inbox-row__status-icon inbox-row__status-icon--flag"
+                                                      aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
-                                                </div>
-
-                                                <div class="vds-inbox-row__title">Mega: maximum metadata density (still
-                                                    scan-first)
-                                                </div>
-
-                                                <div class="vds-inbox-row__labels vds-inbox__hide-sm">
-                                                    <span class="vds-inbox-label vds-inbox-label--accent">Action required</span>
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Week 04</span>
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Owner: You</span>
-                                                </div>
                                             </div>
 
-                                            <div class="vds-inbox-row__labels vds-inbox__show-sm">
-                                                <span class="vds-inbox-label vds-inbox-label--accent">Action required</span>
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Week 04</span>
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Owner: You</span>
+                                            <div class="inbox-row__title">Mega: maximum metadata density (still
+                                                scan-first)
+                                            </div>
+
+                                            <div class="inbox-row__labels inbox__hide-sm">
+                                                <span class="inbox-label inbox-label--accent">Action required</span>
+                                                <span class="inbox-label inbox-label--muted">Week 04</span>
+                                                <span class="inbox-label inbox-label--muted">Owner: You</span>
                                             </div>
                                         </div>
 
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--accent" href="#">Open</a>
-                                            <a class="vds-inbox-action" href="#">Edit</a>
-                                            <a class="vds-inbox-action" href="#">Assign</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox__hide-sm"
-                                               href="#">Pin</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox__hide-sm"
-                                               href="#">Export</a>
-                                            <a class="vds-inbox-action vds-inbox-action--danger" href="#">Delete</a>
+                                        <div class="inbox-row__labels inbox__show-sm">
+                                            <span class="inbox-label inbox-label--accent">Action required</span>
+                                            <span class="inbox-label inbox-label--muted">Week 04</span>
+                                            <span class="inbox-label inbox-label--muted">Owner: You</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="inbox-row__actions">
+                                        <a class="inbox-action inbox-action--accent" href="#">Open</a>
+                                        <a class="inbox-action" href="#">Edit</a>
+                                        <a class="inbox-action" href="#">Assign</a>
+                                        <a class="inbox-action inbox-action--flat inbox__hide-sm"
+                                           href="#">Pin</a>
+                                        <a class="inbox-action inbox-action--flat inbox__hide-sm"
+                                           href="#">Export</a>
+                                        <a class="inbox-action inbox-action--danger" href="#">Delete</a>
+                                    </div>
+
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">
+                                            Mega rows are for “inbox + dashboard”. Use details chips and metafoot to
+                                            show structured fields.
+                                            Keep the row readable: avoid more than 1–2 lines per sub-row.
                                         </div>
 
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                Mega rows are for “inbox + dashboard”. Use details chips and metafoot to
-                                                show structured fields.
-                                                Keep the row readable: avoid more than 1–2 lines per sub-row.
-                                            </div>
+                                        <div class="inbox-row__details">
+                                            <span class="inbox-row__details-item">Status: Pending</span>
+                                            <span class="inbox-row__details-item">Stage: Review</span>
+                                            <span class="inbox-row__details-item inbox__hide-sm">ETA: Fri</span>
+                                            <span class="inbox-row__details-item inbox__hide-sm">Score: 8.4</span>
+                                        </div>
 
-                                            <div class="vds-inbox-row__details">
-                                                <span class="vds-inbox-row__details-item">Status: Pending</span>
-                                                <span class="vds-inbox-row__details-item">Stage: Review</span>
-                                                <span class="vds-inbox-row__details-item vds-inbox__hide-sm">ETA: Fri</span>
-                                                <span class="vds-inbox-row__details-item vds-inbox__hide-sm">Score: 8.4</span>
-                                            </div>
-
-                                            <div class="vds-inbox-row__metafoot">
-                                                <span><strong>Created</strong> 2026-01-12</span>
-                                                <span><strong>Updated</strong> 2026-01-21</span>
-                                                <span class="vds-inbox__hide-sm"><strong>Ref</strong> INB-99201</span>
-                                                <span class="vds-inbox__hide-sm"><strong>Source</strong> API</span>
-                                            </div>
+                                        <div class="inbox-row__metafoot">
+                                            <span><strong>Created</strong> 2026-01-12</span>
+                                            <span><strong>Updated</strong> 2026-01-21</span>
+                                            <span class="inbox__hide-sm"><strong>Ref</strong> INB-99201</span>
+                                            <span class="inbox__hide-sm"><strong>Source</strong> API</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
 
+                    </div>
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox__list"&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox__list"&gt;
 
-  &lt;div class="vds-inbox-row vds-inbox-row--minimal"&gt;...&lt;/div&gt;
-  &lt;div class="vds-inbox-row vds-inbox-row--normal"&gt;...&lt;/div&gt;
-  &lt;div class="vds-inbox-row vds-inbox-row--rich"&gt;...&lt;/div&gt;
-  &lt;div class="vds-inbox-row vds-inbox-row--mega"&gt;...&lt;/div&gt;
+  &lt;div class="inbox-row inbox-row--minimal"&gt;...&lt;/div&gt;
+  &lt;div class="inbox-row inbox-row--normal"&gt;...&lt;/div&gt;
+  &lt;div class="inbox-row inbox-row--rich"&gt;...&lt;/div&gt;
+  &lt;div class="inbox-row inbox-row--mega"&gt;...&lt;/div&gt;
 
 &lt;/div&gt;
 </code></pre>
@@ -897,13 +888,13 @@ Section:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">List styles: rounded cards vs flat separators</h2>
                 <p class="doc-block__summary">
-                    Default is “card rows” (rounded + gap). Use <code>.vds-inbox--flat</code> on the inbox root to
+                    Default is “card rows” (rounded + gap). Use <code>.inbox--flat</code> on the inbox root to
                     remove side borders + radii, add top/bottom borders to the list, and separate items with a single
                     divider.
                 </p>
@@ -912,24 +903,24 @@ Section:
             <div class="doc-block__body">
                 <div class="doc-block__preview">
 
-                    <div class="vds-inbox vds-inbox--flat">
-                        <div class="vds-inbox__list">
+                    <div class="inbox inbox--flat">
+                        <div class="inbox__list">
 
-                            <div class="vds-inbox-row vds-inbox-row--normal" tabindex="0" role="group"
+                            <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
                                  aria-label="Flat row 1">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">Flat list: separator-only rows</div>
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__title">Flat list: separator-only rows</div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Edit</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="#">Edit</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">
                                                 No left/right borders on each row; list carries top/bottom border.
                                             </div>
                                         </div>
@@ -937,14 +928,14 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-row vds-inbox-row--normal is-flagged vds-inbox-row--flag-2"
+                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-2"
                                  tabindex="0" role="group" aria-label="Flat row 2 (flagged)">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
@@ -952,11 +943,11 @@ Section:
                                                         </svg>
                                                     </span>
                                                 </div>
-                                                <div class="vds-inbox-row__title">Flat list still supports flags</div>
+                                                <div class="inbox-row__title">Flat list still supports flags</div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--icon vds-inbox-action--flat"
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--icon inbox-action--flat"
                                                href="#" aria-label="Open">
                                                 <svg viewBox="0 0 16 16" aria-hidden="true">
                                                     <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
@@ -971,8 +962,8 @@ Section:
                                                 </svg>
                                             </a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">
                                                 Flag strip remains on the left; colour helps scan.
                                             </div>
                                         </div>
@@ -986,10 +977,10 @@ Section:
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox vds-inbox--flat"&gt;
-  &lt;div class="vds-inbox__list"&gt;
-    &lt;div class="vds-inbox-row"&gt;...&lt;/div&gt;
-    &lt;div class="vds-inbox-row"&gt;...&lt;/div&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox inbox--flat"&gt;
+  &lt;div class="inbox__list"&gt;
+    &lt;div class="inbox-row"&gt;...&lt;/div&gt;
+    &lt;div class="inbox-row"&gt;...&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -1010,78 +1001,74 @@ Section:
   - Flat vs rich actions
 ========================================================= -->
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Badges row (full-width)</h2>
                 <p class="doc-block__summary">
-                    Badges live in <code>.vds-inbox-row__badges</code> and always span the row width
+                    Badges live in <code>.inbox-row__badges</code> and always span the row width
                     (grid column <code>1 / -1</code>). Use for scan-first states (new, due, verified, etc.).
                 </p>
             </header>
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
+                    <div class="inbox__list">
 
-                    <div class="vds-inbox">
-                        <div class="vds-inbox__list">
+                        <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
+                             aria-label="Row with badges">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
 
-                            <div class="vds-inbox-row vds-inbox-row--normal" tabindex="0" role="group"
-                                 aria-label="Row with badges">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__badges">
+                                            <span class="inbox-badge inbox-badge--info">New</span>
+                                            <span class="inbox-badge">Due today</span>
+                                            <span class="inbox-badge inbox-badge--success">Verified</span>
+                                            <span class="inbox-badge inbox__hide-sm">Team</span>
+                                            <span class="inbox-badge inbox__hide-sm">Client</span>
+                                        </div>
 
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__badges">
-                                                <span class="vds-inbox-badge vds-inbox-badge--info">New</span>
-                                                <span class="vds-inbox-badge">Due today</span>
-                                                <span class="vds-inbox-badge vds-inbox-badge--success">Verified</span>
-                                                <span class="vds-inbox-badge vds-inbox__hide-sm">Team</span>
-                                                <span class="vds-inbox-badge vds-inbox__hide-sm">Client</span>
-                                            </div>
-
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">Badges sit above the title</div>
-                                                <div class="vds-inbox-row__labels vds-inbox__hide-sm">
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Email</span>
-                                                    <span class="vds-inbox-label vds-inbox-label--accent">Hot</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="vds-inbox-row__labels vds-inbox__show-sm">
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Email</span>
-                                                <span class="vds-inbox-label vds-inbox-label--accent">Hot</span>
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__title">Badges sit above the title</div>
+                                            <div class="inbox-row__labels inbox__hide-sm">
+                                                <span class="inbox-label inbox-label--muted">Email</span>
+                                                <span class="inbox-label inbox-label--accent">Hot</span>
                                             </div>
                                         </div>
 
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox__hide-sm"
-                                               href="#">Snooze</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Archive</a>
+                                        <div class="inbox-row__labels inbox__show-sm">
+                                            <span class="inbox-label inbox-label--muted">Email</span>
+                                            <span class="inbox-label inbox-label--accent">Hot</span>
                                         </div>
-
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">Use badges for scanning. Avoid “badge
-                                                overload” on mobile.
-                                            </div>
-                                        </div>
-
                                     </div>
+
+                                    <div class="inbox-row__actions">
+                                        <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                        <a class="inbox-action inbox-action--flat inbox__hide-sm"
+                                           href="#">Snooze</a>
+                                        <a class="inbox-action inbox-action--flat" href="#">Archive</a>
+                                    </div>
+
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">Use badges for scanning. Avoid “badge
+                                            overload” on mobile.
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
                         </div>
-                    </div>
 
+                    </div>
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-row__badges"&gt;
-  &lt;span class="vds-inbox-badge vds-inbox-badge--info"&gt;New&lt;/span&gt;
-  &lt;span class="vds-inbox-badge"&gt;Due today&lt;/span&gt;
-  &lt;span class="vds-inbox-badge vds-inbox-badge--success"&gt;Verified&lt;/span&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox-row__badges"&gt;
+  &lt;span class="inbox-badge inbox-badge--info"&gt;New&lt;/span&gt;
+  &lt;span class="inbox-badge"&gt;Due today&lt;/span&gt;
+  &lt;span class="inbox-badge inbox-badge--success"&gt;Verified&lt;/span&gt;
 &lt;/div&gt;
 </code></pre>
                 </div>
@@ -1090,89 +1077,89 @@ Section:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Status icons (bookmark / star / flag)</h2>
                 <p class="doc-block__summary">
-                    Place icons in <code>.vds-inbox-row__status</code>.
+                    Place icons in <code>.inbox-row__status</code>.
                     Toggle row state with <code>.is-bookmarked</code>, <code>.is-starred</code>,
                     <code>.is-flagged</code>.
-                    Flags additionally support <code>.vds-inbox-row--flag-1..5</code> to select colour.
+                    Flags additionally support <code>.inbox-row--flag-1..5</code> to select colour.
                 </p>
             </header>
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
 
-                    <div class="vds-inbox vds-inbox--flat">
-                        <div class="vds-inbox__list">
+                    <div class="inbox inbox--flat">
+                        <div class="inbox__list">
 
-                            <div class="vds-inbox-row vds-inbox-row--normal is-bookmarked" tabindex="0" role="group"
+                            <div class="inbox-row inbox-row--normal is-bookmarked" tabindex="0" role="group"
                                  aria-label="Bookmarked row">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--bookmark"
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--bookmark"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
                                                             <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
                                                         </svg>
                                                     </span>
                                                 </div>
-                                                <div class="vds-inbox-row__title">Bookmarked</div>
+                                                <div class="inbox-row__title">Bookmarked</div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">Row state: <code>.is-bookmarked</code>.
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">Row state: <code>.is-bookmarked</code>.
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-row vds-inbox-row--normal is-starred" tabindex="0" role="group"
+                            <div class="inbox-row inbox-row--normal is-starred" tabindex="0" role="group"
                                  aria-label="Starred row">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--star"
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--star"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
                                                             <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
                                                         </svg>
                                                     </span>
                                                 </div>
-                                                <div class="vds-inbox-row__title">Starred</div>
+                                                <div class="inbox-row__title">Starred</div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">Row state: <code>.is-starred</code>.
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">Row state: <code>.is-starred</code>.
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-row vds-inbox-row--normal is-flagged vds-inbox-row--flag-1"
+                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-1"
                                  tabindex="0" role="group" aria-label="Flag 1">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="currentColor"
                                                              class="vds-icon-flag--1"
@@ -1182,15 +1169,15 @@ Section:
                                                         </svg>
                                                     </span>
                                                 </div>
-                                                <div class="vds-inbox-row__title">Flag 1 (danger / red)</div>
+                                                <div class="inbox-row__title">Flag 1 (danger / red)</div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                <code>.vds-inbox-row--flag-1</code>
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">
+                                                <code>.inbox-row--flag-1</code>
                                                 <code>.vds-icon-flag--1</code>
                                             </div>
                                         </div>
@@ -1198,14 +1185,14 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-row vds-inbox-row--normal is-flagged vds-inbox-row--flag-2"
+                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-2"
                                  tabindex="0" role="group" aria-label="Flag 2">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="currentColor"
                                                              class="vds-icon-flag--2"
@@ -1215,15 +1202,15 @@ Section:
                                                         </svg>
                                                     </span>
                                                 </div>
-                                                <div class="vds-inbox-row__title">Flag 2 (warning / amber)</div>
+                                                <div class="inbox-row__title">Flag 2 (warning / amber)</div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                <code>.vds-inbox-row--flag-2</code>
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">
+                                                <code>.inbox-row--flag-2</code>
                                                 <code>.vds-icon-flag--2</code>
                                             </div>
                                         </div>
@@ -1231,14 +1218,14 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-row vds-inbox-row--normal is-flagged vds-inbox-row--flag-3"
+                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-3"
                                  tabindex="0" role="group" aria-label="Flag 3">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="currentColor"
                                                              class="vds-icon-flag--3"
@@ -1248,15 +1235,15 @@ Section:
                                                         </svg>
                                                     </span>
                                                 </div>
-                                                <div class="vds-inbox-row__title">Flag 3 (info / blue)</div>
+                                                <div class="inbox-row__title">Flag 3 (info / blue)</div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                <code>.vds-inbox-row--flag-3</code>
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">
+                                                <code>.inbox-row--flag-3</code>
                                                 <code>.vds-icon-flag--3</code>
                                             </div>
                                         </div>
@@ -1264,14 +1251,14 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-row vds-inbox-row--normal is-flagged vds-inbox-row--flag-4"
+                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-4"
                                  tabindex="0" role="group" aria-label="Flag 4">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="currentColor"
                                                              class="vds-icon-flag--4"
@@ -1281,15 +1268,15 @@ Section:
                                                         </svg>
                                                     </span>
                                                 </div>
-                                                <div class="vds-inbox-row__title">Flag 4 (success / green)</div>
+                                                <div class="inbox-row__title">Flag 4 (success / green)</div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                <code>.vds-inbox-row--flag-4</code>
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">
+                                                <code>.inbox-row--flag-4</code>
                                                 <code>.vds-icon-flag--4</code>
                                             </div>
                                         </div>
@@ -1297,14 +1284,14 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-row vds-inbox-row--normal is-flagged vds-inbox-row--flag-5"
+                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-5"
                                  tabindex="0" role="group" aria-label="Flag 5">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="currentColor"
                                                              class="vds-icon-flag--5"
@@ -1314,15 +1301,15 @@ Section:
                                                         </svg>
                                                     </span>
                                                 </div>
-                                                <div class="vds-inbox-row__title">Flag 5 (accent)</div>
+                                                <div class="inbox-row__title">Flag 5 (accent)</div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                <code>.vds-inbox-row--flag-5</code>
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">
+                                                <code>.inbox-row--flag-5</code>
                                                 <code>.vds-icon-flag--5</code>
                                             </div>
                                         </div>
@@ -1336,10 +1323,10 @@ Section:
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-row is-bookmarked"&gt;...&lt;/div&gt;
-&lt;div class="vds-inbox-row is-starred"&gt;...&lt;/div&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox-row is-bookmarked"&gt;...&lt;/div&gt;
+&lt;div class="inbox-row is-starred"&gt;...&lt;/div&gt;
 
-&lt;div class="vds-inbox-row is-flagged vds-inbox-row--flag-3"&gt;
+&lt;div class="inbox-row is-flagged inbox-row--flag-3"&gt;
   &lt;!-- adds left strip colour + optional tinted surface --&gt;
 &lt;/div&gt;
 </code></pre>
@@ -1349,79 +1336,75 @@ Section:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Title labels reflow rules</h2>
                 <p class="doc-block__summary">
-                    On wide screens, <code>.vds-inbox-row__labels</code> sits inline to the right of the title.
+                    On wide screens, <code>.inbox-row__labels</code> sits inline to the right of the title.
                     On small screens, the title becomes full-width and labels move to a new row aligned left.
                     For predictable behaviour in docs, we show both containers using responsive helpers:
-                    <code>.vds-inbox__hide-sm</code> and <code>.vds-inbox__show-sm</code>.
+                    <code>.inbox__hide-sm</code> and <code>.inbox__show-sm</code>.
                 </p>
             </header>
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
+                    <div class="inbox__list">
 
-                    <div class="vds-inbox">
-                        <div class="vds-inbox__list">
+                        <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
+                             aria-label="Labels reflow row">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
 
-                            <div class="vds-inbox-row vds-inbox-row--normal" tabindex="0" role="group"
-                                 aria-label="Labels reflow row">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">Labels reflow to a new line on small
-                                                    screens
-                                                </div>
-
-                                                <div class="vds-inbox-row__labels vds-inbox__hide-sm">
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Label A</span>
-                                                    <span class="vds-inbox-label vds-inbox-label--accent">Label B</span>
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Label C</span>
-                                                </div>
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__title">Labels reflow to a new line on small
+                                                screens
                                             </div>
 
-                                            <div class="vds-inbox-row__labels vds-inbox__show-sm">
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Label A</span>
-                                                <span class="vds-inbox-label vds-inbox-label--accent">Label B</span>
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Label C</span>
+                                            <div class="inbox-row__labels inbox__hide-sm">
+                                                <span class="inbox-label inbox-label--muted">Label A</span>
+                                                <span class="inbox-label inbox-label--accent">Label B</span>
+                                                <span class="inbox-label inbox-label--muted">Label C</span>
                                             </div>
-
                                         </div>
 
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Edit</a>
-                                        </div>
-
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                This preserves scanability when actions and metadata reflow below.
-                                            </div>
+                                        <div class="inbox-row__labels inbox__show-sm">
+                                            <span class="inbox-label inbox-label--muted">Label A</span>
+                                            <span class="inbox-label inbox-label--accent">Label B</span>
+                                            <span class="inbox-label inbox-label--muted">Label C</span>
                                         </div>
 
                                     </div>
+
+                                    <div class="inbox-row__actions">
+                                        <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                        <a class="inbox-action inbox-action--flat" href="#">Edit</a>
+                                    </div>
+
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">
+                                            This preserves scanability when actions and metadata reflow below.
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
                         </div>
-                    </div>
 
+                    </div>
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-row__titleline"&gt;
-  &lt;div class="vds-inbox-row__title"&gt;...&lt;/div&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox-row__titleline"&gt;
+  &lt;div class="inbox-row__title"&gt;...&lt;/div&gt;
 
-  &lt;div class="vds-inbox-row__labels vds-inbox__hide-sm"&gt;...&lt;/div&gt;
+  &lt;div class="inbox-row__labels inbox__hide-sm"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="vds-inbox-row__labels vds-inbox__show-sm"&gt;...&lt;/div&gt;
+&lt;div class="inbox-row__labels inbox__show-sm"&gt;...&lt;/div&gt;
 </code></pre>
                 </div>
             </div>
@@ -1429,7 +1412,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1437,142 +1420,139 @@ Section:
                 <p class="doc-block__summary">
                     Default is a right actions rail (wide) that reflows below on small screens.
                     You can force behaviour using row modifiers:
-                    <code>.vds-inbox-row--actions-below</code> (always below) and
-                    <code>.vds-inbox-row--actions-full</code> (actions span full width).
-                    Control below alignment using <code>.vds-inbox-row__actions--left/center/right</code>.
+                    <code>.inbox-row--actions-below</code> (always below) and
+                    <code>.inbox-row--actions-full</code> (actions span full width).
+                    Control below alignment using <code>.inbox-row__actions--left/center/right</code>.
                 </p>
             </header>
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
+                    <div class="inbox__list">
 
-                    <div class="vds-inbox">
-                        <div class="vds-inbox__list">
-
-                            <!-- Default: right rail (wide) -->
-                            <div class="vds-inbox-row vds-inbox-row--normal" tabindex="0" role="group"
-                                 aria-label="Actions right rail">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">Default actions rail (right on wide
-                                                    screens)
-                                                </div>
+                        <!-- Default: right rail (wide) -->
+                        <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
+                             aria-label="Actions right rail">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__title">Default actions rail (right on wide
+                                                screens)
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--icon" href="#"
-                                               aria-label="Open">
-                                                <svg viewBox="0 0 16 16" aria-hidden="true">
-                                                    <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
-                                                    <path d="M3.5 8h7" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linecap="round"/>
-                                                    <path d="M7 5.5 10.5 8 7 10.5" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </a>
-                                            <a class="vds-inbox-action vds-inbox-action--icon" href="#"
-                                               aria-label="Edit">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                     stroke-width="1.8">
-                                                    <path d="M4 20h4l10-10-4-4L4 16v4z"/>
-                                                    <path d="M13 7l4 4"/>
-                                                </svg>
-                                            </a>
-                                            <a class="vds-inbox-action vds-inbox-action--icon vds-inbox-action--danger"
-                                               href="#" aria-label="Delete">
-                                                <svg viewBox="0 0 16 16" aria-hidden="true">
-                                                    <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
-                                                    <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linecap="round"/>
-                                                    <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">On small screens, actions move below
-                                                automatically.
-                                            </div>
+                                    </div>
+                                    <div class="inbox-row__actions">
+                                        <a class="inbox-action inbox-action--icon" href="#"
+                                           aria-label="Open">
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M3.5 8h7" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linecap="round"/>
+                                                <path d="M7 5.5 10.5 8 7 10.5" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+                                        <a class="inbox-action inbox-action--icon" href="#"
+                                           aria-label="Edit">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="1.8">
+                                                <path d="M4 20h4l10-10-4-4L4 16v4z"/>
+                                                <path d="M13 7l4 4"/>
+                                            </svg>
+                                        </a>
+                                        <a class="inbox-action inbox-action--icon inbox-action--danger"
+                                           href="#" aria-label="Delete">
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linecap="round"/>
+                                                <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
+                                                      stroke-width="1.6"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">On small screens, actions move below
+                                            automatically.
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Always below -->
-                            <div class="vds-inbox-row vds-inbox-row--normal vds-inbox-row--actions-below" tabindex="0"
-                                 role="group" aria-label="Actions always below">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">Forced below: <code>.vds-inbox-row--actions-below</code>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="vds-inbox-row__actions vds-inbox-row__actions--left">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Open</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Edit</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox__hide-sm"
-                                               href="#">Duplicate</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox-action--danger"
-                                               href="#">Delete</a>
-                                        </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">Use when you want the title to keep full
-                                                width even on wide screens.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Full line inside 2-col grid -->
-                            <div class="vds-inbox-row vds-inbox-row--normal vds-inbox-row--actions-full" tabindex="0"
-                                 role="group" aria-label="Actions full line">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">Full-line actions: <code>.vds-inbox-row--actions-full</code>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="vds-inbox-row__actions vds-inbox-row__actions--right">
-                                            <a class="vds-inbox-action" href="#">Open</a>
-                                            <a class="vds-inbox-action" href="#">Edit</a>
-                                            <a class="vds-inbox-action vds-inbox-action--danger" href="#">Delete</a>
-                                        </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">Actions span the row; alignment helpers
-                                                control justification.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                    </div>
 
+                        <!-- Always below -->
+                        <div class="inbox-row inbox-row--normal inbox-row--actions-below" tabindex="0"
+                             role="group" aria-label="Actions always below">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__title">Forced below:
+                                                <code>.inbox-row--actions-below</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inbox-row__actions inbox-row__actions--left">
+                                        <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                        <a class="inbox-action inbox-action--flat" href="#">Edit</a>
+                                        <a class="inbox-action inbox-action--flat inbox__hide-sm"
+                                           href="#">Duplicate</a>
+                                        <a class="inbox-action inbox-action--flat inbox-action--danger"
+                                           href="#">Delete</a>
+                                    </div>
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">Use when you want the title to keep full
+                                            width even on wide screens.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Full line inside 2-col grid -->
+                        <div class="inbox-row inbox-row--normal inbox-row--actions-full" tabindex="0"
+                             role="group" aria-label="Actions full line">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__title">Full-line actions: <code>.inbox-row--actions-full</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inbox-row__actions inbox-row__actions--right">
+                                        <a class="inbox-action" href="#">Open</a>
+                                        <a class="inbox-action" href="#">Edit</a>
+                                        <a class="inbox-action inbox-action--danger" href="#">Delete</a>
+                                    </div>
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">Actions span the row; alignment helpers
+                                            control justification.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-row"&gt;...&lt;/div&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox-row"&gt;...&lt;/div&gt;
 
-&lt;div class="vds-inbox-row vds-inbox-row--actions-below"&gt;...&lt;/div&gt;
+&lt;div class="inbox-row inbox-row--actions-below"&gt;...&lt;/div&gt;
 
-&lt;div class="vds-inbox-row vds-inbox-row--actions-full"&gt;
-  &lt;div class="vds-inbox-row__actions vds-inbox-row__actions--right"&gt;...&lt;/div&gt;
+&lt;div class="inbox-row inbox-row--actions-full"&gt;
+  &lt;div class="inbox-row__actions inbox-row__actions--right"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
                 </div>
@@ -1581,15 +1561,15 @@ Section:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Flat vs rich actions</h2>
                 <p class="doc-block__summary">
                     Two approaches:
-                    (1) per-button: <code>.vds-inbox-action--flat</code>,
-                    (2) global: <code>.vds-inbox--actions-flat</code> on the inbox root.
+                    (1) per-button: <code>.inbox-action--flat</code>,
+                    (2) global: <code>.inbox--actions-flat</code> on the inbox root.
                     Use rich actions sparingly in inbox lists; reserve emphasis for 1 primary action.
                 </p>
             </header>
@@ -1597,26 +1577,26 @@ Section:
             <div class="doc-block__body">
                 <div class="doc-block__preview">
 
-                    <div class="vds-inbox vds-inbox--actions-flat">
-                        <div class="vds-inbox__list">
+                    <div class="inbox inbox--actions-flat">
+                        <div class="inbox__list">
 
-                            <div class="vds-inbox-row vds-inbox-row--normal" tabindex="0" role="group"
+                            <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
                                  aria-label="Global flat actions">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">All actions flat via <code>.vds-inbox--actions-flat</code>
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__title">All actions flat via <code>.inbox--actions-flat</code>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action" href="#">Open</a>
-                                            <a class="vds-inbox-action" href="#">Edit</a>
-                                            <a class="vds-inbox-action vds-inbox-action--danger" href="#">Delete</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action" href="#">Open</a>
+                                            <a class="inbox-action" href="#">Edit</a>
+                                            <a class="inbox-action inbox-action--danger" href="#">Delete</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">Good for inbox density: controls stay
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">Good for inbox density: controls stay
                                                 present but low-noise.
                                             </div>
                                         </div>
@@ -1624,24 +1604,25 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-row vds-inbox-row--normal" tabindex="0" role="group"
+                            <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
                                  aria-label="Mixed actions">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">One emphasised action, others flat
+                                <div class="inbox-row__main">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__title">One emphasised action, others flat
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--accent" href="#">Open</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Edit</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox-action--danger"
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--accent" href="#">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="#">Edit</a>
+                                            <a class="inbox-action inbox-action--flat inbox-action--danger"
                                                href="#">Delete</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">Use a single strong action (<code>--accent</code>)
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">Use a single strong action
+                                                (<code>--accent</code>)
                                                 when needed.
                                             </div>
                                         </div>
@@ -1655,10 +1636,10 @@ Section:
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox vds-inbox--actions-flat"&gt;...&lt;/div&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox inbox--actions-flat"&gt;...&lt;/div&gt;
 
-&lt;a class="vds-inbox-action vds-inbox-action--flat" href="#"&gt;Edit&lt;/a&gt;
-&lt;a class="vds-inbox-action vds-inbox-action--accent" href="#"&gt;Open&lt;/a&gt;
+&lt;a class="inbox-action inbox-action--flat" href="#"&gt;Edit&lt;/a&gt;
+&lt;a class="inbox-action inbox-action--accent" href="#"&gt;Open&lt;/a&gt;
 </code></pre>
                 </div>
             </div>
@@ -1677,134 +1658,130 @@ Section:
   - Responsive visibility helpers (hide/show by breakpoint)
 ========================================================= -->
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Expandable details (open state)</h2>
                 <p class="doc-block__summary">
                     This component is CSS-only for expand behaviour.
-                    To show expanded content: apply <code>.vds-inbox-row--open</code> on the row.
-                    JavaScript can toggle that class. The expanded box is <code>.vds-inbox-row__expanded</code>.
-                    To only unclamp the preview text, use <code>.vds-inbox-row--glance-open</code>.
+                    To show expanded content: apply <code>.inbox-row--open</code> on the row.
+                    JavaScript can toggle that class. The expanded box is <code>.inbox-row__expanded</code>.
+                    To only unclamp the preview text, use <code>.inbox-row--glance-open</code>.
                 </p>
             </header>
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
+                    <div class="inbox__list">
 
-                    <div class="vds-inbox">
-                        <div class="vds-inbox__list">
+                        <div class="inbox-row inbox-row--rich inbox-row--open is-flagged inbox-row--flag-3"
+                             tabindex="0" role="group" aria-label="Open row with details">
+                            <div class="inbox-row__main" aria-expanded="true">
+                                <div class="inbox-row__inner">
 
-                            <div class="vds-inbox-row vds-inbox-row--rich vds-inbox-row--open is-flagged vds-inbox-row--flag-3"
-                                 tabindex="0" role="group" aria-label="Open row with details">
-                                <div class="vds-inbox-row__main" aria-expanded="true">
-                                    <div class="vds-inbox-row__inner">
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__badges">
+                                            <span class="inbox-badge inbox-badge--info">Expanded</span>
+                                            <span class="inbox-badge">Details visible</span>
+                                        </div>
 
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__badges">
-                                                <span class="vds-inbox-badge vds-inbox-badge--info">Expanded</span>
-                                                <span class="vds-inbox-badge">Details visible</span>
-                                            </div>
-
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__status">
-                                                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__status">
+                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                                                           aria-hidden="true">
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="1.8">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
-                                                </div>
-
-                                                <div class="vds-inbox-row__title">Open row: glance unclamped + details
-                                                    panel below
-                                                </div>
-
-                                                <div class="vds-inbox-row__labels vds-inbox__hide-sm">
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Message</span>
-                                                    <span class="vds-inbox-label vds-inbox-label--accent">Pinned</span>
-                                                </div>
                                             </div>
 
-                                            <div class="vds-inbox-row__labels vds-inbox__show-sm">
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Message</span>
-                                                <span class="vds-inbox-label vds-inbox-label--accent">Pinned</span>
+                                            <div class="inbox-row__title">Open row: glance unclamped + details
+                                                panel below
+                                            </div>
+
+                                            <div class="inbox-row__labels inbox__hide-sm">
+                                                <span class="inbox-label inbox-label--muted">Message</span>
+                                                <span class="inbox-label inbox-label--accent">Pinned</span>
                                             </div>
                                         </div>
 
-                                        <div class="vds-inbox-row__actions vds-inbox-row__actions--right">
-                                            <a class="vds-inbox-action vds-inbox-action--accent" href="#">Open</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Collapse</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Edit</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox-action--danger"
-                                               href="#">Delete</a>
+                                        <div class="inbox-row__labels inbox__show-sm">
+                                            <span class="inbox-label inbox-label--muted">Message</span>
+                                            <span class="inbox-label inbox-label--accent">Pinned</span>
                                         </div>
-
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                When the row is open, the glance text is no longer clamped.
-                                                This is helpful when the expanded area is used for the full content,
-                                                but the preview text is still relevant context.
-                                            </div>
-
-                                            <div class="vds-inbox-row__metafoot">
-                                                <span><strong>Updated</strong> 10:42</span>
-                                                <span><strong>Owner</strong> You</span>
-                                                <span class="vds-inbox__hide-sm"><strong>Ref</strong> INB-1204</span>
-                                            </div>
-                                        </div>
-
                                     </div>
 
-                                    <div class="vds-inbox-row__expanded">
-                                        <div class="section__list">
-                                            <div class="section__list-item">
-                                                <svg viewBox="0 0 16 16" aria-hidden="true">
-                                                    <path d="M3 8.2 6.2 11.4 13 4.6" fill="none"
-                                                          stroke="currentColor"
-                                                          stroke-width="1.6" stroke-linecap="round"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                                <div>
-                                                    <div class="section__list-item-title">Expanded content
-                                                        container
-                                                    </div>
-                                                    <div class="section__list-item-desc">
-                                                        Any HTML can be placed here: paragraphs, tables, forms, even
-                                                        nested components.
-                                                    </div>
+                                    <div class="inbox-row__actions inbox-row__actions--right">
+                                        <a class="inbox-action inbox-action--accent" href="#">Open</a>
+                                        <a class="inbox-action inbox-action--flat" href="#">Collapse</a>
+                                        <a class="inbox-action inbox-action--flat" href="#">Edit</a>
+                                        <a class="inbox-action inbox-action--flat inbox-action--danger"
+                                           href="#">Delete</a>
+                                    </div>
+
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">
+                                            When the row is open, the glance text is no longer clamped.
+                                            This is helpful when the expanded area is used for the full content,
+                                            but the preview text is still relevant context.
+                                        </div>
+
+                                        <div class="inbox-row__metafoot">
+                                            <span><strong>Updated</strong> 10:42</span>
+                                            <span><strong>Owner</strong> You</span>
+                                            <span class="inbox__hide-sm"><strong>Ref</strong> INB-1204</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="inbox-row__expanded">
+                                    <div class="section__list">
+                                        <div class="section__list-item">
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M3 8.2 6.2 11.4 13 4.6" fill="none"
+                                                      stroke="currentColor"
+                                                      stroke-width="1.6" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                            <div>
+                                                <div class="section__list-item-title">Expanded content
+                                                    container
+                                                </div>
+                                                <div class="section__list-item-desc">
+                                                    Any HTML can be placed here: paragraphs, tables, forms, even
+                                                    nested components.
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <p>
-                                            This is example expanded content. In production, this could be:
-                                            the full message body, a rich “entity details” view, or an embedded
-                                            editor surface.
-                                        </p>
+                                    <p>
+                                        This is example expanded content. In production, this could be:
+                                        the full message body, a rich “entity details” view, or an embedded
+                                        editor surface.
+                                    </p>
 
-                                        <div class="vds-inbox-row__details">
-                                            <span class="vds-inbox-row__details-item">Status: In progress</span>
-                                            <span class="vds-inbox-row__details-item">Priority: Medium</span>
-                                            <span class="vds-inbox-row__details-item vds-inbox__hide-sm">Assignee: Anna</span>
-                                        </div>
+                                    <div class="inbox-row__details">
+                                        <span class="inbox-row__details-item">Status: In progress</span>
+                                        <span class="inbox-row__details-item">Priority: Medium</span>
+                                        <span class="inbox-row__details-item inbox__hide-sm">Assignee: Anna</span>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
 
+                    </div>
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-row vds-inbox-row--open"&gt;
-  &lt;button class="vds-inbox-row__main" aria-expanded="true"&gt;
-    &lt;div class="vds-inbox-row__inner"&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox-row inbox-row--open"&gt;
+  &lt;button class="inbox-row__main" aria-expanded="true"&gt;
+    &lt;div class="inbox-row__inner"&gt;
       ...
-      &lt;div class="vds-inbox-row__expanded"&gt;
+      &lt;div class="inbox-row__expanded"&gt;
         &lt;!-- any HTML --&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -1813,9 +1790,9 @@ Section:
 </code></pre>
                 </div>
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-row vds-inbox-row--glance-open"&gt;
-  &lt;div class="vds-inbox-row__data"&gt;
-    &lt;div class="vds-inbox-row__glance"&gt;Full preview text...&lt;/div&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox-row inbox-row--glance-open"&gt;
+  &lt;div class="inbox-row__data"&gt;
+    &lt;div class="inbox-row__glance"&gt;Full preview text...&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -1825,13 +1802,13 @@ Section:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">“Hidden row” pattern (details container)</h2>
                 <p class="doc-block__summary">
-                    If you prefer a second sibling container (instead of <code>.vds-inbox-row__expanded</code> inside
+                    If you prefer a second sibling container (instead of <code>.inbox-row__expanded</code> inside
                     the row),
                     use a paired element that follows the row. Toggle visibility with helper classes.
                     This keeps row markup minimal and allows a full-width “details row” layout.
@@ -1841,25 +1818,25 @@ Section:
             <div class="doc-block__body">
                 <div class="doc-block__preview">
 
-                    <div class="vds-inbox vds-inbox--flat">
-                        <div class="vds-inbox__list">
+                    <div class="inbox inbox--flat">
+                        <div class="inbox__list">
 
-                            <div class="vds-inbox-row vds-inbox-row--normal" tabindex="0" role="group"
+                            <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
                                  aria-label="Row controlling sibling details">
-                                <div class="vds-inbox-row__main" aria-expanded="false">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">Row + sibling details element
+                                <div class="inbox-row__main" aria-expanded="false">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__title">Row + sibling details element
                                                     (collapsed)
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Details</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--flat" href="#">Details</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">
                                                 Use <code>.vds-is-hidden</code> / <code>.vds-is-visible</code> helpers
                                                 on the
                                                 sibling details node.
@@ -1867,28 +1844,28 @@ Section:
                                         </div>
                                     </div>
 
-                                    <div class="vds-inbox-row__expanded vds-is-visible" role="region"
+                                    <div class="inbox-row__expanded vds-is-visible" role="region"
                                          aria-label="Sibling details (collapsed)">
                                         <p>Hidden details row. Apply <code>.vds-is-visible</code> to show.</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-row vds-inbox-row--normal vds-inbox-row--open" tabindex="0"
+                            <div class="inbox-row inbox-row--normal inbox-row--open" tabindex="0"
                                  role="group" aria-label="Row controlling sibling details (open)">
-                                <div class="vds-inbox-row__main" aria-expanded="true">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">Row + sibling details element (open)
+                                <div class="inbox-row__main" aria-expanded="true">
+                                    <div class="inbox-row__inner">
+                                        <div class="inbox-row__meta">
+                                            <div class="inbox-row__titleline">
+                                                <div class="inbox-row__title">Row + sibling details element (open)
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Collapse</a>
+                                        <div class="inbox-row__actions">
+                                            <a class="inbox-action inbox-action--flat" href="#">Collapse</a>
                                         </div>
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">Second example with the sibling
+                                        <div class="inbox-row__data">
+                                            <div class="inbox-row__glance">Second example with the sibling
                                                 visible.
                                             </div>
                                         </div>
@@ -1896,16 +1873,16 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="vds-inbox-row__expanded vds-is-visible" role="region"
+                            <div class="inbox-row__expanded vds-is-visible" role="region"
                                  aria-label="Sibling details (open)">
                                 <p>
                                     Visible details row. You can make this fully custom: full-width editor surface,
                                     markdown-rendered content, attachments, etc.
                                 </p>
-                                <div class="vds-inbox-row__details">
-                                    <span class="vds-inbox-row__details-item">Detail: A</span>
-                                    <span class="vds-inbox-row__details-item">Detail: B</span>
-                                    <span class="vds-inbox-row__details-item vds-inbox__hide-sm">Detail: C</span>
+                                <div class="inbox-row__details">
+                                    <span class="inbox-row__details-item">Detail: A</span>
+                                    <span class="inbox-row__details-item">Detail: B</span>
+                                    <span class="inbox-row__details-item inbox__hide-sm">Detail: C</span>
                                 </div>
                             </div>
 
@@ -1915,9 +1892,9 @@ Section:
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-row"&gt;...&lt;/div&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox-row"&gt;...&lt;/div&gt;
 
-&lt;div class="vds-inbox-row__expanded vds-is-hidden"&gt;...&lt;/div&gt;
+&lt;div class="inbox-row__expanded vds-is-hidden"&gt;...&lt;/div&gt;
 &lt;!-- toggle: vds-is-hidden &lt;-&gt; vds-is-visible --&gt;
 </code></pre>
                 </div>
@@ -1951,7 +1928,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1966,40 +1943,40 @@ Section:
             <div class="doc-block__body">
                 <div class="doc-block__preview">
 
-                    <div class="vds-inbox-filter" role="region" aria-label="Inbox filters">
-                        <div class="vds-inbox-filter__group">
-                            <div class="vds-inbox-filter__label">View</div>
-                            <a class="vds-inbox-filter__chip vds-inbox-filter__chip--active" href="#">All</a>
-                            <a class="vds-inbox-filter__chip" href="#">Unread</a>
-                            <a class="vds-inbox-filter__chip" href="#">Flagged</a>
+                    <div class="inbox-filter" role="region" aria-label="Inbox filters">
+                        <div class="inbox-filter__group">
+                            <div class="inbox-filter__label">View</div>
+                            <a class="inbox-filter__chip inbox-filter__chip--active" href="#">All</a>
+                            <a class="inbox-filter__chip" href="#">Unread</a>
+                            <a class="inbox-filter__chip" href="#">Flagged</a>
                         </div>
 
-                        <div class="vds-inbox-filter__group">
-                            <div class="vds-inbox-filter__label">Type</div>
-                            <a class="vds-inbox-filter__chip" href="#">Messages</a>
-                            <a class="vds-inbox-filter__chip" href="#">Emails</a>
-                            <a class="vds-inbox-filter__chip vds-inbox__hide-sm" href="#">Ideas</a>
+                        <div class="inbox-filter__group">
+                            <div class="inbox-filter__label">Type</div>
+                            <a class="inbox-filter__chip" href="#">Messages</a>
+                            <a class="inbox-filter__chip" href="#">Emails</a>
+                            <a class="inbox-filter__chip inbox__hide-sm" href="#">Ideas</a>
                         </div>
 
-                        <div class="vds-inbox-filter__actions">
-                            <a class="vds-inbox-action vds-inbox-action--flat" href="#">Clear</a>
-                            <a class="vds-inbox-action vds-inbox-action--accent" href="#">Apply</a>
+                        <div class="inbox-filter__actions">
+                            <a class="inbox-action inbox-action--flat" href="#">Clear</a>
+                            <a class="inbox-action inbox-action--accent" href="#">Apply</a>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-filter"&gt;
-  &lt;div class="vds-inbox-filter__group"&gt;
-    &lt;div class="vds-inbox-filter__label"&gt;View&lt;/div&gt;
-    &lt;a class="vds-inbox-filter__chip vds-inbox-filter__chip--active"&gt;All&lt;/a&gt;
-    &lt;a class="vds-inbox-filter__chip"&gt;Unread&lt;/a&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox-filter"&gt;
+  &lt;div class="inbox-filter__group"&gt;
+    &lt;div class="inbox-filter__label"&gt;View&lt;/div&gt;
+    &lt;a class="inbox-filter__chip inbox-filter__chip--active"&gt;All&lt;/a&gt;
+    &lt;a class="inbox-filter__chip"&gt;Unread&lt;/a&gt;
   &lt;/div&gt;
 
-  &lt;div class="vds-inbox-filter__actions"&gt;
-    &lt;a class="vds-inbox-action vds-inbox-action--flat"&gt;Clear&lt;/a&gt;
-    &lt;a class="vds-inbox-action vds-inbox-action--accent"&gt;Apply&lt;/a&gt;
+  &lt;div class="inbox-filter__actions"&gt;
+    &lt;a class="inbox-action inbox-action--flat"&gt;Clear&lt;/a&gt;
+    &lt;a class="inbox-action inbox-action--accent"&gt;Apply&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -2009,23 +1986,23 @@ Section:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Bottom corner action bar</h2>
                 <p class="doc-block__summary">
                     A fixed “corner bar” for 1–2 primary actions (e.g., Add, Compose).
-                    Use <code>.vds-inbox-cornerbar</code> and choose left/right with <code>--left</code>.
+                    Use <code>.inbox-cornerbar</code> and choose left/right with <code>--left</code>.
                 </p>
             </header>
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
-                    <div class="vds-inbox-cornerbar" aria-label="Corner actions (right)">
-                        <div class="vds-inbox-cornerbar__inner">
-                            <a class="vds-inbox-action vds-inbox-action--accent" href="#">Add</a>
-                            <a class="vds-inbox-action vds-inbox-action--icon" href="#" aria-label="Compose">
+                    <div class="inbox-cornerbar" aria-label="Corner actions (right)">
+                        <div class="inbox-cornerbar__inner">
+                            <a class="inbox-action inbox-action--accent" href="#">Add</a>
+                            <a class="inbox-action inbox-action--icon" href="#" aria-label="Compose">
                                 <svg viewBox="0 0 16 16" aria-hidden="true">
                                     <path d="M3 11.8V13h1.2l7-7-1.2-1.2z" fill="none" stroke="currentColor"
                                           stroke-width="1.6"
@@ -2037,21 +2014,21 @@ Section:
                         </div>
                     </div>
 
-                    <div class="vds-inbox-cornerbar vds-inbox-cornerbar--left" aria-label="Corner actions (left)">
-                        <div class="vds-inbox-cornerbar__inner">
-                            <a class="vds-inbox-action vds-inbox-action--accent" href="#">New</a>
+                    <div class="inbox-cornerbar inbox-cornerbar--left" aria-label="Corner actions (left)">
+                        <div class="inbox-cornerbar__inner">
+                            <a class="inbox-action inbox-action--accent" href="#">New</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-inbox-cornerbar"&gt;
-  &lt;div class="vds-inbox-cornerbar__inner"&gt;
-    &lt;a class="vds-inbox-action vds-inbox-action--accent"&gt;Add&lt;/a&gt;
+<pre class="doc-block__code"><code>&lt;div class="inbox-cornerbar"&gt;
+  &lt;div class="inbox-cornerbar__inner"&gt;
+    &lt;a class="inbox-action inbox-action--accent"&gt;Add&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="vds-inbox-cornerbar vds-inbox-cornerbar--left"&gt;...&lt;/div&gt;
+&lt;div class="inbox-cornerbar inbox-cornerbar--left"&gt;...&lt;/div&gt;
 </code></pre>
                 </div>
             </div>
@@ -2059,15 +2036,15 @@ Section:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Responsive visibility helpers (component-local)</h2>
                 <p class="doc-block__summary">
                     Use these to hide non-critical UI in dense mobile layouts:
-                    <code>.vds-inbox__hide-sm</code> / <code>.vds-inbox__show-sm</code>,
-                    and <code>.vds-inbox__hide-md</code> / <code>.vds-inbox__show-md</code>.
+                    <code>.inbox__hide-sm</code> / <code>.inbox__show-sm</code>,
+                    and <code>.inbox__hide-md</code> / <code>.inbox__show-md</code>.
                     Common targets: secondary toolbar actions, less-important badges, extra status icons, extra meta
                     foot fields.
                 </p>
@@ -2075,54 +2052,52 @@ Section:
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
-                    <div class="vds-inbox">
-                        <div class="vds-inbox__list">
-                            <div class="vds-inbox-row vds-inbox-row--normal" tabindex="0" role="group"
-                                 aria-label="Visibility helper example">
-                                <div class="vds-inbox-row__main">
-                                    <div class="vds-inbox-row__inner">
-                                        <div class="vds-inbox-row__meta">
-                                            <div class="vds-inbox-row__badges">
-                                                <span class="vds-inbox-badge">Always</span>
-                                                <span class="vds-inbox-badge vds-inbox__hide-sm">Hidden on small</span>
-                                                <span class="vds-inbox-badge vds-inbox__hide-md">Hidden on medium and below</span>
+                    <div class="inbox__list">
+                        <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
+                             aria-label="Visibility helper example">
+                            <div class="inbox-row__main">
+                                <div class="inbox-row__inner">
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__badges">
+                                            <span class="inbox-badge">Always</span>
+                                            <span class="inbox-badge inbox__hide-sm">Hidden on small</span>
+                                            <span class="inbox-badge inbox__hide-md">Hidden on medium and below</span>
+                                        </div>
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__title">Visibility helpers keep the inbox
+                                                scannable
                                             </div>
-                                            <div class="vds-inbox-row__titleline">
-                                                <div class="vds-inbox-row__title">Visibility helpers keep the inbox
-                                                    scannable
-                                                </div>
-                                                <div class="vds-inbox-row__labels vds-inbox__hide-sm">
-                                                    <span class="vds-inbox-label vds-inbox-label--muted">Wide only</span>
-                                                </div>
-                                            </div>
-                                            <div class="vds-inbox-row__labels vds-inbox__show-sm">
-                                                <span class="vds-inbox-label vds-inbox-label--muted">Small only</span>
+                                            <div class="inbox-row__labels inbox__hide-sm">
+                                                <span class="inbox-label inbox-label--muted">Wide only</span>
                                             </div>
                                         </div>
-
-                                        <div class="vds-inbox-row__actions">
-                                            <a class="vds-inbox-action vds-inbox-action--accent" href="#">Open</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox__hide-sm"
-                                               href="#">Edit</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox__hide-md"
-                                               href="#">Duplicate</a>
-                                            <a class="vds-inbox-action vds-inbox-action--flat vds-inbox-action--danger"
-                                               href="#">Delete</a>
+                                        <div class="inbox-row__labels inbox__show-sm">
+                                            <span class="inbox-label inbox-label--muted">Small only</span>
                                         </div>
-
-                                        <div class="vds-inbox-row__data">
-                                            <div class="vds-inbox-row__glance">
-                                                On mobile, reduce UI clutter: keep one primary action, keep the title,
-                                                keep the preview.
-                                            </div>
-                                            <div class="vds-inbox-row__metafoot">
-                                                <span><strong>Updated</strong> 10:42</span>
-                                                <span class="vds-inbox__hide-sm"><strong>Ref</strong> INB-88</span>
-                                                <span class="vds-inbox__hide-md"><strong>Source</strong> API</span>
-                                            </div>
-                                        </div>
-
                                     </div>
+
+                                    <div class="inbox-row__actions">
+                                        <a class="inbox-action inbox-action--accent" href="#">Open</a>
+                                        <a class="inbox-action inbox-action--flat inbox__hide-sm"
+                                           href="#">Edit</a>
+                                        <a class="inbox-action inbox-action--flat inbox__hide-md"
+                                           href="#">Duplicate</a>
+                                        <a class="inbox-action inbox-action--flat inbox-action--danger"
+                                           href="#">Delete</a>
+                                    </div>
+
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">
+                                            On mobile, reduce UI clutter: keep one primary action, keep the title,
+                                            keep the preview.
+                                        </div>
+                                        <div class="inbox-row__metafoot">
+                                            <span><strong>Updated</strong> 10:42</span>
+                                            <span class="inbox__hide-sm"><strong>Ref</strong> INB-88</span>
+                                            <span class="inbox__hide-md"><strong>Source</strong> API</span>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -2130,11 +2105,11 @@ Section:
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;span class="vds-inbox__hide-sm"&gt;Hidden on small&lt;/span&gt;
-&lt;span class="vds-inbox__show-sm"&gt;Shown on small only&lt;/span&gt;
+<pre class="doc-block__code"><code>&lt;span class="inbox__hide-sm"&gt;Hidden on small&lt;/span&gt;
+&lt;span class="inbox__show-sm"&gt;Shown on small only&lt;/span&gt;
 
-&lt;span class="vds-inbox__hide-md"&gt;Hidden on medium and below&lt;/span&gt;
-&lt;span class="vds-inbox__show-md"&gt;Shown on large only&lt;/span&gt;
+&lt;span class="inbox__hide-md"&gt;Hidden on medium and below&lt;/span&gt;
+&lt;span class="inbox__show-md"&gt;Shown on large only&lt;/span&gt;
 </code></pre>
                 </div>
             </div>
@@ -2142,12 +2117,12 @@ Section:
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-inbox class="section">
+<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
             <div class="doc-block__body">
                 <div class="doc-block__preview">
-            <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+            <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                   aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="1.8">
@@ -2155,7 +2130,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"
                  class="vds-icon-flag--1"
@@ -2165,7 +2140,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"
                  class="vds-icon-flag--2"
@@ -2175,7 +2150,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"
                  class="vds-icon-flag--3"
@@ -2185,7 +2160,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"
                  class="vds-icon-flag--4"
@@ -2195,7 +2170,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"
                  class="vds-icon-flag--5"
@@ -2205,7 +2180,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="1.8">
@@ -2213,14 +2188,14 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
                 <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="1.8">
@@ -2228,14 +2203,14 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
                 <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
@@ -2250,7 +2225,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="1.8">
@@ -2259,7 +2234,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
@@ -2274,7 +2249,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 16 16" aria-hidden="true">
                 <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor"
@@ -2285,7 +2260,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
@@ -2302,7 +2277,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 16 16">
                 <circle cx="8" cy="8" r="6.5" fill="none"
@@ -2314,7 +2289,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M3.5 5.5h9v7h-9z" fill="none" stroke="currentColor"
@@ -2324,7 +2299,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M8 3v5l3 2" fill="none" stroke="currentColor"
@@ -2335,7 +2310,7 @@ Section:
             </svg>
             </span>
 
-                    <span class="vds-inbox-row__status-icon vds-inbox-row__status-icon--flag"
+                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
                           aria-hidden="true">
             <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M3.5 8h9" fill="none" stroke="currentColor"

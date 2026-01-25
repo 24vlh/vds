@@ -86,13 +86,20 @@
                                     <li><code>.header</code> — global header container.</li>
                                     <li><code>.header--sticky</code> — sticks to top, with background + border.</li>
                                     <li><code>.header--elevated</code> — additional shadow/elevation.</li>
-                                    <li><code>.header--compact</code>, <code>.header--tall</code> — density control.</li>
-                                    <li><code>.header--borderless</code>, <code>.header--transparent</code> — chrome variants.</li>
+                                    <li><code>.header--compact</code>, <code>.header--tall</code> — density control.
+                                    </li>
+                                    <li><code>.header--borderless</code>, <code>.header--transparent</code> — chrome
+                                        variants.
+                                    </li>
                                     <li><code>.header__inner</code> — flex row for left/right regions.</li>
-                                    <li><code>.header__left</code>, <code>.header__right</code>, <code>.header__actions</code> — layout helpers.</li>
+                                    <li><code>.header__left</code>, <code>.header__right</code>,
+                                        <code>.header__actions</code> — layout helpers.
+                                    </li>
                                     <li><code>.header__toggle</code> — mobile menu toggle button.</li>
                                     <li><code>.header--nav-open .nav</code> — mobile nav expansion.</li>
-                                    <li><code>.header__panel</code> + <code>.header--nav-panel</code> — dedicated mobile panel.</li>
+                                    <li><code>.header__panel</code> + <code>.header--nav-panel</code> — dedicated mobile
+                                        panel.
+                                    </li>
                                 </ul>
                             </div>
 
@@ -106,8 +113,12 @@
                                     <li><code>.footer__col-title</code> — column label text.</li>
                                     <li><code>.footer__link</code> — footer navigation links.</li>
                                     <li><code>.footer__meta</code> — legal / meta text block.</li>
-                                    <li><code>.footer__bottom</code>, <code>.footer__actions</code> — meta + actions row.</li>
-                                    <li><code>.footer--compact</code>, <code>.footer--borderless</code> — density variants.</li>
+                                    <li><code>.footer__bottom</code>, <code>.footer__actions</code> — meta + actions
+                                        row.
+                                    </li>
+                                    <li><code>.footer--compact</code>, <code>.footer--borderless</code> — density
+                                        variants.
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -132,14 +143,14 @@
 &lt;/footer&gt;
 
 // Sticky footer layout example
-&lt;div class=&quot;vds-shell&quot;&gt;
+&lt;div class=&quot;shell&quot;&gt;
   &lt;header class=&quot;header&quot;&gt;&hellip;&lt;/header&gt;
 
-  &lt;main id=&quot;main&quot; class=&quot;vds-shell__main&quot;&gt;
+  &lt;main id=&quot;main&quot; class=&quot;shell__main&quot;&gt;
     &lt;router-outlet /&gt;
   &lt;/main&gt;
 
-  &lt;footer class=&quot;footer vds-shell__footer&quot;&gt;&hellip;&lt;/footer&gt;
+  &lt;footer class=&quot;footer shell__footer&quot;&gt;&hellip;&lt;/footer&gt;
 &lt;/div&gt;
 </code></pre>
                 </div>
@@ -154,7 +165,7 @@
             <header class="doc-block__header">
                 <h2 class="doc-block__title">App shell &amp; sticky footer</h2>
                 <p class="doc-block__summary">
-                    Use <code>.vds-shell</code> to keep the footer pinned to the viewport bottom
+                    Use <code>.shell</code> to keep the footer pinned to the viewport bottom
                     when the main content is short. This removes the need for layout workarounds.
                 </p>
             </header>
@@ -163,16 +174,16 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body">
-                            <div class="vds-shell">
+                            <div class="shell">
                                 <header class="header header--compact">
                                     <div class="header__inner">
                                         <span class="text-xs">Header</span>
                                     </div>
                                 </header>
-                                <main class="vds-shell__main">
+                                <main class="shell__main">
                                     <p class="text-xs text-muted">Main stays flexible, footer stays anchored.</p>
                                 </main>
-                                <footer class="footer vds-shell__footer footer--compact">
+                                <footer class="footer shell__footer footer--compact">
                                     <div class="footer__inner">
                                         <div class="text-xs">Footer</div>
                                     </div>
@@ -183,14 +194,14 @@
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="vds-shell"&gt;
+<pre class="doc-block__code"><code>&lt;div class="shell"&gt;
   &lt;header class="header"&gt;...&lt;/header&gt;
 
-  &lt;main id="main" class="vds-shell__main"&gt;
+  &lt;main id="main" class="shell__main"&gt;
     &lt;!-- content --&gt;
   &lt;/main&gt;
 
-  &lt;footer class="footer vds-shell__footer"&gt;...&lt;/footer&gt;
+  &lt;footer class="footer shell__footer"&gt;...&lt;/footer&gt;
 &lt;/div&gt;
 </code></pre>
                 </div>
@@ -951,7 +962,7 @@
                         </li>
 
                         <li>
-                            Wrap pages in <code>.vds-shell</code> to keep the footer anchored on short pages.
+                            Wrap pages in <code>.shell</code> to keep the footer anchored on short pages.
                         </li>
 
                     </ul>
@@ -1014,7 +1025,7 @@
 6. Use .nav__item--active + aria-current="page" for active nav state.
 7. Mobile nav: toggle via .header--nav-open (CSS) or aria-expanded (JS).
 8. Footer: maintain column/stack behaviour at 768px breakpoint.
-9. Wrap pages in .vds-shell to keep footer anchored on short content.
+9. Wrap pages in .shell to keep footer anchored on short content.
 10. No custom colours, borders, or shadows; theme owns all visual tokens.</code></pre>
             </div>
         </article>
