@@ -907,6 +907,11 @@ a.vds-inbox-action {
     overflow: visible;
 }
 
+.vds-inbox-row--glance-open .vds-inbox-row__glance {
+    -webkit-line-clamp: initial;
+    overflow: visible;
+}
+
 /* Expanded content can be made “flush” in flat list mode */
 .vds-inbox--flat .vds-inbox-row__expanded {
     background: var(--color-surface-subtle);

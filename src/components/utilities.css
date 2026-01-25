@@ -1789,6 +1789,10 @@
     white-space: pre-line !important;
 }
 
+.text-pre-line {
+    white-space: pre-line !important;
+}
+
 .text-xxxs {
     font-size: var(--text-xxxs);
 }

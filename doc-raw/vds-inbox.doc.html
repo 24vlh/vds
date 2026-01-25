@@ -1686,6 +1686,7 @@ Section:
                     This component is CSS-only for expand behaviour.
                     To show expanded content: apply <code>.vds-inbox-row--open</code> on the row.
                     JavaScript can toggle that class. The expanded box is <code>.vds-inbox-row__expanded</code>.
+                    To only unclamp the preview text, use <code>.vds-inbox-row--glance-open</code>.
                 </p>
             </header>
 
@@ -1808,6 +1809,14 @@ Section:
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="vds-inbox-row vds-inbox-row--glance-open"&gt;
+  &lt;div class="vds-inbox-row__data"&gt;
+    &lt;div class="vds-inbox-row__glance"&gt;Full preview text...&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
                 </div>
