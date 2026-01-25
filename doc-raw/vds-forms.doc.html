@@ -158,7 +158,7 @@
                         <input class="form-control" disabled value="Disabled">
                         <input class="form-control" readonly value="Readonly">
 
-                        <input class="form-control" aria-invalid="true" value="ARIA invalid">
+                        <input aria-invalid="true" class="form-control" value="ARIA invalid">
 
                         <select class="form-control">
                             <option>Select option…</option>
@@ -259,7 +259,7 @@
                         <input class="form-control form-control--loading" value="Loading">
                         <input class="form-control" disabled value="Disabled">
                         <input class="form-control" readonly value="Readonly">
-                        <input class="form-control" aria-invalid="true" value="ARIA invalid">
+                        <input aria-invalid="true" class="form-control" value="ARIA invalid">
                     </div>
                 </section>
 
@@ -327,8 +327,8 @@
 
                     <div class="choice-group">
                         <label class="choice choice--checkbox">
-                            <input class="choice__input" type="checkbox" checked>
-                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <input checked class="choice__input" type="checkbox">
+                            <span aria-hidden="true" class="choice__indicator"></span>
                             <span class="choice__label">
                                 <span class="choice__label-text">Send notifications</span>
                                 <span class="choice__hint">Weekly summaries and alerts.</span>
@@ -336,7 +336,7 @@
                         </label>
                         <label class="choice choice--checkbox">
                             <input class="choice__input" type="checkbox">
-                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span aria-hidden="true" class="choice__indicator"></span>
                             <span class="choice__label">
                                 <span class="choice__label-text">Auto-archive completed items</span>
                                 <span class="choice__hint">Moves them into archive after 30 days.</span>
@@ -346,16 +346,16 @@
 
                     <div class="choice-group choice-group--inline">
                         <label class="choice choice--radio">
-                            <input class="choice__input" type="radio" name="plan" checked>
-                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <input checked class="choice__input" name="plan" type="radio">
+                            <span aria-hidden="true" class="choice__indicator"></span>
                             <span class="choice__label">
                                 <span class="choice__label-text">Basic</span>
                                 <span class="choice__hint">For drafts</span>
                             </span>
                         </label>
                         <label class="choice choice--radio">
-                            <input class="choice__input" type="radio" name="plan">
-                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <input class="choice__input" name="plan" type="radio">
+                            <span aria-hidden="true" class="choice__indicator"></span>
                             <span class="choice__label">
                                 <span class="choice__label-text">Pro</span>
                                 <span class="choice__hint">For teams</span>
@@ -365,8 +365,8 @@
 
                     <div class="choice-group choice-group--grid">
                         <label class="choice choice--checkbox choice--success">
-                            <input class="choice__input" type="checkbox" checked>
-                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <input checked class="choice__input" type="checkbox">
+                            <span aria-hidden="true" class="choice__indicator"></span>
                             <span class="choice__label">
                                 <span class="choice__label-text">Auto-sync</span>
                                 <span class="choice__hint">Keeps devices updated.</span>
@@ -374,7 +374,7 @@
                         </label>
                         <label class="choice choice--checkbox choice--warning">
                             <input class="choice__input" type="checkbox">
-                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span aria-hidden="true" class="choice__indicator"></span>
                             <span class="choice__label">
                                 <span class="choice__label-text">Experimental mode</span>
                                 <span class="choice__hint">May change without notice.</span>
@@ -382,15 +382,15 @@
                         </label>
                         <label class="choice choice--checkbox choice--error">
                             <input class="choice__input" type="checkbox">
-                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <span aria-hidden="true" class="choice__indicator"></span>
                             <span class="choice__label">
                                 <span class="choice__label-text">High-risk actions</span>
                                 <span class="choice__hint">Requires confirmation.</span>
                             </span>
                         </label>
                         <label class="choice choice--checkbox choice--disabled">
-                            <input class="choice__input" type="checkbox" disabled>
-                            <span class="choice__indicator" aria-hidden="true"></span>
+                            <input class="choice__input" disabled type="checkbox">
+                            <span aria-hidden="true" class="choice__indicator"></span>
                             <span class="choice__label">
                                 <span class="choice__label-text">Disabled option</span>
                                 <span class="choice__hint">Unavailable in this plan.</span>
@@ -463,13 +463,13 @@
 
                     <form class="section__stack-sm">
                         <input class="form-control" placeholder="Email">
-                        <input class="form-control" type="password" placeholder="Password">
+                        <input class="form-control" placeholder="Password" type="password">
 
                         <div class="flow__nav">
-                            <button type="submit" class="button button--primary">
+                            <button class="button button--primary" type="submit">
                                 Sign in
                             </button>
-                            <button type="button" class="button button--ghost">
+                            <button class="button button--ghost" type="button">
                                 Cancel
                             </button>
                         </div>
@@ -498,13 +498,13 @@
 
                     <form class="section__stack-sm">
                         <input class="form-control" placeholder="Username">
-                        <input class="form-control" aria-invalid="true" value="Already taken">
+                        <input aria-invalid="true" class="form-control" value="Already taken">
 
                         <div class="flow__nav">
                             <button class="button button--secondary" disabled>
                                 Cancel
                             </button>
-                            <button class="button button--primary button--loading" aria-busy="true">
+                            <button aria-busy="true" class="button button--primary button--loading">
                                 Creating…
                             </button>
                         </div>
@@ -519,7 +519,7 @@
                             <span class="steps__label">Account</span>
                         </div>
                         <div class="steps__line"></div>
-                        <div class="steps__item steps__item--active" aria-current="step">
+                        <div aria-current="step" class="steps__item steps__item--active">
                             <div class="steps__bullet">2</div>
                             <span class="steps__label">Profile</span>
                         </div>
@@ -551,7 +551,7 @@
 
                         <div class="form-flow__step form-flow__step--success p-3">
                             <h4 class="text-sm">Account</h4>
-                            <input class="form-control" value="user@example.com" readonly>
+                            <input class="form-control" readonly value="user@example.com">
                         </div>
 
                         <div class="form-flow__step form-flow__step--error p-3">
@@ -653,8 +653,8 @@
                     <h3 class="text-sm">Password field with action icon</h3>
 
                     <div class="form-control-group">
-                        <input class="form-control" type="password" placeholder="Password">
-                        <button type="button" class="button button--outline">
+                        <input class="form-control" placeholder="Password" type="password">
+                        <button class="button button--outline" type="button">
                             <span class="icon icon--mask icon--eye"></span>
                         </button>
                     </div>
@@ -700,7 +700,7 @@
 
                         <div class="steps__line"></div>
 
-                        <div class="steps__item steps__item--active" aria-current="step">
+                        <div aria-current="step" class="steps__item steps__item--active">
                             <span class="icon icon--mask icon--user"></span>
                             <span class="steps__label">Profile</span>
                         </div>
@@ -894,8 +894,8 @@
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Choice controls</h3>
                         <div class="choice-group">
                             <label class="choice choice--checkbox">
-                                <input class="choice__input" type="checkbox" checked/>
-                                <span class="choice__indicator" aria-hidden="true"></span>
+                                <input checked class="choice__input" type="checkbox"/>
+                                <span aria-hidden="true" class="choice__indicator"></span>
                                 <span class="choice__label">
                                     <span class="choice__label-text">Send notifications</span>
                                     <span class="choice__hint">Weekly summaries and alerts.</span>
@@ -903,7 +903,7 @@
                             </label>
                             <label class="choice choice--checkbox">
                                 <input class="choice__input" type="checkbox"/>
-                                <span class="choice__indicator" aria-hidden="true"></span>
+                                <span aria-hidden="true" class="choice__indicator"></span>
                                 <span class="choice__label">
                                     <span class="choice__label-text">Auto-archive completed items</span>
                                     <span class="choice__hint">Moves them into archive after 30 days.</span>
@@ -927,8 +927,8 @@
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Choice grid</h3>
                         <div class="choice-group choice-group--grid">
                             <label class="choice choice--checkbox choice--success">
-                                <input class="choice__input" type="checkbox" checked/>
-                                <span class="choice__indicator" aria-hidden="true"></span>
+                                <input checked class="choice__input" type="checkbox"/>
+                                <span aria-hidden="true" class="choice__indicator"></span>
                                 <span class="choice__label">
                                     <span class="choice__label-text">Auto-sync</span>
                                     <span class="choice__hint">Keeps devices updated.</span>
@@ -936,7 +936,7 @@
                             </label>
                             <label class="choice choice--checkbox choice--warning">
                                 <input class="choice__input" type="checkbox"/>
-                                <span class="choice__indicator" aria-hidden="true"></span>
+                                <span aria-hidden="true" class="choice__indicator"></span>
                                 <span class="choice__label">
                                     <span class="choice__label-text">Experimental mode</span>
                                     <span class="choice__hint">May change without notice.</span>

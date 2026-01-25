@@ -355,7 +355,7 @@
 .ke-text-secondary {
     fill: currentColor;
     font-family: var(--font-family-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
-        "Segoe UI", Roboto, Arial, sans-serif;
+    "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 .ke-text-primary {

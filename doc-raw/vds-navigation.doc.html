@@ -1,4 +1,4 @@
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <h1 class="">Navigation</h1>
         <p class="leading-relaxed text-soft">
@@ -14,7 +14,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -34,7 +34,7 @@
                         <li><code>icons.css</code> (mask icons)</li>
                         <li><code>navigation.css</code> (this subsystem)</li>
                         <li>An active theme file (<code>slate</code>, <code
-                                >navy</code>,
+                        >navy</code>,
                             <code>carbon</code>)
                         </li>
                     </ul>
@@ -58,7 +58,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -127,7 +127,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -176,7 +176,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block doc-block--split">
             <header class="doc-block__header">
@@ -241,7 +241,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -270,11 +270,11 @@
 
                             <nav aria-label="Breadcrumb" class="breadcrumbs">
                                 <span class="breadcrumbs__item">
-                                    <a href="/" class="breadcrumbs__link">Home</a>
+                                    <a class="breadcrumbs__link" href="/">Home</a>
                                 </span>
                                 <span class="breadcrumbs__separator">/</span>
                                 <span class="breadcrumbs__item">
-                                    <a href="/projects" class="breadcrumbs__link">Projects</a>
+                                    <a class="breadcrumbs__link" href="/projects">Projects</a>
                                 </span>
                                 <span class="breadcrumbs__separator">/</span>
                                 <span class="breadcrumbs__item">VDS Redesign</span>
@@ -303,7 +303,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block doc-block--split">
             <header class="doc-block__header">
@@ -318,23 +318,26 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body">
-                            <nav class="pagination" aria-label="Pagination">
-                                <button class="pagination__item pagination__prev pagination__item--disabled" disabled aria-label="Previous page">
+                            <nav aria-label="Pagination" class="pagination">
+                                <button aria-label="Previous page"
+                                        class="pagination__item pagination__prev pagination__item--disabled"
+                                        disabled>
                                     ← Prev
                                 </button>
-                                <button class="pagination__item pagination__item--active" aria-current="page">1</button>
+                                <button aria-current="page" class="pagination__item pagination__item--active">1</button>
                                 <button class="pagination__item">2</button>
                                 <button class="pagination__item">3</button>
-                                <span class="pagination__item pagination__ellipsis" aria-hidden="true">...</span>
+                                <span aria-hidden="true" class="pagination__item pagination__ellipsis">...</span>
                                 <button class="pagination__item">8</button>
-                                <button class="pagination__item pagination__next" aria-label="Next page">Next →</button>
+                                <button aria-label="Next page" class="pagination__item pagination__next">Next →</button>
                             </nav>
                         </div>
                     </div>
 
                     <div class="card mt-6">
                         <div class="card__body">
-                            <nav class="pagination pagination--back-forward pagination--minimal" aria-label="Back and forward pagination">
+                            <nav aria-label="Back and forward pagination"
+                                 class="pagination pagination--back-forward pagination--minimal">
                                 <button class="pagination__item pagination__prev pagination__item--disabled" disabled>
                                     ← Previous
                                 </button>
@@ -346,7 +349,7 @@
 
                     <div class="card mt-6">
                         <div class="card__body">
-                            <nav class="pagination pagination--load-more" aria-label="Load more">
+                            <nav aria-label="Load more" class="pagination pagination--load-more">
                                 <button class="pagination__item">Load more</button>
                                 <span class="pagination__status">Showing 24 of 128</span>
                             </nav>
@@ -355,12 +358,12 @@
 
                     <div class="card mt-6">
                         <div class="card__body">
-                            <nav class="pagination pagination--compact" aria-label="Compact pagination">
-                                <button class="pagination__item pagination__prev" aria-label="Previous page">←</button>
-                                <button class="pagination__item pagination__item--active" aria-current="page">4</button>
+                            <nav aria-label="Compact pagination" class="pagination pagination--compact">
+                                <button aria-label="Previous page" class="pagination__item pagination__prev">←</button>
+                                <button aria-current="page" class="pagination__item pagination__item--active">4</button>
                                 <button class="pagination__item">5</button>
                                 <button class="pagination__item">6</button>
-                                <button class="pagination__item pagination__next" aria-label="Next page">→</button>
+                                <button aria-label="Next page" class="pagination__item pagination__next">→</button>
                             </nav>
                         </div>
                     </div>
@@ -408,7 +411,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -423,11 +426,11 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="nav-tabs" role="tablist">
-                                <button role="tab" aria-selected="true" class="nav-tabs__item nav-tabs__item--active">
+                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab">
                                     Overview
                                 </button>
-                                <button role="tab" aria-selected="false" class="nav-tabs__item">Activity</button>
-                                <button role="tab" aria-selected="false" class="nav-tabs__item">Settings</button>
+                                <button aria-selected="false" class="nav-tabs__item" role="tab">Activity</button>
+                                <button aria-selected="false" class="nav-tabs__item" role="tab">Settings</button>
                             </div>
                         </div>
                     </div>
@@ -435,11 +438,11 @@
                     <div class="card mt-6">
                         <div class="card__body">
                             <div class="nav-tabs nav-tabs--compact" role="tablist">
-                                <button class="nav-tabs__item nav-tabs__item--active" role="tab" aria-selected="true">
+                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab">
                                     Overview
                                 </button>
-                                <button class="nav-tabs__item" role="tab" aria-selected="false">Activity</button>
-                                <button class="nav-tabs__item" role="tab" aria-selected="false">Settings</button>
+                                <button aria-selected="false" class="nav-tabs__item" role="tab">Activity</button>
+                                <button aria-selected="false" class="nav-tabs__item" role="tab">Settings</button>
                             </div>
                         </div>
                     </div>
@@ -447,17 +450,17 @@
                     <div class="card mt-6">
                         <div class="card__body">
                             <div class="nav-tabs" role="tablist">
-                                <button class="nav-tabs__item nav-tabs__item--active" role="tab" aria-selected="true">
+                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab">
                                     <span class="icon icon--mask icon--search nav-tabs__icon"></span>
                                     Overview
                                 </button>
 
-                                <button class="nav-tabs__item" role="tab" aria-selected="false">
+                                <button aria-selected="false" class="nav-tabs__item" role="tab">
                                     <span class="icon icon--mask icon--calendar nav-tabs__icon"></span>
                                     Activity
                                 </button>
 
-                                <button class="nav-tabs__item" role="tab" aria-selected="false">
+                                <button aria-selected="false" class="nav-tabs__item" role="tab">
                                     <span class="icon icon--mask icon--settings nav-tabs__icon"></span>
                                     Settings
                                 </button>
@@ -468,17 +471,17 @@
                     <div class="card mt-6">
                         <div class="card__body">
                             <div class="nav-tabs" role="tablist">
-                                <button class="nav-tabs__item nav-tabs__item--active" role="tab" aria-selected="true">
+                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab">
                                     Overview
                                     <span class="nav-tabs__badge">12</span>
                                 </button>
 
-                                <button class="nav-tabs__item" role="tab" aria-selected="false">
+                                <button aria-selected="false" class="nav-tabs__item" role="tab">
                                     Activity
                                     <span class="nav-tabs__badge">3</span>
                                 </button>
 
-                                <button class="nav-tabs__item" role="tab" aria-selected="false">
+                                <button aria-selected="false" class="nav-tabs__item" role="tab">
                                     Settings
                                 </button>
                             </div>
@@ -538,7 +541,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -667,7 +670,7 @@
                         <div class="toolbar__section">
                             <h3 class="toolbar__title">Analytics</h3>
                             <div class="nav-tabs nav-tabs--compact" role="tablist">
-                                <button class="nav-tabs__item nav-tabs__item--active" aria-selected="true">Overview
+                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active">Overview
                                 </button>
                                 <button class="nav-tabs__item">Traffic</button>
                                 <button class="nav-tabs__item">Events</button>
@@ -705,7 +708,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -803,7 +806,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -955,7 +958,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1090,7 +1093,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1104,10 +1107,10 @@
 
             <div class="doc-block__preview">
                 <button class="nav__toggle">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
-                        <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
-                        <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+                    <svg fill="none" viewBox="0 0 24 24">
+                        <line stroke-width="2" x1="3" x2="21" y1="6" y2="6"/>
+                        <line stroke-width="2" x1="3" x2="21" y1="12" y2="12"/>
+                        <line stroke-width="2" x1="3" x2="21" y1="18" y2="18"/>
                     </svg>
                 </button>
             </div>
@@ -1130,10 +1133,10 @@
                 <h3 class="text-sm text-muted">Basic</h3>
                 <div class="doc-block__preview">
                     <button class="nav__toggle">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
-                            <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
-                            <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+                        <svg fill="none" viewBox="0 0 24 24">
+                            <line stroke-width="2" x1="3" x2="21" y1="6" y2="6"/>
+                            <line stroke-width="2" x1="3" x2="21" y1="12" y2="12"/>
+                            <line stroke-width="2" x1="3" x2="21" y1="18" y2="18"/>
                         </svg>
                     </button>
                 </div>
@@ -1156,10 +1159,10 @@
 
                 <div class="doc-block__preview">
                     <button class="nav__toggle nav__toggle--active">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
-                            <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
-                            <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+                        <svg fill="none" viewBox="0 0 24 24">
+                            <line stroke-width="2" x1="3" x2="21" y1="6" y2="6"/>
+                            <line stroke-width="2" x1="3" x2="21" y1="12" y2="12"/>
+                            <line stroke-width="2" x1="3" x2="21" y1="18" y2="18"/>
                         </svg>
                     </button>
                 </div>
@@ -1188,7 +1191,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1308,7 +1311,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">

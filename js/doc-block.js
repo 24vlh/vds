@@ -45,7 +45,7 @@ let docBlock = function initDocBlocks() {
 
     function setCorrectLabel(block, button) {
         const isCollapsed = block.classList.contains("doc-block--collapsed");
-        const isExpanded  = block.classList.contains("doc-block--expanded");
+        const isExpanded = block.classList.contains("doc-block--expanded");
 
         // if (isExpanded) {
         //     button.textContent = "Collapse";

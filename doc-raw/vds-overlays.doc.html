@@ -1,4 +1,4 @@
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--a">
+<section class="section section--a" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Overlays</p>
@@ -128,7 +128,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b">
+<section class="section section--b" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Live Examples</p>
@@ -178,14 +178,14 @@
             </div>
         </div>
 
-        <div class="backdrop" data-overlay="backdrop-demo" data-close="backdrop-demo"></div>
+        <div class="backdrop" data-close="backdrop-demo" data-overlay="backdrop-demo"></div>
 
-        <div class="backdrop" data-overlay="modal-basic" data-close="modal-basic"></div>
-        <div class="modal modal--md"
-             data-overlay="modal-basic"
-             role="dialog"
+        <div class="backdrop" data-close="modal-basic" data-overlay="modal-basic"></div>
+        <div aria-labelledby="modal-basic-title"
              aria-modal="true"
-             aria-labelledby="modal-basic-title">
+             class="modal modal--md"
+             data-overlay="modal-basic"
+             role="dialog">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-basic-title">Basic Modal</h3>
@@ -200,12 +200,12 @@
             </div>
         </div>
 
-        <div class="backdrop" data-overlay="modal-fullscreen-mobile" data-close="modal-fullscreen-mobile"></div>
-        <div class="modal modal--md modal--fullscreen-mobile"
-             data-overlay="modal-fullscreen-mobile"
-             role="dialog"
+        <div class="backdrop" data-close="modal-fullscreen-mobile" data-overlay="modal-fullscreen-mobile"></div>
+        <div aria-labelledby="modal-fullscreen-title"
              aria-modal="true"
-             aria-labelledby="modal-fullscreen-title">
+             class="modal modal--md modal--fullscreen-mobile"
+             data-overlay="modal-fullscreen-mobile"
+             role="dialog">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-fullscreen-title">Fullscreen Mobile</h3>
@@ -217,11 +217,11 @@
             </div>
         </div>
 
-        <div class="backdrop" data-overlay="drawer-left" data-close="drawer-left"></div>
-        <div class="drawer drawer--left drawer--hidden"
+        <div class="backdrop" data-close="drawer-left" data-overlay="drawer-left"></div>
+        <div aria-label="Left drawer demo"
+             class="drawer drawer--left drawer--hidden"
              data-overlay="drawer-left"
-             role="complementary"
-             aria-label="Left drawer demo">
+             role="complementary">
             <header class="drawer__header">
                 <h3 class="text-sm">Left Drawer</h3>
             </header>
@@ -233,11 +233,11 @@
             </footer>
         </div>
 
-        <div class="backdrop" data-overlay="drawer-right" data-close="drawer-right"></div>
-        <div class="drawer drawer--right drawer--hidden"
+        <div class="backdrop" data-close="drawer-right" data-overlay="drawer-right"></div>
+        <div aria-label="Right drawer demo"
+             class="drawer drawer--right drawer--hidden"
              data-overlay="drawer-right"
-             role="complementary"
-             aria-label="Right drawer demo">
+             role="complementary">
             <header class="drawer__header">
                 <h3 class="text-sm">Right Drawer</h3>
             </header>
@@ -249,12 +249,12 @@
             </footer>
         </div>
 
-        <div class="backdrop" data-overlay="modal-sheet" data-close="modal-sheet"></div>
-        <div class="modal modal--md modal--sheet"
-             data-overlay="modal-sheet"
-             role="dialog"
+        <div class="backdrop" data-close="modal-sheet" data-overlay="modal-sheet"></div>
+        <div aria-labelledby="modal-sheet-title"
              aria-modal="true"
-             aria-labelledby="modal-sheet-title">
+             class="modal modal--md modal--sheet"
+             data-overlay="modal-sheet"
+             role="dialog">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-sheet-title">Bottom Sheet</h3>
@@ -266,12 +266,12 @@
             </div>
         </div>
 
-        <div class="backdrop" data-overlay="modal-workspace" data-close="modal-workspace"></div>
-        <div class="modal modal--lg modal--workspace"
-             data-overlay="modal-workspace"
-             role="dialog"
+        <div class="backdrop" data-close="modal-workspace" data-overlay="modal-workspace"></div>
+        <div aria-labelledby="modal-workspace-title"
              aria-modal="true"
-             aria-labelledby="modal-workspace-title">
+             class="modal modal--lg modal--workspace"
+             data-overlay="modal-workspace"
+             role="dialog">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-workspace-title">Edit workspace</h3>
@@ -315,13 +315,13 @@
         </div>
 
         <div class="backdrop backdrop--heavy backdrop--level-2"
-             data-overlay="modal-workspace-confirm"
-             data-close="modal-workspace-confirm"></div>
-        <div class="modal modal--confirm modal--danger modal--level-2"
-             data-overlay="modal-workspace-confirm"
-             role="dialog"
+             data-close="modal-workspace-confirm"
+             data-overlay="modal-workspace-confirm"></div>
+        <div aria-labelledby="modal-workspace-confirm-title"
              aria-modal="true"
-             aria-labelledby="modal-workspace-confirm-title">
+             class="modal modal--confirm modal--danger modal--level-2"
+             data-overlay="modal-workspace-confirm"
+             role="dialog">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-workspace-confirm-title">Delete workspace?</h3>
@@ -340,12 +340,12 @@
             </div>
         </div>
 
-        <div class="backdrop" data-overlay="modal-confirm" data-close="modal-confirm"></div>
-        <div class="modal modal--confirm modal--danger"
-             data-overlay="modal-confirm"
-             role="dialog"
+        <div class="backdrop" data-close="modal-confirm" data-overlay="modal-confirm"></div>
+        <div aria-labelledby="modal-confirm-title"
              aria-modal="true"
-             aria-labelledby="modal-confirm-title">
+             class="modal modal--confirm modal--danger"
+             data-overlay="modal-confirm"
+             role="dialog">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-confirm-title">Remove member?</h3>
@@ -362,12 +362,12 @@
         </div>
 
         <div class="backdrop backdrop--blocking" data-overlay="modal-blocking-confirm"></div>
-        <div class="modal modal--confirm modal--blocking modal--danger"
-             data-overlay="modal-blocking-confirm"
-             role="dialog"
+        <div aria-labelledby="modal-blocking-confirm-title"
              aria-modal="true"
-             aria-labelledby="modal-blocking-confirm-title"
-             data-blocking="true">
+             class="modal modal--confirm modal--blocking modal--danger"
+             data-blocking="true"
+             data-overlay="modal-blocking-confirm"
+             role="dialog">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-blocking-confirm-title">System update required</h3>
@@ -382,12 +382,12 @@
             </div>
         </div>
 
-        <div class="backdrop" data-overlay="modal-action" data-close="modal-action"></div>
-        <div class="modal modal--md"
-             data-overlay="modal-action"
-             role="dialog"
+        <div class="backdrop" data-close="modal-action" data-overlay="modal-action"></div>
+        <div aria-labelledby="modal-action-title"
              aria-modal="true"
-             aria-labelledby="modal-action-title">
+             class="modal modal--md"
+             data-overlay="modal-action"
+             role="dialog">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-action-title">Export archive</h3>
@@ -419,7 +419,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b section--divided">
+<section class="section section--b section--divided" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Backdrops</p>
@@ -585,7 +585,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b section--alt">
+<section class="section section--b section--alt" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Modals</p>
@@ -652,7 +652,7 @@
                                 <div class="layout-inline">
                                     <h3 class="modal__title">Example modal</h3>
                                 </div>
-                                <button class="modal__close" type="button" aria-label="Close">
+                                <button aria-label="Close" class="modal__close" type="button">
                                     &times;
                                 </button>
                             </header>
@@ -664,8 +664,8 @@
                             </div>
                             <footer class="modal__footer">
                                 <div class="button-row">
-                                    <button type="button" class="button button--ghost">Cancel</button>
-                                    <button type="button" class="button button--primary">Confirm</button>
+                                    <button class="button button--ghost" type="button">Cancel</button>
+                                    <button class="button button--primary" type="button">Confirm</button>
                                 </div>
                             </footer>
                         </div>
@@ -731,7 +731,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b">
+<section class="section section--b" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Modals</p>
@@ -814,7 +814,7 @@
                                         <p class="text-xs text-muted">Large paddings on all regions.</p>
                                     </div>
                                     <footer class="modal__footer">
-                                        <button type="button" class="button button--primary">OK</button>
+                                        <button class="button button--primary" type="button">OK</button>
                                     </footer>
                                 </div>
                             </div>
@@ -828,7 +828,7 @@
                                         <p class="text-xs text-muted">Balanced spacing.</p>
                                     </div>
                                     <footer class="modal__footer">
-                                        <button type="button" class="button button--primary">OK</button>
+                                        <button class="button button--primary" type="button">OK</button>
                                     </footer>
                                 </div>
                             </div>
@@ -842,7 +842,7 @@
                                         <p class="text-xs text-muted">Minimal paddings.</p>
                                     </div>
                                     <footer class="modal__footer">
-                                        <button type="button" class="button button--primary">OK</button>
+                                        <button class="button button--primary" type="button">OK</button>
                                     </footer>
                                 </div>
                             </div>
@@ -951,7 +951,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b section--alt">
+<section class="section section--b section--alt" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Responsive</p>
@@ -1096,7 +1096,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b">
+<section class="section section--b" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Semantics</p>
@@ -1232,7 +1232,7 @@
                             </div>
                             <div class="modal__loader">
                                 <svg class="modal__loader-icon" viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10" stroke-width="2" stroke-linecap="round"></circle>
+                                    <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-width="2"></circle>
                                 </svg>
                             </div>
                         </div>
@@ -1313,7 +1313,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b">
+<section class="section section--b" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Workflows</p>
@@ -1354,7 +1354,8 @@
 
             <div class="doc-block__preview">
                 <div class="layout-grid-inner-2">
-                    <div class="modal modal--active modal--workspace" style="position:relative; inset:auto; min-height:auto;">
+                    <div class="modal modal--active modal--workspace"
+                         style="position:relative; inset:auto; min-height:auto;">
                         <div class="modal__inner">
                             <header class="modal__header">
                                 <h3 class="modal__title text-xs">Workspace modal</h3>
@@ -1364,11 +1365,11 @@
                                     <div class="form-label-row">
                                         <span class="form-label">Workspace name</span>
                                     </div>
-                                    <input class="form-control" type="text" value="Foundry Studio" readonly/>
+                                    <input class="form-control" readonly type="text" value="Foundry Studio"/>
                                 </div>
                                 <div class="modal__section">
                                     <span class="form-label">Owner</span>
-                                    <input class="form-control" type="text" value="Design Ops" readonly/>
+                                    <input class="form-control" readonly type="text" value="Design Ops"/>
                                 </div>
                             </div>
                             <footer class="modal__footer modal__footer--split">
@@ -1378,7 +1379,8 @@
                         </div>
                     </div>
 
-                    <div class="modal modal--active modal--confirm modal--danger" style="position:relative; inset:auto;">
+                    <div class="modal modal--active modal--confirm modal--danger"
+                         style="position:relative; inset:auto;">
                         <div class="modal__inner">
                             <header class="modal__header">
                                 <h3 class="modal__title text-xs">Confirm delete</h3>
@@ -1475,7 +1477,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b section--alt">
+<section class="section section--b section--alt" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Layouts</p>
@@ -1597,7 +1599,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b">
+<section class="section section--b" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Drawers</p>
@@ -1819,7 +1821,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b section--alt">
+<section class="section section--b section--alt" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">Inline overlays</p>
@@ -2027,7 +2029,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--c">
+<section class="section section--c" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner layout-stack">
         <header class="section__header">
             <p class="section__eyebrow">System</p>
@@ -2293,7 +2295,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-overlay>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">

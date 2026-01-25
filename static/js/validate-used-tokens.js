@@ -13,6 +13,7 @@ const path = require("path");
 // ---- CONFIG ----
 const TOKENS_DIR = path.join(process.cwd(), "tokens");
 const CSS_DIR = path.join(process.cwd(), "css/components");
+
 // ----------------
 
 function readCssFilesRecursively(dir) {

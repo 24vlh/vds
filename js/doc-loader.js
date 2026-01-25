@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .filter(Boolean)
         .pop();
 
-    if(!segment) segment = 'home';
+    if (!segment) segment = 'home';
 
     if (segment) {
         const norm = segment.toLowerCase();

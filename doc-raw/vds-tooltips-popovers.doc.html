@@ -1,4 +1,4 @@
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <h1>Tooltips &amp; Popovers</h1>
         <p class="leading-relaxed text-soft">
@@ -15,7 +15,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -33,7 +33,7 @@
                         <li>Load <code>base.css</code> and <code>layout.css</code>.
                         </li>
                         <li>Load <code>typography.css</code> and <code
-                                >icons.css</code>.
+                        >icons.css</code>.
                         </li>
                         <li>
                             Load active theme:
@@ -80,7 +80,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block doc-block--split">
             <header class="doc-block__header">
@@ -96,7 +96,7 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
-                            <button class="button button--ghost tooltip-trigger" aria-describedby="tt-save">
+                            <button aria-describedby="tt-save" class="button button--ghost tooltip-trigger">
                                 Save
                                 <span
                                         class="tooltip tooltip--top tooltip--c tooltip--visible"
@@ -116,22 +116,22 @@
                         <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
                             <div class="popover-anchor">
                                 <button
+                                        aria-controls="user-menu"
+                                        aria-expanded="true"
+                                        aria-haspopup="dialog"
+                                        aria-label="Open user menu"
                                         class="button button--ghost button--icon-only"
                                         type="button"
-                                        aria-haspopup="dialog"
-                                        aria-expanded="true"
-                                        aria-controls="user-menu"
-                                        aria-label="Open user menu"
                                 >
                                     <span class="icon icon--mask icon--user"></span>
                                 </button>
 
                                 <div
+                                        aria-modal="false"
                                         class="popover popover--bottom-right popover--c popover--open"
+                                        data-state="open"
                                         id="user-menu"
                                         role="dialog"
-                                        aria-modal="false"
-                                        data-state="open"
                                 >
                                     <header class="popover__header">
                                         <h3 class="popover__title">Signed in as</h3>
@@ -229,7 +229,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -368,7 +368,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block doc-block--split">
             <header class="doc-block__header">
@@ -408,7 +408,8 @@
                             </button>
                             <button class="button button--ghost tooltip-trigger">
                                 No arrow
-                                <span class="tooltip tooltip--bottom-right tooltip--c tooltip--visible tooltip--no-arrow" role="tooltip">
+                                <span class="tooltip tooltip--bottom-right tooltip--c tooltip--visible tooltip--no-arrow"
+                                      role="tooltip">
                                     Clean edge tooltip
                                 </span>
                             </button>
@@ -422,21 +423,21 @@
                              style="padding-block: var(--space-12);">
                             <div class="popover-anchor">
                                 <button
+                                        aria-controls="corner-popover"
+                                        aria-expanded="true"
+                                        aria-haspopup="dialog"
                                         class="button button--secondary button--sm"
                                         type="button"
-                                        aria-haspopup="dialog"
-                                        aria-expanded="true"
-                                        aria-controls="corner-popover"
                                 >
                                     Corner popover
                                 </button>
 
                                 <div
+                                        aria-modal="false"
                                         class="popover popover--bottom-right popover--c popover--open"
+                                        data-state="open"
                                         id="corner-popover"
                                         role="dialog"
-                                        aria-modal="false"
-                                        data-state="open"
                                         style="--popover-arrow-inset: var(--space-4);"
                                 >
                                     <div class="popover__body text-sm">
@@ -448,21 +449,21 @@
 
                             <div class="popover-anchor">
                                 <button
+                                        aria-controls="arrowless-popover"
+                                        aria-expanded="true"
+                                        aria-haspopup="dialog"
                                         class="button button--secondary button--sm"
                                         type="button"
-                                        aria-haspopup="dialog"
-                                        aria-expanded="true"
-                                        aria-controls="arrowless-popover"
                                 >
                                     Arrowless
                                 </button>
 
                                 <div
+                                        aria-modal="false"
                                         class="popover popover--bottom-left popover--c popover--open popover--no-arrow"
+                                        data-state="open"
                                         id="arrowless-popover"
                                         role="dialog"
-                                        aria-modal="false"
-                                        data-state="open"
                                 >
                                     <div class="popover__body text-sm">
                                         Remove arrows in dense layouts.
@@ -513,7 +514,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block doc-block--split">
             <header class="doc-block__header">
@@ -532,32 +533,32 @@
                              style="padding-block: var(--space-12);">
                             <div class="popover-anchor">
                                 <button
+                                        aria-controls="table-columns"
+                                        aria-expanded="true"
+                                        aria-haspopup="menu"
                                         class="button button--secondary button--sm"
                                         type="button"
-                                        aria-haspopup="menu"
-                                        aria-expanded="true"
-                                        aria-controls="table-columns"
                                 >
                                     Columns
                                 </button>
 
                                 <div
+                                        aria-modal="false"
                                         class="popover popover--bottom-left popover--c popover--open"
+                                        data-state="open"
                                         id="table-columns"
                                         role="menu"
-                                        aria-modal="false"
-                                        data-state="open"
                                 >
                                     <header class="popover__header">
                                         <h3 class="popover__title">Visible columns</h3>
                                     </header>
                                     <div class="popover__body">
                                         <ul class="text-sm">
-                                            <li><label class="inline-flex items-center gap-2"><input type="checkbox"
-                                                                                                     checked>
+                                            <li><label class="inline-flex items-center gap-2"><input checked
+                                                                                                     type="checkbox">
                                                 Name</label></li>
-                                            <li><label class="inline-flex items-center gap-2"><input type="checkbox"
-                                                                                                     checked>
+                                            <li><label class="inline-flex items-center gap-2"><input checked
+                                                                                                     type="checkbox">
                                                 Status</label></li>
                                             <li><label class="inline-flex items-center gap-2"><input type="checkbox">
                                                 Owner</label></li>
@@ -582,21 +583,21 @@
                              style="padding-block: var(--space-12);">
                             <div class="popover-anchor">
                                 <button
+                                        aria-controls="filters"
+                                        aria-expanded="true"
+                                        aria-haspopup="dialog"
                                         class="button button--ghost button--sm"
                                         type="button"
-                                        aria-haspopup="dialog"
-                                        aria-expanded="true"
-                                        aria-controls="filters"
                                 >
                                     Filters
                                 </button>
 
                                 <div
+                                        aria-modal="false"
                                         class="popover popover--bottom popover--a popover--info popover--open"
+                                        data-state="open"
                                         id="filters"
                                         role="dialog"
-                                        aria-modal="false"
-                                        data-state="open"
                                 >
                                     <header class="popover__header">
                                         <h3 class="popover__title">Filters</h3>
@@ -613,7 +614,7 @@
                                         </div>
                                         <div class="form-field">
                                             <label class="text-xs text-muted mb-1">Owner</label>
-                                            <input type="text" placeholder="Any owner">
+                                            <input placeholder="Any owner" type="text">
                                         </div>
                                     </div>
                                     <footer class="popover__footer">
@@ -727,7 +728,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">

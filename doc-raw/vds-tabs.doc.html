@@ -1,4 +1,4 @@
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <h1>Tabs</h1>
         <p class="leading-relaxed text-soft">
@@ -17,7 +17,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -33,40 +33,40 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="tabs">
-                                <div class="tab-list" role="tablist" aria-label="Project tabs">
+                                <div aria-label="Project tabs" class="tab-list" role="tablist">
                                     <button
-                                            class="tab tab--active"
-                                            type="button"
-                                            role="tab"
                                             aria-selected="true"
+                                            class="tab tab--active"
                                             id="tabs-concept-overview"
+                                            role="tab"
+                                            type="button"
                                     >
                                         Overview
                                     </button>
                                     <button
-                                            class="tab"
-                                            type="button"
-                                            role="tab"
                                             aria-selected="false"
+                                            class="tab"
                                             id="tabs-concept-activity"
+                                            role="tab"
+                                            type="button"
                                     >
                                         Activity
                                     </button>
                                     <button
-                                            class="tab"
-                                            type="button"
-                                            role="tab"
                                             aria-selected="false"
+                                            class="tab"
                                             id="tabs-concept-settings"
+                                            role="tab"
+                                            type="button"
                                     >
                                         Settings
                                     </button>
                                 </div>
 
                                 <div
+                                        aria-labelledby="tabs-concept-overview"
                                         class="tab-panel"
                                         role="tabpanel"
-                                        aria-labelledby="tabs-concept-overview"
                                 >
                                     <p class="text-sm">
                                         Use tabs for switching between related views of the same entity (e.g. overview,
@@ -141,7 +141,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -157,40 +157,40 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="tabs">
-                                <div class="tab-list" role="tablist" aria-label="Account tabs">
+                                <div aria-label="Account tabs" class="tab-list" role="tablist">
                                     <button
-                                            class="tab tab--active"
-                                            type="button"
-                                            role="tab"
                                             aria-selected="true"
+                                            class="tab tab--active"
                                             id="tabs-base-profile"
+                                            role="tab"
+                                            type="button"
                                     >
                                         Profile
                                     </button>
                                     <button
-                                            class="tab"
-                                            type="button"
-                                            role="tab"
                                             aria-selected="false"
+                                            class="tab"
                                             id="tabs-base-security"
+                                            role="tab"
+                                            type="button"
                                     >
                                         Security
                                     </button>
                                     <button
-                                            class="tab"
-                                            type="button"
-                                            role="tab"
                                             aria-selected="false"
+                                            class="tab"
                                             id="tabs-base-teams"
+                                            role="tab"
+                                            type="button"
                                     >
                                         Teams
                                     </button>
                                 </div>
 
                                 <div
+                                        aria-labelledby="tabs-base-profile"
                                         class="tab-panel"
                                         role="tabpanel"
-                                        aria-labelledby="tabs-base-profile"
                                 >
                                     <p class="text-sm">
                                         The active tab is emphasised using an underline drawn via
@@ -258,7 +258,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -277,12 +277,12 @@
                         <div class="card__body">
                             <h3 class="text-sm font-semibold mb-2">Relaxed (A)</h3>
                             <div class="tabs tabs--a">
-                                <div class="tab-list" role="tablist" aria-label="Project density A">
-                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                <div aria-label="Project density A" class="tab-list" role="tablist">
+                                    <button aria-selected="true" class="tab tab--active" role="tab" type="button">
                                         General
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Members</button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Security</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Members</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Security</button>
                                 </div>
                                 <div class="tab-panel" role="tabpanel">
                                     <p class="text-sm">
@@ -298,11 +298,11 @@
                         <div class="card__body">
                             <h3 class="text-sm font-semibold mb-2">Compact (C)</h3>
                             <div class="tabs tabs--c">
-                                <div class="tab-list" role="tablist" aria-label="Filter density C">
-                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">All
+                                <div aria-label="Filter density C" class="tab-list" role="tablist">
+                                    <button aria-selected="true" class="tab tab--active" role="tab" type="button">All
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Open</button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Closed</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Open</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Closed</button>
                                 </div>
                                 <div class="tab-panel" role="tabpanel">
                                     <p class="text-sm">
@@ -317,13 +317,13 @@
                         <div class="card__body">
                             <h3 class="text-sm font-semibold mb-2">Stretch</h3>
                             <div class="tabs tabs--stretch tabs--c">
-                                <div class="tab-list" role="tablist" aria-label="Billing window">
-                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                <div aria-label="Billing window" class="tab-list" role="tablist">
+                                    <button aria-selected="true" class="tab tab--active" role="tab" type="button">
                                         Monthly
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Quarterly
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Quarterly
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Yearly</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Yearly</button>
                                 </div>
                                 <div class="tab-panel" role="tabpanel">
                                     <p class="text-sm">
@@ -371,7 +371,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block doc-block--split">
             <header class="doc-block__header">
@@ -387,17 +387,17 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="tabs tabs--pills tabs--c">
-                                <div class="tab-list" role="tablist" aria-label="Project filters">
-                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                <div aria-label="Project filters" class="tab-list" role="tablist">
+                                    <button aria-selected="true" class="tab tab--active" role="tab" type="button">
                                         All
                                         <span class="tab__badge">12</span>
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">
+                                    <button aria-selected="false" class="tab" role="tab" type="button">
                                         Active
                                         <span class="tab__badge">7</span>
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Paused</button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Archived</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Paused</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Archived</button>
                                 </div>
                                 <div class="tab-panel" role="tabpanel">
                                     <p class="text-sm">
@@ -413,12 +413,12 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="tabs tabs--segmented tabs--c">
-                                <div class="tab-list" role="tablist" aria-label="View switcher">
-                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                <div aria-label="View switcher" class="tab-list" role="tablist">
+                                    <button aria-selected="true" class="tab tab--active" role="tab" type="button">
                                         Board
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">List</button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Timeline</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">List</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Timeline</button>
                                 </div>
                                 <div class="tab-panel" role="tabpanel">
                                     <p class="text-sm">
@@ -464,7 +464,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -480,14 +480,17 @@
                     <div class="card" style="max-width: 420px;">
                         <div class="card__body">
                             <div class="tabs">
-                                <div class="tab-list tab-list--scroll" role="tablist" aria-label="Release windows">
-                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                <div aria-label="Release windows" class="tab-list tab-list--scroll" role="tablist">
+                                    <button aria-selected="true" class="tab tab--active" role="tab" type="button">
                                         Q1 Launch
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Q2 Growth</button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Q3 Scale</button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">Q4 Planning</button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">2027 Outlook</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Q2 Growth
+                                    </button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Q3 Scale</button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">Q4 Planning
+                                    </button>
+                                    <button aria-selected="false" class="tab" role="tab" type="button">2027 Outlook
+                                    </button>
                                 </div>
                                 <div class="tab-panel" role="tabpanel">
                                     <p class="text-sm">
@@ -524,7 +527,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block doc-block--split">
             <header class="doc-block__header">
@@ -541,53 +544,53 @@
                         <div class="card__body">
                             <div class="tabs tabs--vertical">
                                 <div
+                                        aria-label="Account settings"
+                                        aria-orientation="vertical"
                                         class="tab-list"
                                         role="tablist"
-                                        aria-orientation="vertical"
-                                        aria-label="Account settings"
                                 >
                                     <button
-                                            class="tab tab--active"
-                                            type="button"
-                                            role="tab"
                                             aria-selected="true"
+                                            class="tab tab--active"
                                             id="tabs-vertical-profile"
+                                            role="tab"
+                                            type="button"
                                     >
                                         Profile
                                     </button>
                                     <button
-                                            class="tab"
-                                            type="button"
-                                            role="tab"
                                             aria-selected="false"
+                                            class="tab"
                                             id="tabs-vertical-security"
+                                            role="tab"
+                                            type="button"
                                     >
                                         Security
                                     </button>
                                     <button
-                                            class="tab"
-                                            type="button"
-                                            role="tab"
                                             aria-selected="false"
+                                            class="tab"
                                             id="tabs-vertical-notifications"
+                                            role="tab"
+                                            type="button"
                                     >
                                         Notifications
                                     </button>
                                     <button
-                                            class="tab"
-                                            type="button"
-                                            role="tab"
                                             aria-selected="false"
+                                            class="tab"
                                             id="tabs-vertical-billing"
+                                            role="tab"
+                                            type="button"
                                     >
                                         Billing
                                     </button>
                                 </div>
 
                                 <div
+                                        aria-labelledby="tabs-vertical-profile"
                                         class="tab-panel"
                                         role="tabpanel"
-                                        aria-labelledby="tabs-vertical-profile"
                                 >
                                     <h3 class="text-sm font-semibold mb-1">Profile</h3>
                                     <p class="text-sm text-soft">
@@ -657,7 +660,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -674,22 +677,22 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="tabs tabs--stretch tabs--c">
-                                <div class="tab-list" role="tablist" aria-label="Inbox filters">
-                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                <div aria-label="Inbox filters" class="tab-list" role="tablist">
+                                    <button aria-selected="true" class="tab tab--active" role="tab" type="button">
                                         <span class="tab__icon">
                                             <span class="icon icon--mask icon--inbox"></span>
                                         </span>
                                         Inbox
                                         <span class="tab__badge">24</span>
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">
+                                    <button aria-selected="false" class="tab" role="tab" type="button">
                                         <span class="tab__icon">
                                             <span class="icon icon--mask icon--star"></span>
                                         </span>
                                         Starred
                                         <span class="tab__badge">6</span>
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">
+                                    <button aria-selected="false" class="tab" role="tab" type="button">
                                         <span class="tab__icon">
                                             <span class="icon icon--mask icon--archive"></span>
                                         </span>
@@ -752,7 +755,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -768,35 +771,35 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="tabs tabs--c tabs--inline">
-                                <div class="tab-list" role="tablist" aria-label="Inbox views">
+                                <div aria-label="Inbox views" class="tab-list" role="tablist">
                                     <button
-                                            class="tab tab--icon-only tab--active"
-                                            type="button"
-                                            role="tab"
-                                            aria-selected="true"
                                             aria-label="Inbox"
+                                            aria-selected="true"
+                                            class="tab tab--icon-only tab--active"
+                                            role="tab"
+                                            type="button"
                                     >
                                         <span class="tab__icon">
                                             <span class="icon icon--mask icon--inbox"></span>
                                         </span>
                                     </button>
                                     <button
-                                            class="tab tab--icon-only"
-                                            type="button"
-                                            role="tab"
-                                            aria-selected="false"
                                             aria-label="Starred"
+                                            aria-selected="false"
+                                            class="tab tab--icon-only"
+                                            role="tab"
+                                            type="button"
                                     >
                                         <span class="tab__icon">
                                             <span class="icon icon--mask icon--star"></span>
                                         </span>
                                     </button>
                                     <button
-                                            class="tab tab--icon-only"
-                                            type="button"
-                                            role="tab"
-                                            aria-selected="false"
                                             aria-label="Archived"
+                                            aria-selected="false"
+                                            class="tab tab--icon-only"
+                                            role="tab"
+                                            type="button"
                                     >
                                         <span class="tab__icon">
                                             <span class="icon icon--mask icon--archive"></span>
@@ -839,7 +842,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -861,14 +864,14 @@
                                 </p>
                             </div>
                             <div class="tabs tabs--c tabs--inline">
-                                <div class="tab-list" role="tablist" aria-label="Revenue window">
-                                    <button class="tab tab--active" type="button" role="tab" aria-selected="true">
+                                <div aria-label="Revenue window" class="tab-list" role="tablist">
+                                    <button aria-selected="true" class="tab tab--active" role="tab" type="button">
                                         7 days
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">
+                                    <button aria-selected="false" class="tab" role="tab" type="button">
                                         30 days
                                     </button>
-                                    <button class="tab" type="button" role="tab" aria-selected="false">
+                                    <button aria-selected="false" class="tab" role="tab" type="button">
                                         12 months
                                     </button>
                                 </div>
@@ -925,7 +928,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1097,7 +1100,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-tabs class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-tabs>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">

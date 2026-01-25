@@ -8,7 +8,7 @@ Sections:
 <!-- =========================================================
 1) OVERVIEW & STRUCTURE
 ========================================================= -->
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <header class="section__header">
             <div class="section__eyebrow">List surfaces</div>
@@ -23,9 +23,9 @@ Sections:
 
         <div class="section__list">
             <div class="section__list-item">
-                <svg viewBox="0 0 16 16" aria-hidden="true">
-                    <path d="M3 8.5 6.5 12 13 4" fill="none" stroke="currentColor" stroke-width="1.6"
-                          stroke-linecap="round" stroke-linejoin="round"/>
+                <svg aria-hidden="true" viewBox="0 0 16 16">
+                    <path d="M3 8.5 6.5 12 13 4" fill="none" stroke="currentColor" stroke-linecap="round"
+                          stroke-linejoin="round" stroke-width="1.6"/>
                 </svg>
                 <div>
                     <div class="section__list-item-title">Inbox-first scanning</div>
@@ -36,11 +36,11 @@ Sections:
             </div>
 
             <div class="section__list-item">
-                <svg viewBox="0 0 16 16" aria-hidden="true">
-                    <rect x="2.5" y="3" width="11" height="10" rx="1.8" ry="1.8" fill="none"
-                          stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M2.5 6.5h11" fill="none" stroke="currentColor" stroke-width="1.6"
-                          stroke-linecap="round"/>
+                <svg aria-hidden="true" viewBox="0 0 16 16">
+                    <rect fill="none" height="10" rx="1.8" ry="1.8" stroke="currentColor" stroke-width="1.6" width="11"
+                          x="2.5" y="3"/>
+                    <path d="M2.5 6.5h11" fill="none" stroke="currentColor" stroke-linecap="round"
+                          stroke-width="1.6"/>
                 </svg>
                 <div>
                     <div class="section__list-item-title">Responsive reflow</div>
@@ -52,10 +52,10 @@ Sections:
             </div>
 
             <div class="section__list-item">
-                <svg viewBox="0 0 16 16" aria-hidden="true">
-                    <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M6 8h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                    <path d="M8 6v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <svg aria-hidden="true" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" fill="none" r="6.5" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M6 8h4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"/>
+                    <path d="M8 6v4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"/>
                 </svg>
                 <div>
                     <div class="section__list-item-title">Expandable details (CSS helpers)</div>
@@ -69,7 +69,7 @@ Sections:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section section--inset">
+<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -116,7 +116,7 @@ Sections:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -132,25 +132,25 @@ Sections:
                 <div class="doc-block__preview">
                     <div class="inbox__list">
 
-                        <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
-                             aria-label="Inbox row">
+                        <div aria-label="Inbox row" class="inbox-row inbox-row--normal" role="group"
+                             tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
 
                                     <div class="inbox-row__meta">
                                         <div class="inbox-row__titleline">
                                             <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--bookmark"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--bookmark">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
                                                         </svg>
                                                     </span>
-                                                <span class="inbox-row__status-icon inbox-row__status-icon--star"
-                                                      aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                <span aria-hidden="true"
+                                                      class="inbox-row__status-icon inbox-row__status-icon--star">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
                                                         </svg>
                                                     </span>
@@ -171,26 +171,26 @@ Sections:
                                     </div>
 
                                     <div class="inbox-row__actions">
-                                        <a class="inbox-action inbox-action--icon" href="#"
-                                           aria-label="Edit">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="1.8">
+                                        <a aria-label="Edit" class="inbox-action inbox-action--icon"
+                                           href="#">
+                                            <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                 viewBox="0 0 24 24">
                                                 <path d="M4 20h4l10-10-4-4L4 16v4z"/>
                                                 <path d="M13 7l4 4"/>
                                             </svg>
                                         </a>
-                                        <a class="inbox-action inbox-action--icon inbox-action--danger"
-                                           href="#" aria-label="Delete">
-                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <a aria-label="Delete"
+                                           class="inbox-action inbox-action--icon inbox-action--danger" href="#">
+                                            <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linecap="round"/>
+                                                      stroke-linecap="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                             </svg>
                                         </a>
                                     </div>
@@ -239,7 +239,7 @@ Sections:
 <!-- =========================================================
 2) TOP NAVIGATION BAR (SEARCH + TABS + ACTION SLOTS)
 ========================================================= -->
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -258,63 +258,65 @@ Sections:
                         <div class="inbox-nav__bar">
 
                             <div class="inbox-nav__left">
-                                <div class="inbox-search" aria-label="Search">
-                                    <button class="inbox-search__toggle" type="button" aria-label="Open search"
-                                            aria-expanded="false">
-                                        <svg viewBox="0 0 16 16" aria-hidden="true">
-                                            <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor"
+                                <div aria-label="Search" class="inbox-search">
+                                    <button aria-expanded="false" aria-label="Open search" class="inbox-search__toggle"
+                                            type="button">
+                                        <svg aria-hidden="true" viewBox="0 0 16 16">
+                                            <circle cx="7" cy="7" fill="none" r="4.5" stroke="currentColor"
                                                     stroke-width="1.6"/>
                                             <path d="M10.7 10.7 13.5 13.5" fill="none" stroke="currentColor"
-                                                  stroke-width="1.6"
-                                                  stroke-linecap="round"/>
+                                                  stroke-linecap="round"
+                                                  stroke-width="1.6"/>
                                         </svg>
                                     </button>
 
                                     <div class="inbox-search__field">
                                         <label class="inbox__sr-only" for="inbox-search-1">Search</label>
-                                        <input id="inbox-search-1" class="inbox-search__input" type="text"
-                                               placeholder="Search…"/>
-                                        <button class="inbox-action inbox-action--icon inbox-action--borderless"
-                                                type="button" aria-label="Close search">
-                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <input class="inbox-search__input" id="inbox-search-1" placeholder="Search…"
+                                               type="text"/>
+                                        <button aria-label="Close search"
+                                                class="inbox-action inbox-action--icon inbox-action--borderless"
+                                                type="button">
+                                            <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6" stroke-linecap="round"/>
+                                                      stroke-linecap="round" stroke-width="1.6"/>
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="inbox-tabs" role="tablist" aria-label="Inbox views">
-                                <button class="inbox-tab is-active" type="button" role="tab" aria-selected="true">
+                            <div aria-label="Inbox views" class="inbox-tabs" role="tablist">
+                                <button aria-selected="true" class="inbox-tab is-active" role="tab" type="button">
                                     <span>Messages</span>
-                                    <span class="inbox-tab__count" aria-label="Messages count">12</span>
+                                    <span aria-label="Messages count" class="inbox-tab__count">12</span>
                                 </button>
-                                <button class="inbox-tab" type="button" role="tab" aria-selected="false">
+                                <button aria-selected="false" class="inbox-tab" role="tab" type="button">
                                     <span>Emails</span>
-                                    <span class="inbox-tab__count" aria-label="Emails count">4</span>
+                                    <span aria-label="Emails count" class="inbox-tab__count">4</span>
                                 </button>
-                                <button class="inbox-tab inbox__hide-sm" type="button" role="tab"
-                                        aria-selected="false">
+                                <button aria-selected="false" class="inbox-tab inbox__hide-sm" role="tab"
+                                        type="button">
                                     <span>Ideas</span>
-                                    <span class="inbox-tab__count" aria-label="Ideas count">31</span>
+                                    <span aria-label="Ideas count" class="inbox-tab__count">31</span>
                                 </button>
                             </div>
 
                             <div class="inbox-nav__right">
-                                <a class="inbox-action inbox-action--icon" href="#" aria-label="Refresh">
-                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                <a aria-label="Refresh" class="inbox-action inbox-action--icon" href="#">
+                                    <svg aria-hidden="true" viewBox="0 0 16 16">
                                         <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
-                                              stroke-width="1.6"
-                                              stroke-linecap="round"/>
+                                              stroke-linecap="round"
+                                              stroke-width="1.6"/>
                                         <path d="M3 8a5 5 0 0 1 9.2-2.6" fill="none" stroke="currentColor"
-                                              stroke-width="1.6"
-                                              stroke-linecap="round"/>
-                                        <path d="M3.1 11.4H4.7V9.8" fill="none" stroke="currentColor" stroke-width="1.6"
-                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                              stroke-linecap="round"
+                                              stroke-width="1.6"/>
+                                        <path d="M3.1 11.4H4.7V9.8" fill="none" stroke="currentColor"
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round" stroke-width="1.6"/>
                                         <path d="M12.9 4.6H11.3V6.2" fill="none" stroke="currentColor"
-                                              stroke-width="1.6"
-                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round" stroke-width="1.6"/>
                                     </svg>
                                 </a>
                                 <a class="inbox-action inbox-action--accent" href="#">New</a>
@@ -380,7 +382,7 @@ Sections:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -401,59 +403,61 @@ Sections:
                         <div class="inbox-nav__bar inbox-nav__bar--search-full">
 
                             <div class="inbox-nav__left">
-                                <div class="inbox-search is-open"
-                                     aria-label="Search (full width)">
-                                    <button class="inbox-search__toggle" type="button" aria-label="Close search"
-                                            aria-expanded="true">
-                                        <svg viewBox="0 0 16 16" aria-hidden="true">
-                                            <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor"
+                                <div aria-label="Search (full width)"
+                                     class="inbox-search is-open">
+                                    <button aria-expanded="true" aria-label="Close search" class="inbox-search__toggle"
+                                            type="button">
+                                        <svg aria-hidden="true" viewBox="0 0 16 16">
+                                            <circle cx="7" cy="7" fill="none" r="4.5" stroke="currentColor"
                                                     stroke-width="1.6"/>
                                             <path d="M10.7 10.7 13.5 13.5" fill="none" stroke="currentColor"
-                                                  stroke-width="1.6"
-                                                  stroke-linecap="round"/>
+                                                  stroke-linecap="round"
+                                                  stroke-width="1.6"/>
                                         </svg>
                                     </button>
 
                                     <div class="inbox-search__field">
                                         <label class="inbox__sr-only" for="inbox-search-2">Search</label>
-                                        <input id="inbox-search-2" class="inbox-search__input" type="text"
-                                               placeholder="Search all…"/>
-                                        <button class="inbox-action inbox-action--icon inbox-action--borderless"
-                                                type="button" aria-label="Close search">
-                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <input class="inbox-search__input" id="inbox-search-2" placeholder="Search all…"
+                                               type="text"/>
+                                        <button aria-label="Close search"
+                                                class="inbox-action inbox-action--icon inbox-action--borderless"
+                                                type="button">
+                                            <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6" stroke-linecap="round"/>
+                                                      stroke-linecap="round" stroke-width="1.6"/>
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="inbox-tabs" role="tablist" aria-label="Inbox views">
-                                <button class="inbox-tab is-active" type="button" role="tab" aria-selected="true">
+                            <div aria-label="Inbox views" class="inbox-tabs" role="tablist">
+                                <button aria-selected="true" class="inbox-tab is-active" role="tab" type="button">
                                     <span>Messages</span>
-                                    <span class="inbox-tab__count" aria-label="Messages count">12</span>
+                                    <span aria-label="Messages count" class="inbox-tab__count">12</span>
                                 </button>
-                                <button class="inbox-tab" type="button" role="tab" aria-selected="false">
+                                <button aria-selected="false" class="inbox-tab" role="tab" type="button">
                                     <span>Emails</span>
-                                    <span class="inbox-tab__count" aria-label="Emails count">4</span>
+                                    <span aria-label="Emails count" class="inbox-tab__count">4</span>
                                 </button>
                             </div>
 
                             <div class="inbox-nav__right">
-                                <a class="inbox-action inbox-action--icon" href="#" aria-label="Refresh">
-                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                <a aria-label="Refresh" class="inbox-action inbox-action--icon" href="#">
+                                    <svg aria-hidden="true" viewBox="0 0 16 16">
                                         <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
-                                              stroke-width="1.6"
-                                              stroke-linecap="round"/>
+                                              stroke-linecap="round"
+                                              stroke-width="1.6"/>
                                         <path d="M3 8a5 5 0 0 1 9.2-2.6" fill="none" stroke="currentColor"
-                                              stroke-width="1.6"
-                                              stroke-linecap="round"/>
-                                        <path d="M3.1 11.4H4.7V9.8" fill="none" stroke="currentColor" stroke-width="1.6"
-                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                              stroke-linecap="round"
+                                              stroke-width="1.6"/>
+                                        <path d="M3.1 11.4H4.7V9.8" fill="none" stroke="currentColor"
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round" stroke-width="1.6"/>
                                         <path d="M12.9 4.6H11.3V6.2" fill="none" stroke="currentColor"
-                                              stroke-width="1.6"
-                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round" stroke-width="1.6"/>
                                     </svg>
                                 </a>
                                 <a class="inbox-action inbox-action--accent" href="#">New</a>
@@ -489,7 +493,7 @@ Sections:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -505,62 +509,64 @@ Sections:
                     <div class="inbox-nav">
                         <div class="inbox-nav__bar">
                             <div class="inbox-nav__left">
-                                <div class="inbox-search" aria-label="Search (disabled)">
-                                    <button class="inbox-search__toggle" type="button"
-                                            aria-label="Search disabled" disabled>
-                                        <svg viewBox="0 0 16 16" aria-hidden="true">
-                                            <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor"
+                                <div aria-label="Search (disabled)" class="inbox-search">
+                                    <button aria-label="Search disabled" class="inbox-search__toggle"
+                                            disabled type="button">
+                                        <svg aria-hidden="true" viewBox="0 0 16 16">
+                                            <circle cx="7" cy="7" fill="none" r="4.5" stroke="currentColor"
                                                     stroke-width="1.6"/>
                                             <path d="M10.7 10.7 13.5 13.5" fill="none" stroke="currentColor"
-                                                  stroke-width="1.6"
-                                                  stroke-linecap="round"/>
+                                                  stroke-linecap="round"
+                                                  stroke-width="1.6"/>
                                         </svg>
                                     </button>
                                 </div>
                             </div>
 
-                            <div class="inbox-tabs" role="tablist" aria-label="Disabled inbox views">
-                                <button class="inbox-tab" type="button" role="tab" aria-selected="false" disabled>
+                            <div aria-label="Disabled inbox views" class="inbox-tabs" role="tablist">
+                                <button aria-selected="false" class="inbox-tab" disabled role="tab" type="button">
                                     <span>Archived</span>
                                 </button>
-                                <button class="inbox-tab" type="button" role="tab" aria-selected="false"
-                                        aria-disabled="true" tabindex="-1">
+                                <button aria-disabled="true" aria-selected="false" class="inbox-tab" role="tab"
+                                        tabindex="-1" type="button">
                                     <span>Locked</span>
                                 </button>
                             </div>
 
                             <div class="inbox-nav__right">
-                                <button class="inbox-action inbox-action--icon" type="button" disabled
-                                        aria-label="Refresh disabled">
-                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                <button aria-label="Refresh disabled" class="inbox-action inbox-action--icon" disabled
+                                        type="button">
+                                    <svg aria-hidden="true" viewBox="0 0 16 16">
                                         <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
-                                              stroke-width="1.6"
-                                              stroke-linecap="round"/>
+                                              stroke-linecap="round"
+                                              stroke-width="1.6"/>
                                         <path d="M3 8a5 5 0 0 1 9.2-2.6" fill="none" stroke="currentColor"
-                                              stroke-width="1.6"
-                                              stroke-linecap="round"/>
-                                        <path d="M3.1 11.4H4.7V9.8" fill="none" stroke="currentColor" stroke-width="1.6"
-                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                              stroke-linecap="round"
+                                              stroke-width="1.6"/>
+                                        <path d="M3.1 11.4H4.7V9.8" fill="none" stroke="currentColor"
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round" stroke-width="1.6"/>
                                         <path d="M12.9 4.6H11.3V6.2" fill="none" stroke="currentColor"
-                                              stroke-width="1.6"
-                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round" stroke-width="1.6"/>
                                     </svg>
                                 </button>
-                                <button class="inbox-action inbox-action--accent" type="button" disabled>New</button>
+                                <button class="inbox-action inbox-action--accent" disabled type="button">New</button>
                             </div>
 
                         </div>
 
                         <div class="inbox-nav__bottom inbox-nav__bottom--left">
-                            <button class="inbox-action" type="button" disabled>Default</button>
-                            <button class="inbox-action inbox-action--danger" type="button" disabled>Delete</button>
-                            <a class="inbox-action inbox-action--flat" href="#" aria-disabled="true"
+                            <button class="inbox-action" disabled type="button">Default</button>
+                            <button class="inbox-action inbox-action--danger" disabled type="button">Delete</button>
+                            <a aria-disabled="true" class="inbox-action inbox-action--flat" href="#"
                                tabindex="-1">Filter</a>
-                            <button class="inbox-action inbox-action--icon inbox-action--borderless" type="button"
-                                    disabled aria-label="Close disabled">
-                                <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <button aria-label="Close disabled"
+                                    class="inbox-action inbox-action--icon inbox-action--borderless"
+                                    disabled type="button">
+                                <svg aria-hidden="true" viewBox="0 0 16 16">
                                     <path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor"
-                                          stroke-width="1.6" stroke-linecap="round"/>
+                                          stroke-linecap="round" stroke-width="1.6"/>
                                 </svg>
                             </button>
                         </div>
@@ -596,7 +602,7 @@ Section:
 3) Row Variants (minimal / normal / rich / mega) + flat vs rounded list
 ========================================================= -->
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -612,17 +618,17 @@ Section:
                 <div class="doc-block__preview">
                     <div class="inbox__list">
                         <!-- 1) MINIMAL -->
-                        <div class="inbox-row inbox-row--minimal is-bookmarked" tabindex="0" role="group"
-                             aria-label="Minimal row">
+                        <div aria-label="Minimal row" class="inbox-row inbox-row--minimal is-bookmarked" role="group"
+                             tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
                                     <div class="inbox-row__meta">
                                         <div class="inbox-row__titleline">
                                             <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--bookmark"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--bookmark">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
                                                         </svg>
                                                     </span>
@@ -643,26 +649,27 @@ Section:
                                     </div>
 
                                     <div class="inbox-row__actions">
-                                        <a class="inbox-action inbox-action--icon inbox-action--flat"
-                                           href="#" aria-label="Edit">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="1.8">
+                                        <a aria-label="Edit"
+                                           class="inbox-action inbox-action--icon inbox-action--flat" href="#">
+                                            <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                 viewBox="0 0 24 24">
                                                 <path d="M4 20h4l10-10-4-4L4 16v4z"/>
                                                 <path d="M13 7l4 4"/>
                                             </svg>
                                         </a>
-                                        <a class="inbox-action inbox-action--icon inbox-action--danger inbox-action--flat"
-                                           href="#" aria-label="Delete">
-                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <a aria-label="Delete"
+                                           class="inbox-action inbox-action--icon inbox-action--danger inbox-action--flat"
+                                           href="#">
+                                            <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linecap="round"/>
+                                                      stroke-linecap="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                             </svg>
                                         </a>
                                     </div>
@@ -672,8 +679,8 @@ Section:
                         </div>
 
                         <!-- 2) NORMAL -->
-                        <div class="inbox-row inbox-row--normal is-starred" tabindex="0" role="group"
-                             aria-label="Normal row">
+                        <div aria-label="Normal row" class="inbox-row inbox-row--normal is-starred" role="group"
+                             tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
                                     <div class="inbox-row__meta">
@@ -681,12 +688,12 @@ Section:
                                                 <span class="inbox-badge inbox-badge--info">
                                                     <span aria-hidden="true">
                                                         <svg viewBox="0 0 16 16">
-                                                            <circle cx="8" cy="8" r="6.5" fill="none"
+                                                            <circle cx="8" cy="8" fill="none" r="6.5"
                                                                     stroke="currentColor" stroke-width="1.6"/>
                                                             <path d="M8 7v4" fill="none" stroke="currentColor"
-                                                                  stroke-width="1.6" stroke-linecap="round"/>
+                                                                  stroke-linecap="round" stroke-width="1.6"/>
                                                             <path d="M8 5.2h.01" fill="none" stroke="currentColor"
-                                                                  stroke-width="2.2" stroke-linecap="round"/>
+                                                                  stroke-linecap="round" stroke-width="2.2"/>
                                                         </svg>
                                                     </span>
                                                     New
@@ -697,10 +704,10 @@ Section:
 
                                         <div class="inbox-row__titleline">
                                             <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--star"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--star">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
                                                         </svg>
                                                     </span>
@@ -723,40 +730,40 @@ Section:
                                     </div>
 
                                     <div class="inbox-row__actions">
-                                        <a class="inbox-action inbox-action--icon" href="#"
-                                           aria-label="Open">
-                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <a aria-label="Open" class="inbox-action inbox-action--icon"
+                                           href="#">
+                                            <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M3.5 8h7" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linecap="round"/>
+                                                      stroke-linecap="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M7 5.5 10.5 8 7 10.5" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                                      stroke-linecap="round"
+                                                      stroke-linejoin="round" stroke-width="1.6"/>
                                             </svg>
                                         </a>
-                                        <a class="inbox-action inbox-action--icon" href="#"
-                                           aria-label="Edit">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="1.8">
+                                        <a aria-label="Edit" class="inbox-action inbox-action--icon"
+                                           href="#">
+                                            <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                 viewBox="0 0 24 24">
                                                 <path d="M4 20h4l10-10-4-4L4 16v4z"/>
                                                 <path d="M13 7l4 4"/>
                                             </svg>
                                         </a>
-                                        <a class="inbox-action inbox-action--icon inbox-action--danger"
-                                           href="#" aria-label="Delete">
-                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <a aria-label="Delete"
+                                           class="inbox-action inbox-action--icon inbox-action--danger" href="#">
+                                            <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linecap="round"/>
+                                                      stroke-linecap="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                             </svg>
                                         </a>
                                     </div>
@@ -779,8 +786,9 @@ Section:
                         </div>
 
                         <!-- 3) RICH -->
-                        <div class="inbox-row inbox-row--rich is-flagged inbox-row--flag-3" tabindex="0"
-                             role="group" aria-label="Rich row (flagged)">
+                        <div aria-label="Rich row (flagged)"
+                             class="inbox-row inbox-row--rich is-flagged inbox-row--flag-3"
+                             role="group" tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
 
@@ -793,17 +801,17 @@ Section:
 
                                         <div class="inbox-row__titleline">
                                             <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
-                                                <span class="inbox-row__status-icon inbox-row__status-icon--bookmark inbox__hide-sm"
-                                                      aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                <span aria-hidden="true"
+                                                      class="inbox-row__status-icon inbox-row__status-icon--bookmark inbox__hide-sm">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
                                                         </svg>
                                                     </span>
@@ -843,30 +851,30 @@ Section:
 
                                         <div class="inbox-row__details">
                                                 <span class="inbox-row__details-item">
-                                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                    <svg aria-hidden="true" viewBox="0 0 16 16">
                                                         <path d="M3.5 5.5h9v7h-9z" fill="none" stroke="currentColor"
-                                                              stroke-width="1.6" stroke-linejoin="round"/>
+                                                              stroke-linejoin="round" stroke-width="1.6"/>
                                                         <path d="M5.5 3.5h5" fill="none" stroke="currentColor"
-                                                              stroke-width="1.6" stroke-linecap="round"/>
+                                                              stroke-linecap="round" stroke-width="1.6"/>
                                                     </svg>
                                                     3 attachments
                                                 </span>
                                             <span class="inbox-row__details-item">
-                                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                    <svg aria-hidden="true" viewBox="0 0 16 16">
                                                         <path d="M8 3v5l3 2" fill="none" stroke="currentColor"
-                                                              stroke-width="1.6"
-                                                              stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor"
+                                                              stroke-linecap="round"
+                                                              stroke-linejoin="round" stroke-width="1.6"/>
+                                                        <circle cx="8" cy="8" fill="none" r="5.5" stroke="currentColor"
                                                                 stroke-width="1.6"/>
                                                     </svg>
                                                     Updated 2h ago
                                                 </span>
                                             <span class="inbox-row__details-item inbox__hide-sm">
-                                                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                    <svg aria-hidden="true" viewBox="0 0 16 16">
                                                         <path d="M3.5 8h9" fill="none" stroke="currentColor"
-                                                              stroke-width="1.6" stroke-linecap="round"/>
+                                                              stroke-linecap="round" stroke-width="1.6"/>
                                                         <path d="M8 3.5v9" fill="none" stroke="currentColor"
-                                                              stroke-width="1.6" stroke-linecap="round"/>
+                                                              stroke-linecap="round" stroke-width="1.6"/>
                                                     </svg>
                                                     +2 fields
                                                 </span>
@@ -878,8 +886,9 @@ Section:
                         </div>
 
                         <!-- 4) MEGA -->
-                        <div class="inbox-row inbox-row--mega is-flagged inbox-row--flag-5 is-bookmarked is-starred"
-                             tabindex="0" role="group" aria-label="Mega row">
+                        <div aria-label="Mega row"
+                             class="inbox-row inbox-row--mega is-flagged inbox-row--flag-5 is-bookmarked is-starred"
+                             role="group" tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
 
@@ -893,24 +902,24 @@ Section:
 
                                         <div class="inbox-row__titleline">
                                             <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--bookmark"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--bookmark">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
                                                         </svg>
                                                     </span>
-                                                <span class="inbox-row__status-icon inbox-row__status-icon--star"
-                                                      aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                <span aria-hidden="true"
+                                                      class="inbox-row__status-icon inbox-row__status-icon--star">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
                                                         </svg>
                                                     </span>
-                                                <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                                                      aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                <span aria-hidden="true"
+                                                      class="inbox-row__status-icon inbox-row__status-icon--flag">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
@@ -989,7 +998,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1007,8 +1016,8 @@ Section:
                     <div class="inbox inbox--flat">
                         <div class="inbox__list">
 
-                            <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
-                                 aria-label="Flat row 1">
+                            <div aria-label="Flat row 1" class="inbox-row inbox-row--normal" role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
@@ -1029,17 +1038,18 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-2"
-                                 tabindex="0" role="group" aria-label="Flat row 2 (flagged)">
+                            <div aria-label="Flat row 2 (flagged)"
+                                 class="inbox-row inbox-row--normal is-flagged inbox-row--flag-2" role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
                                             <div class="inbox-row__titleline">
                                                 <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
@@ -1048,18 +1058,18 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--icon inbox-action--flat"
-                                               href="#" aria-label="Open">
-                                                <svg viewBox="0 0 16 16" aria-hidden="true">
+                                            <a aria-label="Open"
+                                               class="inbox-action inbox-action--icon inbox-action--flat" href="#">
+                                                <svg aria-hidden="true" viewBox="0 0 16 16">
                                                     <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linejoin="round"/>
+                                                          stroke-linejoin="round"
+                                                          stroke-width="1.6"/>
                                                     <path d="M3.5 8h7" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linecap="round"/>
+                                                          stroke-linecap="round"
+                                                          stroke-width="1.6"/>
                                                     <path d="M7 5.5 10.5 8 7 10.5" fill="none" stroke="currentColor"
-                                                          stroke-width="1.6"
-                                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                                          stroke-linecap="round"
+                                                          stroke-linejoin="round" stroke-width="1.6"/>
                                                 </svg>
                                             </a>
                                         </div>
@@ -1102,7 +1112,7 @@ Section:
   - Flat vs rich actions
 ========================================================= -->
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1117,8 +1127,8 @@ Section:
                 <div class="doc-block__preview">
                     <div class="inbox__list">
 
-                        <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
-                             aria-label="Row with badges">
+                        <div aria-label="Row with badges" class="inbox-row inbox-row--normal" role="group"
+                             tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
 
@@ -1178,7 +1188,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1197,16 +1207,17 @@ Section:
                     <div class="inbox inbox--flat">
                         <div class="inbox__list">
 
-                            <div class="inbox-row inbox-row--normal is-bookmarked" tabindex="0" role="group"
-                                 aria-label="Bookmarked row">
+                            <div aria-label="Bookmarked row" class="inbox-row inbox-row--normal is-bookmarked"
+                                 role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
                                             <div class="inbox-row__titleline">
                                                 <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--bookmark"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--bookmark">
+                                                        <svg fill="currentColor" stroke="none" viewBox="0 0 24 24">
                                                             <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
                                                         </svg>
                                                     </span>
@@ -1225,16 +1236,16 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="inbox-row inbox-row--normal is-starred" tabindex="0" role="group"
-                                 aria-label="Starred row">
+                            <div aria-label="Starred row" class="inbox-row inbox-row--normal is-starred" role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
                                             <div class="inbox-row__titleline">
                                                 <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--star"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--star">
+                                                        <svg fill="currentColor" stroke="none" viewBox="0 0 24 24">
                                                             <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
                                                         </svg>
                                                     </span>
@@ -1253,19 +1264,20 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-1"
-                                 tabindex="0" role="group" aria-label="Flag 1">
+                            <div aria-label="Flag 1"
+                                 class="inbox-row inbox-row--normal is-flagged inbox-row--flag-1" role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
                                             <div class="inbox-row__titleline">
                                                 <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="currentColor"
-                                                             class="vds-icon-flag--1"
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+                                                        <svg class="vds-icon-flag--1" fill="currentColor"
                                                              stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                             stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
@@ -1286,19 +1298,20 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-2"
-                                 tabindex="0" role="group" aria-label="Flag 2">
+                            <div aria-label="Flag 2"
+                                 class="inbox-row inbox-row--normal is-flagged inbox-row--flag-2" role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
                                             <div class="inbox-row__titleline">
                                                 <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="currentColor"
-                                                             class="vds-icon-flag--2"
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+                                                        <svg class="vds-icon-flag--2" fill="currentColor"
                                                              stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                             stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
@@ -1319,19 +1332,20 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-3"
-                                 tabindex="0" role="group" aria-label="Flag 3">
+                            <div aria-label="Flag 3"
+                                 class="inbox-row inbox-row--normal is-flagged inbox-row--flag-3" role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
                                             <div class="inbox-row__titleline">
                                                 <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="currentColor"
-                                                             class="vds-icon-flag--3"
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+                                                        <svg class="vds-icon-flag--3" fill="currentColor"
                                                              stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                             stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
@@ -1352,19 +1366,20 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-4"
-                                 tabindex="0" role="group" aria-label="Flag 4">
+                            <div aria-label="Flag 4"
+                                 class="inbox-row inbox-row--normal is-flagged inbox-row--flag-4" role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
                                             <div class="inbox-row__titleline">
                                                 <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="currentColor"
-                                                             class="vds-icon-flag--4"
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+                                                        <svg class="vds-icon-flag--4" fill="currentColor"
                                                              stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                             stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
@@ -1385,19 +1400,20 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="inbox-row inbox-row--normal is-flagged inbox-row--flag-5"
-                                 tabindex="0" role="group" aria-label="Flag 5">
+                            <div aria-label="Flag 5"
+                                 class="inbox-row inbox-row--normal is-flagged inbox-row--flag-5" role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
                                             <div class="inbox-row__titleline">
                                                 <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="currentColor"
-                                                             class="vds-icon-flag--5"
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+                                                        <svg class="vds-icon-flag--5" fill="currentColor"
                                                              stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                             stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
@@ -1437,7 +1453,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1454,8 +1470,8 @@ Section:
                 <div class="doc-block__preview">
                     <div class="inbox__list">
 
-                        <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
-                             aria-label="Labels reflow row">
+                        <div aria-label="Labels reflow row" class="inbox-row inbox-row--normal" role="group"
+                             tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
 
@@ -1513,7 +1529,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1532,8 +1548,8 @@ Section:
                     <div class="inbox__list">
 
                         <!-- Default: right rail (wide) -->
-                        <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
-                             aria-label="Actions right rail">
+                        <div aria-label="Actions right rail" class="inbox-row inbox-row--normal" role="group"
+                             tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
                                     <div class="inbox-row__meta">
@@ -1544,40 +1560,40 @@ Section:
                                         </div>
                                     </div>
                                     <div class="inbox-row__actions">
-                                        <a class="inbox-action inbox-action--icon" href="#"
-                                           aria-label="Open">
-                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <a aria-label="Open" class="inbox-action inbox-action--icon"
+                                           href="#">
+                                            <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M3.5 8h7" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linecap="round"/>
+                                                      stroke-linecap="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M7 5.5 10.5 8 7 10.5" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                                      stroke-linecap="round"
+                                                      stroke-linejoin="round" stroke-width="1.6"/>
                                             </svg>
                                         </a>
-                                        <a class="inbox-action inbox-action--icon" href="#"
-                                           aria-label="Edit">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="1.8">
+                                        <a aria-label="Edit" class="inbox-action inbox-action--icon"
+                                           href="#">
+                                            <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                 viewBox="0 0 24 24">
                                                 <path d="M4 20h4l10-10-4-4L4 16v4z"/>
                                                 <path d="M13 7l4 4"/>
                                             </svg>
                                         </a>
-                                        <a class="inbox-action inbox-action--icon inbox-action--danger"
-                                           href="#" aria-label="Delete">
-                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                        <a aria-label="Delete"
+                                           class="inbox-action inbox-action--icon inbox-action--danger" href="#">
+                                            <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linecap="round"/>
+                                                      stroke-linecap="round"
+                                                      stroke-width="1.6"/>
                                                 <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
-                                                      stroke-width="1.6"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                             </svg>
                                         </a>
                                     </div>
@@ -1591,8 +1607,9 @@ Section:
                         </div>
 
                         <!-- Always below -->
-                        <div class="inbox-row inbox-row--normal inbox-row--actions-below" tabindex="0"
-                             role="group" aria-label="Actions always below">
+                        <div aria-label="Actions always below"
+                             class="inbox-row inbox-row--normal inbox-row--actions-below"
+                             role="group" tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
                                     <div class="inbox-row__meta">
@@ -1620,8 +1637,8 @@ Section:
                         </div>
 
                         <!-- Full line inside 2-col grid -->
-                        <div class="inbox-row inbox-row--normal inbox-row--actions-full" tabindex="0"
-                             role="group" aria-label="Actions full line">
+                        <div aria-label="Actions full line" class="inbox-row inbox-row--normal inbox-row--actions-full"
+                             role="group" tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
                                     <div class="inbox-row__meta">
@@ -1662,7 +1679,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1681,8 +1698,8 @@ Section:
                     <div class="inbox inbox--actions-flat">
                         <div class="inbox__list">
 
-                            <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
-                                 aria-label="Global flat actions">
+                            <div aria-label="Global flat actions" class="inbox-row inbox-row--normal" role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
@@ -1705,8 +1722,8 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
-                                 aria-label="Mixed actions">
+                            <div aria-label="Mixed actions" class="inbox-row inbox-row--normal" role="group"
+                                 tabindex="0">
                                 <div class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
@@ -1759,7 +1776,7 @@ Section:
   - Responsive visibility helpers (hide/show by breakpoint)
 ========================================================= -->
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1776,9 +1793,10 @@ Section:
                 <div class="doc-block__preview">
                     <div class="inbox__list">
 
-                        <div class="inbox-row inbox-row--rich inbox-row--open is-flagged inbox-row--flag-3"
-                             tabindex="0" role="group" aria-label="Open row with details">
-                            <div class="inbox-row__main" aria-expanded="true">
+                        <div aria-label="Open row with details"
+                             class="inbox-row inbox-row--rich inbox-row--open is-flagged inbox-row--flag-3" role="group"
+                             tabindex="0">
+                            <div aria-expanded="true" class="inbox-row__main">
                                 <div class="inbox-row__inner">
 
                                     <div class="inbox-row__meta">
@@ -1789,10 +1807,10 @@ Section:
 
                                         <div class="inbox-row__titleline">
                                             <div class="inbox-row__status">
-                                                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                                                          aria-hidden="true">
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="1.8">
+                                                    <span aria-hidden="true"
+                                                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+                                                        <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                                                             viewBox="0 0 24 24">
                                                             <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
                                                         </svg>
                                                     </span>
@@ -1841,11 +1859,11 @@ Section:
                                 <div class="inbox-row__expanded">
                                     <div class="section__list">
                                         <div class="section__list-item">
-                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                            <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M3 8.2 6.2 11.4 13 4.6" fill="none"
                                                       stroke="currentColor"
-                                                      stroke-width="1.6" stroke-linecap="round"
-                                                      stroke-linejoin="round"/>
+                                                      stroke-linecap="round" stroke-linejoin="round"
+                                                      stroke-width="1.6"/>
                                             </svg>
                                             <div>
                                                 <div class="section__list-item-title">Expanded content
@@ -1903,7 +1921,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -1922,9 +1940,10 @@ Section:
                     <div class="inbox inbox--flat">
                         <div class="inbox__list">
 
-                            <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
-                                 aria-label="Row controlling sibling details">
-                                <div class="inbox-row__main" aria-expanded="false">
+                            <div aria-label="Row controlling sibling details" class="inbox-row inbox-row--normal"
+                                 role="group"
+                                 tabindex="0">
+                                <div aria-expanded="false" class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
                                             <div class="inbox-row__titleline">
@@ -1945,16 +1964,18 @@ Section:
                                         </div>
                                     </div>
 
-                                    <div class="inbox-row__expanded vds-is-visible" role="region"
-                                         aria-label="Sibling details (collapsed)">
+                                    <div aria-label="Sibling details (collapsed)"
+                                         class="inbox-row__expanded vds-is-visible"
+                                         role="region">
                                         <p>Hidden details row. Apply <code>.vds-is-visible</code> to show.</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="inbox-row inbox-row--normal inbox-row--open" tabindex="0"
-                                 role="group" aria-label="Row controlling sibling details (open)">
-                                <div class="inbox-row__main" aria-expanded="true">
+                            <div aria-label="Row controlling sibling details (open)"
+                                 class="inbox-row inbox-row--normal inbox-row--open"
+                                 role="group" tabindex="0">
+                                <div aria-expanded="true" class="inbox-row__main">
                                     <div class="inbox-row__inner">
                                         <div class="inbox-row__meta">
                                             <div class="inbox-row__titleline">
@@ -1974,8 +1995,8 @@ Section:
                                 </div>
                             </div>
 
-                            <div class="inbox-row__expanded vds-is-visible" role="region"
-                                 aria-label="Sibling details (open)">
+                            <div aria-label="Sibling details (open)" class="inbox-row__expanded vds-is-visible"
+                                 role="region">
                                 <p>
                                     Visible details row. You can make this fully custom: full-width editor surface,
                                     markdown-rendered content, attachments, etc.
@@ -2003,9 +2024,9 @@ Section:
                 <div class="doc-block__preview" style="margin-top: var(--space-4);">
                     <div class="section__list">
                         <div class="section__list-item">
-                            <svg viewBox="0 0 16 16" aria-hidden="true">
-                                <path d="M3 8.5 6.5 12 13 4" fill="none" stroke="currentColor" stroke-width="1.6"
-                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg aria-hidden="true" viewBox="0 0 16 16">
+                                <path d="M3 8.5 6.5 12 13 4" fill="none" stroke="currentColor" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="1.6"/>
                             </svg>
                             <div>
                                 <div class="section__list-item-title">Visibility helpers for sibling details</div>
@@ -2029,7 +2050,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -2044,7 +2065,7 @@ Section:
             <div class="doc-block__body">
                 <div class="doc-block__preview">
 
-                    <div class="inbox-filter" role="region" aria-label="Inbox filters">
+                    <div aria-label="Inbox filters" class="inbox-filter" role="region">
                         <div class="inbox-filter__group">
                             <div class="inbox-filter__label">View</div>
                             <a class="inbox-filter__chip inbox-filter__chip--active" href="#">All</a>
@@ -2087,7 +2108,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -2100,22 +2121,22 @@ Section:
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
-                    <div class="inbox-cornerbar" aria-label="Corner actions (right)">
+                    <div aria-label="Corner actions (right)" class="inbox-cornerbar">
                         <div class="inbox-cornerbar__inner">
                             <a class="inbox-action inbox-action--accent" href="#">Add</a>
-                            <a class="inbox-action inbox-action--icon" href="#" aria-label="Compose">
-                                <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <a aria-label="Compose" class="inbox-action inbox-action--icon" href="#">
+                                <svg aria-hidden="true" viewBox="0 0 16 16">
                                     <path d="M3 11.8V13h1.2l7-7-1.2-1.2z" fill="none" stroke="currentColor"
-                                          stroke-width="1.6"
-                                          stroke-linejoin="round"/>
-                                    <path d="M9.6 3.4l1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.6"
-                                          stroke-linecap="round"/>
+                                          stroke-linejoin="round"
+                                          stroke-width="1.6"/>
+                                    <path d="M9.6 3.4l1.2 1.2" fill="none" stroke="currentColor" stroke-linecap="round"
+                                          stroke-width="1.6"/>
                                 </svg>
                             </a>
                         </div>
                     </div>
 
-                    <div class="inbox-cornerbar inbox-cornerbar--left" aria-label="Corner actions (left)">
+                    <div aria-label="Corner actions (left)" class="inbox-cornerbar inbox-cornerbar--left">
                         <div class="inbox-cornerbar__inner">
                             <a class="inbox-action inbox-action--accent" href="#">New</a>
                         </div>
@@ -2137,7 +2158,7 @@ Section:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -2154,8 +2175,8 @@ Section:
             <div class="doc-block__body">
                 <div class="doc-block__preview">
                     <div class="inbox__list">
-                        <div class="inbox-row inbox-row--normal" tabindex="0" role="group"
-                             aria-label="Visibility helper example">
+                        <div aria-label="Visibility helper example" class="inbox-row inbox-row--normal" role="group"
+                             tabindex="0">
                             <div class="inbox-row__main">
                                 <div class="inbox-row__inner">
                                     <div class="inbox-row__meta">
@@ -2218,206 +2239,206 @@ Section:
     </div>
 </section>
 
-<section data-vds-inbox data-vds-dock-block data-vds-content-block class="section">
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
     <div class="section__inner">
         <article class="doc-block">
             <div class="doc-block__body">
                 <div class="doc-block__preview">
-            <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                  aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="1.8">
+            <span aria-hidden="true"
+                  class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                 viewBox="0 0 24 24">
                 <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"
-                 class="vds-icon-flag--1"
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg class="vds-icon-flag--1" fill="currentColor"
                  stroke="currentColor"
-                 stroke-width="1.8">
+                 stroke-width="1.8"
+                 viewBox="0 0 24 24">
                 <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"
-                 class="vds-icon-flag--2"
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg class="vds-icon-flag--2" fill="currentColor"
                  stroke="currentColor"
-                 stroke-width="1.8">
+                 stroke-width="1.8"
+                 viewBox="0 0 24 24">
                 <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"
-                 class="vds-icon-flag--3"
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg class="vds-icon-flag--3" fill="currentColor"
                  stroke="currentColor"
-                 stroke-width="1.8">
+                 stroke-width="1.8"
+                 viewBox="0 0 24 24">
                 <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"
-                 class="vds-icon-flag--4"
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg class="vds-icon-flag--4" fill="currentColor"
                  stroke="currentColor"
-                 stroke-width="1.8">
+                 stroke-width="1.8"
+                 viewBox="0 0 24 24">
                 <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"
-                 class="vds-icon-flag--5"
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg class="vds-icon-flag--5" fill="currentColor"
                  stroke="currentColor"
-                 stroke-width="1.8">
+                 stroke-width="1.8"
+                 viewBox="0 0 24 24">
                 <path d="M6 3v18M6 4h12l-2 4 2 4H6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="1.8">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                 viewBox="0 0 24 24">
                 <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg fill="currentColor" stroke="none" viewBox="0 0 24 24">
                 <path d="M12 3.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 18.8 6.1 21.6l1.2-6.6L2.5 10.4l6.6-.9L12 3.5z"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="1.8">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                 viewBox="0 0 24 24">
                 <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg fill="currentColor" stroke="none" viewBox="0 0 24 24">
                 <path d="M7 4h10a2 2 0 0 1 2 2v16l-7-4-7 4V6a2 2 0 0 1 2-2z"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg aria-hidden="true" viewBox="0 0 16 16">
                 <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linejoin="round"/>
+                      stroke-linejoin="round"
+                      stroke-width="1.6"/>
                 <path d="M3.5 8h7" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"/>
+                      stroke-linecap="round"
+                      stroke-width="1.6"/>
                 <path d="M7 5.5 10.5 8 7 10.5" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round" stroke-linejoin="round"/>
+                      stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="1.6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="1.8">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8"
+                 viewBox="0 0 24 24">
                 <path d="M4 20h4l10-10-4-4L4 16v4z"/>
                 <path d="M13 7l4 4"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg aria-hidden="true" viewBox="0 0 16 16">
                 <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linejoin="round"/>
+                      stroke-linejoin="round"
+                      stroke-width="1.6"/>
                 <path d="M3.5 5.5h9" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"/>
+                      stroke-linecap="round"
+                      stroke-width="1.6"/>
                 <path d="M6 5.5V4h4v1.5" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linejoin="round"/>
+                      stroke-linejoin="round"
+                      stroke-width="1.6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 16 16" aria-hidden="true">
-                <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor"
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg aria-hidden="true" viewBox="0 0 16 16">
+                <circle cx="7" cy="7" fill="none" r="4.5" stroke="currentColor"
                         stroke-width="1.6"/>
                 <path d="M10.7 10.7 13.5 13.5" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"/>
+                      stroke-linecap="round"
+                      stroke-width="1.6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg aria-hidden="true" viewBox="0 0 16 16">
                 <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"/>
+                      stroke-linecap="round"
+                      stroke-width="1.6"/>
                 <path d="M3 8a5 5 0 0 1 9.2-2.6" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"/>
-                <path d="M3.1 11.4H4.7V9.8" fill="none" stroke="currentColor" stroke-width="1.6"
-                      stroke-linecap="round" stroke-linejoin="round"/>
+                      stroke-linecap="round"
+                      stroke-width="1.6"/>
+                <path d="M3.1 11.4H4.7V9.8" fill="none" stroke="currentColor" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="1.6"/>
                 <path d="M12.9 4.6H11.3V6.2" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round" stroke-linejoin="round"/>
+                      stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="1.6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
             <svg viewBox="0 0 16 16">
-                <circle cx="8" cy="8" r="6.5" fill="none"
+                <circle cx="8" cy="8" fill="none" r="6.5"
                         stroke="currentColor" stroke-width="1.6"/>
                 <path d="M8 7v4" fill="none" stroke="currentColor"
-                      stroke-width="1.6" stroke-linecap="round"/>
+                      stroke-linecap="round" stroke-width="1.6"/>
                 <path d="M8 5.2h.01" fill="none" stroke="currentColor"
-                      stroke-width="2.2" stroke-linecap="round"/>
+                      stroke-linecap="round" stroke-width="2.2"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg aria-hidden="true" viewBox="0 0 16 16">
                 <path d="M3.5 5.5h9v7h-9z" fill="none" stroke="currentColor"
-                      stroke-width="1.6" stroke-linejoin="round"/>
+                      stroke-linejoin="round" stroke-width="1.6"/>
                 <path d="M5.5 3.5h5" fill="none" stroke="currentColor"
-                      stroke-width="1.6" stroke-linecap="round"/>
+                      stroke-linecap="round" stroke-width="1.6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg aria-hidden="true" viewBox="0 0 16 16">
                 <path d="M8 3v5l3 2" fill="none" stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="1.6"/>
+                <circle cx="8" cy="8" fill="none" r="5.5" stroke="currentColor"
                         stroke-width="1.6"/>
             </svg>
             </span>
 
-                    <span class="inbox-row__status-icon inbox-row__status-icon--flag"
-                          aria-hidden="true">
-            <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <span aria-hidden="true"
+                          class="inbox-row__status-icon inbox-row__status-icon--flag">
+            <svg aria-hidden="true" viewBox="0 0 16 16">
                 <path d="M3.5 8h9" fill="none" stroke="currentColor"
-                      stroke-width="1.6" stroke-linecap="round"/>
+                      stroke-linecap="round" stroke-width="1.6"/>
                 <path d="M8 3.5v9" fill="none" stroke="currentColor"
-                      stroke-width="1.6" stroke-linecap="round"/>
+                      stroke-linecap="round" stroke-width="1.6"/>
             </svg>
             </span>
                 </div>

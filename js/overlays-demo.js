@@ -87,7 +87,7 @@
     }
 
     function showOverlay(key) {
-        const { backdrop, inline, modal, drawer } = getOverlayElements(key);
+        const {backdrop, inline, modal, drawer} = getOverlayElements(key);
 
         if (backdrop) {
             backdrop.classList.add("backdrop--active");
@@ -113,7 +113,7 @@
     }
 
     function hideOverlay(key) {
-        const { backdrop, inline, modal, drawer } = getOverlayElements(key);
+        const {backdrop, inline, modal, drawer} = getOverlayElements(key);
 
         if (modal) {
             modal.classList.remove("modal--active");
@@ -296,7 +296,7 @@
 
     document.addEventListener("DOMContentLoaded", () => {
         if (window.VDSOverlay) {
-            window.VDSOverlay.init({ force: true });
+            window.VDSOverlay.init({force: true});
         }
     });
 

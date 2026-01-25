@@ -8695,8 +8695,7 @@ a.button:hover {
             transparent 75%,
             transparent
     );
-    background-size: calc(var(--flow-progress-stripe-size) * 2)
-        calc(var(--flow-progress-stripe-size) * 2);
+    background-size: calc(var(--flow-progress-stripe-size) * 2) calc(var(--flow-progress-stripe-size) * 2);
     animation: flow-progress-stripes var(--flow-progress-stripe-speed) linear infinite;
 }
 
@@ -13378,7 +13377,7 @@ select.form-control:not([multiple]):not([size]) {
     --hero-border-color: var(--color-border-subtle);
     --hero-soft-bg: var(--color-surface-subtle);
 
-    --hero-full-overlay: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.0));
+    --hero-full-overlay: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0));
 }
 
 /* ---------------------------------------------------------

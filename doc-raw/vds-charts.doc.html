@@ -1,4 +1,4 @@
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+<section class="section" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <h1>Charts &amp; data visualisation</h1>
 
@@ -20,7 +20,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section section--inset">
+<section class="section section--inset" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -82,7 +82,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+<section class="section" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -191,7 +191,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+<section class="section" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -276,7 +276,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+<section class="section" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block doc-block--split">
             <header class="doc-block__header">
@@ -360,7 +360,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+<section class="section" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -444,7 +444,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+<section class="section" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block doc-block--split">
             <header class="doc-block__header">
@@ -464,16 +464,16 @@
                         </header>
                         <div class="chart__body">
                             <div class="chart__canvas">
-                                <svg viewBox="0 0 400 220" role="img" aria-label="Example line chart">
+                                <svg aria-label="Example line chart" role="img" viewBox="0 0 400 220">
                                     <g class="chart-grid">
-                                        <line x1="40" y1="40" x2="380" y2="40" class="major"></line>
-                                        <line x1="40" y1="90" x2="380" y2="90"></line>
-                                        <line x1="40" y1="140" x2="380" y2="140" class="major"></line>
-                                        <line x1="40" y1="190" x2="380" y2="190"></line>
+                                        <line class="major" x1="40" x2="380" y1="40" y2="40"></line>
+                                        <line x1="40" x2="380" y1="90" y2="90"></line>
+                                        <line class="major" x1="40" x2="380" y1="140" y2="140"></line>
+                                        <line x1="40" x2="380" y1="190" y2="190"></line>
                                     </g>
 
                                     <g class="chart-axis chart-axis--x">
-                                        <line x1="40" y1="190" x2="380" y2="190"></line>
+                                        <line x1="40" x2="380" y1="190" y2="190"></line>
                                         <text x="80" y="200">Q1</text>
                                         <text x="160" y="200">Q2</text>
                                         <text x="240" y="200">Q3</text>
@@ -481,7 +481,7 @@
                                     </g>
 
                                     <g class="chart-axis chart-axis--y">
-                                        <line x1="40" y1="40" x2="40" y2="190"></line>
+                                        <line x1="40" x2="40" y1="40" y2="190"></line>
                                         <text x="30" y="40">400k</text>
                                         <text x="30" y="90">300k</text>
                                         <text x="30" y="140">200k</text>
@@ -491,8 +491,8 @@
                                     <g>
                                         <polyline
                                                 class="chart-series--1"
-                                                points="40,170 120,150 200,120 280,80 360,70"
                                                 fill="none"
+                                                points="40,170 120,150 200,120 280,80 360,70"
                                                 stroke-width="2"
                                         ></polyline>
                                         <path
@@ -565,7 +565,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+<section class="section" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -585,7 +585,7 @@
                         </header>
                         <div class="chart__body">
                             <div class="chart__canvas">
-                                <svg viewBox="0 0 200 100" aria-hidden="true">
+                                <svg aria-hidden="true" viewBox="0 0 200 100">
                                     <polyline
                                             class="chart-series--1"
                                             points="0,70 40,60 80,40 120,30 160,20 200,15"
@@ -607,7 +607,7 @@
                         </header>
 
                         <div class="chart__body">
-                            <div class="chart__canvas flex items-end gap-2" aria-hidden="true">
+                            <div aria-hidden="true" class="chart__canvas flex items-end gap-2">
                                 <div class="flex-1 chart-bar--1" style="height: 40%;"></div>
                                 <div class="flex-1 chart-bar--2" style="height: 60%;"></div>
                                 <div class="flex-1 chart-bar--3" style="height: 30%;"></div>
@@ -635,7 +635,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+<section class="section" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block doc-block--split">
             <header class="doc-block__header">
@@ -692,7 +692,7 @@
                             <h3 class="chart__title">Loading metrics</h3>
                         </header>
                         <div class="chart__body">
-                            <div class="chart__canvas" aria-busy="true" aria-live="polite">
+                            <div aria-busy="true" aria-live="polite" class="chart__canvas">
 
                             </div>
                         </div>
@@ -741,7 +741,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section">
+<section class="section" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -834,7 +834,7 @@
     </div>
 </section>
 
-<section data-vds-dock-block data-vds-content-block data-vds-chart class="section section--inset">
+<section class="section section--inset" data-vds-chart data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">

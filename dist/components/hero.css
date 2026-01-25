@@ -55,7 +55,7 @@
     --hero-border-color: var(--color-border-subtle);
     --hero-soft-bg: var(--color-surface-subtle);
 
-    --hero-full-overlay: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.0));
+    --hero-full-overlay: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0));
 }
 
 /* ---------------------------------------------------------
