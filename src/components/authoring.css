@@ -23,7 +23,9 @@
    1. FOUNDATION / RESET
 --------------------------------------------------------- */
 [data-vds-authoring],
-.vds-authoring {
+.vds-authoring,
+.authoring,
+.doc-authoring {
     --highlight-border-width: var(--border-width-strong);
 
     --admonition-radius: var(--radius-md);
@@ -31,12 +33,19 @@
     --admonition-gap: var(--space-3);
     --admonition-pad-y: var(--space-3);
     --admonition-pad-x: var(--space-4);
+    --admonition-bg: var(--color-surface-subtle);
+    --admonition-border-color: var(--color-border-subtle);
+    --admonition-text: var(--color-text);
+    --admonition-title-color: var(--color-text);
+    --admonition-icon-color: var(--color-text);
+    --admonition-shadow: none;
 
     --footnote-size: var(--text-xs);
-    --footnote-color: var(--footnote-color, var(--color-text-muted));
 
     --marker-bg: var(--color-muted-bg);
     --marker-border: var(--color-muted-border);
+    --marker-text: var(--color-text);
+    --marker-radius: var(--radius-sm);
 }
 
 /* ---------------------------------------------------------
@@ -50,16 +59,19 @@
     align-items: flex-start;
     gap: var(--admonition-gap);
 
+    border: 0;
     border-radius: var(--admonition-radius);
-    border-left: var(--admonition-border) solid var(--color-border-subtle);
-    background-color: var(--color-surface-subtle);
-    color: var(--color-text);
+    border-left: var(--admonition-border) solid var(--admonition-border-color);
+    background-color: var(--admonition-bg);
+    color: var(--admonition-text);
+    box-shadow: var(--admonition-shadow);
 }
 
 .admonition__icon {
     flex-shrink: 0;
     margin-top: 0.15em;
     font-size: var(--text-lg);
+    color: var(--admonition-icon-color);
     opacity: 0.85;
 }
 
@@ -74,6 +86,7 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin-bottom: var(--space-1);
+    color: var(--admonition-title-color);
 }
 
 .admonition__body {
@@ -81,44 +94,140 @@
     line-height: var(--line-height-relaxed);
 }
 
+.admonition__meta {
+    font-size: var(--text-xs);
+    opacity: 0.8;
+    margin-top: var(--space-1);
+}
+
+.admonition__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    font-size: var(--text-xs);
+    opacity: 0.85;
+}
+
+.admonition__actions {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.admonition__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-1);
+}
+
+.admonition__list li {
+    position: relative;
+    padding-left: var(--space-4);
+}
+
+.admonition__list li::before {
+    content: "";
+    position: absolute;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    background-color: var(--admonition-border-color);
+    left: 0;
+    top: 0.35rem;
+}
+
 .admonition--compact {
     padding-block: var(--space-2);
     padding-inline: var(--space-3);
+    gap: var(--space-2);
 }
 
 /* ---------------------------------------------------------
    2.1 ADMONITION VARIANTS
 --------------------------------------------------------- */
+:where(.admonition)[data-variant="info"],
 .admonition--note,
 .admonition--info {
-    background-color: var(--semantic-info-bg);
-    border-color: var(--semantic-info-border);
-    color: var(--semantic-info-text);
+    --admonition-bg: var(--semantic-info-bg);
+    --admonition-border-color: var(--semantic-info-border);
+    --admonition-text: var(--semantic-info-text);
+    --admonition-title-color: var(--semantic-info-text);
+    --admonition-icon-color: var(--semantic-info-text);
 }
 
+:where(.admonition)[data-variant="success"],
 .admonition--tip,
 .admonition--success {
-    background-color: var(--semantic-success-bg);
-    border-color: var(--semantic-success-border);
-    color: var(--semantic-success-text);
+    --admonition-bg: var(--semantic-success-bg);
+    --admonition-border-color: var(--semantic-success-border);
+    --admonition-text: var(--semantic-success-text);
+    --admonition-title-color: var(--semantic-success-text);
+    --admonition-icon-color: var(--semantic-success-text);
 }
 
+:where(.admonition)[data-variant="warning"],
 .admonition--warning {
-    background-color: var(--semantic-warning-bg);
-    border-color: var(--semantic-warning-border);
-    color: var(--semantic-warning-text);
+    --admonition-bg: var(--semantic-warning-bg);
+    --admonition-border-color: var(--semantic-warning-border);
+    --admonition-text: var(--semantic-warning-text);
+    --admonition-title-color: var(--semantic-warning-text);
+    --admonition-icon-color: var(--semantic-warning-text);
 }
 
+:where(.admonition)[data-variant="danger"],
 .admonition--danger,
 .admonition--important {
-    background-color: var(--semantic-danger-bg);
-    border-color: var(--semantic-danger-border);
-    color: var(--semantic-danger-text);
+    --admonition-bg: var(--semantic-danger-bg);
+    --admonition-border-color: var(--semantic-danger-border);
+    --admonition-text: var(--semantic-danger-text);
+    --admonition-title-color: var(--semantic-danger-text);
+    --admonition-icon-color: var(--semantic-danger-text);
+}
+
+:where(.admonition)[data-variant="accent"],
+.admonition--accent {
+    --admonition-bg: var(--accent-soft-surface, var(--color-accent-soft));
+    --admonition-border-color: var(--accent-soft-border, var(--color-accent));
+    --admonition-text: var(--accent-soft-on, var(--color-on-accent));
+    --admonition-title-color: var(--accent-soft-on, var(--color-on-accent));
+    --admonition-icon-color: var(--accent-soft-on, var(--color-on-accent));
+}
+
+:where(.admonition)[data-variant="neutral"],
+.admonition--neutral {
+    --admonition-bg: var(--color-surface-subtle);
+    --admonition-border-color: var(--color-border-strong);
+    --admonition-text: var(--color-text);
+    --admonition-title-color: var(--color-text);
+    --admonition-icon-color: var(--color-text-muted);
+}
+
+.admonition--bordered {
+    border: var(--admonition-border) solid var(--admonition-border-color);
+    border-left-width: var(--admonition-border);
+}
+
+.admonition--outline {
+    border: var(--admonition-border) solid var(--admonition-border-color);
+    border-left-width: var(--admonition-border);
+    background-color: transparent;
+}
+
+.admonition--plain {
+    border: 0;
+    background-color: transparent;
+    padding: 0;
 }
 
 /* ---------------------------------------------------------
    3. MDX / MARKDOWN CALLOUTS
 --------------------------------------------------------- */
+.md-callout,
 .md-note,
 .md-info,
 .md-tip,
@@ -129,32 +238,74 @@
     margin-block: var(--space-4);
     padding: var(--space-3) var(--space-4);
     border-radius: var(--radius-md);
-    border-left: var(--highlight-border-width) solid currentColor;
+    border-left: var(--highlight-border-width) solid var(--callout-border-color, currentColor);
+    background-color: var(--callout-bg, var(--color-surface-subtle));
+    color: var(--callout-text, var(--color-text));
     font-size: var(--text-sm);
     line-height: var(--line-height-relaxed);
 }
 
+.md-callout[data-variant="info"] {
+    --callout-bg: var(--semantic-info-bg);
+    --callout-border-color: var(--semantic-info-border);
+    --callout-text: var(--semantic-info-text);
+}
+
+.md-callout[data-variant="success"] {
+    --callout-bg: var(--semantic-success-bg);
+    --callout-border-color: var(--semantic-success-border);
+    --callout-text: var(--semantic-success-text);
+}
+
+.md-callout[data-variant="warning"] {
+    --callout-bg: var(--semantic-warning-bg);
+    --callout-border-color: var(--semantic-warning-border);
+    --callout-text: var(--semantic-warning-text);
+}
+
+.md-callout[data-variant="danger"] {
+    --callout-bg: var(--semantic-danger-bg);
+    --callout-border-color: var(--semantic-danger-border);
+    --callout-text: var(--semantic-danger-text);
+}
+
+.md-callout[data-variant="accent"] {
+    --callout-bg: var(--accent-soft-surface, var(--color-accent-soft));
+    --callout-border-color: var(--accent-soft-border, var(--color-accent));
+    --callout-text: var(--accent-soft-on, var(--color-on-accent));
+}
+
+.md-callout[data-variant="neutral"] {
+    --callout-bg: var(--color-surface-subtle);
+    --callout-border-color: var(--color-border-strong);
+    --callout-text: var(--color-text);
+}
+
 .md-note,
 .md-info {
-    background-color: var(--semantic-info-bg);
-    color: var(--semantic-info-text);
+    --callout-bg: var(--semantic-info-bg);
+    --callout-border-color: var(--semantic-info-border);
+    --callout-text: var(--semantic-info-text);
 }
 
 .md-tip,
 .md-success {
-    background-color: var(--semantic-success-bg);
-    color: var(--semantic-success-text);
+    --callout-bg: var(--semantic-success-bg);
+    --callout-border-color: var(--semantic-success-border);
+    --callout-text: var(--semantic-success-text);
 }
 
 .md-warning {
-    background-color: var(--semantic-warning-bg);
-    color: var(--semantic-warning-text);
+    --callout-bg: var(--semantic-warning-bg);
+    --callout-border-color: var(--semantic-warning-border);
+    --callout-text: var(--semantic-warning-text);
 }
 
 .md-danger,
 .md-important {
-    background-color: var(--semantic-danger-bg);
-    color: var(--semantic-danger-text);
+    --callout-bg: var(--semantic-danger-bg);
+    --callout-border-color: var(--semantic-danger-border);
+    --callout-text: var(--semantic-danger-text);
 }
 
 /* ---------------------------------------------------------
@@ -188,13 +339,23 @@ h6:focus-within .heading-anchor {
     opacity: 1;
 }
 
+.heading-anchor--always {
+    opacity: 1;
+}
+
+@media (hover: none) {
+    .heading-anchor {
+        opacity: 1;
+    }
+}
+
 /* ---------------------------------------------------------
    5. FOOTNOTES
 --------------------------------------------------------- */
 .fn-ref {
     font-size: var(--footnote-size);
     vertical-align: super;
-    color: var(--footnote-color);
+    color: var(--footnote-color, var(--color-text-muted));
     text-decoration: none;
     margin-left: 0.15em;
 }
@@ -206,7 +367,7 @@ h6:focus-within .heading-anchor {
 .fn-back {
     font-size: var(--footnote-size);
     text-decoration: none;
-    color: var(--footnote-color);
+    color: var(--footnote-color, var(--color-text-muted));
 }
 
 .footnotes {
@@ -230,36 +391,62 @@ h6:focus-within .heading-anchor {
 .inline-marker {
     display: inline-block;
     padding: 0 var(--space-1_5);
-    border-radius: var(--radius-sm);
+    border-radius: var(--marker-radius);
     background: var(--marker-bg);
     border: 1px solid var(--marker-border);
     font-size: var(--text-xs);
     line-height: 1.3;
-    color: var(--color-text);
+    color: var(--marker-text);
 }
 
+:where(.inline-marker)[data-variant="info"],
 .inline-marker--info {
-    background: var(--semantic-info-bg);
-    border-color: var(--semantic-info-border);
-    color: var(--semantic-info-text);
+    --marker-bg: var(--semantic-info-bg);
+    --marker-border: var(--semantic-info-border);
+    --marker-text: var(--semantic-info-text);
 }
 
+:where(.inline-marker)[data-variant="success"],
 .inline-marker--success {
-    background: var(--semantic-success-bg);
-    border-color: var(--semantic-success-border);
-    color: var(--semantic-success-text);
+    --marker-bg: var(--semantic-success-bg);
+    --marker-border: var(--semantic-success-border);
+    --marker-text: var(--semantic-success-text);
 }
 
+:where(.inline-marker)[data-variant="warning"],
 .inline-marker--warning {
-    background: var(--semantic-warning-bg);
-    border-color: var(--semantic-warning-border);
-    color: var(--semantic-warning-text);
+    --marker-bg: var(--semantic-warning-bg);
+    --marker-border: var(--semantic-warning-border);
+    --marker-text: var(--semantic-warning-text);
 }
 
+:where(.inline-marker)[data-variant="danger"],
 .inline-marker--danger {
-    background: var(--semantic-danger-bg);
-    border-color: var(--semantic-danger-border);
-    color: var(--semantic-danger-text);
+    --marker-bg: var(--semantic-danger-bg);
+    --marker-border: var(--semantic-danger-border);
+    --marker-text: var(--semantic-danger-text);
+}
+
+:where(.inline-marker)[data-variant="accent"],
+.inline-marker--accent {
+    --marker-bg: var(--accent-soft-surface, var(--color-accent-soft));
+    --marker-border: var(--accent-soft-border, var(--color-accent));
+    --marker-text: var(--accent-soft-on, var(--color-on-accent));
+}
+
+:where(.inline-marker)[data-variant="neutral"],
+.inline-marker--neutral {
+    --marker-bg: var(--color-surface-subtle);
+    --marker-border: var(--color-border-strong);
+    --marker-text: var(--color-text);
+}
+
+.inline-marker--outline {
+    background: transparent;
+}
+
+.inline-marker--pill {
+    --marker-radius: var(--radius-pill);
 }
 
 /* ---------------------------------------------------------
@@ -289,8 +476,35 @@ h6:focus-within .heading-anchor {
     gap: var(--space-6);
 }
 
+.prose-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+}
+
+.prose-grid-1-2 {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--space-6);
+}
+
+.prose-grid-2-1 {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: var(--space-6);
+}
+
 @media (max-width: 1024px) {
     .prose-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .prose-grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .prose-grid-1-2,
+    .prose-grid-2-1 {
         grid-template-columns: 1fr;
     }
 }
@@ -308,6 +522,7 @@ h6:focus-within .heading-anchor {
 .doc-block__body .md-success,
 .doc-block__body .md-warning,
 .doc-block__body .md-danger,
-.doc-block__body .md-important {
+.doc-block__body .md-important,
+.doc-block__body .md-callout {
     margin-block: var(--space-3);
 }

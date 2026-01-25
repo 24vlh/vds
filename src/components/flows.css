@@ -56,17 +56,24 @@
 
     --flow-progress-stripe-size: var(--space-3);
     --flow-progress-stripe-speed: 1.2s;
+    --flow-progress-track: var(--color-muted-bg);
+    --flow-progress-fill: var(--color-accent);
 }
 
 /* ---------------------------------------------------------
    2. GLOBAL FLOW MODIFIERS
 --------------------------------------------------------- */
-.flow--compact .flow {
+.flow--compact .flow,
+.flow--compact.flow {
     gap: var(--flow-gap-lg);
 }
 
 .flow--compact .flow__body {
     gap: var(--flow-gap-md);
+}
+
+.flow--compact .flow__nav {
+    gap: var(--flow-gap-sm);
 }
 
 .flow--compact .steps {
@@ -300,13 +307,17 @@
     flex: auto;
 }
 
+.steps--vertical .steps__label {
+    white-space: normal;
+}
+
 /* ---------------------------------------------------------
    6. FLOW PROGRESS BARS
 --------------------------------------------------------- */
 .flow-progress {
     width: 100%;
     height: var(--border-width-strong);
-    background-color: var(--color-muted-bg);
+    background-color: var(--flow-progress-track);
     border-radius: var(--radius-sm);
     overflow: hidden;
 }
@@ -314,64 +325,56 @@
 .flow-progress__bar {
     height: 100%;
     width: 0;
-    background-color: var(--color-muted-bg);
-    transition: width 0.2s ease;
+    background-color: var(--flow-progress-fill, var(--color-accent));
+    transition: width var(--transition-normal);
 }
 
-.flow-progress--striped .flow-progress__bar {
-    background-image: repeating-linear-gradient(
+.flow-progress__bar--success {
+    --flow-progress-fill: var(--color-success);
+}
+
+.flow-progress__bar--warning {
+    --flow-progress-fill: var(--color-warning);
+}
+
+.flow-progress__bar--error {
+    --flow-progress-fill: var(--color-danger);
+}
+
+.flow-progress__bar--info {
+    --flow-progress-fill: var(--color-info);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flow-progress__bar {
+        transition: none;
+    }
+}
+
+.flow-progress--striped .flow-progress__bar,
+.flow-progress--striped-right .flow-progress__bar {
+    background-image: linear-gradient(
             45deg,
-            var(--color-text-soft) 0,
-            var(--color-text-soft) var(--flow-progress-stripe-size),
-            var(--color-muted-bg) var(--flow-progress-stripe-size),
-            var(--color-muted-bg) calc(var(--flow-progress-stripe-size) * 2)
+            rgba(255, 255, 255, 0.22) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.22) 50%,
+            rgba(255, 255, 255, 0.22) 75%,
+            transparent 75%,
+            transparent
     );
+    background-size: calc(var(--flow-progress-stripe-size) * 2)
+        calc(var(--flow-progress-stripe-size) * 2);
     animation: flow-progress-stripes var(--flow-progress-stripe-speed) linear infinite;
 }
 
-.flow-progress--striped .flow-progress__bar--error {
-    background-image: repeating-linear-gradient(
-            45deg,
-            var(--color-danger) 0,
-            var(--color-danger) var(--flow-progress-stripe-size),
-            var(--color-danger-soft) var(--flow-progress-stripe-size),
-            var(--color-danger-soft) calc(var(--flow-progress-stripe-size) * 2)
-    );
-}
-
-.flow-progress--striped .flow-progress__bar--warning {
-    background-image: repeating-linear-gradient(
-            45deg,
-            var(--color-warning) 0,
-            var(--color-warning) var(--flow-progress-stripe-size),
-            var(--color-warning-soft) var(--flow-progress-stripe-size),
-            var(--color-warning-soft) calc(var(--flow-progress-stripe-size) * 2)
-    );
+.flow-progress--striped-right .flow-progress__bar {
+    animation-direction: reverse;
 }
 
 @keyframes flow-progress-stripes {
     from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: calc(var(--flow-progress-stripe-size) * -2.828) 0;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .flow-progress--striped .flow-progress__bar {
-        animation: none;
-        background-position: 0 0;
-    }
-}
-
-.flow-progress--striped-right .flow-progress__bar {
-    animation: flow-progress-stripes-right var(--flow-progress-stripe-speed) linear infinite;
-}
-
-@keyframes flow-progress-stripes-right {
-    from {
-        background-position: calc(var(--flow-progress-stripe-size) * -2.828) 0;
+        background-position: calc(var(--flow-progress-stripe-size) * 2) 0;
     }
     to {
         background-position: 0 0;
@@ -379,6 +382,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .flow-progress--striped .flow-progress__bar,
     .flow-progress--striped-right .flow-progress__bar {
         animation: none;
         background-position: 0 0;
@@ -407,6 +411,10 @@
 
 .flow-progress__segment--warning {
     background-color: var(--color-warning);
+}
+
+.flow-progress__segment--info {
+    background-color: var(--color-info);
 }
 
 /* ---------------------------------------------------------
@@ -455,8 +463,8 @@
 }
 
 .timeline__point--success {
-    border-color: var(--danger-soft-border, var(--color-danger));
-    background-color: var(--danger-soft-surface, var(--color-danger-soft));
+    border-color: var(--success-soft-border, var(--color-success));
+    background-color: var(--success-soft-surface, var(--color-success-soft));
 }
 
 .timeline__point--info {
@@ -705,7 +713,7 @@
 }
 
 .journey__stage--info {
-    border-color: var(--color-accent);
+    border-color: var(--color-info);
     background-color: var(--info-soft-surface, var(--color-info-soft));
     color: var(--info-soft-on, var(--color-on-info));
 }
@@ -783,27 +791,32 @@
 .process-flow__node--active {
     border-color: var(--color-accent);
     background-color: var(--accent-soft-surface, var(--color-accent-soft));
+    color: var(--accent-soft-on, var(--color-on-accent));
 }
 
 .process-flow__node--complete,
 .process-flow__node--success {
     border-color: var(--color-success);
     background-color: var(--success-soft-surface, var(--color-success-soft));
+    color: var(--success-soft-on, var(--color-on-success));
 }
 
 .process-flow__node--error {
     border-color: var(--color-danger);
     background-color: var(--danger-soft-surface, var(--color-danger-soft));
+    color: var(--danger-soft-on, var(--color-on-danger));
 }
 
 .process-flow__node--warning {
     border-color: var(--color-warning);
     background-color: var(--warning-soft-surface, var(--color-warning-soft));
+    color: var(--warning-soft-on, var(--color-on-warning));
 }
 
 .process-flow__node--info {
-    border-color: var(--color-accent);
+    border-color: var(--color-info);
     background-color: var(--info-soft-surface, var(--color-info-soft));
+    color: var(--info-soft-on, var(--color-on-info));
 }
 
 .process-flow__icon {
@@ -1035,7 +1048,7 @@
 }
 
 .flow-branch__option--info {
-    border-color: var(--color-accent);
+    border-color: var(--color-info);
     background-color: var(--info-soft-surface, var(--color-info-soft));
     color: var(--info-soft-on, var(--color-on-info));
 }

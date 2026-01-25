@@ -1,0 +1,258 @@
+<section data-vds-dock-block data-vds-content-block data-vds-progress class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Progress indicators</h2>
+                <p class="doc-block__summary">
+                    Use progress bars for long-running tasks and steppers for multi-step flows.
+                    Set progress with a width or <code>--progress-value</code> custom property.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="progress-stack">
+                        <div class="progress__header">
+                            <div class="progress__label">Storage used</div>
+                            <div class="progress__value">68%</div>
+                        </div>
+                        <div class="progress" style="--progress-value: 68%;">
+                            <div class="progress__bar"></div>
+                        </div>
+                        <div class="progress__meta">12.4 GB of 18 GB</div>
+                    </div>
+
+                    <div class="progress-stack">
+                        <div class="progress__header">
+                            <div class="progress__label">Sync complete</div>
+                            <div class="progress__value">Done</div>
+                        </div>
+                        <div class="progress progress--success" style="--progress-value: 100%;">
+                            <div class="progress__bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="progress-stack"&gt;
+  &lt;div class="progress__header"&gt;
+    &lt;div class="progress__label"&gt;Storage used&lt;/div&gt;
+    &lt;div class="progress__value"&gt;68%&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" style="--progress-value: 68%;"&gt;
+    &lt;div class="progress__bar"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-progress class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Density, stripes, and indeterminate</h2>
+                <p class="doc-block__summary">
+                    Adjust size and behavior with modifiers: small or large heights, striped bars,
+                    and indeterminate loading states.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="progress-stack progress-stack--compact">
+                        <div class="progress__header">
+                            <div class="progress__label">Render queue</div>
+                            <div class="progress__value">45%</div>
+                        </div>
+                        <div class="progress progress--sm" style="--progress-value: 45%;">
+                            <div class="progress__bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-stack">
+                        <div class="progress__header">
+                            <div class="progress__label">Encoding assets</div>
+                            <div class="progress__value">30%</div>
+                        </div>
+                        <div class="progress progress--lg progress--warning progress--striped progress--animated"
+                             style="--progress-value: 30%;">
+                            <div class="progress__bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-stack">
+                        <div class="progress__header">
+                            <div class="progress__label">Importing assets</div>
+                            <div class="progress__value">Processing</div>
+                        </div>
+                        <div class="progress progress--info progress--indeterminate">
+                            <div class="progress__bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="progress progress--lg progress--warning progress--striped progress--animated"
+     style="--progress-value: 30%;"&gt;
+  &lt;div class="progress__bar"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-progress class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Steppers</h2>
+                <p class="doc-block__summary">
+                    Stepper indicators show current position across multi-step flows. Use
+                    <code>.stepper__item--active</code> and <code>.stepper__item--complete</code>
+                    to update state.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="stepper">
+                        <div class="stepper__item stepper__item--complete">
+                            <div class="stepper__marker">1</div>
+                            <div class="stepper__content">
+                                <div class="stepper__title">Select plan</div>
+                                <div class="stepper__desc">Choose a tier.</div>
+                            </div>
+                        </div>
+                        <div class="stepper__item stepper__item--active">
+                            <div class="stepper__marker">2</div>
+                            <div class="stepper__content">
+                                <div class="stepper__title">Configure</div>
+                                <div class="stepper__desc">Add team members.</div>
+                            </div>
+                        </div>
+                        <div class="stepper__item">
+                            <div class="stepper__marker">3</div>
+                            <div class="stepper__content">
+                                <div class="stepper__title">Review</div>
+                                <div class="stepper__desc">Confirm details.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stepper stepper--vertical stepper--compact">
+                        <div class="stepper__item stepper__item--complete">
+                            <div class="stepper__marker">1</div>
+                            <div class="stepper__content">
+                                <div class="stepper__title">Draft</div>
+                                <div class="stepper__desc">Write the brief.</div>
+                            </div>
+                        </div>
+                        <div class="stepper__item stepper__item--active">
+                            <div class="stepper__marker">2</div>
+                            <div class="stepper__content">
+                                <div class="stepper__title">Review</div>
+                                <div class="stepper__desc">Stakeholder feedback.</div>
+                            </div>
+                        </div>
+                        <div class="stepper__item stepper__item--disabled">
+                            <div class="stepper__marker">3</div>
+                            <div class="stepper__content">
+                                <div class="stepper__title">Publish</div>
+                                <div class="stepper__desc">Schedule delivery.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="stepper"&gt;
+  &lt;div class="stepper__item stepper__item--complete"&gt;...&lt;/div&gt;
+  &lt;div class="stepper__item stepper__item--active"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="stepper stepper--vertical"&gt;
+  &lt;div class="stepper__item stepper__item--active"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-progress class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Usage patterns &amp; best practices</h2>
+                <p class="doc-block__summary">
+                    Progress indicators should reflect real completion, not fake movement. Match the
+                    density of the surface and keep labels specific.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use determinate progress when completion is measurable.</li>
+                        <li>Use indeterminate only for short, unknown durations.</li>
+                        <li>Label progress with clear, task-specific language.</li>
+                        <li>Use stepper states to show completed and active steps.</li>
+                        <li>Keep progress bars full width within their container.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not animate progress without real progress updates.</li>
+                        <li>Do not reset progress to zero without explanation.</li>
+                        <li>Do not mix multiple progress styles in one workflow.</li>
+                        <li>Do not use steppers for single-step tasks.</li>
+                        <li>Do not hide critical progress updates in tooltips only.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-progress class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Expose progress values to assistive tech and ensure visible contrast for the bar,
+                    track, and labels.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use <code>aria-valuenow</code> and <code>aria-valuemax</code> for progress bars.</li>
+                        <li>Provide text labels when the bar is the only indicator.</li>
+                        <li>Respect reduced motion by avoiding fast animations.</li>
+                        <li>Use semantic colors that maintain contrast on the track.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not rely on color alone to convey completion.</li>
+                        <li>Do not use indeterminate progress for long operations.</li>
+                        <li>Do not hide step labels when the flow requires context.</li>
+                        <li>Do not allow progress bars to shrink below readable sizes.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

@@ -30,8 +30,9 @@
 
                 <p class="doc-block__summary">
                     Load <code>command.css</code> after base, layout and utilities.
-                    Use <code>data-target="__key"</code> on buttons, pair it with
-                    <code>.command.__key</code> panels, and toggle
+                    Use <code>data-target="key"</code> on buttons, pair it with
+                    <code>.command</code> panels carrying
+                    <code>data-command="key"</code>, and toggle
                     <code>command--open</code> on the root element to control visibility.
                 </p>
             </header>
@@ -82,16 +83,16 @@
 
                     <p class="text-sm text-muted">
                         Command palette visibility is controlled via:
-                        <code>data-target="__key"</code> on triggers,
-                        <code>.command.__key</code> on panels, and
+                        <code>data-target="key"</code> on triggers,
+                        <code>.command[data-command="key"]</code> on panels, and
                         <code>.command--open</code> on the active panel.
                     </p>
 
                     <p class="text-xs text-muted">
                         <strong>Contract:</strong>
-                        every button declares <code>data-target="__command-*"</code>.
+                        every button declares <code>data-target="basic"</code>.
                         The matching panel declares the same
-                        <code>__command-*</code> class on the root
+                        <code>data-command="basic"</code> value on the root
                         <code>.command</code>.
                         Open state is represented by
                         <code>.command--open</code>.
@@ -352,8 +353,8 @@
                 Recommended keyboard mapping and button hooks for the most common command palette
                 variants in a SaaS app: full palette, navigation-only, actions-only, empty-state
                 and compact density. All follow the same
-                <code>data-target="__key"</code> /
-                <code>.command.__key</code> /
+                <code>data-target="key"</code> /
+                <code>.command[data-command="key"]</code> /
                 <code>.command--open</code> contract.
             </p>
         </header>
@@ -382,12 +383,12 @@
 
                             <button class="button button--ghost button--sm"
                                     type="button"
-                                    data-target="__command-basic">
+                                    data-target="basic">
                                 Open full palette
                             </button>
 
                             <p class="text-xs text-muted">
-                                Target panel: <code>.command.__command-basic</code>
+                                Target panel: <code>.command[data-command="basic"]</code>
                             </p>
                         </div>
                     </div>
@@ -403,12 +404,12 @@
 
                             <button class="button button--ghost button--sm"
                                     type="button"
-                                    data-target="__command-nav">
+                                    data-target="nav">
                                 Open navigation palette
                             </button>
 
                             <p class="text-xs text-muted">
-                                Target panel: <code>.command.__command-nav</code>
+                                Target panel: <code>.command[data-command="nav"]</code>
                             </p>
                         </div>
                     </div>
@@ -425,12 +426,12 @@
 
                             <button class="button button--ghost button--sm"
                                     type="button"
-                                    data-target="__command-actions">
+                                    data-target="actions">
                                 Open actions palette
                             </button>
 
                             <p class="text-xs text-muted">
-                                Target panel: <code>.command.__command-actions</code>
+                                Target panel: <code>.command[data-command="actions"]</code>
                             </p>
                         </div>
                     </div>
@@ -444,12 +445,12 @@
 
                             <button class="button button--ghost button--sm"
                                     type="button"
-                                    data-target="__command-empty">
+                                    data-target="empty">
                                 Open empty-state palette
                             </button>
 
                             <p class="text-xs text-muted">
-                                Target panel: <code>.command.__command-empty</code>
+                                Target panel: <code>.command[data-command="empty"]</code>
                             </p>
                         </div>
                     </div>
@@ -463,12 +464,12 @@
 
                             <button class="button button--ghost button--sm"
                                     type="button"
-                                    data-target="__command-compact">
+                                    data-target="compact">
                                 Open compact palette
                             </button>
 
                             <p class="text-xs text-muted">
-                                Target panel: <code>.command.__command-compact</code>
+                                Target panel: <code>.command[data-command="compact"]</code>
                             </p>
                         </div>
                     </div>
@@ -483,12 +484,12 @@
 
                             <button class="button button--ghost button--sm"
                                     type="button"
-                                    data-target="__command-projects">
+                                    data-target="projects">
                                 Open project switcher
                             </button>
 
                             <p class="text-xs text-muted">
-                                Target panel: <code>.command.__command-projects</code>
+                                Target panel: <code>.command[data-command="projects"]</code>
                             </p>
                         </div>
                     </div>
@@ -498,12 +499,473 @@
                 <p class="text-xs text-muted mt-4">
                     In production, all buttons above and their keyboard counterparts route into a single controller
                     that toggles <code>command--open</code> on the matching
-                    <code>.command.__command-*</code> instance.
+                    <code>.command[data-command]</code> instance.
                 </p>
 
             </div>
         </article>
 
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section section--inset">
+    <div class="section__inner section__stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Command Page</p>
+            <h2 class="section__title">Command landing page system</h2>
+            <p class="section__subtitle">
+                A command page is the operational surface of the product. It aggregates actions,
+                next steps, queues, glances, nudges, and status snapshots into a single view.
+                The classes below extend <code>command.css</code> to support that page.
+            </p>
+        </header>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h3 class="doc-block__title">Component map</h3>
+                <p class="doc-block__summary">
+                    Use this list as a reference when building a command landing page.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <ul class="section__list">
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">Command page shell</span>
+                        <span class="section__list-item-desc">
+                            <code>.command-page</code>, <code>.command-page__header</code>,
+                            <code>.command-page__actions</code>
+                        </span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">Toolbar and filters</span>
+                        <span class="section__list-item-desc">
+                            <code>.command-toolbar</code>, <code>.command-toolbar__search</code>,
+                            <code>.command-pill</code>
+                        </span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">Action tiles and rows</span>
+                        <span class="section__list-item-desc">
+                            <code>.command-action</code>, <code>.command-action--row</code>,
+                            <code>.command-grid</code>
+                        </span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">Next steps list</span>
+                        <span class="section__list-item-desc">
+                            <code>.command-steps</code>, <code>.command-step</code>,
+                            <code>.command-step__actions</code>
+                        </span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">Queue lanes and progress</span>
+                        <span class="section__list-item-desc">
+                            <code>.command-lanes</code>, <code>.command-queue</code>,
+                            <code>.command-progress</code>
+                        </span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">Glance metrics</span>
+                        <span class="section__list-item-desc">
+                            <code>.command-glance-grid</code>, <code>.command-glance</code>
+                        </span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">Focus cards and nudges</span>
+                        <span class="section__list-item-desc">
+                            <code>.command-card</code>, <code>.command-nudge</code>,
+                            <code>.command-card--rail</code>
+                        </span>
+                    </li>
+                    <li class="section__list-item">
+                        <span class="section__list-item-title">Activity and empty states</span>
+                        <span class="section__list-item-desc">
+                            <code>.command-activity</code>, <code>.command-empty</code>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Next steps list</h2>
+                <p class="doc-block__summary">
+                    Show what must happen next with a numbered, action-ready stack.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <ol class="command-steps">
+                        <li class="command-step" data-variant="accent">
+                            <span class="command-step__index">1</span>
+                            <div class="command-step__content">
+                                <div class="command-step__title">Prep capture brief</div>
+                                <div class="command-step__desc">Lock the intent and message.</div>
+                                <div class="command-step__meta">
+                                    <span class="command-pill" data-variant="info">Due 3pm</span>
+                                    <span>Owner: Maya</span>
+                                </div>
+                            </div>
+                            <div class="command-step__actions">
+                                <button class="button button--ghost">Open</button>
+                            </div>
+                        </li>
+
+                        <li class="command-step" data-variant="warning">
+                            <span class="command-step__index">2</span>
+                            <div class="command-step__content">
+                                <div class="command-step__title">Review queue delays</div>
+                                <div class="command-step__desc">One render is over SLA.</div>
+                                <div class="command-step__meta">
+                                    <span class="command-pill" data-variant="warning">Urgent</span>
+                                    <span>ETA 18 min</span>
+                                </div>
+                            </div>
+                            <div class="command-step__actions">
+                                <button class="button button--ghost">Investigate</button>
+                            </div>
+                        </li>
+
+                        <li class="command-step command-step--done" data-variant="success">
+                            <span class="command-step__index">3</span>
+                            <div class="command-step__content">
+                                <div class="command-step__title">Sync assets</div>
+                                <div class="command-step__desc">Footage uploaded to shared drive.</div>
+                                <div class="command-step__meta">
+                                    <span class="command-pill" data-variant="success">Done</span>
+                                </div>
+                            </div>
+                            <div class="command-step__actions">
+                                <button class="button button--ghost">View</button>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;ol class="command-steps"&gt;
+  &lt;li class="command-step" data-variant="accent"&gt;
+    &lt;span class="command-step__index"&gt;1&lt;/span&gt;
+    &lt;div class="command-step__content"&gt;...&lt;/div&gt;
+    &lt;div class="command-step__actions"&gt;...&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Queue lanes + progress</h2>
+                <p class="doc-block__summary">
+                    Represent work in flight, what is queued, and what is blocked.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="command-lanes">
+                        <div class="command-lane">
+                            <div class="command-lane__header">
+                                <div class="command-lane__title">In progress</div>
+                                <div class="command-lane__count">2</div>
+                            </div>
+                            <div class="command-queue">
+                                <div class="command-queue__item">
+                                    <span class="command-queue__status command-queue__status--warning"></span>
+                                    <div class="command-queue__content">
+                                        <div class="command-queue__title">Render: Session 14</div>
+                                        <div class="command-queue__meta">ETA 12 min · 4.2 GB</div>
+                                        <div class="command-progress">
+                                            <div class="command-progress__bar" style="width: 45%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="command-queue__actions">
+                                        <button class="button button--ghost">View</button>
+                                    </div>
+                                </div>
+
+                                <div class="command-queue__item">
+                                    <span class="command-queue__status command-queue__status--success"></span>
+                                    <div class="command-queue__content">
+                                        <div class="command-queue__title">Upload: Segment 08</div>
+                                        <div class="command-queue__meta">3 clips · 1.1 GB</div>
+                                        <div class="command-progress command-progress--success">
+                                            <div class="command-progress__bar" style="width: 78%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="command-queue__actions">
+                                        <button class="button button--ghost">Open</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="command-lane">
+                            <div class="command-lane__header">
+                                <div class="command-lane__title">Queued</div>
+                                <div class="command-lane__count">3</div>
+                            </div>
+                            <div class="command-queue">
+                                <div class="command-queue__item">
+                                    <span class="command-queue__status"></span>
+                                    <div class="command-queue__content">
+                                        <div class="command-queue__title">Transcode: Session 15</div>
+                                        <div class="command-queue__meta">Queued · Auto start</div>
+                                    </div>
+                                    <div class="command-queue__actions">
+                                        <button class="button button--ghost">Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="command-lane">
+                            <div class="command-lane__header">
+                                <div class="command-lane__title">Blocked</div>
+                                <div class="command-lane__count">1</div>
+                            </div>
+                            <div class="command-queue">
+                                <div class="command-queue__item">
+                                    <span class="command-queue__status command-queue__status--danger"></span>
+                                    <div class="command-queue__content">
+                                        <div class="command-queue__title">Export: Session 12</div>
+                                        <div class="command-queue__meta">Missing audio track</div>
+                                    </div>
+                                    <div class="command-queue__actions">
+                                        <button class="button button--ghost">Fix</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="command-lanes"&gt;
+  &lt;div class="command-lane"&gt;
+    &lt;div class="command-lane__header"&gt;
+      &lt;div class="command-lane__title"&gt;In progress&lt;/div&gt;
+      &lt;div class="command-lane__count"&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="command-queue"&gt;
+      &lt;div class="command-queue__item"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Glance metrics</h2>
+                <p class="doc-block__summary">
+                    Small metric cards for fast status checks and operational clarity.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="command-glance-grid">
+                        <div class="command-glance command-glance--tint" data-variant="success">
+                            <div class="command-glance__value">12</div>
+                            <div class="command-glance__label">Segments done</div>
+                            <div class="command-glance__meta">+3 today</div>
+                        </div>
+                        <div class="command-glance">
+                            <div class="command-glance__value">3</div>
+                            <div class="command-glance__label">In queue</div>
+                            <div class="command-glance__meta">2 running</div>
+                        </div>
+                        <div class="command-glance command-glance--tint" data-variant="warning">
+                            <div class="command-glance__value">2</div>
+                            <div class="command-glance__label">Flags</div>
+                            <div class="command-glance__meta">1 urgent</div>
+                        </div>
+                        <div class="command-glance">
+                            <div class="command-glance__value">94%</div>
+                            <div class="command-glance__label">Completion</div>
+                            <div class="command-glance__meta">Session 14</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="command-glance-grid"&gt;
+  &lt;div class="command-glance command-glance--tint" data-variant="success"&gt;
+    &lt;div class="command-glance__value"&gt;12&lt;/div&gt;
+    &lt;div class="command-glance__label"&gt;Segments done&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Focus cards + nudges</h2>
+                <p class="doc-block__summary">
+                    Use cards for focused attention and nudges for lightweight prompts.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="command-stack">
+                        <div class="command-card command-card--rail command-card--tint" data-variant="warning">
+                            <div class="command-card__kicker">Focus</div>
+                            <div class="command-card__title">Review segment 03</div>
+                            <div class="command-card__subtitle">Missing b-roll notes and audio checks.</div>
+                            <div class="command-card__meta">
+                                <span class="command-pill" data-variant="warning">Due today</span>
+                                <span>Owner: Jun</span>
+                            </div>
+                            <div class="command-card__footer">
+                                <button class="button button--primary">Open segment</button>
+                                <button class="button button--ghost">Assign</button>
+                            </div>
+                        </div>
+
+                        <div class="command-nudge command-nudge--tint" data-variant="info">
+                            <span class="command-nudge__icon">
+                                <span class="icon icon--mask icon--info"></span>
+                            </span>
+                            <div class="command-nudge__body">
+                                <div class="command-nudge__title">Reminder</div>
+                                <div class="command-nudge__text">
+                                    Export presets updated. Refresh your template before recording.
+                                </div>
+                                <div class="command-nudge__actions">
+                                    <button class="button button--ghost">View presets</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="command-nudge" data-variant="danger">
+                            <span class="command-nudge__icon">
+                                <span class="icon icon--mask icon--alert"></span>
+                            </span>
+                            <div class="command-nudge__body">
+                                <div class="command-nudge__title">Blocked export</div>
+                                <div class="command-nudge__text">
+                                    Audio file missing for Session 12. Upload to continue.
+                                </div>
+                                <div class="command-nudge__actions">
+                                    <button class="button button--ghost">Upload</button>
+                                    <button class="button button--ghost">Escalate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="command-card command-card--rail command-card--tint" data-variant="warning"&gt;
+  &lt;div class="command-card__kicker"&gt;Focus&lt;/div&gt;
+  &lt;div class="command-card__title"&gt;Review segment 03&lt;/div&gt;
+  &lt;div class="command-card__footer"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="command-nudge command-nudge--tint" data-variant="info"&gt;
+  &lt;span class="command-nudge__icon"&gt;...&lt;/span&gt;
+  &lt;div class="command-nudge__body"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Activity + empty states</h2>
+                <p class="doc-block__summary">
+                    Surface recent changes and show clear empty states when queues are clear.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="command-stack">
+                        <div class="command-card command-card--flat">
+                            <div class="command-card__kicker">Recent activity</div>
+                            <ul class="command-activity">
+                                <li class="command-activity__item">
+                                    <div class="command-activity__time">2h</div>
+                                    <div>
+                                        <div class="command-activity__title">Segment 04 approved</div>
+                                        <div class="command-activity__meta">By Olivia · Session 14</div>
+                                    </div>
+                                </li>
+                                <li class="command-activity__item">
+                                    <div class="command-activity__time">4h</div>
+                                    <div>
+                                        <div class="command-activity__title">New template added</div>
+                                        <div class="command-activity__meta">Capture plan v2</div>
+                                    </div>
+                                </li>
+                                <li class="command-activity__item">
+                                    <div class="command-activity__time">Yesterday</div>
+                                    <div>
+                                        <div class="command-activity__title">Queue cleared</div>
+                                        <div class="command-activity__meta">All renders complete</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="command-empty">
+                            <div class="command-empty__title">Queue cleared</div>
+                            <div class="command-empty__body">No renders pending. Start a new job?</div>
+                            <div class="command-empty__actions">
+                                <button class="button button--primary">Start new render</button>
+                                <button class="button button--ghost">View history</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;ul class="command-activity"&gt;
+  &lt;li class="command-activity__item"&gt;
+    &lt;div class="command-activity__time"&gt;2h&lt;/div&gt;
+    &lt;div&gt;
+      &lt;div class="command-activity__title"&gt;Segment 04 approved&lt;/div&gt;
+      &lt;div class="command-activity__meta"&gt;By Olivia · Session 14&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="command-empty"&gt;
+  &lt;div class="command-empty__title"&gt;Queue cleared&lt;/div&gt;
+  &lt;div class="command-empty__body"&gt;No renders pending. Start a new job?&lt;/div&gt;
+  &lt;div class="command-empty__actions"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
     </div>
 </section>
 
@@ -532,18 +994,18 @@
                             <div class="section__stack-sm mb-3">
                                 <p class="text-sm text-muted">
                                     Trigger in app:
-                                    <code>data-target="__command-basic"</code> +
+                                    <code>data-target="basic"</code> +
                                     <kbd>⌘</kbd><kbd>K</kbd> / <kbd>Ctrl</kbd><kbd>K</kbd>.
                                 </p>
 
                                 <button class="button button--primary button--sm"
                                         type="button"
-                                        data-target="__command-basic">
+                                        data-target="basic">
                                     Open full command palette
                                 </button>
                             </div>
 
-                            <div class="command command--center __command-basic">
+                            <div class="command command--center" data-command="basic">
                                 <div class="command__panel"
                                      role="dialog"
                                      aria-modal="true"
@@ -680,11 +1142,11 @@
 
                     <pre class="doc-block__code"><code>&lt;button class="button button--primary button--sm"
         type="button"
-        data-target="__command-basic"&gt;
+        data-target="basic"&gt;
     Open full command palette
 &lt;/button&gt;
 
-&lt;div class="command command--center command--open __command-basic"&gt;
+&lt;div class="command command--center command--open" data-command="basic"&gt;
     &lt;div class="command__panel" role="dialog" aria-modal="true" aria-label="Command menu"&gt;
         &lt;header class="command__header"&gt;
             ...
@@ -792,7 +1254,7 @@
             &lt;/div&gt;
         &lt;/div&gt;
 
-        &lt;footer class="command__footer"&gt;...helper text...&lt;/footer&gt;
+        &lt;footer class="command__footer"&gt;... helper text ...&lt;/footer&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -832,11 +1294,11 @@
                         <div class="card__body">
 
                             <button class="button button--primary"
-                                    data-target="__header-search">
+                                    data-target="header-search">
                                 Click to open
                             </button>
 
-                            <div class="command __header-search">
+                            <div class="command" data-command="header-search">
                                 <div class="command__panel" role="dialog" aria-modal="true">
 
                                     <header class="command__header">
@@ -888,7 +1350,7 @@
 
                     <pre class="doc-block__code"><code>&lt;header class="command__header"&gt;
     &lt;div class="command__leading-icon"&gt;
-        &lt;svg viewBox="0 0 16 16" aria-hidden="true"&gt;...search icon...&lt;/svg&gt;
+        &lt;svg viewBox="0 0 16 16" aria-hidden="true"&gt;... search icon ...&lt;/svg&gt;
     &lt;/div&gt;
 
     &lt;input
@@ -941,11 +1403,11 @@
                         <div class="card__body">
 
                             <button class="button button--primary"
-                                    data-target="__sections-lists">
+                                    data-target="sections-lists">
                                 Click to open
                             </button>
 
-                            <div class="command command--center __sections-lists">
+                            <div class="command command--center" data-command="sections-lists">
 
                                 <div class="command__panel" role="dialog" aria-modal="true">
 
@@ -1136,17 +1598,17 @@
                                 <p class="text-sm text-muted">
                                     Trigger in app:
                                     <kbd>/</kbd> or a dedicated “Search” icon mapped to
-                                    <code>data-target="__command-empty"</code>.
+                                    <code>data-target="empty"</code>.
                                 </p>
 
                                 <button class="button button--ghost button--sm"
                                         type="button"
-                                        data-target="__command-empty">
+                                        data-target="empty">
                                     Open empty search palette
                                 </button>
                             </div>
 
-                            <div class="command command--center __command-empty">
+                            <div class="command command--center" data-command="empty">
                                 <div class="command__panel" role="dialog" aria-modal="true">
 
                                     <header class="command__header">
@@ -1224,6 +1686,195 @@
 
 <section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
     <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Command page shell + toolbar</h2>
+                <p class="doc-block__summary">
+                    Start with <code>.command-page</code> to define the header, summary, and action bar.
+                    Pair it with a toolbar for filters and quick search.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="command-page">
+                        <header class="command-page__header">
+                            <div class="command-page__kicker">KeepExec</div>
+                            <div class="command-page__title">Command center</div>
+                            <div class="command-page__subtitle">
+                                See what needs attention, launch the next action, and
+                                keep the queue moving.
+                            </div>
+                            <div class="command-page__actions">
+                                <button class="button button--primary">Start session</button>
+                                <button class="button button--secondary">Review queue</button>
+                                <button class="button button--ghost">Open calendar</button>
+                            </div>
+                        </header>
+
+                        <div class="command-toolbar">
+                            <div class="command-toolbar__group">
+                                <span class="command-pill">Today</span>
+                                <span class="command-pill" data-variant="info">This week</span>
+                                <span class="command-pill" data-variant="neutral">All</span>
+                            </div>
+                            <div class="command-toolbar__search">
+                                <input class="form-control" type="search" placeholder="Search tasks and sessions">
+                            </div>
+                            <div class="command-toolbar__actions">
+                                <button class="button button--ghost">Filters</button>
+                                <button class="button button--ghost">Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="command-page"&gt;
+  &lt;header class="command-page__header"&gt;
+    &lt;div class="command-page__kicker"&gt;KeepExec&lt;/div&gt;
+    &lt;div class="command-page__title"&gt;Command center&lt;/div&gt;
+    &lt;div class="command-page__subtitle"&gt;
+      See what needs attention, launch the next action, and keep the queue moving.
+    &lt;/div&gt;
+    &lt;div class="command-page__actions"&gt;
+      &lt;button class="button button--primary"&gt;Start session&lt;/button&gt;
+      &lt;button class="button button--secondary"&gt;Review queue&lt;/button&gt;
+      &lt;button class="button button--ghost"&gt;Open calendar&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;div class="command-toolbar"&gt;
+    &lt;div class="command-toolbar__group"&gt;
+      &lt;span class="command-pill"&gt;Today&lt;/span&gt;
+      &lt;span class="command-pill" data-variant="info"&gt;This week&lt;/span&gt;
+      &lt;span class="command-pill" data-variant="neutral"&gt;All&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="command-toolbar__search"&gt;
+      &lt;input class="form-control" type="search" placeholder="Search tasks and sessions"&gt;
+    &lt;/div&gt;
+    &lt;div class="command-toolbar__actions"&gt;
+      &lt;button class="button button--ghost"&gt;Filters&lt;/button&gt;
+      &lt;button class="button button--ghost"&gt;Settings&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Action tiles + quick rows</h2>
+                <p class="doc-block__summary">
+                    Use tiles for primary actions and row actions for fast, repetitive tasks.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="command-stack">
+                        <div class="command-grid command-grid--3">
+                            <a class="command-action command-action--primary" data-variant="accent" href="#">
+                                <span class="command-action__icon">
+                                    <span class="icon icon--mask icon--play"></span>
+                                </span>
+                                <div class="command-action__content">
+                                    <div class="command-action__title">Start capture</div>
+                                    <div class="command-action__desc">
+                                        Record the next segment for today's session.
+                                    </div>
+                                    <div class="command-action__meta">
+                                        <span class="command-pill" data-variant="success">Next up</span>
+                                        <span>3 steps</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a class="command-action" data-variant="info" href="#">
+                                <span class="command-action__icon">
+                                    <span class="icon icon--mask icon--calendar"></span>
+                                </span>
+                                <div class="command-action__content">
+                                    <div class="command-action__title">Schedule session</div>
+                                    <div class="command-action__desc">Block a new capture slot.</div>
+                                </div>
+                            </a>
+
+                            <a class="command-action" data-variant="warning" href="#">
+                                <span class="command-action__icon">
+                                    <span class="icon icon--mask icon--alert"></span>
+                                </span>
+                                <div class="command-action__content">
+                                    <div class="command-action__title">Resolve blockers</div>
+                                    <div class="command-action__desc">2 segments need review.</div>
+                                </div>
+                            </a>
+
+                            <a class="command-action" data-variant="neutral" href="#">
+                                <span class="command-action__icon">
+                                    <span class="icon icon--mask icon--flag"></span>
+                                </span>
+                                <div class="command-action__content">
+                                    <div class="command-action__title">Flagged items</div>
+                                    <div class="command-action__desc">Open the flagged queue.</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="command-action command-action--row" data-variant="info">
+                            <span class="command-action__icon">
+                                <span class="icon icon--mask icon--clock"></span>
+                            </span>
+                            <div class="command-action__content">
+                                <div class="command-action__title">Check queue status</div>
+                                <div class="command-action__desc">2 renders running, 1 waiting.</div>
+                            </div>
+                            <div class="command-action__meta">
+                                <span class="command-pill" data-variant="info">Now</span>
+                            </div>
+                        </div>
+
+                        <div class="command-action command-action--row" data-variant="success">
+                            <span class="command-action__icon">
+                                <span class="icon icon--mask icon--check-circle"></span>
+                            </span>
+                            <div class="command-action__content">
+                                <div class="command-action__title">Publish summary</div>
+                                <div class="command-action__desc">Finalize the session recap.</div>
+                            </div>
+                            <div class="command-action__meta">
+                                <span class="command-pill" data-variant="success">Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="command-grid command-grid--3"&gt;
+  &lt;a class="command-action command-action--primary" data-variant="accent" href="#"&gt;...&lt;/a&gt;
+  &lt;a class="command-action" data-variant="info" href="#"&gt;...&lt;/a&gt;
+  &lt;a class="command-action" data-variant="warning" href="#"&gt;...&lt;/a&gt;
+  &lt;a class="command-action" data-variant="neutral" href="#"&gt;...&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="command-action command-action--row" data-variant="info"&gt;
+  &lt;span class="command-action__icon"&gt;...&lt;/span&gt;
+  &lt;div class="command-action__content"&gt;...&lt;/div&gt;
+  &lt;div class="command-action__meta"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-commands class="section">
+    <div class="section__inner">
 
         <article class="doc-block">
 
@@ -1247,17 +1898,17 @@
                                     Trigger in app:
                                     <kbd>⌘</kbd><kbd>Shift</kbd><kbd>K</kbd> /
                                     <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>K</kbd> mapped to
-                                    <code>__command-compact</code>.
+                                    <code>command-compact</code>.
                                 </p>
 
                                 <button class="button button--ghost button--sm"
                                         type="button"
-                                        data-target="__command-compact">
+                                        data-target="compact">
                                     Open compact palette
                                 </button>
                             </div>
 
-                            <div class="command command--center command--compact __command-compact">
+                            <div class="command command--center command--compact" data-command="compact">
                                 <div class="command__panel" role="dialog" aria-modal="true">
 
                                     <header class="command__header">
@@ -1326,7 +1977,7 @@
                         </div>
                     </div>
 
-                    <pre class="doc-block__code"><code>&lt;div class="command command--center command--compact command--open __command-compact"&gt;
+                    <pre class="doc-block__code"><code>&lt;div class="command command--center command--compact command--open" data-command="compact"&gt;
     &lt;div class="command__panel" role="dialog" aria-modal="true"&gt;
         &lt;header class="command__header"&gt;...&lt;/header&gt;
         &lt;div class="command__body"&gt;
@@ -1372,7 +2023,7 @@
                     <div class="card">
                         <div class="card__body">
 
-                            <div class="command command--center __command-nav">
+                            <div class="command command--center" data-command="nav">
                                 <div class="command__panel" role="dialog" aria-modal="true">
 
                                     <header class="command__header">
@@ -1557,7 +2208,7 @@
                         </div>
                     </div>
 
-                    <pre class="doc-block__code"><code>&lt;div class="command command--center __command-basic"&gt;
+                    <pre class="doc-block__code"><code>&lt;div class="command command--center" data-command="basic"&gt;
     &lt;div class="command__panel"
          role="dialog"
          aria-modal="true"
@@ -1689,8 +2340,8 @@
                                 <span class="section__list-item-title">Context-aware variants</span>
                                 <span class="section__list-item-desc">
                                     Use variant keys such as
-                                    <code>__command-basic</code>,
-                                    <code>__command-nav</code>
+                                    <code>command-basic</code>,
+                                    <code>command-nav</code>
                                     and other scope-specific identifiers for global vs. contextual palettes.
                                 </span>
                             </li>
@@ -1867,3 +2518,6 @@
 
     </div>
 </section>
+
+
+

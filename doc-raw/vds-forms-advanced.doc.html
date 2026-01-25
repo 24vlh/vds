@@ -276,12 +276,12 @@
                                 <div class="chip-field__row">
                                     <div class="chip-field__label">Selected labels (toggle)</div>
                                     <div class="chip-field__items">
-                                        <button class="chip-choice chip-choice--toggle chip-choice--selected" type="button">
+                                        <button class="chip-choice chip-choice--selected" type="button">
                                             <span class="chip-choice__check icon icon--mask icon--check"></span>
                                             <span class="chip-choice__label">series:reset</span>
                                             <span class="chip-choice__remove icon icon--mask icon--close"></span>
                                         </button>
-                                        <button class="chip-choice chip-choice--toggle chip-choice--selected" type="button">
+                                        <button class="chip-choice chip-choice--selected" type="button">
                                             <span class="chip-choice__check icon icon--mask icon--check"></span>
                                             <span class="chip-choice__label">format:tutorial</span>
                                             <span class="chip-choice__remove icon icon--mask icon--close"></span>
@@ -340,7 +340,7 @@
   &lt;div class="chip-field__row"&gt;
     &lt;div class="chip-field__label"&gt;Selected labels&lt;/div&gt;
     &lt;div class="chip-field__items"&gt;
-      &lt;button class="chip-choice chip-choice--toggle chip-choice--selected"&gt;
+      &lt;button class="chip-choice chip-choice--selected"&gt;
         &lt;span class="chip-choice__check icon icon--mask icon--check"&gt;&lt;/span&gt;
         &lt;span class="chip-choice__label"&gt;series:reset&lt;/span&gt;
         &lt;span class="chip-choice__remove icon icon--mask icon--close"&gt;&lt;/span&gt;
@@ -775,7 +775,7 @@
                 </p>
             </header>
             <div class="doc-block__body section__stack">
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm">
                         <h3 class="text-sm">Idea capture</h3>
                         <div class="card">
@@ -815,7 +815,7 @@
                     </div>
                 </div>
 
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm">
                         <h3 class="text-sm">Labels + tags picker</h3>
                         <div class="card">
@@ -826,7 +826,7 @@
                                         <div class="chip-field__row">
                                             <div class="chip-field__label">Selected labels</div>
                                             <div class="chip-field__items">
-                                                <button class="chip-choice chip-choice--toggle chip-choice--selected" type="button">
+                                                <button class="chip-choice chip-choice--selected" type="button">
                                                     <span class="chip-choice__check icon icon--mask icon--check"></span>
                                                     <span class="chip-choice__label">series:reset</span>
                                                     <span class="chip-choice__remove icon icon--mask icon--close"></span>
@@ -881,7 +881,7 @@
   &lt;div class="chip-field__row"&gt;
     &lt;div class="chip-field__label"&gt;Selected labels&lt;/div&gt;
     &lt;div class="chip-field__items"&gt;
-      &lt;button class="chip-choice chip-choice--toggle chip-choice--selected"&gt;
+      &lt;button class="chip-choice chip-choice--selected"&gt;
         &lt;span class="chip-choice__check icon icon--mask icon--check"&gt;&lt;/span&gt;
         &lt;span class="chip-choice__label"&gt;series:reset&lt;/span&gt;
         &lt;span class="chip-choice__remove icon icon--mask icon--close"&gt;&lt;/span&gt;
@@ -896,7 +896,7 @@
                     </div>
                 </div>
 
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm">
                         <h3 class="text-sm">Signals + status</h3>
                         <div class="card">
@@ -982,10 +982,9 @@
                         <li>Load <code>forms.css</code> first.</li>
                         <li>Then load <code>forms-advanced.css</code>.</li>
                         <li>Native inputs remain semantic; JavaScript is responsible for behaviour only.</li>
-                        <li>All components respond to <code>.form-field--error</code>, ARIA
-                            validation,
-                            and density layers (<code>.form--a</code> / default / <code
-                                    >.form--c</code>).
+                        <li>All components respond to <code>.form-control--error</code>,
+                            <code>aria-invalid="true"</code>, and density layers (<code>.form--a</code> /
+                            default / <code>.form--c</code>).
                         </li>
                     </ul>
                 </div>
@@ -1046,7 +1045,8 @@
                         </li>
 
                         <li>Expose loading, error, and disabled states through
-                            <code>.form-field--error</code>,
+                            <code>.form-control--error</code>,
+                            <code>aria-invalid="true"</code>,
                             <code>.multi-select--loading</code>,
                             <code>[disabled]</code> or
                             <code>.stepper--disabled</code>.
@@ -1095,7 +1095,8 @@
                         </li>
 
                         <li>Don’t encode validation state with custom colours or ad-hoc classes —
-                            use <code>.form-field--error</code> or the relevant
+                            use <code>.form-control--error</code>,
+                            <code>aria-invalid="true"</code>, or the relevant
                             <code>--error</code> variants.
                         </li>
 
@@ -1123,9 +1124,10 @@
 3. Expose behaviour state with ARIA and tokens (--open, --selected, --error).
 4. Preserve focus-visible; never remove keyboard cues.
 5. Keep layout neutral; rely on utilities for spacing and grid.
-6. Surface validation exclusively via .form-field--error and semantic tokens.
+6. Surface validation exclusively via .form-control--error, aria-invalid="true", and semantic tokens.
 7. Use JS only for behaviour (selecting, toggling, updating values), not styling.</code></pre>
             </div>
         </article>
     </div>
 </section>
+

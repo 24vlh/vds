@@ -87,8 +87,9 @@
                                 <h3 class="text-sm">Sidebar</h3>
                                 <ul class="text-sm">
                                     <li><code>.sidebar</code></li>
-                                    <li><code>.sidebar__item</code></li>
-                                    <li><code>.sidebar__item--active</code></li>
+                                    <li><code>.sidebar__nav</code></li>
+                                    <li><code>.nav__item</code></li>
+                                    <li><code>.nav__item--active</code></li>
                                     <li><code>.sidebar__section</code></li>
                                 </ul>
                             </div>
@@ -141,7 +142,7 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body">
-                            <nav class="nav grid grid-cols-2 md:grid-cols-1">
+                            <nav class="nav">
                                 <div class="nav-section">
                                     <a class="nav__link--active">Overview</a>
                                     <a class="nav__link">Docs</a>
@@ -308,7 +309,8 @@
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Pagination</h2>
                 <p class="doc-block__summary">
-                    Page controls with active, disabled and interactive states.
+                    Page controls with numbered, back/forward and load-more flows, plus size and density
+                    variants.
                 </p>
             </header>
 
@@ -316,30 +318,88 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body">
-                            <nav class="pagination">
-                                <button class="pagination__item pagination__item--disabled" disabled>
+                            <nav class="pagination" aria-label="Pagination">
+                                <button class="pagination__item pagination__prev pagination__item--disabled" disabled aria-label="Previous page">
                                     ← Prev
                                 </button>
-                                <button class="pagination__item pagination__item--active">1</button>
+                                <button class="pagination__item pagination__item--active" aria-current="page">1</button>
                                 <button class="pagination__item">2</button>
                                 <button class="pagination__item">3</button>
-                                <button class="pagination__item">Next →</button>
+                                <span class="pagination__item pagination__ellipsis" aria-hidden="true">...</span>
+                                <button class="pagination__item">8</button>
+                                <button class="pagination__item pagination__next" aria-label="Next page">Next →</button>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="card mt-6">
+                        <div class="card__body">
+                            <nav class="pagination pagination--back-forward pagination--minimal" aria-label="Back and forward pagination">
+                                <button class="pagination__item pagination__prev pagination__item--disabled" disabled>
+                                    ← Previous
+                                </button>
+                                <span class="pagination__meta">Page 1 of 12</span>
+                                <button class="pagination__item pagination__next">Next →</button>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="card mt-6">
+                        <div class="card__body">
+                            <nav class="pagination pagination--load-more" aria-label="Load more">
+                                <button class="pagination__item">Load more</button>
+                                <span class="pagination__status">Showing 24 of 128</span>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="card mt-6">
+                        <div class="card__body">
+                            <nav class="pagination pagination--compact" aria-label="Compact pagination">
+                                <button class="pagination__item pagination__prev" aria-label="Previous page">←</button>
+                                <button class="pagination__item pagination__item--active" aria-current="page">4</button>
+                                <button class="pagination__item">5</button>
+                                <button class="pagination__item">6</button>
+                                <button class="pagination__item pagination__next" aria-label="Next page">→</button>
                             </nav>
                         </div>
                     </div>
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;nav class="pagination"&gt;
-    &lt;button class="pagination__item pagination__item--disabled" disabled&gt;
+<pre class="doc-block__code"><code>&lt;nav class="pagination" aria-label="Pagination"&gt;
+    &lt;button class="pagination__item pagination__prev pagination__item--disabled" disabled aria-label="Previous page"&gt;
         ← Prev
     &lt;/button&gt;
 
-    &lt;button class="pagination__item pagination__item--active"&gt;1&lt;/button&gt;
+    &lt;button class="pagination__item pagination__item--active" aria-current="page"&gt;1&lt;/button&gt;
     &lt;button class="pagination__item"&gt;2&lt;/button&gt;
     &lt;button class="pagination__item"&gt;3&lt;/button&gt;
 
-    &lt;button class="pagination__item"&gt;Next →&lt;/button&gt;
+    &lt;span class="pagination__item pagination__ellipsis" aria-hidden="true"&gt;...&lt;/span&gt;
+    &lt;button class="pagination__item"&gt;8&lt;/button&gt;
+    &lt;button class="pagination__item pagination__next" aria-label="Next page"&gt;Next →&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;nav class="pagination pagination--back-forward pagination--minimal" aria-label="Back and forward pagination"&gt;
+    &lt;button class="pagination__item pagination__prev pagination__item--disabled" disabled&gt;
+        ← Previous
+    &lt;/button&gt;
+    &lt;span class="pagination__meta"&gt;Page 1 of 12&lt;/span&gt;
+    &lt;button class="pagination__item pagination__next"&gt;Next →&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;nav class="pagination pagination--load-more" aria-label="Load more"&gt;
+    &lt;button class="pagination__item"&gt;Load more&lt;/button&gt;
+    &lt;span class="pagination__status"&gt;Showing 24 of 128&lt;/span&gt;
+&lt;/nav&gt;
+
+&lt;nav class="pagination pagination--compact" aria-label="Compact pagination"&gt;
+    &lt;button class="pagination__item pagination__prev" aria-label="Previous page"&gt;←&lt;/button&gt;
+    &lt;button class="pagination__item pagination__item--active" aria-current="page"&gt;4&lt;/button&gt;
+    &lt;button class="pagination__item"&gt;5&lt;/button&gt;
+    &lt;button class="pagination__item"&gt;6&lt;/button&gt;
+    &lt;button class="pagination__item pagination__next" aria-label="Next page"&gt;→&lt;/button&gt;
 &lt;/nav&gt;
 </code></pre>
                 </div>
@@ -1277,7 +1337,9 @@
                             <code>aria-current="page"</code> on
                             <code>.nav__item--active</code>,
                             <code>.sidebar__nav .nav__item--active</code>,
-                            <code>.breadcrumb__item--current</code>.
+                            <code>.pagination__item--active</code>,
+                            <code>aria-current="page"</code> on the active
+                            <code>.breadcrumbs__link</code>.
                         </li>
 
                         <li>

@@ -3,16 +3,28 @@
 
     let initialized = false;
 
-    function getActiveElement(cls) {
-        const nodes = document.querySelectorAll(cls);
-        for (const m of nodes) {
-            if ([...m.classList].some(c => c.startsWith("__"))) return m;
-        }
-        return null;
+    function normalizeKey(key) {
+        if (!key) return null;
+        return key.replace(/^__/, "");
+    }
+
+    function getCommandElement(key) {
+        const cleanKey = normalizeKey(key);
+        if (!cleanKey) return null;
+
+        return (
+            document.querySelector(`.command[data-command="${cleanKey}"]`) ||
+            document.querySelector(`.command.__${cleanKey}`) ||
+            document.querySelector(`.command.${key}`)
+        );
+    }
+
+    function getOpenCommand() {
+        return document.querySelector(".command.command--open");
     }
 
     function showOverlay(key) {
-        const command  = getActiveElement(`.command.${key}`);
+        const command = getCommandElement(key);
 
         if (command) {
             command.classList.add("command--open");
@@ -20,7 +32,7 @@
     }
 
     function hideOverlay() {
-        const command  = getActiveElement(".command.command--open");
+        const command = getOpenCommand();
 
         if (command) {
             command.classList.remove("command--open");

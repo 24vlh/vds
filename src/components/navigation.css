@@ -549,28 +549,86 @@
    9. PAGINATION
 --------------------------------------------------------- */
 .pagination {
+    --pagination-gap: var(--space-1);
+    --pagination-item-height: 2rem;
+    --pagination-item-min-width: 2rem;
+    --pagination-item-padding-x: var(--space-2);
+    --pagination-item-radius: var(--radius-sm);
+    --pagination-item-border: var(--border-width) solid var(--color-border-subtle);
+    --pagination-item-bg: var(--color-surface);
+    --pagination-item-color: var(--color-text);
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pagination-gap);
+    font-size: var(--text-xs);
+    flex-wrap: wrap;
+}
+
+.pagination--compact {
+    --pagination-gap: var(--space-0_5);
+    --pagination-item-height: 1.75rem;
+    --pagination-item-min-width: 1.75rem;
+    --pagination-item-padding-x: var(--space-1_5);
+    font-size: var(--text-xxs);
+}
+
+.pagination--spacious {
+    --pagination-gap: var(--space-2);
+    --pagination-item-height: 2.5rem;
+    --pagination-item-min-width: 2.5rem;
+    --pagination-item-padding-x: var(--space-3);
+    font-size: var(--text-sm);
+}
+
+.pagination--minimal .pagination__item {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.pagination--minimal .pagination__item:hover {
+    background-color: var(--color-surface-subtle);
+    border-color: transparent;
+}
+
+.pagination--back-forward {
+    gap: var(--space-3);
+}
+
+.pagination--load-more {
+    justify-content: center;
+    width: 100%;
+    gap: var(--space-3);
+}
+
+.pagination__meta,
+.pagination__status {
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
     font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    white-space: nowrap;
 }
 
 .pagination__item {
-    min-width: 2rem;
-    height: 2rem;
-    padding: 0 var(--space-2);
+    min-width: var(--pagination-item-min-width);
+    height: var(--pagination-item-height);
+    padding: 0 var(--pagination-item-padding-x);
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: var(--space-1);
 
-    border-radius: var(--radius-sm);
-    border: var(--border-width) solid var(--color-border-subtle);
-    background-color: var(--color-surface);
-    color: var(--color-text);
+    border-radius: var(--pagination-item-radius);
+    border: var(--pagination-item-border);
+    background-color: var(--pagination-item-bg);
+    color: var(--pagination-item-color);
 
     cursor: pointer;
     text-decoration: none;
+    white-space: nowrap;
 
     transition: background-color 0.15s ease,
     border-color 0.15s ease,
@@ -617,6 +675,8 @@
     border: none;
     background-color: transparent;
     cursor: default;
+    color: var(--color-text-muted);
+    pointer-events: none;
 }
 
 /* ---------------------------------------------------------

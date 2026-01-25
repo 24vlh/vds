@@ -48,7 +48,9 @@
                     <ul class="text-sm">
                         <li><code>.container*</code> — max-width shells.</li>
                         <li><code>.section*</code> — vertical spacing helpers.</li>
-                        <li><code>.layout-grid-*</code> — structural grids.</li>
+                        <li><code>.layout-grid-auto</code>, <code>.layout-grid-2</code>,
+                            <code>.layout-grid-3</code>, <code>.layout-grid-4</code>,
+                            <code>.layout-grid-5</code>, <code>.layout-grid-6</code> — structural grids.</li>
                     </ul>
                 </div>
             </div>
@@ -145,7 +147,7 @@ footer.page-footer {
             </header>
 
             <div class="doc-block__body section__grid-2 section__grid-sm">
-                <div class="doc-block__preview">
+                <div class="doc-block__preview flex flex-column gap-3">
                     <div class="content-header">
                         <h3 class="text-sm">Panel title</h3>
                     </div>
@@ -164,7 +166,7 @@ footer.page-footer {
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="flex-column"&gt;
+<pre class="doc-block__code"><code>&lt;div class="flex flex-column gap-3"&gt;
   &lt;div class="content-header"&gt;…&lt;/div&gt;
   &lt;div class="content-body"&gt;…&lt;/div&gt;
   &lt;div class="content-footer"&gt;…&lt;/div&gt;
@@ -390,7 +392,9 @@ footer.page-footer {
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Structural grids</h2>
                 <p class="doc-block__summary">
-                    Use <code>.layout-grid-*</code> for simple, semantic grids. For more
+                    Use <code>.layout-grid-auto</code>, <code>.layout-grid-2</code>,
+                    <code>.layout-grid-3</code>, <code>.layout-grid-4</code>, <code>.layout-grid-5</code>,
+                    <code>.layout-grid-6</code> for simple, semantic grids. For more
                     granular control, fall back to utility-level grid classes.
                 </p>
             </header>
@@ -422,7 +426,7 @@ footer.page-footer {
 
 .layout-grid-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--gap-lg);
 }
 
@@ -471,14 +475,14 @@ footer.page-footer {
                     <pre class="doc-block__code"><code>/* layout.css — sidebar layouts */
 .sidebar-layout {
   display: grid;
-  grid-template-columns: var(--sidebar-width-md) 1fr;
+    grid-template-columns: var(--sidebar-width-md) minmax(0, 1fr);
   gap: var(--gap-lg);
 }
 
 @media (max-width: 1024px) {
-  .sidebar-layout {
-    grid-template-columns: 1fr;
-  }
+    .sidebar-layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
 }</code></pre>
                 </div>
             </div>
@@ -508,15 +512,10 @@ footer.page-footer {
 &lt;/section&gt;</code></pre>
 
                     <pre class="doc-block__code"><code>/* layout.css — split layouts */
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--gap-lg);
-}
-
+.split,
 .split-reverse {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--gap-lg);
 }
 
@@ -526,11 +525,9 @@ footer.page-footer {
 @media (max-width: 768px) {
   .split,
   .split-reverse {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
-}
 
-@media (min-width: 769px) {
   .split-reverse &gt; * {
     order: initial;
   }
@@ -554,7 +551,7 @@ footer.page-footer {
 
             <div class="doc-block__body section__grid-2 section__grid-sm">
                 <div class="doc-block__preview">
-                    <div class="flex-column">
+                    <div class="flex flex-column gap-3">
                         <div class="content-header">
                             <h3 class="text-sm">Delete project</h3>
                         </div>
@@ -573,7 +570,7 @@ footer.page-footer {
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="modal flex-column"&gt;
+<pre class="doc-block__code"><code>&lt;div class="modal flex-column gap-3"&gt;
   &lt;div class="content-header"&gt;
     &lt;h3&gt;Delete project&lt;/h3&gt;
   &lt;/div&gt;
@@ -583,8 +580,8 @@ footer.page-footer {
   &lt;/div&gt;
 
   &lt;div class="content-footer"&gt;
-    &lt;button class="button--ghost"&gt;Cancel&lt;/button&gt;
-    &lt;button class="button--danger"&gt;Delete&lt;/button&gt;
+    &lt;button class="button button--ghost"&gt;Cancel&lt;/button&gt;
+    &lt;button class="button button--danger"&gt;Delete&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
@@ -684,7 +681,9 @@ footer.page-footer {
 
                         <li>
                             Keep DOM order meaningful — layout utilities (<code>split</code>,
-                            <code>sidebar-layout</code>, <code>layout-grid-*</code>) must not be used to
+                            <code>sidebar-layout</code>,
+                            <code>layout-grid-auto</code>/<code>layout-grid-2</code>/<code>layout-grid-3</code>/<code>layout-grid-4</code>/<code>layout-grid-5</code>/<code>layout-grid-6</code>)
+                            must not be used to
                             reorder semantics. Visual order may change; reading order must not.
                         </li>
 
@@ -794,3 +793,4 @@ footer.page-footer {
         </article>
     </div>
 </section>
+

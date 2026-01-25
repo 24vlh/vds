@@ -39,6 +39,12 @@
     --logo-size-xl: 5.5rem;
     --logo-size-xxl: 6.5rem;
     --logo-doc-height: 2.25rem;
+    --logo-ke-frame-stroke: 2.5;
+    --logo-ke-mark-stroke: 3.2;
+    --logo-ke-text-primary-size: 18px;
+    --logo-ke-text-secondary-size: 10px;
+    --logo-ke-primary-letter-spacing: 0.04em;
+    --logo-ke-secondary-letter-spacing: 0.06em;
 }
 
 /* ---------------------------------------------------------
@@ -108,8 +114,14 @@
 .logo--mono .logo-wordmark,
 .logo--mono .logo-text-primary,
 .logo--mono .logo-text-secondary {
-    fill: var(--color-logo-ink) !important;
+    fill: var(--color-logo-mono) !important;
     stroke: none !important;
+}
+
+.logo--mono .ke-ink,
+.logo--mono .ke-accent,
+.logo--mono .ke-muted {
+    color: var(--color-logo-mono);
 }
 
 .logo--footer {
@@ -131,6 +143,15 @@
     fill: var(--color-logo-footer-ink);
 }
 
+.logo--footer .ke-ink,
+.logo--footer .ke-muted {
+    color: var(--color-logo-footer-ink);
+}
+
+.logo--footer .ke-accent {
+    color: var(--color-logo-footer-accent);
+}
+
 .logo--inverse .logo-frame,
 .logo--inverse .logo-rail {
     stroke: var(--color-logo-ink-inverse) !important;
@@ -145,6 +166,15 @@
 .logo--inverse .logo-text-secondary {
     fill: var(--color-logo-ink-inverse) !important;
     stroke: none !important;
+}
+
+.logo--inverse .ke-ink,
+.logo--inverse .ke-muted {
+    color: var(--color-logo-ink-inverse);
+}
+
+.logo--inverse .ke-accent {
+    color: var(--color-logo-accent-inverse);
 }
 
 /* ---------------------------------------------------------
@@ -216,6 +246,18 @@
     stroke: var(--color-logo-accent);
 }
 
+.logo--ink svg .ke-ink {
+    color: var(--color-logo-ink);
+}
+
+.logo--ink svg .ke-accent {
+    color: var(--color-logo-accent);
+}
+
+.logo--ink svg .ke-muted {
+    color: var(--color-text-muted);
+}
+
 .logo--inverse svg .logo-frame,
 .logo--inverse svg .logo-rail {
     stroke: var(--color-logo-ink-inverse);
@@ -223,6 +265,18 @@
 
 .logo--inverse svg .logo-chevron {
     stroke: var(--color-logo-accent-inverse);
+}
+
+.logo--inverse svg .ke-ink {
+    color: var(--color-logo-ink-inverse);
+}
+
+.logo--inverse svg .ke-accent {
+    color: var(--color-logo-accent-inverse);
+}
+
+.logo--inverse svg .ke-muted {
+    color: var(--color-logo-ink-inverse);
 }
 
 /* ---------------------------------------------------------
@@ -246,4 +300,55 @@
 
 .logo--pad-xl {
     padding: var(--space-8);
+}
+
+/* ---------------------------------------------------------
+   7. KEEPEXEC IDENTITY CLASSES
+--------------------------------------------------------- */
+.ke-ink {
+    color: var(--color-logo-ink);
+}
+
+.ke-accent {
+    color: var(--color-logo-accent);
+}
+
+.ke-muted {
+    color: var(--color-text-muted);
+}
+
+.ke-frame {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--logo-ke-frame-stroke);
+    vector-effect: non-scaling-stroke;
+}
+
+.ke-mark {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--logo-ke-mark-stroke);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.ke-text-primary,
+.ke-text-secondary {
+    fill: currentColor;
+    font-family: var(--font-family-sans), ui-sans-serif, system-ui, -apple-system,
+        "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.ke-text-primary {
+    font-size: var(--logo-ke-text-primary-size);
+    font-weight: 700;
+    letter-spacing: var(--logo-ke-primary-letter-spacing);
+}
+
+.ke-text-secondary {
+    font-size: var(--logo-ke-text-secondary-size);
+    font-weight: 500;
+    letter-spacing: var(--logo-ke-secondary-letter-spacing);
+    opacity: 0.9;
 }

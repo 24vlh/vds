@@ -1,0 +1,277 @@
+<section data-vds-dock-block data-vds-content-block data-vds-avatar class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Avatars</h2>
+                <p class="doc-block__summary">
+                    Avatars represent people, teams, or entities. Use initials for placeholders,
+                    images when available, and status dots for presence.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="text-xs text-muted text-mono">Sizes</div>
+                    <div class="section__inline section__inline-wrap">
+                        <div class="avatar avatar--xs"><span class="avatar__initials">AV</span></div>
+                        <div class="avatar avatar--sm"><span class="avatar__initials">AV</span></div>
+                        <div class="avatar"><span class="avatar__initials">AV</span></div>
+                        <div class="avatar avatar--lg"><span class="avatar__initials">AV</span></div>
+                        <div class="avatar avatar--xl"><span class="avatar__initials">AV</span></div>
+                    </div>
+
+                    <div class="text-xs text-muted text-mono">Shape variants</div>
+                    <div class="section__inline section__inline-wrap">
+                        <div class="avatar"><span class="avatar__initials">RD</span></div>
+                        <div class="avatar avatar--square"><span class="avatar__initials">SQ</span></div>
+                        <div class="avatar avatar--sharp"><span class="avatar__initials">SH</span></div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar avatar--lg"&gt;
+  &lt;span class="avatar__initials"&gt;AV&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="avatar avatar--square"&gt;...&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-avatar class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Images, rings, and borders</h2>
+                <p class="doc-block__summary">
+                    Use images for known users. Apply rings to separate avatars on busy surfaces
+                    and borders when you need higher contrast.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__inline section__inline-wrap">
+                    <div class="avatar avatar--ring">
+                        <span class="avatar__media">
+                            <img class="avatar__image" src="static/img/avatars/avatar-01.jpg"
+                                 alt="Profile photo placeholder">
+                        </span>
+                    </div>
+                    <div class="avatar avatar--bordered">
+                        <span class="avatar__media">
+                            <img class="avatar__image" src="static/img/avatars/avatar-02.jpg"
+                                 alt="Profile photo placeholder">
+                        </span>
+                    </div>
+                    <div class="avatar avatar--square avatar--ring">
+                        <span class="avatar__media">
+                            <img class="avatar__image" src="static/img/avatars/avatar-03.jpg"
+                                 alt="Profile photo placeholder">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar avatar--ring"&gt;
+  &lt;span class="avatar__media"&gt;
+    &lt;img class="avatar__image" src="static/img/avatars/avatar-01.jpg" alt="Profile photo placeholder"&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-avatar class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Color variants</h2>
+                <p class="doc-block__summary">
+                    Use color variants to cluster teams or highlight roles when photos are not available.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__inline section__inline-wrap">
+                    <div class="avatar avatar--accent"><span class="avatar__initials">AC</span></div>
+                    <div class="avatar avatar--success"><span class="avatar__initials">SU</span></div>
+                    <div class="avatar avatar--info"><span class="avatar__initials">IN</span></div>
+                    <div class="avatar avatar--warning"><span class="avatar__initials">WA</span></div>
+                    <div class="avatar avatar--danger"><span class="avatar__initials">DA</span></div>
+                    <div class="avatar avatar--mono"><span class="avatar__initials">MO</span></div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar avatar--success"&gt;
+  &lt;span class="avatar__initials"&gt;SU&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-avatar class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Presence status</h2>
+                <p class="doc-block__summary">
+                    Status dots sit above the avatar border to signal presence. Use one status per avatar.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__inline section__inline-wrap">
+                    <div class="avatar">
+                        <span class="avatar__initials">JS</span>
+                        <span class="avatar__status avatar__status--online"></span>
+                    </div>
+                    <div class="avatar">
+                        <span class="avatar__initials">KM</span>
+                        <span class="avatar__status avatar__status--away"></span>
+                    </div>
+                    <div class="avatar">
+                        <span class="avatar__initials">LT</span>
+                        <span class="avatar__status avatar__status--busy"></span>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar"&gt;
+  &lt;span class="avatar__initials"&gt;JS&lt;/span&gt;
+  &lt;span class="avatar__status avatar__status--online"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-avatar class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Avatar groups</h2>
+                <p class="doc-block__summary">
+                    Group avatars to show shared ownership or participants. Use the overflow
+                    indicator for additional counts.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="avatar-group">
+                        <div class="avatar avatar--sm">
+                            <span class="avatar__media">
+                                <img class="avatar__image" src="static/img/avatars/avatar-01.jpg"
+                                     alt="Profile photo placeholder">
+                            </span>
+                        </div>
+                        <div class="avatar avatar--sm">
+                            <span class="avatar__media">
+                                <img class="avatar__image" src="static/img/avatars/avatar-02.jpg"
+                                     alt="Profile photo placeholder">
+                            </span>
+                        </div>
+                        <div class="avatar avatar--sm"><span class="avatar__initials">RK</span></div>
+                        <div class="avatar avatar--sm avatar-group__more">+3</div>
+                    </div>
+
+                    <div class="avatar-group avatar-group--spread">
+                        <div class="avatar"><span class="avatar__initials">PM</span></div>
+                        <div class="avatar"><span class="avatar__initials">ST</span></div>
+                        <div class="avatar"><span class="avatar__initials">CL</span></div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar-group"&gt;
+  &lt;div class="avatar avatar--sm"&gt;
+    &lt;span class="avatar__media"&gt;
+      &lt;img class="avatar__image" src="static/img/avatars/avatar-01.jpg" alt="Profile photo placeholder"&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="avatar avatar--sm avatar-group__more"&gt;+3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-avatar class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Usage patterns &amp; best practices</h2>
+                <p class="doc-block__summary">
+                    Avatars should clarify identity, ownership, or presence without distracting from content.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use images when available and initials as fallbacks.</li>
+                        <li>Keep avatar sizes consistent within the same surface.</li>
+                        <li>Use groups for shared ownership or participant lists.</li>
+                        <li>Use color variants sparingly to indicate teams or roles.</li>
+                        <li>Keep status dots consistent across the product.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not mix multiple sizes in the same row.</li>
+                        <li>Do not use avatars as primary navigation elements.</li>
+                        <li>Do not place labels inside avatars; keep text outside.</li>
+                        <li>Do not rely on color alone for identity or role.</li>
+                        <li>Do not stack too many avatars without a count indicator.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-avatar class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Provide accessible text for image avatars, keep contrast sufficient,
+                    and avoid using avatars as the only status indicator.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use <code>alt</code> text for images that convey identity.</li>
+                        <li>Use <code>aria-label</code> when avatars are interactive.</li>
+                        <li>Keep initials to two characters for readability.</li>
+                        <li>Pair status dots with a text label in the UI.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not leave image <code>alt</code> attributes empty when needed.</li>
+                        <li>Do not use low-contrast color combinations for initials.</li>
+                        <li>Do not animate status dots excessively.</li>
+                        <li>Do not hide critical status only inside the avatar.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

@@ -120,7 +120,7 @@
 <pre><code>&lt;div class="section__stack-sm"&gt;
     &lt;label class="text-sm"&gt;Email&lt;/label&gt;
     &lt;div class="form-control-wrapper"&gt;
-        &lt;input class="form-controlcontrol"&gt;
+        &lt;input class="form-control"&gt;
     &lt;/div&gt;
     &lt;p class="text-xs text-muted"&gt;We never share your email.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
@@ -273,7 +273,7 @@
                         <div class="form-control-file-surface">
                             <input type="file">
                             <strong class="text-sm">Drop file here</strong>
-                            <span class="form-control-file-hint">or click to browse</span>
+                            <span class="text-xs text-muted">or click to browse</span>
                         </div>
 
                         <label class="file-upload-inline">
@@ -564,7 +564,7 @@
                             <div class="form-control-file-surface">
                                 <input type="file">
                                 <strong>Upload document</strong>
-                                <span class="form-control-file-hint">PDF or image</span>
+                                <span class="text-xs text-muted">PDF or image</span>
                             </div>
                         </div>
 
@@ -666,7 +666,7 @@
                         <input type="file">
                         <span class="icon icon--mask icon--upload"></span>
                         <strong class="text-sm">Upload document</strong>
-                        <span class="form-control-file-hint">PDF or image</span>
+                        <span class="text-xs text-muted">PDF or image</span>
                     </div>
                 </section>
                 <section class="section__stack">
@@ -720,7 +720,7 @@
             <header class="doc-block__header"><h2 class="doc-block__title">UFAL Examples</h2>
                 <p class="doc-block__summary">Copy/paste-ready patterns aligned to forms.css (UFAL-only).</p></header>
             <div class="doc-block__body section__stack">
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Base controls</h3>
                         <div class="section__stack-sm">
                             <input class="form-control" placeholder="Text input" type="text"/>
@@ -741,7 +741,7 @@
 &lt;/select&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Icons (left / right)</h3>
                         <div class="section__stack-sm">
                             <div class="form-control-wrapper" data-icon="left">
@@ -765,7 +765,7 @@
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Prefix / suffix</h3>
                         <div class="form-control-wrapper">
                             <span class="form-control-prefix">£</span>
@@ -780,7 +780,7 @@
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Grouped controls</h3>
                         <div class="form-control-group">
                             <input class="form-control" placeholder="Min"/>
@@ -793,7 +793,7 @@
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Validation + loading</h3>
                         <div class="section__stack-sm">
                             <input aria-invalid="true" class="form-control" value="ARIA invalid"/>
@@ -810,7 +810,7 @@
 &lt;input class="form-control form-control--loading" value="Loading…" /&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Disabled / readonly</h3>
                         <div class="section__stack-sm">
                             <input class="form-control" disabled="" value="Disabled"/>
@@ -821,14 +821,14 @@
 &lt;input class="form-control" readonly value="Readonly"&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">File upload (drop surface +
                         inline)</h3>
                         <div class="section__stack-sm">
                             <div class="form-control-file-surface">
                                 <input type="file"/>
                                 <strong class="text-sm">Drop file here</strong>
-                                <span class="form-control-file-hint">or click to browse</span>
+                                <span class="text-xs text-muted">or click to browse</span>
                             </div>
                             <label class="file-upload-inline">
                                 <input class="file-upload-inline__input" type="file"/>
@@ -839,7 +839,7 @@
                     <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-control-file-surface"&gt;
   &lt;input type="file"&gt;
   &lt;strong&gt;Drop file here&lt;/strong&gt;
-  &lt;span class="form-control-file-hint"&gt;or click to browse&lt;/span&gt;
+  &lt;span class="text-xs text-muted"&gt;or click to browse&lt;/span&gt;
 &lt;/div&gt;
 
 &lt;label class="file-upload-inline"&gt;
@@ -848,7 +848,7 @@
 &lt;/label&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Field shell</h3>
                         <div class="form-field">
                             <div class="form-label-row">
@@ -869,7 +869,7 @@
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Field shell (inline)</h3>
                         <div class="form-field form-field--inline">
                             <div class="form-label-row">
@@ -890,7 +890,7 @@
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Choice controls</h3>
                         <div class="choice-group">
                             <label class="choice choice--checkbox">
@@ -923,7 +923,7 @@
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Choice grid</h3>
                         <div class="choice-group choice-group--grid">
                             <label class="choice choice--checkbox choice--success">
@@ -956,7 +956,7 @@
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Layout primitives</h3>
                         <div class="section__stack-sm">
                             <div class="form-row">
@@ -980,7 +980,7 @@
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
-                <div class="doc-block__grid">
+                <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Form messages + section
                         states</h3>
                         <div class="section__stack-sm">
@@ -1011,3 +1011,4 @@
         </article>
     </div>
 </section>
+

@@ -55,6 +55,30 @@
 
     --content-block-highlight-border-width: var(--border-width-strong);
     --content-block-highlight-pad: var(--space-6);
+
+    --content-block-rail-width: var(--border-width-strong);
+    --content-block-hero-pad: var(--space-12);
+    --content-block-hero-title-size: var(--text-xl);
+    --content-block-hero-subtitle-size: var(--text-md);
+
+    --content-block-split-gap: var(--space-10);
+    --content-block-split-main: minmax(0, 1.2fr);
+    --content-block-split-aside: minmax(0, 0.8fr);
+
+    --content-block-grid-min: 14rem;
+    --content-block-grid-gap: var(--space-6);
+    --content-block-list-gap: var(--space-3);
+    --content-block-row-gap: var(--space-3);
+    --content-block-row-pad: var(--space-3);
+
+    --content-block-title-size-base: var(--text-lg);
+    --content-block-subtitle-size-base: var(--text-sm);
+    --content-block-meta-size: var(--text-xs);
+    --content-block-eyebrow-size: var(--text-xxs);
+
+    --content-block-kpi-gap: var(--space-4);
+    --content-block-kpi-value-size: var(--text-lg);
+    --content-block-kpi-label-size: var(--text-xs);
 }
 
 /* ---------------------------------------------------------
@@ -826,24 +850,36 @@
    17. CONTENT BLOCK (NEW STRUCTURAL BLOCK)
    --------------------------------------------------------- */
 .content-block {
+    --content-block-pad: 0;
+    --content-block-title-size: var(--content-block-title-size-base);
+    --content-block-subtitle-size: var(--content-block-subtitle-size-base);
+    --content-block-variant-rail: var(--color-border-strong);
+    --content-block-variant-tint: var(--color-surface-subtle);
+    --content-block-variant-text: var(--color-text);
+    --content-block-variant-muted: var(--color-text-muted);
+    --content-block-variant-border: var(--color-border-subtle);
+
     display: flex;
     flex-direction: column;
     gap: var(--component-gap-md);
     width: 100%;
+    color: var(--content-block-variant-text);
 }
 
 .content-block--surface {
+    --content-block-pad: var(--content-block-component-pad-lg);
     background-color: var(--color-surface);
     border-radius: var(--radius-md);
     border: var(--content-block-component-border-sm) solid var(--color-border-subtle);
-    padding: var(--content-block-component-pad-lg);
+    padding: var(--content-block-pad);
     box-shadow: var(--shadow-1);
 }
 
 .content-block--inset {
+    --content-block-pad: var(--content-block-component-pad-md);
     background-color: var(--color-surface-subtle);
     border-radius: var(--radius-md);
-    padding: var(--content-block-component-pad-md);
+    padding: var(--content-block-pad);
 }
 
 .content-block--compact {
@@ -851,11 +887,11 @@
 }
 
 .content-block--surface.content-block--compact {
-    padding: var(--content-block-component-pad-md);
+    --content-block-pad: var(--content-block-component-pad-md);
 }
 
 .content-block--inset.content-block--compact {
-    padding: var(--content-block-component-pad-sm);
+    --content-block-pad: var(--content-block-component-pad-sm);
 }
 
 .content-block--bordered {
@@ -863,12 +899,177 @@
 }
 
 /* ---------------------------------------------------------
-   17.1 CONTENT BLOCK - REGIONS
+   17.1 CONTENT BLOCK - VARIANTS
+   --------------------------------------------------------- */
+.content-block[data-variant="info"] {
+    --content-block-variant-rail: var(--semantic-info-border, var(--color-info));
+    --content-block-variant-tint: var(--semantic-info-bg, var(--color-info-soft));
+    --content-block-variant-text: var(--semantic-info-text, var(--color-text));
+    --content-block-variant-muted: var(--semantic-info-text, var(--color-text-muted));
+    --content-block-variant-border: var(--semantic-info-border, var(--color-border-subtle));
+}
+
+.content-block[data-variant="success"] {
+    --content-block-variant-rail: var(--semantic-success-border, var(--color-success));
+    --content-block-variant-tint: var(--semantic-success-bg, var(--color-success-soft));
+    --content-block-variant-text: var(--semantic-success-text, var(--color-text));
+    --content-block-variant-muted: var(--semantic-success-text, var(--color-text-muted));
+    --content-block-variant-border: var(--semantic-success-border, var(--color-border-subtle));
+}
+
+.content-block[data-variant="warning"] {
+    --content-block-variant-rail: var(--semantic-warning-border, var(--color-warning));
+    --content-block-variant-tint: var(--semantic-warning-bg, var(--color-warning-soft));
+    --content-block-variant-text: var(--semantic-warning-text, var(--color-text));
+    --content-block-variant-muted: var(--semantic-warning-text, var(--color-text-muted));
+    --content-block-variant-border: var(--semantic-warning-border, var(--color-border-subtle));
+}
+
+.content-block[data-variant="danger"] {
+    --content-block-variant-rail: var(--semantic-danger-border, var(--color-danger));
+    --content-block-variant-tint: var(--semantic-danger-bg, var(--color-danger-soft));
+    --content-block-variant-text: var(--semantic-danger-text, var(--color-text));
+    --content-block-variant-muted: var(--semantic-danger-text, var(--color-text-muted));
+    --content-block-variant-border: var(--semantic-danger-border, var(--color-border-subtle));
+}
+
+.content-block[data-variant="accent"] {
+    --content-block-variant-rail: var(--accent-soft-border, var(--color-accent));
+    --content-block-variant-tint: var(--accent-soft-surface, var(--color-accent-soft));
+    --content-block-variant-text: var(--accent-soft-on, var(--color-on-accent));
+    --content-block-variant-muted: var(--accent-soft-on, var(--color-on-accent));
+    --content-block-variant-border: var(--accent-soft-border, var(--color-border-subtle));
+}
+
+.content-block[data-variant="neutral"] {
+    --content-block-variant-rail: var(--color-border-strong);
+    --content-block-variant-tint: var(--color-surface-subtle);
+    --content-block-variant-text: var(--color-text);
+    --content-block-variant-muted: var(--color-text-muted);
+    --content-block-variant-border: var(--color-border-subtle);
+}
+
+.content-block--tint {
+    background-color: var(--content-block-variant-tint);
+    border-color: var(--content-block-variant-rail);
+}
+
+.content-block--outline {
+    border: var(--content-block-component-border-sm) solid var(--content-block-variant-rail);
+}
+
+.content-block--rail {
+    border-left: var(--content-block-rail-width) solid var(--content-block-variant-rail);
+}
+
+.content-block--hero {
+    --content-block-title-size: var(--content-block-hero-title-size);
+    --content-block-subtitle-size: var(--content-block-hero-subtitle-size);
+    --content-block-pad: var(--content-block-hero-pad);
+    gap: var(--component-gap-lg);
+}
+
+.content-block--center {
+    text-align: center;
+    align-items: center;
+}
+
+.content-block--center .content-block__actions,
+.content-block--center .content-block__footer,
+.content-block--center .content-block__meta {
+    justify-content: center;
+}
+
+.content-block--elevated {
+    box-shadow: var(--shadow-2);
+}
+
+.content-block--flat {
+    box-shadow: none;
+}
+
+.content-block--split {
+    display: grid;
+    grid-template-columns: var(--content-block-split-main) var(--content-block-split-aside);
+    gap: var(--content-block-split-gap);
+    align-items: start;
+    grid-template-areas: "main aside";
+}
+
+.content-block--split-reverse {
+    grid-template-areas: "aside main";
+}
+
+.content-block__main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    gap: var(--component-gap-md);
+}
+
+.content-block__aside {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    gap: var(--component-gap-md);
+}
+
+@media (max-width: 900px) {
+    .content-block--split,
+    .content-block--split-reverse {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "main"
+            "aside";
+    }
+}
+
+/* ---------------------------------------------------------
+   17.2 CONTENT BLOCK - REGIONS
    --------------------------------------------------------- */
 .content-block__header {
     display: flex;
     flex-direction: column;
     gap: var(--component-gap-xs);
+}
+
+.content-block__header--inline {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--component-gap-md);
+}
+
+.content-block__eyebrow {
+    font-size: var(--content-block-eyebrow-size);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--content-block-variant-muted);
+}
+
+.content-block__title {
+    font-size: var(--content-block-title-size);
+    font-weight: 600;
+}
+
+.content-block__subtitle {
+    font-size: var(--content-block-subtitle-size);
+    color: var(--content-block-variant-muted);
+}
+
+.content-block__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--component-gap-sm);
+    font-size: var(--content-block-meta-size);
+    color: var(--content-block-variant-muted);
+}
+
+.content-block__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--component-gap-sm);
+    align-items: center;
 }
 
 .content-block__body {
@@ -892,6 +1093,18 @@
     border-radius: var(--radius-sm);
 }
 
+.content-block__media--bleed {
+    margin: calc(-1 * var(--content-block-pad));
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.content-block__media--bleed img,
+.content-block__media--bleed svg,
+.content-block__media--bleed picture {
+    border-radius: 0;
+}
+
 .content-block__footer {
     display: flex;
     justify-content: flex-end;
@@ -900,7 +1113,110 @@
 }
 
 /* ---------------------------------------------------------
-   17.2 INTERACTIVE STATE (optional)
+   17.3 CONTENT BLOCK - LISTS, GRIDS, KPIS
+   --------------------------------------------------------- */
+.content-block__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--content-block-grid-min), 1fr));
+    gap: var(--content-block-grid-gap);
+}
+
+.content-block__grid--tight {
+    gap: var(--component-gap-sm);
+}
+
+.content-block__grid--loose {
+    gap: var(--component-gap-xl);
+}
+
+.content-block__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--content-block-list-gap);
+}
+
+.content-block__list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--component-gap-md);
+    padding: var(--content-block-row-pad) 0;
+    border-bottom: var(--content-block-component-border-sm) solid var(--content-block-variant-border);
+}
+
+.content-block__list-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.content-block__rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--content-block-row-gap);
+}
+
+.content-block__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--component-gap-md);
+    padding: var(--content-block-row-pad) 0;
+    border-bottom: var(--content-block-component-border-sm) solid var(--content-block-variant-border);
+}
+
+.content-block__row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.content-block__kv {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--component-gap-sm) var(--component-gap-lg);
+}
+
+.content-block__kv-label {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--content-block-variant-muted);
+}
+
+.content-block__kv-value {
+    font-size: var(--text-sm);
+    color: var(--content-block-variant-text);
+}
+
+.content-block__kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: var(--content-block-kpi-gap);
+}
+
+.content-block__kpi {
+    display: flex;
+    flex-direction: column;
+    gap: var(--component-gap-xs);
+}
+
+.content-block__kpi-value {
+    font-size: var(--content-block-kpi-value-size);
+    font-weight: 600;
+}
+
+.content-block__kpi-label {
+    font-size: var(--content-block-kpi-label-size);
+    color: var(--content-block-variant-muted);
+}
+
+@media (max-width: 720px) {
+    .content-block__kv {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ---------------------------------------------------------
+   17.4 INTERACTIVE STATE (optional)
    --------------------------------------------------------- */
 
 .content-block--interactive {

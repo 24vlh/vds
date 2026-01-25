@@ -6,11 +6,11 @@
             anchored to triggers without disrupting layout.
         </p>
         <p class="text-sm text-muted">
-            Source: <code>toasts-popovers.css</code> · Depends on
+            Source: <code>tooltips-popovers.css</code> · Depends on
             <code>base.css</code>,
             <code>layout.css</code>,
             <code>typography.css</code>,
-            theme tokens in <code>/themes/*.css</code>.:contentReference[oaicite:0]{index=0}
+            theme tokens in <code>/themes/*.css</code>.
         </p>
     </div>
 </section>
@@ -23,7 +23,7 @@
                 <p class="doc-block__summary">
                     Tooltips and popovers are surface-level components depending on base reset,
                     layout, typography, tokens and the active theme. Include files in this order
-                    for predictable rendering and theming.:contentReference[oaicite:1]{index=1}
+                    for predictable rendering and theming.
                 </p>
             </header>
 
@@ -39,15 +39,15 @@
                             Load active theme:
                             <code>themes/slate.css</code>
                             (or <code>navy.css</code>, <code>carbon.css</code>),
-                            which provides semantic surfaces and feedback tokens.:contentReference[oaicite:2]{index=2}
+                            which provides semantic surfaces and feedback tokens.
                         </li>
                         <li>
-                            Load <code>toasts-popovers.css</code> for tooltips and
-                            popovers.:contentReference[oaicite:3]{index=3}
+                            Load <code>tooltips-popovers.css</code> for tooltips and
+                            popovers.
                         </li>
                         <li>
                             Load <code>doc-block.css</code> only for documentation
-                            pages.:contentReference[oaicite:4]{index=4}
+                            pages.
                         </li>
                     </ul>
                 </div>
@@ -70,7 +70,7 @@
 &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/themes/carbon.css&quot;&gt;
 
 &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/icons.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/toasts-popovers.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/tooltips-popovers.css&quot;&gt;
 
 &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/doc-block.css&quot;&gt;
 </code></pre>
@@ -88,7 +88,7 @@
                 <p class="doc-block__summary">
                     The tooltip is a non-interactive micro-surface for short contextual help.
                     The popover is an interactive micro-surface holding menus, forms or controls,
-                    anchored to a trigger without blocking the page.:contentReference[oaicite:5]{index=5}
+                    anchored to a trigger without blocking the page.
                 </p>
             </header>
 
@@ -216,12 +216,12 @@
                         <strong>Tooltip:</strong> requires a positioned ancestor
                         (<code>.tooltip-trigger</code>) and one of the
                         position modifiers
-                        (<code>tooltip--top|bottom|left|right</code>).:contentReference[oaicite:6]{index=6}
+                        (<code>tooltip--top|bottom|left|right|top-left|top-right|bottom-left|bottom-right</code>).
                         <br>
                         <strong>Popover:</strong> uses
                         <code>.popover-anchor</code> as positioning context and
                         accepts placement modifiers such as
-                        <code>popover--bottom-right</code>.:contentReference[oaicite:7]{index=7}
+                        <code>popover--bottom-right</code>.
                     </p>
                 </div>
             </div>
@@ -236,7 +236,7 @@
                 <h2 class="doc-block__title">Tooltip positions &amp; semantic variants</h2>
                 <p class="doc-block__summary">
                     Tooltips share motion, radius and shadow tokens. Position, density and
-                    semantic colour are all controlled by class modifiers.:contentReference[oaicite:8]{index=8}
+                    semantic colour are all controlled by class modifiers.
                 </p>
             </header>
 
@@ -355,12 +355,157 @@
                         <strong>Density:</strong> use
                         <code>tooltip--a</code> for more generous padding and
                         <code>tooltip--c</code> for compact
-                        tooltips.:contentReference[oaicite:9]{index=9}
+                        tooltips.
                         <br>
                         <strong>Semantics:</strong> use
                         <code>tooltip--info|success|warning|danger</code> to map
                         to semantic feedback colours, consistent with other feedback
-                        components.:contentReference[oaicite:10]{index=10}
+                        components.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Corner placements &amp; arrow control</h2>
+                <p class="doc-block__summary">
+                    Use corner modifiers to align edges, tune offsets with tokens, and drop
+                    arrows when the surface is already visually connected. Tooltips are
+                    non-interactive by default; use <code>tooltip--interactive</code> only
+                    when you need hover persistence.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
+                            <button class="button button--ghost tooltip-trigger">
+                                Top left
+                                <span class="tooltip tooltip--top-left tooltip--c tooltip--visible" role="tooltip">
+                                    Edge-aligned tooltip
+                                    <span class="tooltip__arrow"></span>
+                                </span>
+                            </button>
+                            <button class="button button--ghost tooltip-trigger">
+                                Top right
+                                <span class="tooltip tooltip--top-right tooltip--c tooltip--visible" role="tooltip">
+                                    Arrow inset follows edge
+                                    <span class="tooltip__arrow"></span>
+                                </span>
+                            </button>
+                            <button class="button button--ghost tooltip-trigger">
+                                Bottom left
+                                <span class="tooltip tooltip--bottom-left tooltip--c tooltip--visible" role="tooltip">
+                                    Corner placement
+                                    <span class="tooltip__arrow"></span>
+                                </span>
+                            </button>
+                            <button class="button button--ghost tooltip-trigger">
+                                No arrow
+                                <span class="tooltip tooltip--bottom-right tooltip--c tooltip--visible tooltip--no-arrow" role="tooltip">
+                                    Clean edge tooltip
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body flex-row flex-wrap gap-4 items-center"
+                             style="padding-block: var(--space-12);">
+                            <div class="popover-anchor">
+                                <button
+                                        class="button button--secondary button--sm"
+                                        type="button"
+                                        aria-haspopup="dialog"
+                                        aria-expanded="true"
+                                        aria-controls="corner-popover"
+                                >
+                                    Corner popover
+                                </button>
+
+                                <div
+                                        class="popover popover--bottom-right popover--c popover--open"
+                                        id="corner-popover"
+                                        role="dialog"
+                                        aria-modal="false"
+                                        data-state="open"
+                                        style="--popover-arrow-inset: var(--space-4);"
+                                >
+                                    <div class="popover__body text-sm">
+                                        Arrow inset can be tuned per popover.
+                                    </div>
+                                    <span class="popover__arrow"></span>
+                                </div>
+                            </div>
+
+                            <div class="popover-anchor">
+                                <button
+                                        class="button button--secondary button--sm"
+                                        type="button"
+                                        aria-haspopup="dialog"
+                                        aria-expanded="true"
+                                        aria-controls="arrowless-popover"
+                                >
+                                    Arrowless
+                                </button>
+
+                                <div
+                                        class="popover popover--bottom-left popover--c popover--open popover--no-arrow"
+                                        id="arrowless-popover"
+                                        role="dialog"
+                                        aria-modal="false"
+                                        data-state="open"
+                                >
+                                    <div class="popover__body text-sm">
+                                        Remove arrows in dense layouts.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;span class=&quot;tooltip tooltip--top-left tooltip--c tooltip--visible&quot; role=&quot;tooltip&quot;&gt;
+    Edge-aligned tooltip
+    &lt;span class=&quot;tooltip__arrow&quot;&gt;&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;div class=&quot;popover popover--bottom-right popover--c popover--open&quot;
+     style=&quot;--popover-arrow-inset: var(--space-4);&quot;&gt;
+    &lt;div class=&quot;popover__body&quot;&gt;Arrow inset can be tuned.&lt;/div&gt;
+    &lt;span class=&quot;popover__arrow&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;popover popover--bottom-left popover--c popover--open popover--no-arrow&quot;&gt;
+    &lt;div class=&quot;popover__body&quot;&gt;Arrowless surface.&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+                    <p class="text-sm text-muted">
+                        <strong>Offsets:</strong> override <code>--tooltip-offset</code> or
+                        <code>--popover-offset</code> per surface for tighter or looser spacing.
+                        <br>
+                        <strong>Arrows:</strong> use <code>tooltip--no-arrow</code> /
+                        <code>popover--no-arrow</code> or tune
+                        <code>--tooltip-arrow-inset</code> /
+                        <code>--popover-arrow-inset</code>.
                     </p>
                 </div>
             </div>
@@ -376,7 +521,7 @@
                 <p class="doc-block__summary">
                     Popovers can render menus, compact forms or filter panels without invoking
                     a full modal or drawer. Position and density are controlled by class
-                    modifiers; behaviour is owned by your JavaScript.:contentReference[oaicite:11]{index=11}
+                    modifiers; behaviour is owned by your JavaScript.
                 </p>
             </header>
 
@@ -590,7 +735,7 @@
                 <p class="doc-block__summary">
                     Contract for safe, semantic, token-driven tooltips and popovers. Maintain
                     correct ARIA roles, connect triggers to surfaces, and rely on VDS tokens
-                    for motion, surfaces and focus instead of ad-hoc styling.:contentReference[oaicite:12]{index=12}
+                    for motion, surfaces and focus instead of ad-hoc styling.
                 </p>
             </header>
 
@@ -612,12 +757,12 @@
                             Manage open/close state via JavaScript by toggling
                             <code>data-state="open"</code> or
                             <code>.tooltip--visible</code> /
-                            <code>.popover--open</code>.:contentReference[oaicite:13]{index=13}
+                            <code>.popover--open</code>.
                         </li>
                         <li>
                             Keep layout, shadow and colour decisions inside
-                            <code>toasts-popovers.css</code> using tokens for
-                            radii, borders, shadows and motion.:contentReference[oaicite:14]{index=14}
+                            <code>tooltips-popovers.css</code> using tokens for
+                            radii, borders, shadows and motion.
                         </li>
                         <li>
                             Prefer concise, task-focused copy in tooltips; use popovers when the
@@ -632,7 +777,7 @@
                             <code>--success</code>,
                             <code>--warning</code>,
                             <code>--danger</code>) to express meaning
-                            consistently with other feedback components.:contentReference[oaicite:15]{index=15}
+                            consistently with other feedback components.
                         </li>
                     </ul>
                 </div>
@@ -658,7 +803,7 @@
                             from token-driven motion. Use
                             <code>--transition-fast</code> and
                             <code>--ease-out</code> from
-                            primitives.:contentReference[oaicite:16]{index=16}
+                            primitives.
                         </li>
                         <li>
                             Don’t mix multiple independent popovers open at once in dense UIs
@@ -667,7 +812,7 @@
                         <li>
                             Don’t override popover width with arbitrary inline styles; rely on the
                             min/max constraints in the component and design content
-                            accordingly.:contentReference[oaicite:17]{index=17}
+                            accordingly.
                         </li>
                     </ul>
                 </div>
@@ -678,7 +823,7 @@
 2. Use role=&quot;dialog&quot; or role=&quot;menu&quot; for popovers + aria-haspopup/expanded/controls.
 3. Toggle data-state=&quot;open&quot; (or .tooltip--visible / .popover--open) from JS; CSS never owns behaviour.
 4. Keep interactive controls out of tooltips; use popovers for menus/forms.
-5. Keep motion, radius, shadow and colours token-driven inside toasts-popovers.css.
+5. Keep motion, radius, shadow and colours token-driven inside tooltips-popovers.css.
 6. Preserve focus-visible outlines and keyboard reachability for all triggers.
 7. Use semantic variants consistently with other VDS feedback components.</code></pre>
             </div>

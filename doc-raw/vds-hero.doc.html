@@ -75,6 +75,123 @@
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
+                <h2 class="doc-block__title">Badges, meta, and stacked actions</h2>
+                <p class="doc-block__summary">
+                    Add lightweight badges and metadata rows to orient the hero, and stack actions when
+                    vertical space or hierarchy needs it.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--b hero--soft">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <span class="hero__badge">New release</span>
+                                <div class="hero__eyebrow">Updates</div>
+                                <h1 class="hero__title">Ship clearer product narratives</h1>
+                                <p class="hero__subtitle">
+                                    Pair a short description with metadata for context and scope.
+                                </p>
+                                <div class="hero__meta">
+                                    <span>Updated 2 days ago</span>
+                                    <span>v2.4</span>
+                                    <span>Docs refreshed</span>
+                                </div>
+                                <div class="hero__actions hero__actions--stack">
+                                    <button class="button button--primary button--lg">
+                                        View release notes
+                                    </button>
+                                    <button class="button button--ghost button--lg">
+                                        Download assets
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--b hero--soft"&gt;
+  &lt;div class="hero__inner"&gt;
+    &lt;div class="hero__body"&gt;
+      &lt;span class="hero__badge"&gt;New release&lt;/span&gt;
+      &lt;div class="hero__eyebrow"&gt;Updates&lt;/div&gt;
+      &lt;h1 class="hero__title"&gt;Ship clearer product narratives&lt;/h1&gt;
+      &lt;p class="hero__subtitle"&gt;Short supporting copy.&lt;/p&gt;
+      &lt;div class="hero__meta"&gt;
+        &lt;span&gt;Updated 2 days ago&lt;/span&gt;
+        &lt;span&gt;v2.4&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="hero__actions hero__actions--stack"&gt;
+        &lt;button class="button button--primary"&gt;View notes&lt;/button&gt;
+        &lt;button class="button button--ghost"&gt;Download&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Centered and bordered heroes</h2>
+                <p class="doc-block__summary">
+                    Use <code>.hero--center</code> to align content and actions, then add
+                    <code>.hero--bordered</code> for subtle separation.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero
+                             class="hero hero--center hero--bordered hero--b">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Customer stories</div>
+                                <h1 class="hero__title">Centered hero layout</h1>
+                                <p class="hero__subtitle">
+                                    Align text, metrics and actions to keep the hero balanced and symmetric.
+                                </p>
+                                <div class="hero__actions hero__actions--center">
+                                    <button class="button button--primary button--lg">Read stories</button>
+                                    <button class="button button--ghost button--lg">View all</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--center hero--bordered hero--b"&gt;
+  &lt;div class="hero__inner"&gt;
+    &lt;div class="hero__body"&gt;
+      &lt;div class="hero__eyebrow"&gt;Customer stories&lt;/div&gt;
+      &lt;h1 class="hero__title"&gt;Centered hero layout&lt;/h1&gt;
+      &lt;p class="hero__subtitle"&gt;Aligned copy and actions.&lt;/p&gt;
+      &lt;div class="hero__actions hero__actions--center"&gt;
+        &lt;button class="button button--primary"&gt;Read stories&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
                 <h2 class="doc-block__title">Base structure</h2>
                 <p class="doc-block__summary">
                     Base hero is a padded band with an inner container, textual body and actions. All other variants
@@ -140,7 +257,7 @@
             </header>
 
             <div class="doc-block__body section__stack">
-                <div class="doc-block__preview grid gap-8 md:grid-cols-3">
+                <div class="doc-block__preview section__grid-3 section__grid-md">
                     <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--a">
                         <div class="hero__inner">
                             <div class="hero__body">
@@ -187,7 +304,7 @@
                 </div>
 
                 <div class="doc-block__preview mt-8">
-                    <div class="grid gap-6 md:grid-cols-2">
+                    <div class="section__grid-2 section__grid-md">
                         <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--minimal">
                             <div class="hero__inner">
                                 <div class="hero__body">
@@ -233,7 +350,7 @@
                 <h2 class="doc-block__title">Split hero (text + points)</h2>
                 <p class="doc-block__summary">
                     Split hero places a narrative column on the left and a bullet point stack on the right.
-                    Ideal for product value propositions.
+                    Ideal for product value propositions. Add <code>.hero--split-reverse</code> to flip columns.
                 </p>
             </header>
 
@@ -260,7 +377,7 @@
                             <div class="hero__points">
                                 <div class="hero__point">
                                     <div class="hero__point-icon">
-                                        <span class="icon icon--shield"></span>
+                                        <span class="icon icon--shield-outline"></span>
                                     </div>
                                     <div>
                                         <div class="text-sm">Security-first</div>
@@ -396,6 +513,57 @@
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
+                <h2 class="doc-block__title">Media alignment &amp; bleed</h2>
+                <p class="doc-block__summary">
+                    Flip media to the left with <code>.hero--media-left</code>, or use
+                    <code>.hero__media--bleed</code> to remove rounded edges.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview">
+                    <section data-vds-dock-block data-vds-content-block data-vds-hero
+                             class="hero hero--with-media hero--media-left hero--b">
+                        <div class="hero__inner">
+                            <div class="hero__body">
+                                <div class="hero__eyebrow">Design system</div>
+                                <h1 class="hero__title">Media-first hero</h1>
+                                <p class="hero__subtitle">
+                                    Place the visual narrative before the copy when the image leads.
+                                </p>
+                            </div>
+
+                            <div class="hero__media hero__media--bleed">
+                                <div class="hero__media-inner">
+                                    <img src="https://placehold.co/800x450" alt="Sample media">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="hero hero--with-media hero--media-left hero--b"&gt;
+  &lt;div class="hero__inner"&gt;
+    &lt;div class="hero__body"&gt;...&lt;/div&gt;
+    &lt;div class="hero__media hero__media--bleed"&gt;
+      &lt;div class="hero__media-inner"&gt;
+        &lt;img src="..." alt="Sample media"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-hero class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
                 <h2 class="doc-block__title">Full &amp; inset surfaces</h2>
                 <p class="doc-block__summary">
                     Full hero uses background imagery or strong colour across the band. Inset hero uses a card-like
@@ -465,7 +633,9 @@
                 <h2 class="doc-block__title">Metric hero (KPI grid)</h2>
                 <p class="doc-block__summary">
                     Metric hero exposes a KPI grid directly under the title. Metrics use dedicated
-                    value, label and trend elements with semantic variants.
+                    value, label and trend elements with semantic variants. Use
+                    <code>.hero__metrics--compact</code> for denser layouts and
+                    <code>.hero__metric--outline</code> for subtle separation.
                 </p>
             </header>
 
@@ -481,8 +651,8 @@
                                 </p>
                             </div>
 
-                            <div class="hero__metrics">
-                                <div class="hero__metric">
+                            <div class="hero__metrics hero__metrics--compact">
+                                <div class="hero__metric hero__metric--outline">
                                     <div class="hero__metric-label">Active users</div>
                                     <div class="hero__metric-value">12,394</div>
                                     <div class="hero__metric-trend hero__metric-trend--up">
@@ -527,8 +697,8 @@
       &lt;p class="hero__subtitle"&gt;Short description.&lt;/p&gt;
     &lt;/div&gt;
 
-    &lt;div class="hero__metrics"&gt;
-      &lt;div class="hero__metric"&gt;
+    &lt;div class="hero__metrics hero__metrics--compact"&gt;
+      &lt;div class="hero__metric hero__metric--outline"&gt;
         &lt;div class="hero__metric-label"&gt;Metric name&lt;/div&gt;
         &lt;div class="hero__metric-value"&gt;42&lt;/div&gt;
         &lt;div class="hero__metric-trend hero__metric-trend--up"&gt;
@@ -655,15 +825,17 @@
                 <div class="doc-block__preview">
                     <section data-vds-dock-block data-vds-content-block data-vds-hero class="hero hero--b">
                         <div class="hero__inner">
-                            <div class="hero__body flex gap-4">
-                                <div class="hero__accent-line"></div>
-                                <div>
-                                    <div class="hero__eyebrow">Docs</div>
-                                    <h1 class="hero__title">Accent hero</h1>
-                                    <p class="hero__subtitle">
-                                        Use this when you need a subtle visual emphasis without changing surface
-                                        colour.
-                                    </p>
+                            <div class="hero__body">
+                                <div class="hero__row">
+                                    <div class="hero__accent-line"></div>
+                                    <div>
+                                        <div class="hero__eyebrow">Docs</div>
+                                        <h1 class="hero__title">Accent hero</h1>
+                                        <p class="hero__subtitle">
+                                            Use this when you need a subtle visual emphasis without changing surface
+                                            colour.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -674,11 +846,13 @@
 <pre class="doc-block__code"><code>&lt;section class="hero hero--b"&gt;
   &lt;div class="hero__inner"&gt;
     &lt;div class="hero__body"&gt;
-      &lt;div class="hero__accent-line"&gt;&lt;/div&gt;
-      &lt;div&gt;
-        &lt;div class="hero__eyebrow"&gt;Docs&lt;/div&gt;
-        &lt;h1 class="hero__title"&gt;Accent hero&lt;/h1&gt;
-        &lt;p class="hero__subtitle"&gt;Short description.&lt;/p&gt;
+      &lt;div class="hero__row"&gt;
+        &lt;div class="hero__accent-line"&gt;&lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class="hero__eyebrow"&gt;Docs&lt;/div&gt;
+          &lt;h1 class="hero__title"&gt;Accent hero&lt;/h1&gt;
+          &lt;p class="hero__subtitle"&gt;Short description.&lt;/p&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;

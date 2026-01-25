@@ -33,8 +33,15 @@ document.addEventListener("DOMContentLoaded", function () {
             window.scrollTo({top: 0, behavior: "smooth"});
 
             docBlock();
-            VDSOverlay.init();
-            VDSCommand.init();
+            if (window.VDSOverlay && typeof window.VDSOverlay.init === "function") {
+                window.VDSOverlay.init({force: true});
+                if (typeof window.VDSOverlay.reset === "function") {
+                    window.VDSOverlay.reset();
+                }
+            }
+            if (window.VDSCommand && typeof window.VDSCommand.init === "function") {
+                window.VDSCommand.init();
+            }
         });
     });
 

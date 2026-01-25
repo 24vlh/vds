@@ -68,6 +68,12 @@
                   In-flow overlay panels with semantic variants (info/success/warning/danger).
                 </span>
                             </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Confirm dialog</span>
+                                <span class="section__list-item-desc">
+                  Compact, centered confirmation layer for destructive or blocking actions.
+                </span>
+                            </li>
                         </ul>
                     </div>
 
@@ -93,6 +99,13 @@
                                 <span class="section__list-item-desc">
                   Wire <code>role="dialog"</code>, <code>aria-modal="true"</code>, focus management
                   and Escape key handlers at JS level.
+                </span>
+                            </li>
+                            <li class="section__list-item">
+                                <span class="section__list-item-title">Multi-step flows</span>
+                                <span class="section__list-item-desc">
+                  Allow multiple active modals (level-2/3) for confirmations; close keys can be
+                  chained in <code>data-close</code> to dismiss related layers.
                 </span>
                             </li>
                         </ul>
@@ -130,64 +143,73 @@
                 <h3 class="doc-block__title">Trigger Panel</h3>
                 <p class="doc-block__summary">
                     Buttons wired via <code>data-target</code> attributes, matching
-                    overlay class keys (e.g. <code>__modal-basic</code>).
+                    overlay keys (e.g. <code>data-overlay="modal-basic"</code>).
                 </p>
             </div>
 
             <div class="doc-block__body">
                 <div class="layout-inline">
-                    <button class="button button--primary" data-target="__modal-basic">Open Modal</button>
-                    <button class="button button--secondary" data-target="__modal-sheet">Open Bottom Sheet</button>
-                    <button class="button button--info" data-target="__modal-fullscreen-mobile">Open Fullscreen Mobile
+                    <button class="button button--primary" data-target="modal-basic">Open Modal</button>
+                    <button class="button button--secondary" data-target="modal-sheet">Open Bottom Sheet</button>
+                    <button class="button button--info" data-target="modal-fullscreen-mobile">Open Fullscreen Mobile
                     </button>
-                    <button class="button button--outline-accent" data-target="__drawer-left">Open Left Drawer</button>
-                    <button class="button button--outline-info" data-target="__drawer-right">Open Right Drawer</button>
-                    <button class="button button--warning" data-target="__backdrop-demo">Show Backdrop</button>
-                    <button class="button button--success" data-target="__inline-overlay">Show Inline Overlay</button>
+                    <button class="button button--outline-accent" data-target="drawer-left">Open Left Drawer</button>
+                    <button class="button button--outline-info" data-target="drawer-right">Open Right Drawer</button>
+                    <button class="button button--warning" data-target="backdrop-demo">Show Backdrop</button>
+                    <button class="button button--success" data-target="inline-overlay">Show Inline Overlay</button>
+                    <button class="button button--primary" data-target="modal-workspace">Open Workspace Modal</button>
+                    <button class="button button--danger" data-target="modal-confirm">Open Confirmation Dialog</button>
+                    <button class="button button--warning" data-target="modal-blocking-confirm">Open Blocking Confirm
+                    </button>
+                    <button class="button button--info" data-action="export-archive" data-target="modal-action">Run
+                        Export Task
+                    </button>
                 </div>
             </div>
 
-            <div class="overlay-inline overlay-inline--info __inline-overlay">
+            <div class="overlay-inline overlay-inline--info" data-overlay="inline-overlay">
                 <div class="overlay-inline__header">
                     <h3 class="text-sm">Inline Overlay</h3>
                 </div>
                 <div class="overlay-inline__body">
                     <p>This panel appears inline.</p>
-                    <button class="button button--subtle" data-close="__inline-overlay">Close</button>
+                    <button class="button button--subtle" data-close="inline-overlay">Close</button>
                 </div>
             </div>
         </div>
 
-        <div class="backdrop __backdrop-demo" data-close="__backdrop-demo"></div>
+        <div class="backdrop" data-overlay="backdrop-demo" data-close="backdrop-demo"></div>
 
-        <div class="backdrop __modal-basic" data-close="__modal-basic"></div>
-        <div class="modal modal--md __modal-basic"
+        <div class="backdrop" data-overlay="modal-basic" data-close="modal-basic"></div>
+        <div class="modal modal--md"
+             data-overlay="modal-basic"
              role="dialog"
              aria-modal="true"
              aria-labelledby="modal-basic-title">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-basic-title">Basic Modal</h3>
-                    <button class="modal__close" data-close="__modal-basic">&times;</button>
+                    <button class="modal__close" data-close="modal-basic">&times;</button>
                 </header>
                 <div class="modal__body">
                     <p>This is a live modal example.</p>
                 </div>
                 <footer class="modal__footer">
-                    <button class="button button--secondary" data-close="__modal-basic">Close</button>
+                    <button class="button button--secondary" data-close="modal-basic">Close</button>
                 </footer>
             </div>
         </div>
 
-        <div class="backdrop __modal-fullscreen-mobile" data-close="__modal-fullscreen-mobile"></div>
-        <div class="modal modal--md modal--fullscreen-mobile __modal-fullscreen-mobile"
+        <div class="backdrop" data-overlay="modal-fullscreen-mobile" data-close="modal-fullscreen-mobile"></div>
+        <div class="modal modal--md modal--fullscreen-mobile"
+             data-overlay="modal-fullscreen-mobile"
              role="dialog"
              aria-modal="true"
              aria-labelledby="modal-fullscreen-title">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-fullscreen-title">Fullscreen Mobile</h3>
-                    <button class="modal__close" data-close="__modal-fullscreen-mobile">&times;</button>
+                    <button class="modal__close" data-close="modal-fullscreen-mobile">&times;</button>
                 </header>
                 <div class="modal__body">
                     <p>Becomes fullscreen on mobile screens.</p>
@@ -195,8 +217,9 @@
             </div>
         </div>
 
-        <div class="backdrop __drawer-left" data-close="__drawer-left"></div>
-        <div class="drawer drawer--left drawer--hidden __drawer-left"
+        <div class="backdrop" data-overlay="drawer-left" data-close="drawer-left"></div>
+        <div class="drawer drawer--left drawer--hidden"
+             data-overlay="drawer-left"
              role="complementary"
              aria-label="Left drawer demo">
             <header class="drawer__header">
@@ -206,12 +229,13 @@
                 <p>This drawer slides from the left.</p>
             </div>
             <footer class="drawer__footer">
-                <button class="button button--secondary" data-close="__drawer-left">Close</button>
+                <button class="button button--secondary" data-close="drawer-left">Close</button>
             </footer>
         </div>
 
-        <div class="backdrop __drawer-right" data-close="__drawer-right"></div>
-        <div class="drawer drawer--right drawer--hidden __drawer-right"
+        <div class="backdrop" data-overlay="drawer-right" data-close="drawer-right"></div>
+        <div class="drawer drawer--right drawer--hidden"
+             data-overlay="drawer-right"
              role="complementary"
              aria-label="Right drawer demo">
             <header class="drawer__header">
@@ -221,23 +245,175 @@
                 <p>This drawer slides from the right.</p>
             </div>
             <footer class="drawer__footer">
-                <button class="button button--secondary" data-close="__drawer-right">Close</button>
+                <button class="button button--secondary" data-close="drawer-right">Close</button>
             </footer>
         </div>
 
-        <div class="backdrop __modal-sheet" data-close="__modal-sheet"></div>
-        <div class="modal modal--md modal--sheet __modal-sheet"
+        <div class="backdrop" data-overlay="modal-sheet" data-close="modal-sheet"></div>
+        <div class="modal modal--md modal--sheet"
+             data-overlay="modal-sheet"
              role="dialog"
              aria-modal="true"
              aria-labelledby="modal-sheet-title">
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-sheet-title">Bottom Sheet</h3>
-                    <button class="modal__close" data-close="__modal-sheet">&times;</button>
+                    <button class="modal__close" data-close="modal-sheet">&times;</button>
                 </header>
                 <div class="modal__body">
                     <p>Slides up from the bottom.</p>
                 </div>
+            </div>
+        </div>
+
+        <div class="backdrop" data-overlay="modal-workspace" data-close="modal-workspace"></div>
+        <div class="modal modal--lg modal--workspace"
+             data-overlay="modal-workspace"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-workspace-title">
+            <div class="modal__inner">
+                <header class="modal__header">
+                    <h3 class="modal__title" id="modal-workspace-title">Edit workspace</h3>
+                    <button class="modal__close" data-close="modal-workspace">&times;</button>
+                </header>
+                <div class="modal__body modal__body--form">
+                    <div class="modal__section">
+                        <div class="form-label-row">
+                            <label class="form-label" for="workspace-name">Workspace name</label>
+                            <span class="form-label-meta">Required</span>
+                        </div>
+                        <input class="form-control" id="workspace-name" type="text" value="Foundry Studio"/>
+                        <p class="form-help">Visible to all team members.</p>
+                    </div>
+                    <div class="modal__section">
+                        <label class="form-label" for="workspace-owner">Owner</label>
+                        <select class="form-control" id="workspace-owner">
+                            <option>Design Ops</option>
+                            <option>Product</option>
+                            <option>Engineering</option>
+                        </select>
+                    </div>
+                    <hr class="modal__divider"/>
+                    <div class="modal__section">
+                        <label class="form-label" for="workspace-note">Notes</label>
+                        <textarea class="form-control" id="workspace-note"
+                                  rows="3">Monthly sync for leadership.</textarea>
+                    </div>
+                </div>
+                <footer class="modal__footer modal__footer--split">
+                    <button class="button button--outline-danger"
+                            data-target="modal-workspace-confirm">
+                        Delete workspace
+                    </button>
+                    <div class="button-row">
+                        <button class="button button--secondary" data-close="modal-workspace">Cancel</button>
+                        <button class="button button--primary">Save changes</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <div class="backdrop backdrop--heavy backdrop--level-2"
+             data-overlay="modal-workspace-confirm"
+             data-close="modal-workspace-confirm"></div>
+        <div class="modal modal--confirm modal--danger modal--level-2"
+             data-overlay="modal-workspace-confirm"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-workspace-confirm-title">
+            <div class="modal__inner">
+                <header class="modal__header">
+                    <h3 class="modal__title" id="modal-workspace-confirm-title">Delete workspace?</h3>
+                    <button class="modal__close" data-close="modal-workspace-confirm">&times;</button>
+                </header>
+                <div class="modal__body">
+                    <p class="text-sm text-muted">This action cannot be undone.</p>
+                </div>
+                <footer class="modal__footer">
+                    <button class="button button--ghost" data-close="modal-workspace-confirm">Cancel</button>
+                    <button class="button button--danger"
+                            data-close="modal-workspace-confirm modal-workspace">
+                        Yes, delete
+                    </button>
+                </footer>
+            </div>
+        </div>
+
+        <div class="backdrop" data-overlay="modal-confirm" data-close="modal-confirm"></div>
+        <div class="modal modal--confirm modal--danger"
+             data-overlay="modal-confirm"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-confirm-title">
+            <div class="modal__inner">
+                <header class="modal__header">
+                    <h3 class="modal__title" id="modal-confirm-title">Remove member?</h3>
+                    <button class="modal__close" data-close="modal-confirm">&times;</button>
+                </header>
+                <div class="modal__body">
+                    <p class="text-sm text-muted">Access will be revoked immediately.</p>
+                </div>
+                <footer class="modal__footer">
+                    <button class="button button--ghost" data-close="modal-confirm">Cancel</button>
+                    <button class="button button--danger" data-close="modal-confirm">Remove</button>
+                </footer>
+            </div>
+        </div>
+
+        <div class="backdrop backdrop--blocking" data-overlay="modal-blocking-confirm"></div>
+        <div class="modal modal--confirm modal--blocking modal--danger"
+             data-overlay="modal-blocking-confirm"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-blocking-confirm-title"
+             data-blocking="true">
+            <div class="modal__inner">
+                <header class="modal__header">
+                    <h3 class="modal__title" id="modal-blocking-confirm-title">System update required</h3>
+                </header>
+                <div class="modal__body">
+                    <p class="text-sm text-muted">Please confirm to continue with the update.</p>
+                </div>
+                <footer class="modal__footer">
+                    <button class="button button--ghost" data-close="modal-blocking-confirm">Not now</button>
+                    <button class="button button--danger" data-close="modal-blocking-confirm">Continue</button>
+                </footer>
+            </div>
+        </div>
+
+        <div class="backdrop" data-overlay="modal-action" data-close="modal-action"></div>
+        <div class="modal modal--md"
+             data-overlay="modal-action"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-action-title">
+            <div class="modal__inner">
+                <header class="modal__header">
+                    <h3 class="modal__title" id="modal-action-title">Export archive</h3>
+                    <button class="modal__close" data-close="modal-action">&times;</button>
+                </header>
+                <div class="modal__body">
+                    <div class="layout-inline layout-inline-start">
+                        <span class="modal__icon modal__icon--info">DL</span>
+                        <div>
+                            <p class="text-sm" data-state="loading">Preparing archive...</p>
+                            <p class="text-sm" data-state="ready" hidden>Archive ready to download.</p>
+                            <p class="text-xs text-muted" data-state="loading">Packaging 3 projects and 42 files.</p>
+                            <p class="text-xs text-muted" data-state="ready" hidden>Download expires in 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+                <footer class="modal__footer">
+                    <div class="button-row" data-state="loading">
+                        <button class="button button--subtle" disabled>Working...</button>
+                        <button class="button button--ghost" data-close="modal-action">Cancel</button>
+                    </div>
+                    <div class="button-row" data-state="ready" hidden>
+                        <button class="button button--primary">Download ZIP</button>
+                        <button class="button button--ghost" data-close="modal-action">Close</button>
+                    </div>
+                </footer>
             </div>
         </div>
     </div>
@@ -285,6 +461,12 @@
                                     <dt class="section__list-item-title">.backdrop--heavy</dt>
                                     <dd class="section__list-item-desc">
                                         Uses <code>--overlay-backdrop-heavy</code> for strong blocking overlays.
+                                    </dd>
+                                </div>
+                                <div class="section__list-item">
+                                    <dt class="section__list-item-title">.backdrop--blocking</dt>
+                                    <dd class="section__list-item-desc">
+                                        Heavy backdrop with blocking cursor, paired with non-dismissable dialogs.
                                     </dd>
                                 </div>
                                 <div class="section__list-item">
@@ -336,6 +518,7 @@
 
 .backdrop--light  { background-color: var(--overlay-backdrop-light); }
 .backdrop--heavy  { background-color: var(--overlay-backdrop-heavy); }
+.backdrop--blocking { background-color: var(--overlay-backdrop-heavy); }
 .backdrop--active { pointer-events: auto; }
 
 .backdrop--level-2 { z-index: calc(var(--z-backdrop, 80) + 10); }
@@ -554,8 +737,8 @@
             <p class="section__eyebrow">Modals</p>
             <h2 class="section__title">Modal density & sizing system</h2>
             <p class="section__subtitle">
-                Three density modes (A/B/C) and five width presets (sm, md, lg, xl, full)
-                enable consistent spacing and layout for simple confirms up to full-screen
+                Three density modes (A/B/C) and size presets (xs through full, plus workspace)
+                enable consistent spacing and layout for quick confirms up to full-screen
                 workflows.
             </p>
         </header>
@@ -682,6 +865,12 @@
                     <div class="layout-inline layout-inline-start">
                         <ul class="section__list">
                             <li class="section__list-item">
+                                <span class="section__list-item-title">.modal--xs</span>
+                                <span class="section__list-item-desc">
+                  Extra compact dialog — uses <code>--modal-width-xs</code>.
+                </span>
+                            </li>
+                            <li class="section__list-item">
                                 <span class="section__list-item-title">.modal--sm</span>
                                 <span class="section__list-item-desc">
                   Small content, narrow flows — uses <code>--modal-width-sm</code>.
@@ -706,6 +895,12 @@
                 </span>
                             </li>
                             <li class="section__list-item">
+                                <span class="section__list-item-title">.modal--workspace</span>
+                                <span class="section__list-item-desc">
+                  Large working surface using <code>--modal-width-workspace</code> and taller bounds.
+                </span>
+                            </li>
+                            <li class="section__list-item">
                                 <span class="section__list-item-title">.modal--full</span>
                                 <span class="section__list-item-desc">
                   Full-screen panel: removes <code>max-width</code>, sets
@@ -723,7 +918,11 @@
                             <button class="doc-block__action">Copy</button>
                         </div>
                     </div>
-                    <pre><code>&lt;div class="modal modal--active modal--sm"&gt;
+                    <pre><code>&lt;div class="modal modal--active modal--xs"&gt;
+  &lt;div class="modal__inner"&gt;…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="modal modal--active modal--sm"&gt;
   &lt;div class="modal__inner"&gt;…&lt;/div&gt;
 &lt;/div&gt;
 
@@ -736,6 +935,10 @@
 &lt;/div&gt;
 
 &lt;div class="modal modal--active modal--xl"&gt;
+  &lt;div class="modal__inner"&gt;…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="modal modal--active modal--workspace"&gt;
   &lt;div class="modal__inner"&gt;…&lt;/div&gt;
 &lt;/div&gt;
 
@@ -1105,6 +1308,168 @@
             </span>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-overlay class="section section--b">
+    <div class="section__inner layout-stack">
+        <header class="section__header">
+            <p class="section__eyebrow">Workflows</p>
+            <h2 class="section__title">Nested confirmations & action dialogs</h2>
+            <p class="section__subtitle">
+                Use workspace modals for long-form editing, open confirmation dialogs on top of
+                an active modal, and surface task results as action-ready overlays.
+            </p>
+        </header>
+
+        <div class="doc-block doc-block--split">
+            <div>
+                <div class="doc-block__header">
+                    <h3 class="doc-block__title">Workspace modal + stacked confirm</h3>
+                    <p class="doc-block__summary">
+                        Workspace modals use <code>.modal--workspace</code> and form-friendly body helpers.
+                        Pair with <code>.modal--confirm</code> + <code>level-2</code> stacking for a second-layer
+                        confirmation without closing the base modal.
+                    </p>
+                </div>
+                <div class="doc-block__body doc-block__body--tight">
+                    <ul class="section__list">
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.modal__body--form</span>
+                            <span class="section__list-item-desc">Grid spacing tuned for form fields.</span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.modal__footer--split</span>
+                            <span class="section__list-item-desc">Left destructive action + right primary actions.</span>
+                        </li>
+                        <li class="section__list-item">
+                            <span class="section__list-item-title">.modal--level-2</span>
+                            <span class="section__list-item-desc">Raises the confirm dialog above the workspace.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__preview">
+                <div class="layout-grid-inner-2">
+                    <div class="modal modal--active modal--workspace" style="position:relative; inset:auto; min-height:auto;">
+                        <div class="modal__inner">
+                            <header class="modal__header">
+                                <h3 class="modal__title text-xs">Workspace modal</h3>
+                            </header>
+                            <div class="modal__body modal__body--form">
+                                <div class="modal__section">
+                                    <div class="form-label-row">
+                                        <span class="form-label">Workspace name</span>
+                                    </div>
+                                    <input class="form-control" type="text" value="Foundry Studio" readonly/>
+                                </div>
+                                <div class="modal__section">
+                                    <span class="form-label">Owner</span>
+                                    <input class="form-control" type="text" value="Design Ops" readonly/>
+                                </div>
+                            </div>
+                            <footer class="modal__footer modal__footer--split">
+                                <button class="button button--outline-danger">Delete</button>
+                                <button class="button button--primary">Save</button>
+                            </footer>
+                        </div>
+                    </div>
+
+                    <div class="modal modal--active modal--confirm modal--danger" style="position:relative; inset:auto;">
+                        <div class="modal__inner">
+                            <header class="modal__header">
+                                <h3 class="modal__title text-xs">Confirm delete</h3>
+                            </header>
+                            <div class="modal__body">
+                                <p class="text-xs text-muted">This action cannot be undone.</p>
+                            </div>
+                            <footer class="modal__footer">
+                                <button class="button button--ghost">Cancel</button>
+                                <button class="button button--danger">Delete</button>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-block">
+            <div class="doc-block__header">
+                <h3 class="doc-block__title">Blocking confirms & action results</h3>
+                <p class="doc-block__summary">
+                    Blocking confirms remove the close icon and ignore Escape. Action modals combine
+                    task progress with a post-action download or next step.
+                </p>
+            </div>
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="layout-grid-inner-2">
+                        <div class="modal modal--active modal--confirm modal--blocking modal--danger"
+                             style="position:relative; inset:auto;">
+                            <div class="modal__inner">
+                                <header class="modal__header">
+                                    <h3 class="modal__title text-xs">Blocking confirm</h3>
+                                </header>
+                                <div class="modal__body">
+                                    <p class="text-xs text-muted">Requires a yes/no decision.</p>
+                                </div>
+                                <footer class="modal__footer">
+                                    <button class="button button--ghost">Later</button>
+                                    <button class="button button--danger">Continue</button>
+                                </footer>
+                            </div>
+                        </div>
+
+                        <div class="modal modal--active modal--md" style="position:relative; inset:auto;">
+                            <div class="modal__inner">
+                                <header class="modal__header">
+                                    <h3 class="modal__title text-xs">Export ready</h3>
+                                </header>
+                                <div class="modal__body">
+                                    <div class="layout-inline layout-inline-start">
+                                        <span class="modal__icon modal__icon--info">DL</span>
+                                        <div>
+                                            <p class="text-xs">Archive ready to download.</p>
+                                            <p class="text-xs text-muted">Expires in 24 hours.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <footer class="modal__footer">
+                                    <button class="button button--primary">Download</button>
+                                    <button class="button button--ghost">Close</button>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code doc-block__code--numbered-soft mt-4">
+                    <div class="doc-block__toolbar">
+                        <div class="doc-block__lang">HTML</div>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action">Copy</button>
+                        </div>
+                    </div>
+                    <pre><code>&lt;div class="backdrop" data-overlay="modal-workspace"&gt;&lt;/div&gt;
+&lt;div class="modal modal--workspace" data-overlay="modal-workspace"&gt;…&lt;/div&gt;
+
+&lt;div class="backdrop backdrop--heavy backdrop--level-2" data-overlay="modal-workspace-confirm"&gt;&lt;/div&gt;
+&lt;div class="modal modal--confirm modal--danger modal--level-2" data-overlay="modal-workspace-confirm"&gt;…&lt;/div&gt;
+
+&lt;div class="backdrop backdrop--blocking" data-overlay="modal-blocking-confirm"&gt;&lt;/div&gt;
+&lt;div class="modal modal--confirm modal--blocking" data-overlay="modal-blocking-confirm" data-blocking="true"&gt;…&lt;/div&gt;
+
+&lt;button data-action="export-archive" data-target="modal-action"&gt;Run export&lt;/button&gt;
+&lt;div class="modal" data-overlay="modal-action"&gt;
+  &lt;div class="modal__body"&gt;
+    &lt;p data-state="loading"&gt;Preparing...&lt;/p&gt;
+    &lt;p data-state="ready" hidden&gt;Ready to download.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
             </div>
         </div>
     </div>
@@ -1741,8 +2106,8 @@
                 </p>
             </div>
             <div class="doc-block__body">
-                <div class="doc-block__columns-3">
-                    <div>
+                <div class="section__grid-2 section__grid-md section__grid-sm">
+                    <div class="card section__stack-sm">
                         <h4 class="doc-block__subtitle">Backdrops</h4>
                         <ul class="section__list">
                             <li class="section__list-item"><span class="section__list-item-title">.backdrop</span></li>
@@ -1751,13 +2116,17 @@
                             <li class="section__list-item"><span
                                     class="section__list-item-title">.backdrop--heavy</span></li>
                             <li class="section__list-item"><span
+                                    class="section__list-item-title">.backdrop--blocking</span></li>
+                            <li class="section__list-item"><span
                                     class="section__list-item-title">.backdrop--active</span></li>
                             <li class="section__list-item"><span
                                     class="section__list-item-title">.backdrop--level-2</span></li>
                             <li class="section__list-item"><span
                                     class="section__list-item-title">.backdrop--level-3</span></li>
                         </ul>
+                    </div>
 
+                    <div class="card section__stack-sm">
                         <h4 class="doc-block__subtitle">Base modal</h4>
                         <ul class="section__list">
                             <li class="section__list-item"><span class="section__list-item-title">.modal</span></li>
@@ -1778,20 +2147,25 @@
                         </ul>
                     </div>
 
-                    <div>
+                    <div class="card section__stack-sm">
                         <h4 class="doc-block__subtitle">Modal densities & sizes</h4>
                         <ul class="section__list">
                             <li class="section__list-item"><span class="section__list-item-title">.modal--a</span></li>
                             <li class="section__list-item"><span class="section__list-item-title">.modal--b</span></li>
                             <li class="section__list-item"><span class="section__list-item-title">.modal--c</span></li>
+                            <li class="section__list-item"><span class="section__list-item-title">.modal--xs</span></li>
                             <li class="section__list-item"><span class="section__list-item-title">.modal--sm</span></li>
                             <li class="section__list-item"><span class="section__list-item-title">.modal--md</span></li>
                             <li class="section__list-item"><span class="section__list-item-title">.modal--lg</span></li>
                             <li class="section__list-item"><span class="section__list-item-title">.modal--xl</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal--workspace</span></li>
                             <li class="section__list-item"><span class="section__list-item-title">.modal--full</span>
                             </li>
                         </ul>
+                    </div>
 
+                    <div class="card section__stack-sm">
                         <h4 class="doc-block__subtitle">Modal semantics & loading</h4>
                         <ul class="section__list">
                             <li class="section__list-item"><span class="section__list-item-title">.modal--success</span>
@@ -1809,7 +2183,9 @@
                             <li class="section__list-item"><span
                                     class="section__list-item-title">.modal__loader-icon</span></li>
                         </ul>
+                    </div>
 
+                    <div class="card section__stack-sm">
                         <h4 class="doc-block__subtitle">Layout & chrome</h4>
                         <ul class="section__list">
                             <li class="section__list-item"><span class="section__list-item-title">.modal--split</span>
@@ -1823,7 +2199,37 @@
                         </ul>
                     </div>
 
-                    <div>
+                    <div class="card section__stack-sm">
+                        <h4 class="doc-block__subtitle">Workflow helpers</h4>
+                        <ul class="section__list">
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal--confirm</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal--blocking</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__body--form</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__section</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__divider</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__footer--split</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__footer--stack</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__icon</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__icon--success</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__icon--danger</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__icon--info</span></li>
+                            <li class="section__list-item"><span
+                                    class="section__list-item-title">.modal__icon--warning</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="card section__stack-sm">
                         <h4 class="doc-block__subtitle">Responsive & stacking</h4>
                         <ul class="section__list">
                             <li class="section__list-item"><span class="section__list-item-title">.modal--fullscreen-mobile</span>
@@ -1835,7 +2241,9 @@
                             <li class="section__list-item"><span class="section__list-item-title">.modal--level-3</span>
                             </li>
                         </ul>
+                    </div>
 
+                    <div class="card section__stack-sm">
                         <h4 class="doc-block__subtitle">Drawers</h4>
                         <ul class="section__list">
                             <li class="section__list-item"><span class="section__list-item-title">.drawer</span></li>
@@ -1852,7 +2260,9 @@
                             <li class="section__list-item"><span class="section__list-item-title">.drawer__footer</span>
                             </li>
                         </ul>
+                    </div>
 
+                    <div class="card section__stack-sm">
                         <h4 class="doc-block__subtitle">Inline overlays</h4>
                         <ul class="section__list">
                             <li class="section__list-item"><span class="section__list-item-title">.overlay-inline</span>
@@ -1964,6 +2374,12 @@
                             <code>.modal--level-2</code> / <code>.modal--level-3</code>,
                             <code>.backdrop--level-2</code> / <code>.backdrop--level-3</code>.
                         </li>
+
+                        <li>
+                            For blocking confirms, use <code>.modal--blocking</code> +
+                            <code>data-blocking="true"</code> and a <code>.backdrop--blocking</code> without
+                            a <code>data-close</code> handler.
+                        </li>
                     </ul>
                 </div>
 
@@ -2032,8 +2448,10 @@
 8. Mobile sheets (modal--sheet) must remain keyboard reachable.
 9. Inline overlays require accessible labelling.
 10. No transitions, no blurs, no opacity animations — instant open/close only.
-11. Respect stacking levels with modal--level-* and backdrop--level-*.</code></pre>
+11. Respect stacking levels with modal--level-* and backdrop--level-*.
+12. Blocking confirms: modal--blocking + data-blocking="true" + backdrop--blocking.</code></pre>
             </div>
         </article>
     </div>
 </section>
+

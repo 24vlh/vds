@@ -1,0 +1,198 @@
+<section data-vds-dock-block data-vds-content-block data-vds-state class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Empty states</h2>
+                <p class="doc-block__summary">
+                    Empty states explain what is missing, why it matters, and what the user can do next.
+                    Use the base layout to keep tone and spacing consistent across surfaces.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview">
+                    <div class="state">
+                        <div class="state__eyebrow">Campaigns</div>
+                        <div class="state__icon">+</div>
+                        <div class="state__title">No campaigns yet</div>
+                        <div class="state__text">
+                            Create your first campaign to start collecting feedback and approvals.
+                        </div>
+                        <div class="state__actions">
+                            <button class="button button--primary">Create campaign</button>
+                            <button class="button button--ghost">View templates</button>
+                        </div>
+                        <div class="state__meta">Tips and imports available in settings.</div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="state"&gt;
+  &lt;div class="state__icon"&gt;+&lt;/div&gt;
+  &lt;div class="state__title"&gt;No campaigns yet&lt;/div&gt;
+  &lt;div class="state__text"&gt;Create your first campaign...&lt;/div&gt;
+  &lt;div class="state__actions"&gt;
+    &lt;button class="button button--primary"&gt;Create campaign&lt;/button&gt;
+    &lt;button class="button button--ghost"&gt;View templates&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-state class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Inline and split layouts</h2>
+                <p class="doc-block__summary">
+                    Inline states are ideal for empty list regions. Split layouts pair media with copy
+                    for onboarding or guided actions.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="state state--inline">
+                        <div class="state__media">!</div>
+                        <div class="state__content">
+                            <div class="state__title">No assignees</div>
+                            <div class="state__text">Assign someone to continue this task.</div>
+                            <div class="state__actions">
+                                <button class="button button--secondary">Assign</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="state state--split state--soft">
+                        <div class="state__media">?</div>
+                        <div class="state__content">
+                            <div class="state__title">Connect your calendar</div>
+                            <div class="state__text">Sync schedules and reminders across the team.</div>
+                            <div class="state__actions">
+                                <button class="button button--primary">Connect</button>
+                                <button class="button button--ghost">Learn more</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="state state--inline"&gt;...&lt;/div&gt;
+&lt;div class="state state--split state--soft"&gt;...&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-state class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Compact and plain variants</h2>
+                <p class="doc-block__summary">
+                    Compact modes reduce padding for dense layouts. Plain states remove surface styling
+                    for embedded messaging.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="state state--compact state--left">
+                        <div class="state__icon">?</div>
+                        <div class="state__title">Nothing saved</div>
+                        <div class="state__text">Drafts will appear here.</div>
+                    </div>
+
+                    <div class="state state--plain state--left">
+                        <div class="state__title">Filter returned zero results</div>
+                        <div class="state__text">Adjust filters or clear search to continue.</div>
+                        <div class="state__actions">
+                            <button class="button button--ghost button--sm">Clear filters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="state state--compact state--left"&gt;...&lt;/div&gt;
+&lt;div class="state state--plain state--left"&gt;...&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-state class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Usage patterns &amp; best practices</h2>
+                <p class="doc-block__summary">
+                    A good empty state gives context, removes uncertainty, and offers a clear next action.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>Explain why the section is empty in plain language.</li>
+                        <li>Offer one primary action and optional secondary action.</li>
+                        <li>Use the split layout for onboarding and setup prompts.</li>
+                        <li>Keep copy short and actionable.</li>
+                        <li>Show lightweight tips in <code>state__meta</code> when helpful.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not overwhelm users with multiple CTAs.</li>
+                        <li>Do not hide critical instructions outside the empty state.</li>
+                        <li>Do not use empty states to advertise unrelated features.</li>
+                        <li>Do not add large illustrations in dense admin views.</li>
+                        <li>Do not use empty states as error messaging.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-state class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Ensure empty states are readable, actionable, and provide semantic context for assistive tech.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use headings for the state title to establish hierarchy.</li>
+                        <li>Ensure actions are focusable and keyboard accessible.</li>
+                        <li>Keep icon text alternatives clear for screen readers.</li>
+                        <li>Provide short helper text for the next steps.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not rely on icon-only messages without text.</li>
+                        <li>Do not hide core guidance inside tooltips only.</li>
+                        <li>Do not use empty states as destructive confirmations.</li>
+                        <li>Do not remove the empty state without replacing context.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

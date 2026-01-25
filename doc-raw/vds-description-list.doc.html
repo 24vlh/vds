@@ -1,0 +1,168 @@
+<section data-vds-dock-block data-vds-content-block data-vds-description-list class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Description lists</h2>
+                <p class="doc-block__summary">
+                    Description lists pair labels with values. Use them for metadata panels,
+                    summaries, and compact details.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview">
+                    <dl class="description-list description-list--inline">
+                        <div class="description-list__item">
+                            <dt class="description-list__term">Project</dt>
+                            <dd class="description-list__desc">VDS Component Audit</dd>
+                        </div>
+                        <div class="description-list__item">
+                            <dt class="description-list__term">Owner</dt>
+                            <dd class="description-list__desc">Design Systems</dd>
+                        </div>
+                        <div class="description-list__item">
+                            <dt class="description-list__term">Status</dt>
+                            <dd class="description-list__desc">In progress</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;dl class="description-list description-list--inline"&gt;
+  &lt;div class="description-list__item"&gt;
+    &lt;dt class="description-list__term"&gt;Project&lt;/dt&gt;
+    &lt;dd class="description-list__desc"&gt;VDS Component Audit&lt;/dd&gt;
+  &lt;/div&gt;
+&lt;/dl&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-description-list class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Stacked and bordered</h2>
+                <p class="doc-block__summary">
+                    Stacked lists work well in narrow panels. Use borders or stripes to add structure.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <dl class="description-list description-list--stacked description-list--bordered">
+                        <div class="description-list__item">
+                            <dt class="description-list__term">Billing cycle</dt>
+                            <dd class="description-list__desc">Monthly</dd>
+                        </div>
+                        <div class="description-list__item">
+                            <dt class="description-list__term">Seats</dt>
+                            <dd class="description-list__desc">14 active</dd>
+                        </div>
+                    </dl>
+
+                    <dl class="description-list description-list--columns description-list--striped description-list--compact">
+                        <div class="description-list__item">
+                            <dt class="description-list__term">Plan</dt>
+                            <dd class="description-list__desc">Enterprise</dd>
+                        </div>
+                        <div class="description-list__item">
+                            <dt class="description-list__term">Region</dt>
+                            <dd class="description-list__desc">EU West</dd>
+                        </div>
+                        <div class="description-list__item">
+                            <dt class="description-list__term">Support</dt>
+                            <dd class="description-list__desc">24/7</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;dl class="description-list description-list--stacked description-list--bordered"&gt;
+  &lt;div class="description-list__item"&gt;...&lt;/div&gt;
+&lt;/dl&gt;
+
+&lt;dl class="description-list description-list--columns description-list--striped"&gt;
+  &lt;div class="description-list__item"&gt;...&lt;/div&gt;
+&lt;/dl&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-description-list class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Usage patterns &amp; best practices</h2>
+                <p class="doc-block__summary">
+                    Description lists are best for compact metadata and attribute summaries.
+                    Keep terms short and values scannable.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use description lists for metadata panels and summaries.</li>
+                        <li>Keep terms short and align values for quick scanning.</li>
+                        <li>Use inline layout for short lists and stacked for narrow spaces.</li>
+                        <li>Use borders or stripes to separate dense lists.</li>
+                        <li>Align related lists with the same column count.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not use description lists for primary content or paragraphs.</li>
+                        <li>Do not overload values with long sentences.</li>
+                        <li>Do not mix unrelated terms in the same list.</li>
+                        <li>Do not use inconsistent term casing or punctuation.</li>
+                        <li>Do not nest complex interactive controls inside values.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-description-list class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Use semantic <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, and <code>&lt;dd&gt;</code>
+                    elements so assistive technologies can announce term and value pairs correctly.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use real <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code> elements.</li>
+                        <li>Keep each term paired with its description.</li>
+                        <li>Use clear labels for abbreviated terms.</li>
+                        <li>Keep contrast strong for terms and values.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not replace <code>&lt;dt&gt;</code> with generic headings.</li>
+                        <li>Do not use lists for tabular data.</li>
+                        <li>Do not remove spacing that makes pairs unclear.</li>
+                        <li>Do not place unrelated controls inside <code>&lt;dt&gt;</code>.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

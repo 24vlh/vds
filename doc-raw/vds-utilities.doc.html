@@ -35,8 +35,8 @@
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Display & visibility</h2>
                 <p class="doc-block__summary">
-                    Control how elements participate in layout and when they are visible at different
-                    breakpoints. All responsive visibility helpers are based on the system breakpoints.
+                    Control how elements participate in layout, when they are visible at breakpoints,
+                    and how to hide text visually while keeping it accessible to assistive technologies.
                 </p>
             </header>
 
@@ -74,8 +74,16 @@
                                         Visible on desktop (.show-desktop)
                                     </span>
                                 <span class="hide-desktop text-xs px-2 py-1 bg-muted radius-sm">
-                                        Hidden on desktop (.hide-desktop)
-                                    </span>
+                                    Hidden on desktop (.hide-desktop)
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="stack-sm">
+                            <div class="text-xs text-muted">Screen reader only text:</div>
+                            <div class="px-2 py-1 text-xs bg-surface-soft radius-sm">
+                                Visible label
+                                <span class="sr-only">Hidden helper text</span>
                             </div>
                         </div>
                     </div>
@@ -90,6 +98,18 @@
 .grid         { display: grid !important; }
 .inline-grid  { display: inline-grid !important; }
 .hidden       { display: none !important; }
+.sr-only      { /* visually hidden, still accessible */ }
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 
 @media (max-width: var(--bp-sm)) {
   .hide-mobile { display: none !important; }
@@ -1037,7 +1057,9 @@
 
                         <li>
                             Use <code>.flex</code>, <code>.grid</code>, <code>.cluster</code>,
-                            <code>.stack</code>, and <code>.layout-*</code> classes for controlled,
+                            <code>.stack</code>, <code>.layout-stack</code>, <code>.layout-inline</code>,
+                            <code>.layout-inline-start</code>, <code>.layout-inline-end</code>,
+                            <code>.layout-cluster</code>, and <code>.layout-grid-inner</code> classes for controlled,
                             predictable alignment patterns.
                         </li>
 
@@ -1059,7 +1081,8 @@
                         </li>
 
                         <li>
-                            Use <code>.opacity-*</code> and <code>cursor-*</code> utilities
+                            Use <code>.opacity-0</code>/<code>.opacity-25</code>/<code>.opacity-50</code>/<code>.opacity-75</code>/<code>.opacity-100</code>
+                            and <code>cursor-*</code> utilities
                             to express state in conjunction with ARIA attributes.
                         </li>
 
@@ -1107,12 +1130,14 @@
                         </li>
 
                         <li>
-                            Don’t use <code>.truncate-*</code> on interactive controls where
+                            Don’t use <code>.truncate-2</code>/<code>.truncate-3</code>/<code>.truncate-4</code> on interactive controls where
                             full text is needed for comprehension.
                         </li>
 
                         <li>
-                            Don’t use <code>.position</code> + <code>.z-*</code> utilities to
+                            Don’t use <code>.relative</code>/<code>.absolute</code>/<code>.fixed</code>/<code>.sticky</code>
+                            + <code>.z-10</code>/<code>.z-20</code>/<code>.z-30</code>/<code>.z-40</code>/<code>.z-50</code>
+                            (or semantic layers like <code>.z-modal</code>/<code>.z-drawer</code>) to
                             re-order modal/backdrop/overlay layers — those are controlled by
                             overlays.css and should not be overridden.
                         </li>

@@ -10,13 +10,13 @@
             </header>
 
             <div class="doc-block__body">
-                <div class="doc-block__preview section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__grid-3 section__grid-auto section__grid-sm">
                     <div class="section__stack-sm">
                         <h3 class="text-sm">Geometry tokens</h3>
                         <ul class="text-sm">
                             <li><code>--logo-stroke-primary</code> — base stroke width.</li>
                             <li><code>--logo-clearspace</code> — padding multiplier around mark.</li>
-                            <li><code>--logo-min-horizontal</code> — min width for full logo.</li>
+                            <li><code>--logo-min-horizontal</code> — min height for full lockup.</li>
                             <li><code>--logo-min-mark</code> — min size for mark-only.</li>
                             <li><code>--logo-primary-letter-spacing</code> — primary wordmark
                                 tracking.
@@ -39,6 +39,18 @@
                             <li><code>--logo-size-xxl</code> — 6.5rem</li>
                         </ul>
                     </div>
+
+                    <div class="section__stack-sm">
+                        <h3 class="text-sm">KeepExec tokens</h3>
+                        <ul class="text-sm">
+                            <li><code>--logo-ke-frame-stroke</code> — frame stroke width.</li>
+                            <li><code>--logo-ke-mark-stroke</code> — mark stroke width.</li>
+                            <li><code>--logo-ke-text-primary-size</code> — wordmark size.</li>
+                            <li><code>--logo-ke-text-secondary-size</code> — tagline size.</li>
+                            <li><code>--logo-ke-primary-letter-spacing</code> — primary tracking.</li>
+                            <li><code>--logo-ke-secondary-letter-spacing</code> — secondary tracking.</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="doc-block__code">
@@ -56,7 +68,106 @@
     --logo-size-xl: 5.5rem;
     --logo-size-xxl: 6.5rem;
     --logo-doc-height: 2.25rem;
+    --logo-ke-frame-stroke: 2.5;
+    --logo-ke-mark-stroke: 3.2;
+    --logo-ke-text-primary-size: 18px;
+    --logo-ke-text-secondary-size: 10px;
+    --logo-ke-primary-letter-spacing: 0.04em;
+    --logo-ke-secondary-letter-spacing: 0.06em;
 }
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-identity class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">KeepExec identity — lockup &amp; mark</h2>
+                <p class="doc-block__summary">
+                    KeepExec uses its own mark geometry and wordmark classes while sharing the
+                    same size and variant utilities. Apply <code>.logo--mono</code>,
+                    <code>.logo--footer</code> or <code>.logo--inverse</code> on the SVG to
+                    shift colour modes.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="text-xs text-mono">Primary lockup</div>
+                    <svg class="logo logo--horizontal logo--md"
+                         xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 320 44"
+                         role="img"
+                         aria-label="KeepExec">
+                        <g class="ke-ink" transform="translate(0,6)">
+                            <rect class="ke-frame" x="2" y="2" width="28" height="28" rx="4"/>
+                            <path class="ke-mark" d="M10 8 L10 24"/>
+                            <path class="ke-mark" d="M10 16 L19 8"/>
+                            <path class="ke-mark" d="M10 16 L19 24"/>
+                        </g>
+                        <g class="ke-accent" transform="translate(0,6)">
+                            <path class="ke-mark" d="M20 10 L26 16 L20 22"/>
+                        </g>
+                        <g transform="translate(44,0)">
+                            <text class="ke-text-primary ke-ink" x="0" y="22">KeepExec</text>
+                            <text class="ke-text-secondary ke-muted" x="0" y="38">
+                                Inbox &#8594; Brainstorm &#8594; Video
+                            </text>
+                        </g>
+                    </svg>
+
+                    <div class="text-xs text-mono">Mark-only</div>
+                    <svg class="logo logo--mark-only logo--xs"
+                         xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 32 32"
+                         role="img"
+                         aria-label="KeepExec mark">
+                        <rect class="ke-frame ke-ink" x="2" y="2" width="28" height="28" rx="4"/>
+                        <path class="ke-mark ke-ink" d="M10 8 L10 24"/>
+                        <path class="ke-mark ke-ink" d="M10 16 L19 8"/>
+                        <path class="ke-mark ke-ink" d="M10 16 L19 24"/>
+                        <path class="ke-mark ke-accent" d="M20 10 L26 16 L20 22"/>
+                    </svg>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;svg class="logo logo--horizontal logo--md"
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 320 44"
+     role="img"
+     aria-label="KeepExec"&gt;
+    &lt;g class="ke-ink" transform="translate(0,6)"&gt;
+        &lt;rect class="ke-frame" x="2" y="2" width="28" height="28" rx="4" /&gt;
+        &lt;path class="ke-mark" d="M10 8 L10 24" /&gt;
+        &lt;path class="ke-mark" d="M10 16 L19 8" /&gt;
+        &lt;path class="ke-mark" d="M10 16 L19 24" /&gt;
+    &lt;/g&gt;
+    &lt;g class="ke-accent" transform="translate(0,6)"&gt;
+        &lt;path class="ke-mark" d="M20 10 L26 16 L20 22" /&gt;
+    &lt;/g&gt;
+    &lt;g transform="translate(44,0)"&gt;
+        &lt;text class="ke-text-primary ke-ink" x="0" y="22"&gt;KeepExec&lt;/text&gt;
+        &lt;text class="ke-text-secondary ke-muted" x="0" y="38"&gt;
+            Inbox &amp;#8594; Brainstorm &amp;#8594; Video
+        &lt;/text&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+
+&lt;svg class="logo logo--mark-only logo--xs"
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 32 32"
+     role="img"
+     aria-label="KeepExec mark"&gt;
+    &lt;rect class="ke-frame ke-ink" x="2" y="2" width="28" height="28" rx="4" /&gt;
+    &lt;path class="ke-mark ke-ink" d="M10 8 L10 24" /&gt;
+    &lt;path class="ke-mark ke-ink" d="M10 16 L19 8" /&gt;
+    &lt;path class="ke-mark ke-ink" d="M10 16 L19 24" /&gt;
+    &lt;path class="ke-mark ke-accent" d="M20 10 L26 16 L20 22" /&gt;
+&lt;/svg&gt;
 </code></pre>
                 </div>
             </div>
@@ -293,8 +404,14 @@
 .logo--mono .logo-wordmark,
 .logo--mono .logo-text-primary,
 .logo--mono .logo-text-secondary {
-    fill: var(--color-logo-ink) !important;
+    fill: var(--color-logo-mono) !important;
     stroke: none !important;
+}
+
+.logo--mono .ke-ink,
+.logo--mono .ke-accent,
+.logo--mono .ke-muted {
+    color: var(--color-logo-mono);
 }
 
 /* Footer */
@@ -311,18 +428,39 @@
     stroke: var(--color-logo-footer-accent);
 }
 
-/* Inverse (hard fallback, see also color-mode utilities) */
+.logo--footer .ke-ink,
+.logo--footer .ke-muted {
+    color: var(--color-logo-footer-ink);
+}
+
+.logo--footer .ke-accent {
+    color: var(--color-logo-footer-accent);
+}
+
+/* Inverse */
 .logo--inverse .logo-frame,
-.logo--inverse .logo-rail,
+.logo--inverse .logo-rail {
+    stroke: var(--color-logo-ink-inverse) !important;
+}
+
 .logo--inverse .logo-chevron {
-    stroke: #FFFFFF !important;
+    stroke: var(--color-logo-accent-inverse) !important;
 }
 
 .logo--inverse .logo-wordmark,
 .logo--inverse .logo-text-primary,
 .logo--inverse .logo-text-secondary {
-    fill: #FFFFFF !important;
+    fill: var(--color-logo-ink-inverse) !important;
     stroke: none !important;
+}
+
+.logo--inverse .ke-ink,
+.logo--inverse .ke-muted {
+    color: var(--color-logo-ink-inverse);
+}
+
+.logo--inverse .ke-accent {
+    color: var(--color-logo-accent-inverse);
 }
 </code></pre>
                 </div>
@@ -551,10 +689,10 @@
                     <div class="section__stack-sm">
                         <h3 class="text-sm">External SVG assets</h3>
                         <ul class="text-sm">
-                            <li><code>/svg/vds-logo.svg</code> — full horizontal logo.</li>
-                            <li><code>/svg/vds-mark.svg</code> — mark-only.</li>
-                            <li><code>/svg/vds-wordmark.svg</code> — wordmark-only.</li>
-                            <li><code>/svg/vds-logo-footer.svg</code> — footer variant.</li>
+                            <li><code>/svg/vlah-horizontal-[theme]-[mode]-[color|mono].svg</code> — horizontal lockups.</li>
+                            <li><code>/svg/vlah-mark-[theme]-[mode]-[color|mono].svg</code> — mark-only.</li>
+                            <li><code>/svg/vlah-favicon-[theme]-[mode].svg</code> — favicons.</li>
+                            <li><code>Wordmark-only</code> — export on demand (not packaged in /svg).</li>
                         </ul>
                     </div>
                 </div>
@@ -571,8 +709,8 @@
     &lt;/g&gt;
 &lt;/svg&gt;
 
-&lt;img src="../svg/vds-logo.svg" alt="Vlah Group logo" class="logo logo--sm"&gt;
-&lt;img src="../svg/vds-mark.svg" alt="Vlah Group mark" class="logo logo--xs"&gt;
+&lt;img src="../svg/vlah-horizontal-slate-light-color.svg" alt="Vlah Group logo" class="logo logo--sm"&gt;
+&lt;img src="../svg/vlah-mark-slate-light-color.svg" alt="Vlah Group mark" class="logo logo--xs"&gt;
 </code></pre>
                 </div>
             </div>
@@ -615,13 +753,13 @@
                         External assets are preferred for content-rich pages and emails
                         where caching and delivery via CMS or CDN matter more than theming.
                     </p>
-                    <pre class="doc-block__code"><code>&lt;img src="../svg/vds-logo.svg"
+                    <pre class="doc-block__code"><code>&lt;img src="../svg/vlah-horizontal-slate-light-color.svg"
      alt="Vlah Group"
      class="logo logo--sm"&gt;
 
-&lt;svg class="logo logo--sm"&gt;
-    &lt;use href="../svg/vds-logo.svg#vds-logo-horizontal"&gt;&lt;/use&gt;
-&lt;/svg&gt;
+&lt;img src="../svg/vlah-mark-slate-light-color.svg"
+     alt="Vlah mark"
+     class="logo logo--xs"&gt;
 </code></pre>
                 </div>
             </div>
@@ -718,6 +856,18 @@
     stroke: var(--color-logo-accent);
 }
 
+.logo--ink svg .ke-ink {
+    color: var(--color-logo-ink);
+}
+
+.logo--ink svg .ke-accent {
+    color: var(--color-logo-accent);
+}
+
+.logo--ink svg .ke-muted {
+    color: var(--color-text-muted);
+}
+
 .logo--inverse svg .logo-frame,
 .logo--inverse svg .logo-rail {
     stroke: var(--color-logo-ink-inverse);
@@ -725,6 +875,18 @@
 
 .logo--inverse svg .logo-chevron {
     stroke: var(--color-logo-accent-inverse);
+}
+
+.logo--inverse svg .ke-ink {
+    color: var(--color-logo-ink-inverse);
+}
+
+.logo--inverse svg .ke-accent {
+    color: var(--color-logo-accent-inverse);
+}
+
+.logo--inverse svg .ke-muted {
+    color: var(--color-logo-ink-inverse);
 }
 </code></pre>
                 </div>
@@ -874,8 +1036,9 @@
                         </li>
 
                         <li>
-                            Use clearspace utilities (<code>.logo--pad-*</code>) to preserve safe breathing room
-                            around the logo in dense UI surfaces.
+                            Use clearspace utilities (<code>.logo--pad-xs</code>, <code>.logo--pad-sm</code>,
+                            <code>.logo--pad-md</code>, <code>.logo--pad-lg</code>, <code>.logo--pad-xl</code>) to
+                            preserve safe breathing room around the logo in dense UI surfaces.
                         </li>
 
                         <li>
@@ -939,7 +1102,7 @@
 5. Use the correct variant (primary / mono / footer / inverse) for background context.
 6. No hardcoded colours; use theme identity tokens only.
 7. Size via .logo--xs → .logo--xxl, never by px dimensions.
-8. Maintain clearspace via .logo--pad-* classes.
+8. Maintain clearspace via .logo--pad-xs/.logo--pad-sm/.logo--pad-md/.logo--pad-lg/.logo--pad-xl classes.
 9. Do not edit SVG strokes, coordinates, or brand geometry.</code></pre>
             </div>
         </article>

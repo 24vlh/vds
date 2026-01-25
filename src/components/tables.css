@@ -62,6 +62,13 @@
     color: var(--color-text-muted);
 }
 
+.table-panel__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
 /* ---------------------------------------------------------
    3. BASE TABLE STRUCTURE
 --------------------------------------------------------- */
@@ -75,6 +82,10 @@
     --table-cell-pad-y: var(--space-3);
     --table-cell-pad-x: var(--space-4);
     --table-cell-font-size: var(--text-sm);
+}
+
+.table--fixed {
+    table-layout: fixed;
 }
 
 .table th,
@@ -93,6 +104,32 @@
     border-bottom: var(--border-width-strong) solid var(--color-border-strong);
     white-space: nowrap;
     font-size: var(--text-sm);
+}
+
+.table-cell--right {
+    text-align: right;
+}
+
+.table-cell--center {
+    text-align: center;
+}
+
+.table-cell--muted {
+    color: var(--color-text-muted);
+}
+
+.table-cell--strong {
+    font-weight: 600;
+}
+
+.table-cell--nowrap {
+    white-space: nowrap;
+}
+
+.table-cell--truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .table caption {
@@ -173,6 +210,11 @@
     text-overflow: ellipsis;
 }
 
+.table--nowrap th,
+.table--nowrap td {
+    white-space: nowrap;
+}
+
 /* ---------------------------------------------------------
    6. STICKY HEADER / COL
 --------------------------------------------------------- */
@@ -190,34 +232,53 @@
     left: 0;
     z-index: var(--z-sticky-col);
     background-color: var(--color-bg-elevated, var(--color-surface));
+    box-shadow: 1px 0 0 var(--color-border-subtle);
+}
+
+.table--sticky-col-end td:last-child,
+.table--sticky-col-end th:last-child {
+    position: sticky;
+    right: 0;
+    z-index: var(--z-sticky-col);
+    background-color: var(--color-bg-elevated, var(--color-surface));
+    box-shadow: -1px 0 0 var(--color-border-subtle);
 }
 
 /* ---------------------------------------------------------
    7. ROW STATES
 --------------------------------------------------------- */
-.table-row--selected {
+.table tbody tr.table-row--selected {
     background-color: var(--color-accent-soft);
 }
 
-.table-row--success {
+.table tbody tr.table-row--success {
     background-color: var(--table-row-good-bg, var(--color-success-soft));
 }
 
-.table-row--danger {
+.table tbody tr.table-row--danger {
     background-color: var(--table-row-bad-bg, var(--color-danger-soft));
 }
 
-.table-row--warning {
+.table tbody tr.table-row--warning {
     background-color: var(--table-row-warning-bg, var(--color-warning-soft));
 }
 
-.table-row--info {
+.table tbody tr.table-row--info {
     background-color: var(--table-row-info-bg, var(--color-info-soft));
 }
 
-.table-row--muted {
+.table tbody tr.table-row--muted {
     background-color: var(--table-row-muted-bg, var(--color-muted-bg));
     color: var(--color-text-muted);
+}
+
+.table tr.table-row--summary {
+    font-weight: 600;
+    background-color: var(--color-surface-subtle);
+}
+
+.table--selectable tbody tr {
+    cursor: pointer;
 }
 
 /* ---------------------------------------------------------
@@ -470,7 +531,23 @@
 }
 
 /* ---------------------------------------------------------
-   16. TREND HELPERS (SPAN-BASED)
+   16. FOOTER / SUMMARY ROWS
+--------------------------------------------------------- */
+.table tfoot td {
+    border-top: var(--border-width-strong) solid var(--color-border-strong);
+    background-color: var(--color-surface-subtle);
+    font-weight: 600;
+}
+
+.table--sticky-footer tfoot td {
+    position: sticky;
+    bottom: 0;
+    z-index: var(--z-sticky);
+    background-color: var(--color-bg-elevated, var(--color-surface));
+}
+
+/* ---------------------------------------------------------
+   17. TREND HELPERS (SPAN-BASED)
 --------------------------------------------------------- */
 .t-trend {
     display: flex;
@@ -526,35 +603,35 @@
 }
 
 /* ---------------------------------------------------------
-   17. FINANCE ROW STATES (NAMESPACED)
+   18. FINANCE ROW STATES (NAMESPACED)
 --------------------------------------------------------- */
-.table-fin--good {
+.table tbody tr.table-fin--good {
     background-color: var(--table-row-good-bg, var(--color-success-soft));
 }
 
-.table-fin--bad {
+.table tbody tr.table-fin--bad {
     background-color: var(--table-row-bad-bg, var(--color-danger-soft));
 }
 
-.table-fin--warning {
+.table tbody tr.table-fin--warning {
     background-color: var(--table-row-warning-bg, var(--color-warning-soft));
 }
 
-.table-fin--info {
+.table tbody tr.table-fin--info {
     background-color: var(--table-row-info-bg, var(--color-info-soft));
 }
 
-.table-fin--muted {
+.table tbody tr.table-fin--muted {
     background-color: var(--table-row-muted-bg, var(--color-muted-bg));
     color: var(--color-text-muted);
 }
 
-.table-fin--flagged {
+.table tbody tr.table-fin--flagged {
     background-color: var(--table-row-flagged-bg, var(--color-danger-soft));
     border-left: var(--border-width-strong) solid var(--color-danger);
 }
 
-.table-fin--curious {
+.table tbody tr.table-fin--curious {
     background-color: var(--table-row-curious-bg, var(--color-surface-subtle));
     border-left: var(--border-width-strong) solid var(--color-accent);
 }

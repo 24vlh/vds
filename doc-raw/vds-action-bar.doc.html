@@ -1,0 +1,227 @@
+<section data-vds-dock-block data-vds-content-block data-vds-action-bar class="section">
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Action bars</h2>
+                <p class="doc-block__summary">
+                    Action bars group bulk actions for tables or lists. Use the meta slot to show
+                    selection counts and context, then place actions and dismiss controls on the right.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="text-xs text-muted text-mono">Bulk actions</div>
+                    <div class="action-bar">
+                        <div class="action-bar__meta">
+                            <span class="action-bar__count">3</span>
+                            <span>Selected</span>
+                            <span class="text-muted">Campaigns</span>
+                        </div>
+                        <div class="action-bar__actions">
+                            <button class="button button--primary button--sm">Approve</button>
+                            <button class="button button--outline button--sm">Archive</button>
+                            <button class="button button--ghost button--sm">Export</button>
+                            <button class="button button--link button--sm action-bar__dismiss">Clear</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="action-bar"&gt;
+  &lt;div class="action-bar__meta"&gt;
+    &lt;span class="action-bar__count"&gt;3&lt;/span&gt;
+    &lt;span&gt;Selected&lt;/span&gt;
+    &lt;span class="text-muted"&gt;Campaigns&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="action-bar__actions"&gt;
+    &lt;button class="button button--primary button--sm"&gt;Approve&lt;/button&gt;
+    &lt;button class="button button--outline button--sm"&gt;Archive&lt;/button&gt;
+    &lt;button class="button button--ghost button--sm"&gt;Export&lt;/button&gt;
+    &lt;button class="button button--link button--sm action-bar__dismiss"&gt;Clear&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-action-bar class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Compact density</h2>
+                <p class="doc-block__summary">
+                    Use the compact variant for dense tables or narrow panels, and pair with
+                    smaller button sizes to keep the bar lightweight.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="action-bar action-bar--compact">
+                        <div class="action-bar__meta">
+                            <span class="action-bar__count">12</span>
+                            <span>Queued tasks</span>
+                        </div>
+                        <div class="action-bar__actions">
+                            <button class="button button--primary button--xs">Run now</button>
+                            <button class="button button--ghost button--xs">Pause</button>
+                            <button class="button button--link button--xs action-bar__dismiss">Clear</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="action-bar action-bar--compact"&gt;
+  &lt;div class="action-bar__meta"&gt;...&lt;/div&gt;
+  &lt;div class="action-bar__actions"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-action-bar class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Sticky and floating bars</h2>
+                <p class="doc-block__summary">
+                    Sticky bars stay visible inside scrollable regions, while floating bars feel lighter
+                    for ephemeral selections.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="text-xs text-muted text-mono">Sticky in a scroll region</div>
+                    <div class="bg-surface-soft border radius-lg p-4" style="height: 240px; overflow-y: auto;">
+                        <div class="section__stack">
+                            <div class="text-sm text-muted">Selected items</div>
+                            <div class="section__stack-sm text-sm">
+                                <div class="border-bottom pb-3">Campaign preview</div>
+                                <div class="border-bottom pb-3">Draft approval</div>
+                                <div class="border-bottom pb-3">Social launch</div>
+                                <div class="border-bottom pb-3">Partner review</div>
+                                <div class="border-bottom pb-3">Export queue</div>
+                                <div class="border-bottom pb-3">Publish window</div>
+                            </div>
+                            <div class="action-bar action-bar--sticky">
+                                <div class="action-bar__meta">
+                                    <span class="action-bar__count">6</span>
+                                    <span>Selected</span>
+                                </div>
+                                <div class="action-bar__actions">
+                                    <button class="button button--primary button--sm">Schedule</button>
+                                    <button class="button button--ghost button--sm">Snooze</button>
+                                    <button class="button button--link button--sm action-bar__dismiss">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-muted text-mono">Floating treatment</div>
+                    <div class="action-bar action-bar--floating">
+                        <div class="action-bar__meta">
+                            <span class="action-bar__count">2</span>
+                            <span>Drafts</span>
+                        </div>
+                        <div class="action-bar__actions">
+                            <button class="button button--primary button--sm">Publish</button>
+                            <button class="button button--ghost button--sm">Review</button>
+                            <button class="button button--link button--sm action-bar__dismiss">Clear</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="action-bar action-bar--sticky"&gt;
+  &lt;div class="action-bar__meta"&gt;...&lt;/div&gt;
+  &lt;div class="action-bar__actions"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="action-bar action-bar--floating"&gt;
+  &lt;div class="action-bar__meta"&gt;...&lt;/div&gt;
+  &lt;div class="action-bar__actions"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-action-bar class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Usage patterns &amp; best practices</h2>
+                <p class="doc-block__summary">
+                    Action bars provide bulk actions and selection context. Keep the copy concise
+                    and the action set focused.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>Show selected counts and the target noun clearly.</li>
+                        <li>Use a single primary action with secondary actions beside it.</li>
+                        <li>Provide a clear dismiss or clear selection control.</li>
+                        <li>Use sticky bars in long scrolling selections.</li>
+                        <li>Use compact bars for dense tables.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not include more than 4-5 actions in one bar.</li>
+                        <li>Do not hide the dismiss action when selections are active.</li>
+                        <li>Do not use action bars for single-item actions.</li>
+                        <li>Do not place destructive actions without confirmation.</li>
+                        <li>Do not detach the bar from the selected region.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-action-bar class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Ensure action bars remain keyboard accessible and announce selection changes.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use real <code>&lt;button&gt;</code> elements for actions.</li>
+                        <li>Update selection counts in the DOM for screen readers.</li>
+                        <li>Keep focus states visible against the bar surface.</li>
+                        <li>Provide <code>aria-label</code> for icon-only actions.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not trap focus inside the bar unnecessarily.</li>
+                        <li>Do not hide actions behind hover-only menus.</li>
+                        <li>Do not use low-contrast text for the selection count.</li>
+                        <li>Do not remove actions without clearing selection state.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

@@ -4,8 +4,7 @@
             <h1>Flows</h1>
             <p>
                 System components for multi-step experiences, journeys, timelines, branching decisions
-                and progress indicators. Built on <code>flows.css</code>
-                (final version) :contentReference[oaicite:1]{index=1}.
+                and progress indicators. Built on <code>flows.css</code>.
             </p>
         </div>
         <p>
@@ -374,7 +373,7 @@
                 <h3 class="doc-block__subtitle">Vertical steps</h3>
                 <p class="doc-block__description">
                     Using <code>.steps--vertical</code>, steps stack vertically and connectors
-                    extend downward.
+                    extend downward. Labels wrap by default for longer step names.
                 </p>
 
                 <div class="doc-block__body section__grid-2">
@@ -443,8 +442,9 @@
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Progress bars</h2>
                 <p class="doc-block__summary">
-                    Simple, striped and segmented progress bars, colour-coded by result:
-                    success, warning, error.
+                    Simple, striped and segmented progress bars with semantic variants
+                    (success, warning, error, info). Override colours with
+                    <code>--flow-progress-track</code> and <code>--flow-progress-fill</code>.
                 </p>
             </header>
 
@@ -454,11 +454,17 @@
                     <div class="flow-progress flow-progress--striped">
                         <div class="flow-progress__bar" style="width: 60%"></div>
                     </div>
+                    <div class="flow-progress flow-progress--striped">
+                        <div class="flow-progress__bar flow-progress__bar--success" style="width: 80%"></div>
+                    </div>
                     <div class="flow-progress flow-progress--striped flow-progress--striped-right">
-                        <div class="flow-progress__bar flow-progress__bar--error" style="width: 90%"></div>
+                        <div class="flow-progress__bar flow-progress__bar--info" style="width: 70%"></div>
                     </div>
                     <div class="flow-progress flow-progress--striped flow-progress--striped-right">
                         <div class="flow-progress__bar flow-progress__bar--warning" style="width: 90%"></div>
+                    </div>
+                    <div class="flow-progress flow-progress--striped flow-progress--striped-right">
+                        <div class="flow-progress__bar flow-progress__bar--error" style="width: 90%"></div>
                     </div>
 
                     <h3>Segments</h3>
@@ -466,7 +472,7 @@
                         <div class="flow-progress__segment flow-progress__segment--complete"></div>
                         <div class="flow-progress__segment"></div>
                         <div class="flow-progress__segment flow-progress__segment--warning"></div>
-                        <div class="flow-progress__segment"></div>
+                        <div class="flow-progress__segment flow-progress__segment--info"></div>
                         <div class="flow-progress__segment flow-progress__segment--error"></div>
                     </div>
                 </div>
@@ -475,18 +481,24 @@
 <pre><code>&lt;div class=&quot;flow-progress flow-progress--striped&quot;&gt;
     &lt;div class=&quot;flow-progress__bar&quot; style=&quot;width: 60%&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
+&lt;div class=&quot;flow-progress flow-progress--striped&quot;&gt;
+    &lt;div class=&quot;flow-progress__bar flow-progress__bar--success&quot; style=&quot;width: 80%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;div class=&quot;flow-progress flow-progress--striped flow-progress--striped-right&quot;&gt;
-    &lt;div class=&quot;flow-progress__bar flow-progress__bar--error&quot; style=&quot;width: 90%&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;flow-progress__bar flow-progress__bar--info&quot; style=&quot;width: 70%&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;flow-progress flow-progress--striped flow-progress--striped-right&quot;&gt;
     &lt;div class=&quot;flow-progress__bar flow-progress__bar--warning&quot; style=&quot;width: 90%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;flow-progress flow-progress--striped flow-progress--striped-right&quot;&gt;
+    &lt;div class=&quot;flow-progress__bar flow-progress__bar--error&quot; style=&quot;width: 90%&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="flow-progress flow-progress--segments"&gt;
   &lt;div class="flow-progress__segment flow-progress__segment--complete"&gt;&lt;/div&gt;
   &lt;div class="flow-progress__segment"&gt;&lt;/div&gt;
   &lt;div class="flow-progress__segment flow-progress__segment--warning"&gt;&lt;/div&gt;
-  &lt;div class="flow-progress__segment"&gt;&lt;/div&gt;
+  &lt;div class="flow-progress__segment flow-progress__segment--info"&gt;&lt;/div&gt;
   &lt;div class="flow-progress__segment flow-progress__segment--error"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
@@ -1691,7 +1703,8 @@
                 <div class="doc-block__subsection">
                     <h3 class="doc-block__subtitle">4. Motion</h3>
                     <ul>
-                        <li>Transitions must be token-based (<code>--motion-fast</code>, <code>--motion-base</code>).
+                        <li>Transitions must be token-based (<code>--transition-fast</code>,
+                            <code>--transition-normal</code>, <code>--transition-slow</code>).
                         </li>
                         <li>Avoid continuous animation unless meaningful (progress, loading indicators).</li>
                         <li>Respect user preference: <code>@media (prefers-reduced-motion: reduce)</code>.</li>
@@ -1705,8 +1718,10 @@
                         <li>Flow components (steps, timelines, journeys) must stack vertically under narrow
                             breakpoints.
                         </li>
-                        <li>Grids use VDS layout breakpoints: <code>--bp-sm</code>, <code>--bp-md</code>,
-                            <code>--bp-lg</code>.
+                        <li>Use VDS breakpoints (<code>@media (max-width: 640px)</code>,
+                            <code>768px</code>, <code>1024px</code>, <code>1280px</code>) or responsive
+                            utilities (<code>sm:*</code>, <code>md:*</code>, <code>lg:*</code>,
+                            <code>xl:*</code>).
                         </li>
                     </ul>
                 </div>

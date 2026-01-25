@@ -188,6 +188,10 @@
                             <code>.skeleton--strong</code></dt>
                         <dd>Colour intensity variants.</dd>
 
+                        <dt><code>.skeleton--pill</code>,
+                            <code>.skeleton--square</code></dt>
+                        <dd>Shape modifiers for pill or sharp-corner surfaces.</dd>
+
                         <dt><code>.skeleton--static</code></dt>
                         <dd>Disables animation for reduced-motion users or cheap surfaces.</dd>
                     </dl>
@@ -206,6 +210,8 @@
 &lt;div class="skeleton skeleton-line skeleton-line--long"&gt;&lt;/div&gt;
 
 &lt;div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"&gt;&lt;/div&gt;
+
+&lt;div class="skeleton skeleton-line skeleton-line--medium skeleton--pill"&gt;&lt;/div&gt;
 
 &lt;div class="skeleton skeleton-avatar skeleton-avatar--md"&gt;&lt;/div&gt;
 
@@ -407,7 +413,7 @@
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="section__grid-2 section__grid-sm">
                         <div class="card skeleton-card">
                             <div class="card__body flex gap-4">
                                 <div class="skeleton skeleton-avatar skeleton-avatar--md"></div>
@@ -685,7 +691,7 @@
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="section__grid-4 section__grid-sm">
                         <div class="card skeleton-card">
                             <div class="card__body stack gap-2">
                                 <div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"></div>
@@ -728,7 +734,7 @@
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;div class="grid grid-cols-1 md:grid-cols-4 gap-4"&gt;
+<pre class="doc-block__code"><code>&lt;div class="section__grid-4 section__grid-sm"&gt;
     &lt;div class="card skeleton-card"&gt;
         &lt;div class="card__body stack gap-2"&gt;
             &lt;div class="skeleton skeleton-line skeleton-line--short skeleton--subtle"&gt;&lt;/div&gt;
@@ -824,7 +830,7 @@
 
                 <div class="doc-block__preview">
                     <div class="card">
-                        <div class="card__body grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="card__body section__grid-2 section__grid-md">
                             <div class="stack gap-2">
                                 <h4 class="text-xs text-muted text-mono">Subtle</h4>
                                 <div class="stack gap-1">
@@ -1161,7 +1167,7 @@
                     <div class="card">
                         <div class="card__body">
 
-                            <div class="grid grid-cols-3 gap-10">
+                            <div class="section__grid-2 gap-10">
                                 <div class="grid grid-auto-fit-300 gap-6">
 
                                     <div class="section__stack-sm">

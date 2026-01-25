@@ -2,105 +2,154 @@
  * VDS Overlays — Pure Instant Version (no animation timing)
  *
  * Contract:
- *   data-target="__key"   → open overlay with class="__key"
- *   data-close="__key"    → close overlay with class="__key"
+ *   data-target="key"   → open overlay with data-overlay="key"
+ *   data-close="key"    → close overlay with data-overlay="key"
+ *   data-action="export-archive" → demo task flow before showing actions
  *
  * Matching overlay structure examples:
- *   <div class="backdrop __modal-basic"></div>
- *   <div class="modal __modal-basic"></div>
- *   <div class="drawer __drawer-left"></div>
- *   <div class="overlay-inline __inline-overlay"></div>
+ *   <div class="backdrop" data-overlay="modal-basic"></div>
+ *   <div class="modal" data-overlay="modal-basic"></div>
+ *   <div class="drawer" data-overlay="drawer-left"></div>
+ *   <div class="overlay-inline" data-overlay="inline-overlay"></div>
  */
 
 (function () {
     "use strict";
 
-    let initialized = false;
+    let bound = false;
 
     // -----------------------------------------------------
     // Pure helpers
     // -----------------------------------------------------
 
-    function showOverlay(key) {
-        const backdrop  = getActiveElement(`.backdrop.${key}`);
-        const inline  = getActiveElement(`.overlay-inline.${key}`);
-        const modal  = getActiveElement(`.modal.${key}`);
-        const drawer = getActiveElement(`.drawer.${key}`);
+    function normalizeKey(key) {
+        if (!key) return null;
+        return key.replace(/^__/, "");
+    }
 
-        // Backdrop
+    function isPreviewElement(el) {
+        return Boolean(el && el.closest && el.closest(".doc-block__preview"));
+    }
+
+    function getOverlayKey(el) {
+        if (!el) return null;
+        if (el.dataset && el.dataset.overlay) return el.dataset.overlay;
+        const classKey = [...el.classList].find((cls) => cls.startsWith("__"));
+        return classKey ? classKey.replace(/^__/, "") : null;
+    }
+
+    function getOverlayElements(key) {
+        const cleanKey = normalizeKey(key);
+        if (!cleanKey) return {};
+
+        const byData = {
+            backdrop: document.querySelector(`.backdrop[data-overlay="${cleanKey}"]`),
+            inline: document.querySelector(`.overlay-inline[data-overlay="${cleanKey}"]`),
+            modal: document.querySelector(`.modal[data-overlay="${cleanKey}"]`),
+            drawer: document.querySelector(`.drawer[data-overlay="${cleanKey}"]`),
+        };
+
+        if (byData.backdrop || byData.inline || byData.modal || byData.drawer) {
+            return byData;
+        }
+
+        const legacyKey = key && key.startsWith("__") ? key : `__${cleanKey}`;
+        return {
+            backdrop: document.querySelector(`.backdrop.${legacyKey}`),
+            inline: document.querySelector(`.overlay-inline.${legacyKey}`),
+            modal: document.querySelector(`.modal.${legacyKey}`),
+            drawer: document.querySelector(`.drawer.${legacyKey}`),
+        };
+    }
+
+    function updateBodyLock() {
+        const anyModalOpen = [...document.querySelectorAll(".modal.modal--active")].some(
+            (modal) => !isPreviewElement(modal)
+        );
+        const anyDrawerOpen = [...document.querySelectorAll(".drawer:not(.drawer--hidden)")].some(
+            (drawer) => !isPreviewElement(drawer)
+        );
+        const anyStillOpen = anyModalOpen || anyDrawerOpen;
+
+        if (anyStillOpen) {
+            document.body.classList.add("modal-open");
+        } else {
+            document.body.classList.remove("modal-open");
+        }
+    }
+
+    function setModalState(modal, state) {
+        if (!modal) return;
+        modal.dataset.state = state;
+        modal.querySelectorAll("[data-state]").forEach((node) => {
+            node.hidden = node.dataset.state !== state;
+        });
+    }
+
+    function showOverlay(key) {
+        const { backdrop, inline, modal, drawer } = getOverlayElements(key);
+
         if (backdrop) {
             backdrop.classList.add("backdrop--active");
         }
 
-        // Modal
         if (modal) {
             modal.classList.add("modal--active");
-            document.body.classList.add("modal-open");
-            return;
+            updateBodyLock();
+            return modal;
         }
 
-        // Drawer
         if (drawer) {
             drawer.classList.remove("drawer--hidden");
-            document.body.classList.add("modal-open");
-            return;
+            updateBodyLock();
+            return drawer;
         }
 
-        // Inline Overlay
         if (inline) {
             inline.classList.add("overlay-inline--active");
-            return;
         }
+
+        return null;
     }
 
-    function hideOverlay() {
-        const backdrop  = getActiveElement(".backdrop.backdrop--active");
-        const inline  = getActiveElement(".overlay-inline.overlay-inline--active");
-        const modal  = getActiveElement(".modal.modal--active");
-        const drawer = getActiveElement(".drawer:not(.drawer--hidden)");
+    function hideOverlay(key) {
+        const { backdrop, inline, modal, drawer } = getOverlayElements(key);
 
-        // Modal
         if (modal) {
             modal.classList.remove("modal--active");
-            if (backdrop) backdrop.classList.remove("backdrop--active");
-
-            const anyStillOpen =
-                document.querySelector(".modal.modal--active") ||
-                document.querySelector(".drawer:not(.drawer--hidden)");
-
-            if (!anyStillOpen) {
-                document.body.classList.remove("modal-open");
-            }
-
-            return;
         }
 
-        // Drawer
         if (drawer) {
             drawer.classList.add("drawer--hidden");
-            if (backdrop) backdrop.classList.remove("backdrop--active");
-
-            const anyStillOpen =
-                document.querySelector(".modal.modal--active") ||
-                document.querySelector(".drawer:not(.drawer--hidden)");
-
-            if (!anyStillOpen) {
-                document.body.classList.remove("modal-open");
-            }
-
-            return;
         }
 
-        // Inline
         if (inline) {
             inline.classList.remove("overlay-inline--active");
-            return;
         }
 
-        // Backdrop-only
         if (backdrop) {
             backdrop.classList.remove("backdrop--active");
         }
+
+        updateBodyLock();
+    }
+
+    function runAction(action, key) {
+        if (action !== "export-archive") {
+            showOverlay(key);
+            return;
+        }
+
+        const modal = showOverlay(key);
+        if (!modal) return;
+
+        modal.classList.add("modal--loading");
+        setModalState(modal, "loading");
+
+        window.setTimeout(() => {
+            modal.classList.remove("modal--loading");
+            setModalState(modal, "ready");
+        }, 1200);
     }
 
     // -----------------------------------------------------
@@ -108,75 +157,130 @@
     // -----------------------------------------------------
 
     function onClick(e) {
-        // OPEN
         const openBtn = e.target.closest("[data-target]");
         if (openBtn) {
+            const action = openBtn.dataset.action;
+            const key = openBtn.dataset.target;
+            const targets = getOverlayElements(key);
+            const hasOverlay =
+                targets.backdrop || targets.inline || targets.modal || targets.drawer;
+
+            if (!hasOverlay) return;
+
             e.preventDefault();
-            showOverlay(openBtn.dataset.target);
+            if (action) {
+                runAction(action, key);
+            } else {
+                showOverlay(key);
+            }
             return;
         }
 
-        // CLOSE
         const closeBtn = e.target.closest("[data-close]");
         if (closeBtn) {
-            e.preventDefault();
-            hideOverlay(closeBtn.dataset.close);
-            return;
-        }
-    }
+            const keys = closeBtn.dataset.close.split(/\s+/).filter(Boolean);
+            const validKeys = keys.filter((key) => {
+                const targets = getOverlayElements(key);
+                return targets.backdrop || targets.inline || targets.modal || targets.drawer;
+            });
 
-    function getActiveElement(cls) {
-        const nodes = document.querySelectorAll(cls);
-        for (const m of nodes) {
-            if ([...m.classList].some(c => c.startsWith("__"))) return m;
+            if (!validKeys.length) return;
+
+            e.preventDefault();
+            validKeys.forEach((key) => hideOverlay(key));
         }
-        return null;
     }
 
     function onKeydown(e) {
         if (e.key !== "Escape" && e.key !== "Esc") return;
 
         // Close whichever modal/drawer is currently active
-        const openBackdrop  = getActiveElement(".backdrop.backdrop--active");
-        const openOverlayInline  = getActiveElement(".overlay-inline.overlay-inline--active");
-        const openModal  = getActiveElement(".modal.modal--active");
-        const openDrawer = getActiveElement(".drawer:not(.drawer--hidden)");
+        const openModal = getTopmost(".modal.modal--active");
+        const openDrawer = getTopmost(".drawer:not(.drawer--hidden)");
+        const openBackdrop = getTopmost(".backdrop.backdrop--active");
+        const openOverlayInline = getTopmost(".overlay-inline.overlay-inline--active");
 
         if (openModal) {
-            const key = [...openModal.classList].find(c => c.startsWith("__"));
+            if (openModal.dataset.blocking === "true") return;
+            const key = getOverlayKey(openModal);
             if (key) hideOverlay(key);
             return;
         }
 
         if (openDrawer) {
-            const key = [...openDrawer.classList].find(c => c.startsWith("__"));
+            const key = getOverlayKey(openDrawer);
             if (key) hideOverlay(key);
             return;
         }
 
         if (openBackdrop) {
-            const key = [...openBackdrop.classList].find(c => c.startsWith("__"));
+            const key = getOverlayKey(openBackdrop);
             if (key) hideOverlay(key);
             return;
         }
 
         if (openOverlayInline) {
-            const key = [...openOverlayInline.classList].find(c => c.startsWith("__"));
+            const key = getOverlayKey(openOverlayInline);
             if (key) hideOverlay(key);
-            return;
         }
+    }
+
+    function getTopmost(selector) {
+        const nodes = [...document.querySelectorAll(selector)].filter(
+            (node) => !isPreviewElement(node)
+        );
+        return nodes.length ? nodes[nodes.length - 1] : null;
     }
 
     // -----------------------------------------------------
     // INIT
     // -----------------------------------------------------
 
-    function init() {
-        if (initialized) return;
-        initialized = true;
+    function bindHandlers() {
+        document.addEventListener("click", onClick, true);
+        document.addEventListener("keydown", onKeydown, true);
+    }
 
-        document.addEventListener("click", onClick, false);
-        document.addEventListener("keydown", onKeydown, false);
+    function unbindHandlers() {
+        document.removeEventListener("click", onClick, true);
+        document.removeEventListener("keydown", onKeydown, true);
+    }
+
+    function reset() {
+        document.querySelectorAll(".modal.modal--active").forEach((modal) => {
+            if (isPreviewElement(modal)) return;
+            modal.classList.remove("modal--active");
+            modal.classList.remove("modal--loading");
+        });
+
+        document.querySelectorAll(".drawer:not(.drawer--hidden)").forEach((drawer) => {
+            if (isPreviewElement(drawer)) return;
+            drawer.classList.add("drawer--hidden");
+        });
+
+        document.querySelectorAll(".backdrop.backdrop--active").forEach((backdrop) => {
+            if (isPreviewElement(backdrop)) return;
+            backdrop.classList.remove("backdrop--active");
+        });
+
+        document.querySelectorAll(".overlay-inline.overlay-inline--active").forEach((panel) => {
+            if (isPreviewElement(panel)) return;
+            panel.classList.remove("overlay-inline--active");
+        });
+
+        updateBodyLock();
+    }
+
+    function init(options = {}) {
+        const force = options && options.force;
+        if (bound && !force) return;
+
+        if (bound) {
+            unbindHandlers();
+        }
+
+        bindHandlers();
+        bound = true;
     }
 
     // -----------------------------------------------------
@@ -185,8 +289,15 @@
 
     window.VDSOverlay = {
         init,
+        reset,
         open: showOverlay,
         close: hideOverlay,
     };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        if (window.VDSOverlay) {
+            window.VDSOverlay.init({ force: true });
+        }
+    });
 
 })();

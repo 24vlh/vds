@@ -30,13 +30,14 @@
     border-radius: var(--radius-md);
     border-width: var(--border-width);
     border-style: solid;
+    --button-text-color: var(--color-text);
     font-family: inherit;
     font-size: var(--text-sm);
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-xl-tight);
     background: var(--color-surface);
     border-color: var(--color-border-subtle);
-    color: var(--color-text);
+    color: var(--button-text-color);
     cursor: pointer;
     text-decoration: none;
     white-space: normal;
@@ -84,6 +85,15 @@
 /* ---------------------------------------------------------
    2. SIZE SCALE
 --------------------------------------------------------- */
+.button--xs {
+    padding-block: var(--space-1_5);
+    padding-inline: var(--space-2_5);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    gap: var(--space-1_5);
+}
+
 .button--sm {
     padding-block: var(--space-1_5);
     padding-inline: var(--space-3);
@@ -117,7 +127,8 @@
     height: 100%;
 }
 
-.button--icon {
+.button--icon,
+.button--icon-only {
     padding: var(--space-2);
     min-width: var(--space-8);
     min-height: var(--space-8);
@@ -131,12 +142,14 @@
     justify-content: center;
 }
 
-.button__icon--left {
-    margin-inline-end: var(--space-2);
-}
+@supports not (gap: 1rem) {
+    .button__icon--left {
+        margin-inline-end: var(--space-2);
+    }
 
-.button__icon--right {
-    margin-inline-start: var(--space-2);
+    .button__icon--right {
+        margin-inline-start: var(--space-2);
+    }
 }
 
 /* ---------------------------------------------------------
@@ -145,7 +158,7 @@
 .button--primary {
     background: var(--color-accent);
     border-color: var(--color-accent-strong);
-    color: var(--color-on-accent);
+    --button-text-color: var(--color-on-accent);
 }
 
 .button--primary:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -171,7 +184,7 @@
 .button--secondary {
     background: var(--color-surface);
     border-color: var(--color-border-subtle);
-    color: var(--color-text);
+    --button-text-color: var(--color-text);
 }
 
 .button--secondary:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -192,7 +205,7 @@
 .button--soft {
     background-color: var(--color-surface-subtle);
     border-color: var(--button-soft-border, var(--color-border-subtle));
-    color: var(--button-soft-text, var(--color-text));
+    --button-text-color: var(--button-soft-text, var(--color-text));
 }
 
 .button--soft:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -213,7 +226,7 @@
 .button--ghost {
     background: transparent;
     border-color: transparent;
-    color: var(--color-text);
+    --button-text-color: var(--color-text);
 }
 
 .button--ghost:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -234,17 +247,17 @@
 .button--subtle {
     background: transparent;
     border-color: transparent;
-    color: var(--color-text-muted);
+    --button-text-color: var(--color-text-muted);
 }
 
 .button--subtle:hover:not(:disabled):not([aria-disabled="true"]) {
     background: var(--color-muted-bg);
-    color: var(--color-text);
+    --button-text-color: var(--color-text);
 }
 
 .button--subtle:active:not(:disabled):not([aria-disabled="true"]) {
     background: var(--color-muted-bg);
-    color: var(--color-text);
+    --button-text-color: var(--color-text);
 }
 
 .button--subtle:focus-visible {
@@ -258,13 +271,13 @@
 .button--success {
     background: var(--color-success);
     border-color: var(--color-success-strong);
-    color: var(--color-on-success);
+    --button-text-color: var(--color-on-success);
 }
 
 .button--success:hover:not(:disabled):not([aria-disabled="true"]) {
     background-color: var(--success-soft-surface-strong, var(--color-success-soft-hover));
     border-color: var(--color-success-strong);
-    color: var(--success-soft-on);
+    --button-text-color: var(--success-soft-on);
 }
 
 .button--success:active:not(:disabled):not([aria-disabled="true"]) {
@@ -280,13 +293,13 @@
 .button--warning {
     background: var(--color-warning);
     border-color: var(--color-warning-strong);
-    color: var(--color-on-warning);
+    --button-text-color: var(--color-on-warning);
 }
 
 .button--warning:hover:not(:disabled):not([aria-disabled="true"]) {
     background-color: var(--warning-soft-surface-strong, var(--color-warning-soft-hover));
     border-color: var(--color-warning-strong);
-    color: var(--warning-soft-on);
+    --button-text-color: var(--warning-soft-on);
 }
 
 .button--warning:active:not(:disabled):not([aria-disabled="true"]) {
@@ -302,13 +315,13 @@
 .button--info {
     background: var(--color-info);
     border-color: var(--color-info-strong);
-    color: var(--color-on-info);
+    --button-text-color: var(--color-on-info);
 }
 
 .button--info:hover:not(:disabled):not([aria-disabled="true"]) {
     background-color: var(--info-soft-surface-strong, var(--color-info-soft-hover));
     border-color: var(--color-info-strong);
-    color: var(--info-soft-on);
+    --button-text-color: var(--info-soft-on);
 }
 
 .button--info:active:not(:disabled):not([aria-disabled="true"]) {
@@ -324,13 +337,13 @@
 .button--danger {
     background: var(--color-danger);
     border-color: var(--color-danger-strong);
-    color: var(--color-on-danger);
+    --button-text-color: var(--color-on-danger);
 }
 
 .button--danger:hover:not(:disabled):not([aria-disabled="true"]) {
     background-color: var(--danger-soft-surface-strong, var(--color-danger-soft-hover));
     border-color: var(--color-danger-strong);
-    color: var(--danger-soft-on);
+    --button-text-color: var(--danger-soft-on);
 }
 
 .button--danger:active:not(:disabled):not([aria-disabled="true"]) {
@@ -344,12 +357,36 @@
 }
 
 /* ---------------------------------------------------------
-   6. OUTLINE VARIANTS
+   6. NEUTRAL (SOFT SURFACE)
+--------------------------------------------------------- */
+.button--neutral {
+    background: var(--color-surface-subtle);
+    border-color: var(--color-border-subtle);
+    --button-text-color: var(--color-text-on-soft, var(--color-text));
+}
+
+.button--neutral:hover:not(:disabled):not([aria-disabled="true"]) {
+    background: var(--color-surface-hover);
+    border-color: var(--color-border-strong, var(--color-border-subtle));
+}
+
+.button--neutral:active:not(:disabled):not([aria-disabled="true"]) {
+    background: var(--color-surface-hover);
+    border-color: var(--color-border-strong, var(--color-border-subtle));
+}
+
+.button--neutral:focus-visible {
+    box-shadow: 0 0 0 1px var(--color-surface),
+    0 0 0 3px var(--focus-ring-color, var(--color-accent-soft));
+}
+
+/* ---------------------------------------------------------
+   7. OUTLINE VARIANTS
 --------------------------------------------------------- */
 .button--outline {
     background: transparent;
     border-color: var(--color-border-subtle);
-    color: var(--color-text);
+    --button-text-color: var(--color-text);
 }
 
 .button--outline:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -370,7 +407,7 @@
 .button--outline-accent {
     background: transparent;
     border-color: var(--color-accent);
-    color: var(--color-accent);
+    --button-text-color: var(--color-accent);
 }
 
 .button--outline-accent:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -391,7 +428,7 @@
 .button--outline-danger {
     background: transparent;
     border-color: var(--color-danger);
-    color: var(--color-danger);
+    --button-text-color: var(--color-danger);
 }
 
 .button--outline-danger:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -412,7 +449,7 @@
 .button--outline-success {
     background: transparent;
     border-color: var(--color-success);
-    color: var(--color-success);
+    --button-text-color: var(--color-success);
 }
 
 .button--outline-success:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -433,7 +470,7 @@
 .button--outline-warning {
     background: transparent;
     border-color: var(--color-warning);
-    color: var(--color-warning);
+    --button-text-color: var(--color-warning);
 }
 
 .button--outline-warning:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -454,7 +491,7 @@
 .button--outline-info {
     background: transparent;
     border-color: var(--color-info);
-    color: var(--color-info);
+    --button-text-color: var(--color-info);
 }
 
 .button--outline-info:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -473,12 +510,12 @@
 }
 
 /* ---------------------------------------------------------
-   7. LINK BUTTON
+   8. LINK BUTTON
 --------------------------------------------------------- */
 .button--link {
     background: transparent;
-    border-color: transparent;
-    color: var(--color-accent);
+    border: 0;
+    --button-text-color: var(--color-accent);
     padding-inline: 0;
     padding-block: 0;
     font-weight: 500;
@@ -508,7 +545,7 @@
 }
 
 /* ---------------------------------------------------------
-   8. LOADING STATE
+   9. LOADING STATE
 --------------------------------------------------------- */
 .button--loading {
     position: relative;
@@ -544,7 +581,7 @@
 }
 
 /* ---------------------------------------------------------
-   9. REDUCED MOTION
+   10. REDUCED MOTION
 --------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
     .button {
@@ -558,21 +595,29 @@
 }
 
 /* ---------------------------------------------------------
-   10. HELPERS
+   11. HELPERS
 --------------------------------------------------------- */
 .button--contrast-hover:hover:not(:disabled):not([aria-disabled="true"]) {
     background: rgba(0, 0, 0, 0.12);
     border-color: currentColor;
 }
 
+.button--lift:hover:not(:disabled):not([aria-disabled="true"]) {
+    transform: translateY(-1px);
+}
+
+.button--lift:active:not(:disabled):not([aria-disabled="true"]) {
+    transform: translateY(0);
+}
+
 /* ---------------------------------------------------------
-   11. LINK RESETS
+   12. LINK RESETS
 --------------------------------------------------------- */
 a.button,
 a.button:hover,
 a.button:focus,
 a.button:active {
-    color: inherit;
+    color: var(--button-text-color, var(--color-text));
     text-decoration: none;
 }
 
@@ -585,67 +630,10 @@ a.button[aria-disabled="true"]:active {
     text-decoration: none;
 }
 
-a.button--primary,
-a.button--primary:hover,
-a.button--primary:focus,
-a.button--primary:active {
-    color: var(--color-on-accent);
-}
-
-a.button--secondary,
-a.button--secondary:hover,
-a.button--secondary:focus,
-a.button--secondary:active {
-    color: var(--color-accent-strong);
-}
-
-a.button--ghost,
-a.button--ghost:hover,
-a.button--ghost:focus,
-a.button--ghost:active {
-    color: var(--color-accent-soft);
-}
-
-a.button--subtle,
-a.button--subtle:hover,
-a.button--subtle:focus,
-a.button--subtle:active {
-    color: var(--color-text);
-}
-
-a.button--neutral,
-a.button--neutral:hover,
-a.button--neutral:focus,
-a.button--neutral:active {
-    color: var(--color-text-on-soft);
-}
-
-a.button--danger,
-a.button--danger:hover,
-a.button--danger:focus,
-a.button--danger:active {
-    color: var(--color-on-danger);
-}
-
-a.button--warning,
-a.button--warning:hover,
-a.button--warning:focus,
-a.button--warning:active {
-    color: var(--color-on-warning);
-}
-
-a.button--success,
-a.button--success:hover,
-a.button--success:focus,
-a.button--success:active {
-    color: var(--color-on-success);
-}
-
-a.button--info,
-a.button--info:hover,
-a.button--info:focus,
-a.button--info:active {
-    color: var(--color-on-info);
+a.button--link:hover,
+a.button--link:focus,
+a.button--link:active {
+    text-decoration: underline;
 }
 
 a.button:hover {

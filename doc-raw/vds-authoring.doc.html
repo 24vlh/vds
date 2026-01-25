@@ -89,19 +89,22 @@
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Authoring scope &amp; foundation</h2>
                 <p class="doc-block__summary">
-                    A single class sets sensible defaults for admonitions, footnotes and inline
-                    markers. Use it on any container that hosts documentation content.
+                    A single class or data attribute sets sensible defaults for admonitions,
+                    footnotes and inline markers. Use it on any container that hosts documentation
+                    content.
                 </p>
             </header>
 
             <div class="doc-block__body section__grid-2 section__grid-sm">
                 <div class="doc-block__preview section__stack-sm">
-                    <h3 class="text-sm">.authoring / .doc-authoring</h3>
+                    <h3 class="text-sm">Scope helpers</h3>
 
                     <p class="text-sm">
                         Wrap long-form documentation areas with
-                        <code>.authoring</code>
-                        or <code>.doc-authoring</code> to initialise authoring variables.
+                        <code>.authoring</code>,
+                        <code>.doc-authoring</code>,
+                        <code>[data-vds-authoring]</code> or
+                        <code>.vds-authoring</code> to initialise authoring variables.
                     </p>
 
                     <div class="authoring">
@@ -127,7 +130,7 @@
                 </div>
 
                 <div class="doc-block__code">
-<pre><code>&lt;article class="typography authoring"&gt;
+<pre><code>&lt;article class="typography" data-vds-authoring&gt;
   &lt;h1&gt;Guide title&lt;/h1&gt;
   &lt;p&gt;Introductory copy…&lt;/p&gt;
 
@@ -154,8 +157,9 @@
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Admonition system (GitHub-style)</h2>
                 <p class="doc-block__summary">
-                    Structured, icon-ready blocks for notes, tips, warnings and dangers. Ideal for
-                    hand-authored HTML or MDX components.
+                    Structured, icon-ready blocks for notes, tips, warnings and dangers. Includes
+                    semantic variants, layout modifiers, lists and footer actions for richer
+                    guidance blocks.
                 </p>
             </header>
 
@@ -192,7 +196,7 @@
                             </div>
                         </div>
 
-                        <div class="admonition admonition--warning">
+                        <div class="admonition" data-variant="warning">
                             <div class="admonition__icon">
                                 <span class="icon icon--mask icon--warning"></span>
                             </div>
@@ -217,18 +221,56 @@
                         </div>
                     </div>
 
+                    <h3 class="text-sm">Layout &amp; actions</h3>
+
+                    <div class="admonition admonition--accent admonition--bordered">
+                        <div class="admonition__icon">
+                            <span class="icon icon--mask icon--sparkles"></span>
+                        </div>
+                        <div class="admonition__content">
+                            <div class="admonition__title">Release checklist</div>
+                            <div class="admonition__body">
+                                Use <code>.admonition__list</code> and <code>.admonition__footer</code>
+                                to structure multi-step guidance.
+                            </div>
+                            <ul class="admonition__list">
+                                <li>Update changelog.</li>
+                                <li>Run integration checks.</li>
+                                <li>Share rollout plan.</li>
+                            </ul>
+                            <div class="admonition__footer">
+                                <span class="admonition__meta">Updated 2 days ago</span>
+                                <div class="admonition__actions">
+                                    <a class="text-sm" href="#">View checklist</a>
+                                    <a class="text-sm" href="#">Notify team</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <p class="text-xs text-muted">
-                        Add <code>.admonition--compact</code> to reduce vertical padding.
+                        Add <code>.admonition--compact</code> to reduce padding, or use
+                        <code>.admonition--bordered</code>, <code>.admonition--outline</code>,
+                        or <code>.admonition--plain</code> to change the surface.
                     </p>
                 </div>
 
                 <div class="doc-block__code">
 <pre><code>&lt;div class="admonition admonition--note"&gt;…&lt;/div&gt;
 &lt;div class="admonition admonition--tip"&gt;…&lt;/div&gt;
-&lt;div class="admonition admonition--warning"&gt;…&lt;/div&gt;
+&lt;div class="admonition" data-variant="warning"&gt;…&lt;/div&gt;
 &lt;div class="admonition admonition--danger"&gt;…&lt;/div&gt;
 
-&lt;div class="admonition admonition--note admonition--compact"&gt;…&lt;/div&gt;</code></pre>
+&lt;div class="admonition admonition--note admonition--compact"&gt;…&lt;/div&gt;
+&lt;div class="admonition admonition--accent admonition--bordered"&gt;…&lt;/div&gt;
+&lt;div class="admonition admonition--warning admonition--outline"&gt;…&lt;/div&gt;
+&lt;div class="admonition admonition--neutral admonition--plain"&gt;…&lt;/div&gt;
+
+&lt;ul class="admonition__list"&gt;…&lt;/ul&gt;
+&lt;div class="admonition__footer"&gt;
+  &lt;span class="admonition__meta"&gt;Updated 2 days ago&lt;/span&gt;
+  &lt;div class="admonition__actions"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
                 </div>
             </div>
         </article>
@@ -242,7 +284,9 @@
                 <h2 class="doc-block__title">Markdown / MDX callouts</h2>
                 <p class="doc-block__summary">
                     Lightweight classes for Markdown-generated callouts, mirroring the admonition
-                    variants without needing nested markup.
+                    variants without needing nested markup. Use <code>.md-callout</code> with
+                    <code>data-variant="info|success|warning|danger|accent|neutral"</code> for
+                    single-class pipelines, or the explicit classes below for MDX output.
                 </p>
             </header>
 
@@ -261,12 +305,16 @@
                     <div class="md-danger">
                         <p><strong>Danger.</strong> Never commit real credentials to source control.</p>
                     </div>
+                    <div class="md-callout" data-variant="accent">
+                        <p><strong>Heads up.</strong> This section is authored in Markdown and
+                            styled with a <code>data-variant</code> override.</p>
+                    </div>
 
                     <p class="text-xs text-muted">
-                        <code>.md-note</code>, <code>.md-tip</code>,
-                        <code>.md-warning</code> and
-                        <code>.md-danger</code> share spacing and typography but use
-                        semantic colours from the theme.
+                        <code>.md-note</code>, <code>.md-info</code>, <code>.md-tip</code>,
+                        <code>.md-success</code>, <code>.md-warning</code>,
+                        <code>.md-danger</code> and <code>.md-important</code> share spacing
+                        and typography but use semantic colours from the theme.
                     </p>
                 </div>
 
@@ -285,6 +333,10 @@
 
 &lt;div class="md-danger"&gt;
   &lt;p&gt;&lt;strong&gt;Danger.&lt;/strong&gt; Never run this in production.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="md-callout" data-variant="accent"&gt;
+  &lt;p&gt;&lt;strong&gt;Heads up.&lt;/strong&gt; Markdown callout with a variant override.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </div>
@@ -300,7 +352,8 @@
                 <p class="doc-block__summary">
                     Small, hover-revealed anchors for deep-linking into sections. Works with
                     plain headings or headings inside a <code>.typography</code>
-                    container.
+                    container. On touch devices anchors stay visible; use
+                    <code>.heading-anchor--always</code> to keep them persistent.
                 </p>
             </header>
 
@@ -407,7 +460,8 @@
                 <h2 class="doc-block__title">Inline markers</h2>
                 <p class="doc-block__summary">
                     Small, high-contrast labels for inline annotations: “Draft”, “Breaking change”,
-                    “Experimental”, and more.
+                    “Experimental”, and more. Supports accent/neutral variants plus outline and
+                    pill styles.
                 </p>
             </header>
 
@@ -434,13 +488,26 @@
                         <span class="inline-marker inline-marker--danger">deprecated</span>
                         and will be removed in the next major release.
                     </p>
+                    <p class="text-sm">
+                        This section is
+                        <span class="inline-marker inline-marker--accent inline-marker--pill">highlighted</span>
+                        for quick scanning.
+                    </p>
+                    <p class="text-sm">
+                        Use a
+                        <span class="inline-marker inline-marker--neutral inline-marker--outline">neutral</span>
+                        label for low emphasis tags.
+                    </p>
 
                     <p class="text-xs text-muted">
-                        Use <code>.inline-marker</code> plus a semantic modifier:
+                        Use <code>.inline-marker</code> plus a semantic modifier (or
+                        <code>data-variant</code>):
                         <code>--info</code>,
                         <code>--success</code>,
                         <code>--warning</code>,
-                        <code>--danger</code>.
+                        <code>--danger</code>,
+                        <code>--accent</code>,
+                        <code>--neutral</code>.
                     </p>
                 </div>
 
@@ -464,6 +531,17 @@
 &lt;p&gt;
   The legacy endpoint is
   &lt;span class="inline-marker inline-marker--danger"&gt;deprecated&lt;/span&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+  This section is
+  &lt;span class="inline-marker inline-marker--accent inline-marker--pill"&gt;highlighted&lt;/span&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+  Use a
+  &lt;span class="inline-marker inline-marker--neutral inline-marker--outline"&gt;neutral&lt;/span&gt;
+  label for low emphasis tags.
 &lt;/p&gt;</code></pre>
                 </div>
             </div>
@@ -478,7 +556,7 @@
                 <h2 class="doc-block__title">Prose helpers</h2>
                 <p class="doc-block__summary">
                     Helpers for lead paragraphs, muted notes and tuned vertical rhythm in long-form
-                    documentation.
+                    documentation, plus simple multi-column layouts.
                 </p>
             </header>
 
@@ -517,9 +595,23 @@
                         </div>
                     </div>
 
+                    <h3 class="text-sm">Three-column prose</h3>
+                    <div class="prose-grid-3">
+                        <div>
+                            <p><strong>First.</strong> Scope and intent.</p>
+                        </div>
+                        <div>
+                            <p><strong>Second.</strong> Decisions and rationale.</p>
+                        </div>
+                        <div>
+                            <p><strong>Third.</strong> Links and references.</p>
+                        </div>
+                    </div>
+
                     <p class="text-xs text-muted">
                         These helpers only adjust spacing and colour; they respect your underlying
-                        typography scale.
+                        typography scale. Use <code>.prose-grid-1-2</code> or
+                        <code>.prose-grid-2-1</code> for asymmetric layouts.
                     </p>
                 </div>
 
@@ -545,6 +637,22 @@
 &lt;div class="prose-grid-2"&gt;
   &lt;div&gt;…left column…&lt;/div&gt;
   &lt;div&gt;…right column…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="prose-grid-3"&gt;
+  &lt;div&gt;…column one…&lt;/div&gt;
+  &lt;div&gt;…column two…&lt;/div&gt;
+  &lt;div&gt;…column three…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="prose-grid-1-2"&gt;
+  &lt;div&gt;…narrow…&lt;/div&gt;
+  &lt;div&gt;…wide…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="prose-grid-2-1"&gt;
+  &lt;div&gt;…wide…&lt;/div&gt;
+  &lt;div&gt;…narrow…&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </div>
@@ -586,7 +694,7 @@
                         </div>
                     </div>
 
-                    <div class="md-tip">
+                    <div class="md-callout" data-variant="success">
                         <p><strong>Tip.</strong> Use numbered code blocks from
                             <code>doc-block.css</code> together with inline markers to
                             explain each step.
@@ -606,7 +714,7 @@
 
     &lt;div class="admonition admonition--info"&gt;…&lt;/div&gt;
 
-    &lt;div class="md-tip"&gt;
+    &lt;div class="md-callout" data-variant="success"&gt;
       &lt;p&gt;&lt;strong&gt;Tip.&lt;/strong&gt; Use numbered code with inline markers.&lt;/p&gt;
     &lt;/div&gt;
 
@@ -638,8 +746,8 @@
                 <div class="doc-block__preview">
                     <h3 class="text-xs text-muted text-mono">Do</h3>
                     <ul class="text-sm">
-                        <li>Wrap documentation areas in <code>.authoring</code> or <code
-                                >.doc-authoring</code> to activate authoring tokens.
+                        <li>Wrap documentation areas in <code>.authoring</code>, <code>.doc-authoring</code>,
+                            <code>.vds-authoring</code>, or <code>[data-vds-authoring]</code> to activate tokens.
                         </li>
 
                         <li>Use semantic structure for admonitions:
@@ -649,7 +757,9 @@
                         </li>
 
                         <li>Use MDX-style callouts (<code>.md-note</code>, <code>.md-warning</code>,
-                            etc.) only when the content comes from Markdown.
+                            etc.) only when the content comes from Markdown. Prefer
+                            <code>.md-callout</code> + <code>data-variant</code> for pipelines that
+                            need a single class.
                         </li>
 
                         <li>Attach anchors directly to headings (<code>h2–h6</code>) with matching
@@ -660,8 +770,14 @@
                             proper footnote semantics.
                         </li>
 
-                        <li>Use inline markers (<code>.inline-marker--*</code>) for short, high-signal
-                            inline labels only.
+                        <li>Use inline markers (<code>.inline-marker--info</code>,
+                            <code>.inline-marker--success</code>, <code>.inline-marker--warning</code>,
+                            <code>.inline-marker--danger</code>, <code>.inline-marker--accent</code>,
+                            <code>.inline-marker--neutral</code>) for short, high-signal inline labels only.
+                        </li>
+
+                        <li>Use <code>data-variant</code> or semantic modifiers for colours; keep
+                            the palette token-driven.
                         </li>
 
                         <li>Use <code>.prose-tight</code> /
@@ -680,9 +796,10 @@
                     <ul class="text-sm">
                         <li>Don’t nest admonitions or MDX callouts inside paragraphs.</li>
 
-                        <li>Don’t mix <code>.admonition</code> and
-                            <code>.md-*</code> patterns in the same block; choose one model per
-                            context.
+                        <li>Don’t mix <code>.admonition</code> and Markdown callouts
+                            (<code>.md-note</code>, <code>.md-info</code>, <code>.md-tip</code>,
+                            <code>.md-success</code>, <code>.md-warning</code>, <code>.md-danger</code>,
+                            <code>.md-important</code>) in the same block; choose one model per context.
                         </li>
 
                         <li>Don’t place heading anchors outside the heading or after sibling elements.</li>
@@ -699,11 +816,11 @@
             </div>
 
             <div class="doc-block__code">
-<pre class="doc-block__code"><code>1. Wrap documentation content in .authoring or .doc-authoring.
-2. Use .admonition or .md-* patterns consistently (never mixed).
+<pre class="doc-block__code"><code>1. Wrap documentation content in .authoring, .doc-authoring, .vds-authoring, or [data-vds-authoring].
+2. Use .admonition or Markdown callouts (.md-note, .md-info, .md-tip, .md-success, .md-warning, .md-danger, .md-important) consistently (never mixed); prefer .md-callout + data-variant for pipelines.
 3. Place heading anchors directly in h2–h6 with matching id/href.
 4. Keep footnotes semantic: .fn-ref in copy, .footnotes list below.
-5. Use inline-marker--* only for short, high-signal labels.
+5. Use inline-marker--info|success|warning|danger|accent|neutral (or data-variant) only for short, high-signal labels.
 6. Preserve spacing via prose-tight / prose-relaxed; do not override.
 7. Never apply global authoring styles to UI components or layouts.</code></pre>
             </div>

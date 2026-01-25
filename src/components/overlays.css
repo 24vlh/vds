@@ -1,19 +1,16 @@
 /************************************************************
- * VLAH DESIGN SYSTEM (VDS) - Navigation
+ * VLAH DESIGN SYSTEM (VDS) - Overlays
  *
  *  Responsibilities:
- *    - Provide the entire navigation architecture: primary/secondary nav,
- *      mobile nav, vertical nav, sidebar, pills, tabs, pagination,
- *      breadcrumbs, toolbars, and announcement bars
- *    - Define interactive states: hover, active, disabled, focus-visible,
- *      depth indentation, collapsed/expanded sections
- *    - Expose brand/logo slots and action areas for headers & sidebars
- *    - Supply panel + backdrop patterns for mobile overlay navigation
+ *    - Provide backdrop, modal, drawer, and inline overlay primitives
+ *    - Support density, size, layout, and state variants
+ *    - Enable multi-layer stacking for nested confirmations
+ *    - Keep all overlay surfaces token-driven and layout-neutral
  *
  *  System Notes:
  *    - Fully token-driven: spacing, radii, borders, colours, z-index, motion
- *    - Pure CSS; JS only toggles `.nav-panel--open` and `.nav-backdrop--visible`
- *    - Safe namespacing: can embed in header/footer/sidebars without collisions
+ *    - Pure CSS; JS toggles visibility and focus management
+ *    - No animations by default for stability and accessibility
  ************************************************************/
 
 /* ---------------------------------------------------------
@@ -21,6 +18,7 @@
 --------------------------------------------------------- */
 [data-vds-overlay],
 .vds-overlay {
+    --modal-width-xs: 22.5rem;
     --modal-width-sm: 26.25rem;
     --modal-width-md: 40rem;
     --modal-width-lg: 51.25rem;
@@ -28,6 +26,10 @@
     --modal-loader-size-lg: 2.5rem;
 
     --drawer-width: 22.5rem;
+
+    --modal-width-workspace: 58rem;
+    --modal-workspace-min-height: 26rem;
+    --modal-workspace-max-height: calc(100vh - var(--space-10));
 }
 
 /* ---------------------------------------------------------
@@ -56,6 +58,11 @@
 
 .backdrop--heavy {
     background-color: var(--overlay-backdrop-heavy);
+}
+
+.backdrop--blocking {
+    background-color: var(--overlay-backdrop-heavy);
+    cursor: not-allowed;
 }
 
 .backdrop--active {
@@ -186,6 +193,10 @@
 /* ---------------------------------------------------------
    6. MODAL SIZES
 --------------------------------------------------------- */
+.modal--xs .modal__inner {
+    max-width: var(--modal-width-xs);
+}
+
 .modal--sm .modal__inner {
     max-width: var(--modal-width-sm);
 }
@@ -210,7 +221,96 @@
 }
 
 /* ---------------------------------------------------------
-   7. MOBILE FULL-SCREEN & BOTTOM-SHEET (NO ANIMATIONS)
+   7. MODAL USE-CASE VARIANTS
+--------------------------------------------------------- */
+.modal--workspace .modal__inner {
+    max-width: var(--modal-width-workspace);
+    min-height: var(--modal-workspace-min-height);
+    max-height: var(--modal-workspace-max-height);
+}
+
+.modal--confirm .modal__inner {
+    max-width: var(--modal-width-xs);
+}
+
+.modal--confirm .modal__header,
+.modal--confirm .modal__body,
+.modal--confirm .modal__footer {
+    text-align: center;
+}
+
+.modal--confirm .modal__footer {
+    justify-content: center;
+}
+
+.modal--blocking .modal__close {
+    display: none;
+}
+
+.modal__body--form {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.modal__section {
+    display: grid;
+    gap: var(--space-3);
+}
+
+.modal__divider {
+    height: 1px;
+    border: none;
+    background-color: var(--color-border-subtle);
+}
+
+.modal__footer--split {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal__footer--stack {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.modal__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    background-color: var(--color-accent-soft);
+    color: var(--accent-soft-on, var(--color-on-accent));
+    font-size: var(--text-md);
+    line-height: 1;
+}
+
+.modal__icon--success {
+    background-color: var(--color-success-soft);
+    color: var(--color-success-strong);
+}
+
+.modal__icon--danger {
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger-strong);
+}
+
+.modal__icon--info {
+    background-color: var(--color-info-soft);
+    color: var(--color-info-strong);
+}
+
+.modal__icon--warning {
+    background-color: var(--color-warning-soft);
+    color: var(--color-warning-strong);
+}
+
+/* ---------------------------------------------------------
+   8. MOBILE FULL-SCREEN & BOTTOM-SHEET (NO ANIMATIONS)
 --------------------------------------------------------- */
 @media (max-width: 768px) {
 
@@ -239,7 +339,7 @@
 }
 
 /* ---------------------------------------------------------
-   8. MODAL STATES
+   9. MODAL STATES
 --------------------------------------------------------- */
 .modal--success .modal__header {
     border-bottom-color: var(--color-success);
@@ -266,7 +366,7 @@
 }
 
 /* ---------------------------------------------------------
-   9. LOADING OVERLAY (NO BLUR)
+   10. LOADING OVERLAY (NO BLUR)
 --------------------------------------------------------- */
 .modal--loading .modal__inner {
     position: relative;
@@ -294,7 +394,7 @@
 }
 
 /* ---------------------------------------------------------
-   10. DRAWERS (NO ANIMATIONS)
+   11. DRAWERS (NO ANIMATIONS)
 --------------------------------------------------------- */
 .drawer {
     position: fixed;
@@ -353,7 +453,7 @@
 }
 
 /* ---------------------------------------------------------
-   11. INLINE OVERLAY PANEL
+   12. INLINE OVERLAY PANEL
 --------------------------------------------------------- */
 .overlay-inline-container {
     position: relative;
@@ -414,7 +514,7 @@
 }
 
 /* ---------------------------------------------------------
-   12. SPLIT MODAL
+   13. SPLIT MODAL
 --------------------------------------------------------- */
 .modal--split .modal__inner {
     display: grid;
@@ -440,7 +540,7 @@
 }
 
 /* ---------------------------------------------------------
-   13. OPTIONAL MODAL CHROME REMOVAL
+   14. OPTIONAL MODAL CHROME REMOVAL
 --------------------------------------------------------- */
 .modal--no-header .modal__header {
     display: none;
@@ -451,7 +551,7 @@
 }
 
 /* ---------------------------------------------------------
-   14. STACKING LEVELS
+   15. STACKING LEVELS
 --------------------------------------------------------- */
 .modal--level-2 {
     z-index: calc(var(--z-modal, 90) + 10);
@@ -468,4 +568,3 @@
 .backdrop--level-3 {
     z-index: calc(var(--z-backdrop, 80) + 20);
 }
-

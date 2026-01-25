@@ -83,6 +83,7 @@
     </div>
 </section>
 
+
 <section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
     <div class="section__inner">
         <article class="doc-block">
@@ -109,8 +110,10 @@
                     <div>
                         <h3 class="text-sm">Semantic blocks</h3>
                         <ul class="text-sm">
-                            <li><code>.callout</code> + <code
-                                    >.semantic-*</code></li>
+                            <li><code>.callout</code> + <code>.semantic-info</code>,
+                                <code>.semantic-success</code>,
+                                <code>.semantic-warning</code>,
+                                <code>.semantic-danger</code></li>
                             <li><code>.stats</code></li>
                             <li><code>.metric-title</code></li>
                             <li><code>.highlight</code></li>
@@ -707,7 +710,7 @@
             </header>
 
             <div class="doc-block__body">
-                <div class="doc-block__preview grid grid-cols-3 sm:grid-cols-1 grid-justify-center items-center gap-6">
+                <div class="doc-block__preview section__grid-3 section__grid-sm grid-justify-center items-center">
                     <div class="avatar avatar--sm"></div>
                     <div class="avatar"></div>
                     <div class="avatar avatar--lg"></div>
@@ -823,7 +826,7 @@
 
             <div class="doc-block__body">
                 <div class="doc-block__preview">
-                    <div class="process grid grid-cols-4 md:grid-cols-1">
+                    <div class="process">
                         <div class="process__step process__step--complete">
                             <div class="text-sm">1. Configure</div>
                             <div class="text-xs text-muted">Set up tokens and themes.</div>
@@ -1148,10 +1151,11 @@
 
                     <div class="content-block__header">
                         <div class="text-xs text-mono text-muted">content-block__header</div>
-                        <h3 class="text-sm">Header region</h3>
-                        <p class="text-xs text-muted">
+                        <div class="content-block__eyebrow">Context label</div>
+                        <div class="content-block__title">Header region</div>
+                        <div class="content-block__subtitle">
                             Optional. Use for block titles, microcopy or short intro text.
-                        </p>
+                        </div>
                     </div>
 
                     <div class="content-block__media">
@@ -1188,6 +1192,17 @@
                             region for titles, meta, labels or short prose.
                         </li>
                         <li>
+                            <code>.content-block__eyebrow</code>,
+                            <code>.content-block__title</code>,
+                            <code>.content-block__subtitle</code> — optional typographic
+                            slots for compact headings.
+                        </li>
+                        <li>
+                            <code>.content-block__meta</code>,
+                            <code>.content-block__actions</code> — metadata and action
+                            groupings inside header, body or footer regions.
+                        </li>
+                        <li>
                             <code>.content-block__media</code> — optional media
                             container for images, charts or icons (auto-centred).
                         </li>
@@ -1198,6 +1213,21 @@
                         <li>
                             <code>.content-block__footer</code> — optional region
                             for actions, secondary controls or meta links.
+                        </li>
+                        <li>
+                            <code>.content-block__main</code>,
+                            <code>.content-block__aside</code> — split layout columns
+                            for primary and secondary content.
+                        </li>
+                        <li>
+                            <code>.content-block__grid</code>,
+                            <code>.content-block__list</code>,
+                            <code>.content-block__rows</code> — structured layout helpers
+                            for repeated data.
+                        </li>
+                        <li>
+                            <code>.content-block__kv</code>,
+                            <code>.content-block__kpis</code> — key-value and metric groups.
                         </li>
                     </ul>
                 </div>
@@ -1226,6 +1256,31 @@
                             <li>
                                 <code>.content-block--bordered</code> —
                                 strong-outline variant for emphasis or separation.
+                            </li>
+                            <li>
+                                <code>.content-block--tint</code>,
+                                <code>.content-block--outline</code>,
+                                <code>.content-block--rail</code> —
+                                semantic surface, outline and rail accents.
+                            </li>
+                            <li>
+                                <code>.content-block--hero</code>,
+                                <code>.content-block--center</code> —
+                                larger padding and centered layouts for CTA blocks.
+                            </li>
+                            <li>
+                                <code>.content-block--split</code>,
+                                <code>.content-block--split-reverse</code> —
+                                two-column layouts with main/aside regions.
+                            </li>
+                            <li>
+                                <code>.content-block--elevated</code>,
+                                <code>.content-block--flat</code> —
+                                control shadow and elevation.
+                            </li>
+                            <li>
+                                <code>data-variant="info|success|warning|danger|accent|neutral"</code> —
+                                injects semantic tokens for rails, tint, text and borders.
                             </li>
                             <li>
                                 <code>.content-block--interactive</code> —
@@ -1268,6 +1323,333 @@
 &lt;/div&gt;</code></pre>
                 </div>
 
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Content-block variants & semantic rails</h2>
+                <p class="doc-block__summary">
+                    Use semantic variants with rail, tint, and outline modifiers to signal emphasis
+                    without turning blocks into callouts.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview grid grid-cols-3 grid-auto-fit-300 gap-8">
+                    <div class="content-block content-block--surface content-block--rail" data-variant="accent">
+                        <div class="content-block__eyebrow">Priority</div>
+                        <div class="content-block__title">Launch checklist</div>
+                        <div class="content-block__subtitle">3 tasks remaining</div>
+                        <div class="content-block__meta">
+                            <span>Due today</span>
+                            <span>Owner: Ops</span>
+                        </div>
+                    </div>
+
+                    <div class="content-block content-block--surface content-block--tint" data-variant="info">
+                        <div class="content-block__eyebrow">Update</div>
+                        <div class="content-block__title">Platform migration</div>
+                        <div class="content-block__subtitle">Copy review in progress.</div>
+                        <div class="content-block__actions">
+                            <button class="button button--sm">Review</button>
+                            <button class="button button--ghost button--sm">Snooze</button>
+                        </div>
+                    </div>
+
+                    <div class="content-block content-block--surface content-block--outline content-block--compact"
+                         data-variant="warning">
+                        <div class="content-block__title">Maintenance window</div>
+                        <div class="content-block__subtitle">Friday 02:00-04:00 UTC</div>
+                        <div class="content-block__meta">
+                            <span>Services: API, web</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="content-block content-block--surface content-block--rail" data-variant="accent"&gt;
+  &lt;div class="content-block__eyebrow"&gt;Priority&lt;/div&gt;
+  &lt;div class="content-block__title"&gt;Launch checklist&lt;/div&gt;
+  &lt;div class="content-block__subtitle"&gt;3 tasks remaining&lt;/div&gt;
+  &lt;div class="content-block__meta"&gt;
+    &lt;span&gt;Due today&lt;/span&gt;
+    &lt;span&gt;Owner: Ops&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-block content-block--surface content-block--tint" data-variant="info"&gt;
+  &lt;div class="content-block__title"&gt;Platform migration&lt;/div&gt;
+  &lt;div class="content-block__actions"&gt;
+    &lt;button class="button button--sm"&gt;Review&lt;/button&gt;
+    &lt;button class="button button--ghost button--sm"&gt;Snooze&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-block content-block--surface content-block--outline content-block--compact"
+     data-variant="warning"&gt;
+  &lt;div class="content-block__title"&gt;Maintenance window&lt;/div&gt;
+  &lt;div class="content-block__subtitle"&gt;Friday 02:00-04:00 UTC&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section section--inset">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Split layouts & media bleed</h2>
+                <p class="doc-block__summary">
+                    Split layouts create main-and-aside structures. Media bleed lets imagery span
+                    the full surface width while preserving token-driven padding.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview">
+                    <div class="content-block content-block--surface content-block--split">
+                        <div class="content-block__main section__stack-sm">
+                            <div class="content-block__eyebrow">Release</div>
+                            <div class="content-block__title">Deployment briefing</div>
+                            <div class="content-block__body text-sm text-muted">
+                                Align ownership, confirm status, and ship the next set of updates.
+                            </div>
+                            <div class="content-block__grid content-block__grid--tight">
+                                <span class="chip chip--soft">Ops</span>
+                                <span class="chip chip--soft">Release</span>
+                                <span class="chip chip--soft">Checklist</span>
+                            </div>
+                            <div class="content-block__actions">
+                                <button class="button button--sm">Review</button>
+                                <button class="button button--ghost button--sm">Open queue</button>
+                            </div>
+                        </div>
+
+                        <div class="content-block__aside section__stack-sm">
+                            <div class="content-block__kpis">
+                                <div class="content-block__kpi">
+                                    <div class="content-block__kpi-value">12</div>
+                                    <div class="content-block__kpi-label">Tasks</div>
+                                </div>
+                                <div class="content-block__kpi">
+                                    <div class="content-block__kpi-value">3</div>
+                                    <div class="content-block__kpi-label">Owners</div>
+                                </div>
+                            </div>
+
+                            <div class="content-block__list">
+                                <div class="content-block__list-item">
+                                    <span class="text-sm">Build assets</span>
+                                    <span class="text-xs text-muted">2m</span>
+                                </div>
+                                <div class="content-block__list-item">
+                                    <span class="text-sm">Run checks</span>
+                                    <span class="text-xs text-muted">5m</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="content-block content-block--surface">
+                        <div class="content-block__media content-block__media--bleed">
+                            <img src="https://picsum.photos/seed/bleed/640/320" alt="Sample media">
+                        </div>
+                        <div class="content-block__body text-sm text-muted">
+                            Use <code>.content-block__media--bleed</code> to let imagery or charts
+                            stretch to the block edge while keeping copy padded.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="content-block content-block--surface content-block--split"&gt;
+  &lt;div class="content-block__main"&gt;
+    &lt;div class="content-block__title"&gt;Deployment briefing&lt;/div&gt;
+    &lt;div class="content-block__grid content-block__grid--tight"&gt;...&lt;/div&gt;
+    &lt;div class="content-block__actions"&gt;
+      &lt;button class="button button--sm"&gt;Review&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="content-block__aside"&gt;
+    &lt;div class="content-block__kpis"&gt;...&lt;/div&gt;
+    &lt;div class="content-block__list"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-block content-block--surface"&gt;
+  &lt;div class="content-block__media content-block__media--bleed"&gt;
+    &lt;img src="..." alt="Sample media"&gt;
+  &lt;/div&gt;
+  &lt;div class="content-block__body"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-dock-block data-vds-content-block data-vds-content-block class="section">
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Data blocks, rows, and CTA surfaces</h2>
+                <p class="doc-block__summary">
+                    Content-blocks scale from dense data stacks to large CTA panels. Use rows,
+                    key-value grids, KPI tiles, and hero padding to keep structure consistent.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview grid grid-cols-3 grid-auto-fit-300 gap-8">
+                    <div class="content-block content-block--surface section__stack-sm">
+                        <div class="content-block__header">
+                            <div class="content-block__title">Queue</div>
+                            <div class="content-block__subtitle">Next items</div>
+                        </div>
+                        <div class="content-block__rows">
+                            <div class="content-block__row">
+                                <div>
+                                    <div class="text-sm">Import assets</div>
+                                    <div class="text-xs text-muted">Queue item</div>
+                                </div>
+                                <button class="button button--ghost button--sm">Open</button>
+                            </div>
+                            <div class="content-block__row">
+                                <div>
+                                    <div class="text-sm">Sync logs</div>
+                                    <div class="text-xs text-muted">Queue item</div>
+                                </div>
+                                <button class="button button--ghost button--sm">Open</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-block content-block--inset section__stack-sm">
+                        <div class="content-block__header">
+                            <div class="content-block__title">Project details</div>
+                            <div class="content-block__subtitle">Key metadata</div>
+                        </div>
+                        <div class="content-block__kv">
+                            <div class="content-block__kv-label">Owner</div>
+                            <div class="content-block__kv-value">Platform team</div>
+                            <div class="content-block__kv-label">Region</div>
+                            <div class="content-block__kv-value">EU West</div>
+                            <div class="content-block__kv-label">Updated</div>
+                            <div class="content-block__kv-value">Today, 09:12</div>
+                        </div>
+                    </div>
+
+                    <div class="content-block content-block--surface section__stack-sm">
+                        <div class="content-block__header">
+                            <div class="content-block__title">Weekly impact</div>
+                            <div class="content-block__subtitle">Operations snapshot</div>
+                        </div>
+                        <div class="content-block__kpis">
+                            <div class="content-block__kpi">
+                                <div class="content-block__kpi-value">32</div>
+                                <div class="content-block__kpi-label">Items shipped</div>
+                            </div>
+                            <div class="content-block__kpi">
+                                <div class="content-block__kpi-value">4h</div>
+                                <div class="content-block__kpi-label">Avg. cycle</div>
+                            </div>
+                            <div class="content-block__kpi">
+                                <div class="content-block__kpi-value">98%</div>
+                                <div class="content-block__kpi-label">Pass rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__preview">
+                    <div class="content-block content-block--surface content-block--hero content-block--center content-block--tint"
+                         data-variant="accent">
+                        <div class="content-block__eyebrow">Ready to start</div>
+                        <div class="content-block__title">Build your command center</div>
+                        <div class="content-block__subtitle">
+                            Combine content blocks, actions, and flows for a cohesive system.
+                        </div>
+                        <div class="content-block__actions">
+                            <a href="#" class="button button--primary button--lg">Start now</a>
+                            <a href="#" class="button button--ghost button--lg">View docs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div class="content-block content-block--surface"&gt;
+  &lt;div class="content-block__rows"&gt;
+    &lt;div class="content-block__row"&gt;
+      &lt;div&gt;
+        &lt;div class="text-sm"&gt;Import assets&lt;/div&gt;
+        &lt;div class="text-xs text-muted"&gt;Queue item&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button class="button button--ghost button--sm"&gt;Open&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-block content-block--inset"&gt;
+  &lt;div class="content-block__kv"&gt;
+    &lt;div class="content-block__kv-label"&gt;Owner&lt;/div&gt;
+    &lt;div class="content-block__kv-value"&gt;Platform team&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-block content-block--surface"&gt;
+  &lt;div class="content-block__kpis"&gt;
+    &lt;div class="content-block__kpi"&gt;
+      &lt;div class="content-block__kpi-value"&gt;32&lt;/div&gt;
+      &lt;div class="content-block__kpi-label"&gt;Items shipped&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-block content-block--surface content-block--hero content-block--center content-block--tint"
+     data-variant="accent"&gt;
+  &lt;div class="content-block__title"&gt;Build your command center&lt;/div&gt;
+  &lt;div class="content-block__actions"&gt;
+    &lt;a class="button button--primary button--lg"&gt;Start now&lt;/a&gt;
+    &lt;a class="button button--ghost button--lg"&gt;View docs&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
             </div>
         </article>
     </div>
@@ -2221,7 +2603,7 @@
 
                         <li>Use <code>aria-current</code>,
                             <code>--selected</code> variants and semantic tokens
-                            (<code>semantic-*</code>) to express state.
+                            (<code>semantic-info</code>/<code>semantic-success</code>/<code>semantic-warning</code>/<code>semantic-danger</code>) to express state.
                         </li>
 
                         <li>Use block shells (<code>.card</code>,
@@ -2292,7 +2674,7 @@
             <div class="doc-block__code">
 <pre class="doc-block__code"><code>1. Use &lt;button&gt;/&lt;a&gt; for interactive cards, list items, chips and tags.
 2. Provide accessible names for all interactive surfaces.
-3. Apply semantic meaning via tokens (semantic-*) not custom colours.
+3. Apply semantic meaning via tokens (semantic-info/semantic-success/semantic-warning/semantic-danger) not custom colours.
 4. Keep blocks layout-neutral; use utilities for spacing/grid/stack.
 5. Preserve focus-visible for interactive variants (never remove).
 6. Use --selected and aria-current to expose selection state.
@@ -2573,3 +2955,4 @@
         </article>
     </div>
 </section>
+

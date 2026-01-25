@@ -577,6 +577,7 @@
                 </div>
             </div>
         </article>
+
     </div>
 </section>
 
@@ -658,6 +659,120 @@
                 </div>
             </div>
         </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Sticky footer + scroll container</h2>
+                <p class="doc-block__summary">
+                    Pair <code>.table--sticky-header</code> and <code>.table--sticky-footer</code>
+                    inside a fixed-height wrapper (<code>.scroll-y</code> + max-height) to keep
+                    totals visible during review.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="table-wrapper scroll-y" style="max-height: 16rem;">
+                        <table class="table table--b table--striped table--sticky-header table--sticky-footer">
+                            <thead>
+                            <tr>
+                                <th scope="col">Invoice</th>
+                                <th scope="col">Client</th>
+                                <th scope="col">Due</th>
+                                <th scope="col" class="table-cell--right">Amount</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                                <td>#INV-4812</td>
+                                <td>Northwind</td>
+                                <td>2025-05-04</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">1,240.00</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-4813</td>
+                                <td>Atlas Bank</td>
+                                <td>2025-05-05</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">980.00</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-4814</td>
+                                <td>Beacon Labs</td>
+                                <td>2025-05-06</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">2,120.00</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-4815</td>
+                                <td>Delta Motors</td>
+                                <td>2025-05-06</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">640.00</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-4816</td>
+                                <td>Kepler Systems</td>
+                                <td>2025-05-07</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">3,800.00</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-4817</td>
+                                <td>Lantern Studio</td>
+                                <td>2025-05-08</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">1,520.00</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-4818</td>
+                                <td>Mariner Co</td>
+                                <td>2025-05-10</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">910.00</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-4819</td>
+                                <td>Orchid Digital</td>
+                                <td>2025-05-11</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">1,640.00</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-4820</td>
+                                <td>Pulse Analytics</td>
+                                <td>2025-05-12</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">2,450.00</span></td>
+                            </tr>
+                            </tbody>
+
+                            <tfoot>
+                            <tr class="table-row--summary">
+                                <td colspan="3">Total outstanding</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">15,300.00</span></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="table-wrapper scroll-y" style="max-height: 16rem;"&gt;
+    &lt;table class="table table--b table--striped table--sticky-header table--sticky-footer"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Invoice&lt;/th&gt;
+                &lt;th&gt;Client&lt;/th&gt;
+                &lt;th&gt;Due&lt;/th&gt;
+                &lt;th class="table-cell--right"&gt;Amount&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;...&lt;/tbody&gt;
+        &lt;tfoot&gt;
+            &lt;tr class="table-row--summary"&gt;
+                &lt;td colspan="3"&gt;Total outstanding&lt;/td&gt;
+                &lt;td class="table-cell--right"&gt;&lt;span class="t-cur cur-eur"&gt;15,300.00&lt;/span&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tfoot&gt;
+    &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
     </div>
 </section>
 
@@ -680,7 +795,10 @@
                                 <div class="table-panel__title">Active subscriptions</div>
                                 <div class="table-panel__meta">Last updated: 2025-05-06 · 12 items</div>
                             </div>
-                            <button class="button button--ghost button--sm">Export</button>
+                            <div class="table-panel__actions">
+                                <button class="button button--ghost button--sm">Filter</button>
+                                <button class="button button--ghost button--sm">Export</button>
+                            </div>
                         </div>
 
                         <div class="table-wrapper">
@@ -721,7 +839,10 @@
             &lt;div class="table-panel__title"&gt;Active subscriptions&lt;/div&gt;
             &lt;div class="table-panel__meta"&gt;Last updated: 2025-05-06 · 12 items&lt;/div&gt;
         &lt;/div&gt;
-        &lt;button class="button button--ghost button--sm"&gt;Export&lt;/button&gt;
+        &lt;div class="table-panel__actions"&gt;
+            &lt;button class="button button--ghost button--sm"&gt;Filter&lt;/button&gt;
+            &lt;button class="button button--ghost button--sm"&gt;Export&lt;/button&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 
     &lt;div class="table-wrapper"&gt;
@@ -886,6 +1007,135 @@
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
+                <h2 class="doc-block__title">Layout &amp; alignment helpers</h2>
+                <p class="doc-block__summary">
+                    Use <code>.table--fixed</code> with per-cell truncation for long text, alignment helpers
+                    for numeric columns, <code>.table--nowrap</code> for single-line rows, and
+                    <code>.table--selectable</code> when rows open detail views. Add sticky end columns
+                    for actions and footer totals for summaries.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="table-wrapper">
+                                <table class="table table--b table--fixed table--hover table--sticky-header table--sticky-col-end table--sticky-footer table--selectable">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Invoice</th>
+                                        <th scope="col">Client</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col" class="table-cell--right">Amount</th>
+                                        <th scope="col" class="table-cell--center">Status</th>
+                                        <th scope="col" class="table-cell--center">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>INV-0912</td>
+                                        <td>Studio K</td>
+                                        <td class="table-cell--truncate"
+                                            title="Quarterly retainer for brand system refresh and research.">
+                                            Quarterly retainer for brand system refresh and research.
+                                        </td>
+                                        <td class="table-cell--right"><span class="t-cur cur-eur">4,200.00</span></td>
+                                        <td class="table-cell--center table-cell--muted">Paid</td>
+                                        <td class="table-cell--center">
+                                            <div class="table-actions">
+                                                <button class="button button--ghost button--xs">View</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>INV-0913</td>
+                                        <td>Northwind</td>
+                                        <td class="table-cell--truncate"
+                                            title="Design systems support, multi-team onboarding and training.">
+                                            Design systems support, multi-team onboarding and training.
+                                        </td>
+                                        <td class="table-cell--right"><span class="t-cur cur-eur">1,120.00</span></td>
+                                        <td class="table-cell--center table-cell--muted">Pending</td>
+                                        <td class="table-cell--center">
+                                            <div class="table-actions">
+                                                <button class="button button--ghost button--xs">View</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>INV-0914</td>
+                                        <td>Valley Labs</td>
+                                        <td class="table-cell--truncate"
+                                            title="UI refresh sprint, rapid prototype testing, and polish.">
+                                            UI refresh sprint, rapid prototype testing, and polish.
+                                        </td>
+                                        <td class="table-cell--right"><span class="t-cur cur-eur">2,980.00</span></td>
+                                        <td class="table-cell--center table-cell--muted">Queued</td>
+                                        <td class="table-cell--center">
+                                            <div class="table-actions">
+                                                <button class="button button--ghost button--xs">View</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="table-row--summary">
+                                        <td colspan="3" class="table-cell--strong">Total</td>
+                                        <td class="table-cell--right"><span class="t-cur cur-eur">8,300.00</span></td>
+                                        <td class="table-cell--center table-cell--muted">3 rows</td>
+                                        <td></td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;table class="table table--b table--fixed table--sticky-col-end table--sticky-footer"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Invoice&lt;/th&gt;
+            &lt;th&gt;Client&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+            &lt;th class="table-cell--right"&gt;Amount&lt;/th&gt;
+            &lt;th class="table-cell--center"&gt;Status&lt;/th&gt;
+            &lt;th class="table-cell--center"&gt;Actions&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;INV-0912&lt;/td&gt;
+            &lt;td&gt;Studio K&lt;/td&gt;
+            &lt;td class="table-cell--truncate"&gt;Quarterly retainer...&lt;/td&gt;
+            &lt;td class="table-cell--right"&gt;&lt;span class="t-cur cur-eur"&gt;4,200.00&lt;/span&gt;&lt;/td&gt;
+            &lt;td class="table-cell--center table-cell--muted"&gt;Paid&lt;/td&gt;
+            &lt;td class="table-cell--center"&gt;
+                &lt;div class="table-actions"&gt;
+                    &lt;button class="button button--ghost button--xs"&gt;View&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr class="table-row--summary"&gt;
+            &lt;td colspan="3" class="table-cell--strong"&gt;Total&lt;/td&gt;
+            &lt;td class="table-cell--right"&gt;&lt;span class="t-cur cur-eur"&gt;8,300.00&lt;/span&gt;&lt;/td&gt;
+            &lt;td class="table-cell--center table-cell--muted"&gt;3 rows&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;
+
+&lt;table class="table table--b table--nowrap"&gt;…&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
                 <h2 class="doc-block__title">Row states</h2>
                 <p class="doc-block__summary">
                     Apply semantic row classes on <code>&lt;tr&gt;</code> to visually mark status:
@@ -961,6 +1211,107 @@
                 </div>
             </div>
         </article>
+
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Selection + checkbox column</h2>
+                <p class="doc-block__summary">
+                    Use a narrow first column with <code>.choice--checkbox</code> and
+                    <code>.table-row--selected</code> to express selection without breaking density.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="table-wrapper">
+                        <table class="table table--b table--hover table--selectable">
+                            <thead>
+                            <tr>
+                                <th scope="col" class="table-cell--center" style="width: 2.5rem;">
+                                    <label class="choice choice--checkbox">
+                                        <input class="choice__input" type="checkbox"
+                                               aria-label="Select all rows">
+                                        <span class="choice__indicator"></span>
+                                    </label>
+                                </th>
+                                <th scope="col">Project</th>
+                                <th scope="col">Owner</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" class="table-cell--right">Budget</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr class="table-row--selected">
+                                <td class="table-cell--center">
+                                    <label class="choice choice--checkbox">
+                                        <input class="choice__input" type="checkbox" checked
+                                               aria-label="Select Apollo rollout">
+                                        <span class="choice__indicator"></span>
+                                    </label>
+                                </td>
+                                <td>Apollo rollout</td>
+                                <td>Mara Visconti</td>
+                                <td>In progress</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">48,000.00</span></td>
+                            </tr>
+
+                            <tr>
+                                <td class="table-cell--center">
+                                    <label class="choice choice--checkbox">
+                                        <input class="choice__input" type="checkbox"
+                                               aria-label="Select Ledger migration">
+                                        <span class="choice__indicator"></span>
+                                    </label>
+                                </td>
+                                <td>Ledger migration</td>
+                                <td>Ion Pop</td>
+                                <td>Queued</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">12,500.00</span></td>
+                            </tr>
+
+                            <tr class="table-row--selected">
+                                <td class="table-cell--center">
+                                    <label class="choice choice--checkbox">
+                                        <input class="choice__input" type="checkbox" checked
+                                               aria-label="Select Atlas audit">
+                                        <span class="choice__indicator"></span>
+                                    </label>
+                                </td>
+                                <td>Atlas audit</td>
+                                <td>Gabi Andrei</td>
+                                <td>Review</td>
+                                <td class="table-cell--right"><span class="t-cur cur-eur">6,800.00</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;table class="table table--b table--hover table--selectable"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th class="table-cell--center" style="width: 2.5rem;"&gt;
+                &lt;label class="choice choice--checkbox"&gt;
+                    &lt;input class="choice__input" type="checkbox" aria-label="Select all rows"&gt;
+                    &lt;span class="choice__indicator"&gt;&lt;/span&gt;
+                &lt;/label&gt;
+            &lt;/th&gt;
+            &lt;th&gt;Project&lt;/th&gt;
+            &lt;th&gt;Owner&lt;/th&gt;
+            &lt;th&gt;Status&lt;/th&gt;
+            &lt;th class="table-cell--right"&gt;Budget&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr class="table-row--selected"&gt;...&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+
     </div>
 </section>
 
@@ -1572,9 +1923,24 @@
                         </li>
 
                         <li>
+                            Use <code>.table-panel__actions</code> to group filters, exports, or bulk actions
+                            without stretching the header.
+                        </li>
+
+                        <li>
                             Apply row-state classes semantically:
                             <code>.table-row--success</code>, <code>--danger</code>, <code>--warning</code>,
                             <code>--info</code>, <code>--muted</code>.
+                        </li>
+
+                        <li>
+                            Use <code>.table--fixed</code> with <code>.table-cell--truncate</code> when you need
+                            ellipsis for long text, and expose full values in <code>title</code> attributes.
+                        </li>
+
+                        <li>
+                            Add a totals row in <code>&lt;tfoot&gt;</code> (or
+                            <code>.table-row--summary</code>) for financial summaries.
                         </li>
 
                         <li>
@@ -1589,7 +1955,7 @@
                         </li>
 
                         <li>
-                            Use finance states (namespaced <code>.table-fin--*</code>) for meaning —
+                            Use finance states (namespaced <code>.table-fin--good</code>/<code>.table-fin--bad</code>/<code>.table-fin--warning</code>/<code>.table-fin--info</code>/<code>.table-fin--muted</code>/<code>.table-fin--flagged</code>/<code>.table-fin--curious</code>) for meaning —
                             good / bad / flagged, etc. — not decoration.
                         </li>
 
@@ -1644,6 +2010,11 @@
                         <li>
                             Don’t use sticky columns (<code>.table--sticky-col</code>) unless the table
                             horizontally scrolls; otherwise it creates unnecessary overlap.
+                        </li>
+
+                        <li>
+                            Don’t expect <code>.table-cell--truncate</code> to work without a fixed layout
+                            (<code>.table--fixed</code>) or explicit column widths.
                         </li>
 
                         <li>
