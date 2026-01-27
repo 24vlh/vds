@@ -120,6 +120,112 @@ Sections:
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
+                <h2 class="doc-block__title">Expanded forms & layout utilities</h2>
+                <p class="doc-block__summary">
+                    Use the inbox utility helpers to keep expanded forms readable:
+                    <code>.inbox__stack</code> for vertical rhythm,
+                    <code>.inbox__cluster</code> for compact chips or meta,
+                    <code>.inbox__form</code> + <code>.inbox__form-row</code> to align fields,
+                    and <code>.inbox__form-actions</code> to separate buttons from inputs.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <div class="inbox__list">
+                        <div aria-label="Open row with form"
+                             class="inbox-row inbox-row--normal inbox-row--open" role="group" tabindex="0">
+                            <div aria-expanded="true" class="inbox-row__main">
+                                <div class="inbox-row__inner">
+                                    <div class="inbox-row__meta">
+                                        <div class="inbox-row__titleline">
+                                            <div class="inbox-row__title">Expanded form with inbox utilities</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="inbox-row__actions inbox-row__actions--right">
+                                        <a class="inbox-action inbox-action--flat" href="#">Close</a>
+                                    </div>
+
+                                    <div class="inbox-row__data">
+                                        <div class="inbox-row__glance">
+                                            Stack utilities create space between actions and fields.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="inbox-row__expanded">
+                                    <div class="inbox__stack inbox__stack--tight">
+                                        <div class="inbox__cluster">
+                                            <span class="inbox-badge">Draft</span>
+                                            <span class="inbox-badge inbox-badge--info">Form</span>
+                                        </div>
+
+                                        <form class="inbox__form" action="#">
+                                            <div class="inbox__form-row">
+                                                <div class="form-field">
+                                                    <div class="form-label-row">
+                                                        <label class="form-label" for="inbox-form-title">Title</label>
+                                                    </div>
+                                                    <input class="form-control" id="inbox-form-title"
+                                                           placeholder="Short title" type="text"/>
+                                                </div>
+                                                <div class="form-field">
+                                                    <div class="form-label-row">
+                                                        <label class="form-label" for="inbox-form-owner">Owner</label>
+                                                    </div>
+                                                    <select class="form-control" id="inbox-form-owner">
+                                                        <option>Unassigned</option>
+                                                        <option>Owner A</option>
+                                                        <option>Owner B</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <div class="form-label-row">
+                                                    <label class="form-label" for="inbox-form-notes">Notes</label>
+                                                </div>
+                                                <textarea class="form-control" id="inbox-form-notes" rows="3"
+                                                          placeholder="Add detail..."></textarea>
+                                            </div>
+
+                                            <div class="inbox__form-actions">
+                                                <button class="button button--primary" type="button">Save</button>
+                                                <button class="button button--ghost" type="button">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="inbox-row inbox-row--open"&gt;
+  &lt;div class="inbox-row__expanded"&gt;
+    &lt;div class="inbox__stack inbox__stack--tight"&gt;
+      &lt;div class="inbox__cluster"&gt;...&lt;/div&gt;
+      &lt;form class="inbox__form"&gt;
+        &lt;div class="inbox__form-row"&gt;...&lt;/div&gt;
+        &lt;div class="form-field"&gt;...&lt;/div&gt;
+        &lt;div class="inbox__form-actions"&gt;...&lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-inbox>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
                 <h2 class="doc-block__title">Structural model</h2>
                 <p class="doc-block__summary">
                     An inbox contains an optional navigation surface and a list. Each row is a container with a
@@ -2446,4 +2552,3 @@ Section:
         </article>
     </div>
 </section>
-
