@@ -1,1 +1,1 @@
-npm-safe run lint-staged
+pnpm run lint-staged
