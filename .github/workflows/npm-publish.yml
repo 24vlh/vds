@@ -12,7 +12,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,9 +38,21 @@ jobs:
       # For VDS, build output is usually dist/
       - name: Prepare publish directory
         run: |
-          mkdir publish
-          cp -R dist publish/dist
-          cp package.json publish/
+          rm -rf publish
+          mkdir -p publish/dist
+          cp -R dist/* publish/dist/
+
+          # Create a sanitized package.json for publishing:
+          # - remove scripts (prevents husky/prepare from ever running)
+          # - remove devDependencies (optional, but clean)
+          node -e "
+            const fs = require('fs');
+            const p = JSON.parse(fs.readFileSync('package.json','utf8'));
+            delete p.scripts;
+            delete p.devDependencies;
+            fs.writeFileSync('publish/package.json', JSON.stringify(p, null, 2));
+          "
+
           cp README.md publish/ || true
           cp LICENSE publish/ || true
 
@@ -54,7 +65,9 @@ jobs:
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
-
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -66,11 +79,6 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
       - name: Publish to npm (trusted publishing)
-        run: npm publish --access public --ignore-scripts
+        run: npm publish --access public --provenance
         working-directory: publish
