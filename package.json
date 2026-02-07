@@ -44,7 +44,7 @@
   },
   "lint-staged": {
     "src/**/*.css": [
-      "npm-safe run build"
+      "pnpm run build"
     ]
   }
 }
