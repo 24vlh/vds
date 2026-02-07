@@ -5740,6 +5740,125 @@ a.button:hover {
 }
 
 /* ---------------------------------------------------------
+   11b. CHIP GROUPS (LABEL + ACTIONS)
+--------------------------------------------------------- */
+
+.chip-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    gap: var(--component-gap-xs);
+    padding: 0.75rem 1rem;
+    padding: var(--component-gap-sm) var(--component-gap-md);
+    height: var(--content-block-tag-size-md);
+    font-size: 0.8125rem;
+    font-size: var(--text-xs);
+    border-radius: 9999px;
+    border: var(--content-block-component-border-sm) solid var(--color-border-subtle);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+}
+
+.chip-group--sm {
+    height: var(--content-block-tag-size-sm);
+}
+
+.chip-group--lg {
+    height: var(--content-block-tag-size-lg);
+}
+
+.chip-group--soft {
+    background-color: var(--color-surface-subtle);
+}
+
+.chip-group--outline {
+    background-color: transparent;
+    border-color: var(--color-border-strong);
+}
+
+.chip-group--interactive {
+    cursor: pointer;
+    transition: background-color 120ms ease-out, border-color 120ms ease-out, color 120ms ease-out;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.chip-group--interactive:hover {
+    background-color: var(--color-surface-hover);
+    border-color: var(--color-border-strong);
+}
+
+.chip-group--interactive:focus-visible {
+    outline: 2px solid var(--focus-ring-color);
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: 2px;
+    outline-offset: var(--focus-ring-offset);
+}
+
+.chip-group--disabled {
+    opacity: 0.5;
+    opacity: var(--content-block-component-disabled--opacity, 0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.chip-group.semantic-info {
+    background-color: var(--semantic-info-bg);
+    color: var(--semantic-info-text);
+}
+
+.chip-group.semantic-warning {
+    background-color: var(--semantic-warning-bg);
+    color: var(--semantic-warning-text);
+}
+
+.chip-group.semantic-success {
+    background-color: var(--semantic-success-bg);
+    color: var(--semantic-success-text);
+}
+
+.chip-group.semantic-danger {
+    background-color: var(--semantic-danger-bg);
+    color: var(--semantic-danger-text);
+}
+
+.chip-group__label,
+.chip-group__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    gap: var(--component-gap-xs);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: 1;
+}
+
+.chip-group__label {
+    cursor: default;
+}
+
+.chip-group__action {
+    cursor: pointer;
+    padding: 0 0.5rem;
+    padding: 0 var(--space-2);
+    border-left: var(--content-block-component-border-sm) solid var(--color-border-subtle);
+}
+
+.chip-group__action:hover {
+    background-color: var(--color-surface-hover);
+}
+
+.chip-group__label:focus-visible,
+.chip-group__action:focus-visible {
+    outline: 2px solid var(--focus-ring-color);
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: 2px;
+    outline-offset: var(--focus-ring-offset);
+}
+
+/* ---------------------------------------------------------
    12. AVATAR + STATUS
 --------------------------------------------------------- */
 
@@ -9691,6 +9810,20 @@ select.form-control:not([multiple]):not([size]) {
     font-size: 0.8125rem;
     font-size: var(--text-xs);
     color: var(--color-text-muted);
+}
+
+.form-help-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    gap: var(--space-2);
+}
+
+.form-help-row__counter {
+    margin-left: auto;
+    text-align: right;
 }
 
 .form-help--error {
@@ -14294,6 +14427,11 @@ select.form-control:not([multiple]):not([size]) {
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='3' width='8' height='2' fill='white'/%3E%3Crect x='7.375' y='5' width='1.25' height='5.5' fill='white'/%3E%3Cpath d='M5.5 9 L8 12.2 L10.5 9 Z' fill='white'/%3E%3C/svg%3E");
 }
 
+.icon--transfer {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 2 L7.5 5 H6 V10 H3 V5 H1.5 Z' fill='white'/%3E%3Cpath d='M11.5 11 L8.5 8 H10 V3 H13 V8 H14.5 Z' fill='white'/%3E%3Crect x='2' y='12' width='12' height='2' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 2 L7.5 5 H6 V10 H3 V5 H1.5 Z' fill='white'/%3E%3Cpath d='M11.5 11 L8.5 8 H10 V3 H13 V8 H14.5 Z' fill='white'/%3E%3Crect x='2' y='12' width='12' height='2' fill='white'/%3E%3C/svg%3E");
+}
+
 .icon--user {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='5' r='3'/%3E%3Cpath d='M3 13c1.2-2 2.9-3 5-3s3.8 1 5 3'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='5' r='3'/%3E%3Cpath d='M3 13c1.2-2 2.9-3 5-3s3.8 1 5 3'/%3E%3C/svg%3E");
@@ -14452,6 +14590,11 @@ select.form-control:not([multiple]):not([size]) {
 .icon--sparkles {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cpath d='M8 2l1.2 2.8L12 6l-2.8 1.2L8 10l-1.2-2.8L4 6l2.8-1.2L8 2z'/%3E%3Cpath d='M3 11l.6 1.4L5 13l-1.4.6L3 15l-.6-1.4L1 13l1.4-.6L3 11z'/%3E%3Cpath d='M13 9l.6 1.4L15 11l-1.4.6L13 13l-.6-1.4L11 11l1.4-.6L13 9z'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cpath d='M8 2l1.2 2.8L12 6l-2.8 1.2L8 10l-1.2-2.8L4 6l2.8-1.2L8 2z'/%3E%3Cpath d='M3 11l.6 1.4L5 13l-1.4.6L3 15l-.6-1.4L1 13l1.4-.6L3 11z'/%3E%3Cpath d='M13 9l.6 1.4L15 11l-1.4.6L13 13l-.6-1.4L11 11l1.4-.6L13 9z'/%3E%3C/svg%3E");
+}
+
+.icon--ai-text {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='2' y='12' font-family='Arial,%20sans-serif' font-size='9' font-weight='700' fill='white'%3EAI%3C/text%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='2' y='12' font-family='Arial,%20sans-serif' font-size='9' font-weight='700' fill='white'%3EAI%3C/text%3E%3C/svg%3E");
 }
 
 /* ---------------------------------------------------------
@@ -15037,7 +15180,7 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 .icon-container--muted {
-    background-color: var(--color-bg-subtle);
+    background-color: var(--color-bg-soft);
     color: var(--color-text-muted);
 }
 
@@ -15790,12 +15933,12 @@ select.form-control:not([multiple]):not([size]) {
     transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
 
-.inbox-row:hover {
+.inbox-row__hover:hover {
     background: var(--inbox-row-bg-hover);
     border-color: var(--color-border-strong, var(--color-border-subtle));
 }
 
-.inbox-row:focus-visible {
+.inbox-row__focus-visible:focus-visible {
     outline: 2px solid var(--focus-ring-color);
     outline: var(--focus-ring-width) solid var(--focus-ring-color);
     outline-offset: 2px;
@@ -16617,9 +16760,25 @@ a.inbox-action.is-disabled {
     white-space: nowrap;
 }
 
-.inbox-filter__chip--active {
+button.inbox-filter__chip {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.inbox-filter__chip--active,
+.inbox-filter__chip.is-active,
+.inbox-filter__chip[aria-pressed="true"] {
     border-color: var(--color-accent);
     background: var(--color-accent-soft);
+}
+
+button.inbox-filter__chip:disabled,
+button.inbox-filter__chip[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .inbox-filter__actions {
@@ -26749,5 +26908,3 @@ code:not(pre code) {
         flex: none;
     }
 }
-
-/*# sourceMappingURL=vds.css.map */

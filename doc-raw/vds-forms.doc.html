@@ -886,7 +886,71 @@
     &lt;span class="form-label-meta"&gt;Optional&lt;/span&gt;
   &lt;/div&gt;
   &lt;input class="form-control" id="field-shell-inline" placeholder="Inline layout"&gt;
-  &lt;p class="form-help"&gt;Compact label/control layout.&lt;/p&gt;
+&lt;p class="form-help"&gt;Compact label/control layout.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Help row + counter</h3>
+                        <div class="form-field">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-shell-counter">Notes</label>
+                                <span class="form-label-meta">Optional</span>
+                            </div>
+                            <textarea class="form-control" id="field-shell-counter" rows="3"
+                                      placeholder="Type here"></textarea>
+                            <div class="form-help-row">
+                                <span class="form-help">Each line becomes a bullet.</span>
+                                <span class="form-help form-help-row__counter">12</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-field"&gt;
+  &lt;div class="form-label-row"&gt;
+    &lt;label class="form-label" for="field-shell-counter"&gt;Notes&lt;/label&gt;
+    &lt;span class="form-label-meta"&gt;Optional&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;textarea class="form-control" id="field-shell-counter" rows="3" placeholder="Type here"&gt;&lt;/textarea&gt;
+  &lt;div class="form-help-row"&gt;
+    &lt;span class="form-help"&gt;Each line becomes a bullet.&lt;/span&gt;
+    &lt;span class="form-help form-help-row__counter"&gt;12&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Help row (max length)</h3>
+                        <div class="form-field">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-shell-limit">Summary</label>
+                                <span class="form-label-meta form-label-meta--required">Required</span>
+                            </div>
+                            <textarea class="form-control" id="field-shell-limit" rows="3" maxlength="120"
+                                      placeholder="Stay under 120 characters"></textarea>
+                            <div class="form-help-row">
+                                <span class="form-help">Keep this under 120 characters.</span>
+                                <span class="form-help form-help-row__counter">120/120</span>
+                            </div>
+                            <div class="form-help-row">
+                                <span class="form-help form-help--warning">Max length reached.</span>
+                                <span class="form-help form-help--warning form-help-row__counter">120/120</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-field"&gt;
+  &lt;div class="form-label-row"&gt;
+    &lt;label class="form-label" for="field-shell-limit"&gt;Summary&lt;/label&gt;
+    &lt;span class="form-label-meta form-label-meta--required"&gt;Required&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;textarea class="form-control" id="field-shell-limit" rows="3" maxlength="120" placeholder="Stay under 120 characters"&gt;&lt;/textarea&gt;
+  &lt;div class="form-help-row"&gt;
+    &lt;span class="form-help"&gt;Keep this under 120 characters.&lt;/span&gt;
+    &lt;span class="form-help form-help-row__counter"&gt;120/120&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="form-help-row"&gt;
+    &lt;span class="form-help form-help--warning"&gt;Max length reached.&lt;/span&gt;
+    &lt;span class="form-help form-help--warning form-help-row__counter"&gt;120/120&lt;/span&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>

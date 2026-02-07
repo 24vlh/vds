@@ -636,6 +636,115 @@
 }
 
 /* ---------------------------------------------------------
+   11b. CHIP GROUPS (LABEL + ACTIONS)
+--------------------------------------------------------- */
+.chip-group {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--component-gap-xs);
+    padding: var(--component-gap-sm) var(--component-gap-md);
+    height: var(--content-block-tag-size-md);
+    font-size: var(--text-xs);
+    border-radius: 9999px;
+    border: var(--content-block-component-border-sm) solid var(--color-border-subtle);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+}
+
+.chip-group--sm {
+    height: var(--content-block-tag-size-sm);
+}
+
+.chip-group--lg {
+    height: var(--content-block-tag-size-lg);
+}
+
+.chip-group--soft {
+    background-color: var(--color-surface-subtle);
+}
+
+.chip-group--outline {
+    background-color: transparent;
+    border-color: var(--color-border-strong);
+}
+
+.chip-group--interactive {
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.chip-group--interactive:hover {
+    background-color: var(--color-surface-hover);
+    border-color: var(--color-border-strong);
+}
+
+.chip-group--interactive:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.chip-group--disabled {
+    opacity: var(--content-block-component-disabled--opacity, 0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.chip-group.semantic-info {
+    background-color: var(--semantic-info-bg);
+    color: var(--semantic-info-text);
+}
+
+.chip-group.semantic-warning {
+    background-color: var(--semantic-warning-bg);
+    color: var(--semantic-warning-text);
+}
+
+.chip-group.semantic-success {
+    background-color: var(--semantic-success-bg);
+    color: var(--semantic-success-text);
+}
+
+.chip-group.semantic-danger {
+    background-color: var(--semantic-danger-bg);
+    color: var(--semantic-danger-text);
+}
+
+.chip-group__label,
+.chip-group__action {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--component-gap-xs);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: 1;
+}
+
+.chip-group__label {
+    cursor: default;
+}
+
+.chip-group__action {
+    cursor: pointer;
+    padding: 0 var(--space-2);
+    border-left: var(--content-block-component-border-sm) solid var(--color-border-subtle);
+}
+
+.chip-group__action:hover {
+    background-color: var(--color-surface-hover);
+}
+
+.chip-group__label:focus-visible,
+.chip-group__action:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+/* ---------------------------------------------------------
    12. AVATAR + STATUS
 --------------------------------------------------------- */
 .avatar {

@@ -2209,6 +2209,63 @@ Section:
 &lt;/div&gt;
 </code></pre>
                 </div>
+
+                <div class="doc-block__preview" style="margin-top: var(--space-4);">
+                    <div aria-label="Inbox filters with ordering" class="inbox-filter" role="region">
+                        <div class="inbox-filter__group">
+                            <div class="inbox-filter__label">Filters</div>
+                            <button aria-pressed="true" class="inbox-filter__chip inbox-filter__chip--active" type="button">
+                                Bookmarked only
+                            </button>
+                            <button class="inbox-filter__chip" type="button">Pin bookmarks</button>
+                        </div>
+
+                        <div class="inbox-filter__group">
+                            <div class="inbox-filter__label">Sort</div>
+                            <button class="inbox-filter__chip" type="button">Default</button>
+                            <button aria-pressed="true" class="inbox-filter__chip inbox-filter__chip--active" type="button">
+                                Updated
+                            </button>
+                            <button class="inbox-filter__chip" type="button">Created</button>
+                            <button class="inbox-filter__chip" type="button">Name</button>
+                        </div>
+
+                        <div class="inbox-filter__group">
+                            <div class="inbox-filter__label">Order</div>
+                            <button aria-pressed="true" class="inbox-filter__chip inbox-filter__chip--active" type="button">
+                                Newest
+                            </button>
+                            <button class="inbox-filter__chip" type="button">Oldest</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="inbox-filter" role="region" aria-label="Inbox filters"&gt;
+  &lt;div class="inbox-filter__group"&gt;
+    &lt;div class="inbox-filter__label"&gt;Filters&lt;/div&gt;
+    &lt;button class="inbox-filter__chip inbox-filter__chip--active" type="button" aria-pressed="true"&gt;
+      Bookmarked only
+    &lt;/button&gt;
+    &lt;button class="inbox-filter__chip" type="button"&gt;Pin bookmarks&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class="inbox-filter__group"&gt;
+    &lt;div class="inbox-filter__label"&gt;Sort&lt;/div&gt;
+    &lt;button class="inbox-filter__chip" type="button"&gt;Default&lt;/button&gt;
+    &lt;button class="inbox-filter__chip inbox-filter__chip--active" type="button" aria-pressed="true"&gt;Updated&lt;/button&gt;
+    &lt;button class="inbox-filter__chip" type="button"&gt;Created&lt;/button&gt;
+    &lt;button class="inbox-filter__chip" type="button"&gt;Name&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class="inbox-filter__group"&gt;
+    &lt;div class="inbox-filter__label"&gt;Order&lt;/div&gt;
+    &lt;button class="inbox-filter__chip inbox-filter__chip--active" type="button" aria-pressed="true"&gt;Newest&lt;/button&gt;
+    &lt;button class="inbox-filter__chip" type="button"&gt;Oldest&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
             </div>
         </article>
     </div>
