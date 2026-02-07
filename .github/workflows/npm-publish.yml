@@ -22,9 +22,15 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
+          cache: pnpm
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm install --frozen-lockfile
 
       # Build VDS
       - name: Build (production)
@@ -61,8 +67,10 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
 
-      - name: Update pnpm for trusted publishing
-        run: pnpm install -g pnpm@latest
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Publish to npm (trusted publishing)
         run: pnpm publish --access public --ignore-scripts
