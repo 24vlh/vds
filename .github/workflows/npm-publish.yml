@@ -72,5 +72,5 @@ jobs:
           version: 9
 
       - name: Publish to npm (trusted publishing)
-        run: pnpm publish --access public --ignore-scripts
+        run: npm publish --access public --ignore-scripts
         working-directory: publish
