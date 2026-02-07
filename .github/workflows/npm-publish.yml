@@ -3,7 +3,7 @@ name: Publish VDS
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 permissions:
   id-token: write
@@ -12,6 +12,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -19,32 +22,36 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
+          # Build can stay on 20; publish job is the one that must meet npm >= 11.5.1
           node-version: 20
-          registry-url: https://registry.npmjs.org/
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
 
+      - name: Show tool versions
+        run: |
+          node --version
+          npm --version
+          pnpm --version
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Build VDS
       - name: Build (production)
         run: pnpm run build:prod
 
-      # Collect final publishable output
-      # For VDS, build output is usually dist/
+      # Create a publishable artifact with a sanitized package.json (no lifecycle scripts)
       - name: Prepare publish directory
         run: |
           rm -rf publish
           mkdir -p publish/dist
           cp -R dist/* publish/dist/
 
-          # Create a sanitized package.json for publishing:
-          # - remove scripts (prevents husky/prepare from ever running)
-          # - remove devDependencies (optional, but clean)
+          # Sanitize package.json for publishing:
+          # - remove scripts to prevent husky/prepare running in CI
+          # - remove devDependencies to keep the published metadata clean
           node -e "
             const fs = require('fs');
             const p = JSON.parse(fs.readFileSync('package.json','utf8'));
@@ -68,16 +75,26 @@ jobs:
     permissions:
       id-token: write
       contents: read
+
     steps:
-      - uses: actions/download-artifact@v4
+      - name: Download publish artifact
+        uses: actions/download-artifact@v4
         with:
           name: vds-publish
           path: publish/
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # Trusted publishing requires npm CLI >= 11.5.1.
+          # Node 24 ships with npm 11.x, satisfying the requirement.
+          node-version: 24
           registry-url: https://registry.npmjs.org/
+
+      - name: Show tool versions (publish job)
+        run: |
+          node --version
+          npm --version
 
       - name: Publish to npm (trusted publishing)
         run: npm publish --access public --provenance
