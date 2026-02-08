@@ -1201,6 +1201,14 @@ button.inbox-filter__chip[aria-disabled="true"] {
     .inbox-search__toggle[aria-expanded="true"] + .inbox-search__field {
         width: 100%;
     }
+
+    .inbox-filter__group {
+        flex-wrap: wrap;
+    }
+
+    .inbox-filter__chip {
+        flex-shrink: 0;
+    }
 }
 
 /* ---------------------------------------------------------
