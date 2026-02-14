@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="KeepExec launcher foreground">
+  <!-- Transparent background; this is foreground only -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 8 L10 24" stroke="#FFFFFF" stroke-width="2.6"/>
+    <path d="M10 16 L19 8" stroke="#FFFFFF" stroke-width="2.6"/>
+    <path d="M10 16 L19 24" stroke="#FFFFFF" stroke-width="2.6"/>
+    <path d="M20 10 L26 16 L20 22" stroke="#E01820" stroke-width="2.6"/>
+  </g>
+</svg>
