@@ -427,32 +427,56 @@
                 <h2 class="doc-block__title">Action toasts &amp; optional slots</h2>
                 <p class="doc-block__summary">
                     Use <code>.toast__actions</code> for CTA rows and disable auto-dismiss with
-                    <code>.toast--no-progress</code>. When you omit the close button, add
-                    <code>.toast--no-close</code> so the grid collapses cleanly.
+                    <code>.toast--no-progress</code>. For collapsible panel-style toasts, place a
+                    top-right icon-only control with <code>icon--minimize-panel</code> and switch to
+                    <code>icon--expand-panel</code> when collapsed.
                 </p>
             </header>
 
             <div class="doc-block__body section__grid-2 section__grid-sm">
                 <div class="doc-block__preview section__stack-sm">
                     <div aria-live="polite"
-                         class="toast toast--info toast--no-progress toast--no-close toast--in" role="status">
+                         class="toast toast--info toast--no-progress toast--in" role="status">
                         <div class="toast__icon">
                             <span class="icon icon--mask icon--download"></span>
                         </div>
 
                         <div class="toast__body">
-                            <div class="toast__title">Export ready</div>
-                            <div class="toast__message">Download expires in 24 hours.</div>
+                            <div class="toast__title">Backup recommended</div>
+                            <div class="toast__message">Local changes are not yet backed up to cloud.</div>
                             <div class="toast__actions">
-                                <button class="button button--ghost button--xs">Dismiss</button>
-                                <button class="button button--primary button--xs">Download</button>
+                                <button class="button button--primary button--xs">Backup to cloud</button>
                             </div>
                         </div>
+                        <button aria-label="Minimize backup toast"
+                                class="toast__close button button--ghost button--icon-only"
+                                type="button">
+                            <span class="icon icon--mask icon--minimize-panel" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                    <div aria-live="polite"
+                         class="toast toast--info toast--compact toast--no-progress toast--in" role="status">
+                        <div class="toast__icon">
+                            <span class="icon icon--mask icon--download"></span>
+                        </div>
+
+                        <div class="toast__body">
+                            <div class="toast__title">Backup recommended</div>
+                            <div class="toast__actions">
+                                <button class="button button--primary button--xs">Backup</button>
+                            </div>
+                        </div>
+                        <button aria-label="Expand backup toast"
+                                class="toast__close button button--ghost button--icon-only"
+                                type="button">
+                            <span class="icon icon--mask icon--expand-panel" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </div>
 
                 <div class="doc-block__code doc-block__code--numbered">
-<pre><code>&lt;div class="toast toast--info toast--no-progress toast--no-close"
+<pre><code>&lt;div class="toast toast--info toast--no-progress"
      role="status"
      aria-live="polite"&gt;
   &lt;div class="toast__icon"&gt;
@@ -460,13 +484,26 @@
   &lt;/div&gt;
 
   &lt;div class="toast__body"&gt;
-    &lt;div class="toast__title"&gt;Export ready&lt;/div&gt;
-    &lt;div class="toast__message"&gt;Download expires in 24 hours.&lt;/div&gt;
+    &lt;div class="toast__title"&gt;Backup recommended&lt;/div&gt;
+    &lt;div class="toast__message"&gt;Local changes are not yet backed up to cloud.&lt;/div&gt;
     &lt;div class="toast__actions"&gt;
-      &lt;button class="button button--ghost button--xs"&gt;Dismiss&lt;/button&gt;
-      &lt;button class="button button--primary button--xs"&gt;Download&lt;/button&gt;
+      &lt;button class="button button--primary button--xs"&gt;Backup to cloud&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
+  &lt;button class="toast__close button button--ghost button--icon-only"
+          type="button"
+          aria-label="Minimize backup toast"&gt;
+    &lt;span class="icon icon--mask icon--minimize-panel"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="toast toast--info toast--compact toast--no-progress"&gt;
+  ...
+  &lt;button class="toast__close button button--ghost button--icon-only"
+          type="button"
+          aria-label="Expand backup toast"&gt;
+    &lt;span class="icon icon--mask icon--expand-panel"&gt;&lt;/span&gt;
+  &lt;/button&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </div>
