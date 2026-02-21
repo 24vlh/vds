@@ -14,7 +14,6 @@
 /* ---------------------------------------------------------
    1. AVATAR TOKENS
 --------------------------------------------------------- */
-
 [data-vds-avatar],
 .vds-avatar {
     --avatar-size-xs: 1.5rem;
@@ -37,7 +36,6 @@
 /* ---------------------------------------------------------
    2. BASE AVATAR
 --------------------------------------------------------- */
-
 .avatar {
     position: relative;
     display: inline-flex;
@@ -94,7 +92,6 @@
 /* ---------------------------------------------------------
    3. SIZE MODIFIERS
 --------------------------------------------------------- */
-
 .avatar--xs {
     width: var(--avatar-size-xs);
     height: var(--avatar-size-xs);
@@ -122,7 +119,6 @@
 /* ---------------------------------------------------------
    4. STATUS INDICATORS
 --------------------------------------------------------- */
-
 .avatar__status {
     position: absolute;
     bottom: calc(-1 * var(--avatar-status-offset));
@@ -150,7 +146,6 @@
 /* ---------------------------------------------------------
    5. AVATAR GROUPS
 --------------------------------------------------------- */
-
 .avatar-group {
     display: flex;
     align-items: center;
@@ -180,7 +175,6 @@
 /* ---------------------------------------------------------
    6. COLOUR VARIANTS
 --------------------------------------------------------- */
-
 .avatar--accent {
     --avatar-bg: var(--color-accent-soft);
     --avatar-border: var(--color-accent);
@@ -227,5 +221,3 @@
     --avatar-border-width: 2px;
     --avatar-border: var(--color-border-strong);
 }
-
-/*# sourceMappingURL=avatar.css.map */

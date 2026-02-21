@@ -21,7 +21,6 @@
 /* ---------------------------------------------------------
    1. HEADER & FOOTER TOKEN DEFINITIONS
 --------------------------------------------------------- */
-
 [data-vds-header-footer],
 .vds-header-footer {
     --header-height: var(--space-16);
@@ -47,7 +46,6 @@
 /* ---------------------------------------------------------
    2. GLOBAL HEADER CONTAINER
 --------------------------------------------------------- */
-
 .header {
     width: 100%;
     background-color: var(--color-header-bg);
@@ -133,7 +131,6 @@
 /* ---------------------------------------------------------
    3. LOGO HANDLING IN HEADER
 --------------------------------------------------------- */
-
 .header .logo {
     display: inline-flex;
     align-items: center;
@@ -156,7 +153,6 @@
 /* ---------------------------------------------------------
    4. PRIMARY NAVIGATION (DESKTOP)
 --------------------------------------------------------- */
-
 .header .nav {
     display: flex;
     align-items: center;
@@ -214,7 +210,6 @@
 /* ---------------------------------------------------------
    5. MOBILE NAVIGATION (CSS-ONLY HOOKS)
 --------------------------------------------------------- */
-
 .header .header__toggle {
     display: none;
     cursor: pointer;
@@ -318,7 +313,6 @@
 /* ---------------------------------------------------------
    6. SKIP-LINK (ACCESSIBILITY)
 --------------------------------------------------------- */
-
 .skip-link,
 .header .skip-link {
     position: absolute;
@@ -344,7 +338,6 @@
 /* ---------------------------------------------------------
    7. GLOBAL FOOTER CONTAINER
 --------------------------------------------------------- */
-
 .footer {
     width: 100%;
     background-color: var(--color-footer-bg);
@@ -404,7 +397,6 @@
 /* ---------------------------------------------------------
    8. FOOTER COLUMN SYSTEM
 --------------------------------------------------------- */
-
 .footer__col {
     display: flex;
     flex-direction: column;
@@ -448,7 +440,6 @@
 /* ---------------------------------------------------------
    9. FOOTER LOGO HANDLING
 --------------------------------------------------------- */
-
 .footer .logo {
     display: inline-flex;
     align-items: center;
@@ -475,7 +466,6 @@
 /* ---------------------------------------------------------
    10. FOOTER META / COPYRIGHT
 --------------------------------------------------------- */
-
 .footer__meta {
     margin-top: var(--space-8);
     font-size: var(--text-xs);
@@ -526,5 +516,3 @@
 .shell__footer {
     margin-top: auto;
 }
-
-/*# sourceMappingURL=header-footer.css.map */

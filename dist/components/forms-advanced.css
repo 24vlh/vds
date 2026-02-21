@@ -31,7 +31,6 @@
 /* ---------------------------------------------------------
    2. MULTI-SELECT (chips + dropdown)
 --------------------------------------------------------- */
-
 .multi-select {
     position: relative;
     width: 100%;
@@ -163,7 +162,6 @@
 /* ---------------------------------------------------------
    3. TAG INPUT (chip builder)
 --------------------------------------------------------- */
-
 .tag-input {
     display: flex;
     flex-wrap: wrap;
@@ -236,7 +234,6 @@
 /* ---------------------------------------------------------
    4. CHOICE BUTTON GROUPS
 --------------------------------------------------------- */
-
 .choice-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -310,7 +307,6 @@
 /* ---------------------------------------------------------
    5. CHOICE CARDS
 --------------------------------------------------------- */
-
 .choice-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
@@ -383,7 +379,6 @@
 /* ---------------------------------------------------------
    6. CHOICE CHIPS (CHECKBOX / RADIO)
 --------------------------------------------------------- */
-
 .choice-chips {
     display: flex;
     flex-wrap: wrap;
@@ -524,7 +519,6 @@
 /* ---------------------------------------------------------
    7. CHIP CHOICE (SELECTED)
 --------------------------------------------------------- */
-
 .chip-choice {
     --chip-choice-bg: var(--color-surface);
     --chip-choice-border: var(--color-border-subtle);
@@ -589,7 +583,6 @@
 /* ---------------------------------------------------------
    8. CHIP FIELD LAYOUT
 --------------------------------------------------------- */
-
 .chip-field {
     display: flex;
     flex-direction: column;
@@ -620,7 +613,6 @@
 /* ---------------------------------------------------------
    9. SEGMENTED CONTROL
 --------------------------------------------------------- */
-
 .segmented-control {
     display: inline-flex;
     border: var(--border-width) solid var(--color-border-subtle);
@@ -670,7 +662,6 @@
 /* ---------------------------------------------------------
    10. TOGGLE SWITCH
 --------------------------------------------------------- */
-
 .toggle {
     --toggle-width: 2.75rem;
     --toggle-height: 1.5rem;
@@ -743,7 +734,6 @@
 /* ---------------------------------------------------------
    11. STEPPER CONTROL
 --------------------------------------------------------- */
-
 .stepper {
     display: inline-flex;
     width: 100%;
@@ -813,7 +803,6 @@
 /* ---------------------------------------------------------
    12. NATIVE DATE/TIME INPUT NORMALIZATION
 --------------------------------------------------------- */
-
 .input[type="date"],
 .input[type="time"],
 .input[type="datetime-local"] {
@@ -829,7 +818,6 @@
 /* ---------------------------------------------------------
    13. CALENDAR BASE STRUCTURE (JS-driven scaffold)
 --------------------------------------------------------- */
-
 .calendar {
     width: 100%;
     background-color: var(--color-surface);
@@ -943,7 +931,6 @@
 /* ---------------------------------------------------------
    14. DENSITY LAYER OVERRIDES (A and C)
 --------------------------------------------------------- */
-
 .form--a .multi-select__control,
 .form--a .tag-input,
 .form--a .stepper {
@@ -1031,5 +1018,3 @@
 }
 
 
-
-/*# sourceMappingURL=forms-advanced.css.map */

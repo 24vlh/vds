@@ -14,7 +14,6 @@
 /* ---------------------------------------------------------
    1. TOKENS
 --------------------------------------------------------- */
-
 [data-vds-description-list],
 .vds-description-list {
     --dl-gap: var(--space-4);
@@ -29,7 +28,6 @@
 /* ---------------------------------------------------------
    2. BASE LIST
 --------------------------------------------------------- */
-
 .description-list {
     display: grid;
     grid-gap: var(--dl-gap);
@@ -58,7 +56,6 @@
 /* ---------------------------------------------------------
    3. LAYOUT VARIANTS
 --------------------------------------------------------- */
-
 .description-list--inline .description-list__item {
     grid-template-columns: minmax(0, var(--dl-term-width)) 1fr;
     align-items: start;
@@ -79,7 +76,6 @@
 /* ---------------------------------------------------------
    4. STYLE VARIANTS
 --------------------------------------------------------- */
-
 .description-list--bordered .description-list__item {
     padding: var(--dl-pad);
     border: 1px solid var(--dl-border);
@@ -99,7 +95,6 @@
 /* ---------------------------------------------------------
    5. DENSITY
 --------------------------------------------------------- */
-
 .description-list--compact {
     --dl-gap: var(--space-2);
     --dl-pad: var(--space-3);
@@ -115,5 +110,3 @@
         grid-template-columns: 1fr;
     }
 }
-
-/*# sourceMappingURL=description-list.css.map */

@@ -20,7 +20,6 @@
 /* ---------------------------------------------------------
    1. BASE BUTTON
 --------------------------------------------------------- */
-
 .button {
     display: inline-flex;
     align-items: center;
@@ -87,7 +86,6 @@
 /* ---------------------------------------------------------
    2. SIZE SCALE
 --------------------------------------------------------- */
-
 .button--xs {
     padding-top: var(--space-1_5);
     padding-bottom: var(--space-1_5);
@@ -127,7 +125,6 @@
 /* ---------------------------------------------------------
    3. LAYOUT MODIFIERS
 --------------------------------------------------------- */
-
 .button--block {
     display: flex;
     width: 100%;
@@ -167,7 +164,6 @@
 /* ---------------------------------------------------------
    4. NEUTRAL / SEMANTIC VARIANTS
 --------------------------------------------------------- */
-
 .button--primary {
     background: var(--color-accent);
     border-color: var(--color-accent-strong);
@@ -281,7 +277,6 @@
 /* ---------------------------------------------------------
    5. STATUS VARIANTS (SOLID)
 --------------------------------------------------------- */
-
 .button--success {
     background: var(--color-success);
     border-color: var(--color-success-strong);
@@ -373,7 +368,6 @@
 /* ---------------------------------------------------------
    6. NEUTRAL (SOFT SURFACE)
 --------------------------------------------------------- */
-
 .button--neutral {
     background: var(--color-surface-subtle);
     border-color: var(--color-border-subtle);
@@ -398,7 +392,6 @@
 /* ---------------------------------------------------------
    7. OUTLINE VARIANTS
 --------------------------------------------------------- */
-
 .button--outline {
     background: transparent;
     border-color: var(--color-border-subtle);
@@ -528,7 +521,6 @@
 /* ---------------------------------------------------------
    8. LINK BUTTON
 --------------------------------------------------------- */
-
 .button--link {
     background: transparent;
     border: 0;
@@ -570,7 +562,6 @@
 /* ---------------------------------------------------------
    9. LOADING STATE
 --------------------------------------------------------- */
-
 .button--loading {
     position: relative;
     pointer-events: none;
@@ -610,7 +601,6 @@
 /* ---------------------------------------------------------
    10. REDUCED MOTION
 --------------------------------------------------------- */
-
 @media (prefers-reduced-motion: reduce) {
     .button {
         transition: none;
@@ -625,7 +615,6 @@
 /* ---------------------------------------------------------
    11. HELPERS
 --------------------------------------------------------- */
-
 .button--contrast-hover:hover:not(:disabled):not([aria-disabled="true"]) {
     background: rgba(0, 0, 0, 0.12);
     border-color: currentColor;
@@ -642,7 +631,6 @@
 /* ---------------------------------------------------------
    12. LINK RESETS
 --------------------------------------------------------- */
-
 a.button,
 a.button:hover,
 a.button:focus,
@@ -673,5 +661,3 @@ a.button:hover {
     -webkit-text-decoration: none;
     text-decoration: none;
 }
-
-/*# sourceMappingURL=buttons.css.map */

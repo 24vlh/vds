@@ -21,7 +21,6 @@
 /* ---------------------------------------------------------
    GRAPHITE - LIGHT THEME
 --------------------------------------------------------- */
-
 :root[data-theme="graphite-light"] {
     /* Core brand */
     --color-brand-ink: #0E3D69;
@@ -341,7 +340,6 @@
    GRAPHITE - DARK THEME
    Inverts background/text, preserves hierarchy.
 --------------------------------------------------------- */
-
 :root[data-theme="graphite-dark"] {
     /* Core brand */
     --color-brand-ink: #F5F7FA;
@@ -656,5 +654,3 @@
 
     --focus-ring-color: #1371A3;
 }
-
-/*# sourceMappingURL=graphite.css.map */

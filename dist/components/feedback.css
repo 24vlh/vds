@@ -18,7 +18,6 @@
 /* ---------------------------------------------------------
    1. FEEDBACK TOKEN DEFINITIONS
 --------------------------------------------------------- */
-
 [data-vds-feedback],
 .vds-feedback {
     --feedback-padding-sm: var(--space-3);
@@ -33,7 +32,6 @@
 /* ---------------------------------------------------------
    2. SEMANTIC FEEDBACK VARIABLE LAYER
 --------------------------------------------------------- */
-
 .feedback[data-variant="info"],
 [data-variant="info"] {
     --feedback-bg: var(--semantic-info-bg-strong, var(--color-info-soft));
@@ -83,7 +81,6 @@
 /* ---------------------------------------------------------
    3. ALERTS
 --------------------------------------------------------- */
-
 .alert {
     display: flex;
     align-items: flex-start;
@@ -161,7 +158,6 @@
 /* ---------------------------------------------------------
    4. BANNERS (SOLID + STICKY + CLOSEABLE)
 --------------------------------------------------------- */
-
 .banner {
     width: 100%;
     padding: var(--feedback-padding-md) 0;
@@ -216,7 +212,6 @@
 /* ---------------------------------------------------------
    5. TOASTS (ANIMATED + STACK)
 --------------------------------------------------------- */
-
 .feedback-toast {
     display: flex;
     align-items: center;
@@ -347,7 +342,6 @@
 /* ---------------------------------------------------------
    6. INLINE FORM FEEDBACK
 --------------------------------------------------------- */
-
 .form-feedback {
     display: flex;
     align-items: center;
@@ -392,7 +386,6 @@
 /* ---------------------------------------------------------
    7. STATUS LABELS (SOLID + OUTLINE + DOT MODE)
 --------------------------------------------------------- */
-
 .status {
     display: inline-flex;
     align-items: center;
@@ -434,7 +427,6 @@
 /* ---------------------------------------------------------
    8. PROGRESS (SOLID + STRIPED + ANIMATED)
 --------------------------------------------------------- */
-
 .progress {
     width: 100%;
     height: var(--space-2);
@@ -530,7 +522,6 @@
 /* ---------------------------------------------------------
    9. GUIDANCE BLOCKS (DO / DON'T / HOW)
 --------------------------------------------------------- */
-
 .guidance {
     --guidance-bg: var(--color-surface-subtle);
     --guidance-border: var(--color-accent);
@@ -630,7 +621,6 @@
 /* ---------------------------------------------------------
    10. INFO BLOCK (SEMANTIC SUPPORT)
 --------------------------------------------------------- */
-
 .info-block {
     padding: var(--feedback-padding-md) var(--feedback-padding-lg);
     border-left: var(--feedback-info-block-border-width) solid var(--color-accent);
@@ -650,7 +640,6 @@
 /* ---------------------------------------------------------
    11. RESULT BLOCK (SEMANTIC SUPPORT)
 --------------------------------------------------------- */
-
 .result {
     padding: var(--feedback-padding-lg);
     border-radius: var(--radius-md);
@@ -694,7 +683,6 @@
 /* ---------------------------------------------------------
    12. DENSITY MODES
 --------------------------------------------------------- */
-
 [data-density="compact"] .alert,
 [data-density="compact"] .feedback-toast,
 [data-density="compact"] .banner,
@@ -719,7 +707,6 @@
 /* ---------------------------------------------------------
    13. RESPONSIVE TIGHTENING
 --------------------------------------------------------- */
-
 @media (max-width: 640px) {
     .alert,
     .feedback-toast,
@@ -740,7 +727,6 @@
    13. STATIC TOAST (Documentation / In-Flow Demo Only)
    Does not float to viewport. Does not autohide.
 --------------------------------------------------------- */
-
 .feedback-toast--static {
     position: relative !important;
     transform: none !important;
@@ -751,11 +737,8 @@
     opacity: 1 !important;
     animation: none !important;
 }
-
 .feedback-toast--static {
     width: -moz-max-content;
     width: max-content;
     max-width: 100%;
 }
-
-/*# sourceMappingURL=feedback.css.map */

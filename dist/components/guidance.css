@@ -15,7 +15,6 @@
 /* ---------------------------------------------------------
    1. TOKENS
 --------------------------------------------------------- */
-
 [data-vds-guidance],
 .vds-guidance {
     --guidance-padding-sm: var(--space-3);
@@ -50,7 +49,6 @@
 }
 
 /* Semantic variants (shared) */
-
 :where(.guidance,
 .guidance-card,
 .guidance-strip,
@@ -144,7 +142,6 @@
 /* ---------------------------------------------------------
    2. GUIDANCE PANEL (DO / DO NOT / HOW / WHY)
 --------------------------------------------------------- */
-
 .guidance {
     position: relative;
     display: flex;
@@ -291,7 +288,6 @@
 /* ---------------------------------------------------------
    3. GUIDANCE GRID
 --------------------------------------------------------- */
-
 .guidance-grid {
     display: grid;
     grid-gap: var(--space-3);
@@ -302,7 +298,6 @@
 /* ---------------------------------------------------------
    4. GUIDANCE CARD (EDUCATION BLOCK)
 --------------------------------------------------------- */
-
 .guidance-card {
     display: flex;
     flex-direction: column;
@@ -350,7 +345,6 @@
 /* ---------------------------------------------------------
    5. GUIDANCE STRIP (INLINE CALLOUT)
 --------------------------------------------------------- */
-
 .guidance-strip {
     position: relative;
     display: grid;
@@ -414,7 +408,6 @@
 /* ---------------------------------------------------------
    6. GUIDANCE STEPS (INSTRUCTION)
 --------------------------------------------------------- */
-
 .guidance-steps {
     display: grid;
     grid-gap: var(--space-3);
@@ -468,7 +461,6 @@
 /* ---------------------------------------------------------
    7. GUIDANCE BRIEF (DECISION SUMMARY)
 --------------------------------------------------------- */
-
 .guidance-brief {
     position: relative;
     display: grid;
@@ -605,7 +597,6 @@
 /* ---------------------------------------------------------
    8. GUIDANCE COMPARE (CONTRAST)
 --------------------------------------------------------- */
-
 .guidance-compare {
     display: grid;
     grid-gap: var(--space-3);
@@ -679,7 +670,6 @@
 /* ---------------------------------------------------------
    9. GUIDANCE ROW (INBOX STYLE)
 --------------------------------------------------------- */
-
 .guidance-row {
     position: relative;
     display: grid;
@@ -782,7 +772,6 @@
 /* ---------------------------------------------------------
    10. GUIDANCE FIELD (FORM EDUCATION)
 --------------------------------------------------------- */
-
 .guidance-field {
     display: grid;
     grid-gap: 0;
@@ -877,7 +866,6 @@
 /* ---------------------------------------------------------
    11. GUIDANCE SCOPE (IN / OUT)
 --------------------------------------------------------- */
-
 .guidance-scope {
     display: grid;
     grid-gap: var(--space-3);
@@ -938,7 +926,6 @@
 /* ---------------------------------------------------------
    12. GUIDANCE CHECKLIST
 --------------------------------------------------------- */
-
 .guidance-checklist {
     list-style: none;
     margin: 0;
@@ -974,7 +961,6 @@
 /* ---------------------------------------------------------
    12. DENSITY
 --------------------------------------------------------- */
-
 [data-density="compact"] .guidance,
 [data-density="compact"] .guidance-card,
 [data-density="compact"] .guidance-strip,
@@ -987,5 +973,3 @@
 [data-density="compact"] .guidance-scope__item {
     padding: var(--guidance-padding-sm, var(--space-3)) !important;
 }
-
-/*# sourceMappingURL=guidance.css.map */

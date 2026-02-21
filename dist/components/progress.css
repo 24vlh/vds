@@ -14,7 +14,6 @@
 /* ---------------------------------------------------------
    1. PROGRESS TOKENS
 --------------------------------------------------------- */
-
 [data-vds-progress],
 .vds-progress {
     --progress-height-sm: 0.35rem;
@@ -42,7 +41,6 @@
 /* ---------------------------------------------------------
    2. LINEAR PROGRESS
 --------------------------------------------------------- */
-
 .progress-stack {
     display: grid;
     grid-gap: var(--space-2);
@@ -157,7 +155,6 @@
 /* ---------------------------------------------------------
    3. PROGRESS SEMANTICS
 --------------------------------------------------------- */
-
 [data-vds-progress] .progress--success, .vds-progress .progress--success {
     --progress-fill: var(--color-success);
 }
@@ -177,7 +174,6 @@
 /* ---------------------------------------------------------
    4. STEPPER
 --------------------------------------------------------- */
-
 .stepper {
     display: flex;
     gap: var(--stepper-gap);
@@ -273,7 +269,6 @@
 /* ---------------------------------------------------------
    5. VERTICAL STEPPER
 --------------------------------------------------------- */
-
 .stepper--vertical {
     flex-direction: column;
     gap: var(--space-4);
@@ -320,5 +315,3 @@
         height: calc(100% + var(--space-4));
     }
 }
-
-/*# sourceMappingURL=progress.css.map */

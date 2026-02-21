@@ -15,7 +15,6 @@
 /* ---------------------------------------------------------
    1. BADGE-TAG TOKENS
 --------------------------------------------------------- */
-
 [data-vds-badge-tag],
 .vds-badge-tag {
     --badge-tag-radius: var(--radius-pill);
@@ -41,7 +40,6 @@
 /* ---------------------------------------------------------
    2. BASE BADGE-TAG
 --------------------------------------------------------- */
-
 .badge-tag {
     display: inline-flex;
     align-items: center;
@@ -90,7 +88,6 @@
 /* ---------------------------------------------------------
    3. SIZE MODIFIERS
 --------------------------------------------------------- */
-
 .badge-tag--xs {
     --badge-tag-padding-y: var(--space-0_5);
     --badge-tag-padding-x: var(--space-2);
@@ -114,7 +111,6 @@
 /* ---------------------------------------------------------
    4. SHAPE & INTERACTION
 --------------------------------------------------------- */
-
 .badge-tag--square {
     --badge-tag-radius: var(--radius-sm);
 }
@@ -155,7 +151,6 @@
 /* ---------------------------------------------------------
    5. STYLE MODES
 --------------------------------------------------------- */
-
 .badge-tag--outline {
     background: transparent;
     border-color: currentColor;
@@ -170,7 +165,6 @@
 /* ---------------------------------------------------------
    6. SEMANTIC VARIANTS
 --------------------------------------------------------- */
-
 .badge-tag--accent {
     --badge-tag-bg: var(--color-accent-soft);
     --badge-tag-border: var(--color-accent);
@@ -233,5 +227,3 @@
     --badge-tag-solid-border: var(--color-mono-strong);
     --badge-tag-solid-text: var(--color-on-mono);
 }
-
-/*# sourceMappingURL=badge-tag.css.map */

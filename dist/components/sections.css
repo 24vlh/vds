@@ -20,7 +20,6 @@
 /* ---------------------------------------------------------
    1. BASE SECTION CONTAINER
 --------------------------------------------------------- */
-
 .section {
     --section-pad-top: var(--section-spacing-md);
     --section-pad-bottom: var(--section-spacing-md);
@@ -49,7 +48,6 @@
 /* ---------------------------------------------------------
    2. INNER WIDTH + EDGE CONTROL
 --------------------------------------------------------- */
-
 .section--tight {
     --section-inner-max: var(--content-width-md);
 }
@@ -105,7 +103,6 @@
 /* ---------------------------------------------------------
    3. LEGACY DENSITY SYSTEM (A / B / C / FLUSH)
 --------------------------------------------------------- */
-
 .section--a {
     --section-pad-top: var(--space-20);
     --section-pad-bottom: var(--space-20);
@@ -129,7 +126,6 @@
 /* ---------------------------------------------------------
    4. NEW UNIVERSAL SECTION RHYTHM (XS–XL)
 --------------------------------------------------------- */
-
 .section--xs {
     --section-pad-top: var(--section-spacing-xs);
     --section-pad-bottom: var(--section-spacing-xs);
@@ -158,7 +154,6 @@
 /* ---------------------------------------------------------
    5. SECTION HEADER SYSTEM
 --------------------------------------------------------- */
-
 .section__header {
     display: flex;
     flex-direction: column;
@@ -220,7 +215,6 @@
 /* ---------------------------------------------------------
    6. SECTION DIVIDERS
 --------------------------------------------------------- */
-
 .section--divided {
     border-top: 1px solid var(--color-border-subtle);
 }
@@ -238,7 +232,6 @@
 /* ---------------------------------------------------------
    7. SURFACES (surface / subtle / brand)
 --------------------------------------------------------- */
-
 .section--surface {
     --section-pad-top: var(--section-spacing-lg);
     --section-pad-bottom: var(--section-spacing-lg);
@@ -265,7 +258,6 @@
 /* ---------------------------------------------------------
    8. ALTERNATE BACKGROUND
 --------------------------------------------------------- */
-
 .section--alt {
     background-color: var(--color-bg-soft);
 }
@@ -273,7 +265,6 @@
 /* ---------------------------------------------------------
    9. SPLIT SECTIONS - CLEAN GRID REVERSAL
 --------------------------------------------------------- */
-
 .section--split .section__inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -299,7 +290,6 @@
 /* ---------------------------------------------------------
    10. INSET SECTIONS (Base + SM/LG)
 --------------------------------------------------------- */
-
 .section--inset .section__inner {
     background-color: var(--color-surface);
     border-radius: var(--radius-md);
@@ -318,7 +308,6 @@
 /* ---------------------------------------------------------
    11. COLUMN GRIDS (2/3/4/5/6/auto) + GAP VARIANTS
 --------------------------------------------------------- */
-
 .section__grid-2,
 .section__grid-3,
 .section__grid-4,
@@ -369,7 +358,6 @@
 /* ---------------------------------------------------------
    12. CONTENT STACKS (VERTICAL)
 --------------------------------------------------------- */
-
 .section__stack {
     display: flex;
     flex-direction: column;
@@ -391,7 +379,6 @@
 /* ---------------------------------------------------------
    13. INLINE STACKS (HORIZONTAL)
 --------------------------------------------------------- */
-
 .section__inline {
     display: flex;
     flex-direction: row;
@@ -416,7 +403,6 @@
 /* ---------------------------------------------------------
    14. VALUE / LIST SECTIONS
 --------------------------------------------------------- */
-
 .section__list {
     display: flex;
     flex-direction: column;
@@ -452,7 +438,6 @@
 /* ---------------------------------------------------------
    15. RESPONSIVE BEHAVIOUR
 --------------------------------------------------------- */
-
 @media (max-width: 1280px) {
     .section__grid-2,
     .section__grid-3,
@@ -540,7 +525,6 @@
 /* ---------------------------------------------------------
    16. PADDING OVERRIDES (TOP / BOTTOM)
 --------------------------------------------------------- */
-
 .section--pad-top-none {
     --section-pad-top: 0;
 }
@@ -588,5 +572,3 @@
 .section--pad-bottom-xl {
     --section-pad-bottom: var(--section-spacing-xl);
 }
-
-/*# sourceMappingURL=sections.css.map */

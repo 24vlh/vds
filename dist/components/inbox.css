@@ -18,7 +18,6 @@
 /* ---------------------------------------------------------
    0. ROOT (tokens + component defaults)
 --------------------------------------------------------- */
-
 [data-vds-inbox],
 .vds-inbox {
     --inbox-row-radius: var(--radius-lg, var(--radius-md));
@@ -47,7 +46,6 @@
 }
 
 /* Optional: make the whole surface slightly denser */
-
 .inbox--dense {
     --inbox-row-pad-x: var(--space-3);
     --inbox-row-pad-y: var(--space-3);
@@ -58,7 +56,6 @@
 /* ---------------------------------------------------------
    1. TOP NAV (search + tabs + actions)
 --------------------------------------------------------- */
-
 .inbox-nav {
     display: flex;
     flex-direction: column;
@@ -85,7 +82,6 @@
 }
 
 /* left / right rails */
-
 .inbox-nav__left,
 .inbox-nav__right {
     display: inline-flex;
@@ -95,7 +91,6 @@
 }
 
 /* bottom rail (optional helper row under tabs/search) */
-
 .inbox-nav__bottom {
     display: flex;
     align-items: center;
@@ -116,7 +111,6 @@
 }
 
 /* bottom alignment helpers */
-
 .inbox-nav__bottom--left {
     justify-content: flex-start;
 }
@@ -134,7 +128,6 @@
 }
 
 /* Tabs */
-
 .inbox-tabs {
     display: inline-flex;
     align-items: center;
@@ -201,7 +194,6 @@
 }
 
 /* Optional tab badge */
-
 .inbox-tab__count {
     display: inline-flex;
     align-items: center;
@@ -220,7 +212,6 @@
 }
 
 /* --- Search (icon -> expanding field) --- */
-
 .inbox-search {
     display: inline-flex;
     align-items: center;
@@ -272,7 +263,6 @@
 }
 
 /* Field wrapper starts collapsed */
-
 .inbox-search__field {
     display: inline-flex;
     align-items: center;
@@ -305,7 +295,6 @@
 }
 
 /* Open state: set on .inbox-search or on toggle via aria-expanded */
-
 .inbox-search.is-open .inbox-search__field,
 .inbox-search__toggle[aria-expanded="true"] + .inbox-search__field {
     width: 100%;
@@ -314,7 +303,6 @@
 }
 
 /* Toolbar takeover: search spans the entire nav bar */
-
 .inbox-nav__bar--search-full .inbox-nav__left {
     flex: 1 1 auto;
     width: 100%;
@@ -343,7 +331,6 @@
 /* ---------------------------------------------------------
    2. LIST (rounded vs flat)
 --------------------------------------------------------- */
-
 .inbox__list {
     display: flex;
     flex-direction: column;
@@ -351,7 +338,6 @@
 }
 
 /* Flat list: separators + list border, no side borders on rows */
-
 .inbox--flat .inbox__list {
     gap: 0;
     border-top: 1px solid var(--color-border-subtle);
@@ -372,7 +358,6 @@
 /* ---------------------------------------------------------
    3. ROW BASE
 --------------------------------------------------------- */
-
 .inbox-row {
     position: relative;
     width: 100%;
@@ -396,7 +381,6 @@
 }
 
 /* Recommended clickable wrapper: <button> or <a> */
-
 .inbox-row__main {
     width: 100%;
     border: 0;
@@ -410,7 +394,6 @@
 }
 
 /* Core grid: meta left + actions right */
-
 .inbox-row__inner {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -428,7 +411,6 @@
 --------------------------------------------------------- */
 
 /* Replace the simple 2-col grid with explicit areas */
-
 .inbox-row__inner {
     grid-template-columns: 1fr auto; /* keep the intent:contentReference[oaicite:2]{index=2} */
     grid-template-areas:
@@ -439,7 +421,6 @@
 
 /* Existing badges row is already full width:contentReference[oaicite:3]{index=3}.
    We map it into the grid areas as well (harmless if not present). */
-
 .inbox-row__badges {
     grid-area: badges;
 }
@@ -454,7 +435,6 @@
 }
 
 /* NEW: one container for all “row data” blocks */
-
 .inbox-row__data {
     grid-area: data;
     min-width: 0;
@@ -467,7 +447,6 @@
    (These selectors already exist in your file.):contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}:contentReference[oaicite:6]{index=6} */
 
 /* --- Mobile / narrow screens: actions must be last, full width, aligned right --- */
-
 @media (max-width: 768px) {
     .inbox-row__inner {
         grid-template-columns: 1fr;
@@ -487,7 +466,6 @@
 }
 
 /* --- Actions “full row” helper should still work; now it just reinforces the layout --- */
-
 .inbox-row--actions-full .inbox-row__actions {
     grid-column: 1 / -1; /* already in file:contentReference[oaicite:8]{index=8} */
 }
@@ -499,7 +477,6 @@
 /* The symptoms you described usually happen when labels are pushed right
    (commonly via margin-left:auto or justify-content:flex-end).
    Force labels to align left and wrap cleanly. */
-
 .inbox-row__labels {
     justify-content: flex-start;
     align-items: center;
@@ -512,7 +489,6 @@
    - title grows
    - labels sit after title but do NOT right-align internally
 */
-
 .inbox-row__title {
     min-width: 0;
     flex: 1 1 auto;
@@ -521,9 +497,7 @@
 /* ---------------------------------------------------------
    4. ROW VARIANTS (minimal / normal / rich / mega)
 --------------------------------------------------------- */
-
 /* Minimalistic: title + status + tiny actions (no extra vertical air) */
-
 .inbox-row--minimal .inbox-row__inner {
     gap: var(--space-3);
     padding: var(--space-3) var(--space-3);
@@ -535,14 +509,12 @@
 }
 
 /* Normal: default */
-
 .inbox-row--normal .inbox-row__inner {
     padding: var(--space-4) var(--space-4);
     gap: var(--space-4);
 }
 
 /* Rich: more air + larger typography */
-
 .inbox-row--rich .inbox-row__inner {
     padding: var(--space-5) var(--space-5);
     gap: var(--space-5);
@@ -554,7 +526,6 @@
 }
 
 /* Mega: “data-heavy” row */
-
 .inbox-row--mega .inbox-row__inner {
     padding: var(--space-6) var(--space-6);
     gap: var(--space-6);
@@ -568,7 +539,6 @@
 /* ---------------------------------------------------------
    5. BADGES ROW (FULL WIDTH)
 --------------------------------------------------------- */
-
 .inbox-row__badges {
     grid-column: 1 / -1;
     display: flex;
@@ -636,7 +606,6 @@
 /* ---------------------------------------------------------
    6. META AREA
 --------------------------------------------------------- */
-
 .inbox-row__meta {
     display: flex;
     flex-direction: column;
@@ -652,7 +621,6 @@
 }
 
 /* Status icons cluster (bookmark/star/flag) */
-
 .inbox-row__status {
     display: inline-flex;
     align-items: center;
@@ -675,7 +643,6 @@
 }
 
 /* state toggles (apply on row) */
-
 .inbox-row.is-bookmarked .inbox-row__status-icon--bookmark,
 .inbox-row.is-starred .inbox-row__status-icon--star {
     color: var(--color-accent);
@@ -703,7 +670,6 @@
 }
 
 /* Inline labels next to title (wide); reflow rules below */
-
 .inbox-row__labels {
     display: inline-flex;
     align-items: center;
@@ -741,7 +707,6 @@
 }
 
 /* Glance / description (clamped by default) */
-
 .inbox-row__glance {
     font-size: var(--inbox-desc-size);
     line-height: var(--line-height-relaxed);
@@ -755,7 +720,6 @@
 }
 
 /* Rich/mega can show more lines (still clamped unless row open) */
-
 .inbox-row--rich .inbox-row__glance {
     -webkit-line-clamp: 3;
 }
@@ -765,7 +729,6 @@
 }
 
 /* Optional metadata footer */
-
 .inbox-row__metafoot {
     display: flex;
     flex-wrap: wrap;
@@ -781,7 +744,6 @@
 }
 
 /* Optional “detail chips row” (horizontal list of small metadata items) */
-
 .inbox-row__details {
     display: flex;
     flex-wrap: wrap;
@@ -812,7 +774,6 @@
 /* ---------------------------------------------------------
    7. ACTIONS (right rail; can reflow below)
 --------------------------------------------------------- */
-
 .inbox-row__actions {
     display: flex;
     align-items: flex-start;
@@ -824,7 +785,6 @@
 }
 
 /* Force actions below even on wide screens */
-
 .inbox-row--actions-below .inbox-row__inner {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -840,7 +800,6 @@
 }
 
 /* Force actions to occupy a full row (even when grid is 2 cols) */
-
 .inbox-row--actions-full .inbox-row__actions {
     grid-column: 1 / -1;
     justify-content: flex-start;
@@ -848,7 +807,6 @@
 }
 
 /* Actions alignment helpers (useful on mobile / below layout) */
-
 .inbox-row__actions--left {
     justify-content: flex-start;
 }
@@ -862,7 +820,6 @@
 }
 
 /* Action button */
-
 .inbox-action {
     display: inline-flex;
     align-items: center;
@@ -915,7 +872,6 @@ a.inbox-action {
 }
 
 /* icon-only action */
-
 .inbox-action--icon {
     width: 2.25rem;
     width: var(--icon-container-md, 2.25rem);
@@ -925,7 +881,6 @@ a.inbox-action {
 }
 
 /* “Flat” action style (no border, lighter affordance) */
-
 .inbox-action--flat {
     border-color: transparent;
     background: transparent;
@@ -946,7 +901,6 @@ a.inbox-action {
 }
 
 /* Global switch: make all actions flat within an inbox */
-
 .inbox--actions-flat .inbox-action {
     border-color: transparent;
     background: transparent;
@@ -989,7 +943,6 @@ a.inbox-action.is-disabled {
 /* ---------------------------------------------------------
    8. EXPANDED CONTENT (OPEN STATE HELPERS)
 --------------------------------------------------------- */
-
 .inbox-row__expanded {
     grid-column: 1 / -1;
     grid-row: 2;
@@ -1017,7 +970,6 @@ a.inbox-action.is-disabled {
 }
 
 /* Expanded content can be made “flush” in flat list mode */
-
 .inbox--flat .inbox-row__expanded {
     background: var(--color-surface-subtle);
 }
@@ -1033,7 +985,6 @@ a.inbox-action.is-disabled {
 /* ---------------------------------------------------------
    9. FLAGS (5 COLORS)
 --------------------------------------------------------- */
-
 .inbox-row.is-flagged::before {
     content: "";
     position: absolute;
@@ -1093,7 +1044,6 @@ a.inbox-action.is-disabled {
 /* ---------------------------------------------------------
    10. FILTER TEMPLATE (lightweight)
 --------------------------------------------------------- */
-
 .inbox-filter {
     display: flex;
     flex-wrap: wrap;
@@ -1168,7 +1118,6 @@ button.inbox-filter__chip[aria-disabled="true"] {
 /* ---------------------------------------------------------
    11. BOTTOM CORNER ACTION BAR (one/two buttons)
 --------------------------------------------------------- */
-
 .inbox-cornerbar {
     position: fixed;
     top: auto;
@@ -1208,7 +1157,6 @@ button.inbox-filter__chip[aria-disabled="true"] {
 /* ---------------------------------------------------------
    12. RESPONSIVE
 --------------------------------------------------------- */
-
 @media (max-width: 768px) {
     .inbox-row__inner {
         grid-template-columns: 1fr;
@@ -1289,7 +1237,6 @@ button.inbox-filter__chip[aria-disabled="true"] {
    13. RESPONSIVE VISIBILITY HELPERS (COMPONENT-LOCAL)
    (useful for hiding icons/actions/labels by breakpoint)
 --------------------------------------------------------- */
-
 @media (max-width: 768px) {
     .inbox__hide-sm {
         display: none !important;
@@ -1317,7 +1264,6 @@ button.inbox-filter__chip[aria-disabled="true"] {
 /* ---------------------------------------------------------
    14. SMALL UTILITIES (COMPONENT-LOCAL)
 --------------------------------------------------------- */
-
 .inbox__truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1377,5 +1323,3 @@ button.inbox-filter__chip[aria-disabled="true"] {
     white-space: nowrap !important;
     border: 0 !important;
 }
-
-/*# sourceMappingURL=inbox.css.map */

@@ -22,7 +22,6 @@
 /* ---------------------------------------------------------
    1. FOUNDATION / RESET
 --------------------------------------------------------- */
-
 [data-vds-authoring],
 .vds-authoring,
 .authoring,
@@ -52,7 +51,6 @@
 /* ---------------------------------------------------------
     2. ADMONITION SYSTEM (GitHub-style)
 --------------------------------------------------------- */
-
 .admonition {
     margin-top: var(--space-4);
     margin-bottom: var(--space-4);
@@ -156,7 +154,6 @@
 /* ---------------------------------------------------------
    2.1 ADMONITION VARIANTS
 --------------------------------------------------------- */
-
 :where(.admonition)[data-variant="info"],
 .admonition--note,
 .admonition--info {
@@ -234,7 +231,6 @@
 /* ---------------------------------------------------------
    3. MDX / MARKDOWN CALLOUTS
 --------------------------------------------------------- */
-
 .md-callout,
 .md-note,
 .md-info,
@@ -321,7 +317,6 @@
 /* ---------------------------------------------------------
    4. HEADING ANCHORS (Robust)
 --------------------------------------------------------- */
-
 .heading-anchor {
     margin-left: var(--space-1);
     font-size: 0.8em;
@@ -364,7 +359,6 @@ h6:focus-within .heading-anchor {
 /* ---------------------------------------------------------
    5. FOOTNOTES
 --------------------------------------------------------- */
-
 .fn-ref {
     font-size: var(--footnote-size);
     vertical-align: super;
@@ -403,7 +397,6 @@ h6:focus-within .heading-anchor {
 /* ---------------------------------------------------------
    6. INLINE MARKERS (Highlight, warning, etc.)
 --------------------------------------------------------- */
-
 .inline-marker {
     display: inline-block;
     padding: 0 var(--space-1_5);
@@ -468,7 +461,6 @@ h6:focus-within .heading-anchor {
 /* ---------------------------------------------------------
    7. PROSE HELPERS (Authoring convenience)
 --------------------------------------------------------- */
-
 .prose-lead {
     font-size: var(--text-md);
     line-height: var(--line-height-relaxed);
@@ -533,7 +525,6 @@ h6:focus-within .heading-anchor {
 /* ---------------------------------------------------------
    8. AUTHORING / DOC-BLOCK INTEGRATION
 --------------------------------------------------------- */
-
 .doc-block__body .admonition {
     margin-top: var(--space-3);
     margin-bottom: var(--space-3);
@@ -550,5 +541,3 @@ h6:focus-within .heading-anchor {
     margin-top: var(--space-3);
     margin-bottom: var(--space-3);
 }
-
-/*# sourceMappingURL=authoring.css.map */

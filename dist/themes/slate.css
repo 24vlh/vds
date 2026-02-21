@@ -21,7 +21,6 @@
 /* ---------------------------------------------------------
    SLATE - LIGHT THEME
 --------------------------------------------------------- */
-
 :root[data-theme="slate-light"] {
     /* Core brand */
     --color-brand-ink: #2A2F33;
@@ -341,7 +340,6 @@
    SLATE - DARK THEME
    Inverts background/text, preserves hierarchy.
 --------------------------------------------------------- */
-
 :root[data-theme="slate-dark"] {
     /* Core brand */
     --color-brand-ink: #F6F5F1;
@@ -657,5 +655,3 @@
 
     --focus-ring-color: #D7C297;
 }
-
-/*# sourceMappingURL=slate.css.map */

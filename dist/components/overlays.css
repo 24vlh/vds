@@ -16,7 +16,6 @@
 /* ---------------------------------------------------------
    1. OVERLAYS TOKEN DEFINITIONS
 --------------------------------------------------------- */
-
 [data-vds-overlay],
 .vds-overlay {
     --modal-width-xs: 22.5rem;
@@ -36,7 +35,6 @@
 /* ---------------------------------------------------------
    2. OVERLAY BACKDROP
 --------------------------------------------------------- */
-
 .backdrop {
     position: fixed;
     top: 0;
@@ -77,7 +75,6 @@
 /* ---------------------------------------------------------
    3. BASE MODAL (NO ANIMATION)
 --------------------------------------------------------- */
-
 .modal {
     position: fixed;
     top: 0;
@@ -129,7 +126,6 @@
 /* ---------------------------------------------------------
    4. MODAL HEADER / BODY / FOOTER
 --------------------------------------------------------- */
-
 .modal__header {
     padding: var(--space-6) var(--space-8);
     border-bottom: 1px solid var(--color-border-subtle);
@@ -171,7 +167,6 @@
 /* ---------------------------------------------------------
    5. MODAL DENSITY VARIANTS
 --------------------------------------------------------- */
-
 .modal--a .modal__header,
 .modal--a .modal__footer {
     padding: var(--space-8) var(--space-10);
@@ -202,7 +197,6 @@
 /* ---------------------------------------------------------
    6. MODAL SIZES
 --------------------------------------------------------- */
-
 .modal--xs .modal__inner {
     max-width: var(--modal-width-xs);
 }
@@ -233,7 +227,6 @@
 /* ---------------------------------------------------------
    7. MODAL USE-CASE VARIANTS
 --------------------------------------------------------- */
-
 .modal--workspace .modal__inner {
     max-width: var(--modal-width-workspace);
     min-height: var(--modal-workspace-min-height);
@@ -325,7 +318,6 @@
 /* ---------------------------------------------------------
    8. MOBILE FULL-SCREEN & BOTTOM-SHEET (NO ANIMATIONS)
 --------------------------------------------------------- */
-
 @media (max-width: 768px) {
 
     .modal--fullscreen-mobile .modal__inner {
@@ -355,7 +347,6 @@
 /* ---------------------------------------------------------
    9. MODAL STATES
 --------------------------------------------------------- */
-
 .modal--success .modal__header {
     border-bottom-color: var(--color-success);
     background-color: var(--color-success-soft);
@@ -383,7 +374,6 @@
 /* ---------------------------------------------------------
    10. LOADING OVERLAY (NO BLUR)
 --------------------------------------------------------- */
-
 .modal--loading .modal__inner {
     position: relative;
 }
@@ -415,7 +405,6 @@
 /* ---------------------------------------------------------
    11. DRAWERS (NO ANIMATIONS)
 --------------------------------------------------------- */
-
 .drawer {
     position: fixed;
     top: 0;
@@ -477,7 +466,6 @@
 /* ---------------------------------------------------------
    12. INLINE OVERLAY PANEL
 --------------------------------------------------------- */
-
 .overlay-inline-container {
     position: relative;
 }
@@ -539,7 +527,6 @@
 /* ---------------------------------------------------------
    13. SPLIT MODAL
 --------------------------------------------------------- */
-
 .modal--split .modal__inner {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -566,7 +553,6 @@
 /* ---------------------------------------------------------
    14. OPTIONAL MODAL CHROME REMOVAL
 --------------------------------------------------------- */
-
 .modal--no-header .modal__header {
     display: none;
 }
@@ -578,7 +564,6 @@
 /* ---------------------------------------------------------
    15. STACKING LEVELS
 --------------------------------------------------------- */
-
 .modal--level-2 {
     z-index: calc(90 + 10);
     z-index: calc(var(--z-modal, 90) + 10);
@@ -598,5 +583,3 @@
     z-index: calc(80 + 20);
     z-index: calc(var(--z-backdrop, 80) + 20);
 }
-
-/*# sourceMappingURL=overlays.css.map */

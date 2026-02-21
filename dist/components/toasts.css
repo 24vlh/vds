@@ -18,7 +18,6 @@
 /* ---------------------------------------------------------
    1. TOAST TOKEN DEFINITIONS (component-level)
 --------------------------------------------------------- */
-
 [data-vds-toast],
 .vds-toast {
     --toast-duration: 5000ms;
@@ -38,7 +37,6 @@
        <div class="toast toast--success">...</div>
      </div>
 --------------------------------------------------------- */
-
 .toast-stack {
     position: fixed;
     z-index: var(--z-toast);
@@ -131,7 +129,6 @@
        <div class="toast__progress"></div>
      </div>
 --------------------------------------------------------- */
-
 .toast {
     --toast-bg: var(--color-surface);
     --toast-border: var(--color-border-subtle);
@@ -278,7 +275,6 @@
 }
 
 /* Optional layout helpers */
-
 .toast--no-progress {
     grid-template-rows: auto;
     grid-template-areas: "icon body close";
@@ -363,7 +359,6 @@
    Usage:
      <div class="toast toast--inline toast--warning">...</div>
 --------------------------------------------------------- */
-
 .toast--inline {
     position: static;
     box-shadow: none;
@@ -382,7 +377,6 @@
 /* ---------------------------------------------------------
    5. SEMANTIC VARIANTS
 --------------------------------------------------------- */
-
 .toast--neutral {
     --toast-bg: var(--color-muted-bg);
     --toast-border: var(--color-muted-border);
@@ -436,7 +430,6 @@
 /* ---------------------------------------------------------
    6. ANIMATION STATES (ENTER / EXIT)
 --------------------------------------------------------- */
-
 .toast--exiting {
     animation: toast-slide-out var(--transition-fast) var(--ease-in) forwards;
 }
@@ -475,7 +468,6 @@
 /* ---------------------------------------------------------
    7. REDUCED MOTION FALLBACKS
 --------------------------------------------------------- */
-
 @media (prefers-reduced-motion: reduce) {
     .toast {
         animation: none;
@@ -493,5 +485,3 @@
         animation-duration: var(--motion-none);
     }
 }
-
-/*# sourceMappingURL=toasts.css.map */

@@ -21,7 +21,6 @@
 /* ---------------------------------------------------------
    1. CONTENT BLOCK TOKEN DEFINITIONS
 --------------------------------------------------------- */
-
 [data-vds-content-block],
 .vds-content-block {
     --content-block-tag-size-sm: var(--space-4);
@@ -85,7 +84,6 @@
 /* ---------------------------------------------------------
    2. GENERIC INTERACTIVE / DISABLED
 --------------------------------------------------------- */
-
 .interactive {
     cursor: pointer;
     transition: background-color var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal), color var(--transition-normal);
@@ -115,7 +113,6 @@
 /* ---------------------------------------------------------
    3. CARD
 --------------------------------------------------------- */
-
 .card {
     background-color: var(--color-surface);
     border: var(--content-block-component-border-sm) solid var(--color-border-subtle);
@@ -217,7 +214,6 @@
 /* ---------------------------------------------------------
    4. CARD GRID
 --------------------------------------------------------- */
-
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--content-block-card-min-width), 1fr));
@@ -240,7 +236,6 @@
 /* ---------------------------------------------------------
    5. MEDIA BLOCK
 --------------------------------------------------------- */
-
 .media {
     display: flex;
     align-items: center;
@@ -313,7 +308,6 @@
 /* ---------------------------------------------------------
    6. LIST GROUP
 --------------------------------------------------------- */
-
 .list-group {
     display: flex;
     flex-direction: column;
@@ -370,7 +364,6 @@
 /* ---------------------------------------------------------
    7. CALLOUTS (Semantic Variants)
 --------------------------------------------------------- */
-
 .callout {
     border-radius: var(--radius-md);
     padding: var(--content-block-component-pad-md);
@@ -446,7 +439,6 @@
 /* ---------------------------------------------------------
    8. EMPTY STATE
 --------------------------------------------------------- */
-
 .empty {
     text-align: center;
     background-color: var(--color-surface);
@@ -496,7 +488,6 @@
 /* ---------------------------------------------------------
    9. STATS BLOCK
 --------------------------------------------------------- */
-
 .stats {
     display: flex;
     flex-wrap: wrap;
@@ -533,7 +524,6 @@
 /* ---------------------------------------------------------
    10. METRIC TITLE
 --------------------------------------------------------- */
-
 .metric-title {
     font-size: var(--text-xs);
     letter-spacing: 0.04em;
@@ -545,7 +535,6 @@
 /* ---------------------------------------------------------
    11. TAGS / CHIPS / BADGES + INTERACTIVE
 --------------------------------------------------------- */
-
 .tag,
 .chip,
 .badge {
@@ -647,7 +636,6 @@
 /* ---------------------------------------------------------
    11b. CHIP GROUPS (LABEL + ACTIONS)
 --------------------------------------------------------- */
-
 .chip-group {
     display: inline-flex;
     align-items: center;
@@ -756,7 +744,6 @@
 /* ---------------------------------------------------------
    12. AVATAR + STATUS
 --------------------------------------------------------- */
-
 .avatar {
     position: relative;
     width: var(--avatar-size-md);
@@ -794,7 +781,6 @@
 /* ---------------------------------------------------------
    13. FEATURE BLOCK
 --------------------------------------------------------- */
-
 .feature {
     display: flex;
     flex-direction: column;
@@ -846,7 +832,6 @@
 /* ---------------------------------------------------------
    14. PROCESS BLOCK
 --------------------------------------------------------- */
-
 .process {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--content-block-process-step-min-width), 1fr));
@@ -892,7 +877,6 @@
 /* ---------------------------------------------------------
    15. HIGHLIGHT BLOCK
 --------------------------------------------------------- */
-
 .highlight {
     background-color: var(--color-surface-subtle);
     border-left: var(--content-block-highlight-border-width) solid var(--color-accent);
@@ -927,7 +911,6 @@
 /* ---------------------------------------------------------
    16. FACT BLOCK
 --------------------------------------------------------- */
-
 .fact {
     text-align: center;
     background-color: var(--color-surface);
@@ -973,7 +956,6 @@
 /* ---------------------------------------------------------
    17. CONTENT BLOCK (NEW STRUCTURAL BLOCK)
    --------------------------------------------------------- */
-
 .content-block {
     --content-block-pad: 0;
     --content-block-title-size: var(--content-block-title-size-base);
@@ -1026,7 +1008,6 @@
 /* ---------------------------------------------------------
    17.1 CONTENT BLOCK - VARIANTS
    --------------------------------------------------------- */
-
 .content-block[data-variant="info"] {
     --content-block-variant-rail: var(--semantic-info-border, var(--color-info));
     --content-block-variant-tint: var(--semantic-info-bg, var(--color-info-soft));
@@ -1154,7 +1135,6 @@
 /* ---------------------------------------------------------
    17.2 CONTENT BLOCK - REGIONS
    --------------------------------------------------------- */
-
 .content-block__header {
     display: flex;
     flex-direction: column;
@@ -1243,7 +1223,6 @@
 /* ---------------------------------------------------------
    17.3 CONTENT BLOCK - LISTS, GRIDS, KPIS
    --------------------------------------------------------- */
-
 .content-block__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--content-block-grid-min), 1fr));
@@ -1373,5 +1352,3 @@
     pointer-events: none;
     cursor: not-allowed;
 }
-
-/*# sourceMappingURL=content-blocks.css.map */

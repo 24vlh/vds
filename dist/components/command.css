@@ -26,7 +26,6 @@
    - Backdrop + centering
    - Open/closed states via class or data attribute
 --------------------------------------------------------- */
-
 [data-vds-commands],
 .vds-commands {
     --command-backdrop-bg: color-mix(in srgb, var(--color-bg) 60%, #000 55%);
@@ -140,7 +139,6 @@
    2. PANEL SHELL
    - Actual dialog surface
 --------------------------------------------------------- */
-
 .command__panel {
     position: relative;
     width: 100%;
@@ -182,7 +180,6 @@
 /* ---------------------------------------------------------
    3. HEADER & SEARCH ROW
 --------------------------------------------------------- */
-
 .command__header {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
@@ -290,7 +287,6 @@
 /* ---------------------------------------------------------
    4. BODY, SECTIONS & LIST
 --------------------------------------------------------- */
-
 .command__body {
     position: relative;
     display: flex;
@@ -460,7 +456,6 @@
 /* ---------------------------------------------------------
    5. EMPTY STATE
 --------------------------------------------------------- */
-
 .command__empty {
     padding: var(--space-6) var(--space-4) var(--space-5);
     text-align: center;
@@ -475,7 +470,6 @@
 /* ---------------------------------------------------------
    6. FOOTER (HELPER TEXT / STATUS)
 --------------------------------------------------------- */
-
 .command__footer {
     padding: var(--space-2_5) var(--space-4);
     border-top: 1px solid var(--command-panel-border);
@@ -508,7 +502,6 @@
 /* ---------------------------------------------------------
    7. SCROLLBARS & OVERRIDES
 --------------------------------------------------------- */
-
 .command__body,
 .command__scroll {
     scrollbar-width: thin;
@@ -534,7 +527,6 @@
 /* ---------------------------------------------------------
    8. COMMAND PAGE FOUNDATION (Landing / Hub)
 --------------------------------------------------------- */
-
 .command-page {
     display: flex;
     flex-direction: column;
@@ -617,7 +609,6 @@
 /* ---------------------------------------------------------
    9. COMMAND TOOLBAR
 --------------------------------------------------------- */
-
 .command-toolbar {
     display: flex;
     flex-wrap: wrap;
@@ -648,7 +639,6 @@
 /* ---------------------------------------------------------
    10. GRID + VARIANTS
 --------------------------------------------------------- */
-
 .command-grid {
     display: grid;
     grid-gap: var(--command-surface-gap);
@@ -758,7 +748,6 @@
 /* ---------------------------------------------------------
    11. CARD + SURFACE
 --------------------------------------------------------- */
-
 .command-card {
     --command-variant-rail: var(--command-accent);
     --command-variant-tint: var(--command-accent-soft);
@@ -819,7 +808,6 @@
 /* ---------------------------------------------------------
    12. PILLS / TAGS
 --------------------------------------------------------- */
-
 .command-pill {
     --command-variant-rail: var(--command-pill-border);
     --command-variant-tint: var(--command-pill-bg);
@@ -843,7 +831,6 @@
 /* ---------------------------------------------------------
    13. ACTIONS (Tiles + Rows)
 --------------------------------------------------------- */
-
 .command-action {
     --command-variant-rail: var(--command-accent);
     --command-variant-tint: var(--command-accent-soft);
@@ -947,7 +934,6 @@
 /* ---------------------------------------------------------
    14. NEXT STEPS
 --------------------------------------------------------- */
-
 .command-steps {
     list-style: none;
     margin: 0;
@@ -1028,7 +1014,6 @@
 /* ---------------------------------------------------------
    15. QUEUE + LANES
 --------------------------------------------------------- */
-
 .command-lanes {
     display: grid;
     grid-gap: var(--space-3);
@@ -1161,7 +1146,6 @@
 /* ---------------------------------------------------------
    16. GLANCE METRICS
 --------------------------------------------------------- */
-
 .command-glance-grid {
     display: grid;
     grid-gap: var(--space-3);
@@ -1212,7 +1196,6 @@
 /* ---------------------------------------------------------
    17. NUDGES
 --------------------------------------------------------- */
-
 .command-nudge {
     --command-variant-rail: var(--command-accent);
     --command-variant-tint: var(--command-accent-soft);
@@ -1273,7 +1256,6 @@
 /* ---------------------------------------------------------
    18. ACTIVITY STREAM
 --------------------------------------------------------- */
-
 .command-activity {
     list-style: none;
     margin: 0;
@@ -1319,7 +1301,6 @@
 /* ---------------------------------------------------------
    19. EMPTY STATE
 --------------------------------------------------------- */
-
 .command-empty {
     padding: var(--space-6);
     border-radius: var(--command-surface-radius);
@@ -1352,7 +1333,6 @@
 /* ---------------------------------------------------------
    20. REDUCED MOTION SAFETY (optional extra)
 --------------------------------------------------------- */
-
 @media (prefers-reduced-motion: reduce) {
     .command,
     .command::before,
@@ -1363,5 +1343,3 @@
         transition: none !important;
     }
 }
-
-/*# sourceMappingURL=command.css.map */

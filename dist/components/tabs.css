@@ -22,7 +22,6 @@
 /* ---------------------------------------------------------
    1. TABS TOKEN DEFINITIONS
 --------------------------------------------------------- */
-
 [data-vds-tabs],
 .vds-tabs {
     --tabs-component-disabled-opacity: 0.48;
@@ -45,7 +44,6 @@
 /* ---------------------------------------------------------
    2. TABS CONTAINER
 --------------------------------------------------------- */
-
 .tabs {
     display: flex;
     flex-direction: column;
@@ -64,7 +62,6 @@
 /* ---------------------------------------------------------
    3. TAB LIST (HORIZONTAL UNDERLINE BASELINE)
 --------------------------------------------------------- */
-
 .tab-list {
     position: relative;
     display: inline-flex;
@@ -100,7 +97,6 @@
    4. TAB (BASE)
    Pattern: <button class="tab">Label</button>
 --------------------------------------------------------- */
-
 .tab {
     position: relative;
     display: inline-flex;
@@ -179,7 +175,6 @@
 /* ---------------------------------------------------------
    5. ACTIVE STATE - UNDERLINE INDICATOR
 --------------------------------------------------------- */
-
 .tab--active {
     color: var(--color-text);
     font-weight: var(--font-weight-semibold);
@@ -197,7 +192,6 @@
 /* ---------------------------------------------------------
    6A. TAB VARIANTS (PILL + SEGMENTED)
 --------------------------------------------------------- */
-
 .tabs--pills .tab-list {
     border: none;
     gap: var(--space-2);
@@ -275,7 +269,6 @@
 /* ---------------------------------------------------------
    7. DENSITY VARIANTS (A / default / C)
 --------------------------------------------------------- */
-
 .tabs--a .tab {
     padding-left: var(--space-4);
     padding-right: var(--space-4);
@@ -300,7 +293,6 @@
      <div class="tab-panel">...</div>
    </div>
 --------------------------------------------------------- */
-
 .tabs--vertical {
     flex-direction: row;
     align-items: flex-start;
@@ -351,7 +343,6 @@
 /* ---------------------------------------------------------
    9. TAB PANELS
 --------------------------------------------------------- */
-
 .tab-panel {
     width: 100%;
     padding-top: var(--space-2);
@@ -379,7 +370,6 @@
 /* ---------------------------------------------------------
    10. RESPONSIVE BEHAVIOUR
 --------------------------------------------------------- */
-
 @media (max-width: 768px) {
     .tab-list {
         overflow-x: auto;
@@ -417,5 +407,3 @@
         box-shadow: 0 var(--tab-indicator-height) 0 0 var(--focus-ring-color);
     }
 }
-
-/*# sourceMappingURL=tabs.css.map */

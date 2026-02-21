@@ -21,7 +21,6 @@
 /* ---------------------------------------------------------
    NAVY - LIGHT THEME
 --------------------------------------------------------- */
-
 :root[data-theme="navy-light"] {
     /* Core brand */
     --color-brand-ink: #0C1A33;
@@ -341,7 +340,6 @@
    NAVY - DARK THEME
    Inverts background/text, preserves hierarchy.
 --------------------------------------------------------- */
-
 :root[data-theme="navy-dark"] {
     /* Core brand */
     --color-brand-ink: #F7F9FB;
@@ -655,5 +653,3 @@
 
     --focus-ring-color: #C0CAD8;
 }
-
-/*# sourceMappingURL=navy.css.map */

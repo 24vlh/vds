@@ -22,7 +22,6 @@
 /* ---------------------------------------------------------
    1. CHART TOKEN DEFINITIONS (extend root)
 --------------------------------------------------------- */
-
 [data-vds-chart],
 .vds-chart {
     --chart-min-height-sm: 10rem;
@@ -84,7 +83,6 @@
 /* ---------------------------------------------------------
    2. CHART CONTAINERS
 --------------------------------------------------------- */
-
 .chart {
     display: flex;
     flex-direction: column;
@@ -123,7 +121,6 @@
 /* ---------------------------------------------------------
    3. HEADER, META & ACTIONS
 --------------------------------------------------------- */
-
 .chart__header {
     display: flex;
     align-items: center;
@@ -174,7 +171,6 @@
 /* ---------------------------------------------------------
    4. BODY & CANVAS WRAPPER
 --------------------------------------------------------- */
-
 .chart__body {
     position: relative;
     flex: 1 1 auto;
@@ -203,7 +199,6 @@
 /* ---------------------------------------------------------
    5. LEGEND SYSTEM
 --------------------------------------------------------- */
-
 .chart__legend {
     display: flex;
     flex-wrap: wrap;
@@ -263,7 +258,6 @@
 /* ---------------------------------------------------------
    6. AXES & GRIDLINE HOOKS (SVG / Canvas wrappers)
 --------------------------------------------------------- */
-
 .chart-axis line,
 .chart-axis path {
     stroke: var(--chart-axis-color);
@@ -298,7 +292,6 @@
    7. SERIES HOOKS (lines, areas, bars)
    Apply to SVG elements created by chart libs or custom D3.
 --------------------------------------------------------- */
-
 .chart-series--1 {
     stroke: var(--chart-series-1-line);
     fill: none;
@@ -401,7 +394,6 @@
 /* ---------------------------------------------------------
    8. EMPTY / ERROR / LOADING STATES
 --------------------------------------------------------- */
-
 .chart--empty .chart__canvas,
 .chart--error .chart__canvas,
 .chart--loading .chart__canvas {
@@ -464,7 +456,6 @@
 /* ---------------------------------------------------------
    9. RESPONSIVE TUNING
 --------------------------------------------------------- */
-
 @media (max-width: 768px) {
     .chart {
         padding: var(--chart-padding-sm);
@@ -491,7 +482,6 @@
 /* ---------------------------------------------------------
    10. ANIMATIONS
 --------------------------------------------------------- */
-
 @keyframes chart-loading-shimmer {
     0% {
         background-position: -150% 0;
@@ -500,5 +490,3 @@
         background-position: 150% 0;
     }
 }
-
-/*# sourceMappingURL=charts.css.map */

@@ -22,7 +22,6 @@
 /* ---------------------------------------------------------
    1. DISPLAY & VISIBILITY
 --------------------------------------------------------- */
-
 .block {
     display: block !important;
 }
@@ -123,7 +122,6 @@
 /* ---------------------------------------------------------
    2. FLEXBOX
 --------------------------------------------------------- */
-
 .flex-row {
     flex-direction: row !important;
 }
@@ -203,7 +201,6 @@
 /* ---------------------------------------------------------
    3. GRID (ATOMIC)
 --------------------------------------------------------- */
-
 .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -318,7 +315,6 @@
    Scale (mapped to --space-* tokens):
      0,1,2,3,4,5,6,7,8,10,12,14,16,20,24,32,40,48,64
 --------------------------------------------------------- */
-
 .m-0 {
     margin: 0 !important;
 }
@@ -1629,7 +1625,6 @@
 /* ---------------------------------------------------------
    5. GAP UTILITIES - FULL SPACE SCALE
 --------------------------------------------------------- */
-
 .gap-0 {
     gap: 0;
 }
@@ -1880,7 +1875,6 @@
 /* ---------------------------------------------------------
    6. TYPOGRAPHY & TEXT DECORATION
 --------------------------------------------------------- */
-
 .text-left {
     text-align: left !important;
 }
@@ -2146,7 +2140,6 @@
 /* ---------------------------------------------------------
    7. WIDTH / HEIGHT / ASPECT RATIO / OBJECT-FIT
 --------------------------------------------------------- */
-
 .w-auto {
     width: auto !important;
 }
@@ -2291,7 +2284,6 @@
 /* ---------------------------------------------------------
    8. BORDER / RADIUS / SHADOW
 --------------------------------------------------------- */
-
 .border {
     border: 1px solid var(--color-border-subtle) !important;
 }
@@ -2367,7 +2359,6 @@
 /* ---------------------------------------------------------
    9. BACKGROUND / SURFACE
 --------------------------------------------------------- */
-
 .bg-surface {
     background-color: var(--color-surface) !important;
 }
@@ -2411,7 +2402,6 @@
 /* ---------------------------------------------------------
    10. OPACITY, CURSOR, POINTER-EVENTS
 --------------------------------------------------------- */
-
 .opacity-0 {
     opacity: 0;
 }
@@ -2463,7 +2453,6 @@
 /* ---------------------------------------------------------
    11. OVERFLOW / SCROLL
 --------------------------------------------------------- */
-
 .overflow-hidden {
     overflow: hidden !important;
 }
@@ -2497,7 +2486,6 @@
 /* ---------------------------------------------------------
    12. POSITION / Z-INDEX
 --------------------------------------------------------- */
-
 .relative {
     position: relative !important;
 }
@@ -2592,7 +2580,6 @@
 /* ---------------------------------------------------------
    13. STACK / CLUSTER / BUTTON ROW / GUTTERS
 --------------------------------------------------------- */
-
 .stack {
     display: flex;
     flex-direction: column;
@@ -2677,7 +2664,6 @@
 /* ---------------------------------------------------------
    14. TEXT HELPERS (TRUNCATE / MULTILINE / MISC)
 --------------------------------------------------------- */
-
 .truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2714,7 +2700,6 @@
     </p>
 
 --------------------------------------------------------- */
-
 .text-info {
     color: var(--semantic-info-text) !important;
 }
@@ -2743,7 +2728,6 @@
    Safe baseline for all inline <code> elements.
    Does not apply to <pre><code> blocks.
 --------------------------------------------------------- */
-
 code:not(pre code) {
     font-family: var(--font-family-mono), monospace;
     font-size: 0.875em;
@@ -2764,7 +2748,6 @@ code:not(pre code) {
    These are local, composable layout patterns that complement
    the structural layouts in layout.css (sidebar, split, layout-grid-*)
 --------------------------------------------------------- */
-
 .layout-stack {
     display: flex;
     flex-direction: column;
@@ -2863,7 +2846,6 @@ code:not(pre code) {
 /* ---------------------------------------------------------
    18. GRID ALIGNMENT UTILITIES
 --------------------------------------------------------- */
-
 .grid-items-start {
     align-items: start;
 }
@@ -2939,7 +2921,6 @@ code:not(pre code) {
 /* ---------------------------------------------------------
    19. RESPONSIVE GRID COLUMN UTILITIES
 --------------------------------------------------------- */
-
 @media (max-width: 640px) {
     .sm\:grid-cols-1 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -3063,7 +3044,6 @@ code:not(pre code) {
 /* ---------------------------------------------------------
    20. FLEX - BASE UTILITIES
 --------------------------------------------------------- */
-
 .flex-row-reverse {
     flex-direction: row-reverse;
 }
@@ -3123,7 +3103,6 @@ code:not(pre code) {
 /* ---------------------------------------------------------
    21. RESPONSIVE GRID COLUMN UTILITIES
 --------------------------------------------------------- */
-
 @media (max-width: 640px) {
 
     .sm\:flex {
@@ -3471,5 +3450,3 @@ code:not(pre code) {
         flex: none;
     }
 }
-
-/*# sourceMappingURL=utilities.css.map */

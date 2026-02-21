@@ -17,7 +17,6 @@
 /* ---------------------------------------------------------
    1. TOKENS & SHARED ANIMATIONS
 --------------------------------------------------------- */
-
 [data-vds-form],
 .vds-form {
     --form-flow-textarea-min-height: 5rem;
@@ -39,7 +38,6 @@
 /* ---------------------------------------------------------
    2. BASE CONTROL PRIMITIVE
 --------------------------------------------------------- */
-
 .form-control {
     position: relative;
     z-index: 0;
@@ -60,7 +58,6 @@
 }
 
 /* Native control normalization (only when used as UFAL control) */
-
 input.form-control,
 select.form-control,
 textarea.form-control {
@@ -81,7 +78,6 @@ select.form-control {
 }
 
 /* Select dropdown affordance */
-
 select.form-control:not([multiple]):not([size]) {
     padding-right: calc(var(--space-7) + var(--space-2));
     background-image: linear-gradient(45deg, transparent 50%, var(--color-text-muted) 50%),
@@ -118,7 +114,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* ARIA validation */
-
 .form-control[aria-invalid="true"] {
     border-color: var(--color-danger);
 }
@@ -130,7 +125,6 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    2A. FIELD SHELL (LABEL + HELP)
 --------------------------------------------------------- */
-
 .form-field {
     display: flex;
     flex-direction: column;
@@ -213,7 +207,6 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    2B. CHOICE CONTROLS (CHECKBOX / RADIO)
 --------------------------------------------------------- */
-
 .choice-group {
     display: flex;
     flex-direction: column;
@@ -384,7 +377,6 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    3. WRAPPERS & GROUPING
 --------------------------------------------------------- */
-
 .form-control-wrapper {
     position: relative;
     width: 100%;
@@ -400,7 +392,6 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    4. STATE MODIFIERS
 --------------------------------------------------------- */
-
 .form-control--loading {
     cursor: progress;
     opacity: .55;
@@ -434,7 +425,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Native disabled / readonly */
-
 .form-control:disabled,
 .form-control[disabled] {
     background-color: var(--color-muted-bg);
@@ -455,7 +445,6 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    5. ICONS / PREFIX / SUFFIX
 --------------------------------------------------------- */
-
 .form-control-wrapper[data-icon="left"] .form-control {
     padding-left: calc(var(--space-7) + var(--space-2));
 }
@@ -495,7 +484,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Prefix / suffix */
-
 .form-control-prefix,
 .form-control-suffix {
     position: static;
@@ -524,7 +512,6 @@ select.form-control:not([multiple]):not([size]) {
    - Group draws internal dividers (always present, any child type)
    - Works for: .form-control, .form-control-wrapper (icons), .button
 --------------------------------------------------------- */
-
 .form-control-group {
     position: relative;
     display: flex;
@@ -537,7 +524,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Outer rounding is applied to slots, to preserve radius even when children are wrappers */
-
 .form-control-group > * {
     position: relative;
     border-radius: 0;
@@ -545,7 +531,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Default flex behavior: controls/wrappers flex, buttons stay auto-sized below */
-
 .form-control-group > .form-control,
 .form-control-group > .form-control-wrapper {
     flex: 1 1 auto;
@@ -556,7 +541,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Edge radii */
-
 .form-control-group > :first-child {
     border-top-left-radius: var(--radius-md);
     border-bottom-left-radius: var(--radius-md);
@@ -568,13 +552,11 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Internal divider (single source of truth) */
-
 .form-control-group > * + * {
     box-shadow: inset var(--border-width) 0 0 var(--color-border-subtle);
 }
 
 /* Suppress per-control focus ring inside groups (prevents double focus visuals) */
-
 .form-control-group .form-control:focus-visible {
     border-color: var(--focus-ring-color);
     box-shadow: inset var(--border-width) 0 0 var(--color-border-subtle),
@@ -582,7 +564,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Children inside group should not draw their own outer borders */
-
 .form-control-group > .form-control,
 .form-control-group > .form-control-wrapper > .form-control {
     border: none;
@@ -590,7 +571,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Action button integration inside groups */
-
 .form-control-group > .button {
     border: none;
     background: transparent;
@@ -609,7 +589,6 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    6. LOADING OVERLAYS
 --------------------------------------------------------- */
-
 .form-control--loading::after {
     content: "";
     position: absolute;
@@ -638,7 +617,6 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    7. FILE UPLOAD PRIMITIVES
 --------------------------------------------------------- */
-
 .form-control--file {
     position: relative;
     padding: var(--space-3);
@@ -657,7 +635,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Drop surface */
-
 .form-control-file-surface {
     position: relative;
     display: flex;
@@ -720,7 +697,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Inline upload */
-
 .file-upload-inline {
     display: inline-flex;
     align-items: center;
@@ -740,7 +716,6 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Loading shimmer on surface */
-
 .form-control-file-surface.form-control--loading::after {
     content: "";
     position: absolute;
@@ -762,7 +737,6 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    8. LAYOUT PRIMITIVES
 --------------------------------------------------------- */
-
 .form-row {
     display: flex;
     flex-wrap: wrap;
@@ -798,7 +772,6 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    9. FORM-LEVEL MESSAGES
 --------------------------------------------------------- */
-
 .form-message {
     width: 100%;
     padding: var(--space-4) var(--space-6);
@@ -850,7 +823,6 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    10. FORM SECTION STATES
 --------------------------------------------------------- */
-
 .form-section--error,
 .form-section--warning,
 .form-section--success,
@@ -881,5 +853,3 @@ select.form-control:not([multiple]):not([size]) {
 .form-section--info:not(:last-child) {
     margin-bottom: var(--space-4);
 }
-
-/*# sourceMappingURL=forms.css.map */
