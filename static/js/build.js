@@ -1,18 +1,23 @@
 // static/js/build.js
 const {execSync} = require("child_process");
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
+const glob = require("glob");
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..");
 const DIST_DIR = path.join(PROJECT_ROOT, "dist");
-const TEMP_DIR = path.join(PROJECT_ROOT, ".tmp_batch");
+const TEMP_DIR = path.join(os.tmpdir(), `vds_tmp_batch_${process.pid}`);
+const POSTCSS_BIN = path.join(PROJECT_ROOT, "node_modules", ".bin", "postcss");
 const IS_PROD = process.env.NODE_ENV === "production";
+// Source maps are expensive on mounted filesystems. Opt-in explicitly.
+const EMIT_MAPS = process.env.VDS_BUILD_MAPS === "1";
 
-const PLUGINS = [
-    "--use postcss-import",
+const BASE_PLUGINS = [
     "--use postcss-preset-env",
     "--use autoprefixer"
 ];
+const IMPORT_PLUGIN = "--use postcss-import";
 
 // METRICS ---------------------------------------------------
 const metrics = {
@@ -34,14 +39,15 @@ function runPostCSS(inputRel, outputRel, minify = false) {
     if (minify) env.NODE_ENV = "production";
     else if (env.NODE_ENV === "production") delete env.NODE_ENV;
 
-    const mapFlag = minify || IS_PROD ? "--no-map" : "--map";
+    const mapFlag = minify || IS_PROD || !EMIT_MAPS ? "--no-map" : "--map";
     const plugins = [
-        ...PLUGINS,
+        IMPORT_PLUGIN,
+        ...BASE_PLUGINS,
         ...(minify ? ["--use cssnano"] : [])
     ];
 
     const cmd = [
-        "postcss",
+        `"${POSTCSS_BIN}"`,
         `"${inputRel}"`,
         mapFlag,
         ...plugins,
@@ -81,14 +87,15 @@ function runPostCSSBatch(patternRel, outDirRel, minify = false) {
     if (minify) env.NODE_ENV = "production";
     else if (env.NODE_ENV === "production") delete env.NODE_ENV;
 
-    const mapFlag = minify || IS_PROD ? "--no-map" : "--map";
+    const mapFlag = minify || IS_PROD || !EMIT_MAPS ? "--no-map" : "--map";
     const plugins = [
-        ...PLUGINS,
+        ...(patternHasImports(patternRel) ? [IMPORT_PLUGIN] : []),
+        ...BASE_PLUGINS,
         ...(minify ? ["--use cssnano"] : [])
     ];
 
     const cmd = [
-        "postcss",
+        `"${POSTCSS_BIN}"`,
         `"${patternRel}"`,
         mapFlag,
         ...plugins,
@@ -144,6 +151,16 @@ function runPostCSSBatch(patternRel, outDirRel, minify = false) {
 
     // cleanup temp
     fs.rmSync(TEMP_DIR, {recursive: true, force: true});
+}
+
+function patternHasImports(patternRel) {
+    const files = glob.sync(patternRel, {cwd: PROJECT_ROOT, nodir: true});
+    for (const rel of files) {
+        const abs = path.join(PROJECT_ROOT, rel);
+        const content = fs.readFileSync(abs, "utf8");
+        if (content.includes("@import")) return true;
+    }
+    return false;
 }
 
 // Recursively collect CSS files
