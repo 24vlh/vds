@@ -100,6 +100,16 @@
                                 <div class="text-xs text-mono text-nowrap">.icon--xl</div>
                             </div>
                         </div>
+                        <div class="section__inline-sm mt-4">
+                            <div class="section__inline-sm mr-4">
+                                <span class="icon icon--mask icon--info icon--sm icon--filled"></span>
+                                <div class="text-xs text-mono text-nowrap">.icon--filled</div>
+                            </div>
+                            <div class="section__inline-sm">
+                                <span class="icon-glyph icon--mask icon--info"></span>
+                                <div class="text-xs text-mono text-nowrap">.icon-glyph</div>
+                            </div>
+                        </div>
                         <p class="text-xs">
                             All glyphs are applied via <code>mask-image</code> and use
                             <code>background-color: currentColor</code>.
@@ -123,6 +133,17 @@
 .icon--md  { width: var(--icon-md);  height: var(--icon-md);  }
 .icon--lg  { width: var(--icon-lg);  height: var(--icon-lg);  }
 .icon--xl  { width: var(--icon-xl);  height: var(--icon-xl);  }
+
+.icon--filled {
+    fill: currentColor;
+    stroke: none;
+}
+
+.icon-glyph {
+    display: inline-block;
+    width: var(--icon-md);
+    height: var(--icon-md);
+}
 </code></pre>
                 </div>
             </div>
@@ -382,6 +403,10 @@
                                             <div class="text-xs text-mono text-nowrap">ai-text</div>
                                         </div>
                                         <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--font-size icon--sm"></span>
+                                            <div class="text-xs text-mono text-nowrap">font-size</div>
+                                        </div>
+                                        <div class="section__inline-sm">
                                             <span class="icon icon--mask icon--plus icon--sm"></span>
                                             <div class="text-xs text-mono text-nowrap">plus</div>
                                         </div>
@@ -488,6 +513,38 @@
                                         <div class="section__inline-sm">
                                             <span class="icon icon--mask icon--take-right-outline icon--sm"></span>
                                             <div class="text-xs text-mono text-nowrap">take-right-outline</div>
+                                        </div>
+                                        <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--take-left-fill icon--sm"></span>
+                                            <div class="text-xs text-mono text-nowrap">take-left-fill</div>
+                                        </div>
+                                        <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--take-left-outline icon--sm"></span>
+                                            <div class="text-xs text-mono text-nowrap">take-left-outline</div>
+                                        </div>
+                                        <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--take-up-fill icon--sm"></span>
+                                            <div class="text-xs text-mono text-nowrap">take-up-fill</div>
+                                        </div>
+                                        <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--take-up-outline icon--sm"></span>
+                                            <div class="text-xs text-mono text-nowrap">take-up-outline</div>
+                                        </div>
+                                        <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--take-down-fill icon--sm"></span>
+                                            <div class="text-xs text-mono text-nowrap">take-down-fill</div>
+                                        </div>
+                                        <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--take-down-outline icon--sm"></span>
+                                            <div class="text-xs text-mono text-nowrap">take-down-outline</div>
+                                        </div>
+                                        <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--take-dow-fill icon--sm"></span>
+                                            <div class="text-xs text-mono text-nowrap">take-dow-fill</div>
+                                        </div>
+                                        <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--take-dow-outline icon--sm"></span>
+                                            <div class="text-xs text-mono text-nowrap">take-dow-outline</div>
                                         </div>
                                         <div class="section__inline-sm">
                                             <span class="icon icon--mask icon--trash icon--sm"></span>
@@ -837,6 +894,14 @@
                                         <div class="section__inline-sm">
                                             <span class="icon icon--mask icon--pulse icon--sm icon--pulsing"></span>
                                             <div class="text-xs text-mono text-nowrap">pulse</div>
+                                        </div>
+                                        <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--spinner icon--sm icon--loader icon--loader-fast"></span>
+                                            <div class="text-xs text-mono text-nowrap">loader-fast</div>
+                                        </div>
+                                        <div class="section__inline-sm">
+                                            <span class="icon icon--mask icon--spinner-dots icon--sm icon--loader icon--loader-slow"></span>
+                                            <div class="text-xs text-mono text-nowrap">loader-slow</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1297,7 +1362,7 @@
             <div class="doc-block__body section__grid-2 section__grid-sm">
 
                 <div class="doc-block__preview">
-                    <div class="section__grid-3 section__grid-sm">
+                    <div class="section__grid-5 section__grid-sm">
                         <div class="section__stack-sm">
                             <span class="icon icon--mask icon--spinner icon--md icon--spinning"></span>
                             <div class="text-xs text-mono">.icon--spinner.icon--spinning</div>
@@ -1309,6 +1374,14 @@
                         <div class="section__stack-sm">
                             <span class="icon icon--mask icon--pulse icon--md icon--pulsing"></span>
                             <div class="text-xs text-mono">.icon--pulse.icon--pulsing</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon icon--mask icon--spinner icon--md icon--loader icon--loader-fast"></span>
+                            <div class="text-xs text-mono">.icon--loader-fast</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon icon--mask icon--spinner icon--md icon--loader icon--loader-slow"></span>
+                            <div class="text-xs text-mono">.icon--loader-slow</div>
                         </div>
                     </div>
                 </div>
@@ -1327,10 +1400,14 @@
 
 .icon--loader.icon--spinner,
 .icon--loader.icon--spinner-dots { /* loader integration */ }
+.icon--loader-fast { /* quicker loader cycle */ }
+.icon--loader-slow { /* slower loader cycle */ }
 
 @media (prefers-reduced-motion: reduce) {
     .icon--spinning,
-    .icon--pulsing {
+    .icon--pulsing,
+    .icon--loader-fast,
+    .icon--loader-slow {
         animation: none;
     }
 }
@@ -1448,6 +1525,26 @@
                             <span class="icon icon--mask icon--info icon--md icon-color--muted"></span>
                             <div class="text-xs text-mono">.icon-color--muted</div>
                         </div>
+                        <div class="section__stack-sm">
+                            <span class="icon icon--mask icon--info icon--md icon-color--soft"></span>
+                            <div class="text-xs text-mono">.icon-color--soft</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon icon--mask icon--info icon--md icon-color--subtle"></span>
+                            <div class="text-xs text-mono">.icon-color--subtle</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--accent-strong">
+                                <span class="icon icon--mask icon--info icon--md icon-color--on-accent"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-color--on-accent</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--accent-strong">
+                                <span class="icon icon--mask icon--info icon--md icon-color--inverse"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon-color--inverse</div>
+                        </div>
                     </div>
 
                     <h3 class="text-sm">Stroke weights</h3>
@@ -1467,6 +1564,87 @@
                         <div class="section__stack-sm">
                             <span class="icon icon--mask icon--info icon--md icon--bold"></span>
                             <div class="text-xs text-mono">.icon--bold</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm mt-8">Density layers</h3>
+                    <div class="section__grid-4 section__grid-sm">
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--a">
+                                <span class="icon icon--mask icon--info icon--a"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon--a + .icon-container--a</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--b">
+                                <span class="icon icon--mask icon--info icon--b"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon--b + .icon-container--b</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container icon-container--c">
+                                <span class="icon icon--mask icon--info icon--c"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon--c + .icon-container--c</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <div class="icon-container">
+                                <span class="icon icon--mask icon--info icon--d"></span>
+                            </div>
+                            <div class="text-xs text-mono">.icon--d</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm mt-8">Notification badges</h3>
+                    <div class="section__grid-4 section__grid-sm">
+                        <div class="section__stack-sm">
+                            <span class="icon-badge">
+                                <span class="icon icon--mask icon--bell icon--md"></span>
+                                <span class="icon-badge__dot"></span>
+                            </span>
+                            <div class="text-xs text-mono">.icon-badge + .icon-badge__dot</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon-badge">
+                                <span class="icon icon--mask icon--bell icon--md"></span>
+                                <span class="icon-badge__dot icon-badge__dot--success"></span>
+                            </span>
+                            <div class="text-xs text-mono">.icon-badge__dot--success</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon-badge">
+                                <span class="icon icon--mask icon--bell icon--md"></span>
+                                <span class="icon-badge__dot icon-badge__dot--danger"></span>
+                            </span>
+                            <div class="text-xs text-mono">.icon-badge__dot--danger</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon-badge">
+                                <span class="icon icon--mask icon--bell icon--md"></span>
+                                <span class="icon-badge__dot icon-badge__dot--warning"></span>
+                            </span>
+                            <div class="text-xs text-mono">.icon-badge__dot--warning</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon-badge">
+                                <span class="icon icon--mask icon--bell icon--md"></span>
+                                <span class="icon-badge__dot icon-badge__dot--info"></span>
+                            </span>
+                            <div class="text-xs text-mono">.icon-badge__dot--info</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon-badge">
+                                <span class="icon icon--mask icon--bell icon--md"></span>
+                                <span class="icon-badge__dot icon-badge__dot--neutral"></span>
+                            </span>
+                            <div class="text-xs text-mono">.icon-badge__dot--neutral</div>
+                        </div>
+                        <div class="section__stack-sm">
+                            <span class="icon-badge">
+                                <span class="icon icon--mask icon--bell icon--md"></span>
+                                <span class="icon-badge__dot icon-badge__dot--disabled"></span>
+                            </span>
+                            <div class="text-xs text-mono">.icon-badge__dot--disabled</div>
                         </div>
                     </div>
                 </div>
@@ -1504,11 +1682,37 @@
 .icon-container--danger        { /* danger surface */ }
 .icon-container--muted         { /* subtle muted */ }
 
+/* Color utilities */
+.icon-color--soft      { /* softer text-tone icon */ }
+.icon-color--subtle    { /* subtle border-tone icon */ }
+.icon-color--on-accent { /* icon on accent background */ }
+.icon-color--inverse   { /* icon on dark/strong background */ }
+
 /* Stroke utilities */
 .icon--no-stroke           { /* stroke-width: 0 */ }
 .icon--stroke-1            { /* stroke-width: 1 */ }
 .icon--stroke-2            { /* stroke-width: 2 */ }
 .icon--bold                { /* stroke-width: var(--icon-stroke-bold) */ }
+
+/* Density layers */
+.icon--a { width: var(--icon-lg); height: var(--icon-lg); }
+.icon--b { width: var(--icon-md); height: var(--icon-md); }
+.icon--c { width: var(--icon-sm); height: var(--icon-sm); }
+.icon--d { width: var(--icon-xxs); height: var(--icon-xxs); }
+
+.icon-container--a { padding: var(--space-3); }
+.icon-container--b { padding: var(--space-2); }
+.icon-container--c { padding: var(--space-1); }
+
+/* Badge overlays */
+.icon-badge { position: relative; display: inline-flex; }
+.icon-badge__dot { /* base dot */ }
+.icon-badge__dot--success  { /* success marker */ }
+.icon-badge__dot--danger   { /* danger marker */ }
+.icon-badge__dot--warning  { /* warning marker */ }
+.icon-badge__dot--info     { /* info marker */ }
+.icon-badge__dot--neutral  { /* neutral marker */ }
+.icon-badge__dot--disabled { /* disabled marker */ }
 </code></pre>
                 </div>
             </div>
@@ -1757,7 +1961,8 @@
                         </li>
 
                         <li>
-                            Don’t mix multiple <code>icon--size</code> classes on the same element.
+                            Don’t mix multiple size classes (e.g. <code>icon--sm</code> +
+                            <code>icon--xl</code>) on the same element.
                         </li>
 
                         <li>

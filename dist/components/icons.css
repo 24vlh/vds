@@ -568,6 +568,46 @@
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 3 V6 H2 V10 H6 V13 L11 8 Z' fill='none' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
+.icon--take-left-fill {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3 V6 H14 V10 H10 V13 L5 8 Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3 V6 H14 V10 H10 V13 L5 8 Z' fill='white'/%3E%3C/svg%3E");
+}
+
+.icon--take-left-outline {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3 V6 H14 V10 H10 V13 L5 8 Z' fill='none' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3 V6 H14 V10 H10 V13 L5 8 Z' fill='none' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.icon--take-up-fill {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 10 H6 V14 H10 V10 H13 L8 5 Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 10 H6 V14 H10 V10 H13 L8 5 Z' fill='white'/%3E%3C/svg%3E");
+}
+
+.icon--take-up-outline {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 10 H6 V14 H10 V10 H13 L8 5 Z' fill='none' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 10 H6 V14 H10 V10 H13 L8 5 Z' fill='none' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.icon--take-down-fill {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6 H6 V2 H10 V6 H13 L8 11 Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6 H6 V2 H10 V6 H13 L8 11 Z' fill='white'/%3E%3C/svg%3E");
+}
+
+.icon--take-down-outline {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6 H6 V2 H10 V6 H13 L8 11 Z' fill='none' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6 H6 V2 H10 V6 H13 L8 11 Z' fill='none' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.icon--take-dow-fill {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6 H6 V2 H10 V6 H13 L8 11 Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6 H6 V2 H10 V6 H13 L8 11 Z' fill='white'/%3E%3C/svg%3E");
+}
+
+.icon--take-dow-outline {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6 H6 V2 H10 V6 H13 L8 11 Z' fill='none' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6 H6 V2 H10 V6 H13 L8 11 Z' fill='none' stroke='white' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
 .icon--open-fill {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='6' width='12' height='8' fill='white'/%3E%3Cpath d='M4 6 L6 2 H14 V6 Z' fill='white'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='6' width='12' height='8' fill='white'/%3E%3Cpath d='M4 6 L6 2 H14 V6 Z' fill='white'/%3E%3C/svg%3E");

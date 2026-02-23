@@ -56,9 +56,6 @@
 
 .sr-only {
     position: absolute !important;
-}
-
-.sr-only {
     width: 1px;
     height: 1px;
     padding: 0;
@@ -72,10 +69,6 @@
 .sr-only-focusable:active,
 .sr-only-focusable:focus {
     position: static !important;
-}
-
-.sr-only-focusable:active,
-.sr-only-focusable:focus {
     width: auto;
     height: auto;
     margin: 0;

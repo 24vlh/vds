@@ -422,7 +422,7 @@
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--command-item-border-active) 40%, transparent);
 }
 
-@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)) {
+@supports (color: color-mix(in lch, red, blue)) {
 .command__item--active,
 .command__item[aria-selected="true"] {
     box-shadow: 0 0 0 var(--border-width, 1px) color-mix(in srgb, var(--command-item-border-active) 40%, transparent);

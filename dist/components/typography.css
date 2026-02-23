@@ -127,9 +127,6 @@
 .typography pre code {
     background: none !important;
     border: none !important;
-}
-
-.typography pre code {
     padding: 0;
     border-radius: 0;
 }

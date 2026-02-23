@@ -74,16 +74,11 @@
 .logo-frame,
 .logo-rail,
 .logo-chevron {
-    fill: none !important;
-}
-
-.logo-frame,
-.logo-rail,
-.logo-chevron {
     stroke-width: var(--logo-stroke-primary);
     stroke-linecap: round;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
+    fill: none !important;
 }
 
 .logo-frame,
@@ -354,7 +349,7 @@
 .ke-text-primary,
 .ke-text-secondary {
     fill: currentColor;
-    font-family: var(--font-family-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    font-family: var(--font-family-sans), ui-sans-serif,system-ui,Segoe UI,Ubuntu,Cantarell,Noto Sans, -apple-system,
     "Segoe UI", Roboto, Arial, sans-serif;
 }
 

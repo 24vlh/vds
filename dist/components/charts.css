@@ -189,10 +189,6 @@
 .chart__canvas svg {
     width: 100% !important;
     height: 100% !important;
-}
-
-.chart__canvas canvas,
-.chart__canvas svg {
     display: block;
 }
 
