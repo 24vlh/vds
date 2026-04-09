@@ -218,6 +218,9 @@
     --semantic-error-bg-strong: #EAC7CB;
     --semantic-error-border-strong: #CE6870;
     --semantic-error-text-strong: #A55158;
+    --semantic-danger-bg-strong: var(--semantic-error-bg-strong);
+    --semantic-danger-border-strong: var(--semantic-error-border-strong);
+    --semantic-danger-text-strong: var(--semantic-error-text-strong);
 
     --semantic-warning-bg-strong: #DDD2C0;
     --semantic-warning-border-strong: #95825D;
@@ -537,6 +540,9 @@
     --semantic-error-bg-strong: #220F12;
     --semantic-error-border-strong: #B51823;
     --semantic-error-text-strong: #bc1425;
+    --semantic-danger-bg-strong: var(--semantic-error-bg-strong);
+    --semantic-danger-border-strong: var(--semantic-error-border-strong);
+    --semantic-danger-text-strong: var(--semantic-error-text-strong);
 
     --semantic-warning-bg-strong: #262012;
     --semantic-warning-border-strong: #A7832E;

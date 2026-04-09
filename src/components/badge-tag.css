@@ -57,6 +57,7 @@
     text-decoration: none;
 }
 
+.badge-tag__dot,
 .badge__dot {
     width: var(--badge-tag-dot-size);
     height: var(--badge-tag-dot-size);
@@ -64,6 +65,7 @@
     background: currentColor;
 }
 
+.badge-tag__icon,
 .badge__icon {
     width: var(--badge-tag-icon-size);
     height: var(--badge-tag-icon-size);
@@ -72,6 +74,7 @@
     justify-content: center;
 }
 
+.badge-tag__remove,
 .badge__remove {
     display: inline-flex;
     align-items: center;

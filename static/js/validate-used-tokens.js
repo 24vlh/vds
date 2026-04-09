@@ -1,113 +1,79 @@
-/**
- * Find all tokens used via var(--token) in /css
- * that are NOT defined anywhere in /css or /tokens.
- *
- * Layout:
- *   ./tokens  → token definition files (primitives, themes, etc.)
- *   ./css     → component/layout/authoring/docs CSS
- */
-
 const fs = require("fs");
 const path = require("path");
+const glob = require("glob");
 
-// ---- CONFIG ----
-const TOKENS_DIR = path.join(process.cwd(), "tokens");
-const CSS_DIR = path.join(process.cwd(), "css/components");
-
-// ----------------
-
-function readCssFilesRecursively(dir) {
-    if (!fs.existsSync(dir)) return [];
-    let results = [];
-    const entries = fs.readdirSync(dir);
-
-    for (const entry of entries) {
-        const fullPath = path.join(dir, entry);
-        const stat = fs.statSync(fullPath);
-
-        if (stat.isDirectory()) {
-            results = results.concat(readCssFilesRecursively(fullPath));
-        } else if (entry.endsWith(".css")) {
-            results.push(fullPath);
-        }
-    }
-    return results;
+function read(file) {
+    return fs.readFileSync(file, "utf8");
 }
 
-/**
- * Any `--token-name:` counts as a definition.
- */
 function extractDefinedTokens(content) {
     const regex = /(--[a-zA-Z0-9-_]+)\s*:/g;
     const tokens = new Set();
     let match;
-    while ((match = regex.exec(content))) {
+
+    while ((match = regex.exec(content)) !== null) {
         tokens.add(match[1]);
     }
+
     return tokens;
 }
 
-/**
- * Any `var(--token-name` counts as usage.
- * (We ignore anything not inside var()).
- */
 function extractUsedTokens(content) {
     const regex = /var\(\s*(--[a-zA-Z0-9-_]+)/g;
     const tokens = new Set();
     let match;
-    while ((match = regex.exec(content))) {
+
+    while ((match = regex.exec(content)) !== null) {
         tokens.add(match[1]);
     }
+
     return tokens;
 }
 
-function loadAllDefinedTokens() {
+function main() {
+    const files = glob.sync("src/**/*.css").sort();
+
+    if (files.length === 0) {
+        console.log("No CSS files found under src/.");
+        return;
+    }
+
     const defined = new Set();
 
-    const tokenFiles = readCssFilesRecursively(TOKENS_DIR);
-    const cssFiles = readCssFilesRecursively(CSS_DIR);
-
-    const allDefinitionSources = [...tokenFiles, ...cssFiles];
-
-    for (const filePath of allDefinitionSources) {
-        const content = fs.readFileSync(filePath, "utf8");
-        extractDefinedTokens(content).forEach(t => defined.add(t));
+    for (const file of files) {
+        extractDefinedTokens(read(file)).forEach(token => defined.add(token));
     }
 
-    return defined;
-}
+    const missingByFile = [];
 
-function loadAllUsedTokens() {
-    const used = new Set();
-    const cssFiles = readCssFilesRecursively(CSS_DIR);
+    for (const file of files) {
+        const used = extractUsedTokens(read(file));
+        const missing = [...used].filter(token => !defined.has(token)).sort();
 
-    for (const filePath of cssFiles) {
-        const content = fs.readFileSync(filePath, "utf8");
-        extractUsedTokens(content).forEach(t => used.add(t));
-    }
-
-    return used;
-}
-
-(function run() {
-    console.log("▶ Collecting defined tokens from /tokens and /css …");
-    const definedTokens = loadAllDefinedTokens();
-
-    console.log("▶ Collecting used tokens (var(--…)) from /css …");
-    const usedTokens = loadAllUsedTokens();
-
-    const missing = [...usedTokens].filter(t => !definedTokens.has(t)).sort();
-
-    console.log("\n========================================");
-    console.log("TOKENS USED VIA var(--…) BUT NEVER DEFINED");
-    console.log("========================================\n");
-
-    if (missing.length === 0) {
-        console.log("✓ All used tokens are defined somewhere.");
-    } else {
-        for (const t of missing) {
-            console.log("• " + t);
+        if (missing.length > 0) {
+            missingByFile.push({
+                file,
+                missing,
+            });
         }
-        console.log(`\nTotal missing: ${missing.length}`);
     }
-})();
+
+    if (missingByFile.length === 0) {
+        console.log(`Token usage audit passed for ${files.length} files.`);
+        return;
+    }
+
+    console.log("Tokens used via var(--...) but not defined in src/:");
+
+    for (const entry of missingByFile) {
+        console.log(`- ${path.relative(process.cwd(), entry.file)}`);
+
+        for (const token of entry.missing) {
+            console.log(`  • ${token}`);
+        }
+    }
+
+    process.exitCode = 1;
+}
+
+main();

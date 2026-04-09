@@ -115,6 +115,7 @@ function main() {
     console.log("\n==============================================");
     console.log(" Missing classes count:", files.length);
     console.log("==============================================");
+    process.exitCode = 1;
 }
 
 main();

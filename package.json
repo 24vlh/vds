@@ -24,6 +24,11 @@
   "scripts": {
     "build": "NODE_ENV=development node static/js/build.js",
     "build:prod": "NODE_ENV=production node static/js/build.js",
+    "audit": "pnpm run audit:css && pnpm run audit:classes && pnpm run audit:tokens && pnpm run audit:docs",
+    "audit:classes": "node static/js/find-bogus-classes.js",
+    "audit:css": "node static/js/validate-css.js",
+    "audit:docs": "node static/js/validate-doc-dependencies.js",
+    "audit:tokens": "node static/js/validate-used-tokens.js",
     "doc:serve": "node static/js/server.js",
     "lint-staged": "lint-staged",
     "prepare": "husky"
