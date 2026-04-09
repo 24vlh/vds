@@ -1,0 +1,1308 @@
+<section class="section" data-vds-android-shell data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
+            <header class="doc-block__header">
+                <div class="section__eyebrow">Android-first screens</div>
+                <h1 class="doc-block__title">Android Shell</h1>
+                <p class="doc-block__summary">
+                    A fuller Android app shell for dashboards, inboxes, alerts, settings, and
+                    adaptive workspaces. It combines safe-area layout, clearer navigation, and
+                    shell-specific helpers for stats, filters, banners, push messages, and timelines.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview section__stack-sm">
+                    <p class="text-sm text-muted">
+                        The shell follows the Android guidance mirrored in
+                        <code>@24vlh/agents/docs_md/mobile-design</code>: protect content from system
+                        bars, keep primary actions reachable, keep destination counts focused, and
+                        prefer strong readability over decorative color.
+                    </p>
+
+                    <ul class="text-sm section__stack-sm">
+                        <li><strong>Safe areas:</strong> top and bottom padding respect device insets.</li>
+                        <li><strong>Navigation:</strong> bottom nav stays readable and is designed for three to five peer destinations.</li>
+                        <li><strong>Shell helpers:</strong> dashboards, filters, banners, notices, chips, and timelines are included for common app states.</li>
+                        <li><strong>Adaptive layout:</strong> panes expand with container queries instead of layout hacks.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="./css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/graphite.css"&gt;
+&lt;link rel="stylesheet" href="./css/base.css"&gt;
+&lt;link rel="stylesheet" href="./css/layout.css"&gt;
+&lt;link rel="stylesheet" href="./css/buttons.css"&gt;
+&lt;link rel="stylesheet" href="./css/icons.css"&gt;
+&lt;link rel="stylesheet" href="./css/forms-advanced.css"&gt; &lt;!-- optional for toggles --&gt;
+&lt;link rel="stylesheet" href="./css/android-shell.css"&gt;
+&lt;link rel="stylesheet" href="./css/doc-block.css"&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-android-shell data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Core shell anatomy</h2>
+                <p class="doc-block__summary">
+                    Start with a shell, then compose the screen out of a top bar, one high-signal
+                    hero, grouped content surfaces, and an optional bottom app bar. The shell stays
+                    product-neutral while still giving you enough structure for real app screens.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview">
+                    <div class="android-shell android-shell--device android-shell--raised">
+                        <header class="android-shell__topbar android-shell__topbar--sticky">
+                            <div class="android-shell__topbar-row">
+                                <button class="android-shell__icon-button" type="button" aria-label="Go back">
+                                    <span aria-hidden="true" class="icon icon--mask icon--arrow-left"></span>
+                                </button>
+                                <div class="android-shell__titles">
+                                    <div class="android-shell__eyebrow">Relay</div>
+                                    <div class="android-shell__title">Shell anatomy</div>
+                                    <div class="android-shell__subtitle">Top bar, hero, grouped list, and bottom actions</div>
+                                </div>
+                                <div class="android-shell__actions">
+                                    <button class="android-shell__icon-button" type="button" aria-label="More actions">
+                                        <span aria-hidden="true" class="icon icon--mask icon--more-vertical"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <main class="android-shell__body">
+                            <div class="android-shell__stack">
+                                <section class="android-shell__hero">
+                                    <div class="android-shell__hero-head">
+                                        <div>
+                                            <div class="android-shell__eyebrow">Hero surface</div>
+                                            <div class="android-shell__hero-title">One strong summary should explain the screen at a glance.</div>
+                                            <div class="android-shell__hero-copy">Use the hero for the primary state, then let sections and lists carry the rest of the workload.</div>
+                                        </div>
+
+                                        <div class="android-shell__hero-actions">
+                                            <button class="button button--ghost button--xs" type="button">Audit</button>
+                                            <button class="button button--primary button--xs" type="button">Review now</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__chip-row">
+                                        <span class="android-shell__chip android-shell__chip--success">Healthy</span>
+                                        <span class="android-shell__chip android-shell__chip--accent">Queue ready</span>
+                                    </div>
+                                </section>
+
+                                <section class="android-shell__section">
+                                    <div class="android-shell__section-head">
+                                        <div class="android-shell__section-heading">
+                                            <div class="android-shell__section-title">Recent handoffs</div>
+                                            <div class="android-shell__section-note">Rows stay compact, readable, and status-aware.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__list">
+                                        <div class="android-shell__list-item android-shell__list-item--current">
+                                            <div class="android-shell__list-leading android-shell__list-leading--accent">RH</div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title-row">
+                                                    <div class="android-shell__list-title">Ready for server handoff</div>
+                                                </div>
+                                                <div class="android-shell__list-support">The current row can be emphasized without turning the whole surface into a loud accent block.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span class="android-shell__list-badge android-shell__list-badge--success">Live</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__list-item android-shell__list-item--interactive">
+                                            <div class="android-shell__list-leading">QR</div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Queued relay notice</div>
+                                                <div class="android-shell__list-support">Rows keep the 48px touch floor, support copy, and handle trailing metadata.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">2m</div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </main>
+
+                        <footer class="android-shell__bottom-bar">
+                            <div class="android-shell__bottom-actions">
+                                <button class="button button--outline button--sm" type="button">Pause</button>
+                                <button class="button button--primary button--sm" type="button">Resume</button>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="android-shell android-shell--device android-shell--raised"&gt;
+  &lt;header class="android-shell__topbar android-shell__topbar--sticky"&gt;...&lt;/header&gt;
+  &lt;main class="android-shell__body"&gt;
+    &lt;div class="android-shell__stack"&gt;...&lt;/div&gt;
+  &lt;/main&gt;
+  &lt;footer class="android-shell__bottom-bar"&gt;...&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-android-shell data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Operations dashboard / home screen</h2>
+                <p class="doc-block__summary">
+                    The dashboard pattern combines one decisive hero, a compact banner for system
+                    state, stat cards, quick actions, and calm bottom navigation. This is the
+                    primary shell example for home or overview screens.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview">
+                    <div class="android-shell android-shell--device android-shell--raised">
+                        <header class="android-shell__topbar android-shell__topbar--sticky">
+                            <div class="android-shell__topbar-row">
+                                <button class="android-shell__icon-button" type="button" aria-label="Open navigation">
+                                    <span aria-hidden="true" class="icon icon--mask icon--menu"></span>
+                                </button>
+                                <div class="android-shell__titles">
+                                    <div class="android-shell__eyebrow">Relay ops</div>
+                                    <div class="android-shell__title">Dashboard</div>
+                                    <div class="android-shell__subtitle">12 active relays · 2 need attention</div>
+                                </div>
+                                <div class="android-shell__actions">
+                                    <button class="android-shell__icon-button" type="button" aria-label="Search">
+                                        <span aria-hidden="true" class="icon icon--mask icon--search"></span>
+                                    </button>
+                                    <button class="android-shell__icon-button" type="button" aria-label="Notifications">
+                                        <span aria-hidden="true" class="icon icon--mask icon--bell"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <main class="android-shell__body">
+                            <div class="android-shell__stack">
+                                <section class="android-shell__hero">
+                                    <div class="android-shell__hero-head">
+                                        <div>
+                                            <div class="android-shell__eyebrow">Operations home</div>
+                                            <div class="android-shell__hero-title">Throughput is healthy across all relay paths.</div>
+                                            <div class="android-shell__hero-copy">Home screens should answer three questions fast: what is happening now, what is risky, and what the operator should do next.</div>
+                                        </div>
+
+                                        <div class="android-shell__hero-actions">
+                                            <button class="button button--ghost button--xs" type="button">Export</button>
+                                            <button class="button button--primary button--xs" type="button">Open queue</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__chip-row">
+                                        <span class="android-shell__chip android-shell__chip--success">Stable</span>
+                                        <span class="android-shell__chip android-shell__chip--warning">2 at risk</span>
+                                        <span class="android-shell__chip android-shell__chip--info">4 push alerts</span>
+                                    </div>
+                                </section>
+
+                                <div class="android-shell__banner android-shell__banner--success">
+                                    <div class="android-shell__banner-content">
+                                        <div class="android-shell__banner-title">Notification delivery is steady.</div>
+                                        <div class="android-shell__banner-copy">Last push handshake completed 42 seconds ago. Retry volume is below the warning threshold.</div>
+                                    </div>
+                                </div>
+
+                                <section class="android-shell__section">
+                                    <div class="android-shell__section-head">
+                                        <div class="android-shell__section-heading">
+                                            <div class="android-shell__section-title">Key stats</div>
+                                            <div class="android-shell__section-note">Use cards when each metric needs one supporting line or trend.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__dashboard">
+                                        <div class="android-shell__stat-card">
+                                            <div class="android-shell__stat-label">Pending review</div>
+                                            <div class="android-shell__stat-value">03</div>
+                                            <div class="android-shell__stat-support">Need operator confirmation</div>
+                                            <div class="android-shell__stat-trend android-shell__stat-trend--warning">Up from 1h ago</div>
+                                        </div>
+                                        <div class="android-shell__stat-card">
+                                            <div class="android-shell__stat-label">Delivered</div>
+                                            <div class="android-shell__stat-value">148</div>
+                                            <div class="android-shell__stat-support">Messages forwarded today</div>
+                                            <div class="android-shell__stat-trend android-shell__stat-trend--good">Inside target</div>
+                                        </div>
+                                        <div class="android-shell__stat-card">
+                                            <div class="android-shell__stat-label">Client uptime</div>
+                                            <div class="android-shell__stat-value">99.8%</div>
+                                            <div class="android-shell__stat-support">Foreground monitor availability</div>
+                                            <div class="android-shell__stat-trend android-shell__stat-trend--neutral">Flat</div>
+                                        </div>
+                                        <div class="android-shell__stat-card">
+                                            <div class="android-shell__stat-label">Missed pings</div>
+                                            <div class="android-shell__stat-value">02</div>
+                                            <div class="android-shell__stat-support">Both already retried</div>
+                                            <div class="android-shell__stat-trend android-shell__stat-trend--warning">Watch closely</div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="android-shell__section">
+                                    <div class="android-shell__section-head">
+                                        <div class="android-shell__section-heading">
+                                            <div class="android-shell__section-title">Quick actions</div>
+                                            <div class="android-shell__section-note">Action tiles work for operator shortcuts, setup steps, or admin entry points.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__action-grid">
+                                        <a class="android-shell__action-tile" href="#">
+                                            <span class="android-shell__action-icon" aria-hidden="true">
+                                                <span class="icon icon--mask icon--layers"></span>
+                                            </span>
+                                            <div class="android-shell__action-label">Review queue</div>
+                                            <div class="android-shell__action-support">Open the items that still need manual consent.</div>
+                                        </a>
+                                        <a class="android-shell__action-tile" href="#">
+                                            <span class="android-shell__action-icon" aria-hidden="true">
+                                                <span class="icon icon--mask icon--bell"></span>
+                                            </span>
+                                            <div class="android-shell__action-label">Broadcast alert</div>
+                                            <div class="android-shell__action-support">Send a one-off notice to every active client.</div>
+                                        </a>
+                                        <a class="android-shell__action-tile" href="#">
+                                            <span class="android-shell__action-icon" aria-hidden="true">
+                                                <span class="icon icon--mask icon--tip"></span>
+                                            </span>
+                                            <div class="android-shell__action-label">Battery guide</div>
+                                            <div class="android-shell__action-support">Jump to the monitor exemption walkthrough.</div>
+                                        </a>
+                                        <a class="android-shell__action-tile" href="#">
+                                            <span class="android-shell__action-icon" aria-hidden="true">
+                                                <span class="icon icon--mask icon--export-outline"></span>
+                                            </span>
+                                            <div class="android-shell__action-label">Audit export</div>
+                                            <div class="android-shell__action-support">Package the latest handoff log for review.</div>
+                                        </a>
+                                    </div>
+                                </section>
+                            </div>
+                        </main>
+
+                        <footer class="android-shell__bottom-bar">
+                            <a class="android-shell__fab android-shell__fab--float" href="#" aria-label="Create new relay">
+                                <span aria-hidden="true" class="icon icon--mask icon--plus"></span>
+                            </a>
+
+                            <nav class="android-shell__bottom-nav" aria-label="Primary">
+                                <a class="android-shell__nav-link android-shell__nav-link--active" aria-current="page" href="#">
+                                    <span class="android-shell__nav-icon" aria-hidden="true">
+                                        <span class="icon icon--mask icon--home"></span>
+                                    </span>
+                                    <span class="android-shell__nav-label">Home</span>
+                                </a>
+                                <a class="android-shell__nav-link" href="#">
+                                    <span class="android-shell__nav-icon" aria-hidden="true">
+                                        <span class="icon icon--mask icon--layers"></span>
+                                    </span>
+                                    <span class="android-shell__nav-label">Queue</span>
+                                </a>
+                                <a class="android-shell__nav-link" href="#">
+                                    <span class="android-shell__nav-icon" aria-hidden="true">
+                                        <span class="icon icon--mask icon--alert"></span>
+                                    </span>
+                                    <span class="android-shell__nav-label">Alerts</span>
+                                </a>
+                                <a class="android-shell__nav-link" href="#">
+                                    <span class="android-shell__nav-icon" aria-hidden="true">
+                                        <span class="icon icon--mask icon--settings"></span>
+                                    </span>
+                                    <span class="android-shell__nav-label">Settings</span>
+                                </a>
+                            </nav>
+                        </footer>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="android-shell__hero"&gt;...&lt;/section&gt;
+&lt;div class="android-shell__banner android-shell__banner--success"&gt;...&lt;/div&gt;
+&lt;div class="android-shell__dashboard"&gt;...&lt;/div&gt;
+&lt;div class="android-shell__action-grid"&gt;...&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-android-shell data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Filters / search helpers</h2>
+                <p class="doc-block__summary">
+                    Use shell filter helpers for screen-local refinement, not destination
+                    navigation. Keep the active state calm, pair chips with explicit labels, and
+                    add a search field only when it meaningfully reduces scanning effort.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview">
+                    <div class="android-shell android-shell--device android-shell--raised">
+                        <header class="android-shell__topbar android-shell__topbar--sticky">
+                            <div class="android-shell__topbar-row">
+                                <button class="android-shell__icon-button" type="button" aria-label="Go back">
+                                    <span aria-hidden="true" class="icon icon--mask icon--arrow-left"></span>
+                                </button>
+                                <div class="android-shell__titles">
+                                    <div class="android-shell__eyebrow">Review queue</div>
+                                    <div class="android-shell__title">Queue filters</div>
+                                    <div class="android-shell__subtitle">19 open items · 4 high priority</div>
+                                </div>
+                                <div class="android-shell__actions">
+                                    <button class="android-shell__icon-button" type="button" aria-label="More actions">
+                                        <span aria-hidden="true" class="icon icon--mask icon--more-vertical"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <main class="android-shell__body">
+                            <div class="android-shell__stack">
+                                <div class="android-shell__filters" role="region" aria-label="Queue filters">
+                                    <label class="android-shell__filter-search">
+                                        <span aria-hidden="true" class="icon icon--mask icon--search"></span>
+                                        <input aria-label="Search queue" class="android-shell__filter-input" placeholder="Search by client or tag" type="search">
+                                    </label>
+
+                                    <div class="android-shell__filter-group">
+                                        <div class="android-shell__filter-label">State</div>
+                                        <button aria-pressed="true" class="android-shell__filter-chip android-shell__filter-chip--active" type="button">
+                                            <span aria-hidden="true" class="icon icon--mask icon--layers"></span>
+                                            Open
+                                        </button>
+                                        <button class="android-shell__filter-chip" type="button">Waiting</button>
+                                        <button class="android-shell__filter-chip" type="button">Done</button>
+                                    </div>
+
+                                    <div class="android-shell__filter-group">
+                                        <div class="android-shell__filter-label">Priority</div>
+                                        <button aria-pressed="true" class="android-shell__filter-chip android-shell__filter-chip--active" type="button">
+                                            <span aria-hidden="true" class="icon icon--mask icon--alert"></span>
+                                            High
+                                        </button>
+                                        <button class="android-shell__filter-chip" type="button">Medium</button>
+                                        <button class="android-shell__filter-chip" type="button">Low</button>
+                                    </div>
+
+                                    <div class="android-shell__filter-group">
+                                        <div class="android-shell__filter-label">Sort</div>
+                                        <button aria-pressed="true" class="android-shell__filter-chip android-shell__filter-chip--active" type="button">
+                                            <span aria-hidden="true" class="icon icon--mask icon--sort"></span>
+                                            Newest
+                                        </button>
+                                        <button class="android-shell__filter-chip" type="button">Priority</button>
+                                    </div>
+
+                                    <div class="android-shell__filter-actions">
+                                        <span class="android-shell__filter-meta">19 matches</span>
+                                        <button class="button button--ghost button--xs" type="button">Clear</button>
+                                        <button class="button button--primary button--xs" type="button">Apply</button>
+                                    </div>
+                                </div>
+
+                                <div class="android-shell__list">
+                                    <div class="android-shell__list-item android-shell__list-item--current">
+                                        <div class="android-shell__list-leading android-shell__list-leading--accent">
+                                            <span aria-hidden="true" class="icon icon--mask icon--alert"></span>
+                                        </div>
+                                        <div class="android-shell__list-content">
+                                            <div class="android-shell__list-title">Manual consent still pending</div>
+                                            <div class="android-shell__list-support">The server handoff is blocked until the operator reviews the last challenge code.</div>
+                                        </div>
+                                        <div class="android-shell__list-trailing">
+                                            <span class="android-shell__list-badge android-shell__list-badge--warning">Open</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__list-item android-shell__list-item--interactive">
+                                        <div class="android-shell__list-leading">
+                                            <span aria-hidden="true" class="icon icon--mask icon--shield-outline"></span>
+                                        </div>
+                                        <div class="android-shell__list-content">
+                                            <div class="android-shell__list-title">Fallback route already verified</div>
+                                            <div class="android-shell__list-support">Safe to approve if the current route keeps timing out.</div>
+                                        </div>
+                                        <div class="android-shell__list-trailing">11m</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="android-shell__filters" role="region" aria-label="Queue filters"&gt;
+  &lt;label class="android-shell__filter-search"&gt;...&lt;/label&gt;
+  &lt;div class="android-shell__filter-group"&gt;...&lt;/div&gt;
+  &lt;div class="android-shell__filter-actions"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                    <p class="text-sm text-muted">
+                        If you later add roving focus and arrow-key management, this group can be
+                        promoted to a toolbar. Until then, treat it as a labelled region of related
+                        controls.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-android-shell data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Push inbox / notification center</h2>
+                <p class="doc-block__summary">
+                    Push and alert screens need more than plain rows. Use banners for live system
+                    state and notices for richer message previews with time, source, and status.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview">
+                    <div class="android-shell android-shell--device android-shell--raised">
+                        <header class="android-shell__topbar android-shell__topbar--sticky">
+                            <div class="android-shell__topbar-row">
+                                <button class="android-shell__icon-button" type="button" aria-label="Go back">
+                                    <span aria-hidden="true" class="icon icon--mask icon--arrow-left"></span>
+                                </button>
+                                <div class="android-shell__titles">
+                                    <div class="android-shell__eyebrow">Notifications</div>
+                                    <div class="android-shell__title">Push inbox</div>
+                                    <div class="android-shell__subtitle">7 unread messages · 1 delivery warning</div>
+                                </div>
+                                <div class="android-shell__actions">
+                                    <button class="android-shell__icon-button" type="button" aria-label="Search">
+                                        <span aria-hidden="true" class="icon icon--mask icon--search"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <main class="android-shell__body">
+                            <div class="android-shell__stack">
+                                <div class="android-shell__banner-stack">
+                                    <div class="android-shell__banner android-shell__banner--warning">
+                                        <div class="android-shell__banner-content">
+                                            <div class="android-shell__banner-title">One push channel fell back to retry mode.</div>
+                                            <div class="android-shell__banner-copy">The app recovered automatically, but the last two notifications were delayed by 3 minutes.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__banner android-shell__banner--info">
+                                        <div class="android-shell__banner-content">
+                                            <div class="android-shell__banner-title">Quiet hours are active on two clients.</div>
+                                            <div class="android-shell__banner-copy">Delay non-critical pushes until 07:00 or route them to audit-only delivery.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <section class="android-shell__section">
+                                    <div class="android-shell__section-head">
+                                        <div class="android-shell__section-heading">
+                                            <div class="android-shell__section-title">Latest pushes</div>
+                                            <div class="android-shell__section-note">Notice cards are a better fit than bare rows when the payload needs more context.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__notice-stack">
+                                        <div class="android-shell__notice android-shell__notice--danger">
+                                            <div class="android-shell__notice-icon">
+                                                <span aria-hidden="true" class="icon icon--mask icon--alert"></span>
+                                            </div>
+                                            <div class="android-shell__notice-content">
+                                                <div class="android-shell__notice-head">
+                                                    <div class="android-shell__notice-title">Battery optimization disabled the listener.</div>
+                                                    <div class="android-shell__notice-time">Now</div>
+                                                </div>
+                                                <div class="android-shell__notice-copy">The source device paused background delivery. Prompt the operator to re-enable unrestricted monitoring.</div>
+                                                <div class="android-shell__notice-meta">
+                                                    <span>Critical</span>
+                                                    <span>Source device</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__notice android-shell__notice--info">
+                                            <div class="android-shell__notice-icon">
+                                                <span aria-hidden="true" class="icon icon--mask icon--bell"></span>
+                                            </div>
+                                            <div class="android-shell__notice-content">
+                                                <div class="android-shell__notice-head">
+                                                    <div class="android-shell__notice-title">Queued push delivered after reconnect.</div>
+                                                    <div class="android-shell__notice-time">6m</div>
+                                                </div>
+                                                <div class="android-shell__notice-copy">A delayed broadcast reached the client after network recovery and no manual resend is required.</div>
+                                                <div class="android-shell__notice-meta">
+                                                    <span>Delivery</span>
+                                                    <span>Recovered</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__notice">
+                                            <div class="android-shell__notice-icon">
+                                                <span aria-hidden="true" class="icon icon--mask icon--shield-outline"></span>
+                                            </div>
+                                            <div class="android-shell__notice-content">
+                                                <div class="android-shell__notice-head">
+                                                    <div class="android-shell__notice-title">Client token rotated successfully.</div>
+                                                    <div class="android-shell__notice-time">21m</div>
+                                                </div>
+                                                <div class="android-shell__notice-copy">The old token was invalidated and the new token has already passed a delivery handshake.</div>
+                                                <div class="android-shell__notice-meta">
+                                                    <span>Security</span>
+                                                    <span>No action needed</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="android-shell__section">
+                                    <div class="android-shell__section-head">
+                                        <div class="android-shell__section-heading">
+                                            <div class="android-shell__section-title">Receipts</div>
+                                            <div class="android-shell__section-note">Use list rows for simpler delivery receipts or audit entries.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__list">
+                                        <div class="android-shell__list-item android-shell__list-item--current">
+                                            <div class="android-shell__list-leading android-shell__list-leading--accent">DL</div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Alert broadcast accepted</div>
+                                                <div class="android-shell__list-support">Accepted by FCM and relayed to two active devices.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span class="android-shell__list-badge android-shell__list-badge--success">Sent</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__list-item android-shell__list-item--interactive">
+                                            <div class="android-shell__list-leading">QH</div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Quiet-hours deferral</div>
+                                                <div class="android-shell__list-support">The message was held because the client is in a do-not-disturb window.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span class="android-shell__list-badge android-shell__list-badge--warning">Held</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </main>
+
+                        <footer class="android-shell__bottom-bar">
+                            <nav class="android-shell__bottom-nav" aria-label="Primary">
+                                <a class="android-shell__nav-link" href="#">
+                                    <span class="android-shell__nav-icon" aria-hidden="true">
+                                        <span class="icon icon--mask icon--home"></span>
+                                    </span>
+                                    <span class="android-shell__nav-label">Home</span>
+                                </a>
+                                <a class="android-shell__nav-link" href="#">
+                                    <span class="android-shell__nav-icon" aria-hidden="true">
+                                        <span class="icon icon--mask icon--layers"></span>
+                                    </span>
+                                    <span class="android-shell__nav-label">Queue</span>
+                                </a>
+                                <a class="android-shell__nav-link android-shell__nav-link--active" aria-current="page" href="#">
+                                    <span class="android-shell__nav-icon" aria-hidden="true">
+                                        <span class="icon icon--mask icon--inbox"></span>
+                                    </span>
+                                    <span class="android-shell__nav-label">Inbox</span>
+                                </a>
+                                <a class="android-shell__nav-link" href="#">
+                                    <span class="android-shell__nav-icon" aria-hidden="true">
+                                        <span class="icon icon--mask icon--settings"></span>
+                                    </span>
+                                    <span class="android-shell__nav-label">Settings</span>
+                                </a>
+                            </nav>
+                        </footer>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="android-shell__banner android-shell__banner--warning"&gt;...&lt;/div&gt;
+&lt;div class="android-shell__notice-stack"&gt;
+  &lt;div class="android-shell__notice android-shell__notice--danger"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-android-shell data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Incident / alert detail</h2>
+                <p class="doc-block__summary">
+                    Detail screens should move from summary into action: banner, timeline, affected
+                    entities, and one clear operator path. Avoid relying on color alone to explain
+                    what is urgent.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview">
+                    <div class="android-shell android-shell--device android-shell--raised">
+                        <header class="android-shell__topbar android-shell__topbar--sticky">
+                            <div class="android-shell__topbar-row">
+                                <button class="android-shell__icon-button" type="button" aria-label="Go back">
+                                    <span aria-hidden="true" class="icon icon--mask icon--arrow-left"></span>
+                                </button>
+                                <div class="android-shell__titles">
+                                    <div class="android-shell__eyebrow">Incident 2481</div>
+                                    <div class="android-shell__title">Handshake retries exceeded</div>
+                                    <div class="android-shell__subtitle">Detected 4 minutes ago · 3 clients affected</div>
+                                </div>
+                                <div class="android-shell__actions">
+                                    <button class="android-shell__icon-button" type="button" aria-label="More actions">
+                                        <span aria-hidden="true" class="icon icon--mask icon--more-vertical"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <main class="android-shell__body">
+                            <div class="android-shell__stack">
+                                <div class="android-shell__banner android-shell__banner--danger">
+                                    <div class="android-shell__banner-content">
+                                        <div class="android-shell__banner-title">Server handoff is blocked on the current route.</div>
+                                        <div class="android-shell__banner-copy">The retry budget is exhausted. Either change the route or move the affected clients to a safe fallback.</div>
+                                        <div class="android-shell__banner-actions">
+                                            <button class="button button--ghost button--xs" type="button">Open runbook</button>
+                                            <button class="button button--primary button--xs" type="button">Escalate now</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <section class="android-shell__surface android-shell__surface--muted">
+                                    <div class="android-shell__chip-row">
+                                        <span class="android-shell__chip android-shell__chip--danger">Critical</span>
+                                        <span class="android-shell__chip android-shell__chip--warning">Retries exhausted</span>
+                                        <span class="android-shell__chip android-shell__chip--accent">Manual review</span>
+                                    </div>
+
+                                    <div class="android-shell__section">
+                                        <div class="android-shell__section-head">
+                                            <div class="android-shell__section-heading">
+                                                <div class="android-shell__section-title">Response timeline</div>
+                                                <div class="android-shell__section-note">Timelines work well for alerts, onboarding states, and workflow history.</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__timeline">
+                                            <div class="android-shell__timeline-item">
+                                                <div class="android-shell__timeline-dot android-shell__timeline-dot--danger"></div>
+                                                <div class="android-shell__timeline-content">
+                                                    <div class="android-shell__timeline-title">Retry budget reached zero.</div>
+                                                    <div class="android-shell__timeline-support">The last four server calls returned timeout responses and the shell promoted the incident to a blocking alert.</div>
+                                                    <div class="android-shell__timeline-meta">
+                                                        <span>Now</span>
+                                                        <span>Escalation started</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="android-shell__timeline-item">
+                                                <div class="android-shell__timeline-dot android-shell__timeline-dot--warning"></div>
+                                                <div class="android-shell__timeline-content">
+                                                    <div class="android-shell__timeline-title">Battery warning surfaced on one source device.</div>
+                                                    <div class="android-shell__timeline-support">The listener continued running but background constraints increased retry latency.</div>
+                                                    <div class="android-shell__timeline-meta">
+                                                        <span>2m</span>
+                                                        <span>Source device</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="android-shell__timeline-item">
+                                                <div class="android-shell__timeline-dot android-shell__timeline-dot--info"></div>
+                                                <div class="android-shell__timeline-content">
+                                                    <div class="android-shell__timeline-title">Fallback relay remained available.</div>
+                                                    <div class="android-shell__timeline-support">No messages were lost, but handoff confirmation is still waiting for manual acceptance.</div>
+                                                    <div class="android-shell__timeline-meta">
+                                                        <span>4m</span>
+                                                        <span>Fallback path</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="android-shell__section">
+                                    <div class="android-shell__section-head">
+                                        <div class="android-shell__section-heading">
+                                            <div class="android-shell__section-title">Affected clients</div>
+                                            <div class="android-shell__section-note">Pair the timeline with a simple list of impacted clients or tasks.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__list">
+                                        <div class="android-shell__list-item android-shell__list-item--current">
+                                            <div class="android-shell__list-leading android-shell__list-leading--accent">C1</div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Source pixel</div>
+                                                <div class="android-shell__list-support">Waiting for battery optimization exemption confirmation.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span class="android-shell__list-badge android-shell__list-badge--warning">Needs action</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__list-item">
+                                            <div class="android-shell__list-leading">C2</div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Audit handset</div>
+                                                <div class="android-shell__list-support">Connected through the fallback route and still receiving message copies.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span class="android-shell__list-badge android-shell__list-badge--info">Fallback</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </main>
+
+                        <footer class="android-shell__bottom-bar">
+                            <div class="android-shell__bottom-actions">
+                                <button class="button button--outline button--sm" type="button">Dismiss</button>
+                                <button class="button button--primary button--sm" type="button">Open runbook</button>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="android-shell__banner android-shell__banner--danger"&gt;...&lt;/div&gt;
+&lt;div class="android-shell__timeline"&gt;
+  &lt;div class="android-shell__timeline-item"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-android-shell data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Settings / grouped preferences</h2>
+                <p class="doc-block__summary">
+                    Settings screens are still list screens, but they benefit from shell banners,
+                    tighter section grouping, and calmer bottom actions. Keep settings readable
+                    before trying to make them visually expressive.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview">
+                    <div class="android-shell android-shell--device android-shell--raised">
+                        <header class="android-shell__topbar android-shell__topbar--sticky">
+                            <div class="android-shell__topbar-row">
+                                <button class="android-shell__icon-button" type="button" aria-label="Go back">
+                                    <span aria-hidden="true" class="icon icon--mask icon--arrow-left"></span>
+                                </button>
+                                <div class="android-shell__titles">
+                                    <div class="android-shell__title">Monitoring settings</div>
+                                    <div class="android-shell__subtitle">Small sections and short support copy keep settings understandable.</div>
+                                </div>
+                            </div>
+                        </header>
+
+                        <main class="android-shell__body">
+                            <div class="android-shell__stack">
+                                <div class="android-shell__banner android-shell__banner--info">
+                                    <div class="android-shell__banner-content">
+                                        <div class="android-shell__banner-title">Battery guidance is enabled.</div>
+                                        <div class="android-shell__banner-copy">Show the operator why unrestricted monitoring matters before prompting for exemptions.</div>
+                                    </div>
+                                </div>
+
+                                <section class="android-shell__section">
+                                    <div class="android-shell__section-head">
+                                        <div class="android-shell__section-heading">
+                                            <div class="android-shell__section-title">Reliability</div>
+                                            <div class="android-shell__section-note">High-frequency preferences stay together.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__list">
+                                        <div class="android-shell__list-item">
+                                            <div class="android-shell__list-leading">
+                                                <span aria-hidden="true" class="icon icon--mask icon--signal"></span>
+                                            </div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Keep source monitoring active</div>
+                                                <div class="android-shell__list-support">Re-register foreground monitoring after reboot or role change.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <label class="toggle toggle--sm">
+                                                    <input checked class="toggle__input" type="checkbox">
+                                                    <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__list-item">
+                                            <div class="android-shell__list-leading">
+                                                <span aria-hidden="true" class="icon icon--mask icon--bell"></span>
+                                            </div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Notification listener alerts</div>
+                                                <div class="android-shell__list-support">Warn immediately when notification access is revoked.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <label class="toggle toggle--sm">
+                                                    <input checked class="toggle__input" type="checkbox">
+                                                    <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="android-shell__section">
+                                    <div class="android-shell__section-head">
+                                        <div class="android-shell__section-heading">
+                                            <div class="android-shell__section-title">Delivery behaviour</div>
+                                            <div class="android-shell__section-note">Use interactive rows for drill-ins, mode pickers, and guides.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__list">
+                                        <div class="android-shell__list-item android-shell__list-item--interactive">
+                                            <div class="android-shell__list-leading">
+                                                <span aria-hidden="true" class="icon icon--mask icon--share"></span>
+                                            </div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Default forwarding mode</div>
+                                                <div class="android-shell__list-support">Direct relay with queued fallback</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span aria-hidden="true" class="icon icon--mask icon--chevron-right"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__list-item android-shell__list-item--interactive">
+                                            <div class="android-shell__list-leading">
+                                                <span aria-hidden="true" class="icon icon--mask icon--clock-outline"></span>
+                                            </div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Quiet-hours profile</div>
+                                                <div class="android-shell__list-support">Delay non-critical push traffic between 22:00 and 07:00.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span aria-hidden="true" class="icon icon--mask icon--chevron-right"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__list-item android-shell__list-item--interactive">
+                                            <div class="android-shell__list-leading">
+                                                <span aria-hidden="true" class="icon icon--mask icon--tip"></span>
+                                            </div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Battery optimization guide</div>
+                                                <div class="android-shell__list-support">Explain when the app asks for exemptions and what breaks without them.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span aria-hidden="true" class="icon icon--mask icon--chevron-right"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="android-shell__section">
+                                    <div class="android-shell__section-head">
+                                        <div class="android-shell__section-heading">
+                                            <div class="android-shell__section-title">Session</div>
+                                            <div class="android-shell__section-note">Reserve destructive or account actions for their own calm group.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__list">
+                                        <div class="android-shell__list-item android-shell__list-item--interactive">
+                                            <div class="android-shell__list-leading">
+                                                <span aria-hidden="true" class="icon icon--mask icon--logout"></span>
+                                            </div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Sign out from this device</div>
+                                                <div class="android-shell__list-support">End the operator session and require a fresh approval before reopening admin tools.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span aria-hidden="true" class="icon icon--mask icon--chevron-right"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </main>
+
+                        <footer class="android-shell__bottom-bar">
+                            <div class="android-shell__bottom-actions">
+                                <button class="button button--ghost button--sm" type="button">Reset</button>
+                                <button class="button button--primary button--sm" type="button">Save changes</button>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="android-shell__list-item"&gt;
+  &lt;div class="android-shell__list-content"&gt;...&lt;/div&gt;
+  &lt;div class="android-shell__list-trailing"&gt;
+    &lt;label class="toggle toggle--sm"&gt;...&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                    <p class="text-sm text-muted">
+                        The shell does not replace form controls. Pair it with existing VDS buttons,
+                        toggles, radios, or segmented controls as needed.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-android-shell data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Adaptive workspace / supporting pane</h2>
+                <p class="doc-block__summary">
+                    When the shell gets more width, promote supporting context into a second pane
+                    instead of stretching one long mobile column. This keeps list, detail, and
+                    operator controls readable.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview">
+                    <div class="android-shell android-shell--adaptive android-shell--raised">
+                        <header class="android-shell__topbar">
+                            <div class="android-shell__topbar-row">
+                                <div class="android-shell__titles">
+                                    <div class="android-shell__eyebrow">Adaptive shell</div>
+                                    <div class="android-shell__title">Review queue with supporting context</div>
+                                    <div class="android-shell__subtitle">Container queries promote the second pane only when space exists.</div>
+                                </div>
+                                <div class="android-shell__actions">
+                                    <button class="android-shell__icon-button" type="button" aria-label="Refresh">
+                                        <span aria-hidden="true" class="icon icon--mask icon--refresh"></span>
+                                    </button>
+                                    <button class="android-shell__icon-button" type="button" aria-label="Search">
+                                        <span aria-hidden="true" class="icon icon--mask icon--search"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <main class="android-shell__body">
+                            <div class="android-shell__panes android-shell__panes--supporting">
+                                <section class="android-shell__section">
+                                    <div class="android-shell__section-head">
+                                        <div class="android-shell__section-heading">
+                                            <div class="android-shell__section-title">Review queue</div>
+                                            <div class="android-shell__section-note">Primary list and newest notices stay on the main side.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__banner android-shell__banner--warning">
+                                        <div class="android-shell__banner-content">
+                                            <div class="android-shell__banner-title">Two items need manual consent.</div>
+                                            <div class="android-shell__banner-copy">Review the blocked handoffs before the queue rolls over into the next window.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__notice-stack">
+                                        <div class="android-shell__notice android-shell__notice--warning">
+                                            <div class="android-shell__notice-icon">
+                                                <span aria-hidden="true" class="icon icon--mask icon--alert"></span>
+                                            </div>
+                                            <div class="android-shell__notice-content">
+                                                <div class="android-shell__notice-head">
+                                                    <div class="android-shell__notice-title">Server consent challenge is waiting.</div>
+                                                    <div class="android-shell__notice-time">Now</div>
+                                                </div>
+                                                <div class="android-shell__notice-copy">The phone number is verified, but the last approval code still needs human confirmation.</div>
+                                                <div class="android-shell__notice-meta">
+                                                    <span>Priority</span>
+                                                    <span>Manual</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__notice">
+                                            <div class="android-shell__notice-icon">
+                                                <span aria-hidden="true" class="icon icon--mask icon--archive-outline"></span>
+                                            </div>
+                                            <div class="android-shell__notice-content">
+                                                <div class="android-shell__notice-head">
+                                                    <div class="android-shell__notice-title">Audit export is ready for packaging.</div>
+                                                    <div class="android-shell__notice-time">11m</div>
+                                                </div>
+                                                <div class="android-shell__notice-copy">The queue package contains the last twenty handoffs and one alert summary.</div>
+                                                <div class="android-shell__notice-meta">
+                                                    <span>Audit</span>
+                                                    <span>Optional</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__list">
+                                        <div class="android-shell__list-item android-shell__list-item--current">
+                                            <div class="android-shell__list-leading android-shell__list-leading--accent">01</div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Pending intake</div>
+                                                <div class="android-shell__list-support">Waiting for operator approval before forwarding.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span class="android-shell__list-badge android-shell__list-badge--warning">Open</span>
+                                            </div>
+                                        </div>
+                                        <div class="android-shell__list-item">
+                                            <div class="android-shell__list-leading">02</div>
+                                            <div class="android-shell__list-content">
+                                                <div class="android-shell__list-title">Confirmed relay</div>
+                                                <div class="android-shell__list-support">Delivered to the trusted server and written to the audit log.</div>
+                                            </div>
+                                            <div class="android-shell__list-trailing">
+                                                <span class="android-shell__list-badge android-shell__list-badge--success">Done</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <aside class="android-shell__surface">
+                                    <div class="android-shell__eyebrow">Supporting pane</div>
+                                    <div class="android-shell__title">Operator context</div>
+                                    <div class="android-shell__subtitle">Use the second pane for stats, history, and focused actions instead of stretching the primary column.</div>
+
+                                    <div class="android-shell__dashboard">
+                                        <div class="android-shell__stat-card">
+                                            <div class="android-shell__stat-label">Retries</div>
+                                            <div class="android-shell__stat-value">02</div>
+                                            <div class="android-shell__stat-support">Still within budget</div>
+                                            <div class="android-shell__stat-trend android-shell__stat-trend--warning">Watch</div>
+                                        </div>
+                                        <div class="android-shell__stat-card">
+                                            <div class="android-shell__stat-label">State</div>
+                                            <div class="android-shell__stat-value">Warm</div>
+                                            <div class="android-shell__stat-support">Listener recovered</div>
+                                            <div class="android-shell__stat-trend android-shell__stat-trend--good">Recovered</div>
+                                        </div>
+                                        <div class="android-shell__stat-card">
+                                            <div class="android-shell__stat-label">Last audit</div>
+                                            <div class="android-shell__stat-value">14m</div>
+                                            <div class="android-shell__stat-support">Package already prepared</div>
+                                            <div class="android-shell__stat-trend android-shell__stat-trend--neutral">Flat</div>
+                                        </div>
+                                        <div class="android-shell__stat-card">
+                                            <div class="android-shell__stat-label">Fallback use</div>
+                                            <div class="android-shell__stat-value">1</div>
+                                            <div class="android-shell__stat-support">Temporary route in use</div>
+                                            <div class="android-shell__stat-trend android-shell__stat-trend--warning">Needs review</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="android-shell__timeline">
+                                        <div class="android-shell__timeline-item">
+                                            <div class="android-shell__timeline-dot android-shell__timeline-dot--info"></div>
+                                            <div class="android-shell__timeline-content">
+                                                <div class="android-shell__timeline-title">Queue package generated.</div>
+                                                <div class="android-shell__timeline-support">A compressed audit bundle is ready to export with the current review batch.</div>
+                                                <div class="android-shell__timeline-meta">
+                                                    <span>14m</span>
+                                                    <span>Audit</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="android-shell__timeline-item">
+                                            <div class="android-shell__timeline-dot android-shell__timeline-dot--success"></div>
+                                            <div class="android-shell__timeline-content">
+                                                <div class="android-shell__timeline-title">Fallback path verified.</div>
+                                                <div class="android-shell__timeline-support">The backup server route remained available during the last outage window.</div>
+                                                <div class="android-shell__timeline-meta">
+                                                    <span>28m</span>
+                                                    <span>Fallback</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="android-shell android-shell--adaptive android-shell--raised"&gt;
+  &lt;main class="android-shell__body"&gt;
+    &lt;div class="android-shell__panes android-shell__panes--supporting"&gt;
+      &lt;section&gt;Primary content&lt;/section&gt;
+      &lt;aside&gt;Supporting pane&lt;/aside&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-android-shell data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Class contract</h2>
+                <p class="doc-block__summary">
+                    Treat the shell as a small screen kit. These are the core classes intended for
+                    repeated Android-style screen composition.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Frame and bars</h3>
+                    <ul class="text-sm">
+                        <li><code>.android-shell</code>, <code>.android-shell--device</code>, <code>.android-shell--adaptive</code></li>
+                        <li><code>.android-shell__topbar</code>, <code>.android-shell__titles</code>, <code>.android-shell__actions</code></li>
+                        <li><code>.android-shell__body</code>, <code>.android-shell__stack</code>, <code>.android-shell__section</code></li>
+                        <li><code>.android-shell__bottom-bar</code>, <code>.android-shell__bottom-nav</code>, <code>.android-shell__nav-link</code></li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Summary and stats</h3>
+                    <ul class="text-sm">
+                        <li><code>.android-shell__hero</code>, <code>.android-shell__hero-head</code>, <code>.android-shell__hero-actions</code></li>
+                        <li><code>.android-shell__metric-grid</code>, <code>.android-shell__metric</code></li>
+                        <li><code>.android-shell__dashboard</code>, <code>.android-shell__stat-card</code></li>
+                        <li><code>.android-shell__action-grid</code>, <code>.android-shell__action-tile</code>, <code>.android-shell__action-icon</code></li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Status and activity</h3>
+                    <ul class="text-sm">
+                        <li><code>.android-shell__chip</code>, <code>.android-shell__list-badge</code> with semantic modifiers</li>
+                        <li><code>.android-shell__filters</code>, <code>.android-shell__filter-group</code>, <code>.android-shell__filter-chip</code>, <code>.android-shell__filter-search</code></li>
+                        <li><code>.android-shell__banner</code>, <code>.android-shell__banner--info|success|warning|danger</code></li>
+                        <li><code>.android-shell__notice</code>, <code>.android-shell__notice-stack</code></li>
+                        <li><code>.android-shell__timeline</code>, <code>.android-shell__timeline-item</code></li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Lists and adaptive panes</h3>
+                    <ul class="text-sm">
+                        <li><code>.android-shell__list</code>, <code>.android-shell__list-item</code>, <code>.android-shell__list-content</code></li>
+                        <li><code>.android-shell__list-item--current</code> for the primary current row</li>
+                        <li><code>.android-shell__surface</code>, <code>.android-shell__surface--muted</code>, <code>.android-shell__surface--accent</code></li>
+                        <li><code>.android-shell__panes</code>, <code>.android-shell__panes--supporting</code></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-android-shell data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Usage and accessibility rules</h2>
+                <p class="doc-block__summary">
+                    Android-style shells must feel practical and calm. Readability, reachability,
+                    and clear hierarchy matter more than aggressive branding inside app chrome.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>Keep bottom navigation readable and reserve it for three to five peer destinations.</li>
+                        <li>Use hero, banner, and stat helpers to explain state before the user starts reading rows.</li>
+                        <li>Label filter groups clearly and keep active filter states readable without flooding the surface with accent color.</li>
+                        <li>Group settings and activity into smaller surfaces with short supporting text.</li>
+                        <li>Move detail, diagnostics, and controls into a supporting pane when more width becomes available.</li>
+                        <li>Reinforce urgency with labels, badges, and copy, not with color alone.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not use the accent color as the main reading color for large navigation states.</li>
+                        <li>Do not confuse screen-local filters with primary navigation destinations.</li>
+                        <li>Do not stack multiple equally-loud banners, heroes, and FABs on the same screen.</li>
+                        <li>Do not stretch one endless column on wider layouts when a second pane would read better.</li>
+                        <li>Do not overload the top bar with many equal-priority actions.</li>
+                        <li>Do not bury critical controls under gesture or system-bar areas.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Accessibility</h3>
+                    <ul class="text-sm">
+                        <li>Keep interactive targets at or above 48px. The shell defaults honor that floor.</li>
+                        <li>Expose the current destination with <code>aria-current="page"</code> in bottom navigation.</li>
+                        <li>Provide labels for icon-only controls and keep focus rings visible.</li>
+                        <li>Use <code>aria-pressed</code> for toggle-like filter chips and promote a filter group to a toolbar only when keyboard focus management is implemented.</li>
+                        <li>Keep text/icon contrast strong enough to meet Android accessibility guidance.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Pair with other VDS layers</h3>
+                    <ul class="text-sm">
+                        <li>Use <code>buttons.css</code> for top-bar, hero, and footer actions.</li>
+                        <li>Use <code>forms.css</code> / <code>forms-advanced.css</code> for toggles and grouped settings controls.</li>
+                        <li>Use <code>tabs.css</code> when a shell also needs secondary sibling navigation inside a destination.</li>
+                        <li>Use <code>overlays.css</code> or <code>toasts.css</code> when the app needs modal or transient layers above the shell.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

@@ -1,0 +1,1534 @@
+/************************************************************
+ * VLAH DESIGN SYSTEM (VDS) - Android Shell
+ *
+ *  Responsibilities:
+ *    - Provide a safe-area-aware mobile/app shell for Android-first screens
+ *    - Define top app bar, scroll body, grouped surfaces, dashboards,
+ *      banners, notices, list rows, bottom navigation, and floating action
+ *    - Support compact handset shells and wider adaptive pane layouts
+ *    - Keep touch targets, spacing, and section containment aligned with
+ *      Android mobile guidance while remaining theme-driven
+ *
+ *  System Notes:
+ *    - Pure CSS; interactive behaviour is controlled externally
+ *    - Token-driven via primitives + active theme
+ *    - Container-query aware so a shell can adapt inside any host surface
+ ************************************************************/
+
+/* ---------------------------------------------------------
+   1. ROOT TOKENS
+--------------------------------------------------------- */
+[data-vds-android-shell],
+.vds-android-shell {
+    --android-shell-max-width: 100%;
+    --android-shell-min-block-size: 100svh;
+    --android-shell-shell-radius: 0;
+    --android-shell-shell-border: transparent;
+    --android-shell-shell-shadow: none;
+
+    --android-shell-bg: var(--color-bg);
+    --android-shell-body-bg: var(--color-bg);
+    --android-shell-panel: var(--color-bg-elevated, var(--color-surface));
+    --android-shell-panel-muted: var(--color-surface-subtle);
+    --android-shell-panel-hover: var(--color-surface-hover, var(--color-surface-subtle));
+    --android-shell-panel-accent: var(--color-accent-soft);
+
+    --android-shell-border: var(--color-border-subtle);
+    --android-shell-border-strong: var(--color-border-strong, var(--color-border-subtle));
+
+    --android-shell-text: var(--color-text);
+    --android-shell-text-muted: var(--color-text-muted);
+    --android-shell-text-soft: var(--color-text-soft, var(--color-text-muted));
+    --android-shell-accent: var(--color-accent);
+    --android-shell-accent-strong: var(--color-accent-strong, var(--color-accent));
+    --android-shell-on-accent: var(--color-on-accent);
+
+    --android-shell-info-bg: var(--semantic-info-bg-strong, var(--color-info-soft));
+    --android-shell-info-border: var(--semantic-info-border-strong, var(--color-info));
+    --android-shell-info-text: var(--semantic-info-text-strong, var(--color-text));
+    --android-shell-success-bg: var(--semantic-success-bg-strong, var(--color-success-soft));
+    --android-shell-success-border: var(--semantic-success-border-strong, var(--color-success));
+    --android-shell-success-text: var(--semantic-success-text-strong, var(--color-text));
+    --android-shell-warning-bg: var(--semantic-warning-bg-strong, var(--color-warning-soft));
+    --android-shell-warning-border: var(--semantic-warning-border-strong, var(--color-warning));
+    --android-shell-warning-text: var(--semantic-warning-text-strong, var(--color-text));
+    --android-shell-danger-bg: var(--semantic-danger-bg-strong, var(--color-danger-soft));
+    --android-shell-danger-border: var(--semantic-danger-border-strong, var(--color-danger));
+    --android-shell-danger-text: var(--semantic-danger-text-strong, var(--color-text));
+
+    --android-shell-inline-pad: var(--space-4);
+    --android-shell-section-gap: var(--space-5);
+    --android-shell-section-pad: var(--space-5);
+    --android-shell-list-pad: var(--space-4);
+    --android-shell-topbar-gap: var(--space-3);
+    --android-shell-bottom-gap: var(--space-3);
+    --android-shell-hit-size: 3rem;
+    --android-shell-icon-button-size: 3rem;
+    --android-shell-fab-size: 3.5rem;
+
+    --android-shell-safe-top: max(var(--space-3), env(safe-area-inset-top, 0px));
+    --android-shell-safe-right: max(var(--space-3), env(safe-area-inset-right, 0px));
+    --android-shell-safe-bottom: max(var(--space-3), env(safe-area-inset-bottom, 0px));
+    --android-shell-safe-left: max(var(--space-3), env(safe-area-inset-left, 0px));
+}
+
+/* ---------------------------------------------------------
+   2. SHELL FRAME
+--------------------------------------------------------- */
+.android-shell {
+    container-type: inline-size;
+    container-name: android-shell;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    inline-size: min(100%, var(--android-shell-max-width));
+    min-block-size: var(--android-shell-min-block-size);
+    margin-inline: auto;
+
+    background:
+        radial-gradient(
+            circle at top center,
+            var(--android-shell-panel-accent) 0,
+            transparent 32%
+        ),
+        linear-gradient(
+            180deg,
+            var(--android-shell-panel-muted) 0,
+            var(--android-shell-body-bg) var(--space-24)
+        );
+    color: var(--android-shell-text);
+    border: 1px solid var(--android-shell-shell-border);
+    border-radius: var(--android-shell-shell-radius);
+    box-shadow: var(--android-shell-shell-shadow);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.android-shell--device {
+    --android-shell-max-width: 30rem;
+    --android-shell-min-block-size: 44rem;
+    --android-shell-shell-radius: calc(var(--radius-xl) + var(--space-2));
+    --android-shell-shell-border: var(--android-shell-border);
+    --android-shell-shell-shadow: var(--shadow-3);
+}
+
+.android-shell--adaptive {
+    --android-shell-max-width: 72rem;
+}
+
+.android-shell--raised {
+    --android-shell-shell-radius: calc(var(--radius-xl) + var(--space-1));
+    --android-shell-shell-border: var(--android-shell-border);
+    --android-shell-shell-shadow: var(--shadow-2);
+}
+
+/* ---------------------------------------------------------
+   3. TOP APP BAR
+--------------------------------------------------------- */
+.android-shell__topbar {
+    position: relative;
+    z-index: var(--z-sticky);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--android-shell-topbar-gap);
+
+    padding:
+        calc(var(--android-shell-safe-top) + var(--space-2))
+        calc(var(--android-shell-inline-pad) + var(--android-shell-safe-right))
+        var(--space-3)
+        calc(var(--android-shell-inline-pad) + var(--android-shell-safe-left));
+
+    border-bottom: 1px solid var(--android-shell-border);
+    background:
+        linear-gradient(
+            180deg,
+            var(--android-shell-panel) 0%,
+            var(--android-shell-panel-muted) 100%
+        );
+    box-shadow:
+        0 1px 0 var(--android-shell-border),
+        0 10px 24px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(18px);
+}
+
+.android-shell__topbar--sticky {
+    position: sticky;
+    top: 0;
+}
+
+.android-shell__topbar-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+}
+
+.android-shell__leading,
+.android-shell__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.android-shell__actions {
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+.android-shell__titles {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.android-shell__eyebrow {
+    font-size: var(--text-xxs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--android-shell-text-soft);
+}
+
+.android-shell__title {
+    font-size: var(--text-lg);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text);
+}
+
+.android-shell__subtitle {
+    font-size: var(--text-xs);
+    line-height: var(--line-height-normal);
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+
+    min-inline-size: var(--android-shell-icon-button-size);
+    min-block-size: var(--android-shell-hit-size);
+    padding: 0 var(--space-3);
+
+    border: 1px solid var(--android-shell-border);
+    border-radius: var(--radius-full);
+    background: var(--android-shell-panel);
+    color: var(--android-shell-text);
+    box-shadow: var(--shadow-1);
+    text-decoration: none;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.android-shell__icon-button:hover {
+    background: var(--android-shell-panel-hover);
+    border-color: var(--android-shell-border-strong);
+    color: var(--android-shell-text);
+    transform: translateY(-1px);
+}
+
+.android-shell__icon-button:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+/* ---------------------------------------------------------
+   4. BODY, PANES, AND SECTION CONTAINMENT
+--------------------------------------------------------- */
+.android-shell__body {
+    flex: 1 1 auto;
+    min-block-size: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: transparent;
+
+    padding:
+        var(--space-4)
+        calc(var(--android-shell-inline-pad) + var(--android-shell-safe-right))
+        calc(var(--space-8) + var(--android-shell-safe-bottom))
+        calc(var(--android-shell-inline-pad) + var(--android-shell-safe-left));
+}
+
+.android-shell__stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--android-shell-section-gap);
+}
+
+.android-shell__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.android-shell__section-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.android-shell__section-heading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-width: 0;
+}
+
+.android-shell__section-title {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text);
+}
+
+.android-shell__section-note,
+.android-shell__section-meta {
+    font-size: var(--text-xs);
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__panes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+}
+
+/* ---------------------------------------------------------
+   5. SURFACES, HERO, METRICS
+--------------------------------------------------------- */
+.android-shell__surface {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+
+    padding: var(--android-shell-section-pad);
+    border: 1px solid var(--android-shell-border);
+    border-radius: calc(var(--radius-xl) + var(--space-1));
+    background: var(--android-shell-panel);
+    box-shadow: var(--shadow-1);
+}
+
+.android-shell__surface--muted {
+    background: var(--android-shell-panel-muted);
+}
+
+.android-shell__surface--accent {
+    background:
+        linear-gradient(
+            180deg,
+            var(--android-shell-panel-accent) 0%,
+            var(--android-shell-panel) 100%
+        );
+}
+
+.android-shell__hero {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+
+    padding: calc(var(--android-shell-section-pad) + var(--space-1));
+    border: 1px solid var(--android-shell-border);
+    border-radius: calc(var(--radius-xl) + var(--space-2));
+    background:
+        radial-gradient(
+            circle at top right,
+            var(--android-shell-panel-accent) 0,
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            var(--android-shell-panel) 0%,
+            var(--android-shell-panel-muted) 100%
+        );
+    box-shadow: var(--shadow-2);
+}
+
+.android-shell__hero-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.android-shell__hero-title {
+    font-size: var(--text-2xl);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text);
+}
+
+.android-shell__hero-copy {
+    max-inline-size: 44ch;
+    font-size: var(--text-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.android-shell__chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.android-shell__metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+}
+
+.android-shell__metric {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-block-size: var(--space-20);
+    padding: var(--space-4);
+
+    border: 1px solid var(--android-shell-border);
+    border-radius: calc(var(--radius-lg) + var(--space-0_5));
+    background: var(--android-shell-panel);
+    box-shadow: var(--shadow-1);
+}
+
+.android-shell__metric-label {
+    font-size: var(--text-xxs);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--android-shell-text-soft);
+}
+
+.android-shell__metric-value {
+    font-size: var(--text-lg);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text);
+}
+
+.android-shell__metric-support {
+    font-size: var(--text-xs);
+    color: var(--android-shell-text-muted);
+}
+
+/* ---------------------------------------------------------
+   6. DASHBOARDS, QUICK ACTIONS, STATUS PILLS
+--------------------------------------------------------- */
+.android-shell__dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+}
+
+.android-shell__stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-block-size: 7.5rem;
+    padding: var(--space-4);
+
+    border: 1px solid var(--android-shell-border);
+    border-radius: calc(var(--radius-lg) + var(--space-1));
+    background: var(--android-shell-panel);
+    box-shadow: var(--shadow-1);
+}
+
+.android-shell__stat-label {
+    font-size: var(--text-xxs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--android-shell-text-soft);
+}
+
+.android-shell__stat-value {
+    font-size: var(--text-xl);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text);
+}
+
+.android-shell__stat-support {
+    font-size: var(--text-xs);
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__stat-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-xxs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__stat-trend--good {
+    color: var(--android-shell-success-text);
+}
+
+.android-shell__stat-trend--warning {
+    color: var(--android-shell-warning-text);
+}
+
+.android-shell__stat-trend--bad {
+    color: var(--android-shell-danger-text);
+}
+
+.android-shell__stat-trend--neutral {
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+}
+
+.android-shell__action-tile {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-block-size: 6.75rem;
+    padding: var(--space-4);
+
+    border: 1px solid var(--android-shell-border);
+    border-radius: calc(var(--radius-lg) + var(--space-1));
+    background: var(--android-shell-panel);
+    box-shadow: var(--shadow-1);
+    color: var(--android-shell-text);
+    text-decoration: none;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.android-shell__action-tile:hover {
+    background: var(--android-shell-panel-hover);
+    border-color: var(--android-shell-border-strong);
+    color: var(--android-shell-text);
+    transform: translateY(-1px);
+}
+
+.android-shell__action-tile:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.android-shell__action-label {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text);
+}
+
+.android-shell__action-support {
+    font-size: var(--text-xs);
+    line-height: var(--line-height-normal);
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__action-icon,
+.android-shell__nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: currentColor;
+}
+
+.android-shell__action-icon {
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
+    border-radius: var(--radius-full);
+    background: var(--android-shell-panel-accent);
+    box-shadow: inset 0 0 0 1px var(--android-shell-accent);
+    color: var(--android-shell-accent-strong);
+}
+
+.android-shell__icon-button .icon,
+.android-shell__notice-icon .icon,
+.android-shell__list-leading .icon {
+    width: var(--icon-md);
+    height: var(--icon-md);
+}
+
+.android-shell__action-icon .icon,
+.android-shell__chip .icon,
+.android-shell__list-badge .icon,
+.android-shell__filter-chip .icon,
+.android-shell__filter-search .icon,
+.android-shell__list-trailing .icon,
+.android-shell__nav-icon .icon {
+    width: var(--icon-sm);
+    height: var(--icon-sm);
+}
+
+.android-shell__chip,
+.android-shell__list-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+
+    min-block-size: 1.75rem;
+    padding-inline: var(--space-2_5);
+
+    border: 1px solid var(--android-shell-pill-border, var(--android-shell-border));
+    border-radius: var(--radius-full);
+    background: var(--android-shell-pill-bg, var(--android-shell-panel-muted));
+    color: var(--android-shell-pill-text, var(--android-shell-text));
+    font-size: var(--text-xxs);
+    font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
+}
+
+.android-shell__chip--accent,
+.android-shell__list-badge--accent {
+    --android-shell-pill-bg: var(--android-shell-panel-accent);
+    --android-shell-pill-border: var(--android-shell-accent);
+    --android-shell-pill-text: var(--android-shell-accent-strong);
+}
+
+.android-shell__chip--info,
+.android-shell__list-badge--info {
+    --android-shell-pill-bg: var(--android-shell-info-bg);
+    --android-shell-pill-border: var(--android-shell-info-border);
+    --android-shell-pill-text: var(--android-shell-info-text);
+}
+
+.android-shell__chip--success,
+.android-shell__list-badge--success {
+    --android-shell-pill-bg: var(--android-shell-success-bg);
+    --android-shell-pill-border: var(--android-shell-success-border);
+    --android-shell-pill-text: var(--android-shell-success-text);
+}
+
+.android-shell__chip--warning,
+.android-shell__list-badge--warning {
+    --android-shell-pill-bg: var(--android-shell-warning-bg);
+    --android-shell-pill-border: var(--android-shell-warning-border);
+    --android-shell-pill-text: var(--android-shell-warning-text);
+}
+
+.android-shell__chip--danger,
+.android-shell__list-badge--danger {
+    --android-shell-pill-bg: var(--android-shell-danger-bg);
+    --android-shell-pill-border: var(--android-shell-danger-border);
+    --android-shell-pill-text: var(--android-shell-danger-text);
+}
+
+/* ---------------------------------------------------------
+   7. FILTERS, SEARCH, AND SEGMENTED ACTIONS
+--------------------------------------------------------- */
+.android-shell__filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+
+    border: 1px solid var(--android-shell-border);
+    border-radius: calc(var(--radius-xl) + var(--space-1));
+    background:
+        linear-gradient(
+            180deg,
+            var(--android-shell-panel) 0%,
+            var(--android-shell-panel-muted) 100%
+        );
+    box-shadow: var(--shadow-1);
+}
+
+.android-shell__filters--muted {
+    background: var(--android-shell-panel-muted);
+}
+
+.android-shell__filter-group {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    min-width: 0;
+}
+
+.android-shell__filter-group--grow {
+    flex: 1 1 12rem;
+}
+
+.android-shell__filter-label {
+    font-size: var(--text-xxs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--android-shell-text-soft);
+    white-space: nowrap;
+}
+
+.android-shell__filter-chip {
+    --android-shell-filter-bg: var(--android-shell-panel);
+    --android-shell-filter-border: var(--android-shell-border);
+    --android-shell-filter-text: var(--android-shell-text);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1_5);
+
+    min-block-size: 2.25rem;
+    padding-inline: var(--space-3);
+
+    border: 1px solid var(--android-shell-filter-border);
+    border-radius: var(--radius-full);
+    background: var(--android-shell-filter-bg);
+    color: var(--android-shell-filter-text);
+
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.1;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+button.android-shell__filter-chip {
+    appearance: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.android-shell__filter-chip:hover {
+    --android-shell-filter-bg: var(--android-shell-panel-hover);
+    --android-shell-filter-border: var(--android-shell-border-strong);
+
+    transform: translateY(-1px);
+}
+
+.android-shell__filter-chip:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.android-shell__filter-chip--active,
+.android-shell__filter-chip.is-active,
+.android-shell__filter-chip[aria-pressed="true"] {
+    --android-shell-filter-bg: var(--android-shell-panel-accent);
+    --android-shell-filter-border: var(--android-shell-accent);
+    --android-shell-filter-text: var(--android-shell-accent-strong);
+
+    box-shadow: var(--shadow-1);
+}
+
+button.android-shell__filter-chip:disabled,
+button.android-shell__filter-chip[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.56;
+    transform: none;
+}
+
+.android-shell__filter-meta {
+    font-size: var(--text-xxs);
+    color: var(--android-shell-text-soft);
+    white-space: nowrap;
+}
+
+.android-shell__filter-search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 1 1 13rem;
+    min-inline-size: 12rem;
+    min-block-size: 2.5rem;
+    padding-inline: var(--space-3);
+
+    border: 1px solid var(--android-shell-border);
+    border-radius: var(--radius-full);
+    background: var(--android-shell-panel);
+    color: var(--android-shell-text-muted);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.android-shell__filter-search:focus-within {
+    border-color: var(--focus-ring-color);
+    color: var(--android-shell-text);
+    box-shadow: inset 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.android-shell__filter-input {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    border: none;
+    background: transparent;
+    color: var(--android-shell-text);
+    font: inherit;
+}
+
+.android-shell__filter-input::placeholder {
+    color: var(--android-shell-text-soft);
+}
+
+.android-shell__filter-input:focus {
+    outline: none;
+}
+
+.android-shell__filter-actions {
+    margin-left: auto;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* ---------------------------------------------------------
+   8. BANNERS, PUSH NOTICES, TIMELINES
+--------------------------------------------------------- */
+.android-shell__banner-stack,
+.android-shell__notice-stack,
+.android-shell__timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.android-shell__banner {
+    --android-shell-banner-bg: var(--android-shell-panel);
+    --android-shell-banner-border: var(--android-shell-border);
+    --android-shell-banner-rail: var(--android-shell-accent);
+
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-4);
+
+    border: 1px solid var(--android-shell-banner-border);
+    border-radius: calc(var(--radius-xl) + var(--space-1));
+    background: var(--android-shell-banner-bg);
+    box-shadow: var(--shadow-1);
+}
+
+.android-shell__banner::before {
+    content: "";
+    flex: 0 0 auto;
+    inline-size: 0.375rem;
+    border-radius: var(--radius-full);
+    align-self: stretch;
+    background: var(--android-shell-banner-rail);
+}
+
+.android-shell__banner-content {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.android-shell__banner-title {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text);
+}
+
+.android-shell__banner-copy {
+    font-size: var(--text-xs);
+    line-height: var(--line-height-normal);
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__banner-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+
+.android-shell__banner--accent {
+    --android-shell-banner-bg: var(--android-shell-panel-accent);
+    --android-shell-banner-border: var(--android-shell-accent);
+    --android-shell-banner-rail: var(--android-shell-accent-strong);
+}
+
+.android-shell__banner--info {
+    --android-shell-banner-bg: var(--android-shell-info-bg);
+    --android-shell-banner-border: var(--android-shell-info-border);
+    --android-shell-banner-rail: var(--android-shell-info-border);
+}
+
+.android-shell__banner--success {
+    --android-shell-banner-bg: var(--android-shell-success-bg);
+    --android-shell-banner-border: var(--android-shell-success-border);
+    --android-shell-banner-rail: var(--android-shell-success-border);
+}
+
+.android-shell__banner--warning {
+    --android-shell-banner-bg: var(--android-shell-warning-bg);
+    --android-shell-banner-border: var(--android-shell-warning-border);
+    --android-shell-banner-rail: var(--android-shell-warning-border);
+}
+
+.android-shell__banner--danger {
+    --android-shell-banner-bg: var(--android-shell-danger-bg);
+    --android-shell-banner-border: var(--android-shell-danger-border);
+    --android-shell-banner-rail: var(--android-shell-danger-border);
+}
+
+.android-shell__notice {
+    --android-shell-notice-bg: var(--android-shell-panel);
+    --android-shell-notice-border: var(--android-shell-border);
+    --android-shell-notice-icon-bg: var(--android-shell-panel-muted);
+    --android-shell-notice-icon-border: var(--android-shell-border);
+    --android-shell-notice-icon-text: var(--android-shell-accent);
+
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-4);
+
+    border: 1px solid var(--android-shell-notice-border);
+    border-radius: calc(var(--radius-lg) + var(--space-1));
+    background: var(--android-shell-notice-bg);
+    box-shadow: var(--shadow-1);
+}
+
+.android-shell__notice-icon {
+    flex: 0 0 auto;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: var(--radius-lg);
+    background: var(--android-shell-notice-icon-bg);
+    box-shadow: inset 0 0 0 1px var(--android-shell-notice-icon-border);
+    color: var(--android-shell-notice-icon-text);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+}
+
+.android-shell__notice-content {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.android-shell__notice-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+}
+
+.android-shell__notice-title {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text);
+}
+
+.android-shell__notice-copy {
+    font-size: var(--text-xs);
+    line-height: var(--line-height-normal);
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__notice-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: var(--text-xxs);
+    color: var(--android-shell-text-soft);
+}
+
+.android-shell__notice-time {
+    flex: 0 0 auto;
+    min-inline-size: max-content;
+    font-size: var(--text-xxs);
+    color: var(--android-shell-text-soft);
+    text-align: right;
+}
+
+.android-shell__notice--accent {
+    --android-shell-notice-bg: var(--android-shell-panel-accent);
+    --android-shell-notice-border: var(--android-shell-accent);
+    --android-shell-notice-icon-bg: var(--android-shell-panel);
+    --android-shell-notice-icon-border: var(--android-shell-accent);
+    --android-shell-notice-icon-text: var(--android-shell-accent-strong);
+}
+
+.android-shell__notice--info {
+    --android-shell-notice-bg: var(--android-shell-info-bg);
+    --android-shell-notice-border: var(--android-shell-info-border);
+    --android-shell-notice-icon-bg: var(--android-shell-panel);
+    --android-shell-notice-icon-border: var(--android-shell-info-border);
+    --android-shell-notice-icon-text: var(--android-shell-info-text);
+}
+
+.android-shell__notice--success {
+    --android-shell-notice-bg: var(--android-shell-success-bg);
+    --android-shell-notice-border: var(--android-shell-success-border);
+    --android-shell-notice-icon-bg: var(--android-shell-panel);
+    --android-shell-notice-icon-border: var(--android-shell-success-border);
+    --android-shell-notice-icon-text: var(--android-shell-success-text);
+}
+
+.android-shell__notice--warning {
+    --android-shell-notice-bg: var(--android-shell-warning-bg);
+    --android-shell-notice-border: var(--android-shell-warning-border);
+    --android-shell-notice-icon-bg: var(--android-shell-panel);
+    --android-shell-notice-icon-border: var(--android-shell-warning-border);
+    --android-shell-notice-icon-text: var(--android-shell-warning-text);
+}
+
+.android-shell__notice--danger {
+    --android-shell-notice-bg: var(--android-shell-danger-bg);
+    --android-shell-notice-border: var(--android-shell-danger-border);
+    --android-shell-notice-icon-bg: var(--android-shell-panel);
+    --android-shell-notice-icon-border: var(--android-shell-danger-border);
+    --android-shell-notice-icon-text: var(--android-shell-danger-text);
+}
+
+.android-shell__timeline-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-3);
+    align-items: flex-start;
+}
+
+.android-shell__timeline-dot {
+    flex: 0 0 auto;
+    inline-size: 0.875rem;
+    block-size: 0.875rem;
+    margin-top: var(--space-1);
+
+    border-radius: var(--radius-full);
+    background: var(--android-shell-accent);
+    box-shadow: 0 0 0 4px var(--android-shell-panel-muted);
+}
+
+.android-shell__timeline-dot--info {
+    background: var(--android-shell-info-border);
+}
+
+.android-shell__timeline-dot--success {
+    background: var(--android-shell-success-border);
+}
+
+.android-shell__timeline-dot--warning {
+    background: var(--android-shell-warning-border);
+}
+
+.android-shell__timeline-dot--danger {
+    background: var(--android-shell-danger-border);
+}
+
+.android-shell__timeline-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-block-end: var(--space-3);
+    border-bottom: 1px solid var(--android-shell-border);
+}
+
+.android-shell__timeline-item:last-child .android-shell__timeline-content {
+    padding-block-end: 0;
+    border-bottom: none;
+}
+
+.android-shell__timeline-title {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text);
+}
+
+.android-shell__timeline-support {
+    font-size: var(--text-xs);
+    line-height: var(--line-height-normal);
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__timeline-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: var(--text-xxs);
+    color: var(--android-shell-text-soft);
+}
+
+/* ---------------------------------------------------------
+   9. LIST GROUPS AND SETTINGS / FEED ROWS
+--------------------------------------------------------- */
+.android-shell__list {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    border: 1px solid var(--android-shell-border);
+    border-radius: calc(var(--radius-xl) + var(--space-1));
+    background: var(--android-shell-panel);
+    box-shadow: var(--shadow-1);
+}
+
+.android-shell__list--plain {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.android-shell__list-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+
+    min-block-size: var(--android-shell-hit-size);
+    padding: var(--android-shell-list-pad);
+    background: transparent;
+    border-top: 1px solid var(--android-shell-border);
+}
+
+.android-shell__list-item:first-child {
+    border-top: none;
+}
+
+.android-shell__list-item--interactive {
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.android-shell__list-item--interactive:hover {
+    background: var(--android-shell-panel-hover);
+    transform: translateY(-1px);
+}
+
+.android-shell__list-item--current {
+    background:
+        linear-gradient(
+            180deg,
+            var(--android-shell-panel-accent) 0%,
+            var(--android-shell-panel) 100%
+        );
+}
+
+.android-shell__list-item--current::before {
+    content: "";
+    position: absolute;
+    inset-block: var(--space-2);
+    inset-inline-start: var(--space-2);
+    inline-size: 0.1875rem;
+    border-radius: var(--radius-full);
+    background: var(--android-shell-accent);
+}
+
+.android-shell__list-leading {
+    flex: 0 0 auto;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: var(--radius-lg);
+    background: var(--android-shell-panel-muted);
+    box-shadow: inset 0 0 0 1px var(--android-shell-border);
+    color: var(--android-shell-text);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+}
+
+.android-shell__list-leading--accent {
+    background: var(--android-shell-panel-accent);
+    box-shadow: inset 0 0 0 1px var(--android-shell-accent);
+    color: var(--android-shell-accent-strong);
+}
+
+.android-shell__list-content {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.android-shell__list-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+}
+
+.android-shell__list-title {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-semibold);
+    color: var(--android-shell-text);
+}
+
+.android-shell__list-support {
+    font-size: var(--text-xs);
+    line-height: var(--line-height-normal);
+    color: var(--android-shell-text-muted);
+}
+
+.android-shell__list-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: var(--text-xxs);
+    color: var(--android-shell-text-soft);
+}
+
+.android-shell__list-trailing {
+    flex: 0 0 auto;
+    min-inline-size: max-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: var(--space-1);
+
+    color: var(--android-shell-text-muted);
+    font-size: var(--text-xs);
+}
+
+/* ---------------------------------------------------------
+   10. BOTTOM APP BAR, NAVIGATION, AND FAB
+--------------------------------------------------------- */
+.android-shell__bottom-bar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--android-shell-bottom-gap);
+
+    padding:
+        var(--space-3)
+        calc(var(--android-shell-inline-pad) + var(--android-shell-safe-right))
+        calc(var(--space-3) + var(--android-shell-safe-bottom))
+        calc(var(--android-shell-inline-pad) + var(--android-shell-safe-left));
+
+    border-top: 1px solid var(--android-shell-border);
+    background:
+        linear-gradient(
+            180deg,
+            var(--android-shell-panel) 0%,
+            var(--android-shell-panel-muted) 100%
+        );
+    box-shadow:
+        0 -1px 0 var(--android-shell-border),
+        0 -12px 24px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(18px);
+}
+
+.android-shell__bottom-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.android-shell__bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(var(--android-shell-nav-count, 4), minmax(0, 1fr));
+    gap: var(--space-1);
+    padding: var(--space-1);
+
+    border: 1px solid var(--android-shell-border);
+    border-radius: calc(var(--radius-xl) + var(--space-1));
+    background: var(--android-shell-panel-muted);
+}
+
+.android-shell__nav-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+
+    min-block-size: calc(var(--android-shell-hit-size) + var(--space-2));
+    padding: var(--space-2) var(--space-1);
+
+    border: 1px solid transparent;
+    border-radius: calc(var(--radius-lg) + var(--space-1));
+    background: transparent;
+    color: var(--android-shell-text-muted);
+    text-decoration: none;
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.android-shell__nav-link::after {
+    content: "";
+    inline-size: 0.375rem;
+    block-size: 0.375rem;
+    border-radius: var(--radius-full);
+    background: transparent;
+    transform: scale(0.7);
+    transition:
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.android-shell__nav-link:hover {
+    background: var(--android-shell-panel);
+    color: var(--android-shell-text);
+    transform: translateY(-1px);
+}
+
+.android-shell__nav-link:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.android-shell__nav-link[aria-current="page"],
+.android-shell__nav-link--active {
+    background: var(--android-shell-panel);
+    border-color: var(--android-shell-border);
+    color: var(--android-shell-text);
+    box-shadow: var(--shadow-1);
+}
+
+.android-shell__nav-link[aria-current="page"]::after,
+.android-shell__nav-link--active::after {
+    background: var(--android-shell-accent);
+    transform: scale(1);
+}
+
+.android-shell__nav-icon {
+    min-block-size: 1.25rem;
+    line-height: 1;
+}
+
+.android-shell__nav-label {
+    font-size: var(--text-xxs);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    color: var(--android-shell-text);
+}
+
+.android-shell__fab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+
+    min-inline-size: var(--android-shell-fab-size);
+    min-block-size: var(--android-shell-fab-size);
+    padding-inline: var(--space-4);
+
+    border: 1px solid var(--android-shell-accent-strong);
+    border-radius: var(--radius-full);
+    background: var(--android-shell-accent);
+    color: var(--android-shell-on-accent);
+    box-shadow: var(--shadow-3);
+    text-decoration: none;
+
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        filter var(--transition-fast);
+}
+
+.android-shell__fab:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.98);
+}
+
+.android-shell__fab:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.android-shell__fab--float {
+    position: absolute;
+    inset-inline-end: calc(var(--android-shell-inline-pad) + var(--android-shell-safe-right));
+    inset-block-end: calc(var(--android-shell-safe-bottom) + var(--space-6));
+    z-index: var(--z-sticky);
+}
+
+.android-shell__bottom-bar .android-shell__fab--float {
+    inset-block-start: 0;
+    inset-block-end: auto;
+    transform: translateY(-55%);
+}
+
+.android-shell__bottom-bar .android-shell__fab--float:hover {
+    transform: translateY(calc(-55% - 1px));
+}
+
+/* ---------------------------------------------------------
+   11. ADAPTIVE BEHAVIOUR
+--------------------------------------------------------- */
+@container android-shell (min-width: 34rem) {
+    .android-shell__hero-head {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .android-shell__hero-actions {
+        justify-content: flex-end;
+    }
+
+    .android-shell__dashboard {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .android-shell__action-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+}
+
+@container android-shell (min-width: 42rem) {
+    .android-shell__panes--supporting {
+        grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+        align-items: start;
+    }
+
+    .android-shell__metric-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .android-shell__section-head {
+        align-items: center;
+    }
+
+    .android-shell__bottom-actions {
+        justify-content: flex-end;
+    }
+
+    .android-shell__filter-group--grow {
+        flex-basis: auto;
+    }
+}
+
+@container android-shell (max-width: 26rem) {
+    .android-shell__topbar-row {
+        flex-wrap: wrap;
+    }
+
+    .android-shell__actions {
+        margin-left: 0;
+        inline-size: 100%;
+    }
+
+    .android-shell__notice-head {
+        flex-wrap: wrap;
+    }
+
+    .android-shell__list-item {
+        padding: var(--space-3);
+    }
+
+    .android-shell__filters,
+    .android-shell__filter-group {
+        align-items: stretch;
+    }
+
+    .android-shell__filter-group--grow,
+    .android-shell__filter-search,
+    .android-shell__filter-actions {
+        flex-basis: 100%;
+    }
+
+    .android-shell__filter-search {
+        min-inline-size: 0;
+    }
+
+    .android-shell__filter-actions {
+        margin-left: 0;
+    }
+
+    .android-shell__bottom-actions > * {
+        flex: 1 1 calc(50% - var(--space-3));
+    }
+}
+
+@container android-shell (max-width: 22rem) {
+    .android-shell__metric-grid,
+    .android-shell__dashboard,
+    .android-shell__action-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .android-shell__banner {
+        flex-direction: column;
+    }
+
+    .android-shell__banner::before {
+        inline-size: 100%;
+        block-size: 0.375rem;
+    }
+}
+
+@media (max-width: 480px) {
+    [data-vds-android-shell],
+    .vds-android-shell {
+        --android-shell-inline-pad: var(--space-3);
+        --android-shell-section-pad: var(--space-4);
+        --android-shell-list-pad: var(--space-3);
+    }
+
+    .android-shell__bottom-nav {
+        gap: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .android-shell__icon-button,
+    .android-shell__action-tile,
+    .android-shell__filter-chip,
+    .android-shell__list-item--interactive,
+    .android-shell__nav-link,
+    .android-shell__fab {
+        transition: none;
+    }
+
+    .android-shell__icon-button:hover,
+    .android-shell__action-tile:hover,
+    .android-shell__filter-chip:hover,
+    .android-shell__list-item--interactive:hover,
+    .android-shell__nav-link:hover,
+    .android-shell__fab:hover,
+    .android-shell__bottom-bar .android-shell__fab--float:hover {
+        transform: none;
+    }
+}
