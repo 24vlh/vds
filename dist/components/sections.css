@@ -386,6 +386,10 @@
     gap: var(--space-3);
 }
 
+.section__inline-wrap {
+    flex-wrap: wrap;
+}
+
 .section__inline-sm {
     display: flex;
     flex-direction: row;

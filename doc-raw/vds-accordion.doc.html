@@ -4,24 +4,33 @@
         <div class="section__stack-sm">
             <h1>Accordion</h1>
             <p class="text-sm text-muted">
-                Native <code>&lt;details&gt;</code>-based disclosure blocks for
-                compact, accessible vertical sections in settings pages, documentation, and dense UIs.
+                Native <code>&lt;details&gt;</code>-based disclosure blocks for compact,
+                accessible vertical sections in settings pages, documentation, dashboards,
+                and dense configuration flows.
             </p>
             <p class="text-sm text-muted">
-                Source: <code>accordion.css</code> · Depends on
-                <code>base.css</code>,
-                <code>layout.css</code>,
-                <code>typography.css</code>,
-                <code>icons.css</code>,
-                and theme tokens in <code>/themes/*.css</code>.
+                Source: <code>accordion.css</code>. Minimum runtime dependencies:
+                <code>base.css</code>, one active theme in <code>/themes/*.css</code>,
+                and <code>icons.css</code> only if you use VDS icon utilities for the chevron.
+                This documentation page also uses <code>layout.css</code>, <code>typography.css</code>,
+                <code>sections.css</code>, <code>content-blocks.css</code>, <code>utilities.css</code>,
+                and <code>doc-block.css</code> for presentation.
             </p>
         </div>
 
         <p class="text-sm text-muted">
-            This page documents the full accordion surface: native
-            <code>&lt;details&gt;</code> anatomy, header and body roles,
-            chevron icons, open/closed state, semantic variants, and accessibility rules. Use it for
-            progressive disclosure where tabs would be too heavy and inline content would be too long.
+            VDS keeps the implementation intentionally native: each item stays a real
+            <code>&lt;details&gt;</code>, the <code>[open]</code> attribute remains the state source
+            of truth, richer headers use optional text slots instead of custom widgets, and
+            local overrides can scope to <code>.accordion</code>, <code>.vds-accordion</code>,
+            or <code>[data-vds-accordion]</code> through <code>--accordion-*</code> variables.
+        </p>
+
+        <p class="text-sm text-muted">
+            If you want "only one panel open" behavior, modern browsers can do it natively with
+            a shared <code>name</code> attribute on sibling <code>&lt;details&gt;</code> elements.
+            If your support matrix excludes that feature, mirror the same behavior by syncing
+            the <code>open</code> attribute with a tiny script instead of replacing the component.
         </p>
     </div>
 </section>
@@ -32,11 +41,11 @@
         <article class="doc-block">
 
             <header class="doc-block__header">
-                <h2 class="doc-block__title">Accordion specimen (multiple items)</h2>
+                <h2 class="doc-block__title">Accordion specimen</h2>
                 <p class="doc-block__summary">
-                    A compact “kitchen sink” accordion showing multiple items, open/closed states,
-                    chevron icons, and semantic variants. This is the recommended baseline for
-                    settings and documentation disclosure blocks.
+                    Recommended baseline for real product surfaces: native structure, rich header
+                    text, open and closed items, semantic emphasis, and body content that can hold
+                    lists or short supporting copy.
                 </p>
             </header>
 
@@ -48,47 +57,91 @@
                             <div class="accordion">
                                 <details class="accordion-item">
                                     <summary class="accordion-header">
-                                        <span class="accordion-title">Profile settings</span>
+                                        <span class="accordion-header-text">
+                                            <span class="accordion-eyebrow">Account</span>
+                                            <span class="accordion-title">Profile settings</span>
+                                            <span class="accordion-description">
+                                                Name, email, avatar, locale, and the public bio shown on team pages.
+                                            </span>
+                                        </span>
                                         <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
                                     </summary>
                                     <div class="accordion-body text-sm">
-                                        <p>Basic account details: name, email, avatar, and short bio.</p>
+                                        <p>Use when account identity fields should stay out of the primary form flow.</p>
                                     </div>
                                 </details>
 
                                 <details class="accordion-item" open>
                                     <summary class="accordion-header">
-                                        <span class="accordion-title">Security &amp; sign-in</span>
+                                        <span class="accordion-header-text">
+                                            <span class="accordion-eyebrow">Security</span>
+                                            <span class="accordion-title">Security &amp; sign-in</span>
+                                            <span class="accordion-description">
+                                                Two-factor authentication, recovery methods, and active device sessions.
+                                            </span>
+                                            <span class="accordion-meta">3 recommended checks pending</span>
+                                        </span>
                                         <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
                                     </summary>
                                     <div class="accordion-body text-sm section__stack-sm">
-                                        <p>Two-factor authentication, recovery email, and active sessions.</p>
+                                        <p>Keep the header scannable; move actions and long instructions into the body.</p>
                                         <ul class="text-sm">
-                                            <li>Enable 2FA via SMS or authenticator app.</li>
-                                            <li>Review devices that recently accessed your account.</li>
+                                            <li>Enable 2FA via SMS or an authenticator app.</li>
+                                            <li>Review devices that recently accessed the account.</li>
+                                            <li>Rotate recovery codes after sensitive role changes.</li>
                                         </ul>
                                     </div>
                                 </details>
 
                                 <details class="accordion-item accordion-item--info">
                                     <summary class="accordion-header">
-                                        <span class="accordion-title">Billing &amp; invoices</span>
+                                        <span class="accordion-header-text">
+                                            <span class="accordion-eyebrow">Billing</span>
+                                            <span class="accordion-title">Billing &amp; invoices</span>
+                                            <span class="accordion-description">
+                                                Plan, payment methods, invoice delivery, tax profile, and credit balance.
+                                            </span>
+                                        </span>
                                         <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
                                     </summary>
                                     <div class="accordion-body text-sm">
-                                        <p>Plan, payment method, invoice history, and tax information.</p>
+                                        <p>Use semantic emphasis when the section carries a distinct meaning, not just decoration.</p>
+                                    </div>
+                                </details>
+
+                                <details class="accordion-item">
+                                    <summary class="accordion-header">
+                                        <span class="accordion-header-text">
+                                            <span class="accordion-eyebrow">Governance</span>
+                                            <span class="accordion-title accordion-title--truncate">
+                                                Advanced retention, legal hold, export scheduling, and regional archive policy
+                                            </span>
+                                            <span class="accordion-description">
+                                                Truncation is optional and should only be used in constrained single-line layouts.
+                                            </span>
+                                        </span>
+                                        <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                                    </summary>
+                                    <div class="accordion-body text-sm">
+                                        <p>Default title behavior wraps. Add <code>.accordion-title--truncate</code> only when the layout requires it.</p>
                                     </div>
                                 </details>
 
                                 <details class="accordion-item accordion-item--danger">
                                     <summary class="accordion-header">
-                                        <span class="accordion-title">Danger zone</span>
+                                        <span class="accordion-header-text">
+                                            <span class="accordion-eyebrow">Irreversible</span>
+                                            <span class="accordion-title">Danger zone</span>
+                                            <span class="accordion-description">
+                                                Destructive actions such as data removal, tenant closure, or token revocation.
+                                            </span>
+                                        </span>
                                         <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
                                     </summary>
                                     <div class="accordion-body text-sm section__stack-sm">
-                                        <p>Actions that cannot be easily undone.</p>
+                                        <p>Danger sections can use the semantic rail, but destructive actions still need clear body copy.</p>
                                         <ul class="text-sm">
-                                            <li>Delete account and all associated data.</li>
+                                            <li>Delete the tenant and all associated data.</li>
                                             <li>Revoke all active API tokens.</li>
                                         </ul>
                                     </div>
@@ -110,41 +163,66 @@
                     <pre class="doc-block__code"><code>&lt;div class="accordion"&gt;
     &lt;details class="accordion-item"&gt;
         &lt;summary class="accordion-header"&gt;
-            &lt;span class="accordion-title"&gt;Profile settings&lt;/span&gt;
+            &lt;span class="accordion-header-text"&gt;
+                &lt;span class="accordion-eyebrow"&gt;Account&lt;/span&gt;
+                &lt;span class="accordion-title"&gt;Profile settings&lt;/span&gt;
+                &lt;span class="accordion-description"&gt;
+                    Name, email, avatar, locale, and the public bio shown on team pages.
+                &lt;/span&gt;
+            &lt;/span&gt;
             &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
         &lt;/summary&gt;
         &lt;div class="accordion-body"&gt;
-            &lt;p&gt;Basic account details: name, email, avatar, and short bio.&lt;/p&gt;
+            &lt;p&gt;Use when account identity fields should stay out of the primary form flow.&lt;/p&gt;
         &lt;/div&gt;
     &lt;/details&gt;
 
     &lt;details class="accordion-item" open&gt;
         &lt;summary class="accordion-header"&gt;
-            &lt;span class="accordion-title"&gt;Security &amp; sign-in&lt;/span&gt;
+            &lt;span class="accordion-header-text"&gt;
+                &lt;span class="accordion-eyebrow"&gt;Security&lt;/span&gt;
+                &lt;span class="accordion-title"&gt;Security &amp;amp; sign-in&lt;/span&gt;
+                &lt;span class="accordion-description"&gt;
+                    Two-factor authentication, recovery methods, and active device sessions.
+                &lt;/span&gt;
+                &lt;span class="accordion-meta"&gt;3 recommended checks pending&lt;/span&gt;
+            &lt;/span&gt;
             &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
         &lt;/summary&gt;
         &lt;div class="accordion-body"&gt;
-            &lt;p&gt;Two-factor authentication, recovery email, and active sessions.&lt;/p&gt;
+            &lt;p&gt;Keep the header scannable; move actions and long instructions into the body.&lt;/p&gt;
         &lt;/div&gt;
     &lt;/details&gt;
 
     &lt;details class="accordion-item accordion-item--info"&gt;
         &lt;summary class="accordion-header"&gt;
-            &lt;span class="accordion-title"&gt;Billing &amp; invoices&lt;/span&gt;
+            &lt;span class="accordion-header-text"&gt;
+                &lt;span class="accordion-eyebrow"&gt;Billing&lt;/span&gt;
+                &lt;span class="accordion-title"&gt;Billing &amp;amp; invoices&lt;/span&gt;
+                &lt;span class="accordion-description"&gt;
+                    Plan, payment methods, invoice delivery, tax profile, and credit balance.
+                &lt;/span&gt;
+            &lt;/span&gt;
             &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
         &lt;/summary&gt;
         &lt;div class="accordion-body"&gt;
-            &lt;p&gt;Plan, payment method, invoice history, and tax information.&lt;/p&gt;
+            &lt;p&gt;Use semantic emphasis when the section carries a distinct meaning, not just decoration.&lt;/p&gt;
         &lt;/div&gt;
     &lt;/details&gt;
 
     &lt;details class="accordion-item accordion-item--danger"&gt;
         &lt;summary class="accordion-header"&gt;
-            &lt;span class="accordion-title"&gt;Danger zone&lt;/span&gt;
+            &lt;span class="accordion-header-text"&gt;
+                &lt;span class="accordion-eyebrow"&gt;Irreversible&lt;/span&gt;
+                &lt;span class="accordion-title"&gt;Danger zone&lt;/span&gt;
+                &lt;span class="accordion-description"&gt;
+                    Destructive actions such as data removal, tenant closure, or token revocation.
+                &lt;/span&gt;
+            &lt;/span&gt;
             &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
         &lt;/summary&gt;
         &lt;div class="accordion-body"&gt;
-            &lt;p&gt;Actions that cannot be easily undone.&lt;/p&gt;
+            &lt;p&gt;Danger sections can use the semantic rail, but destructive actions still need clear body copy.&lt;/p&gt;
         &lt;/div&gt;
     &lt;/details&gt;
 &lt;/div&gt;
@@ -164,21 +242,31 @@
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Installation &amp; dependencies</h2>
                 <p class="doc-block__summary">
-                    <code>accordion.css</code> is a thin component layer for
-                    native disclosure blocks. Load it after core layout, typography, icons, and theme
-                    tokens. Documentation-only styles remain optional.
+                    <code>accordion.css</code> is intentionally thin. Load the component after the
+                    base layer and a single active theme. Only load <code>icons.css</code> if you
+                    want the VDS icon helpers for the chevron.
                 </p>
             </header>
 
             <div class="doc-block__body section__grid-2 section__grid-sm">
-                <div class="doc-block__preview">
-                    <ul class="text-sm">
-                        <li>Load <code>base.css</code> and <code>layout.css</code> first.</li>
-                        <li>Load <code>typography.css</code> and <code>icons.css</code>.</li>
-                        <li>Load an active theme: <code>themes/slate.css</code>, etc.</li>
-                        <li>Then load <code>accordion.css</code>.</li>
-                        <li>Optionally load <code>doc-block.css</code>.</li>
-                    </ul>
+                <div class="doc-block__preview section__stack-sm">
+                    <div>
+                        <h3 class="text-sm">Runtime</h3>
+                        <ul class="text-sm">
+                            <li>Load <code>base.css</code> first.</li>
+                            <li>Choose exactly one active theme from <code>/themes/*.css</code>.</li>
+                            <li>Load <code>icons.css</code> only if you use icon utility classes.</li>
+                            <li>Then load <code>accordion.css</code>.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm">Docs site extras</h3>
+                        <p class="text-xs text-muted">
+                            The previews on this page also rely on layout, typography, sections,
+                            content-block, utilities, and doc-block styles. Product usage does not.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="doc-block__code">
@@ -191,17 +279,14 @@
                     </div>
 
                     <pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="/css/base.css"&gt;
-&lt;link rel="stylesheet" href="/css/layout.css"&gt;
-&lt;link rel="stylesheet" href="/css/typography.css"&gt;
 
+&lt;!-- Choose one active theme --&gt;
 &lt;link rel="stylesheet" href="/css/themes/slate.css"&gt;
-&lt;link rel="stylesheet" href="/css/themes/navy.css"&gt;
-&lt;link rel="stylesheet" href="/css/themes/carbon.css"&gt;
 
+&lt;!-- Optional if you use VDS icon utilities --&gt;
 &lt;link rel="stylesheet" href="/css/icons.css"&gt;
-&lt;link rel="stylesheet" href="/css/accordion.css"&gt;
 
-&lt;link rel="stylesheet" href="/css/doc-block.css"&gt;
+&lt;link rel="stylesheet" href="/css/accordion.css"&gt;
 </code></pre>
                 </div>
             </div>
@@ -217,8 +302,9 @@
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Anatomy &amp; markup contract</h2>
                 <p class="doc-block__summary">
-                    Accordions in VDS are built on native <code>&lt;details&gt;</code> elements.
-                    Each item is a disclosure block with a clickable header and a body region.
+                    The structure stays intentionally small. The only required pieces are the accordion
+                    wrapper, a <code>&lt;details&gt;</code> item, a <code>&lt;summary&gt;</code> header,
+                    a title, an icon, and a body. Richer header text is optional.
                 </p>
             </header>
 
@@ -227,25 +313,37 @@
                     <h3 class="text-sm">Structural elements</h3>
                     <dl class="text-sm">
                         <dt><code>.accordion</code></dt>
-                        <dd>Vertical stack of accordion items.</dd>
+                        <dd>Vertical stack and default token scope for the component.</dd>
 
                         <dt><code>.accordion-item</code> (<code>&lt;details&gt;</code>)</dt>
-                        <dd>Single disclosure block.</dd>
+                        <dd>Single disclosure block. The native <code>[open]</code> attribute controls state.</dd>
 
                         <dt><code>.accordion-header</code> (<code>&lt;summary&gt;</code>)</dt>
-                        <dd>Clickable header row.</dd>
+                        <dd>Visible toggle row. Keep it native.</dd>
+
+                        <dt><code>.accordion-header-text</code></dt>
+                        <dd>Optional multi-line wrapper for eyebrow, title, description, and meta text.</dd>
+
+                        <dt><code>.accordion-eyebrow</code></dt>
+                        <dd>Optional overline for category or grouping context.</dd>
 
                         <dt><code>.accordion-title</code></dt>
-                        <dd>Header text span.</dd>
+                        <dd>Required visible label for the item.</dd>
+
+                        <dt><code>.accordion-title--truncate</code></dt>
+                        <dd>Optional single-line truncation helper for constrained layouts.</dd>
+
+                        <dt><code>.accordion-description</code> / <code>.accordion-meta</code></dt>
+                        <dd>Optional secondary header lines.</dd>
 
                         <dt><code>.accordion-icon</code></dt>
-                        <dd>Chevron indicator.</dd>
+                        <dd>Chevron indicator. Usually paired with VDS icon utilities.</dd>
 
                         <dt><code>.accordion-body</code></dt>
-                        <dd>Content region.</dd>
+                        <dd>Expanded content region below the header.</dd>
 
-                        <dt><code>[open]</code></dt>
-                        <dd>Native <code>&lt;details&gt;</code> state attribute.</dd>
+                        <dt><code>name</code> on <code>&lt;details&gt;</code></dt>
+                        <dd>Optional native exclusive-group hook for modern browsers.</dd>
                     </dl>
                 </div>
 
@@ -261,7 +359,12 @@
                     <pre class="doc-block__code"><code>&lt;div class="accordion"&gt;
     &lt;details class="accordion-item"&gt;
         &lt;summary class="accordion-header"&gt;
-            &lt;span class="accordion-title"&gt;Section title&lt;/span&gt;
+            &lt;span class="accordion-header-text"&gt;
+                &lt;span class="accordion-eyebrow"&gt;Optional category&lt;/span&gt;
+                &lt;span class="accordion-title"&gt;Section title&lt;/span&gt;
+                &lt;span class="accordion-description"&gt;Optional supporting text.&lt;/span&gt;
+                &lt;span class="accordion-meta"&gt;Optional small status line&lt;/span&gt;
+            &lt;/span&gt;
             &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
         &lt;/summary&gt;
         &lt;div class="accordion-body"&gt;
@@ -276,21 +379,120 @@
     </div>
 </section>
 
+
 <section class="section section--inset" data-vds-content-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
+
             <header class="doc-block__header">
-                <h2 class="doc-block__title">States &amp; variants</h2>
+                <h2 class="doc-block__title">Header slots &amp; long labels</h2>
                 <p class="doc-block__summary">
-                    Accordions support a neutral base style and semantic variants that reuse existing
-                    feedback tokens. Open state adds an accent border-left; chevron rotation indicates
-                    expansion. There are no height animations.
+                    The component supports multi-line headers without custom layout code. Titles wrap
+                    by default. Truncation is opt-in and should only be used when the surrounding layout
+                    guarantees a single visible line.
                 </p>
             </header>
 
             <div class="doc-block__body section__grid-2 section__grid-sm">
                 <div class="doc-block__preview section__stack-sm">
-                    <h3 class="text-sm">Base vs semantic variants</h3>
+                    <div class="accordion">
+                        <details class="accordion-item" open>
+                            <summary class="accordion-header">
+                                <span class="accordion-header-text">
+                                    <span class="accordion-eyebrow">Finance</span>
+                                    <span class="accordion-title">Invoice delivery</span>
+                                    <span class="accordion-description">
+                                        Send invoices to finance@example.com and always include purchase order numbers.
+                                    </span>
+                                    <span class="accordion-meta">Updated 2 days ago</span>
+                                </span>
+                                <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                            </summary>
+                            <div class="accordion-body text-sm">
+                                <p>Use description and meta text sparingly. The header should stay scannable, not become a mini body.</p>
+                            </div>
+                        </details>
+
+                        <details class="accordion-item">
+                            <summary class="accordion-header">
+                                <span class="accordion-header-text">
+                                    <span class="accordion-title accordion-title--truncate">
+                                        Regional archival retention, export scheduling, and supervisor approval chain
+                                    </span>
+                                    <span class="accordion-meta">Single-line constrained layout</span>
+                                </span>
+                                <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                            </summary>
+                            <div class="accordion-body text-sm">
+                                <p>Use truncation only when the header cannot grow vertically.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;details class="accordion-item" open&gt;
+    &lt;summary class="accordion-header"&gt;
+        &lt;span class="accordion-header-text"&gt;
+            &lt;span class="accordion-eyebrow"&gt;Finance&lt;/span&gt;
+            &lt;span class="accordion-title"&gt;Invoice delivery&lt;/span&gt;
+            &lt;span class="accordion-description"&gt;
+                Send invoices to finance@example.com and always include purchase order numbers.
+            &lt;/span&gt;
+            &lt;span class="accordion-meta"&gt;Updated 2 days ago&lt;/span&gt;
+        &lt;/span&gt;
+        &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+    &lt;/summary&gt;
+    &lt;div class="accordion-body"&gt;
+        &lt;p&gt;Use description and meta text sparingly. The header should stay scannable, not become a mini body.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/details&gt;
+
+&lt;details class="accordion-item"&gt;
+    &lt;summary class="accordion-header"&gt;
+        &lt;span class="accordion-header-text"&gt;
+            &lt;span class="accordion-title accordion-title--truncate"&gt;
+                Regional archival retention, export scheduling, and supervisor approval chain
+            &lt;/span&gt;
+            &lt;span class="accordion-meta"&gt;Single-line constrained layout&lt;/span&gt;
+        &lt;/span&gt;
+        &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+    &lt;/summary&gt;
+    &lt;div class="accordion-body"&gt;
+        &lt;p&gt;Use truncation only when the header cannot grow vertically.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/details&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">States &amp; semantic variants</h2>
+                <p class="doc-block__summary">
+                    Open state adds a stronger border and an accent rail without shifting layout width.
+                    Semantic modifiers only change the rail color; they do not add ARIA or alter the
+                    content meaning on their own.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Neutral vs semantic rails</h3>
 
                     <div class="accordion section__stack-sm">
                         <details class="accordion-item" open>
@@ -299,7 +501,7 @@
                                 <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
                             </summary>
                             <div class="accordion-body text-sm">
-                                <p>Uses <code>--color-accent</code> for the left border when open.</p>
+                                <p>Uses <code>--color-accent</code> for the open rail.</p>
                             </div>
                         </details>
 
@@ -309,7 +511,7 @@
                                 <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
                             </summary>
                             <div class="accordion-body text-sm">
-                                <p>Uses <code>--color-info</code> for the open border-left.</p>
+                                <p>Uses <code>--color-info</code> for the open rail.</p>
                             </div>
                         </details>
 
@@ -319,7 +521,7 @@
                                 <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
                             </summary>
                             <div class="accordion-body text-sm">
-                                <p>Uses <code>--color-success</code> for the open border-left.</p>
+                                <p>Uses <code>--color-success</code> for the open rail.</p>
                             </div>
                         </details>
 
@@ -329,7 +531,7 @@
                                 <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
                             </summary>
                             <div class="accordion-body text-sm">
-                                <p>Uses <code>--color-warning</code> for the open border-left.</p>
+                                <p>Uses <code>--color-warning</code> for the open rail.</p>
                             </div>
                         </details>
 
@@ -339,7 +541,7 @@
                                 <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
                             </summary>
                             <div class="accordion-body text-sm">
-                                <p>Uses <code>--color-danger</code> for the open border-left.</p>
+                                <p>Uses <code>--color-danger</code> for the open rail.</p>
                             </div>
                         </details>
                     </div>
@@ -373,10 +575,112 @@
         <article class="doc-block">
 
             <header class="doc-block__header">
+                <h2 class="doc-block__title">Exclusive groups with native <code>name</code></h2>
+                <p class="doc-block__summary">
+                    When your support matrix allows it, sibling <code>&lt;details&gt;</code> items
+                    can share the same <code>name</code> value to create an exclusive accordion where
+                    opening one item closes the others.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="accordion">
+                        <details class="accordion-item" name="account-faq">
+                            <summary class="accordion-header">
+                                <span class="accordion-title">How do I rotate API keys?</span>
+                                <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                            </summary>
+                            <div class="accordion-body text-sm">
+                                <p>Create a replacement key first, update consumers, then revoke the old key.</p>
+                            </div>
+                        </details>
+
+                        <details class="accordion-item" name="account-faq" open>
+                            <summary class="accordion-header">
+                                <span class="accordion-title">Where can I review active sessions?</span>
+                                <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                            </summary>
+                            <div class="accordion-body text-sm">
+                                <p>Active sessions live in the Security section of the account settings page.</p>
+                            </div>
+                        </details>
+
+                        <details class="accordion-item" name="account-faq">
+                            <summary class="accordion-header">
+                                <span class="accordion-title">Can invoice emails go to a finance alias?</span>
+                                <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
+                            </summary>
+                            <div class="accordion-body text-sm">
+                                <p>Yes. Use the Billing section to set a dedicated destination address.</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        Shared <code>name</code> is the cleanest native exclusive-group pattern. If older
+                        browsers are part of your support matrix, keep the markup and synchronize
+                        <code>open</code> with a minimal script instead.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+
+                    <pre class="doc-block__code"><code>&lt;div class="accordion"&gt;
+    &lt;details class="accordion-item" name="account-faq"&gt;
+        &lt;summary class="accordion-header"&gt;
+            &lt;span class="accordion-title"&gt;How do I rotate API keys?&lt;/span&gt;
+            &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+        &lt;/summary&gt;
+        &lt;div class="accordion-body"&gt;
+            &lt;p&gt;Create a replacement key first, update consumers, then revoke the old key.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details class="accordion-item" name="account-faq" open&gt;
+        &lt;summary class="accordion-header"&gt;
+            &lt;span class="accordion-title"&gt;Where can I review active sessions?&lt;/span&gt;
+            &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+        &lt;/summary&gt;
+        &lt;div class="accordion-body"&gt;
+            &lt;p&gt;Active sessions live in the Security section of the account settings page.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details class="accordion-item" name="account-faq"&gt;
+        &lt;summary class="accordion-header"&gt;
+            &lt;span class="accordion-title"&gt;Can invoice emails go to a finance alias?&lt;/span&gt;
+            &lt;span class="accordion-icon icon icon--mask icon--chevron-right"&gt;&lt;/span&gt;
+        &lt;/summary&gt;
+        &lt;div class="accordion-body"&gt;
+            &lt;p&gt;Yes. Use the Billing section to set a dedicated destination address.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
                 <h2 class="doc-block__title">Density layers</h2>
                 <p class="doc-block__summary">
-                    Accordions adapt to VDS density layers by adjusting header and body padding. Content
-                    stays identical; only vertical rhythm changes to match the surrounding layout.
+                    Accordions adapt to VDS density layers through custom properties. Content structure
+                    stays identical; only rhythm and padding change to match surrounding layout density.
                 </p>
             </header>
 
@@ -410,7 +714,7 @@
                                         <span class="accordion-icon icon icon--mask icon--chevron-right"></span>
                                     </summary>
                                     <div class="accordion-body text-sm">
-                                        <p>Increased padding for marketing, onboarding, or documentation pages.</p>
+                                        <p>Increased padding for onboarding, documentation, or more spacious layouts.</p>
                                     </div>
                                 </details>
                             </div>
@@ -471,8 +775,7 @@
                 <h2 class="doc-block__title">Usage patterns &amp; best practices</h2>
                 <p class="doc-block__summary">
                     Use accordions for progressive disclosure in dense layouts, not as a replacement
-                    for tabs or navigation. Keep headers clear, body content short, and avoid nesting
-                    too deeply inside other collapsible components.
+                    for tabs or navigation. Keep headers short, content grouped, and behavior native.
                 </p>
             </header>
 
@@ -480,51 +783,24 @@
                 <div class="doc-block__preview">
                     <h3 class="text-xs text-muted">Do</h3>
                     <ul class="text-sm">
-                        <li>
-                            Use accordions for secondary content: advanced settings, explanations,
-                            and optional configuration blocks.
-                        </li>
-                        <li>
-                            Keep header labels short and descriptive; treat them like section titles,
-                            not full sentences.
-                        </li>
-                        <li>
-                            Group related content into one accordion item instead of many tiny ones.
-                        </li>
-                        <li>
-                            Use semantic variants to draw attention to important sections
-                            (e.g. danger zone, billing, legal).
-                        </li>
-                        <li>
-                            Respect native keyboard behaviour; headers remain real
-                            <code>&lt;summary&gt;</code> elements.
-                        </li>
+                        <li>Use accordions for secondary content: advanced settings, explanations, optional configuration, or FAQs.</li>
+                        <li>Keep header labels short and descriptive; treat them like section labels, not paragraphs.</li>
+                        <li>Use <code>.accordion-header-text</code> when you need a small amount of supporting context in the header.</li>
+                        <li>Use semantic variants only when a section carries a real meaning such as billing, warning, or destructive actions.</li>
+                        <li>Use local <code>--accordion-*</code> variables for spacing or visual adjustments before forking the CSS.</li>
+                        <li>Use shared <code>name</code> values when you want a native exclusive accordion on modern browsers.</li>
                     </ul>
                 </div>
 
                 <div class="doc-block__preview">
-                    <h3 class="text-xs text-muted">Don’t</h3>
+                    <h3 class="text-xs text-muted">Do not</h3>
                     <ul class="text-sm">
-                        <li>
-                            Don’t use accordions as primary navigation; use tabs, sidebar nav,
-                            or breadcrumbs instead.
-                        </li>
-                        <li>
-                            Don’t place critical blocking actions (like “Delete account”) inside
-                            closed items only; surface them clearly.
-                        </li>
-                        <li>
-                            Don’t nest accordions inside accordions; prefer a single-level structure
-                            with clear sections.
-                        </li>
-                        <li>
-                            Don’t remove focus styles or override <code>:focus-visible</code>
-                            on headers or actions.
-                        </li>
-                        <li>
-                            Don’t fake the markup with arbitrary <code>&lt;div&gt;</code>s;
-                            rely on real <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>.
-                        </li>
+                        <li>Do not use accordions as primary navigation; use tabs, sidebar navigation, or page sections instead.</li>
+                        <li>Do not hide critical destructive actions only inside closed items; surface the risk clearly when the section opens.</li>
+                        <li>Do not pack long instructions, buttons, links, or form controls into the header itself.</li>
+                        <li>Do not rely on truncation unless the layout truly requires a single visible line.</li>
+                        <li>Do not nest accordions inside accordions unless there is a very strong information architecture reason.</li>
+                        <li>Do not replace the native structure with arbitrary <code>&lt;div&gt;</code>s just to chase custom keyboard behavior.</li>
                     </ul>
                 </div>
 
@@ -541,9 +817,9 @@
             <header class="doc-block__header">
                 <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
                 <p class="doc-block__summary">
-                    Accordions rely on native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>
-                    semantics, keyboard focus, and token-driven focus styles. Keep the structure intact
-                    to preserve assistive technology behaviour.
+                    Accessibility comes from keeping the structure native. Preserve the
+                    <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> contract, keep the
+                    visible label inside the summary, and let the body hold the richer interaction.
                 </p>
             </header>
 
@@ -551,43 +827,24 @@
                 <div class="doc-block__preview">
                     <h3 class="text-xs text-muted">Contract</h3>
                     <ul class="text-sm">
-                        <li>
-                            Always use real <code>&lt;details&gt;</code> as the root of each
-                            accordion item. The <code>[open]</code> attribute controls state.
-                        </li>
-                        <li>
-                            Keep <code>&lt;summary&gt;</code> as the header; do not replace it with
-                            non-semantic elements.
-                        </li>
-                        <li>
-                            Do not remove or override <code>:focus-visible</code> styles on
-                            <code>.accordion-header</code>.
-                        </li>
-                        <li>
-                            Avoid JS that breaks native behaviour; if you need “only one open at a time”,
-                            toggle the <code>open</code> attribute.
-                        </li>
-                        <li>
-                            Ensure the body remains readable; avoid fixed heights or clipping.
-                        </li>
+                        <li>Always use real <code>&lt;details&gt;</code> as the root of each accordion item. State belongs on <code>[open]</code>.</li>
+                        <li>Keep <code>&lt;summary&gt;</code> as the visible toggle. The title, eyebrow, description, meta, and icon are fine inside it.</li>
+                        <li>Keep links, buttons, form fields, and other persistent interactive controls out of <code>&lt;summary&gt;</code>; place them in the body or an adjacent toolbar instead.</li>
+                        <li>Do not remove or override the component's <code>:focus-visible</code> treatment.</li>
+                        <li>If the page needs formal document-outline headings, place them around the accordion sections rather than relying on heading elements inside <code>&lt;summary&gt;</code>.</li>
+                        <li>Avoid fixed heights or clipping on the body; disclosure content needs room to grow.</li>
                     </ul>
                 </div>
 
                 <div class="doc-block__preview">
                     <h3 class="text-xs text-muted">Keyboard &amp; AT</h3>
                     <ul class="text-sm">
-                        <li>
-                            Native disclosure elements expose expanded/collapsed state to assistive tech.
-                        </li>
-                        <li>
-                            Keyboard users toggle with <kbd>Enter</kbd> or <kbd>Space</kbd>.
-                        </li>
-                        <li>
-                            The visible header must always remain the toggle element.
-                        </li>
-                        <li>
-                            Titles should be short; they act as labels for screen readers.
-                        </li>
+                        <li>Native disclosure elements expose expanded and collapsed state to assistive technology.</li>
+                        <li>Keyboard users toggle items with <kbd>Enter</kbd> or <kbd>Space</kbd>.</li>
+                        <li><kbd>Tab</kbd> and <kbd>Shift</kbd> + <kbd>Tab</kbd> move through the summary and any focusable content inside the expanded body.</li>
+                        <li>Arrow-key, <kbd>Home</kbd>, and <kbd>End</kbd> roving behavior is not provided here because VDS intentionally keeps the pattern native.</li>
+                        <li>Shared <code>name</code> values can provide native exclusive-group behavior, but older-browser support should be handled explicitly if required.</li>
+                        <li>Keep the visible title short and specific because it acts as the primary spoken label for the disclosure.</li>
                     </ul>
                 </div>
             </div>

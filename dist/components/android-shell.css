@@ -20,6 +20,7 @@
 --------------------------------------------------------- */
 [data-vds-android-shell],
 .vds-android-shell {
+    --android-shell-nav-count: 4;
     --android-shell-max-width: 100%;
     --android-shell-min-block-size: 100svh;
     --android-shell-shell-radius: 0;
