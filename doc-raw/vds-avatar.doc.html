@@ -7,6 +7,13 @@
                     Avatars represent people, teams, or entities. Use initials for placeholders,
                     images when available, and status dots for presence.
                 </p>
+                <p class="text-sm text-muted">
+                    Source: <code>avatar.css</code> · Depends on
+                    <code>primitives.css</code>,
+                    <code>base.css</code>,
+                    <code>typography.css</code>,
+                    and theme tokens in <code>/themes/*.css</code>.
+                </p>
             </header>
 
             <div class="doc-block__body section__grid-2 section__grid-md">
@@ -128,22 +135,22 @@
                 <div class="doc-block__preview section__inline section__inline-wrap">
                     <div class="avatar">
                         <span class="avatar__initials">JS</span>
-                        <span class="avatar__status avatar__status--online"></span>
+                        <span aria-hidden="true" class="avatar__status avatar__status--online"></span>
                     </div>
                     <div class="avatar">
                         <span class="avatar__initials">KM</span>
-                        <span class="avatar__status avatar__status--away"></span>
+                        <span aria-hidden="true" class="avatar__status avatar__status--away"></span>
                     </div>
                     <div class="avatar">
                         <span class="avatar__initials">LT</span>
-                        <span class="avatar__status avatar__status--busy"></span>
+                        <span aria-hidden="true" class="avatar__status avatar__status--busy"></span>
                     </div>
                 </div>
 
                 <div class="doc-block__code">
 <pre class="doc-block__code"><code>&lt;div class="avatar"&gt;
   &lt;span class="avatar__initials"&gt;JS&lt;/span&gt;
-  &lt;span class="avatar__status avatar__status--online"&gt;&lt;/span&gt;
+  &lt;span class="avatar__status avatar__status--online" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </div>
@@ -178,7 +185,7 @@
                             </span>
                         </div>
                         <div class="avatar avatar--sm"><span class="avatar__initials">RK</span></div>
-                        <div class="avatar avatar--sm avatar-group__more">+3</div>
+                        <div aria-label="3 more participants" class="avatar avatar--sm avatar-group__more">+3</div>
                     </div>
 
                     <div class="avatar-group avatar-group--spread">
@@ -195,7 +202,7 @@
       &lt;img class="avatar__image" src="static/img/avatars/avatar-01.jpg" alt="Profile photo placeholder"&gt;
     &lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="avatar avatar--sm avatar-group__more"&gt;+3&lt;/div&gt;
+  &lt;div class="avatar avatar--sm avatar-group__more" aria-label="3 more participants"&gt;+3&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </div>
@@ -256,8 +263,12 @@
                     <h3 class="text-xs text-muted text-mono">Do</h3>
                     <ul class="text-sm">
                         <li>Use <code>alt</code> text for images that convey identity.</li>
+                        <li>Use empty <code>alt=""</code> when avatars are purely decorative inside labelled controls.</li>
                         <li>Use <code>aria-label</code> when avatars are interactive.</li>
                         <li>Keep initials to two characters for readability.</li>
+                        <li>Use <code>role="img"</code> + <code>aria-label</code> for initials-only avatars
+                            and set <code>aria-hidden="true"</code> on the initials.
+                        </li>
                         <li>Pair status dots with a text label in the UI.</li>
                     </ul>
                 </div>
@@ -266,11 +277,24 @@
                     <h3 class="text-xs text-muted text-mono">Do not</h3>
                     <ul class="text-sm">
                         <li>Do not leave image <code>alt</code> attributes empty when needed.</li>
+                        <li>Do not duplicate names in both visible text and <code>aria-label</code> on the same element.</li>
                         <li>Do not use low-contrast color combinations for initials.</li>
                         <li>Do not animate status dots excessively.</li>
                         <li>Do not hide critical status only inside the avatar.</li>
                     </ul>
                 </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar" role="img" aria-label="Avery Vega"&gt;
+  &lt;span class="avatar__initials" aria-hidden="true"&gt;AV&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="avatar"&gt;
+  &lt;span class="avatar__media"&gt;
+    &lt;img class="avatar__image" src="static/img/avatars/avatar-01.jpg" alt="Avery Vega"&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
             </div>
         </article>
     </div>

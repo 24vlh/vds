@@ -19,12 +19,13 @@
 .vds-badge-tag {
     --badge-tag-radius: var(--radius-pill);
     --badge-tag-font-size: var(--text-xs);
-    --badge-tag-font-weight: 600;
+    --badge-tag-font-weight: var(--font-weight-semibold);
     --badge-tag-padding-y: var(--space-1);
     --badge-tag-padding-x: var(--space-2_5);
     --badge-tag-gap: var(--space-1_5);
     --badge-tag-dot-size: 0.4rem;
     --badge-tag-icon-size: 0.85rem;
+    --badge-tag-remove-size: var(--badge-tag-icon-size);
     --badge-tag-border-width: var(--border-width);
     --badge-tag-circle-size: var(--space-6);
 
@@ -52,13 +53,16 @@
     color: var(--badge-tag-text);
     font-size: var(--badge-tag-font-size);
     font-weight: var(--badge-tag-font-weight);
+    font-family: inherit;
     line-height: 1;
     white-space: nowrap;
     text-decoration: none;
+    appearance: none;
 }
 
 .badge-tag__dot,
 .badge__dot {
+    flex-shrink: 0;
     width: var(--badge-tag-dot-size);
     height: var(--badge-tag-dot-size);
     border-radius: 999px;
@@ -67,6 +71,7 @@
 
 .badge-tag__icon,
 .badge__icon {
+    flex-shrink: 0;
     width: var(--badge-tag-icon-size);
     height: var(--badge-tag-icon-size);
     display: inline-flex;
@@ -78,6 +83,7 @@
 .badge__remove {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     border: 0;
     background: transparent;
     color: inherit;
@@ -85,6 +91,23 @@
     padding: 0;
     line-height: 1;
     margin-left: var(--space-1);
+    width: var(--badge-tag-remove-size);
+    height: var(--badge-tag-remove-size);
+    border-radius: 999px;
+    appearance: none;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.badge-tag__remove:hover,
+.badge__remove:hover {
+    background-color: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.badge-tag__remove:focus-visible,
+.badge__remove:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--color-surface),
+    0 0 0 3px var(--focus-ring-color);
 }
 
 /* ---------------------------------------------------------
@@ -149,6 +172,13 @@
     outline: none;
     box-shadow: 0 0 0 1px var(--color-surface),
     0 0 0 3px var(--focus-ring-color);
+}
+
+.badge-tag--tag:disabled,
+.badge-tag--tag[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* ---------------------------------------------------------

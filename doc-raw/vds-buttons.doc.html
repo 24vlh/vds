@@ -9,9 +9,11 @@
 
         <p class="text-sm text-muted">
             Source: <code>buttons.css</code> · Depends on
+            <code>primitives.css</code>,
             <code>base.css</code>,
             <code>typography.css</code>,
-            theme tokens in <code>/themes/*.css</code>.
+            theme tokens in <code>/themes/*.css</code>,
+            and <code>icons.css</code> for icon buttons.
         </p>
     </div>
 </section>
@@ -31,23 +33,23 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body flex-row flex-wrap gap-3">
-                            <button aria-label="More options" class="button button--icon">
-                                <span class="button__icon icon icon--mask icon--more-vertical"></span>
+                            <button aria-label="More options" class="button button--icon" type="button">
+                                <span aria-hidden="true" class="button__icon icon icon--mask icon--more-vertical"></span>
                             </button>
-                            <button aria-label="Continue" class="button button--primary button--icon">
-                                <span class="button__icon icon icon--mask icon--arrow-right"></span>
+                            <button aria-label="Continue" class="button button--primary button--icon" type="button">
+                                <span aria-hidden="true" class="button__icon icon icon--mask icon--arrow-right"></span>
                             </button>
-                            <button aria-label="Back" class="button button--outline button--icon">
-                                <span class="button__icon icon icon--mask icon--arrow-left"></span>
+                            <button aria-label="Back" class="button button--outline button--icon" type="button">
+                                <span aria-hidden="true" class="button__icon icon icon--mask icon--arrow-left"></span>
                             </button>
-                            <button aria-label="More" class="button button--ghost button--icon">
-                                <span class="button__icon icon icon--mask icon--more-vertical"></span>
+                            <button aria-label="More" class="button button--ghost button--icon" type="button">
+                                <span aria-hidden="true" class="button__icon icon icon--mask icon--more-vertical"></span>
                             </button>
-                            <button aria-label="More" class="button button--subtle button--icon">
-                                <span class="button__icon icon icon--mask icon--more-vertical"></span>
+                            <button aria-label="More" class="button button--subtle button--icon" type="button">
+                                <span aria-hidden="true" class="button__icon icon icon--mask icon--more-vertical"></span>
                             </button>
-                            <button aria-label="Delete" class="button button--danger button--icon">
-                                <span class="button__icon icon icon--mask icon--more-vertical"></span>
+                            <button aria-label="Delete" class="button button--danger button--icon" type="button">
+                                <span aria-hidden="true" class="button__icon icon icon--mask icon--more-vertical"></span>
                             </button>
                         </div>
                     </div>
@@ -62,23 +64,23 @@
                         </div>
                     </div>
 
-                    <pre class="doc-block__code"><code>&lt;button class="button button--icon" aria-label="More options"&gt;
-    &lt;span class="button__icon icon icon--mask icon--more-vertical"&gt;&lt;/span&gt;
+                    <pre class="doc-block__code"><code>&lt;button class="button button--icon" aria-label="More options" type="button"&gt;
+    &lt;span class="button__icon icon icon--mask icon--more-vertical" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/button&gt;
-&lt;button class="button button--primary button--icon" aria-label="Continue"&gt;
-    &lt;span class="button__icon icon icon--mask icon--arrow-right"&gt;&lt;/span&gt;
+&lt;button class="button button--primary button--icon" aria-label="Continue" type="button"&gt;
+    &lt;span class="button__icon icon icon--mask icon--arrow-right" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/button&gt;
-&lt;button class="button button--outline button--icon" aria-label="Back"&gt;
-    &lt;span class="button__icon icon icon--mask icon--arrow-left"&gt;&lt;/span&gt;
+&lt;button class="button button--outline button--icon" aria-label="Back" type="button"&gt;
+    &lt;span class="button__icon icon icon--mask icon--arrow-left" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/button&gt;
-&lt;button class="button button--ghost button--icon" aria-label="More"&gt;
-    &lt;span class="button__icon icon icon--mask icon--more-vertical"&gt;&lt;/span&gt;
+&lt;button class="button button--ghost button--icon" aria-label="More" type="button"&gt;
+    &lt;span class="button__icon icon icon--mask icon--more-vertical" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/button&gt;
-&lt;button class="button button--subtle button--icon" aria-label="More"&gt;
-    &lt;span class="button__icon icon icon--mask icon--more-vertical"&gt;&lt;/span&gt;
+&lt;button class="button button--subtle button--icon" aria-label="More" type="button"&gt;
+    &lt;span class="button__icon icon icon--mask icon--more-vertical" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/button&gt;
-&lt;button class="button button--danger button--icon" aria-label="Delete"&gt;
-    &lt;span class="button__icon icon icon--mask icon--more-vertical"&gt;&lt;/span&gt;
+&lt;button class="button button--danger button--icon" aria-label="Delete" type="button"&gt;
+    &lt;span class="button__icon icon icon--mask icon--more-vertical" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/button&gt;
 </code></pre>
                 </div>
@@ -103,15 +105,15 @@
                     <div class="card">
                         <div class="card__body flex-row flex-wrap gap-3">
                             <a class="button button--link" href="#">View all</a>
-                            <button class="button button--link">
-                                <span class="button__icon button__icon--left icon icon--mask icon--arrow-right"></span>
+                            <button class="button button--link" type="button">
+                                <span aria-hidden="true" class="button__icon button__icon--left icon icon--mask icon--arrow-right"></span>
                                 <span>Read more</span>
                             </button>
-                            <button class="button button--link">
+                            <button class="button button--link" type="button">
                                 <span>Next</span>
-                                <span class="button__icon button__icon--right icon icon--mask icon--arrow-right"></span>
+                                <span aria-hidden="true" class="button__icon button__icon--right icon icon--mask icon--arrow-right"></span>
                             </button>
-                            <button class="button button--link" disabled>Disabled link</button>
+                            <button class="button button--link" disabled type="button">Disabled link</button>
                         </div>
                     </div>
                 </div>
@@ -126,15 +128,15 @@
                     </div>
 
                     <pre class="doc-block__code"><code>&lt;a href="#" class="button button--link"&gt;View all&lt;/a&gt;
-&lt;button class="button button--link"&gt;
-    &lt;span class="button__icon button__icon--left icon icon--mask icon--arrow-right"&gt;&lt;/span&gt;
+&lt;button class="button button--link" type="button"&gt;
+    &lt;span class="button__icon button__icon--left icon icon--mask icon--arrow-right" aria-hidden="true"&gt;&lt;/span&gt;
     &lt;span&gt;Read more&lt;/span&gt;
 &lt;/button&gt;
-&lt;button class="button button--link"&gt;
+&lt;button class="button button--link" type="button"&gt;
     &lt;span&gt;Next&lt;/span&gt;
-    &lt;span class="button__icon button__icon--right icon icon--mask icon--arrow-right"&gt;&lt;/span&gt;
+    &lt;span class="button__icon button__icon--right icon icon--mask icon--arrow-right" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/button&gt;
-&lt;button class="button button--link" disabled&gt;Disabled link&lt;/button&gt;
+&lt;button class="button button--link" disabled type="button"&gt;Disabled link&lt;/button&gt;
 </code></pre>
                 </div>
             </div>
@@ -156,6 +158,7 @@
             <div class="doc-block__body">
                 <div class="doc-block__preview">
                     <ul class="text-body">
+                        <li>Load <code>primitives.css</code> first.</li>
                         <li>Load <code>base.css</code> and <code>layout.css</code>
                             first.
                         </li>
@@ -179,7 +182,8 @@
                         </div>
                     </div>
 
-                    <pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="../css/base.css"&gt;
+                    <pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="../css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="../css/base.css"&gt;
 &lt;link rel="stylesheet" href="../css/layout.css"&gt;
 &lt;link rel="stylesheet" href="../css/typography.css"&gt;
 
@@ -212,7 +216,7 @@
             <div class="doc-block__body">
                 <div class="doc-block__preview doc-block__preview--inline">
                     <button class="button button--primary">
-                        <span class="button__icon icon icon--mask icon--arrow-right"></span>
+                        <span aria-hidden="true" class="button__icon icon icon--mask icon--arrow-right"></span>
                         <span>Primary action</span>
                     </button>
                 </div>
@@ -227,7 +231,7 @@
                     </div>
 
                     <pre class="doc-block__code"><code>&lt;button class=&quot;button button--primary&quot;&gt;
-    &lt;span class=&quot;button__icon icon icon--mask icon--arrow-right&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;button__icon icon icon--mask icon--arrow-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
     &lt;span&gt;Primary action&lt;/span&gt;
 &lt;/button&gt;
 </code></pre>
@@ -404,21 +408,21 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body">
-                            <button class="button button--secondary">
-                                <span class="button__icon button__icon--left icon icon--mask icon--arrow-left"></span>
+                            <button class="button button--secondary" type="button">
+                                <span aria-hidden="true" class="button__icon button__icon--left icon icon--mask icon--arrow-left"></span>
                                 <span>Back</span>
                             </button>
 
-                            <button class="button button--primary">
+                            <button class="button button--primary" type="button">
                                 <span>Continue</span>
-                                <span class="button__icon button__icon--right icon icon--mask icon--arrow-right"></span>
+                                <span aria-hidden="true" class="button__icon button__icon--right icon icon--mask icon--arrow-right"></span>
                             </button>
 
-                            <button aria-label="More options" class="button button--ghost button--icon">
-                                <span class="button__icon icon icon--mask icon--more-vertical"></span>
+                            <button aria-label="More options" class="button button--ghost button--icon" type="button">
+                                <span aria-hidden="true" class="button__icon icon icon--mask icon--more-vertical"></span>
                             </button>
 
-                            <button class="button button--primary button--loading">
+                            <button aria-busy="true" class="button button--primary button--loading" type="button">
                                 <span>Saving…</span>
                             </button>
                         </div>
@@ -434,24 +438,24 @@
                         </div>
                     </div>
 
-                    <pre class="doc-block__code"><code>&lt;button class="button button--secondary"&gt;
-    &lt;span class="button__icon button__icon--left icon icon--mask icon--arrow-left"&gt;&lt;/span&gt;
+                    <pre class="doc-block__code"><code>&lt;button class="button button--secondary" type="button"&gt;
+    &lt;span class="button__icon button__icon--left icon icon--mask icon--arrow-left" aria-hidden="true"&gt;&lt;/span&gt;
     &lt;span&gt;Back&lt;/span&gt;
 &lt;/button&gt;
 
-&lt;button class="button button--primary"&gt;
+&lt;button class="button button--primary" type="button"&gt;
     &lt;span&gt;Continue&lt;/span&gt;
-    &lt;span class="button__icon button__icon--right icon icon--mask icon--arrow-right"&gt;&lt;/span&gt;
+    &lt;span class="button__icon button__icon--right icon icon--mask icon--arrow-right" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/button&gt;
 
 &lt;button
     class="button button--ghost button--icon"
     type="button"
     aria-label="More options"&gt;
-    &lt;span class="button__icon icon icon--mask icon--more-vertical"&gt;&lt;/span&gt;
+    &lt;span class="button__icon icon icon--mask icon--more-vertical" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/button&gt;
 
-&lt;button class="button button--primary button--loading" disabled&gt;
+&lt;button class="button button--primary button--loading" type="button" aria-busy="true" disabled&gt;
     &lt;span&gt;Saving…&lt;/span&gt;
 &lt;/button&gt;
 </code></pre>
@@ -586,6 +590,8 @@
                             <code>&lt;a&gt;</code> for navigation.
                         </li>
 
+                        <li>Set <code>type="button"</code> when the button is not submitting a form.</li>
+
                         <li>Provide <code>aria-label</code> for icon-only buttons
                             (<code>button--icon</code>, <code
                             >button--icon-only</code>).
@@ -610,6 +616,10 @@
 
                         <li>Use <code>button--loading</code> to preserve layout width
                             and avoid content shifts.
+                        </li>
+
+                        <li>Use <code>aria-pressed</code> for toggle buttons and
+                            <code>aria-busy</code> for loading actions.
                         </li>
 
                         <li>Allow tokens to determine focus ring, colours, and transitions

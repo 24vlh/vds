@@ -614,7 +614,7 @@
                                 </div>
                             </div>
                             <div class="command-step__actions">
-                                <button class="button button--ghost">Open</button>
+                                <button class="button button--ghost" type="button">Open</button>
                             </div>
                         </li>
 
@@ -629,7 +629,7 @@
                                 </div>
                             </div>
                             <div class="command-step__actions">
-                                <button class="button button--ghost">Investigate</button>
+                                <button class="button button--ghost" type="button">Investigate</button>
                             </div>
                         </li>
 
@@ -643,7 +643,7 @@
                                 </div>
                             </div>
                             <div class="command-step__actions">
-                                <button class="button button--ghost">View</button>
+                                <button class="button button--ghost" type="button">View</button>
                             </div>
                         </li>
                     </ol>
@@ -683,7 +683,7 @@
                             </div>
                             <div class="command-queue">
                                 <div class="command-queue__item">
-                                    <span class="command-queue__status command-queue__status--warning"></span>
+                                    <span class="command-queue__status command-queue__status--warning" aria-hidden="true"></span>
                                     <div class="command-queue__content">
                                         <div class="command-queue__title">Render: Session 14</div>
                                         <div class="command-queue__meta">ETA 12 min · 4.2 GB</div>
@@ -692,12 +692,12 @@
                                         </div>
                                     </div>
                                     <div class="command-queue__actions">
-                                        <button class="button button--ghost">View</button>
+                                        <button class="button button--ghost" type="button">View</button>
                                     </div>
                                 </div>
 
                                 <div class="command-queue__item">
-                                    <span class="command-queue__status command-queue__status--success"></span>
+                                    <span class="command-queue__status command-queue__status--success" aria-hidden="true"></span>
                                     <div class="command-queue__content">
                                         <div class="command-queue__title">Upload: Segment 08</div>
                                         <div class="command-queue__meta">3 clips · 1.1 GB</div>
@@ -706,7 +706,7 @@
                                         </div>
                                     </div>
                                     <div class="command-queue__actions">
-                                        <button class="button button--ghost">Open</button>
+                                        <button class="button button--ghost" type="button">Open</button>
                                     </div>
                                 </div>
                             </div>
@@ -719,13 +719,13 @@
                             </div>
                             <div class="command-queue">
                                 <div class="command-queue__item">
-                                    <span class="command-queue__status"></span>
+                                    <span class="command-queue__status" aria-hidden="true"></span>
                                     <div class="command-queue__content">
                                         <div class="command-queue__title">Transcode: Session 15</div>
                                         <div class="command-queue__meta">Queued · Auto start</div>
                                     </div>
                                     <div class="command-queue__actions">
-                                        <button class="button button--ghost">Details</button>
+                                        <button class="button button--ghost" type="button">Details</button>
                                     </div>
                                 </div>
                             </div>
@@ -738,13 +738,13 @@
                             </div>
                             <div class="command-queue">
                                 <div class="command-queue__item">
-                                    <span class="command-queue__status command-queue__status--danger"></span>
+                                    <span class="command-queue__status command-queue__status--danger" aria-hidden="true"></span>
                                     <div class="command-queue__content">
                                         <div class="command-queue__title">Export: Session 12</div>
                                         <div class="command-queue__meta">Missing audio track</div>
                                     </div>
                                     <div class="command-queue__actions">
-                                        <button class="button button--ghost">Fix</button>
+                                        <button class="button button--ghost" type="button">Fix</button>
                                     </div>
                                 </div>
                             </div>
@@ -841,14 +841,14 @@
                                 <span>Owner: Jun</span>
                             </div>
                             <div class="command-card__footer">
-                                <button class="button button--primary">Open segment</button>
-                                <button class="button button--ghost">Assign</button>
+                                <button class="button button--primary" type="button">Open segment</button>
+                                <button class="button button--ghost" type="button">Assign</button>
                             </div>
                         </div>
 
                         <div class="command-nudge command-nudge--tint" data-variant="info">
                             <span class="command-nudge__icon">
-                                <span class="icon icon--mask icon--info"></span>
+                                <span class="icon icon--mask icon--info" aria-hidden="true"></span>
                             </span>
                             <div class="command-nudge__body">
                                 <div class="command-nudge__title">Reminder</div>
@@ -856,14 +856,14 @@
                                     Export presets updated. Refresh your template before recording.
                                 </div>
                                 <div class="command-nudge__actions">
-                                    <button class="button button--ghost">View presets</button>
+                                    <button class="button button--ghost" type="button">View presets</button>
                                 </div>
                             </div>
                         </div>
 
                         <div class="command-nudge" data-variant="danger">
                             <span class="command-nudge__icon">
-                                <span class="icon icon--mask icon--alert"></span>
+                                <span class="icon icon--mask icon--alert" aria-hidden="true"></span>
                             </span>
                             <div class="command-nudge__body">
                                 <div class="command-nudge__title">Blocked export</div>
@@ -871,8 +871,8 @@
                                     Audio file missing for Session 12. Upload to continue.
                                 </div>
                                 <div class="command-nudge__actions">
-                                    <button class="button button--ghost">Upload</button>
-                                    <button class="button button--ghost">Escalate</button>
+                                    <button class="button button--ghost" type="button">Upload</button>
+                                    <button class="button button--ghost" type="button">Escalate</button>
                                 </div>
                             </div>
                         </div>
@@ -940,8 +940,8 @@
                             <div class="command-empty__title">Queue cleared</div>
                             <div class="command-empty__body">No renders pending. Start a new job?</div>
                             <div class="command-empty__actions">
-                                <button class="button button--primary">Start new render</button>
-                                <button class="button button--ghost">View history</button>
+                                <button class="button button--primary" type="button">Start new render</button>
+                                <button class="button button--ghost" type="button">View history</button>
                             </div>
                         </div>
                     </div>
@@ -1025,7 +1025,8 @@
                                             </svg>
                                         </div>
 
-                                        <input class="command__input"
+                                        <input aria-label="Search commands or go to…"
+                                               class="command__input"
                                                placeholder="Search commands or go to…"
                                                type="search">
 
@@ -1242,7 +1243,7 @@
                     </div>
 
                     <pre class="doc-block__code"><code>&lt;div class="command command--center"&gt;
-    &lt;div class="command__panel" role="dialog" aria-modal="true"&gt;
+    &lt;div class="command__panel" role="dialog" aria-modal="true" aria-label="Command menu"&gt;
         &lt;header class="command__header"&gt;...input + shortcut...&lt;/header&gt;
 
         &lt;div class="command__body"&gt;
@@ -1294,12 +1295,13 @@
                         <div class="card__body">
 
                             <button class="button button--primary"
-                                    data-target="header-search">
+                                    data-target="header-search"
+                                    type="button">
                                 Click to open
                             </button>
 
                             <div class="command" data-command="header-search">
-                                <div aria-modal="true" class="command__panel" role="dialog">
+                                <div aria-label="Command menu" aria-modal="true" class="command__panel" role="dialog">
 
                                     <header class="command__header">
 
@@ -1316,7 +1318,8 @@
                                             </svg>
                                         </div>
 
-                                        <input class="command__input"
+                                        <input aria-label="Search or type a command…"
+                                               class="command__input"
                                                placeholder="Search or type a command…"
                                                type="search">
 
@@ -1356,6 +1359,7 @@
     &lt;input
         class="command__input"
         type="search"
+        aria-label="Search or type a command…"
         placeholder="Search or type a command…" /&gt;
 
     &lt;div class="command__hint"&gt;
@@ -1403,13 +1407,14 @@
                         <div class="card__body">
 
                             <button class="button button--primary"
-                                    data-target="sections-lists">
+                                    data-target="sections-lists"
+                                    type="button">
                                 Click to open
                             </button>
 
                             <div class="command command--center" data-command="sections-lists">
 
-                                <div aria-modal="true" class="command__panel" role="dialog">
+                                <div aria-label="Command menu" aria-modal="true" class="command__panel" role="dialog">
 
                                     <div class="command__body">
                                         <div class="command__section">
@@ -1609,7 +1614,7 @@
                             </div>
 
                             <div class="command command--center" data-command="empty">
-                                <div aria-modal="true" class="command__panel" role="dialog">
+                                <div aria-label="Command menu" aria-modal="true" class="command__panel" role="dialog">
 
                                     <header class="command__header">
                                         <div class="command__leading-icon">
@@ -1706,9 +1711,9 @@
                                 keep the queue moving.
                             </div>
                             <div class="command-page__actions">
-                                <button class="button button--primary">Start session</button>
-                                <button class="button button--secondary">Review queue</button>
-                                <button class="button button--ghost">Open calendar</button>
+                                <button class="button button--primary" type="button">Start session</button>
+                                <button class="button button--secondary" type="button">Review queue</button>
+                                <button class="button button--ghost" type="button">Open calendar</button>
                             </div>
                         </header>
 
@@ -1719,11 +1724,11 @@
                                 <span class="command-pill" data-variant="neutral">All</span>
                             </div>
                             <div class="command-toolbar__search">
-                                <input class="form-control" placeholder="Search tasks and sessions" type="search">
+                                <input aria-label="Search tasks and sessions" class="form-control" placeholder="Search tasks and sessions" type="search">
                             </div>
                             <div class="command-toolbar__actions">
-                                <button class="button button--ghost">Filters</button>
-                                <button class="button button--ghost">Settings</button>
+                                <button class="button button--ghost" type="button">Filters</button>
+                                <button class="button button--ghost" type="button">Settings</button>
                             </div>
                         </div>
                     </div>
@@ -1738,9 +1743,9 @@
       See what needs attention, launch the next action, and keep the queue moving.
     &lt;/div&gt;
     &lt;div class="command-page__actions"&gt;
-      &lt;button class="button button--primary"&gt;Start session&lt;/button&gt;
-      &lt;button class="button button--secondary"&gt;Review queue&lt;/button&gt;
-      &lt;button class="button button--ghost"&gt;Open calendar&lt;/button&gt;
+      &lt;button class="button button--primary" type="button"&gt;Start session&lt;/button&gt;
+      &lt;button class="button button--secondary" type="button"&gt;Review queue&lt;/button&gt;
+      &lt;button class="button button--ghost" type="button"&gt;Open calendar&lt;/button&gt;
     &lt;/div&gt;
   &lt;/header&gt;
 
@@ -1751,11 +1756,11 @@
       &lt;span class="command-pill" data-variant="neutral"&gt;All&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="command-toolbar__search"&gt;
-      &lt;input class="form-control" type="search" placeholder="Search tasks and sessions"&gt;
+      &lt;input class="form-control" type="search" aria-label="Search tasks and sessions" placeholder="Search tasks and sessions"&gt;
     &lt;/div&gt;
     &lt;div class="command-toolbar__actions"&gt;
-      &lt;button class="button button--ghost"&gt;Filters&lt;/button&gt;
-      &lt;button class="button button--ghost"&gt;Settings&lt;/button&gt;
+      &lt;button class="button button--ghost" type="button"&gt;Filters&lt;/button&gt;
+      &lt;button class="button button--ghost" type="button"&gt;Settings&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -1781,7 +1786,7 @@
                         <div class="command-grid command-grid--3">
                             <a class="command-action command-action--primary" data-variant="accent" href="#">
                                 <span class="command-action__icon">
-                                    <span class="icon icon--mask icon--play"></span>
+                                    <span class="icon icon--mask icon--play" aria-hidden="true"></span>
                                 </span>
                                 <div class="command-action__content">
                                     <div class="command-action__title">Start capture</div>
@@ -1797,7 +1802,7 @@
 
                             <a class="command-action" data-variant="info" href="#">
                                 <span class="command-action__icon">
-                                    <span class="icon icon--mask icon--calendar"></span>
+                                    <span class="icon icon--mask icon--calendar" aria-hidden="true"></span>
                                 </span>
                                 <div class="command-action__content">
                                     <div class="command-action__title">Schedule session</div>
@@ -1807,7 +1812,7 @@
 
                             <a class="command-action" data-variant="warning" href="#">
                                 <span class="command-action__icon">
-                                    <span class="icon icon--mask icon--alert"></span>
+                                    <span class="icon icon--mask icon--alert" aria-hidden="true"></span>
                                 </span>
                                 <div class="command-action__content">
                                     <div class="command-action__title">Resolve blockers</div>
@@ -1817,7 +1822,7 @@
 
                             <a class="command-action" data-variant="neutral" href="#">
                                 <span class="command-action__icon">
-                                    <span class="icon icon--mask icon--flag"></span>
+                                    <span class="icon icon--mask icon--flag" aria-hidden="true"></span>
                                 </span>
                                 <div class="command-action__content">
                                     <div class="command-action__title">Flagged items</div>
@@ -1828,7 +1833,7 @@
 
                         <div class="command-action command-action--row" data-variant="info">
                             <span class="command-action__icon">
-                                <span class="icon icon--mask icon--clock"></span>
+                                <span class="icon icon--mask icon--clock" aria-hidden="true"></span>
                             </span>
                             <div class="command-action__content">
                                 <div class="command-action__title">Check queue status</div>
@@ -1841,7 +1846,7 @@
 
                         <div class="command-action command-action--row" data-variant="success">
                             <span class="command-action__icon">
-                                <span class="icon icon--mask icon--check-circle"></span>
+                                <span class="icon icon--mask icon--check-circle" aria-hidden="true"></span>
                             </span>
                             <div class="command-action__content">
                                 <div class="command-action__title">Publish summary</div>
@@ -1909,10 +1914,11 @@
                             </div>
 
                             <div class="command command--center command--compact" data-command="compact">
-                                <div aria-modal="true" class="command__panel" role="dialog">
+                                <div aria-label="Command menu" aria-modal="true" class="command__panel" role="dialog">
 
                                     <header class="command__header">
-                                        <input class="command__input"
+                                        <input aria-label="Jump to…"
+                                               class="command__input"
                                                placeholder="Jump to…"
                                                type="search">
                                         <div class="command__hint">
@@ -1978,7 +1984,7 @@
                     </div>
 
                     <pre class="doc-block__code"><code>&lt;div class="command command--center command--compact command--open" data-command="compact"&gt;
-    &lt;div class="command__panel" role="dialog" aria-modal="true"&gt;
+    &lt;div class="command__panel" role="dialog" aria-modal="true" aria-label="Command menu"&gt;
         &lt;header class="command__header"&gt;...&lt;/header&gt;
         &lt;div class="command__body"&gt;
             &lt;div class="command__section"&gt;
@@ -2024,10 +2030,11 @@
                         <div class="card__body">
 
                             <div class="command command--center" data-command="nav">
-                                <div aria-modal="true" class="command__panel" role="dialog">
+                                <div aria-label="Command menu" aria-modal="true" class="command__panel" role="dialog">
 
                                     <header class="command__header">
-                                        <input class="command__input"
+                                        <input aria-label="Search or run a command…"
+                                               class="command__input"
                                                placeholder="Search or run a command…"
                                                type="search">
 

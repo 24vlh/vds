@@ -6,6 +6,7 @@
                 <p class="doc-block__summary">
                     Action bars group bulk actions for tables or lists. Use the meta slot to show
                     selection counts and context, then place actions and dismiss controls on the right.
+                    Use compact or stacked variants when density or layout requires it.
                 </p>
             </header>
 
@@ -19,10 +20,10 @@
                             <span class="text-muted">Campaigns</span>
                         </div>
                         <div class="action-bar__actions">
-                            <button class="button button--primary button--sm">Approve</button>
-                            <button class="button button--outline button--sm">Archive</button>
-                            <button class="button button--ghost button--sm">Export</button>
-                            <button class="button button--link button--sm action-bar__dismiss">Clear</button>
+                            <button class="button button--primary button--sm" type="button">Approve</button>
+                            <button class="button button--outline button--sm" type="button">Archive</button>
+                            <button class="button button--ghost button--sm" type="button">Export</button>
+                            <button class="button button--link button--sm action-bar__dismiss" type="button">Clear</button>
                         </div>
                     </div>
                 </div>
@@ -35,10 +36,10 @@
     &lt;span class="text-muted"&gt;Campaigns&lt;/span&gt;
   &lt;/div&gt;
   &lt;div class="action-bar__actions"&gt;
-    &lt;button class="button button--primary button--sm"&gt;Approve&lt;/button&gt;
-    &lt;button class="button button--outline button--sm"&gt;Archive&lt;/button&gt;
-    &lt;button class="button button--ghost button--sm"&gt;Export&lt;/button&gt;
-    &lt;button class="button button--link button--sm action-bar__dismiss"&gt;Clear&lt;/button&gt;
+    &lt;button class="button button--primary button--sm" type="button"&gt;Approve&lt;/button&gt;
+    &lt;button class="button button--outline button--sm" type="button"&gt;Archive&lt;/button&gt;
+    &lt;button class="button button--ghost button--sm" type="button"&gt;Export&lt;/button&gt;
+    &lt;button class="button button--link button--sm action-bar__dismiss" type="button"&gt;Clear&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
@@ -66,9 +67,9 @@
                             <span>Queued tasks</span>
                         </div>
                         <div class="action-bar__actions">
-                            <button class="button button--primary button--xs">Run now</button>
-                            <button class="button button--ghost button--xs">Pause</button>
-                            <button class="button button--link button--xs action-bar__dismiss">Clear</button>
+                            <button class="button button--primary button--xs" type="button">Run now</button>
+                            <button class="button button--ghost button--xs" type="button">Pause</button>
+                            <button class="button button--link button--xs action-bar__dismiss" type="button">Clear</button>
                         </div>
                     </div>
                 </div>
@@ -77,6 +78,52 @@
 <pre class="doc-block__code"><code>&lt;div class="action-bar action-bar--compact"&gt;
   &lt;div class="action-bar__meta"&gt;...&lt;/div&gt;
   &lt;div class="action-bar__actions"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-action-bar data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Stacked layout</h2>
+                <p class="doc-block__summary">
+                    Use the stacked variant when the action bar sits in narrow panels or mobile drawers.
+                    Meta stays above the actions while the dismiss control remains aligned to the right.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="action-bar action-bar--stacked">
+                        <div class="action-bar__meta">
+                            <span class="action-bar__count">8</span>
+                            <span>Selected</span>
+                            <span class="text-muted">Invoices</span>
+                        </div>
+                        <div class="action-bar__actions">
+                            <button class="button button--primary button--sm" type="button">Send</button>
+                            <button class="button button--ghost button--sm" type="button">Mark paid</button>
+                            <button class="button button--link button--sm action-bar__dismiss" type="button">Clear</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="action-bar action-bar--stacked"&gt;
+  &lt;div class="action-bar__meta"&gt;
+    &lt;span class="action-bar__count"&gt;8&lt;/span&gt;
+    &lt;span&gt;Selected&lt;/span&gt;
+    &lt;span class="text-muted"&gt;Invoices&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="action-bar__actions"&gt;
+    &lt;button class="button button--primary button--sm" type="button"&gt;Send&lt;/button&gt;
+    &lt;button class="button button--ghost button--sm" type="button"&gt;Mark paid&lt;/button&gt;
+    &lt;button class="button button--link button--sm action-bar__dismiss" type="button"&gt;Clear&lt;/button&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </div>
@@ -115,9 +162,9 @@
                                     <span>Selected</span>
                                 </div>
                                 <div class="action-bar__actions">
-                                    <button class="button button--primary button--sm">Schedule</button>
-                                    <button class="button button--ghost button--sm">Snooze</button>
-                                    <button class="button button--link button--sm action-bar__dismiss">Clear</button>
+                                    <button class="button button--primary button--sm" type="button">Schedule</button>
+                                    <button class="button button--ghost button--sm" type="button">Snooze</button>
+                                    <button class="button button--link button--sm action-bar__dismiss" type="button">Clear</button>
                                 </div>
                             </div>
                         </div>
@@ -130,9 +177,9 @@
                             <span>Drafts</span>
                         </div>
                         <div class="action-bar__actions">
-                            <button class="button button--primary button--sm">Publish</button>
-                            <button class="button button--ghost button--sm">Review</button>
-                            <button class="button button--link button--sm action-bar__dismiss">Clear</button>
+                            <button class="button button--primary button--sm" type="button">Publish</button>
+                            <button class="button button--ghost button--sm" type="button">Review</button>
+                            <button class="button button--link button--sm action-bar__dismiss" type="button">Clear</button>
                         </div>
                     </div>
                 </div>
@@ -173,6 +220,7 @@
                         <li>Provide a clear dismiss or clear selection control.</li>
                         <li>Use sticky bars in long scrolling selections.</li>
                         <li>Use compact bars for dense tables.</li>
+                        <li>Use stacked bars in narrow side panels or mobile drawers.</li>
                     </ul>
                 </div>
 
@@ -206,7 +254,8 @@
                     <h3 class="text-xs text-muted text-mono">Do</h3>
                     <ul class="text-sm">
                         <li>Use real <code>&lt;button&gt;</code> elements for actions.</li>
-                        <li>Update selection counts in the DOM for screen readers.</li>
+                        <li>Update selection counts in the DOM and consider <code>aria-live="polite"</code>.</li>
+                        <li>If you implement roving tabindex, add <code>role="toolbar"</code> with a label.</li>
                         <li>Keep focus states visible against the bar surface.</li>
                         <li>Provide <code>aria-label</code> for icon-only actions.</li>
                     </ul>

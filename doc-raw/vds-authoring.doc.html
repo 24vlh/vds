@@ -112,7 +112,7 @@
                     <div class="authoring">
                         <div class="admonition admonition--note">
                             <div class="admonition__icon">
-                                <span class="icon icon--mask icon--info"></span>
+                                <span aria-hidden="true" class="icon icon--mask icon--info"></span>
                             </div>
 
                             <div class="admonition__content">
@@ -137,7 +137,7 @@
   &lt;p&gt;Introductory copy…&lt;/p&gt;
 
   &lt;div class="admonition admonition--note"&gt;
-    &lt;div class="admonition__icon"&gt;&lt;span class="icon icon--mask icon--info"&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="admonition__icon"&gt;&lt;span class="icon icon--mask icon--info" aria-hidden="true"&gt;&lt;/span&gt;&lt;/div&gt;
     &lt;div class="admonition__content"&gt;
       &lt;div class="admonition__title"&gt;Note&lt;/div&gt;
       &lt;div class="admonition__body"&gt;
@@ -171,7 +171,7 @@
 
                     <div class="admonition admonition--note">
                         <div class="admonition__icon">
-                            <span class="icon icon--mask icon--info"></span>
+                            <span aria-hidden="true" class="icon icon--mask icon--info"></span>
                         </div>
 
                         <div class="admonition__content">
@@ -188,7 +188,7 @@
                     <div class="section__stack-sm">
                         <div class="admonition admonition--tip">
                             <div class="admonition__icon">
-                                <span class="icon icon--mask icon--tip"></span>
+                                <span aria-hidden="true" class="icon icon--mask icon--tip"></span>
                             </div>
                             <div class="admonition__content">
                                 <div class="admonition__title">Tip</div>
@@ -200,7 +200,7 @@
 
                         <div class="admonition" data-variant="warning">
                             <div class="admonition__icon">
-                                <span class="icon icon--mask icon--warning"></span>
+                                <span aria-hidden="true" class="icon icon--mask icon--warning"></span>
                             </div>
                             <div class="admonition__content">
                                 <div class="admonition__title">Warning</div>
@@ -212,7 +212,7 @@
 
                         <div class="admonition admonition--danger">
                             <div class="admonition__icon">
-                                <span class="icon icon--mask icon--danger"></span>
+                                <span aria-hidden="true" class="icon icon--mask icon--danger"></span>
                             </div>
                             <div class="admonition__content">
                                 <div class="admonition__title">Danger</div>
@@ -227,7 +227,7 @@
 
                     <div class="admonition admonition--accent admonition--bordered">
                         <div class="admonition__icon">
-                            <span class="icon icon--mask icon--sparkles"></span>
+                            <span aria-hidden="true" class="icon icon--mask icon--sparkles"></span>
                         </div>
                         <div class="admonition__content">
                             <div class="admonition__title">Release checklist</div>
@@ -684,7 +684,7 @@
 
                     <div class="admonition admonition--info">
                         <div class="admonition__icon">
-                            <span class="icon icon--mask icon--info"></span>
+                            <span aria-hidden="true" class="icon icon--mask icon--info"></span>
                         </div>
                         <div class="admonition__content">
                             <div class="admonition__title">Authoring-aware spacing</div>
@@ -766,6 +766,10 @@
 
                         <li>Attach anchors directly to headings (<code>h2–h6</code>) with matching
                             <code>id</code> and <code>href</code>.
+                        </li>
+
+                        <li>Mark decorative icons as <code>aria-hidden="true"</code> and add
+                            <code>aria-label</code> to heading anchors when the visible glyph is just “#”.
                         </li>
 
                         <li>Use <code>.fn-ref</code> and <code>.fn-back</code> for

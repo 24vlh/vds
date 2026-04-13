@@ -7,6 +7,13 @@
                     Badges label status, tags support filtering, and pills provide compact states.
                     Use semantic colors to convey meaning and shape modifiers for layout control.
                 </p>
+                <p class="text-sm text-muted">
+                    Source: <code>badge-tag.css</code> · Depends on
+                    <code>primitives.css</code>,
+                    <code>base.css</code>,
+                    <code>typography.css</code>,
+                    and theme tokens in <code>/themes/*.css</code>.
+                </p>
             </header>
 
             <div class="doc-block__body section__grid-2 section__grid-md">
@@ -96,11 +103,11 @@
                     <span class="badge-tag badge-tag--circle badge-tag--solid badge-tag--accent">3</span>
                     <span class="badge-tag badge-tag--count badge-tag--solid badge-tag--danger">12</span>
                     <span class="badge-tag badge-tag--solid badge-tag--info">
-                        <span class="badge-tag__icon">!</span>
+                        <span aria-hidden="true" class="badge-tag__icon">!</span>
                         New
                     </span>
                     <span class="badge-tag badge-tag--outline badge-tag--mono">
-                        <span class="badge-tag__icon">#</span>
+                        <span aria-hidden="true" class="badge-tag__icon">#</span>
                         Finance
                     </span>
                 </div>
@@ -109,7 +116,7 @@
 <pre class="doc-block__code"><code>&lt;span class="badge-tag badge-tag--circle badge-tag--solid badge-tag--accent"&gt;3&lt;/span&gt;
 &lt;span class="badge-tag badge-tag--count badge-tag--solid badge-tag--danger"&gt;12&lt;/span&gt;
 &lt;span class="badge-tag badge-tag--solid badge-tag--info"&gt;
-  &lt;span class="badge-tag__icon"&gt;!&lt;/span&gt; New
+  &lt;span class="badge-tag__icon" aria-hidden="true"&gt;!&lt;/span&gt; New
 &lt;/span&gt;</code></pre>
                 </div>
             </div>
@@ -130,21 +137,21 @@
 
             <div class="doc-block__body">
                 <div class="doc-block__preview section__inline section__inline-wrap">
-                    <button class="badge-tag badge-tag--tag badge-tag--outline badge-tag--sharp">Design</button>
-                    <button class="badge-tag badge-tag--tag badge-tag--square">Research</button>
-                    <button class="badge-tag badge-tag--tag badge-tag--success">
+                    <button class="badge-tag badge-tag--tag badge-tag--outline badge-tag--sharp" type="button">Design</button>
+                    <button class="badge-tag badge-tag--tag badge-tag--square" type="button">Research</button>
+                    <span class="badge-tag badge-tag--success">
                         Shipped
-                        <span aria-label="Remove" class="badge-tag__remove">&times;</span>
-                    </button>
+                        <button aria-label="Remove tag" class="badge-tag__remove" type="button">&times;</button>
+                    </span>
                 </div>
 
                 <div class="doc-block__code">
-<pre class="doc-block__code"><code>&lt;button class="badge-tag badge-tag--tag badge-tag--outline badge-tag--sharp"&gt;Design&lt;/button&gt;
-&lt;button class="badge-tag badge-tag--tag badge-tag--square"&gt;Research&lt;/button&gt;
-&lt;button class="badge-tag badge-tag--tag badge-tag--success"&gt;
+<pre class="doc-block__code"><code>&lt;button class="badge-tag badge-tag--tag badge-tag--outline badge-tag--sharp" type="button"&gt;Design&lt;/button&gt;
+&lt;button class="badge-tag badge-tag--tag badge-tag--square" type="button"&gt;Research&lt;/button&gt;
+&lt;span class="badge-tag badge-tag--success"&gt;
   Shipped
-  &lt;span class="badge-tag__remove" aria-label="Remove"&gt;&amp;times;&lt;/span&gt;
-&lt;/button&gt;</code></pre>
+  &lt;button class="badge-tag__remove" type="button" aria-label="Remove tag"&gt;&amp;times;&lt;/button&gt;
+&lt;/span&gt;</code></pre>
                 </div>
             </div>
         </article>
@@ -164,22 +171,22 @@
             <div class="doc-block__body">
                 <div class="doc-block__preview section__inline section__inline-wrap">
                     <span class="badge-tag badge-tag--success">
-                        <span class="badge-tag__dot"></span>
+                        <span aria-hidden="true" class="badge-tag__dot"></span>
                         Live
                     </span>
                     <span class="badge-tag badge-tag--warning">
-                        <span class="badge-tag__dot"></span>
+                        <span aria-hidden="true" class="badge-tag__dot"></span>
                         Paused
                     </span>
                     <span class="badge-tag badge-tag--danger">
-                        <span class="badge-tag__dot"></span>
+                        <span aria-hidden="true" class="badge-tag__dot"></span>
                         Offline
                     </span>
                 </div>
 
                 <div class="doc-block__code">
 <pre class="doc-block__code"><code>&lt;span class="badge-tag badge-tag--success"&gt;
-  &lt;span class="badge-tag__dot"&gt;&lt;/span&gt;
+  &lt;span class="badge-tag__dot" aria-hidden="true"&gt;&lt;/span&gt;
   Live
 &lt;/span&gt;</code></pre>
                 </div>
@@ -281,9 +288,11 @@
                     <h3 class="text-xs text-muted text-mono">Do</h3>
                     <ul class="text-sm">
                         <li>Use <code>&lt;button&gt;</code> for interactive tags and filters.</li>
+                        <li>Use a separate remove <code>&lt;button&gt;</code> inside a non-button badge.</li>
                         <li>Provide <code>aria-label</code> for icon-only badges or remove controls.</li>
+                        <li>Mark decorative dots or icons with <code>aria-hidden="true"</code>.</li>
                         <li>Ensure text has sufficient contrast for the chosen variant.</li>
-                        <li>Use <code>badge--outline</code> when the surface is highly saturated.</li>
+                        <li>Use <code>badge-tag--outline</code> when the surface is highly saturated.</li>
                     </ul>
                 </div>
 
@@ -292,8 +301,8 @@
                     <ul class="text-sm">
                         <li>Do not hide status behind color-only badges without text.</li>
                         <li>Do not use badges as the only focusable element in a row.</li>
-                        <li>Do not nest multiple interactive controls inside a badge.</li>
-                        <li>Do not use small badges (<code>badge--xs</code>) for long labels.</li>
+                        <li>Do not nest a remove button inside a <code>&lt;button&gt;</code> badge.</li>
+                        <li>Do not use small badges (<code>badge-tag--xs</code>) for long labels.</li>
                     </ul>
                 </div>
             </div>
