@@ -126,3 +126,22 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media (forced-colors: active) {
+    .description-list,
+    .description-list__item,
+    .description-list--bordered .description-list__item {
+        border-color: CanvasText;
+        forced-color-adjust: auto;
+    }
+
+    .description-list--striped .description-list__item:nth-child(odd),
+    .description-list--bordered .description-list__item {
+        background: Canvas;
+    }
+
+    .description-list__term,
+    .description-list__desc {
+        color: CanvasText;
+    }
+}

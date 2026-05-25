@@ -28,7 +28,7 @@ Every component family session must close with CSS changes where needed, docs/ex
 | `COMP-S06` | `done` | Data and content | `tables`, `content-blocks`, `guidance`, `flows`, `charts`, `badge-tag`. |
 | `COMP-S07` | `done` | App/work surfaces | `android-shell`, `inbox`, `authoring`, `doc-block`. |
 | `COMP-S08` | `done` | Media, identity, foundation-adjacent | `accordion`, `avatar`, `hero`, `icons`, `identity`, `typography`, `sections`, `utilities`. |
-| `COMP-S09` | `ready` | Component release pass | Check selector classification, aliases, migration notes, examples, and package-facing CSS coverage across all component families. |
+| `COMP-S09` | `done` | Component release pass | Verified component matrix, raw-doc copy safety, package-facing CSS presence, identity exception, forced-colors coverage, and release risks across all component families. |
 
 ### Component Session Rules
 
@@ -36,6 +36,14 @@ Every component family session must close with CSS changes where needed, docs/ex
 - Every breaking selector, import, token, or copyable docs-example change requires migration notes before `REL-S03`.
 - Consumer-owned JavaScript, keyboard behavior, ARIA synchronization, validation, routing, lifecycle, focus, and live-region behavior must be named in docs.
 - Source CSS is the current behavior truth; raw docs and archived audit files are evidence when planning fixes.
+
+### Component Release-Pass Findings
+
+- `COMP-S09` verified all `33` `src/components/*.css` files plus standalone `src/identity.css` are represented once in the component matrix and have raw-doc evidence.
+- Package-facing CSS files exist for every component under `dist/components/*.css` and `dist/components/*.min.css`; identity remains the standalone exception at `dist/identity.css` and `dist/identity.min.css`.
+- Raw docs now pass the component copy-safety scan: real and escaped copyable buttons have explicit `type`, no `href="#"` placeholders remain, images have `alt`, and obvious icon/action buttons have accessible names.
+- Late-pass safe fixes added forced-colors fallbacks to remaining core interactive/component surfaces without selector removals or token renames.
+- Release risks remain deferred: source-vs-`dist` drift until approved regeneration, generated docs metadata drift after raw-doc edits, utility/icon pruning policy, high `!important` surfaces, hard-coded helper color audit, package smoke tests, and visual/responsive/accessibility browser smoke coverage.
 
 ### Component Execution Matrix
 

@@ -16,17 +16,17 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `COMP-S09 Component release pass`.
+Next session: `DOCS-S01 Documentation rewrite queue`.
 
-Reason: `COMP-S08` completed the media, identity, and foundation-adjacent baseline. The next useful step is the final component release pass: selector classification, compatibility aliases, migration notes, examples, and package-facing CSS coverage across all component families.
+Reason: `COMP-S09` completed the component release pass. The next useful step is to convert the documentation IA and quality rules into an executable raw-doc rewrite queue tied to the completed component modernization work.
 
 ## Release Programs
 
 | Program | Status | Purpose | Source |
 | --- | --- | --- | --- |
 | `REL` | `in-progress` | Coordinate `1.0.0` release sessions, gates, version bump, and publish readiness. | `vds-next-major-backlog.md` |
-| `COMP` | `in-progress` | Modernize every VDS component through family sessions and component rows. | `vds-next-major-backlog.md` |
-| `DOCS` | `ready` | Rebuild docs content, examples, ownership, shell, metadata, and linting. | `vds-next-major-backlog.md` |
+| `COMP` | `done` | Modernize every VDS component through family sessions and component rows. | `vds-next-major-backlog.md` |
+| `DOCS` | `in-progress` | Rebuild docs content, examples, ownership, shell, metadata, and linting. | `vds-next-major-backlog.md` |
 | `INFRA` | `ready` | Make build, audit, generated metadata, package checks, CI, and publishing reliable. | `vds-next-major-backlog.md` |
 
 ## Active Planning Files

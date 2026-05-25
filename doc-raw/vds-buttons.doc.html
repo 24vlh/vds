@@ -104,7 +104,7 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body flex-row flex-wrap gap-3">
-                            <a class="button button--link" href="#">View all</a>
+                            <a class="button button--link" href="/docs/buttons/example">View all</a>
                             <button class="button button--link" type="button">
                                 <span aria-hidden="true" class="button__icon button__icon--left icon icon--mask icon--arrow-right"></span>
                                 <span>Read more</span>
@@ -127,7 +127,7 @@
                         </div>
                     </div>
 
-                    <pre class="doc-block__code"><code>&lt;a href="#" class="button button--link"&gt;View all&lt;/a&gt;
+                    <pre class="doc-block__code"><code>&lt;a href="/docs/buttons/example" class="button button--link"&gt;View all&lt;/a&gt;
 &lt;button class="button button--link" type="button"&gt;
     &lt;span class="button__icon button__icon--left icon icon--mask icon--arrow-right" aria-hidden="true"&gt;&lt;/span&gt;
     &lt;span&gt;Read more&lt;/span&gt;
@@ -505,18 +505,17 @@
                         <h3 class="text-sm">&lt;a&gt; elements styled as buttons</h3>
 
                         <div class="section__stack flex flex-column gap-6 items-start">
-                            <a class="button button--primary" href="#">Primary</a>
-                            <a class="button button--secondary" href="#">Secondary</a>
-                            <a class="button button--ghost" href="#">Ghost</a>
-                            <a class="button button--subtle" href="#">Subtle</a>
-                            <a class="button button--neutral" href="#">Neutral</a>
-                            <a class="button button--link" href="#">Link</a>
-                            <a class="button button--success" href="#">Success</a>
-                            <a class="button button--info" href="#">Info</a>
-                            <a class="button button--warning" href="#">Warning</a>
-                            <a class="button button--danger" href="#">Danger</a>
-
-                            <a aria-disabled="true" class="button button--primary" href="#">
+                            <a class="button button--primary" href="/docs/buttons/example">Primary</a>
+                            <a class="button button--secondary" href="/docs/buttons/example">Secondary</a>
+                            <a class="button button--ghost" href="/docs/buttons/example">Ghost</a>
+                            <a class="button button--subtle" href="/docs/buttons/example">Subtle</a>
+                            <a class="button button--neutral" href="/docs/buttons/example">Neutral</a>
+                            <a class="button button--link" href="/docs/buttons/example">Link</a>
+                            <a class="button button--success" href="/docs/buttons/example">Success</a>
+                            <a class="button button--info" href="/docs/buttons/example">Info</a>
+                            <a class="button button--warning" href="/docs/buttons/example">Warning</a>
+                            <a class="button button--danger" href="/docs/buttons/example">Danger</a>
+                            <a aria-disabled="true" class="button button--primary" href="/docs/buttons/example">
                                 Disabled primary
                             </a>
                         </div>
@@ -533,7 +532,7 @@
                         </div>
                     </div>
 
-                    <pre><code>&lt;!-- Native &lt;button&gt; elements --&gt;
+                    <pre><code>&lt;!-- Native &lt;button type=&quot;button&quot;&gt; elements --&gt;
 &lt;button class="button button--primary" type="button"&gt;Primary&lt;/button&gt;
 &lt;button class="button button--secondary" type="button"&gt;Secondary&lt;/button&gt;
 &lt;button class="button button--ghost" type="button"&gt;Ghost&lt;/button&gt;
@@ -549,18 +548,17 @@
 &lt;button class="button button--primary" disabled type="button"&gt;Disabled primary&lt;/button&gt;
 
 &lt;!-- &lt;a&gt; elements styled as buttons --&gt;
-&lt;a href="#" class="button button--primary"&gt;Primary&lt;/a&gt;
-&lt;a href="#" class="button button--secondary"&gt;Secondary&lt;/a&gt;
-&lt;a href="#" class="button button--ghost"&gt;Ghost&lt;/a&gt;
-&lt;a href="#" class="button button--subtle"&gt;Subtle&lt;/a&gt;
-&lt;a href="#" class="button button--neutral"&gt;Neutral&lt;/a&gt;
-&lt;a href="#" class="button button--link"&gt;Link&lt;/a&gt;
-&lt;a href="#" class="button button--success"&gt;Success&lt;/a&gt;
-&lt;a href="#" class="button button--info"&gt;Info&lt;/a&gt;
-&lt;a href="#" class="button button--warning"&gt;Warning&lt;/a&gt;
-&lt;a href="#" class="button button--danger"&gt;Danger&lt;/a&gt;
-
-&lt;a href="#" class="button button--primary" aria-disabled="true"&gt;
+&lt;a href="/docs/buttons/example" class="button button--primary"&gt;Primary&lt;/a&gt;
+&lt;a href="/docs/buttons/example" class="button button--secondary"&gt;Secondary&lt;/a&gt;
+&lt;a href="/docs/buttons/example" class="button button--ghost"&gt;Ghost&lt;/a&gt;
+&lt;a href="/docs/buttons/example" class="button button--subtle"&gt;Subtle&lt;/a&gt;
+&lt;a href="/docs/buttons/example" class="button button--neutral"&gt;Neutral&lt;/a&gt;
+&lt;a href="/docs/buttons/example" class="button button--link"&gt;Link&lt;/a&gt;
+&lt;a href="/docs/buttons/example" class="button button--success"&gt;Success&lt;/a&gt;
+&lt;a href="/docs/buttons/example" class="button button--info"&gt;Info&lt;/a&gt;
+&lt;a href="/docs/buttons/example" class="button button--warning"&gt;Warning&lt;/a&gt;
+&lt;a href="/docs/buttons/example" class="button button--danger"&gt;Danger&lt;/a&gt;
+&lt;a href="/docs/buttons/example" class="button button--primary" aria-disabled="true"&gt;
   Disabled primary
 &lt;/a&gt;</code></pre>
                 </div>
@@ -654,7 +652,7 @@
             </div>
 
             <div class="doc-block__code">
-<pre class="doc-block__code"><code>1. Use &lt;button&gt; for actions; provide aria-label for icon-only.
+<pre class="doc-block__code"><code>1. Use &lt;button type=&quot;button&quot;&gt; for actions; provide aria-label for icon-only.
 2. Use one primary action per view; avoid colour-only meaning.
 3. Use size modifiers (button--xs/sm/md/lg), never inline padding.
 4. Keep focus-visible ring from tokens; do not suppress it.

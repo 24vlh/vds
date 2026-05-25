@@ -186,3 +186,19 @@
         padding-bottom: var(--space-1);
     }
 }
+
+@media (forced-colors: active) {
+    .action-bar,
+    .action-bar__count {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .action-bar__actions > :is(a, button):focus-visible,
+    .action-bar__dismiss:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+}

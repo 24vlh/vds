@@ -1104,3 +1104,69 @@
         animation: none;
     }
 }
+
+@media (forced-colors: active) {
+    .multi-select__control,
+    .multi-select__panel,
+    .multi-select__option,
+    .tag-input,
+    .choice-button__surface,
+    .choice-card__surface,
+    .choice-chip,
+    .chip-choice,
+    .segmented-control,
+    .segmented-control__label,
+    .toggle__track,
+    .stepper,
+    .calendar,
+    .calendar__popover,
+    .calendar__day {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .multi-select__control:focus-visible,
+    .multi-select__control:focus-within,
+    .tag-input:focus-within,
+    .choice-button__input:focus-visible + .choice-button__surface,
+    .choice-card__input:focus-visible + .choice-card__surface,
+    .choice-chip__input:focus-visible + .choice-chip__indicator,
+    .chip-choice:focus-visible,
+    .segmented-control__input:focus-visible + .segmented-control__label,
+    .toggle__input:focus-visible + .toggle__track,
+    .stepper__button:focus-visible,
+    .calendar__nav-button:focus-visible,
+    .calendar__day:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .multi-select__option--selected,
+    .multi-select__option[aria-selected="true"],
+    .choice-button__input:checked + .choice-button__surface,
+    .choice-card__input:checked + .choice-card__surface,
+    .choice-chip__input:checked + .choice-chip__indicator,
+    .chip-choice--selected,
+    .chip-choice[aria-selected="true"],
+    .segmented-control__input:checked + .segmented-control__label,
+    .toggle__input:checked + .toggle__track,
+    .calendar__day--selected,
+    .calendar__day[aria-selected="true"] {
+        border-color: Highlight;
+    }
+
+    .multi-select--disabled,
+    .multi-select[aria-disabled="true"],
+    .tag-input--disabled,
+    .tag-input[aria-disabled="true"],
+    .chip-choice--disabled,
+    .chip-choice[aria-disabled="true"],
+    .stepper--disabled,
+    .stepper[aria-disabled="true"],
+    .calendar--disabled,
+    .calendar[aria-disabled="true"] {
+        color: GrayText;
+    }
+}

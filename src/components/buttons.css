@@ -651,3 +651,33 @@ a.button--link:active {
 a.button:hover {
     text-decoration: none;
 }
+
+@media (forced-colors: active) {
+    .button {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .button:focus-visible,
+    .button--loading:focus-visible,
+    .button[aria-busy="true"]:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .button:disabled,
+    .button[disabled],
+    .button[aria-disabled="true"],
+    a.button[aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+    }
+
+    .button--loading::after,
+    .button[aria-busy="true"]::after {
+        border-color: CanvasText;
+        border-top-color: Canvas;
+    }
+}

@@ -878,3 +878,42 @@ select.form-control:not([multiple]):not([size]) {
         animation: none;
     }
 }
+
+@media (forced-colors: active) {
+    .form-control,
+    .form-control-file-surface,
+    .choice__indicator,
+    .form-message,
+    .form-section--error,
+    .form-section--warning,
+    .form-section--success,
+    .form-section--info {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .form-control:focus-visible,
+    .form-control-file-surface:focus-visible,
+    .choice__control:focus-visible + .choice__indicator,
+    .choice__control:focus-visible ~ .choice__content {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .form-control--disabled,
+    .form-control:disabled,
+    .form-control[aria-disabled="true"],
+    .choice--disabled,
+    .choice[aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+    }
+
+    .form-control--invalid,
+    .form-control[aria-invalid="true"],
+    .form-message--error {
+        border-color: Highlight;
+    }
+}

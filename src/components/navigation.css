@@ -994,3 +994,55 @@
         transform: none;
     }
 }
+
+@media (forced-colors: active) {
+    .nav__item,
+    .nav__link,
+    .nav__toggle,
+    .nav-panel,
+    .nav-backdrop,
+    .sidebar,
+    .announcement,
+    .announcement__close,
+    .pagination__item,
+    .toolbar,
+    .nav-tabs,
+    .nav-tabs__item,
+    .nav-tabs__badge {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .nav__item:focus-visible,
+    .nav__link:focus-visible,
+    .nav__toggle:focus-visible,
+    .announcement__close:focus-visible,
+    .pagination__item:focus-visible,
+    .nav-tabs__item:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .nav__item--active,
+    .nav__item[aria-current],
+    .nav__link--active,
+    .nav__link[aria-current],
+    .pagination__item--current,
+    .pagination__item[aria-current],
+    .nav-tabs__item--active,
+    .nav-tabs__item[aria-selected="true"] {
+        color: Highlight;
+    }
+
+    .nav__item--disabled,
+    .nav__item[aria-disabled="true"],
+    .nav__link[aria-disabled="true"],
+    .pagination__item--disabled,
+    .pagination__item[aria-disabled="true"],
+    .nav-tabs__item--disabled,
+    .nav-tabs__item[aria-disabled="true"] {
+        color: GrayText;
+    }
+}
