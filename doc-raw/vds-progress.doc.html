@@ -16,7 +16,9 @@
                             <div class="progress__label">Storage used</div>
                             <div class="progress__value">68%</div>
                         </div>
-                        <div class="progress" style="--progress-value: 68%;">
+                        <div class="progress" role="progressbar" aria-label="Storage used"
+                             aria-valuemin="0" aria-valuemax="100" aria-valuenow="68"
+                             style="--progress-value: 68%;">
                             <div class="progress__bar"></div>
                         </div>
                         <div class="progress__meta">12.4 GB of 18 GB</div>
@@ -27,7 +29,9 @@
                             <div class="progress__label">Sync complete</div>
                             <div class="progress__value">Done</div>
                         </div>
-                        <div class="progress progress--success" style="--progress-value: 100%;">
+                        <div class="progress progress--success" role="progressbar" aria-label="Sync complete"
+                             aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"
+                             style="--progress-value: 100%;">
                             <div class="progress__bar"></div>
                         </div>
                     </div>
@@ -39,7 +43,9 @@
     &lt;div class="progress__label"&gt;Storage used&lt;/div&gt;
     &lt;div class="progress__value"&gt;68%&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="progress" style="--progress-value: 68%;"&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Storage used"
+       aria-valuemin="0" aria-valuemax="100" aria-valuenow="68"
+       style="--progress-value: 68%;"&gt;
     &lt;div class="progress__bar"&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -67,7 +73,9 @@
                             <div class="progress__label">Render queue</div>
                             <div class="progress__value">45%</div>
                         </div>
-                        <div class="progress progress--sm" style="--progress-value: 45%;">
+                        <div class="progress progress--sm" role="progressbar" aria-label="Render queue"
+                             aria-valuemin="0" aria-valuemax="100" aria-valuenow="45"
+                             style="--progress-value: 45%;">
                             <div class="progress__bar"></div>
                         </div>
                     </div>
@@ -78,6 +86,8 @@
                             <div class="progress__value">30%</div>
                         </div>
                         <div class="progress progress--lg progress--warning progress--striped progress--animated"
+                             role="progressbar" aria-label="Encoding assets"
+                             aria-valuemin="0" aria-valuemax="100" aria-valuenow="30"
                              style="--progress-value: 30%;">
                             <div class="progress__bar"></div>
                         </div>
@@ -88,7 +98,8 @@
                             <div class="progress__label">Importing assets</div>
                             <div class="progress__value">Processing</div>
                         </div>
-                        <div class="progress progress--info progress--indeterminate">
+                        <div class="progress progress--info progress--indeterminate"
+                             role="progressbar" aria-label="Importing assets">
                             <div class="progress__bar"></div>
                         </div>
                     </div>
@@ -96,6 +107,8 @@
 
                 <div class="doc-block__code">
 <pre class="doc-block__code"><code>&lt;div class="progress progress--lg progress--warning progress--striped progress--animated"
+     role="progressbar" aria-label="Encoding assets"
+     aria-valuemin="0" aria-valuemax="100" aria-valuenow="30"
      style="--progress-value: 30%;"&gt;
   &lt;div class="progress__bar"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -120,14 +133,14 @@
             <div class="doc-block__body section__grid-2 section__grid-md">
                 <div class="doc-block__preview section__stack-sm">
                     <div class="stepper">
-                        <div class="stepper__item stepper__item--complete">
+                        <div class="stepper__item stepper__item--complete" data-complete="true">
                             <div class="stepper__marker">1</div>
                             <div class="stepper__content">
                                 <div class="stepper__title">Select plan</div>
                                 <div class="stepper__desc">Choose a tier.</div>
                             </div>
                         </div>
-                        <div class="stepper__item stepper__item--active">
+                        <div class="stepper__item stepper__item--active" aria-current="step">
                             <div class="stepper__marker">2</div>
                             <div class="stepper__content">
                                 <div class="stepper__title">Configure</div>
@@ -144,21 +157,21 @@
                     </div>
 
                     <div class="stepper stepper--vertical stepper--compact">
-                        <div class="stepper__item stepper__item--complete">
+                        <div class="stepper__item stepper__item--complete" data-complete="true">
                             <div class="stepper__marker">1</div>
                             <div class="stepper__content">
                                 <div class="stepper__title">Draft</div>
                                 <div class="stepper__desc">Write the brief.</div>
                             </div>
                         </div>
-                        <div class="stepper__item stepper__item--active">
+                        <div class="stepper__item stepper__item--active" aria-current="step">
                             <div class="stepper__marker">2</div>
                             <div class="stepper__content">
                                 <div class="stepper__title">Review</div>
                                 <div class="stepper__desc">Stakeholder feedback.</div>
                             </div>
                         </div>
-                        <div class="stepper__item stepper__item--disabled">
+                        <div class="stepper__item stepper__item--disabled" aria-disabled="true">
                             <div class="stepper__marker">3</div>
                             <div class="stepper__content">
                                 <div class="stepper__title">Publish</div>
@@ -170,12 +183,12 @@
 
                 <div class="doc-block__code">
 <pre class="doc-block__code"><code>&lt;div class="stepper"&gt;
-  &lt;div class="stepper__item stepper__item--complete"&gt;...&lt;/div&gt;
-  &lt;div class="stepper__item stepper__item--active"&gt;...&lt;/div&gt;
+  &lt;div class="stepper__item stepper__item--complete" data-complete="true"&gt;...&lt;/div&gt;
+  &lt;div class="stepper__item stepper__item--active" aria-current="step"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="stepper stepper--vertical"&gt;
-  &lt;div class="stepper__item stepper__item--active"&gt;...&lt;/div&gt;
+  &lt;div class="stepper__item stepper__item--active" aria-current="step"&gt;...&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </div>
@@ -236,10 +249,19 @@
                 <div class="doc-block__preview">
                     <h3 class="text-xs text-muted text-mono">Do</h3>
                     <ul class="text-sm">
-                        <li>Use <code>aria-valuenow</code> and <code>aria-valuemax</code> for progress bars.</li>
+                        <li>Use <code>role="progressbar"</code>, <code>aria-valuemin</code>,
+                            <code>aria-valuemax</code> and <code>aria-valuenow</code> for
+                            determinate progress bars.</li>
+                        <li>Omit <code>aria-valuenow</code> on indeterminate progress and provide a
+                            clear accessible label.</li>
+                        <li>Use <code>aria-current="step"</code> for the active step and
+                            <code>aria-disabled="true"</code> only when application code also
+                            prevents interaction.</li>
                         <li>Provide text labels when the bar is the only indicator.</li>
                         <li>Respect reduced motion by avoiding fast animations.</li>
                         <li>Use semantic colors that maintain contrast on the track.</li>
+                        <li>Keep progress calculation, live announcements, wizard routing and
+                            step validation in application code.</li>
                     </ul>
                 </div>
 

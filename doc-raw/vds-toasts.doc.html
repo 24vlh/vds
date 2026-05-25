@@ -320,8 +320,7 @@
     &lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;button class="toast__close"
-          type="button"
+  &lt;button class="toast__close" type="button"
           aria-label="Dismiss notification"&gt;
     &amp;times;
   &lt;/button&gt;
@@ -447,12 +446,11 @@
                             <div class="toast__title">Backup recommended</div>
                             <div class="toast__message">Local changes are not yet backed up to cloud.</div>
                             <div class="toast__actions">
-                                <button class="button button--primary button--xs">Backup to cloud</button>
+                                <button class="button button--primary button--xs" type="button">Backup to cloud</button>
                             </div>
                         </div>
                         <button aria-label="Minimize backup toast"
-                                class="toast__close button button--ghost button--icon-only"
-                                type="button">
+                                class="toast__close button button--ghost button--icon-only" type="button">
                             <span class="icon icon--mask icon--minimize-panel" aria-hidden="true"></span>
                         </button>
                     </div>
@@ -466,12 +464,11 @@
                         <div class="toast__body">
                             <div class="toast__title">Backup recommended</div>
                             <div class="toast__actions">
-                                <button class="button button--primary button--xs">Backup</button>
+                                <button class="button button--primary button--xs" type="button">Backup</button>
                             </div>
                         </div>
                         <button aria-label="Expand backup toast"
-                                class="toast__close button button--ghost button--icon-only"
-                                type="button">
+                                class="toast__close button button--ghost button--icon-only" type="button">
                             <span class="icon icon--mask icon--expand-panel" aria-hidden="true"></span>
                         </button>
                     </div>
@@ -489,11 +486,10 @@
     &lt;div class="toast__title"&gt;Backup recommended&lt;/div&gt;
     &lt;div class="toast__message"&gt;Local changes are not yet backed up to cloud.&lt;/div&gt;
     &lt;div class="toast__actions"&gt;
-      &lt;button class="button button--primary button--xs"&gt;Backup to cloud&lt;/button&gt;
+      &lt;button class="button button--primary button--xs" type="button"&gt;Backup to cloud&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;button class="toast__close button button--ghost button--icon-only"
-          type="button"
+  &lt;button class="toast__close button button--ghost button--icon-only" type="button"
           aria-label="Minimize backup toast"&gt;
     &lt;span class="icon icon--mask icon--minimize-panel"&gt;&lt;/span&gt;
   &lt;/button&gt;
@@ -501,8 +497,7 @@
 
 &lt;div class="toast toast--info toast--compact toast--no-progress"&gt;
   ...
-  &lt;button class="toast__close button button--ghost button--icon-only"
-          type="button"
+  &lt;button class="toast__close button button--ghost button--icon-only" type="button"
           aria-label="Expand backup toast"&gt;
     &lt;span class="icon icon--mask icon--expand-panel"&gt;&lt;/span&gt;
   &lt;/button&gt;
@@ -589,8 +584,9 @@
                 <h2 class="doc-block__title">Auto-Dismiss &amp; Duration</h2>
                 <p class="doc-block__summary">
                     Toasts expose a <code>--toast-duration</code> property used by
-                    the progress bar. JavaScript can read the same value to schedule auto-dismiss.
-                    Keep durations short, predictable and token-consistent.
+                    the progress bar. JavaScript can read the same value to schedule auto-dismiss,
+                    pause the timer on hover/focus, and dismiss on Escape. Keep durations short,
+                    predictable and token-consistent.
                 </p>
             </header>
 
@@ -753,6 +749,10 @@
                             <code>.toast--no-progress</code> and provide an explicit dismiss
                             action.
                         </li>
+                        <li>Pause auto-dismiss while the toast is hovered or contains focus; the CSS
+                            pauses the visual progress bar, but application JavaScript must pause the
+                            matching timer.
+                        </li>
                         <li>Keep toast content short: one title or one sentence. Use dialogs or
                             banners for complex messages.
                         </li>
@@ -764,6 +764,9 @@
                         </li>
                         <li>Respect user motion preferences; rely on existing token-based animations
                             rather than hard-coded custom effects.
+                        </li>
+                        <li>Use the built-in mobile stack reflow and safe-area offsets instead of
+                            custom viewport positioning.
                         </li>
                     </ul>
                 </div>
@@ -786,6 +789,9 @@
                         <li>Don’t trigger rapid sequences of toasts; batch or debounce where possible
                             to avoid overwhelming the user.
                         </li>
+                        <li>Don’t rely on CSS alone for Escape behavior, timer pausing, queue order,
+                            focus return or live-region announcements.
+                        </li>
                         <li>Don’t animate toasts with large translations, bounces or spins; keep
                             motion subtle and token-consistent.
                         </li>
@@ -803,9 +809,10 @@
 4. Keep toasts short-lived, concise and dismissible; use banners/dialogs for complex content.
 5. Configure durations via --toast-duration and align JS auto-dismiss with the same value.
 6. Disable auto-dismiss for action toasts (toast--no-progress) and provide a dismiss action.
-7. Respect prefers-reduced-motion; never add aggressive or custom motion on top.
-8. Avoid flooding users with toasts; queue, debounce or aggregate events as needed.
-9. Use inline toasts for local context; use floating stacks for global or cross-context status.</code></pre>
+7. Pause timers on hover/focus when the visual progress bar pauses.
+8. Respect prefers-reduced-motion; never add aggressive or custom motion on top.
+9. Avoid flooding users with toasts; queue, debounce or aggregate events as needed.
+10. Use inline toasts for local context; use floating stacks for global or cross-context status.</code></pre>
             </div>
         </article>
     </div>

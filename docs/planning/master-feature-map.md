@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `COMP-S04 Feedback and status`.
+Next session: `COMP-S05 Overlays and command surfaces`.
 
-Reason: `COMP-S03` completed the forms family baseline. The next useful step is to stabilize feedback, toasts, progress, skeleton, and state surfaces before the overlay/data families.
+Reason: `COMP-S04` completed the feedback/status baseline. The next useful step is to stabilize overlays, tooltips/popovers, and command surfaces because they carry the highest dialog, dismissal, focus, and z-index runtime risk.
 
 ## Release Programs
 

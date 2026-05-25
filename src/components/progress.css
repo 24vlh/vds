@@ -240,24 +240,29 @@
     color: var(--color-text-muted);
 }
 
-.stepper__item--active .stepper__marker {
+.stepper__item--active .stepper__marker,
+.stepper__item[aria-current="step"] .stepper__marker,
+.stepper__item[aria-current="true"] .stepper__marker {
     border-color: var(--stepper-active);
     box-shadow: 0 0 0 2px color-mix(in srgb, var(--stepper-active) 30%, transparent);
     color: var(--stepper-active);
 }
 
-.stepper__item--complete .stepper__marker {
+.stepper__item--complete .stepper__marker,
+.stepper__item[data-complete="true"] .stepper__marker {
     border-color: var(--color-success);
     background: var(--color-success);
     color: var(--color-on-success);
 }
 
-.stepper__item--disabled .stepper__content {
+.stepper__item--disabled .stepper__content,
+.stepper__item[aria-disabled="true"] .stepper__content {
     opacity: 0.5;
     pointer-events: none;
 }
 
-.stepper__item--disabled .stepper__marker {
+.stepper__item--disabled .stepper__marker,
+.stepper__item[aria-disabled="true"] .stepper__marker {
     pointer-events: none;
 }
 
@@ -313,5 +318,29 @@
         right: auto;
         width: var(--stepper-line-size);
         height: calc(100% + var(--space-4));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :is([data-vds-progress], .vds-progress) .progress__bar {
+        transition: none;
+    }
+
+    :is([data-vds-progress], .vds-progress) .progress--animated .progress__bar,
+    :is([data-vds-progress], .vds-progress) .progress--indeterminate .progress__bar {
+        animation: none;
+        transform: none;
+    }
+}
+
+@media (forced-colors: active) {
+    :is([data-vds-progress], .vds-progress) .progress,
+    :is([data-vds-progress], .vds-progress) .progress__track,
+    :is([data-vds-progress], .vds-progress) .stepper__marker {
+        border-color: CanvasText;
+    }
+
+    :is([data-vds-progress], .vds-progress) .progress__bar {
+        background: Highlight;
     }
 }
