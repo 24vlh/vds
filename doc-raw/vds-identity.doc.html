@@ -959,7 +959,7 @@
   /&gt;
 &lt;/div&gt;
 
-&lt;button&gt;
+&lt;button type=&quot;button&quot;&gt;
   &lt;img
     class="logo logo--xs"
     src="./svg/vlah-mark-slate-light-color.svg"
@@ -989,6 +989,9 @@
                     preserve geometric accuracy, minimum sizes, contrast requirements, and alt-text
                     semantics whether embedded as inline SVG or external assets. Variants (mono,
                     footer, inverse) must be selected based exclusively on background context.
+                    Identity CSS is a standalone package surface: source lives in
+                    <code>src/identity.css</code> and package-facing files live at
+                    <code>dist/identity.css</code> and <code>dist/identity.min.css</code>.
                 </p>
             </header>
 
@@ -1045,6 +1048,11 @@
                         <li>
                             When using mark-only icons for favicons, avatars, or compact UI,
                             ensure the mark remains ≥ <code>--logo-min-mark</code>.
+                        </li>
+
+                        <li>
+                            Consumer code owns logo link semantics, accessible names, decorative treatment,
+                            static asset selection, and choosing inline SVG versus fixed artwork.
                         </li>
                     </ul>
                 </div>

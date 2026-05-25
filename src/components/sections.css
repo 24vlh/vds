@@ -573,3 +573,40 @@
 .section--pad-bottom-xl {
     --section-pad-bottom: var(--section-spacing-xl);
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .section--surface {
+        transition: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .section,
+    .section--surface,
+    .section--subtle,
+    .section--brand,
+    .section--alt,
+    .section--inset .section__inner,
+    .section__list-item {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .section--surface:hover {
+        background-color: Canvas;
+    }
+
+    .section__eyebrow,
+    .section__title,
+    .section__subtitle,
+    .section__list-item-title,
+    .section__list-item-desc {
+        color: CanvasText;
+    }
+
+    .section__list-item svg {
+        color: CanvasText;
+        stroke: currentColor;
+    }
+}

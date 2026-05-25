@@ -820,6 +820,8 @@
                     Accessibility comes from keeping the structure native. Preserve the
                     <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> contract, keep the
                     visible label inside the summary, and let the body hold the richer interaction.
+                    If an application replaces native disclosure behavior, it owns
+                    <code>aria-expanded</code>, focus movement, exclusive-group logic, and announcements.
                 </p>
             </header>
 
@@ -832,6 +834,7 @@
                         <li>Keep links, buttons, form fields, and other persistent interactive controls out of <code>&lt;summary&gt;</code>; place them in the body or an adjacent toolbar instead.</li>
                         <li>Do not remove or override the component's <code>:focus-visible</code> treatment.</li>
                         <li>If the page needs formal document-outline headings, place them around the accordion sections rather than relying on heading elements inside <code>&lt;summary&gt;</code>.</li>
+                        <li>Use native <code>&lt;details name="..."&gt;</code> for exclusivity only when the browser support target allows it; otherwise consumer JavaScript owns that behavior.</li>
                         <li>Avoid fixed heights or clipping on the body; disclosure content needs room to grow.</li>
                     </ul>
                 </div>

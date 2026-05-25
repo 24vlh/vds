@@ -3310,3 +3310,73 @@ code:not(pre code) {
         flex: none;
     }
 }
+
+@media (forced-colors: active) {
+    .border,
+    .border-strong,
+    .border-muted,
+    .border-top,
+    .border-bottom,
+    .border-left,
+    .border-right {
+        border-color: CanvasText !important;
+        forced-color-adjust: auto;
+    }
+
+    .shadow-1,
+    .shadow-2,
+    .shadow-3 {
+        box-shadow: none !important;
+    }
+
+    .bg-surface,
+    .bg-surface-soft,
+    .bg-muted,
+    .bg-soft,
+    .bg-accent-soft,
+    .bg-success-soft,
+    .bg-warning-soft,
+    .bg-danger-soft,
+    .bg-info-soft,
+    .surface,
+    .surface-muted {
+        background-color: Canvas !important;
+        color: CanvasText !important;
+        forced-color-adjust: auto;
+    }
+
+    .bg-brand,
+    .text-on-strong,
+    .text-info,
+    .text-success,
+    .text-warning,
+    .text-danger {
+        color: HighlightText !important;
+        background-color: Highlight !important;
+    }
+
+    .text-muted,
+    .text-soft,
+    .text-body-soft,
+    .text-body-muted,
+    .text-mono-soft,
+    .text-mono-muted,
+    .opacity-25,
+    .opacity-50,
+    .opacity-75 {
+        color: CanvasText !important;
+        opacity: 1 !important;
+    }
+
+    .cursor-not-allowed,
+    .pointer-events-none {
+        color: GrayText !important;
+    }
+
+    .sr-only-focusable:focus,
+    .sr-only-focusable:focus-visible,
+    .sr-only-focusable:active {
+        outline: 1px solid Highlight !important;
+        outline-offset: 2px !important;
+    }
+}

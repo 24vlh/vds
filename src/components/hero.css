@@ -599,3 +599,57 @@
         grid-template-columns: repeat(auto-fit, minmax(calc(var(--hero-metric-min-width) * 0.8), 1fr));
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__skeleton,
+    .hero__skeleton-line {
+        animation: none;
+        background-size: 100% 100%;
+    }
+}
+
+@media (forced-colors: active) {
+    .hero,
+    .hero--soft,
+    .hero--bordered,
+    .hero--inset .hero,
+    .hero__badge,
+    .hero__metric,
+    .hero__media,
+    .hero__error,
+    .hero__skeleton,
+    .hero__skeleton-line {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .hero--full::before {
+        background: Canvas;
+        opacity: 0.85;
+    }
+
+    .hero--full,
+    .hero--full .hero__body,
+    .hero--full .hero__eyebrow,
+    .hero--full .hero__subtitle,
+    .hero--full .hero__actions,
+    .hero--full .hero__actions *,
+    .hero--full .hero__metrics *,
+    .hero--full .hero__points *,
+    .hero--full .hero__desc {
+        color: CanvasText;
+        text-shadow: none;
+    }
+
+    .hero__accent-line,
+    .hero__point-icon {
+        background-color: Highlight;
+        color: Highlight;
+    }
+
+    .hero__metric--error,
+    .hero--error .hero__error {
+        border-left-color: CanvasText;
+    }
+}

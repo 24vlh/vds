@@ -255,6 +255,8 @@
                 <p class="doc-block__summary">
                     Provide accessible text for image avatars, keep contrast sufficient,
                     and avoid using avatars as the only status indicator.
+                    Application code owns profile links or buttons, status freshness,
+                    group overflow actions, and any live status announcements.
                 </p>
             </header>
 
@@ -270,6 +272,7 @@
                             and set <code>aria-hidden="true"</code> on the initials.
                         </li>
                         <li>Pair status dots with a text label in the UI.</li>
+                        <li>Treat avatar CSS as presentation only; route changes, menu actions, and presence updates belong to the consuming application.</li>
                     </ul>
                 </div>
 

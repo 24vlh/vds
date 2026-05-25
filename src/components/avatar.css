@@ -232,3 +232,33 @@
     --avatar-border-width: var(--avatar-border-strong-width);
     --avatar-border: var(--color-border-strong);
 }
+
+/* ---------------------------------------------------------
+   7. FORCED COLORS
+--------------------------------------------------------- */
+@media (forced-colors: active) {
+    .avatar,
+    .avatar__media,
+    .avatar-group__more {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .avatar--ring,
+    .avatar-group .avatar {
+        box-shadow: 0 0 0 var(--avatar-ring-width) Canvas;
+    }
+
+    .avatar__status {
+        background: CanvasText;
+        border-color: Canvas;
+        box-shadow: 0 0 0 var(--avatar-status-border-width) CanvasText;
+    }
+
+    .avatar__status--online,
+    .avatar__status--away,
+    .avatar__status--busy {
+        background: Highlight;
+    }
+}

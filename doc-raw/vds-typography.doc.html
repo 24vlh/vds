@@ -784,6 +784,9 @@ export async function handler(req, res) {
                     must use correct HTML elements. Appearance is token-driven; readability, rhythm
                     and structure come from real semantics, not classes. Contrast and legibility are
                     theme-controlled.
+                    Consumer content owns the document outline, link targets, figure alternatives,
+                    code meaning, prose table appropriateness, footnote targets, truncation behavior,
+                    and responsive prose composition.
                 </p>
             </header>
 
@@ -839,6 +842,11 @@ export async function handler(req, res) {
                         <li>
                             Use footnotes with <code>.fn-ref</code> and <code>.footnotes</code>;
                             links must preserve bidirectional navigation.
+                        </li>
+
+                        <li>
+                            Keep responsive reading width and any truncation/clamp behavior explicit in the surrounding layout;
+                            typography.css does not decide content hiding or disclosure.
                         </li>
 
                         <li>

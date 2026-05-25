@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `COMP-S08 Media, identity, foundation-adjacent`.
+Next session: `COMP-S09 Component release pass`.
 
-Reason: `COMP-S07` completed the app/work-surface baseline. The next useful step is to stabilize media, identity, and foundation-adjacent surfaces: avatar, hero, icons, identity, typography, sections, and utilities.
+Reason: `COMP-S08` completed the media, identity, and foundation-adjacent baseline. The next useful step is the final component release pass: selector classification, compatibility aliases, migration notes, examples, and package-facing CSS coverage across all component families.
 
 ## Release Programs
 

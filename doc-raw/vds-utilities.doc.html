@@ -20,8 +20,8 @@
     &lt;span class="text-sm"&gt;Vlah Design System&lt;/span&gt;
   &lt;/div&gt;
   &lt;div class="flex gap-2"&gt;
-    &lt;button class="button button--ghost text-sm"&gt;Preview&lt;/button&gt;
-    &lt;button class="button button--primary text-sm"&gt;Publish&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class="button button--ghost text-sm"&gt;Preview&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class="button button--primary text-sm"&gt;Publish&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
             </div>
@@ -145,8 +145,8 @@
                             <span class="text-sm">Live</span>
                         </div>
                         <div class="flex gap-2">
-                            <button class="button button--ghost text-sm">Discard</button>
-                            <button class="button button--primary text-sm">Save changes</button>
+                            <button type="button" class="button button--ghost text-sm">Discard</button>
+                            <button type="button" class="button button--primary text-sm">Save changes</button>
                         </div>
                     </div>
 
@@ -624,10 +624,10 @@
             <div class="doc-block__body section__grid-2 section__grid-sm">
                 <div class="doc-block__preview">
                     <div class="flex gap-3">
-                        <button class="button button--primary text-sm">
+                        <button type="button" class="button button--primary text-sm">
                             Primary action
                         </button>
-                        <button class="button button--ghost text-sm opacity-50 cursor-not-allowed">
+                        <button type="button" class="button button--ghost text-sm opacity-50 cursor-not-allowed">
                             Disabled state
                         </button>
                     </div>
@@ -672,13 +672,13 @@
                 <div class="doc-block__preview">
                     <div class="overflow-x-auto scroll-x bg-surface-soft px-3 py-2 radius-md">
                         <div class="flex gap-2 w-max">
-                            <button class="button button--ghost text-xs">Overview</button>
-                            <button class="button button--ghost text-xs">Content</button>
-                            <button class="button button--ghost text-xs">Tables</button>
-                            <button class="button button--ghost text-xs">Icons</button>
-                            <button class="button button--ghost text-xs">Feedback</button>
-                            <button class="button button--ghost text-xs">Flows</button>
-                            <button class="button button--ghost text-xs">Utilities</button>
+                            <button type="button" class="button button--ghost text-xs">Overview</button>
+                            <button type="button" class="button button--ghost text-xs">Content</button>
+                            <button type="button" class="button button--ghost text-xs">Tables</button>
+                            <button type="button" class="button button--ghost text-xs">Icons</button>
+                            <button type="button" class="button button--ghost text-xs">Feedback</button>
+                            <button type="button" class="button button--ghost text-xs">Flows</button>
+                            <button type="button" class="button button--ghost text-xs">Utilities</button>
                         </div>
                     </div>
                     <div class="mt-3 text-xs">
@@ -782,25 +782,25 @@
                     </div>
 
                     <div class="mt-4 cluster bg-surface-soft px-4 py-4 radius-md">
-                        <button class="button button--ghost text-xs">
+                        <button type="button" class="button button--ghost text-xs">
                             Tag A
                         </button>
-                        <button class="button button--ghost text-xs">
+                        <button type="button" class="button button--ghost text-xs">
                             Tag B
                         </button>
-                        <button class="button button--ghost text-xs">
+                        <button type="button" class="button button--ghost text-xs">
                             Tag C
                         </button>
-                        <button class="button button--ghost text-xs">
+                        <button type="button" class="button button--ghost text-xs">
                             Tag D
                         </button>
                     </div>
 
                     <div class="mt-4 button-row bg-surface-soft px-4 py-3 radius-md">
-                        <button class="button button--secondary text-sm">
+                        <button type="button" class="button button--secondary text-sm">
                             Cancel
                         </button>
-                        <button class="button button--primary text-sm">
+                        <button type="button" class="button button--primary text-sm">
                             Continue
                         </button>
                     </div>
@@ -940,10 +940,10 @@
           components.
         &lt;/p&gt;
         &lt;div class="flex gap-3"&gt;
-          &lt;button class="button button--primary text-sm"&gt;
+          &lt;button type=&quot;button&quot; class="button button--primary text-sm"&gt;
             Get started
           &lt;/button&gt;
-          &lt;button class="button button--ghost text-sm"&gt;
+          &lt;button type=&quot;button&quot; class="button button--ghost text-sm"&gt;
             View components
           &lt;/button&gt;
         &lt;/div&gt;
@@ -1005,10 +1005,10 @@
           spacing utilities only where you need them.
         &lt;/p&gt;
         &lt;div class="flex gap-3"&gt;
-          &lt;button class="button button--primary text-sm"&gt;
+          &lt;button type=&quot;button&quot; class="button button--primary text-sm"&gt;
             Install now
           &lt;/button&gt;
-          &lt;button class="button button--ghost text-sm text-on-strong"&gt;
+          &lt;button type=&quot;button&quot; class="button button--ghost text-sm text-on-strong"&gt;
             Read the spec
           &lt;/button&gt;
         &lt;/div&gt;
@@ -1031,6 +1031,8 @@
                     Every class applies a single visual or structural instruction and must never
                     conflict with semantic HTML, component CSS, or layout primitives. All spacing,
                     sizing and colour behaviours are token-driven.
+                    Utilities cannot create semantics or runtime state; pair visibility, opacity,
+                    cursor, scroll, and colour helpers with real attributes, labels, and announcements.
                 </p>
             </header>
 
@@ -1084,6 +1086,11 @@
                             Use <code>.opacity-0</code>/<code>.opacity-25</code>/<code>.opacity-50</code>/<code>.opacity-75</code>/<code>.opacity-100</code>
                             and <code>cursor-*</code> utilities
                             to express state in conjunction with ARIA attributes.
+                        </li>
+
+                        <li>
+                            Use utilities to support component markup, not to replace disabled, hidden,
+                            pressed, selected, busy, or live-region state semantics.
                         </li>
 
                         <li>

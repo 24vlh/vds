@@ -1259,6 +1259,8 @@
                     They are visually expressive but intentionally non-semantic. Accessibility comes
                     from correct HTML landmarks, heading hierarchy, predictable reading order and
                     token-driven contrast — never from the classes themselves.
+                    Responsive collapse changes visual layout only; DOM order, landmark choice,
+                    heading order, and accessible names stay consumer-owned.
                 </p>
             </header>
 
@@ -1299,6 +1301,10 @@
                             For split layouts (<code>.section--split</code> /
                             <code>.section--split-reverse</code>), keep the DOM order meaningful.
                             CSS reverses columns visually; assistive tech follows DOM.
+                        </li>
+
+                        <li>
+                            Treat section responsive behavior as presentation only; do not rely on it to change reading order or interaction order.
                         </li>
 
                         <li>
