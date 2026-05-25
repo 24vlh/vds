@@ -1,13 +1,12 @@
 // static/js/build.js
 const {execSync} = require("child_process");
 const fs = require("fs");
-const os = require("os");
 const path = require("path");
 const glob = require("glob");
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..");
-const DIST_DIR = path.join(PROJECT_ROOT, "dist");
-const TEMP_DIR = path.join(os.tmpdir(), `vds_tmp_batch_${process.pid}`);
+const CACHE_DIR = path.join(PROJECT_ROOT, "node_modules", ".cache");
+const TEMP_DIR = path.join(CACHE_DIR, `vds_tmp_batch_${process.pid}`);
 const POSTCSS_BIN = path.join(PROJECT_ROOT, "node_modules", ".bin", "postcss");
 const IS_PROD = process.env.NODE_ENV === "production";
 // Source maps are expensive on mounted filesystems. Opt-in explicitly.
@@ -18,6 +17,45 @@ const BASE_PLUGINS = [
     "--use autoprefixer"
 ];
 const IMPORT_PLUGIN = "--use postcss-import";
+
+function parseArgs(argv) {
+    const options = {
+        out: "dist",
+    };
+
+    for (let i = 0; i < argv.length; i += 1) {
+        const arg = argv[i];
+
+        if (arg === "--out" || arg === "-o") {
+            options.out = argv[++i];
+            continue;
+        }
+
+        if (arg === "--help" || arg === "-h") {
+            console.log(`Usage:
+  node static/js/build.js [--out dist]
+
+Writes the VDS package CSS output to the target directory. Use
+\`pnpm run dist:refresh\` for checked-in dist and \`pnpm run dist:check\`
+for read-only freshness validation.
+`);
+            process.exit(0);
+        }
+
+        throw new Error(`Unknown option: ${arg}`);
+    }
+
+    return options;
+}
+
+const options = parseArgs(process.argv.slice(2));
+const OUT_DIR = path.resolve(PROJECT_ROOT, options.out);
+
+if (OUT_DIR === PROJECT_ROOT) {
+    throw new Error("Refusing to write build output to the project root.");
+}
+
+fs.mkdirSync(CACHE_DIR, {recursive: true});
 
 // METRICS ---------------------------------------------------
 const metrics = {
@@ -34,10 +72,22 @@ const fmtBytes = (b) =>
 // ---------------------------------------------------------------------------
 // Single-file PostCSS wrapper
 // ---------------------------------------------------------------------------
-function runPostCSS(inputRel, outputRel, minify = false) {
+function toPosix(value) {
+    return value.split(path.sep).join("/");
+}
+
+function displayPath(absPath) {
+    const rel = path.relative(PROJECT_ROOT, absPath);
+    return rel && !rel.startsWith("..") ? toPosix(rel) : absPath;
+}
+
+function runPostCSS(inputRel, outputSubPath, minify = false) {
     const env = {...process.env};
     if (minify) env.NODE_ENV = "production";
     else if (env.NODE_ENV === "production") delete env.NODE_ENV;
+
+    const outputAbs = path.join(OUT_DIR, outputSubPath);
+    fs.mkdirSync(path.dirname(outputAbs), {recursive: true});
 
     const mapFlag = minify || IS_PROD || !EMIT_MAPS ? "--no-map" : "--map";
     const plugins = [
@@ -52,36 +102,35 @@ function runPostCSS(inputRel, outputRel, minify = false) {
         mapFlag,
         ...plugins,
         "-o",
-        `"${outputRel}"`
+        `"${outputAbs}"`
     ].join(" ");
 
     const t0 = process.hrtime.bigint();
     execSync(cmd, {cwd: PROJECT_ROOT, stdio: "inherit", env});
     const t1 = process.hrtime.bigint();
 
-    const outAbs = path.join(PROJECT_ROOT, outputRel);
-    const size = fs.statSync(outAbs).size;
+    const size = fs.statSync(outputAbs).size;
 
     metrics.files.push({
-        file: outputRel,
+        file: displayPath(outputAbs),
         time: t1 - t0,
         size
     });
 
-    console.log(`✔ ${outputRel} (${minify ? "min" : "std"}) — ${fmt(t1 - t0)}, ${fmtBytes(size)}`);
+    console.log(`✔ ${displayPath(outputAbs)} (${minify ? "min" : "std"}) — ${fmt(t1 - t0)}, ${fmtBytes(size)}`);
 }
 
 // ---------------------------------------------------------------------------
 // Batch PostCSS builder — now produces .css + .min.css WITHOUT overwriting
 // ---------------------------------------------------------------------------
-function runPostCSSBatch(patternRel, outDirRel, minify = false) {
+function runPostCSSBatch(patternRel, outSubDir, minify = false) {
     // Clean temp folder on each batch minify pass
     if (minify) {
         if (fs.existsSync(TEMP_DIR)) fs.rmSync(TEMP_DIR, {recursive: true, force: true});
         fs.mkdirSync(TEMP_DIR);
     }
 
-    const targetDir = minify ? TEMP_DIR : path.join(PROJECT_ROOT, outDirRel);
+    const targetDir = minify ? TEMP_DIR : path.join(OUT_DIR, outSubDir);
 
     const env = {...process.env};
     if (minify) env.NODE_ENV = "production";
@@ -109,8 +158,8 @@ function runPostCSSBatch(patternRel, outDirRel, minify = false) {
 
     if (!minify) {
         // Record all generated standard files
-        const folderAbs = path.join(PROJECT_ROOT, outDirRel);
-        const allFiles = collectCSSFiles(folderAbs, outDirRel);
+        const folderAbs = path.join(OUT_DIR, outSubDir);
+        const allFiles = collectCSSFiles(folderAbs, outSubDir);
         allFiles.forEach(f => {
             metrics.files.push({
                 file: f.rel,
@@ -118,14 +167,14 @@ function runPostCSSBatch(patternRel, outDirRel, minify = false) {
                 size: f.size
             });
         });
-        console.log(`✔ ${outDirRel} (batch std) — ${fmt(t1 - t0)}`);
+        console.log(`✔ ${displayPath(folderAbs)} (batch std) — ${fmt(t1 - t0)}`);
         return;
     }
 
     // -------------------------------
     // MINIFY PATH: rename → *.min.css
     // -------------------------------
-    const outAbsFinal = path.join(PROJECT_ROOT, outDirRel);
+    const outAbsFinal = path.join(OUT_DIR, outSubDir);
 
     const entries = collectCSSFiles(TEMP_DIR, "");
     entries.forEach(f => {
@@ -137,7 +186,7 @@ function runPostCSSBatch(patternRel, outDirRel, minify = false) {
 
         fs.copyFileSync(srcAbs, destAbs);
 
-        const finalRel = path.join(outDirRel, minName);
+        const finalRel = path.join(outSubDir, minName);
         const size = fs.statSync(destAbs).size;
 
         metrics.files.push({
@@ -147,7 +196,7 @@ function runPostCSSBatch(patternRel, outDirRel, minify = false) {
         });
     });
 
-    console.log(`✔ ${outDirRel} (batch min) — ${fmt(t1 - t0)}`);
+    console.log(`✔ ${displayPath(outAbsFinal)} (batch min) — ${fmt(t1 - t0)}`);
 
     // cleanup temp
     fs.rmSync(TEMP_DIR, {recursive: true, force: true});
@@ -183,16 +232,16 @@ function collectCSSFiles(abs, relBase) {
 // ---------------------------------------------------------------------------
 // Clean dist
 // ---------------------------------------------------------------------------
-if (fs.existsSync(DIST_DIR)) fs.rmSync(DIST_DIR, {recursive: true, force: true});
-fs.mkdirSync(DIST_DIR);
+if (fs.existsSync(OUT_DIR)) fs.rmSync(OUT_DIR, {recursive: true, force: true});
+fs.mkdirSync(OUT_DIR, {recursive: true});
 
 // ---------------------------------------------------------------------------
 // Build top-level bundles
 // ---------------------------------------------------------------------------
 const topLevel = [
-    {in: "src/index.css", out: "dist/vds.css"},
-    {in: "src/core.css", out: "dist/core.css"},
-    {in: "src/identity.css", out: "dist/identity.css"}
+    {in: "src/index.css", out: "vds.css"},
+    {in: "src/core.css", out: "core.css"},
+    {in: "src/identity.css", out: "identity.css"}
 ];
 
 topLevel.forEach(({in: input, out}) => {
@@ -204,14 +253,14 @@ topLevel.forEach(({in: input, out}) => {
 // Build components + themes (batch)
 // This now correctly outputs: file.css AND file.min.css
 // ---------------------------------------------------------------------------
-fs.mkdirSync(path.join(PROJECT_ROOT, "dist/components"), {recursive: true});
-fs.mkdirSync(path.join(PROJECT_ROOT, "dist/themes"), {recursive: true});
+fs.mkdirSync(path.join(OUT_DIR, "components"), {recursive: true});
+fs.mkdirSync(path.join(OUT_DIR, "themes"), {recursive: true});
 
-runPostCSSBatch("src/components/**/*.css", "dist/components", false);
-runPostCSSBatch("src/components/**/*.css", "dist/components", true);
+runPostCSSBatch("src/components/**/*.css", "components", false);
+runPostCSSBatch("src/components/**/*.css", "components", true);
 
-runPostCSSBatch("src/themes/**/*.css", "dist/themes", false);
-runPostCSSBatch("src/themes/**/*.css", "dist/themes", true);
+runPostCSSBatch("src/themes/**/*.css", "themes", false);
+runPostCSSBatch("src/themes/**/*.css", "themes", true);
 
 // ---------------------------------------------------------------------------
 // Summary

@@ -72,6 +72,8 @@
     --command-pill-text: var(--color-text-muted);
     --command-progress-track: var(--color-muted-bg);
     --command-progress-fill: var(--color-accent);
+    --command-safe-area-block: max(var(--space-4), env(safe-area-inset-top), env(safe-area-inset-bottom));
+    --command-safe-area-inline: max(var(--space-2), env(safe-area-inset-left), env(safe-area-inset-right));
 }
 
 .command {
@@ -112,6 +114,7 @@
 
 .command--open,
 .command[data-command-open="true"],
+.command[data-state="open"],
 .command[aria-hidden="false"] {
     opacity: 1;
     visibility: visible;
@@ -120,6 +123,7 @@
 
 .command--open::before,
 .command[data-command-open="true"]::before,
+.command[data-state="open"]::before,
 .command[aria-hidden="false"]::before {
     opacity: 1;
 }
@@ -131,7 +135,7 @@
 @media (max-width: 640px) {
     .command {
         align-items: stretch;
-        padding: var(--space-6) var(--space-2);
+        padding: var(--command-safe-area-block) var(--command-safe-area-inline);
     }
 }
 
@@ -164,6 +168,7 @@
 
 .command--open .command__panel,
 .command[data-command-open="true"] .command__panel,
+.command[data-state="open"] .command__panel,
 .command[aria-hidden="false"] .command__panel {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -424,6 +429,8 @@
 }
 
 .command__item--active,
+.command__item[data-active="true"],
+.command__item[data-state="active"],
 .command__item[aria-selected="true"] {
     background-color: var(--command-item-bg-active);
     border: 1px solid var(--command-item-border-active);
@@ -433,32 +440,43 @@
 
 @supports (color: color-mix(in lch, red, blue)) {
 .command__item--active,
+.command__item[data-active="true"],
+.command__item[data-state="active"],
 .command__item[aria-selected="true"] {
     box-shadow: 0 0 0 var(--border-width, 1px) color-mix(in srgb, var(--command-item-border-active) 40%, transparent);
 }
 }
 
 .command__item--active .command__item-label,
+.command__item[data-active="true"] .command__item-label,
+.command__item[data-state="active"] .command__item-label,
 .command__item[aria-selected="true"] .command__item-label {
     color: var(--color-on-accent);
 }
 
 .command__item--active .command__item-meta,
+.command__item[data-active="true"] .command__item-meta,
+.command__item[data-state="active"] .command__item-meta,
 .command__item[aria-selected="true"] .command__item-meta {
     color: color-mix(in srgb, var(--color-on-accent) 65%, transparent);
 }
 
 .command__item--active .command__item-description,
+.command__item[data-active="true"] .command__item-description,
+.command__item[data-state="active"] .command__item-description,
 .command__item[aria-selected="true"] .command__item-description {
     color: color-mix(in srgb, var(--color-on-accent) 75%, transparent);
 }
 
 .command__item--active .command__item-icon,
+.command__item[data-active="true"] .command__item-icon,
+.command__item[data-state="active"] .command__item-icon,
 .command__item[aria-selected="true"] .command__item-icon {
     color: color-mix(in srgb, var(--color-on-accent) 80%, transparent);
 }
 
 .command__item[aria-disabled="true"],
+.command__item[data-disabled="true"],
 .command__item--disabled {
     opacity: 0.55;
     cursor: not-allowed;
@@ -1364,5 +1382,28 @@
     .command-action,
     .command-progress__bar {
         transition: none !important;
+    }
+}
+
+@media (forced-colors: active) {
+    .command__panel,
+    .command-surface,
+    .command-action,
+    .command-empty {
+        border-color: CanvasText;
+        box-shadow: none;
+    }
+
+    .command__item--active,
+    .command__item[data-active="true"],
+    .command__item[data-state="active"],
+    .command__item[aria-selected="true"] {
+        outline: 2px solid Highlight;
+        outline: var(--border-width-strong, 2px) solid Highlight;
+        box-shadow: none;
+    }
+
+    .command-progress__bar {
+        background: Highlight;
     }
 }

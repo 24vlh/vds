@@ -54,6 +54,23 @@
     background: var(--action-bar-bg);
     box-shadow: var(--action-bar-shadow);
     flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.action-bar:focus-within {
+    box-shadow: var(--action-bar-shadow),
+    0 0 0 3px var(--focus-ring-color, var(--color-accent-soft));
+}
+
+.action-bar--disabled,
+.action-bar[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.action-bar--disabled .action-bar__actions > *,
+.action-bar[aria-disabled="true"] .action-bar__actions > * {
+    pointer-events: none;
 }
 
 .action-bar__meta {
@@ -94,6 +111,29 @@
     gap: var(--action-bar-actions-gap);
     margin-left: auto;
     min-width: 0;
+}
+
+.action-bar__actions > * {
+    flex: 0 0 auto;
+    max-width: 100%;
+}
+
+.action-bar__actions > a:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--action-bar-bg),
+    0 0 0 3px var(--focus-ring-color, var(--color-accent-soft));
+}
+
+.action-bar__actions > button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--action-bar-bg),
+    0 0 0 3px var(--focus-ring-color, var(--color-accent-soft));
+}
+
+.action-bar__dismiss:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--action-bar-bg),
+    0 0 0 3px var(--focus-ring-color, var(--color-accent-soft));
 }
 
 .action-bar__dismiss {
@@ -154,5 +194,34 @@
         width: 100%;
         margin-left: 0;
         justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: var(--space-1);
+    }
+}
+
+@media (forced-colors: active) {
+    .action-bar,
+    .action-bar__count {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .action-bar__actions > a:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .action-bar__actions > button:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .action-bar__dismiss:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
     }
 }

@@ -245,3 +245,31 @@
     font-size: var(--text-xs);
     color: var(--color-text-muted);
 }
+
+@media (forced-colors: active) {
+    .typography code,
+    .typography pre,
+    .typography table:not(.table),
+    .typography table:not(.table) th,
+    .typography table:not(.table) td,
+    .typography blockquote,
+    .typography .pullquote,
+    .typography .badge-inline,
+    .typography .footnotes {
+        border-color: CanvasText;
+        forced-color-adjust: auto;
+    }
+
+    .typography code,
+    .typography pre,
+    .typography table:not(.table) th,
+    .typography .badge-inline {
+        background: Canvas;
+        color: CanvasText;
+    }
+
+    .typography blockquote,
+    .typography .pullquote {
+        color: CanvasText;
+    }
+}

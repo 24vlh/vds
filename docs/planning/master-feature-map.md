@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `INFRA-S04 Make build/dist verification reliable`.
+Next session: `INFRA-S05 Package import smoke tests`.
 
-Reason: `INFRA-S03` refreshed generated docs metadata for all `42` raw docs and added a read-only freshness check. The next useful step is to make checked-in `dist` reproducibility and freshness reliable without accidental manual edits.
+Reason: `INFRA-S04` made checked-in `dist` reproducible through an explicit refresh command and a read-only freshness check. The next useful step is to prove package-facing imports work from the generated surface.
 
 ## Release Programs
 

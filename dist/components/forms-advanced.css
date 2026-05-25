@@ -61,16 +61,22 @@
     box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
 }
 
-.multi-select--disabled .multi-select__control {
+.multi-select--disabled .multi-select__control,
+.multi-select[aria-disabled="true"] .multi-select__control,
+.multi-select__control[aria-disabled="true"] {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-.multi-select--error .multi-select__control {
+.multi-select--error .multi-select__control,
+.multi-select[aria-invalid="true"] .multi-select__control,
+.multi-select__control[aria-invalid="true"] {
     border-color: var(--color-danger);
 }
 
-.multi-select--loading .multi-select__control {
+.multi-select--loading .multi-select__control,
+.multi-select[aria-busy="true"] .multi-select__control,
+.multi-select__control[aria-busy="true"] {
     background-image: linear-gradient(
             90deg,
             var(--color-muted-bg),
@@ -105,6 +111,10 @@
 
 .multi-select__chip-remove {
     cursor: pointer;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
     width: var(--icon-xs);
     height: var(--icon-xs);
     display: inline-flex;
@@ -133,7 +143,10 @@
     overflow: hidden;
 }
 
-.multi-select--open .multi-select__list {
+.multi-select--open .multi-select__list,
+.multi-select[data-state="open"] .multi-select__list,
+.multi-select[aria-expanded="true"] .multi-select__list,
+.multi-select__control[aria-expanded="true"] ~ .multi-select__list {
     display: block;
 }
 
@@ -148,15 +161,24 @@
     background-color: var(--color-surface-subtle);
 }
 
-.multi-select__option--selected {
+.multi-select__option--selected,
+.multi-select__option[aria-selected="true"] {
     background-color: var(--accent-soft-surface, var(--color-accent-soft));
     border-color: var(--accent-soft-border, var(--color-accent));
     box-shadow: 0 0 0 1px var(--accent-soft-shadow);
     color: var(--accent-soft-on, var(--color-on-accent));
 }
 
-.multi-select__option--selected:hover {
+.multi-select__option--selected:hover,
+.multi-select__option[aria-selected="true"]:hover {
     background-color: var(--accent-soft-surface-strong, var(--accent-soft-surface));
+}
+
+.multi-select__option--disabled,
+.multi-select__option[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* ---------------------------------------------------------
@@ -186,12 +208,14 @@
     box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
 }
 
-.tag-input--disabled {
+.tag-input--disabled,
+.tag-input[aria-disabled="true"] {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-.tag-input--error {
+.tag-input--error,
+.tag-input[aria-invalid="true"] {
     border-color: var(--color-danger);
 }
 
@@ -209,6 +233,10 @@
 
 .tag-input__chip-remove {
     cursor: pointer;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
     width: var(--icon-xs);
     height: var(--icon-xs);
     display: inline-flex;
@@ -291,14 +319,17 @@
     box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
 }
 
-.choice-button__input:checked + .choice-button__surface {
+.choice-button__input:checked + .choice-button__surface,
+.choice-button__input[aria-checked="true"] + .choice-button__surface {
     border-color: var(--accent-soft-border, var(--color-accent));
     background-color: var(--accent-soft-surface, var(--color-accent-soft));
     color: var(--accent-soft-on, var(--color-on-accent));
     box-shadow: 0 0 0 1px var(--accent-soft-shadow);
 }
 
-.choice-button__input:disabled + .choice-button__surface {
+.choice-button__input:disabled + .choice-button__surface,
+.choice-button__input[aria-disabled="true"] + .choice-button__surface,
+.choice-button[aria-disabled="true"] .choice-button__surface {
     opacity: 0.6;
     cursor: not-allowed;
     background-color: var(--color-muted-bg);
@@ -353,14 +384,17 @@
     box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
 }
 
-.choice-card__input:checked + .choice-card__surface {
+.choice-card__input:checked + .choice-card__surface,
+.choice-card__input[aria-checked="true"] + .choice-card__surface {
     border-color: var(--accent-soft-border, var(--color-accent));
     background-color: var(--accent-soft-surface, var(--color-accent-soft));
     color: var(--accent-soft-on, var(--color-on-accent));
     box-shadow: 0 0 0 1px var(--accent-soft-shadow);
 }
 
-.choice-card__input:disabled + .choice-card__surface {
+.choice-card__input:disabled + .choice-card__surface,
+.choice-card__input[aria-disabled="true"] + .choice-card__surface,
+.choice-card[aria-disabled="true"] .choice-card__surface {
     opacity: 0.6;
     cursor: not-allowed;
     background-color: var(--color-muted-bg);
@@ -452,16 +486,19 @@
     box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
 }
 
-.choice-chip__input:checked + .choice-chip__indicator {
+.choice-chip__input:checked + .choice-chip__indicator,
+.choice-chip__input[aria-checked="true"] + .choice-chip__indicator {
     border-color: var(--choice-chip-accent);
     background-color: var(--choice-chip-accent);
 }
 
-.choice-chip__input:checked + .choice-chip__indicator::after {
+.choice-chip__input:checked + .choice-chip__indicator::after,
+.choice-chip__input[aria-checked="true"] + .choice-chip__indicator::after {
     opacity: 1;
 }
 
-.choice-chip__input:checked ~ .choice-chip__label {
+.choice-chip__input:checked ~ .choice-chip__label,
+.choice-chip__input[aria-checked="true"] ~ .choice-chip__label {
     color: var(--choice-chip-accent);
 }
 
@@ -491,7 +528,11 @@
 }
 
 .choice-chip__input:disabled ~ .choice-chip__label,
-.choice-chip__input:disabled + .choice-chip__indicator {
+.choice-chip__input:disabled + .choice-chip__indicator,
+.choice-chip__input[aria-disabled="true"] ~ .choice-chip__label,
+.choice-chip__input[aria-disabled="true"] + .choice-chip__indicator,
+.choice-chip[aria-disabled="true"] .choice-chip__label,
+.choice-chip[aria-disabled="true"] .choice-chip__indicator {
     opacity: 0.6;
     cursor: not-allowed;
 }
@@ -546,14 +587,17 @@
     border-color: var(--color-border-strong);
 }
 
-.chip-choice--selected {
+.chip-choice--selected,
+.chip-choice[aria-selected="true"],
+.chip-choice[aria-pressed="true"] {
     --chip-choice-bg: var(--accent-soft-surface, var(--color-accent-soft));
     --chip-choice-border: var(--accent-soft-border, var(--color-accent));
     --chip-choice-text: var(--accent-soft-on, var(--color-on-accent));
     box-shadow: 0 0 0 1px var(--accent-soft-shadow);
 }
 
-.chip-choice--disabled {
+.chip-choice--disabled,
+.chip-choice[aria-disabled="true"] {
     opacity: 0.6;
     cursor: not-allowed;
 }
@@ -650,7 +694,9 @@
     border-left: var(--border-width) solid var(--color-border-subtle);
 }
 
-.segmented-control__input:checked + .segmented-control__label {
+.segmented-control__input:checked + .segmented-control__label,
+.segmented-control__input[aria-checked="true"] + .segmented-control__label,
+.segmented-control__option[aria-selected="true"] .segmented-control__label {
     background-color: var(--color-accent);
     color: var(--color-on-accent);
 }
@@ -712,12 +758,14 @@
     transition: transform 0.2s, background-color 0.2s;
 }
 
-.toggle__input:checked + .toggle__track {
+.toggle__input:checked + .toggle__track,
+.toggle__input[aria-checked="true"] + .toggle__track {
     border-color: var(--color-accent);
     background-color: var(--color-accent);
 }
 
-.toggle__input:checked + .toggle__track .toggle__thumb {
+.toggle__input:checked + .toggle__track .toggle__thumb,
+.toggle__input[aria-checked="true"] + .toggle__track .toggle__thumb {
     transform: translateX(calc(var(--toggle-width) - var(--toggle-thumb) - var(--space-1)));
     background-color: var(--color-on-accent);
 }
@@ -726,7 +774,9 @@
     box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
 }
 
-.toggle__input:disabled + .toggle__track {
+.toggle__input:disabled + .toggle__track,
+.toggle__input[aria-disabled="true"] + .toggle__track,
+.toggle[aria-disabled="true"] .toggle__track {
     opacity: 0.6;
     cursor: not-allowed;
 }
@@ -753,12 +803,14 @@
     box-shadow: 0 0 0 var(--border-width-strong) var(--focus-ring-color);
 }
 
-.stepper--disabled {
+.stepper--disabled,
+.stepper[aria-disabled="true"] {
     opacity: 0.6;
     pointer-events: none;
 }
 
-.stepper--error {
+.stepper--error,
+.stepper[aria-invalid="true"] {
     border-color: var(--color-danger);
 }
 
@@ -784,6 +836,12 @@
 .stepper__button:focus-visible {
     outline: none;
     box-shadow: inset 0 0 0 var(--border-width-strong) var(--focus-ring-color);
+}
+
+.stepper__button:disabled,
+.stepper__button[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .stepper__input {
@@ -829,12 +887,14 @@
             user-select: none;
 }
 
-.calendar--disabled {
+.calendar--disabled,
+.calendar[aria-disabled="true"] {
     opacity: 0.6;
     pointer-events: none;
 }
 
-.calendar--error {
+.calendar--error,
+.calendar[aria-invalid="true"] {
     border-color: var(--color-danger);
 }
 
@@ -858,6 +918,9 @@
     align-items: center;
     justify-content: center;
 
+    border: 0;
+    background: transparent;
+    font: inherit;
     border-radius: var(--radius-sm);
     cursor: pointer;
     color: var(--color-text-muted);
@@ -879,6 +942,9 @@
 
 .calendar__day {
     padding: var(--space-2);
+    border: 0;
+    background: transparent;
+    font: inherit;
     text-align: center;
     border-radius: var(--radius-sm);
     cursor: pointer;
@@ -896,7 +962,8 @@
     font-weight: 600;
 }
 
-.calendar__day--selected {
+.calendar__day--selected,
+.calendar__day[aria-selected="true"] {
     background-color: var(--color-accent);
     color: var(--color-on-accent);
     font-weight: 600;
@@ -908,7 +975,8 @@
     color: var(--color-accent-strong);
 }
 
-.calendar__day--disabled {
+.calendar__day--disabled,
+.calendar__day[aria-disabled="true"] {
     opacity: 0.4;
     pointer-events: none;
 }
@@ -926,6 +994,10 @@
     box-shadow: var(--shadow-md);
 
     padding: var(--space-3);
+}
+
+.calendar__popover[data-state="open"] {
+    display: block;
 }
 
 /* ---------------------------------------------------------
@@ -1017,4 +1089,95 @@
     padding: var(--space-1);
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .multi-select__control,
+    .multi-select__option,
+    .tag-input,
+    .choice-button__surface,
+    .choice-card__surface,
+    .choice-chip,
+    .choice-chip__indicator,
+    .choice-chip__indicator::after,
+    .chip-choice,
+    .segmented-control__label,
+    .toggle__track,
+    .toggle__thumb,
+    .stepper,
+    .stepper__button,
+    .calendar__nav-button,
+    .calendar__day {
+        transition: none;
+    }
 
+    .multi-select--loading .multi-select__control,
+    .multi-select[aria-busy="true"] .multi-select__control,
+    .multi-select__control[aria-busy="true"] {
+        animation: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .multi-select__control,
+    .multi-select__panel,
+    .multi-select__option,
+    .tag-input,
+    .choice-button__surface,
+    .choice-card__surface,
+    .choice-chip,
+    .chip-choice,
+    .segmented-control,
+    .segmented-control__label,
+    .toggle__track,
+    .stepper,
+    .calendar,
+    .calendar__popover,
+    .calendar__day {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .multi-select__control:focus-visible,
+    .multi-select__control:focus-within,
+    .tag-input:focus-within,
+    .choice-button__input:focus-visible + .choice-button__surface,
+    .choice-card__input:focus-visible + .choice-card__surface,
+    .choice-chip__input:focus-visible + .choice-chip__indicator,
+    .chip-choice:focus-visible,
+    .segmented-control__input:focus-visible + .segmented-control__label,
+    .toggle__input:focus-visible + .toggle__track,
+    .stepper__button:focus-visible,
+    .calendar__nav-button:focus-visible,
+    .calendar__day:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .multi-select__option--selected,
+    .multi-select__option[aria-selected="true"],
+    .choice-button__input:checked + .choice-button__surface,
+    .choice-card__input:checked + .choice-card__surface,
+    .choice-chip__input:checked + .choice-chip__indicator,
+    .chip-choice--selected,
+    .chip-choice[aria-selected="true"],
+    .segmented-control__input:checked + .segmented-control__label,
+    .toggle__input:checked + .toggle__track,
+    .calendar__day--selected,
+    .calendar__day[aria-selected="true"] {
+        border-color: Highlight;
+    }
+
+    .multi-select--disabled,
+    .multi-select[aria-disabled="true"],
+    .tag-input--disabled,
+    .tag-input[aria-disabled="true"],
+    .chip-choice--disabled,
+    .chip-choice[aria-disabled="true"],
+    .stepper--disabled,
+    .stepper[aria-disabled="true"],
+    .calendar--disabled,
+    .calendar[aria-disabled="true"] {
+        color: GrayText;
+    }
+}

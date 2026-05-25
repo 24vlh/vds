@@ -391,3 +391,20 @@
         animation: none !important;
     }
 }
+
+@media (forced-colors: active) {
+    .skeleton,
+    .skeleton-line,
+    .skeleton-avatar,
+    .skeleton-block {
+        border: 1px solid CanvasText;
+        background-color: Canvas;
+    }
+
+    .skeleton::after,
+    .skeleton-line::after,
+    .skeleton-avatar::after,
+    .skeleton-block::after {
+        display: none !important;
+    }
+}

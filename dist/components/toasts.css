@@ -28,6 +28,9 @@
     --toast-padding-compact: var(--space-3);
     --toast-progress-track: color-mix(in srgb, currentColor 20%, transparent);
     --toast-progress-fill: currentColor;
+    --toast-safe-area-inline: max(var(--space-2), env(safe-area-inset-left), env(safe-area-inset-right));
+    --toast-safe-area-top: max(var(--space-2), env(safe-area-inset-top));
+    --toast-safe-area-bottom: max(var(--space-2), env(safe-area-inset-bottom));
 }
 
 /* ---------------------------------------------------------
@@ -93,8 +96,8 @@
 
 @media (max-width: 640px) {
     .toast-stack {
-        left: var(--space-2);
-        right: var(--space-2);
+        left: var(--toast-safe-area-inline);
+        right: var(--toast-safe-area-inline);
         max-width: none;
     }
 
@@ -102,7 +105,7 @@
     .toast-stack--top-left,
     .toast-stack--top-center {
         top: auto;
-        bottom: var(--space-2);
+        bottom: var(--toast-safe-area-bottom);
         transform: none;
         align-items: stretch;
     }
@@ -110,7 +113,7 @@
     .toast-stack--bottom-right,
     .toast-stack--bottom-left,
     .toast-stack--bottom-center {
-        bottom: var(--space-2);
+        bottom: var(--toast-safe-area-bottom);
         transform: none;
         align-items: stretch;
     }
@@ -253,6 +256,11 @@
     transform: scaleX(1);
     background-color: var(--toast-progress-fill);
     animation: toast-progress var(--toast-duration) linear forwards;
+}
+
+.toast:hover .toast__progress::before,
+.toast:focus-within .toast__progress::before {
+    animation-play-state: paused;
 }
 
 .toast--compact {
@@ -482,6 +490,21 @@
     }
 
     .toast__progress::before {
-        animation-duration: var(--motion-none);
+        animation: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .toast {
+        border-color: CanvasText;
+        box-shadow: none;
+    }
+
+    .toast__progress {
+        border: 1px solid CanvasText;
+    }
+
+    .toast__progress::before {
+        background-color: CanvasText;
     }
 }

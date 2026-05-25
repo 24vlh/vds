@@ -82,6 +82,8 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    min-width: 0;
+    max-width: 100%;
 }
 
 .state__title {
@@ -93,6 +95,7 @@
 .state__text {
     font-size: var(--text-sm);
     color: var(--color-text-muted);
+    word-wrap: anywhere;
 }
 
 .state__actions {
@@ -100,6 +103,7 @@
     flex-wrap: wrap;
     gap: var(--space-3);
     justify-content: center;
+    min-width: 0;
 }
 
 .state__meta {
@@ -165,5 +169,16 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+}
+
+@media (forced-colors: active) {
+    .state {
+        border-color: CanvasText;
+    }
+
+    .state__icon,
+    .state__media {
+        border: 1px solid CanvasText;
     }
 }

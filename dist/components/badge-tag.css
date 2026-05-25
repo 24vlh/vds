@@ -179,7 +179,10 @@
 }
 
 .badge-tag--tag:disabled,
-.badge-tag--tag[aria-disabled="true"] {
+.badge-tag--tag[aria-disabled="true"],
+.badge-tag--tag[data-disabled="true"],
+.badge-tag[aria-disabled="true"],
+.badge-tag[data-disabled="true"] {
     opacity: 0.6;
     cursor: not-allowed;
     pointer-events: none;
@@ -263,4 +266,42 @@
     --badge-tag-solid-bg: var(--color-mono);
     --badge-tag-solid-border: var(--color-mono-strong);
     --badge-tag-solid-text: var(--color-on-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .badge-tag,
+    .badge-tag__remove,
+    .badge__remove,
+    .badge-tag--tag {
+        transition: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .badge-tag {
+        border-color: CanvasText;
+        background: Canvas;
+        color: CanvasText;
+    }
+
+    .badge-tag--solid {
+        background: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+    }
+
+    .badge-tag__dot,
+    .badge__dot {
+        background: currentColor;
+    }
+
+    .badge-tag__remove:focus-visible,
+    .badge__remove:focus-visible,
+    .badge-tag--tag:focus-visible {
+        outline: 2px solid Highlight;
+        outline: var(--focus-ring-width, 2px) solid Highlight;
+        outline-offset: 2px;
+        outline-offset: var(--focus-ring-offset, 2px);
+        box-shadow: none;
+    }
 }

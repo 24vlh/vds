@@ -347,6 +347,12 @@
     color: var(--link-text-hover);
 }
 
+.heading-anchor:focus-visible {
+    opacity: 1;
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
 h1:hover .heading-anchor,
 h2:hover .heading-anchor,
 h3:hover .heading-anchor,
@@ -556,4 +562,31 @@ h6:focus-within .heading-anchor {
 .doc-block__body .md-callout {
     margin-top: var(--space-3);
     margin-bottom: var(--space-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heading-anchor {
+        transition: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .admonition,
+    .md-callout,
+    .md-note,
+    .md-info,
+    .md-tip,
+    .md-success,
+    .md-warning,
+    .md-danger,
+    .md-important,
+    .inline-marker,
+    .footnotes {
+        border-color: CanvasText;
+        forced-color-adjust: auto;
+    }
+
+    .heading-anchor {
+        color: LinkText;
+    }
 }

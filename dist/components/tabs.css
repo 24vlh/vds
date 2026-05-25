@@ -153,7 +153,7 @@
     margin-right: 0;
 }
 
-.tab:hover {
+.tab:hover:not(:disabled):not([disabled]):not([aria-disabled="true"]) {
     color: var(--color-text);
     background-color: var(--color-surface-subtle);
 }
@@ -165,7 +165,8 @@
 }
 
 .tab[disabled],
-.tab--disabled {
+.tab--disabled,
+.tab[aria-disabled="true"] {
     cursor: not-allowed;
     opacity: var(--tabs-component-disabled-opacity);
     box-shadow: none;
@@ -175,17 +176,20 @@
 /* ---------------------------------------------------------
    5. ACTIVE STATE - UNDERLINE INDICATOR
 --------------------------------------------------------- */
-.tab--active {
+.tab--active,
+.tab[aria-selected="true"] {
     color: var(--color-text);
     font-weight: var(--font-weight-semibold);
     box-shadow: 0 var(--tab-indicator-height) 0 0 var(--color-accent);
 }
 
-.tabs--on-muted .tab--active {
+.tabs--on-muted .tab--active,
+.tabs--on-muted .tab[aria-selected="true"] {
     box-shadow: 0 var(--tab-indicator-height) 0 0 var(--color-accent-strong);
 }
 
-.tab--active:hover {
+.tab--active:hover,
+.tab[aria-selected="true"]:hover {
     background-color: transparent;
 }
 
@@ -205,7 +209,7 @@
     box-shadow: none;
 }
 
-.tabs--pills .tab:hover {
+.tabs--pills .tab:hover:not(:disabled):not([disabled]):not([aria-disabled="true"]) {
     background-color: var(--tabs-pill-hover-bg);
     color: var(--color-text);
 }
@@ -215,14 +219,16 @@
     0 0 0 3px var(--focus-ring-color);
 }
 
-.tabs--pills .tab--active {
+.tabs--pills .tab--active,
+.tabs--pills .tab[aria-selected="true"] {
     background-color: var(--tabs-pill-active-bg);
     border-color: var(--tabs-pill-active-border);
     color: var(--tabs-pill-active-text);
     box-shadow: none;
 }
 
-.tabs--pills .tab--active:hover {
+.tabs--pills .tab--active:hover,
+.tabs--pills .tab[aria-selected="true"]:hover {
     background-color: var(--tabs-pill-active-bg);
 }
 
@@ -246,7 +252,7 @@
     box-shadow: none;
 }
 
-.tabs--segmented .tab:hover {
+.tabs--segmented .tab:hover:not(:disabled):not([disabled]):not([aria-disabled="true"]) {
     background-color: var(--color-surface);
     color: var(--color-text);
 }
@@ -256,13 +262,15 @@
     0 0 0 3px var(--focus-ring-color);
 }
 
-.tabs--segmented .tab--active {
+.tabs--segmented .tab--active,
+.tabs--segmented .tab[aria-selected="true"] {
     background-color: var(--tabs-segmented-active-bg);
     color: var(--tabs-segmented-active-text);
     box-shadow: var(--tabs-segmented-shadow);
 }
 
-.tabs--segmented .tab--active:hover {
+.tabs--segmented .tab--active:hover,
+.tabs--segmented .tab[aria-selected="true"]:hover {
     background-color: var(--tabs-segmented-active-bg);
 }
 
@@ -318,7 +326,8 @@
     padding-bottom: var(--space-2);
 }
 
-.tabs--vertical .tab--active {
+.tabs--vertical .tab--active,
+.tabs--vertical .tab[aria-selected="true"] {
     box-shadow: var(--tab-indicator-height) 0 0 0 var(--color-accent);
 }
 
@@ -349,7 +358,8 @@
 }
 
 .tab-panel[hidden],
-.tab-panel.is-hidden {
+.tab-panel.is-hidden,
+.tab-panel[aria-hidden="true"] {
     display: none;
 }
 
@@ -399,11 +409,52 @@
         text-align: center;
     }
 
-    .tabs--vertical .tab--active {
+    .tabs--vertical .tab--active,
+    .tabs--vertical .tab[aria-selected="true"] {
         box-shadow: 0 var(--tab-indicator-height) 0 0 var(--color-accent);
     }
 
     .tabs--vertical .tab:focus-visible {
         box-shadow: 0 var(--tab-indicator-height) 0 0 var(--focus-ring-color);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tab {
+        transition: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .tabs,
+    .tab-list,
+    .tab,
+    .tab-panel,
+    .tab-panels,
+    .tab__badge {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .tab:focus-visible,
+    .tabs--vertical .tab:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .tab--active,
+    .tab[aria-selected="true"],
+    .tabs--vertical .tab--active,
+    .tabs--vertical .tab[aria-selected="true"] {
+        color: Highlight;
+        box-shadow: inset 0 calc(var(--tab-indicator-height) * -1) 0 Highlight;
+    }
+
+    .tab--disabled,
+    .tab[disabled],
+    .tab[aria-disabled="true"] {
+        color: GrayText;
     }
 }

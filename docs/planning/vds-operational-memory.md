@@ -82,6 +82,7 @@ pnpm run audit:docs
 pnpm run audit:docs:metadata
 pnpm run audit:selectors
 pnpm run audit:dist
+pnpm run dist:check
 pnpm run audit:consumers
 pnpm run audit
 git diff --check
@@ -94,6 +95,7 @@ pnpm run inventory:selectors
 pnpm run inventory:tokens
 pnpm run inventory
 pnpm run docs:vds:index
+pnpm run dist:refresh
 ```
 
 Current guarded/write-like commands:
@@ -111,6 +113,8 @@ Future `1.0.0` infrastructure sessions should restore deliberate selector, docs 
 
 `INFRA-S03` restored generated docs metadata freshness: `docs:vds:index` is the explicit write command for `@24vlh/agents/docs_vds`, and `audit:docs:metadata` is the read-only drift check included in `audit:docs`. The generated index now covers all `42` raw docs.
 
+`INFRA-S04` made checked-in `dist` reproducible: `dist:refresh` is the explicit write command, `dist:check` is the read-only temporary-build comparison, and `audit:dist` now checks both package-file presence and source-vs-dist freshness.
+
 ## Known System Gaps
 
 - Component contracts are large and uneven; several files combine component, utility, docs-demo, and app-pattern responsibilities.
@@ -118,7 +122,7 @@ Future `1.0.0` infrastructure sessions should restore deliberate selector, docs 
 - Generated docs metadata is active generated evidence, but richer full-text/search extraction remains a future docs tooling concern.
 - Existing audits are useful but not enough for visual, responsive, accessibility, theme, package, and release readiness.
 - Consumer/runtime responsibilities are often implied rather than documented.
-- `dist` is checked in, but generation and freshness remain a maintenance risk.
+- `dist` is checked in and freshness-checked; build performance remains slow on this filesystem and can be optimized later if it becomes a blocker.
 - Release workflow needs stronger pre-publish gates and package smoke tests.
 
 ## 1.0.0 Working Rule

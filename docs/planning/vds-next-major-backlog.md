@@ -43,7 +43,7 @@ Every component family session must close with CSS changes where needed, docs/ex
 - Package-facing CSS files exist for every component under `dist/components/*.css` and `dist/components/*.min.css`; identity remains the standalone exception at `dist/identity.css` and `dist/identity.min.css`.
 - Raw docs now pass the component copy-safety scan: real and escaped copyable buttons have explicit `type`, no `href="#"` placeholders remain, images have `alt`, and obvious icon/action buttons have accessible names.
 - Late-pass safe fixes added forced-colors fallbacks to remaining core interactive/component surfaces without selector removals or token renames.
-- Release risks remain deferred: source-vs-`dist` drift until approved regeneration, generated docs metadata drift after raw-doc edits, utility/icon pruning policy, high `!important` surfaces, hard-coded helper color audit, package smoke tests, and visual/responsive/accessibility browser smoke coverage.
+- Release risks remain deferred: package import smoke gaps, utility/icon pruning policy, high `!important` surfaces, hard-coded helper color audit, and visual/responsive/accessibility browser smoke coverage.
 
 ### Component Execution Matrix
 
@@ -154,8 +154,8 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 | `INFRA-S01` | `done` | Reintroduce selector, token, docs, dist, and consumer checks deliberately with clear check/write command boundaries. |
 | `INFRA-S02` | `done` | Improve selector and token parsing, inventories, generated evidence, and drift detection. |
 | `INFRA-S03` | `done` | Rework docs metadata generation, refresh the `42`-doc index, and add read-only freshness validation. |
-| `INFRA-S04` | `ready` | Make build/dist verification reliable without accidental manual `dist` edits. |
-| `INFRA-S05` | `todo` | Add package smoke tests for full, core, component, theme, and standalone identity imports. |
+| `INFRA-S04` | `done` | Make checked-in `dist` reproducible with explicit refresh and read-only freshness commands. |
+| `INFRA-S05` | `ready` | Add package smoke tests for full, core, component, theme, and standalone identity imports. |
 | `INFRA-S06` | `todo` | Add visual, responsive, theme, reduced-motion, forced-colors, and accessibility smoke checks. |
 | `INFRA-S07` | `todo` | Review CI, npm publish workflow, provenance, secrets, and pre-publish gates. |
 | `INFRA-S08` | `todo` | Finalize release checklist: migration guide, changelog, release notes, version bump, dist refresh, package smoke, publish dry run. |

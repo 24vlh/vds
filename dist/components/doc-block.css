@@ -22,6 +22,8 @@
 /* ---------------------------------------------------------
    1. DOC BLOCK TOKEN DEFINITIONS
 --------------------------------------------------------- */
+[data-vds-doc-block],
+.vds-doc-block,
 [data-vds-dock-block],
 .vds-dock-block {
     --doc-block-border: var(--color-border-subtle);
@@ -304,7 +306,22 @@
     color: var(--doc-block-action-hover-text);
 }
 
-.doc-block__action--active {
+.doc-block__action:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.doc-block__action:disabled,
+.doc-block__action[aria-disabled="true"],
+.doc-block__action.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+    pointer-events: none;
+}
+
+.doc-block__action--active,
+.doc-block__action[aria-pressed="true"],
+.doc-block__action[data-active="true"] {
     background-color: var(--color-accent-soft);
     border-color: var(--color-accent);
 }
@@ -312,12 +329,18 @@
 /* ---------------------------------------------------------
    9. COLLAPSIBLE VARIANT
 --------------------------------------------------------- */
-.doc-block--collapsed .doc-block__code {
+.doc-block--collapsed .doc-block__code,
+.doc-block[aria-expanded="false"] .doc-block__code,
+.doc-block[data-expanded="false"] .doc-block__code,
+.doc-block[data-state="collapsed"] .doc-block__code {
     max-height: 12rem;
     overflow: hidden;
 }
 
-.doc-block--collapsed .doc-block__code::after {
+.doc-block--collapsed .doc-block__code::after,
+.doc-block[aria-expanded="false"] .doc-block__code::after,
+.doc-block[data-expanded="false"] .doc-block__code::after,
+.doc-block[data-state="collapsed"] .doc-block__code::after {
     content: "";
     position: absolute;
     top: 0;
@@ -754,5 +777,37 @@
     .doc-block__action,
     .doc-block__code.is-copied {
         transition: none !important;
+    }
+}
+
+@media (forced-colors: active) {
+    .doc-block,
+    .doc-block--surface,
+    .doc-block--elevated,
+    .doc-block--contrast,
+    .doc-block__preview,
+    .doc-block__code,
+    .doc-block__action,
+    .doc-block__note,
+    .doc-block__note--info,
+    .doc-block__note--warning,
+    .doc-block__note--danger,
+    .doc-block__note--success {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .doc-block__action--active,
+    .doc-block__action[aria-pressed="true"],
+    .doc-block__action[data-active="true"],
+    .doc-block__code.is-copied {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+    }
+
+    .doc-block--diff-line-add,
+    .doc-block--diff-line-remove {
+        border-left-color: CanvasText;
     }
 }

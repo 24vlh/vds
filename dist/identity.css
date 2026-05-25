@@ -365,3 +365,56 @@
     letter-spacing: var(--logo-ke-secondary-letter-spacing);
     opacity: 0.9;
 }
+
+@media (forced-colors: active) {
+    .logo,
+    .logo--mono,
+    .logo--footer,
+    .logo--inverse,
+    .logo--ink {
+        color: CanvasText;
+        forced-color-adjust: auto;
+    }
+
+    .logo-frame,
+    .logo-rail,
+    .logo-chevron,
+    .ke-frame,
+    .ke-mark,
+    .logo--mono .logo-frame,
+    .logo--mono .logo-rail,
+    .logo--mono .logo-chevron,
+    .logo--footer .logo-frame,
+    .logo--footer .logo-rail,
+    .logo--footer .logo-chevron,
+    .logo--inverse .logo-frame,
+    .logo--inverse .logo-rail,
+    .logo--inverse .logo-chevron {
+        stroke: CanvasText !important;
+    }
+
+    .logo-wordmark,
+    .logo-text-primary,
+    .logo-text-secondary,
+    .ke-text-primary,
+    .ke-text-secondary,
+    .logo--mono .logo-wordmark,
+    .logo--mono .logo-text-primary,
+    .logo--mono .logo-text-secondary,
+    .logo--footer .logo-wordmark,
+    .logo--footer .logo-text-primary,
+    .logo--footer .logo-text-secondary,
+    .logo--inverse .logo-wordmark,
+    .logo--inverse .logo-text-primary,
+    .logo--inverse .logo-text-secondary {
+        fill: CanvasText !important;
+    }
+
+    .logo-chevron,
+    .ke-accent,
+    .logo--footer .ke-accent,
+    .logo--inverse .ke-accent {
+        color: Highlight;
+        stroke: Highlight !important;
+    }
+}

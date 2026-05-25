@@ -59,11 +59,11 @@
     0 0 0 3px var(--focus-ring-color, var(--color-accent-soft));
 }
 
-.button:hover:not(:disabled):not([aria-disabled="true"]) {
+.button:hover:not(:disabled):not([aria-disabled="true"]):not([aria-busy="true"]) {
     background: var(--color-surface-subtle, var(--color-muted-bg));
 }
 
-.button:active:not(:disabled):not([aria-disabled="true"]) {
+.button:active:not(:disabled):not([aria-disabled="true"]):not([aria-busy="true"]) {
     transform: translateY(1px);
     background: var(--color-surface-subtle, var(--color-muted-bg));
     border-color: var(--color-border-strong, var(--color-border-subtle));
@@ -79,6 +79,10 @@
     background-color: var(--color-surface-subtle);
     color: var(--color-text-muted);
     border-color: var(--color-border-subtle);
+}
+
+.button[aria-busy="true"] {
+    cursor: progress;
 }
 
 .button--selected,
@@ -566,16 +570,19 @@
 /* ---------------------------------------------------------
    9. LOADING STATE
 --------------------------------------------------------- */
-.button--loading {
+.button--loading,
+.button[aria-busy="true"] {
     position: relative;
     pointer-events: none;
 }
 
-.button--loading > * {
+.button--loading > *,
+.button[aria-busy="true"] > * {
     visibility: hidden;
 }
 
-.button--loading::after {
+.button--loading::after,
+.button[aria-busy="true"]::after {
     content: "";
     position: absolute;
     top: 0;
@@ -591,7 +598,8 @@
     animation: button-spinner 0.8s linear infinite;
 }
 
-.button--loading:focus-visible {
+.button--loading:focus-visible,
+.button[aria-busy="true"]:focus-visible {
     box-shadow: 0 0 0 1px var(--color-surface),
     0 0 0 3px var(--focus-ring-color, var(--color-accent-soft));
 }
@@ -610,7 +618,8 @@
         transition: none;
     }
 
-    .button--loading::after {
+    .button--loading::after,
+    .button[aria-busy="true"]::after {
         animation: none;
         border-top-color: currentColor;
     }
@@ -664,4 +673,34 @@ a.button--link:active {
 a.button:hover {
     -webkit-text-decoration: none;
     text-decoration: none;
+}
+
+@media (forced-colors: active) {
+    .button {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .button:focus-visible,
+    .button--loading:focus-visible,
+    .button[aria-busy="true"]:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .button:disabled,
+    .button[disabled],
+    .button[aria-disabled="true"],
+    a.button[aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+    }
+
+    .button--loading::after,
+    .button[aria-busy="true"]::after {
+        border-color: CanvasText;
+        border-top-color: Canvas;
+    }
 }

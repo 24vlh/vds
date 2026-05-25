@@ -266,6 +266,22 @@
 }
 
 /* ---------------------------------------------------------
+   8A. REDUCED MOTION
+--------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .accordion-item,
+    .accordion-header,
+    .accordion-icon {
+        transition: none;
+    }
+
+    .accordion-icon,
+    .accordion-item[open] .accordion-icon {
+        transform: none;
+    }
+}
+
+/* ---------------------------------------------------------
    9. HIGH CONTRAST / FORCED COLORS
 --------------------------------------------------------- */
 @media (forced-colors: active) {

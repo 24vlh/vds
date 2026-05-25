@@ -391,8 +391,13 @@
    8. EMPTY / ERROR / LOADING STATES
 --------------------------------------------------------- */
 .chart--empty .chart__canvas,
+.chart[data-state="empty"] .chart__canvas,
 .chart--error .chart__canvas,
-.chart--loading .chart__canvas {
+.chart[data-state="error"] .chart__canvas,
+.chart--loading .chart__canvas,
+.chart[aria-busy="true"] .chart__canvas,
+.chart[data-loading="true"] .chart__canvas,
+.chart[data-state="loading"] .chart__canvas {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -427,15 +432,20 @@
     color: var(--color-text-muted);
 }
 
-.chart--empty .chart-state__icon {
+.chart--empty .chart-state__icon,
+.chart[data-state="empty"] .chart-state__icon {
     color: var(--color-text-soft);
 }
 
-.chart--error .chart-state__icon {
+.chart--error .chart-state__icon,
+.chart[data-state="error"] .chart-state__icon {
     color: var(--color-danger);
 }
 
-.chart--loading .chart__canvas::before {
+.chart--loading .chart__canvas::before,
+.chart[aria-busy="true"] .chart__canvas::before,
+.chart[data-loading="true"] .chart__canvas::before,
+.chart[data-state="loading"] .chart__canvas::before {
     content: "";
     position: absolute;
     top: 0;
@@ -484,5 +494,51 @@
     }
     100% {
         background-position: 150% 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chart--loading .chart__canvas::before,
+    .chart[aria-busy="true"] .chart__canvas::before,
+    .chart[data-loading="true"] .chart__canvas::before,
+    .chart[data-state="loading"] .chart__canvas::before {
+        animation: none;
+        background-position: 50% 0;
+    }
+}
+
+@media (forced-colors: active) {
+    .chart,
+    .chart__canvas,
+    .chart-state {
+        border-color: CanvasText;
+        box-shadow: none;
+    }
+
+    .chart-legend__swatch,
+    .chart-bar,
+    .chart-line,
+    .chart-area,
+    .chart-point {
+        forced-color-adjust: none;
+        background-color: CanvasText;
+        border-color: CanvasText;
+        color: CanvasText;
+        fill: CanvasText;
+        stroke: CanvasText;
+    }
+
+    .chart--error .chart-state__icon,
+    .chart[data-state="error"] .chart-state__icon {
+        color: Highlight;
+    }
+
+    .chart--loading .chart__canvas::before,
+    .chart[aria-busy="true"] .chart__canvas::before,
+    .chart[data-loading="true"] .chart__canvas::before,
+    .chart[data-state="loading"] .chart__canvas::before {
+        background-image: none;
+        background-color: CanvasText;
+        opacity: 0.18;
     }
 }

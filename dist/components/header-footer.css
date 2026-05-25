@@ -176,13 +176,17 @@
 }
 
 .header .nav__item--active,
-.header .nav__link--active {
+.header .nav__link--active,
+.header .nav__item[aria-current="page"],
+.header .nav__link[aria-current="page"] {
     color: var(--color-text);
     font-weight: 600;
 }
 
 .header .nav__item--active::after,
-.header .nav__link--active::after {
+.header .nav__link--active::after,
+.header .nav__item[aria-current="page"]::after,
+.header .nav__link[aria-current="page"]::after {
     content: "";
     position: absolute;
     left: 0;
@@ -194,7 +198,9 @@
 }
 
 .header .nav__item--disabled,
-.header .nav__link--disabled {
+.header .nav__link--disabled,
+.header .nav__item[aria-disabled="true"],
+.header .nav__link[aria-disabled="true"] {
     opacity: 0.5;
     cursor: default;
     pointer-events: none;
@@ -229,6 +235,17 @@
 .header .header__toggle:focus-visible {
     outline: var(--border-width) solid var(--focus-ring-color);
     outline-offset: var(--space-1);
+}
+
+.header .header__toggle[aria-expanded="true"] {
+    background-color: var(--color-accent-soft);
+}
+
+.header .header__toggle:disabled,
+.header .header__toggle[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .header__panel {
@@ -424,6 +441,17 @@
     opacity: 1;
 }
 
+.footer__link[aria-current="page"] {
+    opacity: 1;
+    font-weight: var(--font-weight-semibold);
+}
+
+.footer__link[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .footer__link:focus-visible {
     outline: var(--border-width) solid var(--focus-ring-color);
     outline-offset: var(--space-1);
@@ -515,4 +543,59 @@
 
 .shell__footer {
     margin-top: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header .nav__item,
+    .header .nav__link,
+    .header .logo[href],
+    .header .header__toggle,
+    .skip-link,
+    .header .skip-link,
+    .footer__link,
+    .footer__meta a {
+        transition: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .header,
+    .header__inner,
+    .header__panel,
+    .header__toggle,
+    .nav__item,
+    .nav__link,
+    .skip-link,
+    .footer,
+    .footer__link,
+    .footer__meta a {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .header__toggle:focus-visible,
+    .nav__item:focus-visible,
+    .nav__link:focus-visible,
+    .skip-link:focus-visible,
+    .footer__link:focus-visible,
+    .footer__meta a:focus-visible {
+        outline: 1px solid Highlight;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .nav__item--active,
+    .nav__item[aria-current],
+    .nav__link--active,
+    .nav__link[aria-current],
+    .footer__link[aria-current] {
+        color: Highlight;
+    }
+
+    .nav__item--disabled,
+    .nav__item[aria-disabled="true"],
+    .nav__link[aria-disabled="true"] {
+        color: GrayText;
+    }
 }

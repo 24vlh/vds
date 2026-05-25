@@ -1318,3 +1318,46 @@
     opacity: 0.4;
     pointer-events: none;
 }
+
+@media (forced-colors: active) {
+    .icon,
+    .icon--mask,
+    .icon-glyph {
+        color: CanvasText;
+        forced-color-adjust: auto;
+    }
+
+    .icon-container,
+    .icon-container--circle,
+    .icon-container--square,
+    .icon-badge {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .icon--success,
+    .icon--warning,
+    .icon--danger,
+    .icon--info,
+    .icon--accent,
+    .icon-badge__dot,
+    .icon-badge__dot--success,
+    .icon-badge__dot--danger,
+    .icon-badge__dot--warning,
+    .icon-badge__dot--info,
+    .icon-badge__dot--neutral {
+        background-color: Highlight;
+        color: Highlight;
+    }
+
+    .icon-badge__dot {
+        border-color: Canvas;
+    }
+
+    .icon--disabled,
+    .icon-badge__dot--disabled {
+        color: GrayText;
+        background-color: GrayText;
+    }
+}
