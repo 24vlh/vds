@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `DOCS-S05 Remaining component/pattern docs rewrite`.
+Next session: `DOCS-S06 Example quality consolidation`.
 
-Reason: `DOCS-S04` rewrote the priority behavior raw docs for actions/navigation, forms, overlays/command, data, feedback, loading, and state. The next useful step is to finish the remaining component and pattern docs queue.
+Reason: `DOCS-S05` rewrote the remaining component and pattern raw docs. The next useful step is to consolidate example quality across the rewritten documentation set before docs shell and infrastructure work.
 
 ## Release Programs
 
