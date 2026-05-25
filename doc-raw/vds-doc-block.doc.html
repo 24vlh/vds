@@ -1,4 +1,4 @@
-<section class="section" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner section__stack">
         <div class="section__stack-sm">
             <h1>Documentation Blocks</h1>
@@ -24,11 +24,16 @@
             code frames, numbered lines, diffs, semantic presets, and meta notes. Every
             documentation page in VDS composes these primitives.
         </p>
+        <p class="text-sm text-muted">
+            Use <code>[data-vds-doc-block]</code> or <code>.vds-doc-block</code> for new roots.
+            The older <code>[data-vds-dock-block]</code> and <code>.vds-dock-block</code> hooks
+            remain supported as compatibility aliases for existing docs.
+        </p>
     </div>
 </section>
 
 
-<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section section--inset" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -96,7 +101,7 @@
 </section>
 
 
-<section class="section section--subtle" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section section--subtle" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -141,7 +146,7 @@
     </div>
 </section>
 
-<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section section--inset" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -205,7 +210,7 @@
 </section>
 
 
-<section class="section" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -287,7 +292,7 @@
 </section>
 
 
-<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section section--inset" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -343,9 +348,9 @@
                         </p>
 
                         <div class="flex gap-3 flex-wrap mt-6">
-                            <button class="button button--primary button--sm">Primary</button>
-                            <button class="button button--ghost button--sm">Ghost</button>
-                            <button class="button button--outline button--sm">Outline</button>
+                            <button class="button button--primary button--sm" type="button">Primary</button>
+                            <button class="button button--ghost button--sm" type="button">Ghost</button>
+                            <button class="button button--outline button--sm" type="button">Outline</button>
                         </div>
                     </div>
                 </div>
@@ -363,7 +368,7 @@
     </div>
 </section>
 
-<section class="section" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -442,7 +447,7 @@
 </section>
 
 
-<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section section--inset" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block doc-block--collapsed">
             <header class="doc-block__header">
@@ -490,7 +495,7 @@
 </section>
 
 
-<section class="section" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block doc-block--contrast doc-block--surface doc-block--diff">
             <header class="doc-block__header">
@@ -547,7 +552,7 @@
     </div>
 </section>
 
-<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section section--inset" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
             <header class="doc-block__header">
@@ -623,7 +628,7 @@
 </section>
 
 
-<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-dock-block>
+<section class="section section--inset" data-vds-content-block data-vds-doc-block data-vds-dock-block>
     <div class="section__inner">
         <article class="doc-block">
 
@@ -657,9 +662,15 @@
                             and <code>.doc-block__code</code> for code; never mix roles.
                         </li>
 
+                        <li>Keep copy, expand/collapse, syntax toggles, preview switching, and
+                            copied-state timing in docs-runtime JavaScript. CSS only exposes the
+                            visual hooks, including collapsed and copied states.
+                        </li>
+
                         <li>Keep toolbar actions (<code>Copy</code>,
                             <code>Expand</code>) keyboard accessible:
-                            they must remain actual <code>&lt;button&gt;</code> elements.
+                            they must remain actual <code>&lt;button type="button"&gt;</code> elements
+                            with accessible names when the visible label is hidden or icon-only.
                         </li>
 
                         <li>Use numbered blocks (<code>.doc-block__code--numbered</code>)
@@ -721,7 +732,7 @@
 
             <div class="doc-block__code">
 <pre class="doc-block__code"><code>1. Use .doc-block anatomy exactly: header → body → preview/code → meta.
-2. Keep toolbar actions semantic: real &lt;button&gt; with focus-visible.
+2. Keep toolbar actions semantic: real &lt;button type="button"&gt; with focus-visible.
 3. Use previews for visuals and .doc-block__code for code (no mixing).
 4. Apply numbered code only when each row has semantic meaning.
 5. Use diff blocks for structural change explanation (add/remove).

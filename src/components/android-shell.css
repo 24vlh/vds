@@ -233,7 +233,7 @@
         box-shadow var(--transition-fast);
 }
 
-.android-shell__icon-button:hover {
+.android-shell__icon-button:hover:not(:disabled):not([aria-disabled="true"]):not(.is-disabled) {
     background: var(--android-shell-panel-hover);
     border-color: var(--android-shell-border-strong);
     color: var(--android-shell-text);
@@ -243,6 +243,15 @@
 .android-shell__icon-button:focus-visible {
     outline: var(--focus-ring-width) solid var(--focus-ring-color);
     outline-offset: var(--focus-ring-offset);
+}
+
+.android-shell__icon-button:disabled,
+.android-shell__icon-button[aria-disabled="true"],
+.android-shell__icon-button.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+    transform: none;
+    pointer-events: none;
 }
 
 /* ---------------------------------------------------------
@@ -521,7 +530,7 @@
         box-shadow var(--transition-fast);
 }
 
-.android-shell__action-tile:hover {
+.android-shell__action-tile:hover:not([aria-disabled="true"]):not(.is-disabled) {
     background: var(--android-shell-panel-hover);
     border-color: var(--android-shell-border-strong);
     color: var(--android-shell-text);
@@ -531,6 +540,14 @@
 .android-shell__action-tile:focus-visible {
     outline: var(--focus-ring-width) solid var(--focus-ring-color);
     outline-offset: var(--focus-ring-offset);
+}
+
+.android-shell__action-tile[aria-disabled="true"],
+.android-shell__action-tile.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+    transform: none;
+    pointer-events: none;
 }
 
 .android-shell__action-label {
@@ -719,7 +736,7 @@ button.android-shell__filter-chip {
     font: inherit;
 }
 
-.android-shell__filter-chip:hover {
+.android-shell__filter-chip:hover:not(:disabled):not([aria-disabled="true"]):not(.is-disabled) {
     --android-shell-filter-bg: var(--android-shell-panel-hover);
     --android-shell-filter-border: var(--android-shell-border-strong);
 
@@ -733,7 +750,8 @@ button.android-shell__filter-chip {
 
 .android-shell__filter-chip--active,
 .android-shell__filter-chip.is-active,
-.android-shell__filter-chip[aria-pressed="true"] {
+.android-shell__filter-chip[aria-pressed="true"],
+.android-shell__filter-chip[data-pressed="true"] {
     --android-shell-filter-bg: var(--android-shell-panel-accent);
     --android-shell-filter-border: var(--android-shell-accent);
     --android-shell-filter-text: var(--android-shell-accent-strong);
@@ -742,10 +760,12 @@ button.android-shell__filter-chip {
 }
 
 button.android-shell__filter-chip:disabled,
-button.android-shell__filter-chip[aria-disabled="true"] {
+.android-shell__filter-chip[aria-disabled="true"],
+.android-shell__filter-chip.is-disabled {
     cursor: not-allowed;
     opacity: 0.56;
     transform: none;
+    pointer-events: none;
 }
 
 .android-shell__filter-meta {
@@ -1125,12 +1145,14 @@ button.android-shell__filter-chip[aria-disabled="true"] {
         transform var(--transition-fast);
 }
 
-.android-shell__list-item--interactive:hover {
+.android-shell__list-item--interactive:hover:not([aria-disabled="true"]):not(.is-disabled) {
     background: var(--android-shell-panel-hover);
     transform: translateY(-1px);
 }
 
-.android-shell__list-item--current {
+.android-shell__list-item--current,
+.android-shell__list-item[aria-current="page"],
+.android-shell__list-item[data-current="true"] {
     background:
         linear-gradient(
             180deg,
@@ -1139,7 +1161,9 @@ button.android-shell__filter-chip[aria-disabled="true"] {
         );
 }
 
-.android-shell__list-item--current::before {
+.android-shell__list-item--current::before,
+.android-shell__list-item[aria-current="page"]::before,
+.android-shell__list-item[data-current="true"]::before {
     content: "";
     position: absolute;
     inset-block: var(--space-2);
@@ -1147,6 +1171,14 @@ button.android-shell__filter-chip[aria-disabled="true"] {
     inline-size: 0.1875rem;
     border-radius: var(--radius-full);
     background: var(--android-shell-accent);
+}
+
+.android-shell__list-item[aria-disabled="true"],
+.android-shell__list-item.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+    pointer-events: none;
+    transform: none;
 }
 
 .android-shell__list-leading {
@@ -1319,6 +1351,7 @@ button.android-shell__filter-chip[aria-disabled="true"] {
 }
 
 .android-shell__nav-link[aria-current="page"],
+.android-shell__nav-link[data-current="true"],
 .android-shell__nav-link--active {
     background: var(--android-shell-panel);
     border-color: var(--android-shell-border);
@@ -1327,6 +1360,7 @@ button.android-shell__filter-chip[aria-disabled="true"] {
 }
 
 .android-shell__nav-link[aria-current="page"]::after,
+.android-shell__nav-link[data-current="true"]::after,
 .android-shell__nav-link--active::after {
     background: var(--android-shell-accent);
     transform: scale(1);
@@ -1367,7 +1401,7 @@ button.android-shell__filter-chip[aria-disabled="true"] {
         filter var(--transition-fast);
 }
 
-.android-shell__fab:hover {
+.android-shell__fab:hover:not([aria-disabled="true"]):not(.is-disabled) {
     transform: translateY(-1px);
     filter: brightness(0.98);
 }
@@ -1375,6 +1409,14 @@ button.android-shell__filter-chip[aria-disabled="true"] {
 .android-shell__fab:focus-visible {
     outline: var(--focus-ring-width) solid var(--focus-ring-color);
     outline-offset: var(--focus-ring-offset);
+}
+
+.android-shell__fab[aria-disabled="true"],
+.android-shell__fab.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+    transform: none;
+    pointer-events: none;
 }
 
 .android-shell__fab--float {
@@ -1531,5 +1573,44 @@ button.android-shell__filter-chip[aria-disabled="true"] {
     .android-shell__fab:hover,
     .android-shell__bottom-bar .android-shell__fab--float:hover {
         transform: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .android-shell,
+    .android-shell__topbar,
+    .android-shell__panel,
+    .android-shell__banner,
+    .android-shell__notice,
+    .android-shell__list,
+    .android-shell__icon-button,
+    .android-shell__action-tile,
+    .android-shell__filter-chip,
+    .android-shell__filter-search,
+    .android-shell__nav-link,
+    .android-shell__fab {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .android-shell__list-item--current::before,
+    .android-shell__list-item[aria-current="page"]::before,
+    .android-shell__list-item[data-current="true"]::before,
+    .android-shell__nav-link[aria-current="page"]::after,
+    .android-shell__nav-link[data-current="true"]::after,
+    .android-shell__nav-link--active::after {
+        background: Highlight;
+    }
+
+    .android-shell__filter-chip--active,
+    .android-shell__filter-chip.is-active,
+    .android-shell__filter-chip[aria-pressed="true"],
+    .android-shell__filter-chip[data-pressed="true"],
+    .android-shell__nav-link[aria-current="page"],
+    .android-shell__nav-link[data-current="true"],
+    .android-shell__nav-link--active {
+        outline: 1px solid Highlight;
+        outline-offset: -1px;
     }
 }

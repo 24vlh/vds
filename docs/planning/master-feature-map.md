@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `COMP-S07 App/work surfaces`.
+Next session: `COMP-S08 Media, identity, foundation-adjacent`.
 
-Reason: `COMP-S06` completed the data/content baseline. The next useful step is to stabilize app/work surfaces: Android shell, inbox, authoring, and doc-block surfaces.
+Reason: `COMP-S07` completed the app/work-surface baseline. The next useful step is to stabilize media, identity, and foundation-adjacent surfaces: avatar, hero, icons, identity, typography, sections, and utilities.
 
 ## Release Programs
 

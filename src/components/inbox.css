@@ -236,6 +236,15 @@
     border-color: var(--color-border-strong, var(--color-border-subtle));
 }
 
+.inbox-search__toggle:focus-visible,
+.inbox-search__input:focus-visible,
+.inbox-filter__chip:focus-visible,
+.inbox-action:focus-visible,
+.inbox-row__main:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
 .inbox-search__toggle:disabled,
 .inbox-search__toggle[aria-disabled="true"],
 .inbox-search__toggle.is-disabled {
@@ -287,6 +296,8 @@
 
 /* Open state: set on .inbox-search or on toggle via aria-expanded */
 .inbox-search.is-open .inbox-search__field,
+.inbox-search[data-state="open"] .inbox-search__field,
+.inbox-search[data-open="true"] .inbox-search__field,
 .inbox-search__toggle[aria-expanded="true"] + .inbox-search__field {
     width: 100%;
     opacity: 1;
@@ -366,6 +377,13 @@
 .inbox-row__hover:hover {
     background: var(--inbox-row-bg-hover);
     border-color: var(--color-border-strong, var(--color-border-subtle));
+}
+
+.inbox-row[data-selected="true"],
+.inbox-row[aria-selected="true"],
+.inbox-row.is-selected {
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
 }
 
 .inbox-row__focus-visible:focus-visible {
@@ -945,11 +963,17 @@ a.inbox-action.is-disabled {
     gap: var(--space-3);
 }
 
-.inbox-row--open .inbox-row__expanded {
+.inbox-row--open .inbox-row__expanded,
+.inbox-row[data-state="open"] .inbox-row__expanded,
+.inbox-row[data-expanded="true"] .inbox-row__expanded,
+.inbox-row[aria-expanded="true"] .inbox-row__expanded {
     display: flex;
 }
 
-.inbox-row--open .inbox-row__glance {
+.inbox-row--open .inbox-row__glance,
+.inbox-row[data-state="open"] .inbox-row__glance,
+.inbox-row[data-expanded="true"] .inbox-row__glance,
+.inbox-row[aria-expanded="true"] .inbox-row__glance {
     -webkit-line-clamp: initial;
     overflow: visible;
 }
@@ -968,7 +992,9 @@ a.inbox-action.is-disabled {
     display: none !important;
 }
 
-.inbox-row__expanded.is-visible {
+.inbox-row__expanded.is-visible,
+.inbox-row__expanded[data-state="visible"],
+.inbox-row__expanded[data-hidden="false"] {
     display: block !important;
 }
 
@@ -1082,15 +1108,19 @@ button.inbox-filter__chip {
 
 .inbox-filter__chip--active,
 .inbox-filter__chip.is-active,
-.inbox-filter__chip[aria-pressed="true"] {
+.inbox-filter__chip[aria-pressed="true"],
+.inbox-filter__chip[data-selected="true"],
+.inbox-filter__chip[data-pressed="true"] {
     border-color: var(--color-accent);
     background: var(--color-accent-soft);
 }
 
 button.inbox-filter__chip:disabled,
-button.inbox-filter__chip[aria-disabled="true"] {
+.inbox-filter__chip[aria-disabled="true"],
+.inbox-filter__chip.is-disabled {
     cursor: not-allowed;
     opacity: 0.6;
+    pointer-events: none;
 }
 
 .inbox-filter__actions {
@@ -1198,6 +1228,8 @@ button.inbox-filter__chip[aria-disabled="true"] {
 
     /* Search: expand wider on small screens */
     .inbox-search.is-open .inbox-search__field,
+    .inbox-search[data-state="open"] .inbox-search__field,
+    .inbox-search[data-open="true"] .inbox-search__field,
     .inbox-search__toggle[aria-expanded="true"] + .inbox-search__field {
         width: 100%;
     }
@@ -1300,4 +1332,55 @@ button.inbox-filter__chip[aria-disabled="true"] {
     clip: rect(0, 0, 0, 0) !important;
     white-space: nowrap !important;
     border: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .inbox-search__toggle,
+    .inbox-search__field,
+    .inbox-row,
+    .inbox-action,
+    .inbox-filter__chip {
+        transition: none;
+    }
+
+    .inbox-action:hover,
+    .inbox-action:active {
+        transform: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .inbox-nav__bar,
+    .inbox-tabs,
+    .inbox-tab,
+    .inbox-search__toggle,
+    .inbox-search__input,
+    .inbox-row,
+    .inbox-row__expanded,
+    .inbox-action,
+    .inbox-filter,
+    .inbox-filter__chip,
+    .inbox-cornerbar {
+        border-color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .inbox-tab[aria-selected="true"],
+    .inbox-tab.is-active,
+    .inbox-row[data-selected="true"],
+    .inbox-row[aria-selected="true"],
+    .inbox-row.is-selected,
+    .inbox-filter__chip--active,
+    .inbox-filter__chip.is-active,
+    .inbox-filter__chip[aria-pressed="true"],
+    .inbox-filter__chip[data-selected="true"],
+    .inbox-filter__chip[data-pressed="true"] {
+        outline: 1px solid Highlight;
+        outline-offset: -1px;
+    }
+
+    .inbox-row.is-flagged::before {
+        background: Highlight;
+    }
 }

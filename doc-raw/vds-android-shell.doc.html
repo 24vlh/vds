@@ -268,28 +268,28 @@
                                     </div>
 
                                     <div class="android-shell__action-grid">
-                                        <a class="android-shell__action-tile" href="#">
+                                        <a class="android-shell__action-tile" href="/app/android-shell/demo">
                                             <span class="android-shell__action-icon" aria-hidden="true">
                                                 <span class="icon icon--mask icon--layers"></span>
                                             </span>
                                             <div class="android-shell__action-label">Review queue</div>
                                             <div class="android-shell__action-support">Open the items that still need manual consent.</div>
                                         </a>
-                                        <a class="android-shell__action-tile" href="#">
+                                        <a class="android-shell__action-tile" href="/app/android-shell/demo">
                                             <span class="android-shell__action-icon" aria-hidden="true">
                                                 <span class="icon icon--mask icon--bell"></span>
                                             </span>
                                             <div class="android-shell__action-label">Broadcast alert</div>
                                             <div class="android-shell__action-support">Send a one-off notice to every active client.</div>
                                         </a>
-                                        <a class="android-shell__action-tile" href="#">
+                                        <a class="android-shell__action-tile" href="/app/android-shell/demo">
                                             <span class="android-shell__action-icon" aria-hidden="true">
                                                 <span class="icon icon--mask icon--tip"></span>
                                             </span>
                                             <div class="android-shell__action-label">Battery guide</div>
                                             <div class="android-shell__action-support">Jump to the monitor exemption walkthrough.</div>
                                         </a>
-                                        <a class="android-shell__action-tile" href="#">
+                                        <a class="android-shell__action-tile" href="/app/android-shell/demo">
                                             <span class="android-shell__action-icon" aria-hidden="true">
                                                 <span class="icon icon--mask icon--export-outline"></span>
                                             </span>
@@ -302,30 +302,30 @@
                         </main>
 
                         <footer class="android-shell__bottom-bar">
-                            <a class="android-shell__fab android-shell__fab--float" href="#" aria-label="Create new relay">
+                            <a class="android-shell__fab android-shell__fab--float" href="/app/android-shell/demo" aria-label="Create new relay">
                                 <span aria-hidden="true" class="icon icon--mask icon--plus"></span>
                             </a>
 
                             <nav class="android-shell__bottom-nav" aria-label="Primary">
-                                <a class="android-shell__nav-link android-shell__nav-link--active" aria-current="page" href="#">
+                                <a class="android-shell__nav-link android-shell__nav-link--active" aria-current="page" href="/app/android-shell/demo">
                                     <span class="android-shell__nav-icon" aria-hidden="true">
                                         <span class="icon icon--mask icon--home"></span>
                                     </span>
                                     <span class="android-shell__nav-label">Home</span>
                                 </a>
-                                <a class="android-shell__nav-link" href="#">
+                                <a class="android-shell__nav-link" href="/app/android-shell/demo">
                                     <span class="android-shell__nav-icon" aria-hidden="true">
                                         <span class="icon icon--mask icon--layers"></span>
                                     </span>
                                     <span class="android-shell__nav-label">Queue</span>
                                 </a>
-                                <a class="android-shell__nav-link" href="#">
+                                <a class="android-shell__nav-link" href="/app/android-shell/demo">
                                     <span class="android-shell__nav-icon" aria-hidden="true">
                                         <span class="icon icon--mask icon--alert"></span>
                                     </span>
                                     <span class="android-shell__nav-label">Alerts</span>
                                 </a>
-                                <a class="android-shell__nav-link" href="#">
+                                <a class="android-shell__nav-link" href="/app/android-shell/demo">
                                     <span class="android-shell__nav-icon" aria-hidden="true">
                                         <span class="icon icon--mask icon--settings"></span>
                                     </span>
@@ -621,25 +621,25 @@
 
                         <footer class="android-shell__bottom-bar">
                             <nav class="android-shell__bottom-nav" aria-label="Primary">
-                                <a class="android-shell__nav-link" href="#">
+                                <a class="android-shell__nav-link" href="/app/android-shell/demo">
                                     <span class="android-shell__nav-icon" aria-hidden="true">
                                         <span class="icon icon--mask icon--home"></span>
                                     </span>
                                     <span class="android-shell__nav-label">Home</span>
                                 </a>
-                                <a class="android-shell__nav-link" href="#">
+                                <a class="android-shell__nav-link" href="/app/android-shell/demo">
                                     <span class="android-shell__nav-icon" aria-hidden="true">
                                         <span class="icon icon--mask icon--layers"></span>
                                     </span>
                                     <span class="android-shell__nav-label">Queue</span>
                                 </a>
-                                <a class="android-shell__nav-link android-shell__nav-link--active" aria-current="page" href="#">
+                                <a class="android-shell__nav-link android-shell__nav-link--active" aria-current="page" href="/app/android-shell/demo">
                                     <span class="android-shell__nav-icon" aria-hidden="true">
                                         <span class="icon icon--mask icon--inbox"></span>
                                     </span>
                                     <span class="android-shell__nav-label">Inbox</span>
                                 </a>
-                                <a class="android-shell__nav-link" href="#">
+                                <a class="android-shell__nav-link" href="/app/android-shell/demo">
                                     <span class="android-shell__nav-icon" aria-hidden="true">
                                         <span class="icon icon--mask icon--settings"></span>
                                     </span>
@@ -1253,6 +1253,12 @@
                     Android-style shells must feel practical and calm. Readability, reachability,
                     and clear hierarchy matter more than aggressive branding inside app chrome.
                 </p>
+                <p class="doc-block__summary">
+                    Treat this as an app/work-surface pattern. VDS provides the chrome, spacing,
+                    safe-area, navigation, pane, dashboard and FAB hooks; application code owns
+                    route state, active destination sync, filter state, pane state, action behavior,
+                    badge/count freshness, and live status announcements.
+                </p>
             </header>
 
             <div class="doc-block__body section__grid-2 section__grid-sm">
@@ -1289,6 +1295,7 @@
                         <li>Expose the current destination with <code>aria-current="page"</code> in bottom navigation.</li>
                         <li>Provide labels for icon-only controls and keep focus rings visible.</li>
                         <li>Use <code>aria-pressed</code> for toggle-like filter chips and promote a filter group to a toolbar only when keyboard focus management is implemented.</li>
+                        <li>Keep navigation, search, pane switching, FAB actions, badge counts, and live updates in application code; synchronize CSS hooks with <code>aria-current</code>, <code>aria-pressed</code>, and labels when state changes.</li>
                         <li>Keep text/icon contrast strong enough to meet Android accessibility guidance.</li>
                     </ul>
                 </div>

@@ -144,7 +144,7 @@ Sections:
                                     </div>
 
                                     <div class="inbox-row__actions inbox-row__actions--right">
-                                        <a class="inbox-action inbox-action--flat" href="#">Close</a>
+                                        <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Close</a>
                                     </div>
 
                                     <div class="inbox-row__data">
@@ -232,6 +232,14 @@ Sections:
                     two-column layout on wide screens (<code>meta</code> + <code>actions</code>) and reflows to single
                     column on small screens.
                 </p>
+                <p class="doc-block__summary">
+                    VDS styles the dense work-list surface only. Application code owns search,
+                    filtering, tab selection, row selection, expansion/collapse, virtualization,
+                    route/action execution, disabled-anchor semantics, loading state, focus movement,
+                    keyboard behavior, and live announcements. Keep <code>aria-selected</code>,
+                    <code>aria-expanded</code>, <code>aria-controls</code>, <code>aria-pressed</code>,
+                    and <code>aria-disabled</code> synchronized with the visible state.
+                </p>
             </header>
 
             <div class="doc-block__body">
@@ -278,7 +286,7 @@ Sections:
 
                                     <div class="inbox-row__actions">
                                         <a aria-label="Edit" class="inbox-action inbox-action--icon"
-                                           href="#">
+                                           href="/app/inbox/items">
                                             <svg fill="none" stroke="currentColor" stroke-width="1.8"
                                                  viewBox="0 0 24 24">
                                                 <path d="M4 20h4l10-10-4-4L4 16v4z"/>
@@ -286,7 +294,7 @@ Sections:
                                             </svg>
                                         </a>
                                         <a aria-label="Delete"
-                                           class="inbox-action inbox-action--icon inbox-action--danger" href="#">
+                                           class="inbox-action inbox-action--icon inbox-action--danger" href="/app/inbox/items">
                                             <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
                                                       stroke-linejoin="round"
@@ -409,7 +417,7 @@ Sections:
                             </div>
 
                             <div class="inbox-nav__right">
-                                <a aria-label="Refresh" class="inbox-action inbox-action--icon" href="#">
+                                <a aria-label="Refresh" class="inbox-action inbox-action--icon" href="/app/inbox/items">
                                     <svg aria-hidden="true" viewBox="0 0 16 16">
                                         <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
                                               stroke-linecap="round"
@@ -425,19 +433,19 @@ Sections:
                                               stroke-linejoin="round" stroke-width="1.6"/>
                                     </svg>
                                 </a>
-                                <a class="inbox-action inbox-action--accent" href="#">New</a>
+                                <a class="inbox-action inbox-action--accent" href="/app/inbox/items">New</a>
                             </div>
 
                         </div>
 
                         <div class="inbox-nav__bottom inbox-nav__bottom--split">
                             <div class="inbox-nav__bottom-left">
-                                <a class="inbox-action inbox-action--flat" href="#">Filter</a>
-                                <a class="inbox-action inbox-action--flat inbox__hide-sm" href="#">Bulk
+                                <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Filter</a>
+                                <a class="inbox-action inbox-action--flat inbox__hide-sm" href="/app/inbox/items">Bulk
                                     select</a>
                             </div>
                             <div class="inbox-nav__bottom-right">
-                                <a class="inbox-action inbox-action--flat" href="#">Clear</a>
+                                <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Clear</a>
                             </div>
                         </div>
                     </div>
@@ -451,26 +459,26 @@ Sections:
 
         &lt;div class="inbox-nav__left"&gt;
             &lt;div class="inbox-search"&gt;
-                &lt;button class="inbox-search__toggle" aria-expanded="false"&gt;...&lt;/button&gt;
+                &lt;button class="inbox-search__toggle" type="button" aria-expanded="false"&gt;...&lt;/button&gt;
                 &lt;div class="inbox-search__field"&gt;
                     &lt;input class="inbox-search__input" type="text" placeholder="Search…" /&gt;
-                    &lt;button class="inbox-action inbox-action--icon inbox-action--borderless"
+                    &lt;button class="inbox-action inbox-action--icon inbox-action--borderless" type="button"
                         aria-label="Close search"&gt;...&lt;/button&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
 
         &lt;div class="inbox-tabs" role="tablist"&gt;
-            &lt;button class="inbox-tab is-active" role="tab" aria-selected="true"&gt;
+            &lt;button class="inbox-tab is-active" type="button" role="tab" aria-selected="true"&gt;
                 &lt;span&gt;Messages&lt;/span&gt;
                 &lt;span class="inbox-tab__count"&gt;12&lt;/span&gt;
             &lt;/button&gt;
-            &lt;button class="inbox-tab" role="tab" aria-selected="false"&gt;...&lt;/button&gt;
+            &lt;button class="inbox-tab" type="button" role="tab" aria-selected="false"&gt;...&lt;/button&gt;
         &lt;/div&gt;
 
         &lt;div class="inbox-nav__right"&gt;
-            &lt;a class="inbox-action inbox-action--icon" href="#"&gt;...&lt;/a&gt;
-            &lt;a class="inbox-action inbox-action--accent" href="#"&gt;New&lt;/a&gt;
+            &lt;a class="inbox-action inbox-action--icon" href="/app/inbox/items"&gt;...&lt;/a&gt;
+            &lt;a class="inbox-action inbox-action--accent" href="/app/inbox/items"&gt;New&lt;/a&gt;
         &lt;/div&gt;
 
     &lt;/div&gt;
@@ -550,7 +558,7 @@ Sections:
                             </div>
 
                             <div class="inbox-nav__right">
-                                <a aria-label="Refresh" class="inbox-action inbox-action--icon" href="#">
+                                <a aria-label="Refresh" class="inbox-action inbox-action--icon" href="/app/inbox/items">
                                     <svg aria-hidden="true" viewBox="0 0 16 16">
                                         <path d="M13 8a5 5 0 0 1-9.2 2.6" fill="none" stroke="currentColor"
                                               stroke-linecap="round"
@@ -566,7 +574,7 @@ Sections:
                                               stroke-linejoin="round" stroke-width="1.6"/>
                                     </svg>
                                 </a>
-                                <a class="inbox-action inbox-action--accent" href="#">New</a>
+                                <a class="inbox-action inbox-action--accent" href="/app/inbox/items">New</a>
                             </div>
 
                         </div>
@@ -576,10 +584,10 @@ Sections:
 
                 <div class="doc-block__code">
 <pre class="doc-block__code"><code>&lt;div class="inbox-search is-open"&gt;
-    &lt;button class="inbox-search__toggle" aria-expanded="true"&gt;...&lt;/button&gt;
+    &lt;button class="inbox-search__toggle" type="button" aria-expanded="true"&gt;...&lt;/button&gt;
     &lt;div class="inbox-search__field"&gt;
         &lt;input class="inbox-search__input" /&gt;
-        &lt;button class="inbox-action inbox-action--icon inbox-action--borderless"
+        &lt;button class="inbox-action inbox-action--icon inbox-action--borderless" type="button"
             aria-label="Close search"&gt;...&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -665,7 +673,7 @@ Sections:
                         <div class="inbox-nav__bottom inbox-nav__bottom--left">
                             <button class="inbox-action" disabled type="button">Default</button>
                             <button class="inbox-action inbox-action--danger" disabled type="button">Delete</button>
-                            <a aria-disabled="true" class="inbox-action inbox-action--flat" href="#"
+                            <a aria-disabled="true" class="inbox-action inbox-action--flat" href="/app/inbox/items"
                                tabindex="-1">Filter</a>
                             <button aria-label="Close disabled"
                                     class="inbox-action inbox-action--icon inbox-action--borderless"
@@ -691,7 +699,7 @@ Sections:
 &lt;button class="inbox-action" type="button" disabled&gt;Default&lt;/button&gt;
 &lt;button class="inbox-action inbox-action--danger" type="button" disabled&gt;Delete&lt;/button&gt;
 
-&lt;a class="inbox-action inbox-action--flat" href="#" aria-disabled="true"
+&lt;a class="inbox-action inbox-action--flat" href="/app/inbox/items" aria-disabled="true"
   tabindex="-1"&gt;Filter&lt;/a&gt;
 &lt;button class="inbox-action inbox-action--icon inbox-action--borderless"
   type="button" disabled aria-label="Close"&gt;...&lt;/button&gt;
@@ -756,7 +764,7 @@ Section:
 
                                     <div class="inbox-row__actions">
                                         <a aria-label="Edit"
-                                           class="inbox-action inbox-action--icon inbox-action--flat" href="#">
+                                           class="inbox-action inbox-action--icon inbox-action--flat" href="/app/inbox/items">
                                             <svg fill="none" stroke="currentColor" stroke-width="1.8"
                                                  viewBox="0 0 24 24">
                                                 <path d="M4 20h4l10-10-4-4L4 16v4z"/>
@@ -765,7 +773,7 @@ Section:
                                         </a>
                                         <a aria-label="Delete"
                                            class="inbox-action inbox-action--icon inbox-action--danger inbox-action--flat"
-                                           href="#">
+                                           href="/app/inbox/items">
                                             <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
                                                       stroke-linejoin="round"
@@ -837,7 +845,7 @@ Section:
 
                                     <div class="inbox-row__actions">
                                         <a aria-label="Open" class="inbox-action inbox-action--icon"
-                                           href="#">
+                                           href="/app/inbox/items">
                                             <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
                                                       stroke-linejoin="round"
@@ -851,7 +859,7 @@ Section:
                                             </svg>
                                         </a>
                                         <a aria-label="Edit" class="inbox-action inbox-action--icon"
-                                           href="#">
+                                           href="/app/inbox/items">
                                             <svg fill="none" stroke="currentColor" stroke-width="1.8"
                                                  viewBox="0 0 24 24">
                                                 <path d="M4 20h4l10-10-4-4L4 16v4z"/>
@@ -859,7 +867,7 @@ Section:
                                             </svg>
                                         </a>
                                         <a aria-label="Delete"
-                                           class="inbox-action inbox-action--icon inbox-action--danger" href="#">
+                                           class="inbox-action inbox-action--icon inbox-action--danger" href="/app/inbox/items">
                                             <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
                                                       stroke-linejoin="round"
@@ -942,11 +950,11 @@ Section:
                                     </div>
 
                                     <div class="inbox-row__actions">
-                                        <a class="inbox-action" href="#">Open</a>
-                                        <a class="inbox-action" href="#">Edit</a>
+                                        <a class="inbox-action" href="/app/inbox/items">Open</a>
+                                        <a class="inbox-action" href="/app/inbox/items">Edit</a>
                                         <a class="inbox-action inbox-action--flat inbox__hide-sm"
-                                           href="#">Duplicate</a>
-                                        <a class="inbox-action inbox-action--danger" href="#">Delete</a>
+                                           href="/app/inbox/items">Duplicate</a>
+                                        <a class="inbox-action inbox-action--danger" href="/app/inbox/items">Delete</a>
                                     </div>
 
                                     <div class="inbox-row__data">
@@ -1050,14 +1058,14 @@ Section:
                                     </div>
 
                                     <div class="inbox-row__actions">
-                                        <a class="inbox-action inbox-action--accent" href="#">Open</a>
-                                        <a class="inbox-action" href="#">Edit</a>
-                                        <a class="inbox-action" href="#">Assign</a>
+                                        <a class="inbox-action inbox-action--accent" href="/app/inbox/items">Open</a>
+                                        <a class="inbox-action" href="/app/inbox/items">Edit</a>
+                                        <a class="inbox-action" href="/app/inbox/items">Assign</a>
                                         <a class="inbox-action inbox-action--flat inbox__hide-sm"
-                                           href="#">Pin</a>
+                                           href="/app/inbox/items">Pin</a>
                                         <a class="inbox-action inbox-action--flat inbox__hide-sm"
-                                           href="#">Export</a>
-                                        <a class="inbox-action inbox-action--danger" href="#">Delete</a>
+                                           href="/app/inbox/items">Export</a>
+                                        <a class="inbox-action inbox-action--danger" href="/app/inbox/items">Delete</a>
                                     </div>
 
                                     <div class="inbox-row__data">
@@ -1132,8 +1140,8 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
-                                            <a class="inbox-action inbox-action--flat" href="#">Edit</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Edit</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">
@@ -1165,7 +1173,7 @@ Section:
                                         </div>
                                         <div class="inbox-row__actions">
                                             <a aria-label="Open"
-                                               class="inbox-action inbox-action--icon inbox-action--flat" href="#">
+                                               class="inbox-action inbox-action--icon inbox-action--flat" href="/app/inbox/items">
                                                 <svg aria-hidden="true" viewBox="0 0 16 16">
                                                     <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
                                                           stroke-linejoin="round"
@@ -1262,10 +1270,10 @@ Section:
                                     </div>
 
                                     <div class="inbox-row__actions">
-                                        <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                        <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
                                         <a class="inbox-action inbox-action--flat inbox__hide-sm"
-                                           href="#">Snooze</a>
-                                        <a class="inbox-action inbox-action--flat" href="#">Archive</a>
+                                           href="/app/inbox/items">Snooze</a>
+                                        <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Archive</a>
                                     </div>
 
                                     <div class="inbox-row__data">
@@ -1332,7 +1340,7 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">Row state: <code>.is-bookmarked</code>.
@@ -1360,7 +1368,7 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">Row state: <code>.is-starred</code>.
@@ -1392,7 +1400,7 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">
@@ -1426,7 +1434,7 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">
@@ -1460,7 +1468,7 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">
@@ -1494,7 +1502,7 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">
@@ -1528,7 +1536,7 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--flat" href="#">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">
@@ -1603,8 +1611,8 @@ Section:
                                     </div>
 
                                     <div class="inbox-row__actions">
-                                        <a class="inbox-action inbox-action--flat" href="#">Open</a>
-                                        <a class="inbox-action inbox-action--flat" href="#">Edit</a>
+                                        <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
+                                        <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Edit</a>
                                     </div>
 
                                     <div class="inbox-row__data">
@@ -1667,7 +1675,7 @@ Section:
                                     </div>
                                     <div class="inbox-row__actions">
                                         <a aria-label="Open" class="inbox-action inbox-action--icon"
-                                           href="#">
+                                           href="/app/inbox/items">
                                             <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M6.5 3.5h6v9h-6" fill="none" stroke="currentColor"
                                                       stroke-linejoin="round"
@@ -1681,7 +1689,7 @@ Section:
                                             </svg>
                                         </a>
                                         <a aria-label="Edit" class="inbox-action inbox-action--icon"
-                                           href="#">
+                                           href="/app/inbox/items">
                                             <svg fill="none" stroke="currentColor" stroke-width="1.8"
                                                  viewBox="0 0 24 24">
                                                 <path d="M4 20h4l10-10-4-4L4 16v4z"/>
@@ -1689,7 +1697,7 @@ Section:
                                             </svg>
                                         </a>
                                         <a aria-label="Delete"
-                                           class="inbox-action inbox-action--icon inbox-action--danger" href="#">
+                                           class="inbox-action inbox-action--icon inbox-action--danger" href="/app/inbox/items">
                                             <svg aria-hidden="true" viewBox="0 0 16 16">
                                                 <path d="M4.5 5.5v7h7v-7" fill="none" stroke="currentColor"
                                                       stroke-linejoin="round"
@@ -1726,12 +1734,12 @@ Section:
                                         </div>
                                     </div>
                                     <div class="inbox-row__actions inbox-row__actions--left">
-                                        <a class="inbox-action inbox-action--flat" href="#">Open</a>
-                                        <a class="inbox-action inbox-action--flat" href="#">Edit</a>
+                                        <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Open</a>
+                                        <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Edit</a>
                                         <a class="inbox-action inbox-action--flat inbox__hide-sm"
-                                           href="#">Duplicate</a>
+                                           href="/app/inbox/items">Duplicate</a>
                                         <a class="inbox-action inbox-action--flat inbox-action--danger"
-                                           href="#">Delete</a>
+                                           href="/app/inbox/items">Delete</a>
                                     </div>
                                     <div class="inbox-row__data">
                                         <div class="inbox-row__glance">Use when you want the title to keep full
@@ -1754,9 +1762,9 @@ Section:
                                         </div>
                                     </div>
                                     <div class="inbox-row__actions inbox-row__actions--right">
-                                        <a class="inbox-action" href="#">Open</a>
-                                        <a class="inbox-action" href="#">Edit</a>
-                                        <a class="inbox-action inbox-action--danger" href="#">Delete</a>
+                                        <a class="inbox-action" href="/app/inbox/items">Open</a>
+                                        <a class="inbox-action" href="/app/inbox/items">Edit</a>
+                                        <a class="inbox-action inbox-action--danger" href="/app/inbox/items">Delete</a>
                                     </div>
                                     <div class="inbox-row__data">
                                         <div class="inbox-row__glance">Actions span the row; alignment helpers
@@ -1815,9 +1823,9 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action" href="#">Open</a>
-                                            <a class="inbox-action" href="#">Edit</a>
-                                            <a class="inbox-action inbox-action--danger" href="#">Delete</a>
+                                            <a class="inbox-action" href="/app/inbox/items">Open</a>
+                                            <a class="inbox-action" href="/app/inbox/items">Edit</a>
+                                            <a class="inbox-action inbox-action--danger" href="/app/inbox/items">Delete</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">Good for inbox density: controls stay
@@ -1839,10 +1847,10 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--accent" href="#">Open</a>
-                                            <a class="inbox-action inbox-action--flat" href="#">Edit</a>
+                                            <a class="inbox-action inbox-action--accent" href="/app/inbox/items">Open</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Edit</a>
                                             <a class="inbox-action inbox-action--flat inbox-action--danger"
-                                               href="#">Delete</a>
+                                               href="/app/inbox/items">Delete</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">Use a single strong action
@@ -1862,8 +1870,8 @@ Section:
                 <div class="doc-block__code">
 <pre class="doc-block__code"><code>&lt;div class="vds-inbox inbox--actions-flat"&gt;...&lt;/div&gt;
 
-&lt;a class="inbox-action inbox-action--flat" href="#"&gt;Edit&lt;/a&gt;
-&lt;a class="inbox-action inbox-action--accent" href="#"&gt;Open&lt;/a&gt;
+&lt;a class="inbox-action inbox-action--flat" href="/app/inbox/items"&gt;Edit&lt;/a&gt;
+&lt;a class="inbox-action inbox-action--accent" href="/app/inbox/items"&gt;Open&lt;/a&gt;
 </code></pre>
                 </div>
             </div>
@@ -1939,11 +1947,11 @@ Section:
                                     </div>
 
                                     <div class="inbox-row__actions inbox-row__actions--right">
-                                        <a class="inbox-action inbox-action--accent" href="#">Open</a>
-                                        <a class="inbox-action inbox-action--flat" href="#">Collapse</a>
-                                        <a class="inbox-action inbox-action--flat" href="#">Edit</a>
+                                        <a class="inbox-action inbox-action--accent" href="/app/inbox/items">Open</a>
+                                        <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Collapse</a>
+                                        <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Edit</a>
                                         <a class="inbox-action inbox-action--flat inbox-action--danger"
-                                           href="#">Delete</a>
+                                           href="/app/inbox/items">Delete</a>
                                     </div>
 
                                     <div class="inbox-row__data">
@@ -2003,7 +2011,7 @@ Section:
 
                 <div class="doc-block__code">
 <pre class="doc-block__code"><code>&lt;div class="inbox-row inbox-row--open"&gt;
-  &lt;button class="inbox-row__main" aria-expanded="true"&gt;
+  &lt;button class="inbox-row__main" type="button" aria-expanded="true"&gt;
     &lt;div class="inbox-row__inner"&gt;
       ...
     &lt;/div&gt;
@@ -2059,7 +2067,7 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--flat" href="#">Details</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Details</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">
@@ -2089,7 +2097,7 @@ Section:
                                             </div>
                                         </div>
                                         <div class="inbox-row__actions">
-                                            <a class="inbox-action inbox-action--flat" href="#">Collapse</a>
+                                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Collapse</a>
                                         </div>
                                         <div class="inbox-row__data">
                                             <div class="inbox-row__glance">Second example with the sibling
@@ -2169,21 +2177,21 @@ Section:
                     <div aria-label="Inbox filters" class="inbox-filter" role="region">
                         <div class="inbox-filter__group">
                             <div class="inbox-filter__label">View</div>
-                            <a class="inbox-filter__chip inbox-filter__chip--active" href="#">All</a>
-                            <a class="inbox-filter__chip" href="#">Unread</a>
-                            <a class="inbox-filter__chip" href="#">Flagged</a>
+                            <a class="inbox-filter__chip inbox-filter__chip--active" href="/app/inbox/items">All</a>
+                            <a class="inbox-filter__chip" href="/app/inbox/items">Unread</a>
+                            <a class="inbox-filter__chip" href="/app/inbox/items">Flagged</a>
                         </div>
 
                         <div class="inbox-filter__group">
                             <div class="inbox-filter__label">Type</div>
-                            <a class="inbox-filter__chip" href="#">Messages</a>
-                            <a class="inbox-filter__chip" href="#">Emails</a>
-                            <a class="inbox-filter__chip inbox__hide-sm" href="#">Ideas</a>
+                            <a class="inbox-filter__chip" href="/app/inbox/items">Messages</a>
+                            <a class="inbox-filter__chip" href="/app/inbox/items">Emails</a>
+                            <a class="inbox-filter__chip inbox__hide-sm" href="/app/inbox/items">Ideas</a>
                         </div>
 
                         <div class="inbox-filter__actions">
-                            <a class="inbox-action inbox-action--flat" href="#">Clear</a>
-                            <a class="inbox-action inbox-action--accent" href="#">Apply</a>
+                            <a class="inbox-action inbox-action--flat" href="/app/inbox/items">Clear</a>
+                            <a class="inbox-action inbox-action--accent" href="/app/inbox/items">Apply</a>
                         </div>
                     </div>
 
@@ -2281,8 +2289,8 @@ Section:
                 <div class="doc-block__preview">
                     <div aria-label="Corner actions (right)" class="inbox-cornerbar">
                         <div class="inbox-cornerbar__inner">
-                            <a class="inbox-action inbox-action--accent" href="#">Add</a>
-                            <a aria-label="Compose" class="inbox-action inbox-action--icon" href="#">
+                            <a class="inbox-action inbox-action--accent" href="/app/inbox/items">Add</a>
+                            <a aria-label="Compose" class="inbox-action inbox-action--icon" href="/app/inbox/items">
                                 <svg aria-hidden="true" viewBox="0 0 16 16">
                                     <path d="M3 11.8V13h1.2l7-7-1.2-1.2z" fill="none" stroke="currentColor"
                                           stroke-linejoin="round"
@@ -2296,7 +2304,7 @@ Section:
 
                     <div aria-label="Corner actions (left)" class="inbox-cornerbar inbox-cornerbar--left">
                         <div class="inbox-cornerbar__inner">
-                            <a class="inbox-action inbox-action--accent" href="#">New</a>
+                            <a class="inbox-action inbox-action--accent" href="/app/inbox/items">New</a>
                         </div>
                     </div>
                 </div>
@@ -2357,13 +2365,13 @@ Section:
                                     </div>
 
                                     <div class="inbox-row__actions">
-                                        <a class="inbox-action inbox-action--accent" href="#">Open</a>
+                                        <a class="inbox-action inbox-action--accent" href="/app/inbox/items">Open</a>
                                         <a class="inbox-action inbox-action--flat inbox__hide-sm"
-                                           href="#">Edit</a>
+                                           href="/app/inbox/items">Edit</a>
                                         <a class="inbox-action inbox-action--flat inbox__hide-md"
-                                           href="#">Duplicate</a>
+                                           href="/app/inbox/items">Duplicate</a>
                                         <a class="inbox-action inbox-action--flat inbox-action--danger"
-                                           href="#">Delete</a>
+                                           href="/app/inbox/items">Delete</a>
                                     </div>
 
                                     <div class="inbox-row__data">
