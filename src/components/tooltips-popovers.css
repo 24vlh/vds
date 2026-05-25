@@ -62,7 +62,8 @@
 }
 
 .tooltip--visible,
-.tooltip[data-state="open"] {
+.tooltip[data-state="open"],
+.tooltip[aria-hidden="false"] {
     opacity: 1;
     --tooltip-motion: 0rem;
 }
@@ -187,7 +188,8 @@
 }
 
 .tooltip--interactive.tooltip--visible,
-.tooltip--interactive[data-state="open"] {
+.tooltip--interactive[data-state="open"],
+.tooltip--interactive[aria-hidden="false"] {
     pointer-events: auto;
 }
 
@@ -276,7 +278,8 @@
 }
 
 .popover--open,
-.popover[data-state="open"] {
+.popover[data-state="open"],
+.popover[aria-hidden="false"] {
     opacity: 1;
     pointer-events: auto;
     --popover-motion: 0rem;
@@ -470,4 +473,35 @@
     background-color: var(--semantic-danger-bg);
     color: var(--semantic-danger-text);
     border-color: var(--semantic-danger-border);
+}
+
+@media (max-width: 640px) {
+    .tooltip,
+    .popover {
+        max-width: min(var(--tooltip-max-width), calc(100vw - (var(--space-4) * 2)));
+    }
+
+    .popover {
+        max-width: min(var(--popover-max-width), calc(100vw - (var(--space-4) * 2)));
+        min-width: min(var(--popover-min-width), calc(100vw - (var(--space-4) * 2)));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tooltip,
+    .popover {
+        --tooltip-motion: 0rem;
+        --popover-motion: 0rem;
+        transition: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .tooltip,
+    .popover,
+    .tooltip__arrow,
+    .popover__arrow {
+        border-color: CanvasText;
+        box-shadow: none;
+    }
 }

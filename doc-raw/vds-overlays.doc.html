@@ -97,8 +97,9 @@
                             <li class="section__list-item">
                                 <span class="section__list-item-title">Accessibility</span>
                                 <span class="section__list-item-desc">
-                  Wire <code>role="dialog"</code>, <code>aria-modal="true"</code>, focus management
-                  and Escape key handlers at JS level.
+                  Wire <code>role="dialog"</code>, <code>aria-modal="true"</code>, labels, focus trap,
+                  focus return, inert/background handling, Escape, outside-click dismissal, and portal
+                  order at JS level.
                 </span>
                             </li>
                             <li class="section__list-item">
@@ -116,7 +117,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">CSS</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>.backdrop { /* full-screen dim layer behind modals & drawers */ }
@@ -149,19 +150,19 @@
 
             <div class="doc-block__body">
                 <div class="layout-inline">
-                    <button class="button button--primary" data-target="modal-basic">Open Modal</button>
-                    <button class="button button--secondary" data-target="modal-sheet">Open Bottom Sheet</button>
-                    <button class="button button--info" data-target="modal-fullscreen-mobile">Open Fullscreen Mobile
+                    <button class="button button--primary" data-target="modal-basic" type="button">Open Modal</button>
+                    <button class="button button--secondary" data-target="modal-sheet" type="button">Open Bottom Sheet</button>
+                    <button class="button button--info" data-target="modal-fullscreen-mobile" type="button">Open Fullscreen Mobile
                     </button>
-                    <button class="button button--outline-accent" data-target="drawer-left">Open Left Drawer</button>
-                    <button class="button button--outline-info" data-target="drawer-right">Open Right Drawer</button>
-                    <button class="button button--warning" data-target="backdrop-demo">Show Backdrop</button>
-                    <button class="button button--success" data-target="inline-overlay">Show Inline Overlay</button>
-                    <button class="button button--primary" data-target="modal-workspace">Open Workspace Modal</button>
-                    <button class="button button--danger" data-target="modal-confirm">Open Confirmation Dialog</button>
-                    <button class="button button--warning" data-target="modal-blocking-confirm">Open Blocking Confirm
+                    <button class="button button--outline-accent" data-target="drawer-left" type="button">Open Left Drawer</button>
+                    <button class="button button--outline-info" data-target="drawer-right" type="button">Open Right Drawer</button>
+                    <button class="button button--warning" data-target="backdrop-demo" type="button">Show Backdrop</button>
+                    <button class="button button--success" data-target="inline-overlay" type="button">Show Inline Overlay</button>
+                    <button class="button button--primary" data-target="modal-workspace" type="button">Open Workspace Modal</button>
+                    <button class="button button--danger" data-target="modal-confirm" type="button">Open Confirmation Dialog</button>
+                    <button class="button button--warning" data-target="modal-blocking-confirm" type="button">Open Blocking Confirm
                     </button>
-                    <button class="button button--info" data-action="export-archive" data-target="modal-action">Run
+                    <button class="button button--info" data-action="export-archive" data-target="modal-action" type="button">Run
                         Export Task
                     </button>
                 </div>
@@ -173,7 +174,7 @@
                 </div>
                 <div class="overlay-inline__body">
                     <p>This panel appears inline.</p>
-                    <button class="button button--subtle" data-close="inline-overlay">Close</button>
+                    <button class="button button--subtle" data-close="inline-overlay" type="button">Close</button>
                 </div>
             </div>
         </div>
@@ -189,13 +190,13 @@
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-basic-title">Basic Modal</h3>
-                    <button class="modal__close" data-close="modal-basic">&times;</button>
+                    <button aria-label="Close basic modal" class="modal__close" data-close="modal-basic" type="button">&times;</button>
                 </header>
                 <div class="modal__body">
                     <p>This is a live modal example.</p>
                 </div>
                 <footer class="modal__footer">
-                    <button class="button button--secondary" data-close="modal-basic">Close</button>
+                    <button class="button button--secondary" data-close="modal-basic" type="button">Close</button>
                 </footer>
             </div>
         </div>
@@ -209,7 +210,7 @@
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-fullscreen-title">Fullscreen Mobile</h3>
-                    <button class="modal__close" data-close="modal-fullscreen-mobile">&times;</button>
+                    <button aria-label="Close fullscreen modal" class="modal__close" data-close="modal-fullscreen-mobile" type="button">&times;</button>
                 </header>
                 <div class="modal__body">
                     <p>Becomes fullscreen on mobile screens.</p>
@@ -229,7 +230,7 @@
                 <p>This drawer slides from the left.</p>
             </div>
             <footer class="drawer__footer">
-                <button class="button button--secondary" data-close="drawer-left">Close</button>
+                <button class="button button--secondary" data-close="drawer-left" type="button">Close</button>
             </footer>
         </div>
 
@@ -245,7 +246,7 @@
                 <p>This drawer slides from the right.</p>
             </div>
             <footer class="drawer__footer">
-                <button class="button button--secondary" data-close="drawer-right">Close</button>
+                <button class="button button--secondary" data-close="drawer-right" type="button">Close</button>
             </footer>
         </div>
 
@@ -258,7 +259,7 @@
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-sheet-title">Bottom Sheet</h3>
-                    <button class="modal__close" data-close="modal-sheet">&times;</button>
+                    <button aria-label="Close bottom sheet" class="modal__close" data-close="modal-sheet" type="button">&times;</button>
                 </header>
                 <div class="modal__body">
                     <p>Slides up from the bottom.</p>
@@ -275,7 +276,7 @@
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-workspace-title">Edit workspace</h3>
-                    <button class="modal__close" data-close="modal-workspace">&times;</button>
+                    <button aria-label="Close workspace modal" class="modal__close" data-close="modal-workspace" type="button">&times;</button>
                 </header>
                 <div class="modal__body modal__body--form">
                     <div class="modal__section">
@@ -303,12 +304,12 @@
                 </div>
                 <footer class="modal__footer modal__footer--split">
                     <button class="button button--outline-danger"
-                            data-target="modal-workspace-confirm">
+                            data-target="modal-workspace-confirm" type="button">
                         Delete workspace
                     </button>
                     <div class="button-row">
-                        <button class="button button--secondary" data-close="modal-workspace">Cancel</button>
-                        <button class="button button--primary">Save changes</button>
+                        <button class="button button--secondary" data-close="modal-workspace" type="button">Cancel</button>
+                        <button class="button button--primary" type="button">Save changes</button>
                     </div>
                 </footer>
             </div>
@@ -325,15 +326,15 @@
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-workspace-confirm-title">Delete workspace?</h3>
-                    <button class="modal__close" data-close="modal-workspace-confirm">&times;</button>
+                    <button aria-label="Close delete workspace confirmation" class="modal__close" data-close="modal-workspace-confirm" type="button">&times;</button>
                 </header>
                 <div class="modal__body">
                     <p class="text-sm text-muted">This action cannot be undone.</p>
                 </div>
                 <footer class="modal__footer">
-                    <button class="button button--ghost" data-close="modal-workspace-confirm">Cancel</button>
+                    <button class="button button--ghost" data-close="modal-workspace-confirm" type="button">Cancel</button>
                     <button class="button button--danger"
-                            data-close="modal-workspace-confirm modal-workspace">
+                            data-close="modal-workspace-confirm modal-workspace" type="button">
                         Yes, delete
                     </button>
                 </footer>
@@ -349,14 +350,14 @@
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-confirm-title">Remove member?</h3>
-                    <button class="modal__close" data-close="modal-confirm">&times;</button>
+                    <button aria-label="Close remove member confirmation" class="modal__close" data-close="modal-confirm" type="button">&times;</button>
                 </header>
                 <div class="modal__body">
                     <p class="text-sm text-muted">Access will be revoked immediately.</p>
                 </div>
                 <footer class="modal__footer">
-                    <button class="button button--ghost" data-close="modal-confirm">Cancel</button>
-                    <button class="button button--danger" data-close="modal-confirm">Remove</button>
+                    <button class="button button--ghost" data-close="modal-confirm" type="button">Cancel</button>
+                    <button class="button button--danger" data-close="modal-confirm" type="button">Remove</button>
                 </footer>
             </div>
         </div>
@@ -376,8 +377,8 @@
                     <p class="text-sm text-muted">Please confirm to continue with the update.</p>
                 </div>
                 <footer class="modal__footer">
-                    <button class="button button--ghost" data-close="modal-blocking-confirm">Not now</button>
-                    <button class="button button--danger" data-close="modal-blocking-confirm">Continue</button>
+                    <button class="button button--ghost" data-close="modal-blocking-confirm" type="button">Not now</button>
+                    <button class="button button--danger" data-close="modal-blocking-confirm" type="button">Continue</button>
                 </footer>
             </div>
         </div>
@@ -391,7 +392,7 @@
             <div class="modal__inner">
                 <header class="modal__header">
                     <h3 class="modal__title" id="modal-action-title">Export archive</h3>
-                    <button class="modal__close" data-close="modal-action">&times;</button>
+                    <button aria-label="Close export archive modal" class="modal__close" data-close="modal-action" type="button">&times;</button>
                 </header>
                 <div class="modal__body">
                     <div class="layout-inline layout-inline-start">
@@ -406,12 +407,12 @@
                 </div>
                 <footer class="modal__footer">
                     <div class="button-row" data-state="loading">
-                        <button class="button button--subtle" disabled>Working...</button>
-                        <button class="button button--ghost" data-close="modal-action">Cancel</button>
+                        <button class="button button--subtle" disabled type="button">Working...</button>
+                        <button class="button button--ghost" data-close="modal-action" type="button">Cancel</button>
                     </div>
                     <div class="button-row" data-state="ready" hidden>
-                        <button class="button button--primary">Download ZIP</button>
-                        <button class="button button--ghost" data-close="modal-action">Close</button>
+                        <button class="button button--primary" type="button">Download ZIP</button>
+                        <button class="button button--ghost" data-close="modal-action" type="button">Close</button>
                     </div>
                 </footer>
             </div>
@@ -504,7 +505,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">CSS (excerpt)</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>.backdrop {
@@ -565,7 +566,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">HTML</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>&lt;div class="backdrop backdrop--active"&gt;&lt;/div&gt;
@@ -687,7 +688,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">HTML</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>&lt;div class="backdrop backdrop--active"&gt;&lt;/div&gt;
@@ -780,7 +781,7 @@
                         <div class="doc-block__toolbar">
                             <div class="doc-block__lang">CSS (excerpt)</div>
                             <div class="doc-block__actions">
-                                <button class="doc-block__action">Copy</button>
+                                <button class="doc-block__action" type="button">Copy</button>
                             </div>
                         </div>
                         <pre><code>.modal--a .modal__header,
@@ -915,7 +916,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">HTML</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>&lt;div class="modal modal--active modal--xs"&gt;
@@ -992,7 +993,7 @@
                         <div class="doc-block__toolbar">
                             <div class="doc-block__lang">CSS (excerpt)</div>
                             <div class="doc-block__actions">
-                                <button class="doc-block__action">Copy</button>
+                                <button class="doc-block__action" type="button">Copy</button>
                             </div>
                         </div>
                         <pre><code>@media (max-width: 768px) {
@@ -1041,7 +1042,7 @@
                         <div class="doc-block__toolbar">
                             <div class="doc-block__lang">CSS (excerpt)</div>
                             <div class="doc-block__actions">
-                                <button class="doc-block__action">Copy</button>
+                                <button class="doc-block__action" type="button">Copy</button>
                             </div>
                         </div>
                         <pre><code>@media (max-width: 768px) {
@@ -1074,7 +1075,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">HTML</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>&lt;div class="backdrop backdrop--active"&gt;&lt;/div&gt;
@@ -1180,7 +1181,7 @@
                         <div class="doc-block__toolbar">
                             <div class="doc-block__lang">CSS (excerpt)</div>
                             <div class="doc-block__actions">
-                                <button class="doc-block__action">Copy</button>
+                                <button class="doc-block__action" type="button">Copy</button>
                             </div>
                         </div>
                         <pre><code>.modal--success .modal__header {
@@ -1243,7 +1244,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">HTML</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>&lt;div class="modal modal--active modal--md modal--loading"&gt;
@@ -1373,8 +1374,8 @@
                                 </div>
                             </div>
                             <footer class="modal__footer modal__footer--split">
-                                <button class="button button--outline-danger">Delete</button>
-                                <button class="button button--primary">Save</button>
+                                <button class="button button--outline-danger" type="button">Delete</button>
+                                <button class="button button--primary" type="button">Save</button>
                             </footer>
                         </div>
                     </div>
@@ -1389,8 +1390,8 @@
                                 <p class="text-xs text-muted">This action cannot be undone.</p>
                             </div>
                             <footer class="modal__footer">
-                                <button class="button button--ghost">Cancel</button>
-                                <button class="button button--danger">Delete</button>
+                                <button class="button button--ghost" type="button">Cancel</button>
+                                <button class="button button--danger" type="button">Delete</button>
                             </footer>
                         </div>
                     </div>
@@ -1419,8 +1420,8 @@
                                     <p class="text-xs text-muted">Requires a yes/no decision.</p>
                                 </div>
                                 <footer class="modal__footer">
-                                    <button class="button button--ghost">Later</button>
-                                    <button class="button button--danger">Continue</button>
+                                    <button class="button button--ghost" type="button">Later</button>
+                                    <button class="button button--danger" type="button">Continue</button>
                                 </footer>
                             </div>
                         </div>
@@ -1440,8 +1441,8 @@
                                     </div>
                                 </div>
                                 <footer class="modal__footer">
-                                    <button class="button button--primary">Download</button>
-                                    <button class="button button--ghost">Close</button>
+                                    <button class="button button--primary" type="button">Download</button>
+                                    <button class="button button--ghost" type="button">Close</button>
                                 </footer>
                             </div>
                         </div>
@@ -1452,7 +1453,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">HTML</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>&lt;div class="backdrop" data-overlay="modal-workspace"&gt;&lt;/div&gt;
@@ -1464,7 +1465,7 @@
 &lt;div class="backdrop backdrop--blocking" data-overlay="modal-blocking-confirm"&gt;&lt;/div&gt;
 &lt;div class="modal modal--confirm modal--blocking" data-overlay="modal-blocking-confirm" data-blocking="true"&gt;…&lt;/div&gt;
 
-&lt;button data-action="export-archive" data-target="modal-action"&gt;Run export&lt;/button&gt;
+&lt;button data-action="export-archive" data-target="modal-action" type=&quot;button&quot;&gt;Run export&lt;/button&gt;
 &lt;div class="modal" data-overlay="modal-action"&gt;
   &lt;div class="modal__body"&gt;
     &lt;p data-state="loading"&gt;Preparing...&lt;/p&gt;
@@ -1521,7 +1522,7 @@
                         <div class="doc-block__toolbar">
                             <div class="doc-block__lang">HTML</div>
                             <div class="doc-block__actions">
-                                <button class="doc-block__action">Copy</button>
+                                <button class="doc-block__action" type="button">Copy</button>
                             </div>
                         </div>
                         <pre><code>&lt;div class="modal modal--active modal--lg modal--split"&gt;
@@ -1583,7 +1584,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">CSS (excerpt)</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>.modal--no-header .modal__header {
@@ -1673,7 +1674,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">CSS (excerpt)</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>.drawer {
@@ -1752,7 +1753,7 @@
                         <div class="doc-block__toolbar">
                             <div class="doc-block__lang">HTML</div>
                             <div class="doc-block__actions">
-                                <button class="doc-block__action">Copy</button>
+                                <button class="doc-block__action" type="button">Copy</button>
                             </div>
                         </div>
                         <pre><code>&lt;div class="backdrop backdrop--active backdrop--light"&gt;&lt;/div&gt;
@@ -1804,7 +1805,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">HTML</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>&lt;div class="drawer drawer--right drawer--hidden" role="complementary"
@@ -1894,7 +1895,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">CSS (excerpt)</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>.overlay-inline {
@@ -1951,7 +1952,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">HTML</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>&lt;aside class="overlay-inline"&gt;
@@ -2016,7 +2017,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">HTML</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>&lt;div class="overlay-inline overlay-inline--info"&gt;…&lt;/div&gt;
@@ -2072,7 +2073,7 @@
                     <div class="doc-block__toolbar">
                         <div class="doc-block__lang">CSS (excerpt)</div>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
+                            <button class="doc-block__action" type="button">Copy</button>
                         </div>
                     </div>
                     <pre><code>.modal--level-2 {
@@ -2333,8 +2334,8 @@
 
                         <li>
                             Ensure the close button is a real focusable element:
-                            <code>&lt;button class="modal__close"&gt;</code> with a proper
-                            <code aria-label="Close modal"></code>.
+                            <code>&lt;button class="modal__close" type=&quot;button&quot;&gt;</code> with a proper
+                            <code>aria-label="Close modal"</code>.
                         </li>
 
                         <li>
@@ -2441,17 +2442,18 @@
 
             <div class="doc-block__code">
 <pre class="doc-block__code"><code>1. role="dialog" + aria-modal="true" + labelledby required for modals.
-2. Backdrop must activate with the modal; hide background interaction.
-3. Close button must be a real &lt;button&gt; with aria-label.
+2. Backdrop must activate with the modal; make background content inert or otherwise unavailable.
+3. Close button must be a real &lt;button type=&quot;button&quot;&gt; with aria-label.
 4. Maintain focus trap while modal/drawer is active.
-5. body.modal-open → no background scroll.
+5. body.modal-open → no background scroll; release scroll lock when the last overlay closes.
 6. Overflow regions (modal__body, drawer__body) remain scrollable and flex:1.
 7. State variants (success/danger/info/warning) must reflect real meaning.
 8. Mobile sheets (modal--sheet) must remain keyboard reachable.
 9. Inline overlays require accessible labelling.
 10. No transitions, no blurs, no opacity animations — instant open/close only.
 11. Respect stacking levels with modal--level-* and backdrop--level-*.
-12. Blocking confirms: modal--blocking + data-blocking="true" + backdrop--blocking.</code></pre>
+12. Blocking confirms: modal--blocking + data-blocking="true" + backdrop--blocking.
+13. JS owns portal order, Escape/outside-click policy, nested-dialog policy and focus return.</code></pre>
             </div>
         </article>
     </div>

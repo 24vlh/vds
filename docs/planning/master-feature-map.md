@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `COMP-S05 Overlays and command surfaces`.
+Next session: `COMP-S06 Data and content`.
 
-Reason: `COMP-S04` completed the feedback/status baseline. The next useful step is to stabilize overlays, tooltips/popovers, and command surfaces because they carry the highest dialog, dismissal, focus, and z-index runtime risk.
+Reason: `COMP-S05` completed the overlay, tooltip/popover, and command-surface baseline. The next useful step is to stabilize data and content components: tables, content blocks, guidance, flows, charts, and badge/tag surfaces.
 
 ## Release Programs
 

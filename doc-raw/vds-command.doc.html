@@ -2514,11 +2514,12 @@
 2. Focus moves to .command__input when opening.
 3. Lists use role="listbox"; items use role="option" + aria-selected.
 4. Visual state = .command__item--active kept in sync with aria-selected.
-5. Toggle open state via .command--open only.
-6. .command__empty replaces listbox in no-results mode.
+5. Toggle open state via .command--open, data-state="open" or aria-hidden="false".
+6. .command__empty replaces listbox in no-results mode and should be announced from application code when results change.
 7. Keyboard: ↑↓ navigate · Enter run · Esc close · Tab cycle.
-8. Restore focus to trigger when closing.
-9. Never remove focus-visible outlines.</code></pre>
+8. Focus return: restore focus to trigger when closing.
+9. Application code owns filtering, routing, action execution, Escape/outside-click dismissal and no-results announcements.
+10. Never remove focus-visible outlines.</code></pre>
             </div>
 
         </article>

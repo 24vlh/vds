@@ -96,7 +96,7 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
-                            <button aria-describedby="tt-save" class="button button--ghost tooltip-trigger">
+                            <button aria-describedby="tt-save" class="button button--ghost tooltip-trigger" type="button">
                                 Save
                                 <span
                                         class="tooltip tooltip--top tooltip--c tooltip--visible"
@@ -144,7 +144,7 @@
                                         </ul>
                                     </div>
                                     <footer class="popover__footer">
-                                        <button class="button button--ghost button--sm">Sign out</button>
+                                        <button class="button button--ghost button--sm" type="button">Sign out</button>
                                     </footer>
                                     <span class="popover__arrow"></span>
                                 </div>
@@ -162,7 +162,7 @@
                         </div>
                     </div>
 
-                    <pre class="doc-block__code"><code>&lt;button class=&quot;button button--ghost tooltip-trigger&quot; aria-describedby=&quot;tt-save&quot;&gt;
+                    <pre class="doc-block__code"><code>&lt;button class=&quot;button button--ghost tooltip-trigger&quot; aria-describedby=&quot;tt-save&quot; type=&quot;button&quot;&gt;
     Save
     &lt;span
         class=&quot;tooltip tooltip--top tooltip--c&quot;
@@ -204,7 +204,7 @@
         &lt;/div&gt;
 
         &lt;footer class=&quot;popover__footer&quot;&gt;
-            &lt;button class=&quot;button button--ghost button--sm&quot;&gt;Sign out&lt;/button&gt;
+            &lt;button class=&quot;button button--ghost button--sm&quot; type=&quot;button&quot;&gt;Sign out&lt;/button&gt;
         &lt;/footer&gt;
 
         &lt;span class=&quot;popover__arrow&quot;&gt;&lt;/span&gt;
@@ -244,7 +244,7 @@
                 <div class="doc-block__preview">
                     <div class="card mb-6">
                         <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
-                            <button class="button button--ghost tooltip-trigger">
+                            <button class="button button--ghost tooltip-trigger" type="button">
                                 Top
                                 <span class="tooltip tooltip--top tooltip--c tooltip--info tooltip--visible"
                                       role="tooltip">
@@ -259,7 +259,7 @@
                 <div class="doc-block__preview">
                     <div class="card mb-6">
                         <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
-                            <button class="button button--ghost tooltip-trigger">
+                            <button class="button button--ghost tooltip-trigger" type="button">
                                 Right
                                 <span class="tooltip tooltip--right tooltip--c tooltip--success tooltip--visible"
                                       role="tooltip">
@@ -274,7 +274,7 @@
                 <div class="doc-block__preview">
                     <div class="card mb-6">
                         <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
-                            <button class="button button--ghost tooltip-trigger">
+                            <button class="button button--ghost tooltip-trigger" type="button">
                                 Bottom
                                 <span class="tooltip tooltip--bottom tooltip--a tooltip--warning tooltip--visible"
                                       role="tooltip">
@@ -289,7 +289,7 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
-                            <button class="button button--ghost tooltip-trigger">
+                            <button class="button button--ghost tooltip-trigger" type="button">
                                 Left
                                 <span class="tooltip tooltip--left tooltip--c tooltip--danger tooltip--visible"
                                       role="tooltip">
@@ -310,7 +310,7 @@
                         </div>
                     </div>
 
-                    <pre class="doc-block__code"><code>&lt;button class=&quot;button button--ghost tooltip-trigger&quot;&gt;
+                    <pre class="doc-block__code"><code>&lt;button class=&quot;button button--ghost tooltip-trigger&quot; type=&quot;button&quot;&gt;
     Top
     &lt;span
         class=&quot;tooltip tooltip--top tooltip--c tooltip--info tooltip--visible&quot;
@@ -320,7 +320,7 @@
     &lt;/span&gt;
 &lt;/button&gt;
 
-&lt;button class=&quot;button button--ghost tooltip-trigger&quot;&gt;
+&lt;button class=&quot;button button--ghost tooltip-trigger&quot; type=&quot;button&quot;&gt;
     Right
     &lt;span
         class=&quot;tooltip tooltip--right tooltip--c tooltip--success tooltip--visible&quot;
@@ -330,7 +330,7 @@
     &lt;/span&gt;
 &lt;/button&gt;
 
-&lt;button class=&quot;button button--ghost tooltip-trigger&quot;&gt;
+&lt;button class=&quot;button button--ghost tooltip-trigger&quot; type=&quot;button&quot;&gt;
     Bottom
     &lt;span
         class=&quot;tooltip tooltip--bottom tooltip--a tooltip--warning tooltip--visible&quot;
@@ -340,7 +340,7 @@
     &lt;/span&gt;
 &lt;/button&gt;
 
-&lt;button class=&quot;button button--ghost tooltip-trigger&quot;&gt;
+&lt;button class=&quot;button button--ghost tooltip-trigger&quot; type=&quot;button&quot;&gt;
     Left
     &lt;span
         class=&quot;tooltip tooltip--left tooltip--c tooltip--danger tooltip--visible&quot;
@@ -385,28 +385,28 @@
                 <div class="doc-block__preview">
                     <div class="card">
                         <div class="card__body flex-row flex-wrap gap-3" style="padding-block: var(--space-10);">
-                            <button class="button button--ghost tooltip-trigger">
+                            <button class="button button--ghost tooltip-trigger" type="button">
                                 Top left
                                 <span class="tooltip tooltip--top-left tooltip--c tooltip--visible" role="tooltip">
                                     Edge-aligned tooltip
                                     <span class="tooltip__arrow"></span>
                                 </span>
                             </button>
-                            <button class="button button--ghost tooltip-trigger">
+                            <button class="button button--ghost tooltip-trigger" type="button">
                                 Top right
                                 <span class="tooltip tooltip--top-right tooltip--c tooltip--visible" role="tooltip">
                                     Arrow inset follows edge
                                     <span class="tooltip__arrow"></span>
                                 </span>
                             </button>
-                            <button class="button button--ghost tooltip-trigger">
+                            <button class="button button--ghost tooltip-trigger" type="button">
                                 Bottom left
                                 <span class="tooltip tooltip--bottom-left tooltip--c tooltip--visible" role="tooltip">
                                     Corner placement
                                     <span class="tooltip__arrow"></span>
                                 </span>
                             </button>
-                            <button class="button button--ghost tooltip-trigger">
+                            <button class="button button--ghost tooltip-trigger" type="button">
                                 No arrow
                                 <span class="tooltip tooltip--bottom-right tooltip--c tooltip--visible tooltip--no-arrow"
                                       role="tooltip">
@@ -567,8 +567,8 @@
                                         </ul>
                                     </div>
                                     <footer class="popover__footer">
-                                        <button class="button button--ghost button--sm">Reset</button>
-                                        <button class="button button--primary button--sm">Apply</button>
+                                        <button class="button button--ghost button--sm" type="button">Reset</button>
+                                        <button class="button button--primary button--sm" type="button">Apply</button>
                                     </footer>
                                     <span class="popover__arrow"></span>
                                 </div>
@@ -618,8 +618,8 @@
                                         </div>
                                     </div>
                                     <footer class="popover__footer">
-                                        <button class="button button--ghost button--sm">Clear</button>
-                                        <button class="button button--primary button--sm">Apply filters</button>
+                                        <button class="button button--ghost button--sm" type="button">Clear</button>
+                                        <button class="button button--primary button--sm" type="button">Apply filters</button>
                                     </footer>
                                     <span class="popover__arrow"></span>
                                 </div>
@@ -668,8 +668,8 @@
         &lt;/div&gt;
 
         &lt;footer class=&quot;popover__footer&quot;&gt;
-            &lt;button class=&quot;button button--ghost button--sm&quot;&gt;Reset&lt;/button&gt;
-            &lt;button class=&quot;button button--primary button--sm&quot;&gt;Apply&lt;/button&gt;
+            &lt;button class=&quot;button button--ghost button--sm&quot; type=&quot;button&quot;&gt;Reset&lt;/button&gt;
+            &lt;button class=&quot;button button--primary button--sm&quot; type=&quot;button&quot;&gt;Apply&lt;/button&gt;
         &lt;/footer&gt;
 
         &lt;span class=&quot;popover__arrow&quot;&gt;&lt;/span&gt;
@@ -714,8 +714,8 @@
         &lt;/div&gt;
 
         &lt;footer class=&quot;popover__footer&quot;&gt;
-            &lt;button class=&quot;button button--ghost button--sm&quot;&gt;Clear&lt;/button&gt;
-            &lt;button class=&quot;button button--primary button--sm&quot;&gt;Apply filters&lt;/button&gt;
+            &lt;button class=&quot;button button--ghost button--sm&quot; type=&quot;button&quot;&gt;Clear&lt;/button&gt;
+            &lt;button class=&quot;button button--primary button--sm&quot; type=&quot;button&quot;&gt;Apply filters&lt;/button&gt;
         &lt;/footer&gt;
 
         &lt;span class=&quot;popover__arrow&quot;&gt;&lt;/span&gt;
@@ -826,7 +826,9 @@
 4. Keep interactive controls out of tooltips; use popovers for menus/forms.
 5. Keep motion, radius, shadow and colours token-driven inside tooltips-popovers.css.
 6. Preserve focus-visible outlines and keyboard reachability for all triggers.
-7. Use semantic variants consistently with other VDS feedback components.</code></pre>
+7. Use semantic variants consistently with other VDS feedback components.
+8. JS owns Escape/outside-click dismissal, aria-expanded sync, focus return, collision-aware positioning and portal mounting.
+9. Provide a touch fallback; do not require hover-only access on mobile.</code></pre>
             </div>
         </article>
     </div>
