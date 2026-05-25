@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `DOCS-S01 Documentation rewrite queue`.
+Next session: `DOCS-S02 Raw docs authoring model`.
 
-Reason: `COMP-S09` completed the component release pass. The next useful step is to convert the documentation IA and quality rules into an executable raw-doc rewrite queue tied to the completed component modernization work.
+Reason: `DOCS-S01` converted the documentation IA and quality rules into an executable raw-doc rewrite queue. The next useful step is to lock the authoring model before heavy raw-doc rewrites begin.
 
 ## Release Programs
 

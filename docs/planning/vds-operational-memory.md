@@ -50,6 +50,15 @@ If CSS and docs conflict, source CSS wins for current behavior and the mismatch 
 - Generated metadata is evidence and index data, not the hand-edited docs source.
 - Archived selector and consumer compatibility scripts are not active; `INFRA-S01` owns reintroducing them deliberately.
 
+## Documentation Program Memory
+
+- `DOCS-S01` created the executable raw-doc rewrite queue for all `37` raw docs: `DOCS-S03` Start/Foundation (`10` docs), `DOCS-S04` priority behavior components (`17` docs), and `DOCS-S05` remaining components/patterns (`10` docs).
+- Raw docs stay handwritten and canonical for this cycle until `DOCS-S02` changes that decision; generated component JSON stays evidence only.
+- Current generated docs evidence has `37` component JSON files; generated metadata may drift after raw-doc rewrites until `INFRA-S03` owns freshness validation.
+- Current docs shell evidence has `39` `data-doc` links, `37` unique linked raw docs, no missing linked raw docs, and duplicate `home`/`state` routes that belong to `DOCS-S07`.
+- Raw-doc heading structure is inconsistent, including files with no `h1` and files with multiple `h1`; enforceable heading checks belong to `DOCS-S09`.
+- Every raw-doc rewrite must use source-backed selectors, copy-safe examples, accessible labels/names, explicit consumer-owned runtime/ARIA notes, and responsive/theme notes where relevant.
+
 ## Current Validation Commands
 
 Useful checks in the cleaned package metadata:
@@ -90,4 +99,3 @@ Each implementation session must either:
 
 - change real source/docs/tooling and validate it; or
 - explicitly mark the work deferred with the reason and release impact.
-

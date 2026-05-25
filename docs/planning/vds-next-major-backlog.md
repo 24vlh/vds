@@ -88,15 +88,42 @@ Every component family session must close with CSS changes where needed, docs/ex
 
 | Session | Status | Outcome |
 | --- | --- | --- |
-| `DOCS-S01` | `ready` | Convert documentation IA and quality rules into a raw-doc rewrite queue tied to component sessions. |
-| `DOCS-S02` | `todo` | Decide long-term docs authoring model: handwritten raw HTML, generated templates, or hybrid. |
-| `DOCS-S03` | `todo` | Apply a real component doc template to raw docs instead of only planning it. |
-| `DOCS-S04` | `todo` | Rewrite priority docs for `buttons`, `forms`, `navigation`, `overlays`, `tables`, `tabs`, and `toasts`. |
-| `DOCS-S05` | `todo` | Rewrite remaining component docs by component family. |
+| `DOCS-S01` | `done` | Convert documentation IA and quality rules into a raw-doc rewrite queue tied to component sessions. |
+| `DOCS-S02` | `ready` | Decide long-term docs authoring model: handwritten raw HTML, generated templates, or hybrid. |
+| `DOCS-S03` | `todo` | Rewrite Start/Foundation raw docs: overview, base, layout, sections, typography, utilities, icons, identity, authoring, and doc-block. |
+| `DOCS-S04` | `todo` | Rewrite priority behavior raw docs: actions/navigation, forms, overlays/command, data, feedback, loading, and state. |
+| `DOCS-S05` | `todo` | Rewrite remaining component/pattern raw docs: accordion, shell/work surfaces, media, badge/tag, charts, content, flows, guidance, hero, and inbox. |
 | `DOCS-S06` | `todo` | Rebuild examples so they are realistic, accessible, source-backed, and explicit about consumer-owned JS/ARIA behavior. |
 | `DOCS-S07` | `todo` | Fix docs shell routes, duplicate links, search, titles, loading, errors, and deep-link behavior. |
 | `DOCS-S08` | `todo` | Add shared accessibility, theming, utilities, migration, and consumer recipe docs. |
 | `DOCS-S09` | `todo` | Add docs linting for headings, snippets, dependencies, class existence, accessible examples, and required sections. |
+
+### Documentation Session Rules
+
+- `doc-raw/*.doc.html` remains the canonical handwritten runnable docs source until a later approved session changes the authoring model.
+- `@24vlh/agents/docs_vds` remains generated evidence only; do not hand-edit it or refresh it during raw-doc rewrite sessions unless that session explicitly owns metadata generation.
+- Source CSS wins for component selector, state, import, and behavior evidence when raw docs or generated metadata disagree.
+- Every raw-doc rewrite must end with copy-safe examples, accessible labels/names, explicit consumer-owned runtime and ARIA responsibilities, and responsive/theme notes where the example depends on them.
+- Docs shell, search, navigation, title/loading/error behavior, and duplicate docs routes belong to `DOCS-S07`.
+- Docs linting and enforceable structure checks belong to `DOCS-S09`; generated metadata freshness belongs to `INFRA-S03`.
+
+### Raw-Doc Rewrite Queue
+
+Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
+
+| Session | Queue | Raw docs | Done when |
+| --- | --- | --- | --- |
+| `DOCS-S03` | Start/Foundation | `vds-index`, `vds-base`, `vds-layout`, `vds-sections`, `vds-typography`, `vds-utilities`, `vds-icons`, `vds-identity`, `vds-authoring`, `vds-doc-block` | Start and foundation docs follow the `1.0.0` IA/template, explain package surfaces and source dependencies, and make prose/foundation examples copy-safe. |
+| `DOCS-S04` | Priority behavior components | `vds-buttons`, `vds-action-bar`, `vds-navigation`, `vds-header-footer`, `vds-tabs`, `vds-forms`, `vds-forms-advanced`, `vds-description-list`, `vds-overlays`, `vds-tooltips-popovers`, `vds-command`, `vds-tables`, `vds-toasts`, `vds-feedback`, `vds-progress`, `vds-skeleton`, `vds-state` | Priority interactive, form, data, overlay, feedback, and loading docs follow the template, use source-backed examples, and name consumer-owned JavaScript/ARIA behavior. |
+| `DOCS-S05` | Remaining components/patterns | `vds-accordion`, `vds-android-shell`, `vds-avatar`, `vds-badge-tag`, `vds-charts`, `vds-content-blocks`, `vds-flows`, `vds-guidance`, `vds-hero`, `vds-inbox` | Remaining component and pattern docs follow the template, reference completed component rows, and close copy-safety/accessibility gaps. |
+
+### Documentation Release Risks
+
+- Generated docs metadata will drift from raw-doc rewrites until `INFRA-S03` owns generation and freshness validation.
+- Docs shell duplicate `home` and `state` routes remain `DOCS-S07` work.
+- Raw-doc `h1` structure is inconsistent and remains `DOCS-S09` lint/rewrite work.
+- The template/generator decision remains `DOCS-S02`; do not start broad rewrites until the authoring model is locked.
+- Shared accessibility, theming, utility, migration, and recipe docs remain `DOCS-S08` work.
 
 ## Program 3: VDS Infrastructure
 
