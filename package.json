@@ -22,9 +22,11 @@
     "url": "https://github.com/24vlh/vds.git"
   },
   "scripts": {
+    "browser:smoke": "node static/js/validate-browser-smoke.js",
     "build": "NODE_ENV=development node static/js/build.js",
     "build:prod": "NODE_ENV=production node static/js/build.js",
-    "audit": "pnpm run audit:css && pnpm run audit:classes && pnpm run audit:tokens && pnpm run audit:docs && pnpm run audit:selectors && pnpm run audit:dist && pnpm run audit:package && pnpm run audit:consumers",
+    "audit": "pnpm run audit:css && pnpm run audit:classes && pnpm run audit:tokens && pnpm run audit:docs && pnpm run audit:selectors && pnpm run audit:dist && pnpm run audit:package && pnpm run audit:browser && pnpm run audit:consumers",
+    "audit:browser": "pnpm run browser:smoke",
     "audit:classes": "node static/js/find-bogus-classes.js",
     "audit:css": "node static/js/validate-css.js",
     "audit:consumers": "node static/js/validate-consumer-compatibility.js",
@@ -48,11 +50,13 @@
   "devDependencies": {
     "@types/node": "^25.3.0",
     "autoprefixer": "^10.4.24",
+    "axe-core": "^4.11.4",
     "cssnano": "^7.1.2",
     "express": "^5.2.1",
     "glob": "^13.0.6",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "playwright-core": "^1.60.0",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",

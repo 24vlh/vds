@@ -85,6 +85,8 @@ pnpm run audit:dist
 pnpm run dist:check
 pnpm run audit:package
 pnpm run package:smoke
+pnpm run audit:browser
+pnpm run browser:smoke
 pnpm run audit:consumers
 pnpm run audit
 git diff --check
@@ -107,7 +109,7 @@ pnpm run build
 pnpm run build:prod
 ```
 
-Future `1.0.0` infrastructure sessions should restore deliberate selector, docs metadata, dist freshness, package smoke, visual, responsive, accessibility, theme, and consumer checks.
+Current `1.0.0` infrastructure has deliberate selector, docs metadata, dist freshness, package smoke, browser smoke, and consumer compatibility checks. Remaining infrastructure work is CI/publish workflow, release gates, and deeper release-candidate verification.
 
 `INFRA-S01` restored read-only selector, dist-presence, and consumer compatibility audit commands and changed `lint-staged` to run CSS/token validation instead of the build. Generated selector inventories, generated consumer reports, docs metadata regeneration, and dist freshness comparison remain deferred to later `INFRA-*` sessions.
 
@@ -119,15 +121,17 @@ Future `1.0.0` infrastructure sessions should restore deliberate selector, docs 
 
 `INFRA-S05` added package smoke checks: `package:smoke` builds an ignored temporary package fixture from `pnpm pack --dry-run --json` output and verifies package-root, full bundle, core-plus-components, theme, and standalone identity CSS imports through `postcss-import`. `audit:package` is included in the full `audit` flow.
 
+`INFRA-S06` added browser smoke checks: `browser:smoke` launches system Chromium (`chromium-browser` by default, or `VDS_CHROMIUM=/path/to/chrome`) against an internal ephemeral static server and verifies representative docs routes, desktop/mobile overflow, theme values, reduced-motion rendering, forced-colors rendering, and serious/critical axe findings. `audit:browser` is included in the full `audit` flow.
+
 ## Known System Gaps
 
 - Component contracts are large and uneven; several files combine component, utility, docs-demo, and app-pattern responsibilities.
 - Docs are manually authored raw HTML, inconsistent in structure, and sometimes stale against CSS.
 - Generated docs metadata is active generated evidence, but richer full-text/search extraction remains a future docs tooling concern.
-- Existing audits are useful but not enough for visual, responsive, accessibility, theme, and release readiness.
+- Browser smoke now covers first-gate docs rendering, responsive overflow, theme values, reduced-motion, forced-colors, and serious/critical axe checks; deeper screenshot baselines and scripted interaction tests remain future release work.
 - Consumer/runtime responsibilities are often implied rather than documented.
 - `dist` is checked in and freshness-checked; build performance remains slow on this filesystem and can be optimized later if it becomes a blocker.
-- Release workflow needs stronger pre-publish gates and browser smoke tests.
+- Release workflow needs stronger CI pre-publish gates, browser installation policy, provenance review, and publish dry-run coverage.
 
 ## 1.0.0 Working Rule
 

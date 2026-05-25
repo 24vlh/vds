@@ -1,6 +1,6 @@
 # VDS 1.0.0 Master Feature Map
 
-Last updated: `2026-05-25`
+Last updated: `2026-05-26`
 
 This is the compact dashboard for the `@24vlh/vds` `1.0.0` major release.
 
@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `INFRA-S06 Visual, responsive, theme, reduced-motion, forced-colors, and accessibility smoke checks`.
+Next session: `INFRA-S07 CI, npm publish workflow, provenance, secrets, and pre-publish gates`.
 
-Reason: `INFRA-S05` added package smoke tests for the publishable CSS surface. The next useful step is browser-facing smoke coverage for visual, responsive, theme, motion, forced-colors, and accessibility behavior.
+Reason: `INFRA-S06` added browser-facing smoke coverage for docs routes, responsive layouts, themes, reduced-motion, forced-colors, and serious/critical axe findings. The next useful step is making those checks reliable in CI and mapping the publish workflow gates.
 
 ## Release Programs
 

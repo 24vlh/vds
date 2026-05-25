@@ -43,7 +43,7 @@ Every component family session must close with CSS changes where needed, docs/ex
 - Package-facing CSS files exist for every component under `dist/components/*.css` and `dist/components/*.min.css`; identity remains the standalone exception at `dist/identity.css` and `dist/identity.min.css`.
 - Raw docs now pass the component copy-safety scan: real and escaped copyable buttons have explicit `type`, no `href="#"` placeholders remain, images have `alt`, and obvious icon/action buttons have accessible names.
 - Late-pass safe fixes added forced-colors fallbacks to remaining core interactive/component surfaces without selector removals or token renames.
-- Release risks remain deferred: utility/icon pruning policy, high `!important` surfaces, hard-coded helper color audit, and visual/responsive/accessibility browser smoke coverage.
+- Release risks remain deferred: utility/icon pruning policy, high `!important` surfaces, hard-coded helper color audit, deeper visual regression baselines, and interactive browser tests beyond the first smoke gate.
 
 ### Component Execution Matrix
 
@@ -156,8 +156,8 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 | `INFRA-S03` | `done` | Rework docs metadata generation, refresh the `42`-doc index, and add read-only freshness validation. |
 | `INFRA-S04` | `done` | Make checked-in `dist` reproducible with explicit refresh and read-only freshness commands. |
 | `INFRA-S05` | `done` | Add package smoke tests for full, core, component, theme, and standalone identity imports. |
-| `INFRA-S06` | `ready` | Add visual, responsive, theme, reduced-motion, forced-colors, and accessibility smoke checks. |
-| `INFRA-S07` | `todo` | Review CI, npm publish workflow, provenance, secrets, and pre-publish gates. |
+| `INFRA-S06` | `done` | Add browser smoke checks for representative docs routes, desktop/mobile overflow, theme switching, reduced-motion, forced-colors, and serious/critical axe findings. |
+| `INFRA-S07` | `ready` | Review CI, npm publish workflow, provenance, secrets, and pre-publish gates. |
 | `INFRA-S08` | `todo` | Finalize release checklist: migration guide, changelog, release notes, version bump, dist refresh, package smoke, publish dry run. |
 
 ## 1.0.0 Acceptance Gates

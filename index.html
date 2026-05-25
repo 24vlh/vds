@@ -209,10 +209,10 @@
     </div>
 </footer>
 
-<div class="theme-switcher-toggle" id="themeToggleBtn">☰</div>
-<div class="theme-switcher theme-switcher-hidden" id="themePanel">
-    <button class="theme-switcher-close" id="themeCloseBtn" type="button">
-        <span class="icon icon--mask icon--close"></span>
+<button aria-controls="themePanel" aria-expanded="false" aria-label="Open theme switcher" class="theme-switcher-toggle" id="themeToggleBtn" type="button">☰</button>
+<div aria-label="Theme switcher" class="theme-switcher theme-switcher-hidden" id="themePanel" role="group">
+    <button aria-label="Close theme switcher" class="theme-switcher-close" id="themeCloseBtn" type="button">
+        <span aria-hidden="true" class="icon icon--mask icon--close"></span>
     </button>
     <label><input name="vg-theme" type="radio" value="graphite-light"> Graphite Light</label>
     <label><input name="vg-theme" type="radio" value="graphite-dark"> Graphite Dark</label>

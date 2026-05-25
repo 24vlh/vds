@@ -8,12 +8,15 @@
     height: var(--space-6);
     border-radius: 50%;
     background: var(--color-accent, #ff3366); /* pops by default */
+    border: 0;
     color: white;
+    font: inherit;
     font-size: var(--text-xs);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    line-height: 1;
     box-shadow: var(--shadow-2);
     transition: transform 0.2s ease;
     padding: var(--space-1);

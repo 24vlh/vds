@@ -20,16 +20,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggle = document.getElementById('themeToggleBtn');
     const closeBtn = document.getElementById('themeCloseBtn');
 
+    if (!panel || !toggle || !closeBtn) return;
+
     function openPanel() {
         panel.classList.remove('theme-switcher-hidden');
         toggle.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'true');
     }
 
-    function closePanel() {
+    function closePanel(options = {}) {
         panel.classList.add('theme-switcher-hidden');
         toggle.classList.remove('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+
+        if (options.restoreFocus) {
+            toggle.focus();
+        }
     }
 
     toggle.addEventListener('click', openPanel);
-    closeBtn.addEventListener('click', closePanel);
+    closeBtn.addEventListener('click', () => closePanel({restoreFocus: true}));
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !panel.classList.contains('theme-switcher-hidden')) {
+            closePanel({restoreFocus: true});
+        }
+    });
 });

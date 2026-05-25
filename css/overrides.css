@@ -37,3 +37,18 @@
 [data-theme="graphite-dark"] footer a:visited {
     color: #C7D0DA;
 }
+
+/* -------------------------------------------
+   DOCS SHELL CONTRAST OVERRIDES
+   ------------------------------------------- */
+.doc-block__eyebrow {
+    color: var(--color-text-muted);
+}
+
+#doc-content .alert__message,
+#doc-content .alert__title,
+#doc-content .form-help,
+#doc-content .toast__message,
+#doc-content .toast strong {
+    color: var(--color-text);
+}
