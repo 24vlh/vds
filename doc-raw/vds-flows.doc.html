@@ -83,8 +83,8 @@
                         </div>
 
                         <div class="flow__nav">
-                            <button class="button button--secondary">Back</button>
-                            <button class="button button--primary">Next</button>
+                            <button class="button button--secondary" type="button">Back</button>
+                            <button class="button button--primary" type="button">Next</button>
                         </div>
                     </div>
                 </div>
@@ -101,8 +101,8 @@
   &lt;/div&gt;
 
   &lt;div class="flow__nav"&gt;
-    &lt;button class="button button--secondary"&gt;Back&lt;/button&gt;
-    &lt;button class="button button--primary"&gt;Next&lt;/button&gt;
+    &lt;button class="button button--secondary" type=&quot;button&quot;&gt;Back&lt;/button&gt;
+    &lt;button class="button button--primary" type=&quot;button&quot;&gt;Next&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
@@ -1671,7 +1671,7 @@
                 <div class="doc-block__subsection">
                     <h3 class="doc-block__subtitle">1. Semantics</h3>
                     <ul>
-                        <li>Use the appropriate semantic element: buttons must use <code>&lt;button&gt;</code>, links
+                        <li>Use the appropriate semantic element: buttons must use <code>&lt;button type=&quot;button&quot;&gt;</code>, links
                             use <code>&lt;a&gt;</code>, lists use <code>&lt;ul/li&gt;</code>, steps/timelines must
                             reflect ordered flow.
                         </li>
@@ -1684,7 +1684,7 @@
                     <h3 class="doc-block__subtitle">2. Keyboard behaviour</h3>
                     <ul>
                         <li>All interactive elements require focus states derived from theme tokens.</li>
-                        <li>Clickable modifiers (<code>--clickable</code>) must wrap a focusable element (<code>&lt;button&gt;</code>,
+                        <li>Clickable modifiers (<code>--clickable</code>) must wrap a focusable element (<code>&lt;button type=&quot;button&quot;&gt;</code>,
                             <code>&lt;a&gt;</code>, <code>tabindex="0"</code>).
                         </li>
                         <li>Never hide focus outlines; rely on <code>--focus-ring-* </code> tokens for consistency.</li>
@@ -1750,6 +1750,8 @@
                         <li>Disabled items must be non-interactive and excluded from tab order.</li>
                         <li>Active states must be programmatically identifiable (e.g. <code>aria-current="step"</code>).
                         </li>
+                        <li>Use <code>aria-disabled</code> for unavailable steps and <code>aria-selected</code> for branch options when selection is interactive.</li>
+                        <li>Keep route/wizard state, progress values, validation and live announcements in application code.</li>
                     </ul>
                 </div>
 
@@ -1776,6 +1778,7 @@
                         <li>Each component must declare its semantic role in its documentation page.</li>
                         <li>Include ARIA attributes where needed (progress, steps, navigation).</li>
                         <li>Examples must use real tokens, no hardcoded overrides.</li>
+                        <li>CSS owns the visual flow only; consumers synchronize current, complete, disabled and selected state.</li>
                     </ul>
                 </div>
             </div>

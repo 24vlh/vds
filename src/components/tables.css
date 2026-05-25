@@ -247,23 +247,30 @@
 /* ---------------------------------------------------------
    7. ROW STATES
 --------------------------------------------------------- */
-.table tbody tr.table-row--selected {
+.table tbody tr.table-row--selected,
+.table tbody tr[aria-selected="true"],
+.table tbody tr[data-selected="true"] {
     background-color: var(--color-accent-soft);
 }
 
-.table tbody tr.table-row--success {
+.table tbody tr.table-row--success,
+.table tbody tr[data-state="success"] {
     background-color: var(--table-row-good-bg, var(--color-success-soft));
 }
 
-.table tbody tr.table-row--danger {
+.table tbody tr.table-row--danger,
+.table tbody tr[data-state="danger"],
+.table tbody tr[data-state="error"] {
     background-color: var(--table-row-bad-bg, var(--color-danger-soft));
 }
 
-.table tbody tr.table-row--warning {
+.table tbody tr.table-row--warning,
+.table tbody tr[data-state="warning"] {
     background-color: var(--table-row-warning-bg, var(--color-warning-soft));
 }
 
-.table tbody tr.table-row--info {
+.table tbody tr.table-row--info,
+.table tbody tr[data-state="info"] {
     background-color: var(--table-row-info-bg, var(--color-info-soft));
 }
 
@@ -279,6 +286,12 @@
 
 .table--selectable tbody tr {
     cursor: pointer;
+}
+
+.table--selectable tbody tr:focus-visible,
+.table-row--expandable:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: calc(var(--focus-ring-offset) * -1);
 }
 
 /* ---------------------------------------------------------
@@ -314,6 +327,8 @@
 }
 
 .table-row--expanded + .table-row--details,
+.table-row--expandable[aria-expanded="true"] + .table-row--details,
+.table-row--expandable[data-expanded="true"] + .table-row--details,
 .table-row--details[data-expanded="true"] {
     display: table-row;
 }
@@ -384,13 +399,17 @@
     margin-bottom: var(--space-2, 0.5rem);
 }
 
-.table-loading td {
+.table-loading td,
+.table[aria-busy="true"] td,
+.table[data-loading="true"] td {
     position: relative;
     color: transparent;
     overflow: hidden;
 }
 
-.table-loading td::after {
+.table-loading td::after,
+.table[aria-busy="true"] td::after,
+.table[data-loading="true"] td::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -634,4 +653,42 @@
 .table tbody tr.table-fin--curious {
     background-color: var(--table-row-curious-bg, var(--color-surface-subtle));
     border-left: var(--border-width-strong) solid var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .table-loading td::after,
+    .table[aria-busy="true"] td::after,
+    .table[data-loading="true"] td::after {
+        animation: none;
+        transform: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .table-wrapper,
+    .table-panel,
+    .table th,
+    .table td,
+    .table-empty,
+    .table-row--details td {
+        border-color: CanvasText;
+    }
+
+    .table tbody tr.table-row--selected,
+    .table tbody tr[aria-selected="true"],
+    .table tbody tr[data-selected="true"],
+    .table tbody tr.table-row--success,
+    .table tbody tr.table-row--danger,
+    .table tbody tr.table-row--warning,
+    .table tbody tr.table-row--info {
+        outline: var(--border-width-strong, 2px) solid Highlight;
+        outline-offset: calc(var(--border-width-strong, 2px) * -1);
+    }
+
+    .table-loading td::after,
+    .table[aria-busy="true"] td::after,
+    .table[data-loading="true"] td::after {
+        background: CanvasText;
+        opacity: 0.18;
+    }
 }

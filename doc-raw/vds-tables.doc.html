@@ -796,8 +796,8 @@
                                 <div class="table-panel__meta">Last updated: 2025-05-06 · 12 items</div>
                             </div>
                             <div class="table-panel__actions">
-                                <button class="button button--ghost button--sm">Filter</button>
-                                <button class="button button--ghost button--sm">Export</button>
+                                <button class="button button--ghost button--sm" type="button">Filter</button>
+                                <button class="button button--ghost button--sm" type="button">Export</button>
                             </div>
                         </div>
 
@@ -840,8 +840,8 @@
             &lt;div class="table-panel__meta"&gt;Last updated: 2025-05-06 · 12 items&lt;/div&gt;
         &lt;/div&gt;
         &lt;div class="table-panel__actions"&gt;
-            &lt;button class="button button--ghost button--sm"&gt;Filter&lt;/button&gt;
-            &lt;button class="button button--ghost button--sm"&gt;Export&lt;/button&gt;
+            &lt;button class="button button--ghost button--sm" type=&quot;button&quot;&gt;Filter&lt;/button&gt;
+            &lt;button class="button button--ghost button--sm" type=&quot;button&quot;&gt;Export&lt;/button&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 
@@ -1044,7 +1044,7 @@
                                         <td class="table-cell--center table-cell--muted">Paid</td>
                                         <td class="table-cell--center">
                                             <div class="table-actions">
-                                                <button class="button button--ghost button--xs">View</button>
+                                                <button class="button button--ghost button--xs" type="button">View</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -1059,7 +1059,7 @@
                                         <td class="table-cell--center table-cell--muted">Pending</td>
                                         <td class="table-cell--center">
                                             <div class="table-actions">
-                                                <button class="button button--ghost button--xs">View</button>
+                                                <button class="button button--ghost button--xs" type="button">View</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -1074,7 +1074,7 @@
                                         <td class="table-cell--center table-cell--muted">Queued</td>
                                         <td class="table-cell--center">
                                             <div class="table-actions">
-                                                <button class="button button--ghost button--xs">View</button>
+                                                <button class="button button--ghost button--xs" type="button">View</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -1114,7 +1114,7 @@
             &lt;td class="table-cell--center table-cell--muted"&gt;Paid&lt;/td&gt;
             &lt;td class="table-cell--center"&gt;
                 &lt;div class="table-actions"&gt;
-                    &lt;button class="button button--ghost button--xs"&gt;View&lt;/button&gt;
+                    &lt;button class="button button--ghost button--xs" type=&quot;button&quot;&gt;View&lt;/button&gt;
                 &lt;/div&gt;
             &lt;/td&gt;
         &lt;/tr&gt;
@@ -1347,8 +1347,8 @@
                                         <td>Running</td>
                                         <td>
                                             <div class="table-actions">
-                                                <button class="button button--ghost button--sm">View</button>
-                                                <button class="button button--ghost button--sm">Pause</button>
+                                                <button class="button button--ghost button--sm" type="button">View</button>
+                                                <button class="button button--ghost button--sm" type="button">Pause</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -1362,8 +1362,8 @@
                                         <td>Stopped</td>
                                         <td>
                                             <div class="table-actions">
-                                                <button class="button button--ghost button--sm">View</button>
-                                                <button class="button button--ghost button--sm">Resume</button>
+                                                <button class="button button--ghost button--sm" type="button">View</button>
+                                                <button class="button button--ghost button--sm" type="button">Resume</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -1381,8 +1381,8 @@
         &lt;td&gt;Running&lt;/td&gt;
         &lt;td&gt;
             &lt;div class="table-actions"&gt;
-                &lt;button class="button button--ghost button--sm"&gt;View&lt;/button&gt;
-                &lt;button class="button button--ghost button--sm"&gt;Pause&lt;/button&gt;
+                &lt;button class="button button--ghost button--sm" type=&quot;button&quot;&gt;View&lt;/button&gt;
+                &lt;button class="button button--ghost button--sm" type=&quot;button&quot;&gt;Pause&lt;/button&gt;
             &lt;/div&gt;
         &lt;/td&gt;
     &lt;/tr&gt;
@@ -1396,8 +1396,8 @@
         &lt;td&gt;Stopped&lt;/td&gt;
         &lt;td&gt;
             &lt;div class="table-actions"&gt;
-                &lt;button class="button button--ghost button--sm"&gt;View&lt;/button&gt;
-                &lt;button class="button button--ghost button--sm"&gt;Resume&lt;/button&gt;
+                &lt;button class="button button--ghost button--sm" type=&quot;button&quot;&gt;View&lt;/button&gt;
+                &lt;button class="button button--ghost button--sm" type=&quot;button&quot;&gt;Resume&lt;/button&gt;
             &lt;/div&gt;
         &lt;/td&gt;
     &lt;/tr&gt;
@@ -1950,6 +1950,13 @@
                         </li>
 
                         <li>
+                            Keep sorting, pagination, selection, expansion, loading lifecycle and
+                            <code>aria-sort</code>, <code>aria-selected</code>,
+                            <code>aria-expanded</code>, and <code>aria-busy</code>
+                            synchronization in application code.
+                        </li>
+
+                        <li>
                             Make sure all action icons in <code>.table-actions</code> have tooltips or
                             sr-labels when icon-only.
                         </li>
@@ -2050,7 +2057,8 @@
 10. Don’t override cell padding, font-size, or borders inline.
 11. Table actions must provide text or sr-only labels.
 12. Loading states stay semantic; shimmer is visual only.
-13. Mobile collapse = structural rewrite; never simulate via visibility.</code></pre>
+13. Mobile collapse = structural rewrite; never simulate via visibility.
+14. Consumer JS owns sorting, pagination, selection, expansion, aria-sort, aria-selected, aria-expanded and aria-busy.</code></pre>
             </div>
         </article>
     </div>

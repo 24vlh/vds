@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `COMP-S06 Data and content`.
+Next session: `COMP-S07 App/work surfaces`.
 
-Reason: `COMP-S05` completed the overlay, tooltip/popover, and command-surface baseline. The next useful step is to stabilize data and content components: tables, content blocks, guidance, flows, charts, and badge/tag surfaces.
+Reason: `COMP-S06` completed the data/content baseline. The next useful step is to stabilize app/work surfaces: Android shell, inbox, authoring, and doc-block surfaces.
 
 ## Release Programs
 

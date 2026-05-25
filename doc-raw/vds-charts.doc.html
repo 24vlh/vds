@@ -163,7 +163,7 @@
             &lt;p class="chart__subtitle"&gt;Last 12 months&lt;/p&gt;
         &lt;/div&gt;
         &lt;div class="chart__actions"&gt;
-            &lt;button class="button button--ghost button--sm"&gt;Last year&lt;/button&gt;
+            &lt;button class="button button--ghost button--sm" type=&quot;button&quot;&gt;Last year&lt;/button&gt;
         &lt;/div&gt;
     &lt;/header&gt;
 
@@ -869,7 +869,8 @@
                             <code>.chart--empty</code>,
                             <code>.chart--error</code>,
                             <code>.chart--loading</code> and
-                            <code>.chart-state</code>.
+                            <code>.chart-state</code>; synchronize loading with
+                            <code>aria-busy</code> when the chart data is pending.
                         </li>
                         <li>Use legends for multi-series charts and keep labels short but
                             meaningful; map labels to business terms users recognise.
@@ -888,6 +889,9 @@
                         </li>
                         <li>Don’t use charts as the only source of truth for important numbers;
                             mirror key values in text, stats or tables.
+                        </li>
+                        <li>Don’t rely on VDS chart CSS for data semantics, chart rendering,
+                            tooltip behavior, selection state, filtering or announcements.
                         </li>
                         <li>Don’t place interactive controls inside the canvas/SVG region without
                             proper keyboard support and focus management.
@@ -916,7 +920,8 @@
 4. Use explicit empty/error/loading states instead of leaving blank canvases.
 5. Keep charts layout-neutral; rely on sections, grids and cards for page structure.
 6. Avoid chart-only navigation; keep routing and filters in dedicated components.
-7. Prefer tables or stats when exact values matter more than shape or trend.</code></pre>
+7. Prefer tables or stats when exact values matter more than shape or trend.
+8. Consumer code owns chart rendering, data summaries, aria-busy, filtering, selection and live announcements.</code></pre>
             </div>
 
         </article>

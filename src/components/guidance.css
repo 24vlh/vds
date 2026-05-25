@@ -920,7 +920,9 @@
     top: 0.2rem;
 }
 
-.guidance-checklist li.is-done::before {
+.guidance-checklist li.is-done::before,
+.guidance-checklist li[aria-checked="true"]::before,
+.guidance-checklist li[data-state="done"]::before {
     background-color: var(--guidance-rail);
     box-shadow: inset 0 0 0 2px var(--color-surface);
 }
@@ -939,4 +941,33 @@
 [data-density="compact"] .guidance-stat,
 [data-density="compact"] .guidance-scope__item {
     padding: var(--guidance-padding-sm, var(--space-3)) !important;
+}
+
+@media (forced-colors: active) {
+    .guidance,
+    .guidance-card,
+    .guidance-strip,
+    .guidance-step,
+    .guidance-field,
+    .guidance-brief,
+    .guidance-compare__item,
+    .guidance-row,
+    .guidance-stat,
+    .guidance-scope__item {
+        border-color: CanvasText;
+        box-shadow: none;
+    }
+
+    .guidance-checklist li::before,
+    .guidance-scope__list li::before {
+        border-color: CanvasText;
+        background-color: Canvas;
+    }
+
+    .guidance-checklist li.is-done::before,
+    .guidance-checklist li[aria-checked="true"]::before,
+    .guidance-checklist li[data-state="done"]::before {
+        background-color: Highlight;
+        box-shadow: inset 0 0 0 2px Canvas;
+    }
 }
