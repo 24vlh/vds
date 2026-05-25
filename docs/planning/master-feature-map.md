@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `DOCS-S09 Docs linting and required-section checks`.
+Next session: `INFRA-S01 Reintroduce deliberate audit checks`.
 
-Reason: `DOCS-S08` added shared accessibility, theming, utilities-guide, migration, and recipe docs as canonical raw-doc routes. The next useful step is to make the rewritten docs enforceable with linting and required-section checks.
+Reason: `DOCS-S09` made raw-doc heading, required-section, dependency, class, and copy-safety checks enforceable through `pnpm run audit:docs`. The next useful step is to formalize the broader audit/check boundary for `1.0.0` infrastructure.
 
 ## Release Programs
 
@@ -26,7 +26,7 @@ Reason: `DOCS-S08` added shared accessibility, theming, utilities-guide, migrati
 | --- | --- | --- | --- |
 | `REL` | `in-progress` | Coordinate `1.0.0` release sessions, gates, version bump, and publish readiness. | `vds-next-major-backlog.md` |
 | `COMP` | `done` | Modernize every VDS component through family sessions and component rows. | `vds-next-major-backlog.md` |
-| `DOCS` | `in-progress` | Rebuild docs content, examples, ownership, shell, metadata, and linting. | `vds-next-major-backlog.md` |
+| `DOCS` | `done` | Rebuild docs content, examples, ownership, shell, metadata, and linting. | `vds-next-major-backlog.md` |
 | `INFRA` | `ready` | Make build, audit, generated metadata, package checks, CI, and publishing reliable. | `vds-next-major-backlog.md` |
 
 ## Active Planning Files

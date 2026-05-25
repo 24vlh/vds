@@ -96,7 +96,7 @@ Every component family session must close with CSS changes where needed, docs/ex
 | `DOCS-S06` | `done` | Rebuild examples so they are realistic, accessible, source-backed, and explicit about consumer-owned JS/ARIA behavior. |
 | `DOCS-S07` | `done` | Fix docs shell routes, duplicate links, search, titles, loading, errors, and deep-link behavior. |
 | `DOCS-S08` | `done` | Add shared accessibility, theming, utilities, migration, and consumer recipe docs. |
-| `DOCS-S09` | `ready` | Add docs linting for headings, snippets, dependencies, class existence, accessible examples, and required sections. |
+| `DOCS-S09` | `done` | Add docs linting for headings, snippets, dependencies, class existence, accessible examples, and required sections. |
 
 ### Documentation Session Rules
 
@@ -106,7 +106,7 @@ Every component family session must close with CSS changes where needed, docs/ex
 - Every raw-doc rewrite must end with copy-safe examples, accessible labels/names, explicit consumer-owned runtime and ARIA responsibilities, and responsive/theme notes where the example depends on them.
 - Raw docs must follow the `DOCS-S01` queue and the archived component-doc template rules; no generated template system is introduced during `DOCS-S02`.
 - Docs shell, search, navigation, title/loading/error behavior, and duplicate docs routes belong to `DOCS-S07`.
-- Docs linting and enforceable structure checks belong to `DOCS-S09`; generated metadata freshness belongs to `INFRA-S03`.
+- Docs linting and enforceable structure checks are enforced by `pnpm run audit:docs`; generated metadata freshness belongs to `INFRA-S03`.
 
 ### Raw-First Hybrid Authoring Model
 
@@ -132,7 +132,7 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 
 - Generated docs metadata will drift from raw-doc rewrites until `INFRA-S03` owns generation and freshness validation.
 - Docs shell duplicate `home` and `state` routes were resolved in `DOCS-S07`.
-- Raw-doc `h1` structure is inconsistent and remains `DOCS-S09` lint/rewrite work.
+- Raw-doc `h1`, required-section, copy-safety, image-alt, hash-link, and button-name checks are enforced by `DOCS-S09`.
 - Template/data-generator implementation remains deferred to `INFRA-S03` or a later approved docs tooling session.
 - Shared accessibility, theming, utility, migration, and recipe docs were added in `DOCS-S08`; generated metadata for those pages remains deferred to `INFRA-S03`.
 
@@ -144,6 +144,7 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 - `DOCS-S06` added a shared example-quality and release-check block to all `37` raw docs so every page names source truth, package-facing `dist`, validation, responsive/theme/motion checks, migration/release notes, and consumer-owned runtime responsibilities.
 - `DOCS-S07` normalized the docs shell to one canonical route per raw doc, added lightweight search over canonical docs links, and moved loading, error, title, active navigation, exact route, and `popstate` handling into `js/doc-loader.js`.
 - `DOCS-S08` added five shared guidance docs and routes: `vds-accessibility`, `vds-theming`, `vds-utilities-guide`, `vds-migration`, and `vds-recipes`. The docs shell now has `42` canonical raw-doc routes; generated metadata was not refreshed.
+- `DOCS-S09` added a maintained docs quality validator to `pnpm run audit:docs`, covering one live `h1`, required quality blocks and language, copy-safe buttons/links, image alt text, and accessible button names across all `42` raw docs.
 - Generated metadata was not refreshed; any `source_css` or extracted block drift remains deferred to `INFRA-S03`.
 
 ## Program 3: VDS Infrastructure
