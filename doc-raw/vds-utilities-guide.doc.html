@@ -1,0 +1,88 @@
+<section class="section section--lg" data-vds-doc="vds-utilities-guide">
+    <div class="section__inner section__stack section__stack-lg">
+        <header class="section__header section__header--wide">
+            <p class="section__eyebrow">Shared guidance</p>
+            <h1 class="section__title">Utilities Guide</h1>
+            <p class="section__subtitle">
+                Utilities are small composition helpers. They can adjust spacing, layout, visibility, and text
+                treatment, but they do not create component behavior, semantics, or state.
+            </p>
+        </header>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Source truth</p>
+                <h2 class="doc-block__title">Utility imports</h2>
+                <p class="doc-block__summary">
+                    Utility selectors are authored in <code>src/components/utilities.css</code> and ship through
+                    <code>dist/components/utilities.css</code>. The selector reference remains the Utilities page.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/core.css";
+@import "@24vlh/vds/dist/components/utilities.css";</code></pre>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Example</p>
+                <h2 class="doc-block__title">Composition without replacing semantics</h2>
+                <p class="doc-block__summary">
+                    Use utilities to support layout around semantic markup. Do not use utilities to fake disabled,
+                    selected, invalid, hidden, or current state.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <section class="section__stack section__stack-sm" aria-labelledby="utility-example-title">
+                    <h3 id="utility-example-title">Deployment notes</h3>
+                    <p class="text-muted">Utilities support spacing and tone while the document keeps real structure.</p>
+                    <a class="button button--outline" href="/migration">Read migration guidance</a>
+                </section>
+                <pre class="doc-block__code"><code>&lt;section class="section__stack section__stack-sm" aria-labelledby="utility-example-title"&gt;
+  &lt;h3 id="utility-example-title"&gt;Deployment notes&lt;/h3&gt;
+  &lt;p class="text-muted"&gt;Utilities support spacing and tone.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Accessibility</p>
+                <h2 class="doc-block__title">Utility boundaries</h2>
+                <p class="doc-block__summary">
+                    A utility class cannot add keyboard behavior, ARIA synchronization, focus management, or live
+                    announcements.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ul>
+                    <li>Use <code>sr-only</code> helpers only for text that must remain available to assistive technology.</li>
+                    <li>Use responsive utilities only when DOM order still makes sense.</li>
+                    <li>Use component state classes or ARIA state for behavior, not visual utilities alone.</li>
+                    <li>Record utility pruning, aliases, or renamed helpers in migration notes.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Validation</p>
+                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <p class="doc-block__summary">
+                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
+                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
+                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ul>
+                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
+                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
+                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
+                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>

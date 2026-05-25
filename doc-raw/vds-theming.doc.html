@@ -1,0 +1,89 @@
+<section class="section section--lg" data-vds-doc="vds-theming">
+    <div class="section__inner section__stack section__stack-lg">
+        <header class="section__header section__header--wide">
+            <p class="section__eyebrow">Shared guidance</p>
+            <h1 class="section__title">Theming</h1>
+            <p class="section__subtitle">
+                VDS themes are separate package-facing CSS files. Components consume tokens; applications choose the
+                active theme, validate contrast, and decide whether custom token overrides are allowed.
+            </p>
+        </header>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Source truth</p>
+                <h2 class="doc-block__title">Theme imports</h2>
+                <p class="doc-block__summary">
+                    Theme source lives under <code>src/themes/</code>. Package consumers load theme files from
+                    <code>dist/themes/</code> separately from the component bundle.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/core.css";
+@import "@24vlh/vds/dist/vds.css";
+@import "@24vlh/vds/dist/themes/graphite.css";</code></pre>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Example</p>
+                <h2 class="doc-block__title">Token override boundary</h2>
+                <p class="doc-block__summary">
+                    Prefer official theme files. If a product layer overrides tokens, it owns contrast and regression
+                    testing for every component using those tokens.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <pre class="doc-block__code"><code>:root[data-theme="product-light"] {
+  --color-bg: #ffffff;
+  --color-text: #162033;
+  --color-accent: #2854c5;
+}</code></pre>
+                <p>
+                    A custom theme must be checked against components, utility classes, focus rings, semantic states,
+                    reduced-motion behavior, and forced-colors fallbacks.
+                </p>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Accessibility</p>
+                <h2 class="doc-block__title">Contrast, motion, and forced-colors</h2>
+                <p class="doc-block__summary">
+                    CSS contains tokenized styles and some forced-colors/reduced-motion hooks, but final readability
+                    depends on the theme and the consuming layout.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ul>
+                    <li>Do not rely on color alone for success, warning, danger, current, or selected meaning.</li>
+                    <li>Validate focus-visible indicators in every shipped theme.</li>
+                    <li>Respect user motion preferences and avoid adding app-level motion that bypasses VDS CSS.</li>
+                    <li>Document custom token overrides in migration and release notes.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Validation</p>
+                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <p class="doc-block__summary">
+                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
+                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
+                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ul>
+                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
+                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
+                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
+                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>

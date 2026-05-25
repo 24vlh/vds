@@ -1,0 +1,87 @@
+<section class="section section--lg" data-vds-doc="vds-migration">
+    <div class="section__inner section__stack section__stack-lg">
+        <header class="section__header section__header--wide">
+            <p class="section__eyebrow">Release</p>
+            <h1 class="section__title">Migration</h1>
+            <p class="section__subtitle">
+                Migration guidance tracks the move from the current <code>0.3.8</code> package toward VDS
+                <code>1.0.0</code>. Breaking selector, token, import, and example changes must be explicit.
+            </p>
+        </header>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Source truth</p>
+                <h2 class="doc-block__title">What must be reviewed</h2>
+                <p class="doc-block__summary">
+                    Review authored CSS under <code>src/</code>, package-facing CSS under <code>dist/</code>, raw docs,
+                    generated metadata drift, and consumer import paths before release notes are final.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/vds.css";
+@import "@24vlh/vds/dist/themes/graphite.css";
+@import "@24vlh/vds/dist/components/buttons.css";</code></pre>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Workflow</p>
+                <h2 class="doc-block__title">Migration note checklist</h2>
+                <p class="doc-block__summary">
+                    Preserve where cheap, alias where useful, and remove only when release notes explain the
+                    replacement.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ol>
+                    <li>List selector, token, import, and docs-example changes.</li>
+                    <li>Record whether each change is preserved, aliased, deprecated, or removed.</li>
+                    <li>Verify package-facing <code>dist</code> output after the approved infrastructure session refreshes it.</li>
+                    <li>Publish known limitations with the changelog and release notes.</li>
+                </ol>
+                <pre class="doc-block__code"><code>0.3.8 usage: @import "@24vlh/vds/dist/components/forms.css";
+1.0.0 action: keep direct dist component import unless release notes say otherwise.</code></pre>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Accessibility</p>
+                <h2 class="doc-block__title">Runtime behavior must not migrate silently</h2>
+                <p class="doc-block__summary">
+                    Application-owned JavaScript, ARIA synchronization, focus, keyboard, routing, validation, and
+                    live announcements remain consumer responsibilities unless a release note says otherwise.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ul>
+                    <li>Document any changed state selector or ARIA alias.</li>
+                    <li>Document any changed theme token that affects contrast or focus visibility.</li>
+                    <li>Document any changed example that affects button type, labels, roles, or live-region behavior.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Validation</p>
+                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <p class="doc-block__summary">
+                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
+                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
+                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ul>
+                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
+                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
+                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
+                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>

@@ -1,0 +1,94 @@
+<section class="section section--lg" data-vds-doc="vds-accessibility">
+    <div class="section__inner section__stack section__stack-lg">
+        <header class="section__header section__header--wide">
+            <p class="section__eyebrow">Shared guidance</p>
+            <h1 class="section__title">Accessibility</h1>
+            <p class="section__subtitle">
+                VDS is CSS-first. The library supplies source-backed visual hooks; consumers own semantic HTML,
+                accessible names, keyboard behavior, focus management, live announcements, and ARIA synchronization.
+            </p>
+        </header>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Source truth</p>
+                <h2 class="doc-block__title">Package surfaces and source evidence</h2>
+                <p class="doc-block__summary">
+                    Accessibility examples compose authored CSS under <code>src/</code> and package-facing imports
+                    under <code>dist/</code>. Source CSS remains the behavior contract when examples drift.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/core.css";
+@import "@24vlh/vds/dist/components/buttons.css";
+@import "@24vlh/vds/dist/components/forms.css";
+@import "@24vlh/vds/dist/components/feedback.css";</code></pre>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Example</p>
+                <h2 class="doc-block__title">Label, description, state, and action</h2>
+                <p class="doc-block__summary">
+                    Prefer native controls before ARIA. Use ARIA to connect names, descriptions, and state that the
+                    application actually manages.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <form class="form-grid" aria-labelledby="accessibility-contact-title">
+                    <h3 id="accessibility-contact-title">Contact reviewer</h3>
+                    <div class="form-field">
+                        <label class="form-label" for="accessibility-email">Email</label>
+                        <input class="form-control" id="accessibility-email" type="email"
+                               aria-describedby="accessibility-email-help" aria-invalid="false">
+                        <p class="form-help" id="accessibility-email-help">Use a monitored team address.</p>
+                    </div>
+                    <button class="button button--primary" type="button">Send request</button>
+                </form>
+                <pre class="doc-block__code"><code>&lt;label class="form-label" for="accessibility-email"&gt;Email&lt;/label&gt;
+&lt;input class="form-control" id="accessibility-email" type="email"
+       aria-describedby="accessibility-email-help" aria-invalid="false"&gt;
+&lt;button class="button button--primary" type="button"&gt;Send request&lt;/button&gt;</code></pre>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Runtime ownership</p>
+                <h2 class="doc-block__title">What application code must own</h2>
+                <p class="doc-block__summary">
+                    CSS cannot move focus, validate data, trap focus, announce status, or choose accessible text.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ul>
+                    <li>Use native HTML semantics before adding ARIA roles.</li>
+                    <li>Give icon-only, dismiss, copy, remove, and navigation controls accessible names.</li>
+                    <li>Synchronize <code>aria-current</code>, <code>aria-selected</code>, <code>aria-expanded</code>, <code>aria-invalid</code>, <code>aria-busy</code>, and disabled state with real behavior.</li>
+                    <li>Use live regions only for meaningful status changes, not for purely visual restyling.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Validation</p>
+                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <p class="doc-block__summary">
+                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
+                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
+                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ul>
+                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
+                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
+                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
+                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>

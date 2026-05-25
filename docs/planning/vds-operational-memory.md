@@ -36,7 +36,7 @@ If CSS and docs conflict, source CSS wins for current behavior and the mismatch 
 - Source CSS files: `43`
 - Component CSS files under `src/components`: `33`
 - Theme files: `4`
-- Raw docs: `37`
+- Raw docs: `42`
 - Generated docs component JSON files: `37`
 - Archived planning Markdown: `166` files before compression, about `41k` lines.
 
@@ -52,13 +52,13 @@ If CSS and docs conflict, source CSS wins for current behavior and the mismatch 
 
 ## Documentation Program Memory
 
-- `DOCS-S01` created the executable raw-doc rewrite queue for all `37` raw docs: `DOCS-S03` Start/Foundation (`10` docs), `DOCS-S04` priority behavior components (`17` docs), and `DOCS-S05` remaining components/patterns (`10` docs).
+- `DOCS-S01` created the executable raw-doc rewrite queue for the original `37` raw docs: `DOCS-S03` Start/Foundation (`10` docs), `DOCS-S04` priority behavior components (`17` docs), and `DOCS-S05` remaining components/patterns (`10` docs).
 - `DOCS-S02` locked the `1.0.0` authoring model as raw-first hybrid: raw docs stay handwritten and canonical, while strict template rules guide rewrites.
 - `index.html` and `js/doc-loader.js` continue loading raw HTML fragments directly during this cycle.
 - Generated component JSON stays evidence/index output only, not hand-edited source.
 - Current generated docs evidence has `37` component JSON files; generated metadata may drift after raw-doc rewrites until `INFRA-S03` owns freshness validation.
-- Current docs shell evidence has `37` canonical `data-doc` links, `37` unique linked raw docs, no missing linked raw docs, and no duplicate docs routes after `DOCS-S07`.
-- Raw-doc heading structure is inconsistent, including files with no `h1` and files with multiple `h1`; enforceable heading checks belong to `DOCS-S09`.
+- Current docs shell evidence has `42` canonical `data-doc` links, `42` unique linked raw docs, no missing linked raw docs, and no duplicate docs routes after `DOCS-S08`.
+- Raw-doc heading structure has been normalized by rewrite sessions, but enforceable heading checks still belong to `DOCS-S09`.
 - Every raw-doc rewrite must use source-backed selectors, copy-safe examples, accessible labels/names, explicit consumer-owned runtime/ARIA notes, and responsive/theme notes where relevant.
 - Template/data generator work is deferred to `INFRA-S03` or a later approved docs tooling session and must not block `DOCS-S03` through `DOCS-S05`.
 - `DOCS-S03` rewrote the Start/Foundation raw docs: `vds-index`, `vds-base`, `vds-layout`, `vds-sections`, `vds-typography`, `vds-utilities`, `vds-icons`, `vds-identity`, `vds-authoring`, and `vds-doc-block`. They now use one live `h1`, current source/package paths, copy-safe examples, and runtime ownership notes.
@@ -66,6 +66,7 @@ If CSS and docs conflict, source CSS wins for current behavior and the mismatch 
 - `DOCS-S05` rewrote the remaining component/pattern raw docs: `vds-accordion`, `vds-android-shell`, `vds-avatar`, `vds-badge-tag`, `vds-charts`, `vds-content-blocks`, `vds-flows`, `vds-guidance`, `vds-hero`, and `vds-inbox`. They now use one live `h1`, current source/package paths, copy-safe examples, and explicit consumer-owned JavaScript/ARIA/runtime ownership notes. Generated metadata remains stale until `INFRA-S03`.
 - `DOCS-S06` consolidated example quality across all `37` raw docs by adding shared validation, responsive/theme/motion, migration/release, source-truth, package-surface, and runtime-ownership notes. Generated metadata remains stale until `INFRA-S03`.
 - `DOCS-S07` fixed docs shell routes/search/navigation: `index.html` now exposes one canonical route per raw doc, and `js/doc-loader.js` owns exact route loading, lightweight link search, loading/error states, active navigation, title updates, and browser back/forward handling. Generated metadata remains stale until `INFRA-S03`.
+- `DOCS-S08` added five shared handwritten raw docs and routes: `vds-accessibility`, `vds-theming`, `vds-utilities-guide`, `vds-migration`, and `vds-recipes`. The shell now indexes `42` canonical raw docs; generated metadata remains stale until `INFRA-S03`.
 
 ## Current Validation Commands
 

@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `DOCS-S08 Shared accessibility/theming/utilities/migration docs`.
+Next session: `DOCS-S09 Docs linting and required-section checks`.
 
-Reason: `DOCS-S07` fixed docs shell routing, search, navigation, title, loading, error, and deep-link behavior. The next useful step is to add shared accessibility, theming, utilities, migration, and consumer recipe docs.
+Reason: `DOCS-S08` added shared accessibility, theming, utilities-guide, migration, and recipe docs as canonical raw-doc routes. The next useful step is to make the rewritten docs enforceable with linting and required-section checks.
 
 ## Release Programs
 

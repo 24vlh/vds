@@ -95,8 +95,8 @@ Every component family session must close with CSS changes where needed, docs/ex
 | `DOCS-S05` | `done` | Rewrite remaining component/pattern raw docs: accordion, shell/work surfaces, media, badge/tag, charts, content, flows, guidance, hero, and inbox. |
 | `DOCS-S06` | `done` | Rebuild examples so they are realistic, accessible, source-backed, and explicit about consumer-owned JS/ARIA behavior. |
 | `DOCS-S07` | `done` | Fix docs shell routes, duplicate links, search, titles, loading, errors, and deep-link behavior. |
-| `DOCS-S08` | `ready` | Add shared accessibility, theming, utilities, migration, and consumer recipe docs. |
-| `DOCS-S09` | `todo` | Add docs linting for headings, snippets, dependencies, class existence, accessible examples, and required sections. |
+| `DOCS-S08` | `done` | Add shared accessibility, theming, utilities, migration, and consumer recipe docs. |
+| `DOCS-S09` | `ready` | Add docs linting for headings, snippets, dependencies, class existence, accessible examples, and required sections. |
 
 ### Documentation Session Rules
 
@@ -126,6 +126,7 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 | `DOCS-S03` | Start/Foundation | `vds-index`, `vds-base`, `vds-layout`, `vds-sections`, `vds-typography`, `vds-utilities`, `vds-icons`, `vds-identity`, `vds-authoring`, `vds-doc-block` | Start and foundation docs follow the `1.0.0` IA/template, explain package surfaces and source dependencies, and make prose/foundation examples copy-safe. |
 | `DOCS-S04` | Priority behavior components | `vds-buttons`, `vds-action-bar`, `vds-navigation`, `vds-header-footer`, `vds-tabs`, `vds-forms`, `vds-forms-advanced`, `vds-description-list`, `vds-overlays`, `vds-tooltips-popovers`, `vds-command`, `vds-tables`, `vds-toasts`, `vds-feedback`, `vds-progress`, `vds-skeleton`, `vds-state` | Priority interactive, form, data, overlay, feedback, and loading docs follow the template, use source-backed examples, and name consumer-owned JavaScript/ARIA behavior. |
 | `DOCS-S05` | Remaining components/patterns | `vds-accordion`, `vds-android-shell`, `vds-avatar`, `vds-badge-tag`, `vds-charts`, `vds-content-blocks`, `vds-flows`, `vds-guidance`, `vds-hero`, `vds-inbox` | Remaining component and pattern docs follow the template, reference completed component rows, and close copy-safety/accessibility gaps. |
+| `DOCS-S08` | Shared guidance | `vds-accessibility`, `vds-theming`, `vds-utilities-guide`, `vds-migration`, `vds-recipes` | Shared accessibility, theming, utility-composition, migration, and recipe guidance docs exist as canonical raw docs and docs-shell routes. |
 
 ### Documentation Release Risks
 
@@ -133,7 +134,7 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 - Docs shell duplicate `home` and `state` routes were resolved in `DOCS-S07`.
 - Raw-doc `h1` structure is inconsistent and remains `DOCS-S09` lint/rewrite work.
 - Template/data-generator implementation remains deferred to `INFRA-S03` or a later approved docs tooling session.
-- Shared accessibility, theming, utility, migration, and recipe docs remain `DOCS-S08` work.
+- Shared accessibility, theming, utility, migration, and recipe docs were added in `DOCS-S08`; generated metadata for those pages remains deferred to `INFRA-S03`.
 
 ### Documentation Rewrite Progress
 
@@ -142,6 +143,7 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 - `DOCS-S05` rewrote the remaining component/pattern queue for accordion, Android shell, avatar, badge/tag, charts, content blocks, flows, guidance, hero, and inbox. The `10` raw docs now use one live `h1`, current `src/components/*` and `dist/components/*` references, copy-safe examples, and explicit consumer-owned runtime boundaries.
 - `DOCS-S06` added a shared example-quality and release-check block to all `37` raw docs so every page names source truth, package-facing `dist`, validation, responsive/theme/motion checks, migration/release notes, and consumer-owned runtime responsibilities.
 - `DOCS-S07` normalized the docs shell to one canonical route per raw doc, added lightweight search over canonical docs links, and moved loading, error, title, active navigation, exact route, and `popstate` handling into `js/doc-loader.js`.
+- `DOCS-S08` added five shared guidance docs and routes: `vds-accessibility`, `vds-theming`, `vds-utilities-guide`, `vds-migration`, and `vds-recipes`. The docs shell now has `42` canonical raw-doc routes; generated metadata was not refreshed.
 - Generated metadata was not refreshed; any `source_css` or extracted block drift remains deferred to `INFRA-S03`.
 
 ## Program 3: VDS Infrastructure

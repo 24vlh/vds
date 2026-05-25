@@ -1,0 +1,98 @@
+<section class="section section--lg" data-vds-doc="vds-recipes">
+    <div class="section__inner section__stack section__stack-lg">
+        <header class="section__header section__header--wide">
+            <p class="section__eyebrow">Patterns</p>
+            <h1 class="section__title">Recipes</h1>
+            <p class="section__subtitle">
+                Recipes show how VDS components compose into common product flows. They are not runtime frameworks:
+                application code owns data, routing, validation, keyboard behavior, and announcements.
+            </p>
+        </header>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Source truth</p>
+                <h2 class="doc-block__title">Recipe imports</h2>
+                <p class="doc-block__summary">
+                    Recipes combine authored CSS under <code>src/components/</code> and package-facing imports under
+                    <code>dist/components/</code>. Import only the surfaces the page uses.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/core.css";
+@import "@24vlh/vds/dist/components/header-footer.css";
+@import "@24vlh/vds/dist/components/forms.css";
+@import "@24vlh/vds/dist/components/tables.css";
+@import "@24vlh/vds/dist/components/feedback.css";</code></pre>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Example</p>
+                <h2 class="doc-block__title">Admin review surface</h2>
+                <p class="doc-block__summary">
+                    Combine shell, form, feedback, and table CSS while keeping behavior in application code.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <section class="section__stack section__stack-sm" aria-labelledby="recipe-review-title">
+                    <h3 id="recipe-review-title">Review queue</h3>
+                    <div class="alert" data-variant="info" role="status">
+                        <div class="alert__content">
+                            <p class="alert__title">12 records need review</p>
+                            <p class="alert__message">Filtering, sorting, and live announcements are app-owned.</p>
+                        </div>
+                    </div>
+                    <form class="form-row" aria-label="Filter records">
+                        <label class="form-label" for="recipe-filter">Filter by owner</label>
+                        <input class="form-control" id="recipe-filter" type="search">
+                        <button class="button button--primary" type="button">Apply filter</button>
+                    </form>
+                </section>
+                <pre class="doc-block__code"><code>&lt;div class="alert" data-variant="info" role="status"&gt;
+  &lt;p class="alert__title"&gt;12 records need review&lt;/p&gt;
+&lt;/div&gt;
+&lt;button class="button button--primary" type="button"&gt;Apply filter&lt;/button&gt;</code></pre>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Runtime ownership</p>
+                <h2 class="doc-block__title">Recipe boundaries</h2>
+                <p class="doc-block__summary">
+                    Recipes are copy-safe starting points, not complete applications.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ul>
+                    <li>App shell recipes own navigation, active route state, search, and responsive menu behavior.</li>
+                    <li>Form recipes own labels, validation, submission, disabled state, and live error announcements.</li>
+                    <li>Data recipes own sorting, selection, expansion, pagination, virtualization, and data accuracy.</li>
+                    <li>Feedback/loading recipes own queueing, timers, progress values, lifecycle, and announcements.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+            <header class="doc-block__header">
+                <p class="doc-block__eyebrow">Validation</p>
+                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <p class="doc-block__summary">
+                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
+                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
+                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                </p>
+            </header>
+            <div class="doc-block__body">
+                <ul>
+                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
+                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
+                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
+                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</section>
