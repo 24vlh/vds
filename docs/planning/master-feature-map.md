@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `INFRA-S07 CI, npm publish workflow, provenance, secrets, and pre-publish gates`.
+Next session: `INFRA-S08 Final release checklist`.
 
-Reason: `INFRA-S06` added browser-facing smoke coverage for docs routes, responsive layouts, themes, reduced-motion, forced-colors, and serious/critical axe findings. The next useful step is making those checks reliable in CI and mapping the publish workflow gates.
+Reason: `INFRA-S07` hardened CI and npm publishing around read-only audits, checked-in `dist`, trusted publishing, provenance, no-token policy, and prepared-package validation. The next useful step is the final release checklist, version bump, release notes, and publish dry run.
 
 ## Release Programs
 

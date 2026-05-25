@@ -1,19 +1,20 @@
-name: Publish VDS
+name: VDS CI
 
 on:
+  pull_request:
   push:
-    tags:
-      - "v*.*.*"
+    branches:
+      - main
 
 permissions:
   contents: read
 
 concurrency:
-  group: vds-publish-${{ github.ref }}
-  cancel-in-progress: false
+  group: vds-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  verify:
+  audit:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -63,58 +64,6 @@ jobs:
           echo "VDS_CHROMIUM=$CHROME" >> "$GITHUB_ENV"
           "$CHROME" --version
 
-      - name: Validate release context
-        working-directory: vds
-        run: pnpm run release:context -- --tag "${GITHUB_REF_NAME}"
-
       - name: Run read-only audit gates
         working-directory: vds
         run: pnpm run audit
-
-      - name: Prepare publish package
-        working-directory: vds
-        run: pnpm run release:prepare
-
-      - name: Validate publish package
-        working-directory: vds
-        run: pnpm run release:package
-
-      - name: Upload publish package
-        uses: actions/upload-artifact@v4
-        with:
-          name: vds-publish
-          path: vds/node_modules/.cache/vds-publish/package/
-          if-no-files-found: error
-
-  publish-npm:
-    needs: verify
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-
-    steps:
-      - name: Download publish package
-        uses: actions/download-artifact@v4
-        with:
-          name: vds-publish
-          path: publish/
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          registry-url: https://registry.npmjs.org/
-
-      - name: Show tool versions
-        run: |
-          node --version
-          npm --version
-
-      - name: Pack dry run
-        working-directory: publish
-        run: npm pack --dry-run --json
-
-      - name: Publish to npm with provenance
-        working-directory: publish
-        run: npm publish --access public --provenance

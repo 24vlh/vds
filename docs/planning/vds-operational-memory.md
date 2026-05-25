@@ -88,6 +88,10 @@ pnpm run package:smoke
 pnpm run audit:browser
 pnpm run browser:smoke
 pnpm run audit:consumers
+pnpm run release:context -- --tag v0.3.8
+pnpm run release:prepare
+pnpm run release:package
+pnpm run release:verify
 pnpm run audit
 git diff --check
 ```
@@ -109,7 +113,7 @@ pnpm run build
 pnpm run build:prod
 ```
 
-Current `1.0.0` infrastructure has deliberate selector, docs metadata, dist freshness, package smoke, browser smoke, and consumer compatibility checks. Remaining infrastructure work is CI/publish workflow, release gates, and deeper release-candidate verification.
+Current `1.0.0` infrastructure has deliberate selector, docs metadata, dist freshness, package smoke, browser smoke, consumer compatibility checks, CI, and npm trusted-publish gates. Remaining infrastructure work is final release checklist, version bump, release notes, and release-candidate verification.
 
 `INFRA-S01` restored read-only selector, dist-presence, and consumer compatibility audit commands and changed `lint-staged` to run CSS/token validation instead of the build. Generated selector inventories, generated consumer reports, docs metadata regeneration, and dist freshness comparison remain deferred to later `INFRA-*` sessions.
 
@@ -123,6 +127,8 @@ Current `1.0.0` infrastructure has deliberate selector, docs metadata, dist fres
 
 `INFRA-S06` added browser smoke checks: `browser:smoke` launches system Chromium (`chromium-browser` by default, or `VDS_CHROMIUM=/path/to/chrome`) against an internal ephemeral static server and verifies representative docs routes, desktop/mobile overflow, theme values, reduced-motion rendering, forced-colors rendering, and serious/critical axe findings. `audit:browser` is included in the full `audit` flow.
 
+`INFRA-S07` hardened CI and publishing: pull requests and `main` pushes run `pnpm run audit` with sibling `@24vlh/agents` metadata tooling checked out beside VDS, while tag publishes verify release context, run the full audit, prepare a sanitized package from checked-in `dist`, validate `npm pack --dry-run`, and publish with npm trusted publishing/OIDC plus `--provenance`. npm auth tokens are intentionally rejected.
+
 ## Known System Gaps
 
 - Component contracts are large and uneven; several files combine component, utility, docs-demo, and app-pattern responsibilities.
@@ -131,7 +137,7 @@ Current `1.0.0` infrastructure has deliberate selector, docs metadata, dist fres
 - Browser smoke now covers first-gate docs rendering, responsive overflow, theme values, reduced-motion, forced-colors, and serious/critical axe checks; deeper screenshot baselines and scripted interaction tests remain future release work.
 - Consumer/runtime responsibilities are often implied rather than documented.
 - `dist` is checked in and freshness-checked; build performance remains slow on this filesystem and can be optimized later if it becomes a blocker.
-- Release workflow needs stronger CI pre-publish gates, browser installation policy, provenance review, and publish dry-run coverage.
+- Release workflow now has CI and trusted-publish gates; final `1.0.0` still needs release notes, version bump, changelog/migration review, and a release-candidate publish dry run.
 
 ## 1.0.0 Working Rule
 

@@ -157,8 +157,8 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 | `INFRA-S04` | `done` | Make checked-in `dist` reproducible with explicit refresh and read-only freshness commands. |
 | `INFRA-S05` | `done` | Add package smoke tests for full, core, component, theme, and standalone identity imports. |
 | `INFRA-S06` | `done` | Add browser smoke checks for representative docs routes, desktop/mobile overflow, theme switching, reduced-motion, forced-colors, and serious/critical axe findings. |
-| `INFRA-S07` | `ready` | Review CI, npm publish workflow, provenance, secrets, and pre-publish gates. |
-| `INFRA-S08` | `todo` | Finalize release checklist: migration guide, changelog, release notes, version bump, dist refresh, package smoke, publish dry run. |
+| `INFRA-S07` | `done` | Harden CI and npm publish workflow with read-only audit gates, checked-in `dist` publishing, trusted publishing/provenance, no-token guards, and prepared-package validation. |
+| `INFRA-S08` | `ready` | Finalize release checklist: migration guide, changelog, release notes, version bump, dist refresh, package smoke, publish dry run. |
 
 ## 1.0.0 Acceptance Gates
 
