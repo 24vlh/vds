@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `INFRA-S05 Package import smoke tests`.
+Next session: `INFRA-S06 Visual, responsive, theme, reduced-motion, forced-colors, and accessibility smoke checks`.
 
-Reason: `INFRA-S04` made checked-in `dist` reproducible through an explicit refresh command and a read-only freshness check. The next useful step is to prove package-facing imports work from the generated surface.
+Reason: `INFRA-S05` added package smoke tests for the publishable CSS surface. The next useful step is browser-facing smoke coverage for visual, responsive, theme, motion, forced-colors, and accessibility behavior.
 
 ## Release Programs
 

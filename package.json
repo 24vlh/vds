@@ -24,13 +24,14 @@
   "scripts": {
     "build": "NODE_ENV=development node static/js/build.js",
     "build:prod": "NODE_ENV=production node static/js/build.js",
-    "audit": "pnpm run audit:css && pnpm run audit:classes && pnpm run audit:tokens && pnpm run audit:docs && pnpm run audit:selectors && pnpm run audit:dist && pnpm run audit:consumers",
+    "audit": "pnpm run audit:css && pnpm run audit:classes && pnpm run audit:tokens && pnpm run audit:docs && pnpm run audit:selectors && pnpm run audit:dist && pnpm run audit:package && pnpm run audit:consumers",
     "audit:classes": "node static/js/find-bogus-classes.js",
     "audit:css": "node static/js/validate-css.js",
     "audit:consumers": "node static/js/validate-consumer-compatibility.js",
     "audit:dist": "node static/js/validate-dist-presence.js && pnpm run dist:check",
     "audit:docs": "node static/js/validate-doc-dependencies.js && node static/js/validate-doc-quality.js && pnpm run audit:docs:metadata",
     "audit:docs:metadata": "node ../agents/tools/vds-index.mjs --source /mnt/w/public_html/24vlh/vds/doc-raw --out /mnt/w/public_html/24vlh/agents/docs_vds --check",
+    "audit:package": "pnpm run package:smoke",
     "audit:selectors": "node static/js/validate-selector-contract.js",
     "audit:tokens": "node static/js/validate-used-tokens.js",
     "doc:serve": "node static/js/server.js",
@@ -40,6 +41,7 @@
     "inventory": "pnpm run inventory:selectors && pnpm run inventory:tokens",
     "inventory:selectors": "node static/js/generate-selector-inventory.js",
     "inventory:tokens": "node static/js/generate-token-inventory.js",
+    "package:smoke": "node static/js/validate-package-smoke.js",
     "lint-staged": "lint-staged",
     "prepare": "husky"
   },

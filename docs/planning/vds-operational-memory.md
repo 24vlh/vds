@@ -83,6 +83,8 @@ pnpm run audit:docs:metadata
 pnpm run audit:selectors
 pnpm run audit:dist
 pnpm run dist:check
+pnpm run audit:package
+pnpm run package:smoke
 pnpm run audit:consumers
 pnpm run audit
 git diff --check
@@ -115,15 +117,17 @@ Future `1.0.0` infrastructure sessions should restore deliberate selector, docs 
 
 `INFRA-S04` made checked-in `dist` reproducible: `dist:refresh` is the explicit write command, `dist:check` is the read-only temporary-build comparison, and `audit:dist` now checks both package-file presence and source-vs-dist freshness.
 
+`INFRA-S05` added package smoke checks: `package:smoke` builds an ignored temporary package fixture from `pnpm pack --dry-run --json` output and verifies package-root, full bundle, core-plus-components, theme, and standalone identity CSS imports through `postcss-import`. `audit:package` is included in the full `audit` flow.
+
 ## Known System Gaps
 
 - Component contracts are large and uneven; several files combine component, utility, docs-demo, and app-pattern responsibilities.
 - Docs are manually authored raw HTML, inconsistent in structure, and sometimes stale against CSS.
 - Generated docs metadata is active generated evidence, but richer full-text/search extraction remains a future docs tooling concern.
-- Existing audits are useful but not enough for visual, responsive, accessibility, theme, package, and release readiness.
+- Existing audits are useful but not enough for visual, responsive, accessibility, theme, and release readiness.
 - Consumer/runtime responsibilities are often implied rather than documented.
 - `dist` is checked in and freshness-checked; build performance remains slow on this filesystem and can be optimized later if it becomes a blocker.
-- Release workflow needs stronger pre-publish gates and package smoke tests.
+- Release workflow needs stronger pre-publish gates and browser smoke tests.
 
 ## 1.0.0 Working Rule
 
