@@ -93,8 +93,8 @@ Every component family session must close with CSS changes where needed, docs/ex
 | `DOCS-S03` | `done` | Rewrite Start/Foundation raw docs: overview, base, layout, sections, typography, utilities, icons, identity, authoring, and doc-block. |
 | `DOCS-S04` | `done` | Rewrite priority behavior raw docs: actions/navigation, forms, overlays/command, data, feedback, loading, and state. |
 | `DOCS-S05` | `done` | Rewrite remaining component/pattern raw docs: accordion, shell/work surfaces, media, badge/tag, charts, content, flows, guidance, hero, and inbox. |
-| `DOCS-S06` | `ready` | Rebuild examples so they are realistic, accessible, source-backed, and explicit about consumer-owned JS/ARIA behavior. |
-| `DOCS-S07` | `todo` | Fix docs shell routes, duplicate links, search, titles, loading, errors, and deep-link behavior. |
+| `DOCS-S06` | `done` | Rebuild examples so they are realistic, accessible, source-backed, and explicit about consumer-owned JS/ARIA behavior. |
+| `DOCS-S07` | `ready` | Fix docs shell routes, duplicate links, search, titles, loading, errors, and deep-link behavior. |
 | `DOCS-S08` | `todo` | Add shared accessibility, theming, utilities, migration, and consumer recipe docs. |
 | `DOCS-S09` | `todo` | Add docs linting for headings, snippets, dependencies, class existence, accessible examples, and required sections. |
 
@@ -140,6 +140,7 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 - `DOCS-S03` rewrote the Start/Foundation queue with one live `h1` per raw doc, current package/source truth, copy-safe examples, and explicit runtime ownership notes.
 - `DOCS-S04` rewrote the priority behavior queue for actions/navigation, forms, overlays/command, data, feedback, loading, and state. The `17` raw docs now use one live `h1`, current `src/components/*` and `dist/components/*` references, copy-safe examples, and explicit consumer-owned JavaScript/ARIA/runtime boundaries.
 - `DOCS-S05` rewrote the remaining component/pattern queue for accordion, Android shell, avatar, badge/tag, charts, content blocks, flows, guidance, hero, and inbox. The `10` raw docs now use one live `h1`, current `src/components/*` and `dist/components/*` references, copy-safe examples, and explicit consumer-owned runtime boundaries.
+- `DOCS-S06` added a shared example-quality and release-check block to all `37` raw docs so every page names source truth, package-facing `dist`, validation, responsive/theme/motion checks, migration/release notes, and consumer-owned runtime responsibilities.
 - Generated metadata was not refreshed; any `source_css` or extracted block drift remains deferred to `INFRA-S03`.
 
 ## Program 3: VDS Infrastructure

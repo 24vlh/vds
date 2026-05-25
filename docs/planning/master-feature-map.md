@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `DOCS-S06 Example quality consolidation`.
+Next session: `DOCS-S07 Docs shell routes/search/navigation`.
 
-Reason: `DOCS-S05` rewrote the remaining component and pattern raw docs. The next useful step is to consolidate example quality across the rewritten documentation set before docs shell and infrastructure work.
+Reason: `DOCS-S06` consolidated example quality across all rewritten raw docs. The next useful step is to fix the docs shell routes, search, navigation, title, loading, error, and deep-link behavior that wraps those fragments.
 
 ## Release Programs
 
