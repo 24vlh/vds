@@ -3,6 +3,7 @@ const path = require("path");
 const glob = require("glob");
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..");
+const ACTIVE_INVENTORY = path.join(PROJECT_ROOT, "docs/planning/api/vds-selector-inventory.json");
 const ARCHIVE_INVENTORY = path.join(PROJECT_ROOT, "docs/planning/_archive/2026-05-planning-ledger/api/vds-selector-inventory.json");
 
 const TARGETS = [
@@ -113,18 +114,14 @@ function currentDocumentedClasses() {
     return classes;
 }
 
-function archivedCompatibilityClasses() {
-    const archived = {
-        public: new Set(),
-        legacyCompatible: new Set(),
-        deprecated: new Set(),
-    };
+function selectorInventoryClasses(file) {
+    const classesByName = new Map();
 
-    if (!fs.existsSync(ARCHIVE_INVENTORY)) {
-        return archived;
+    if (!fs.existsSync(file)) {
+        return classesByName;
     }
 
-    const inventory = JSON.parse(fs.readFileSync(ARCHIVE_INVENTORY, "utf8"));
+    const inventory = JSON.parse(fs.readFileSync(file, "utf8"));
     const classes = inventory.classes || [];
     const entries = Array.isArray(classes)
         ? classes.map((entry) => [entry.className, entry])
@@ -132,14 +129,10 @@ function archivedCompatibilityClasses() {
 
     for (const [className, entry] of entries) {
         if (!className) continue;
-
-        const classification = entry.classification;
-        if (classification === "public") archived.public.add(className);
-        if (classification === "legacy-compatible") archived.legacyCompatible.add(className);
-        if (classification === "deprecated") archived.deprecated.add(className);
+        classesByName.set(className, entry);
     }
 
-    return archived;
+    return classesByName;
 }
 
 function filesForTarget(root) {
@@ -154,7 +147,8 @@ function filesForTarget(root) {
 function main() {
     const definedClasses = currentDefinedClasses();
     const documentedClasses = currentDocumentedClasses();
-    const archived = archivedCompatibilityClasses();
+    const activeInventory = selectorInventoryClasses(ACTIVE_INVENTORY);
+    const archivedInventory = selectorInventoryClasses(ARCHIVE_INVENTORY);
     const warnings = [];
     const failures = [];
     let scannedTargets = 0;
@@ -176,14 +170,20 @@ function main() {
         for (const relPath of files) {
             const content = fs.readFileSync(path.join(target.root, relPath), "utf8");
             for (const className of extractConsumerClasses(content)) {
-                const defined = definedClasses.has(className);
-                const documented = documentedClasses.has(className);
-                const wasPublic = archived.public.has(className) || archived.legacyCompatible.has(className);
-                const deprecated = archived.deprecated.has(className);
+                const activeEntry = activeInventory.get(className);
+                const archivedEntry = archivedInventory.get(className);
+                const defined = activeEntry ? activeEntry.defined : definedClasses.has(className);
+                const documented = activeEntry ? activeEntry.documented : documentedClasses.has(className);
+                const classification = activeEntry ? activeEntry.classification : defined && documented ? "public" : defined ? "candidate-public" : null;
+                const archivedClassification = archivedEntry ? archivedEntry.classification : null;
+                const wasPublic = archivedClassification === "public" || archivedClassification === "legacy-compatible";
+                const deprecated = classification === "deprecated" || archivedClassification === "deprecated";
 
                 if (defined) {
                     matchedClasses += 1;
-                    if (!documented) {
+                    if (classification === "deprecated") {
+                        failures.push(`${target.label}: ${className} in ${relPath} is marked deprecated in current VDS inventory`);
+                    } else if (classification === "candidate-public" || !documented) {
                         candidatePublicUsages += 1;
                     }
                     continue;

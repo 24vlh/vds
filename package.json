@@ -33,6 +33,9 @@
     "audit:selectors": "node static/js/validate-selector-contract.js",
     "audit:tokens": "node static/js/validate-used-tokens.js",
     "doc:serve": "node static/js/server.js",
+    "inventory": "pnpm run inventory:selectors && pnpm run inventory:tokens",
+    "inventory:selectors": "node static/js/generate-selector-inventory.js",
+    "inventory:tokens": "node static/js/generate-token-inventory.js",
     "lint-staged": "lint-staged",
     "prepare": "husky"
   },

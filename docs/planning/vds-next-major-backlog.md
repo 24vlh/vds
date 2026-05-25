@@ -152,8 +152,8 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 | Session | Status | Outcome |
 | --- | --- | --- |
 | `INFRA-S01` | `done` | Reintroduce selector, token, docs, dist, and consumer checks deliberately with clear check/write command boundaries. |
-| `INFRA-S02` | `ready` | Improve selector and token parsing, inventories, generated evidence, and drift detection. |
-| `INFRA-S03` | `todo` | Rework docs metadata generation and freshness validation. |
+| `INFRA-S02` | `done` | Improve selector and token parsing, inventories, generated evidence, and drift detection. |
+| `INFRA-S03` | `ready` | Rework docs metadata generation and freshness validation. |
 | `INFRA-S04` | `todo` | Make build/dist verification reliable without accidental manual `dist` edits. |
 | `INFRA-S05` | `todo` | Add package smoke tests for full, core, component, theme, and standalone identity imports. |
 | `INFRA-S06` | `todo` | Add visual, responsive, theme, reduced-motion, forced-colors, and accessibility smoke checks. |

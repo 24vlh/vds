@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `INFRA-S02 Improve selector and token parsing`.
+Next session: `INFRA-S03 Rework docs metadata generation`.
 
-Reason: `INFRA-S01` reintroduced read-only selector, dist, and consumer audit commands and removed build generation from the pre-commit boundary. The next useful step is to improve selector and token parsing, inventories, generated evidence, and drift detection.
+Reason: `INFRA-S02` restored active selector and token inventories with explicit generation commands and read-only drift checks. The next useful step is to make generated docs metadata equally reproducible and freshness-checked.
 
 ## Release Programs
 

@@ -1,0 +1,5 @@
+{
+  "classes": {},
+  "description": "Manual selector classification overrides. Use only for intentional internal, legacy-compatible, deprecated, public, or candidate-public classification changes.",
+  "schemaVersion": 1
+}

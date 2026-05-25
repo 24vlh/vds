@@ -85,6 +85,14 @@ pnpm run audit
 git diff --check
 ```
 
+Current generated-evidence commands:
+
+```sh
+pnpm run inventory:selectors
+pnpm run inventory:tokens
+pnpm run inventory
+```
+
 Current guarded/write-like commands:
 
 ```sh
@@ -95,6 +103,8 @@ pnpm run build:prod
 Future `1.0.0` infrastructure sessions should restore deliberate selector, docs metadata, dist freshness, package smoke, visual, responsive, accessibility, theme, and consumer checks.
 
 `INFRA-S01` restored read-only selector, dist-presence, and consumer compatibility audit commands and changed `lint-staged` to run CSS/token validation instead of the build. Generated selector inventories, generated consumer reports, docs metadata regeneration, and dist freshness comparison remain deferred to later `INFRA-*` sessions.
+
+`INFRA-S02` restored active selector and token inventories under `docs/planning/api/`. `audit:selectors` and `audit:tokens` are read-only drift checks; `inventory:selectors`, `inventory:tokens`, and `inventory` are the explicit write commands. Consumer compatibility now reads current selector evidence when present, while generated consumer reports remain deferred.
 
 ## Known System Gaps
 
