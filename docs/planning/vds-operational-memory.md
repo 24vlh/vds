@@ -57,7 +57,7 @@ If CSS and docs conflict, source CSS wins for current behavior and the mismatch 
 - `index.html` and `js/doc-loader.js` continue loading raw HTML fragments directly during this cycle.
 - Generated component JSON stays evidence/index output only, not hand-edited source.
 - Current generated docs evidence has `37` component JSON files; generated metadata may drift after raw-doc rewrites until `INFRA-S03` owns freshness validation.
-- Current docs shell evidence has `39` `data-doc` links, `37` unique linked raw docs, no missing linked raw docs, and duplicate `home`/`state` routes that belong to `DOCS-S07`.
+- Current docs shell evidence has `37` canonical `data-doc` links, `37` unique linked raw docs, no missing linked raw docs, and no duplicate docs routes after `DOCS-S07`.
 - Raw-doc heading structure is inconsistent, including files with no `h1` and files with multiple `h1`; enforceable heading checks belong to `DOCS-S09`.
 - Every raw-doc rewrite must use source-backed selectors, copy-safe examples, accessible labels/names, explicit consumer-owned runtime/ARIA notes, and responsive/theme notes where relevant.
 - Template/data generator work is deferred to `INFRA-S03` or a later approved docs tooling session and must not block `DOCS-S03` through `DOCS-S05`.
@@ -65,6 +65,7 @@ If CSS and docs conflict, source CSS wins for current behavior and the mismatch 
 - `DOCS-S04` rewrote the priority behavior raw docs: `vds-buttons`, `vds-action-bar`, `vds-navigation`, `vds-header-footer`, `vds-tabs`, `vds-forms`, `vds-forms-advanced`, `vds-description-list`, `vds-overlays`, `vds-tooltips-popovers`, `vds-command`, `vds-tables`, `vds-toasts`, `vds-feedback`, `vds-progress`, `vds-skeleton`, and `vds-state`. They now use one live `h1`, current source/package paths, copy-safe examples, and explicit consumer-owned JavaScript/ARIA/runtime ownership notes. Generated metadata remains stale until `INFRA-S03`.
 - `DOCS-S05` rewrote the remaining component/pattern raw docs: `vds-accordion`, `vds-android-shell`, `vds-avatar`, `vds-badge-tag`, `vds-charts`, `vds-content-blocks`, `vds-flows`, `vds-guidance`, `vds-hero`, and `vds-inbox`. They now use one live `h1`, current source/package paths, copy-safe examples, and explicit consumer-owned JavaScript/ARIA/runtime ownership notes. Generated metadata remains stale until `INFRA-S03`.
 - `DOCS-S06` consolidated example quality across all `37` raw docs by adding shared validation, responsive/theme/motion, migration/release, source-truth, package-surface, and runtime-ownership notes. Generated metadata remains stale until `INFRA-S03`.
+- `DOCS-S07` fixed docs shell routes/search/navigation: `index.html` now exposes one canonical route per raw doc, and `js/doc-loader.js` owns exact route loading, lightweight link search, loading/error states, active navigation, title updates, and browser back/forward handling. Generated metadata remains stale until `INFRA-S03`.
 
 ## Current Validation Commands
 

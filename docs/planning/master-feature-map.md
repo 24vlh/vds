@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `DOCS-S07 Docs shell routes/search/navigation`.
+Next session: `DOCS-S08 Shared accessibility/theming/utilities/migration docs`.
 
-Reason: `DOCS-S06` consolidated example quality across all rewritten raw docs. The next useful step is to fix the docs shell routes, search, navigation, title, loading, error, and deep-link behavior that wraps those fragments.
+Reason: `DOCS-S07` fixed docs shell routing, search, navigation, title, loading, error, and deep-link behavior. The next useful step is to add shared accessibility, theming, utilities, migration, and consumer recipe docs.
 
 ## Release Programs
 

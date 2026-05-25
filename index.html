@@ -71,8 +71,8 @@
 <body>
 <header class="page-header header header--sticky" data-vds-header-footer>
     <div class="header__inner">
-        <a class="logo logo--horizontal" data-doc="./doc-raw/vds-index.doc.html" data-path="home" data-vds-identity
-           href="#">
+        <a aria-label="Open VDS start guide" class="logo logo--horizontal" data-doc="./doc-raw/vds-index.doc.html"
+           data-path="home" data-vds-identity href="/home">
             <svg aria-hidden="true" viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
                 <g class="logo-mark" transform="translate(0,4)">
                     <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
@@ -85,6 +85,14 @@
                 </g>
             </svg>
         </a>
+        <div class="header__actions" data-doc-search>
+            <label class="sr-only" for="doc-search">Search documentation</label>
+            <input aria-controls="doc-search-results" aria-describedby="doc-search-status" autocomplete="off"
+                   class="form-control" id="doc-search" placeholder="Search docs" type="search">
+            <div aria-label="Documentation search results" class="nav nav--vertical" hidden id="doc-search-results"
+                 role="listbox"></div>
+            <p id="doc-search-status" aria-live="polite">Search documentation by component or topic.</p>
+        </div>
     </div>
 </header>
 
@@ -95,7 +103,7 @@
 <footer class="page-footer footer" data-vds-header-footer data-vds-identity>
     <div class="footer__inner">
         <div class="footer__col">
-            <a class="logo logo--mark-only" data-doc="./doc-raw/vds-index.doc.html" data-path="home" href="#">
+            <a aria-label="Open VDS start guide" class="logo logo--mark-only" href="/home">
                 <svg aria-hidden="true"
                      viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                     <g class="logo-mark" transform="translate(4,4)">
@@ -113,75 +121,73 @@
         <div class="footer__col">
             <div class="footer__col-title">VLAH DESIGN SYSTEM (VDS)</div>
             <nav class="nav nav--vertical">
-                <a class="footer__link" data-doc="./doc-raw/vds-base.doc.html" data-path="base" href="#">Base
+                <a class="footer__link" data-doc="./doc-raw/vds-base.doc.html" data-path="base" href="/base">Base
                     Layer</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-identity.doc.html" data-path="identity" href="#">Identity
+                <a class="footer__link" data-doc="./doc-raw/vds-identity.doc.html" data-path="identity" href="/identity">Identity
                     Layer</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-layout.doc.html" data-path="layout"
-                   href="#">Layout</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-accordion.doc.html" data-path="accordion" href="#">Accordion</a>
+                   href="/layout">Layout</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-accordion.doc.html" data-path="accordion" href="/accordion">Accordion</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-action-bar.doc.html" data-path="action-bar"
-                   href="#">Action Bar</a>
+                   href="/action-bar">Action Bar</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-android-shell.doc.html" data-path="android-shell"
-                   href="#">Android Shell</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-authoring.doc.html" data-path="authoring" href="#">Authoring
+                   href="/android-shell">Android Shell</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-authoring.doc.html" data-path="authoring" href="/authoring">Authoring
                     Layer</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-avatar.doc.html" data-path="avatar"
-                   href="#">Avatars</a>
+                   href="/avatar">Avatars</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-badge-tag.doc.html" data-path="badge-tag"
-                   href="#">Badges & Tags</a>
+                   href="/badge-tag">Badges & Tags</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-buttons.doc.html" data-path="buttons"
-                   href="#">Buttons</a>
+                   href="/buttons">Buttons</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-charts.doc.html" data-path="charts"
-                   href="#">Charts</a>
+                   href="/charts">Charts</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-command.doc.html" data-path="command"
-                   href="#">Command</a>
+                   href="/command">Command</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-content-blocks.doc.html" data-path="content-blocks"
-                   href="#">Content Blocks</a>
+                   href="/content-blocks">Content Blocks</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-description-list.doc.html" data-path="description-list"
-                   href="#">Description Lists</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-doc-block.doc.html" data-path="doc-block" href="#">Dock
+                   href="/description-list">Description Lists</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-doc-block.doc.html" data-path="doc-block" href="/doc-block">Doc
                     Block</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-state.doc.html" data-path="state"
-                   href="#">Empty States</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-feedback.doc.html" data-path="feedback" href="#">Feedback</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-flows.doc.html" data-path="flows" href="#">Flows</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-feedback.doc.html" data-path="feedback" href="/feedback">Feedback</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-flows.doc.html" data-path="flows" href="/flows">Flows</a>
             </nav>
         </div>
 
         <div class="footer__col">
             <div class="footer__col-title"></div>
             <nav class="nav nav--vertical">
-                <a class="footer__link" data-doc="./doc-raw/vds-forms.doc.html" data-path="forms" href="#">Forms</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-forms.doc.html" data-path="forms" href="/forms">Forms</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-forms-advanced.doc.html" data-path="forms-advanced"
-                   href="#">Forms Advanced</a>
+                   href="/forms-advanced">Forms Advanced</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-guidance.doc.html" data-path="guidance"
-                   href="#">Guidance</a>
+                   href="/guidance">Guidance</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-header-footer.doc.html" data-path="header-footer"
-                   href="#">Header & Footer</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-hero.doc.html" data-path="hero" href="#">Hero</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-icons.doc.html" data-path="icons" href="#">Icons</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-inbox.doc.html" data-path="inbox" href="#">Inbox</a>
+                   href="/header-footer">Header & Footer</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-hero.doc.html" data-path="hero" href="/hero">Hero</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-icons.doc.html" data-path="icons" href="/icons">Icons</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-inbox.doc.html" data-path="inbox" href="/inbox">Inbox</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-navigation.doc.html" data-path="navigation"
-                   href="#">Navigation</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-overlays.doc.html" data-path="overlays" href="#">Overlays</a>
+                   href="/navigation">Navigation</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-overlays.doc.html" data-path="overlays" href="/overlays">Overlays</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-progress.doc.html" data-path="progress"
-                   href="#">Progress</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-sections.doc.html" data-path="sections" href="#">Sections</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-skeleton.doc.html" data-path="skeleton" href="#">Skeleton</a>
+                   href="/progress">Progress</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-sections.doc.html" data-path="sections" href="/sections">Sections</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-skeleton.doc.html" data-path="skeleton" href="/skeleton">Skeleton</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-state.doc.html" data-path="state"
-                   href="#">State</a>
+                   href="/state">State</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-tables.doc.html" data-path="tables"
-                   href="#">Tables</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-tabs.doc.html" data-path="tabs" href="#">Tabs</a>
+                   href="/tables">Tables</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-tabs.doc.html" data-path="tabs" href="/tabs">Tabs</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-toasts.doc.html" data-path="toasts"
-                   href="#">Toasts</a>
+                   href="/toasts">Toasts</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-tooltips-popovers.doc.html"
                    data-path="tooltips-popovers"
-                   href="#">Tooltips & Popovers</a>
+                   href="/tooltips-popovers">Tooltips & Popovers</a>
                 <a class="footer__link" data-doc="./doc-raw/vds-typography.doc.html" data-path="typography"
-                   href="#">Typography</a>
-                <a class="footer__link" data-doc="./doc-raw/vds-utilities.doc.html" data-path="utilities" href="#">Utilities</a>
+                   href="/typography">Typography</a>
+                <a class="footer__link" data-doc="./doc-raw/vds-utilities.doc.html" data-path="utilities" href="/utilities">Utilities</a>
             </nav>
         </div>
     </div>
@@ -189,7 +195,7 @@
 
 <div class="theme-switcher-toggle" id="themeToggleBtn">☰</div>
 <div class="theme-switcher theme-switcher-hidden" id="themePanel">
-    <button class="theme-switcher-close" id="themeCloseBtn">
+    <button class="theme-switcher-close" id="themeCloseBtn" type="button">
         <span class="icon icon--mask icon--close"></span>
     </button>
     <label><input name="vg-theme" type="radio" value="graphite-light"> Graphite Light</label>
@@ -203,7 +209,6 @@
 </div>
 
 <script src="./js/theme-switcher.js"></script>
-<script src="./js/title-handler.js"></script>
 <script src="./js/doc-block.js"></script>
 <script src="./js/overlays-demo.js"></script>
 <script src="./js/vds-command.js"></script>

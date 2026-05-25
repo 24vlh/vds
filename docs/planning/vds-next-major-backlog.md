@@ -94,8 +94,8 @@ Every component family session must close with CSS changes where needed, docs/ex
 | `DOCS-S04` | `done` | Rewrite priority behavior raw docs: actions/navigation, forms, overlays/command, data, feedback, loading, and state. |
 | `DOCS-S05` | `done` | Rewrite remaining component/pattern raw docs: accordion, shell/work surfaces, media, badge/tag, charts, content, flows, guidance, hero, and inbox. |
 | `DOCS-S06` | `done` | Rebuild examples so they are realistic, accessible, source-backed, and explicit about consumer-owned JS/ARIA behavior. |
-| `DOCS-S07` | `ready` | Fix docs shell routes, duplicate links, search, titles, loading, errors, and deep-link behavior. |
-| `DOCS-S08` | `todo` | Add shared accessibility, theming, utilities, migration, and consumer recipe docs. |
+| `DOCS-S07` | `done` | Fix docs shell routes, duplicate links, search, titles, loading, errors, and deep-link behavior. |
+| `DOCS-S08` | `ready` | Add shared accessibility, theming, utilities, migration, and consumer recipe docs. |
 | `DOCS-S09` | `todo` | Add docs linting for headings, snippets, dependencies, class existence, accessible examples, and required sections. |
 
 ### Documentation Session Rules
@@ -130,7 +130,7 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 ### Documentation Release Risks
 
 - Generated docs metadata will drift from raw-doc rewrites until `INFRA-S03` owns generation and freshness validation.
-- Docs shell duplicate `home` and `state` routes remain `DOCS-S07` work.
+- Docs shell duplicate `home` and `state` routes were resolved in `DOCS-S07`.
 - Raw-doc `h1` structure is inconsistent and remains `DOCS-S09` lint/rewrite work.
 - Template/data-generator implementation remains deferred to `INFRA-S03` or a later approved docs tooling session.
 - Shared accessibility, theming, utility, migration, and recipe docs remain `DOCS-S08` work.
@@ -141,6 +141,7 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 - `DOCS-S04` rewrote the priority behavior queue for actions/navigation, forms, overlays/command, data, feedback, loading, and state. The `17` raw docs now use one live `h1`, current `src/components/*` and `dist/components/*` references, copy-safe examples, and explicit consumer-owned JavaScript/ARIA/runtime boundaries.
 - `DOCS-S05` rewrote the remaining component/pattern queue for accordion, Android shell, avatar, badge/tag, charts, content blocks, flows, guidance, hero, and inbox. The `10` raw docs now use one live `h1`, current `src/components/*` and `dist/components/*` references, copy-safe examples, and explicit consumer-owned runtime boundaries.
 - `DOCS-S06` added a shared example-quality and release-check block to all `37` raw docs so every page names source truth, package-facing `dist`, validation, responsive/theme/motion checks, migration/release notes, and consumer-owned runtime responsibilities.
+- `DOCS-S07` normalized the docs shell to one canonical route per raw doc, added lightweight search over canonical docs links, and moved loading, error, title, active navigation, exact route, and `popstate` handling into `js/doc-loader.js`.
 - Generated metadata was not refreshed; any `source_css` or extracted block drift remains deferred to `INFRA-S03`.
 
 ## Program 3: VDS Infrastructure
