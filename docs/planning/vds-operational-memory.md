@@ -78,6 +78,9 @@ pnpm run audit:css
 pnpm run audit:classes
 pnpm run audit:tokens
 pnpm run audit:docs
+pnpm run audit:selectors
+pnpm run audit:dist
+pnpm run audit:consumers
 pnpm run audit
 git diff --check
 ```
@@ -90,6 +93,8 @@ pnpm run build:prod
 ```
 
 Future `1.0.0` infrastructure sessions should restore deliberate selector, docs metadata, dist freshness, package smoke, visual, responsive, accessibility, theme, and consumer checks.
+
+`INFRA-S01` restored read-only selector, dist-presence, and consumer compatibility audit commands and changed `lint-staged` to run CSS/token validation instead of the build. Generated selector inventories, generated consumer reports, docs metadata regeneration, and dist freshness comparison remain deferred to later `INFRA-*` sessions.
 
 ## Known System Gaps
 

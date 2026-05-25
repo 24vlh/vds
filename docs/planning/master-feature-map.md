@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `INFRA-S01 Reintroduce deliberate audit checks`.
+Next session: `INFRA-S02 Improve selector and token parsing`.
 
-Reason: `DOCS-S09` made raw-doc heading, required-section, dependency, class, and copy-safety checks enforceable through `pnpm run audit:docs`. The next useful step is to formalize the broader audit/check boundary for `1.0.0` infrastructure.
+Reason: `INFRA-S01` reintroduced read-only selector, dist, and consumer audit commands and removed build generation from the pre-commit boundary. The next useful step is to improve selector and token parsing, inventories, generated evidence, and drift detection.
 
 ## Release Programs
 
@@ -27,7 +27,7 @@ Reason: `DOCS-S09` made raw-doc heading, required-section, dependency, class, an
 | `REL` | `in-progress` | Coordinate `1.0.0` release sessions, gates, version bump, and publish readiness. | `vds-next-major-backlog.md` |
 | `COMP` | `done` | Modernize every VDS component through family sessions and component rows. | `vds-next-major-backlog.md` |
 | `DOCS` | `done` | Rebuild docs content, examples, ownership, shell, metadata, and linting. | `vds-next-major-backlog.md` |
-| `INFRA` | `ready` | Make build, audit, generated metadata, package checks, CI, and publishing reliable. | `vds-next-major-backlog.md` |
+| `INFRA` | `in-progress` | Make build, audit, generated metadata, package checks, CI, and publishing reliable. | `vds-next-major-backlog.md` |
 
 ## Active Planning Files
 
