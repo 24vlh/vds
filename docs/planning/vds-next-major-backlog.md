@@ -89,8 +89,8 @@ Every component family session must close with CSS changes where needed, docs/ex
 | Session | Status | Outcome |
 | --- | --- | --- |
 | `DOCS-S01` | `done` | Convert documentation IA and quality rules into a raw-doc rewrite queue tied to component sessions. |
-| `DOCS-S02` | `ready` | Decide long-term docs authoring model: handwritten raw HTML, generated templates, or hybrid. |
-| `DOCS-S03` | `todo` | Rewrite Start/Foundation raw docs: overview, base, layout, sections, typography, utilities, icons, identity, authoring, and doc-block. |
+| `DOCS-S02` | `done` | Lock the `1.0.0` docs authoring model as raw-first hybrid: handwritten raw HTML remains canonical, with strict template rules and deferred generator work. |
+| `DOCS-S03` | `ready` | Rewrite Start/Foundation raw docs: overview, base, layout, sections, typography, utilities, icons, identity, authoring, and doc-block. |
 | `DOCS-S04` | `todo` | Rewrite priority behavior raw docs: actions/navigation, forms, overlays/command, data, feedback, loading, and state. |
 | `DOCS-S05` | `todo` | Rewrite remaining component/pattern raw docs: accordion, shell/work surfaces, media, badge/tag, charts, content, flows, guidance, hero, and inbox. |
 | `DOCS-S06` | `todo` | Rebuild examples so they are realistic, accessible, source-backed, and explicit about consumer-owned JS/ARIA behavior. |
@@ -100,12 +100,22 @@ Every component family session must close with CSS changes where needed, docs/ex
 
 ### Documentation Session Rules
 
-- `doc-raw/*.doc.html` remains the canonical handwritten runnable docs source until a later approved session changes the authoring model.
+- `doc-raw/*.doc.html` is the canonical handwritten runnable docs source for the `1.0.0` rewrite cycle.
 - `@24vlh/agents/docs_vds` remains generated evidence only; do not hand-edit it or refresh it during raw-doc rewrite sessions unless that session explicitly owns metadata generation.
 - Source CSS wins for component selector, state, import, and behavior evidence when raw docs or generated metadata disagree.
 - Every raw-doc rewrite must end with copy-safe examples, accessible labels/names, explicit consumer-owned runtime and ARIA responsibilities, and responsive/theme notes where the example depends on them.
+- Raw docs must follow the `DOCS-S01` queue and the archived component-doc template rules; no generated template system is introduced during `DOCS-S02`.
 - Docs shell, search, navigation, title/loading/error behavior, and duplicate docs routes belong to `DOCS-S07`.
 - Docs linting and enforceable structure checks belong to `DOCS-S09`; generated metadata freshness belongs to `INFRA-S03`.
+
+### Raw-First Hybrid Authoring Model
+
+- Decision: use a raw-first hybrid model for `1.0.0`.
+- Canonical authoring source: `doc-raw/*.doc.html`.
+- Generated metadata role: evidence, index output, and drift signal only until `INFRA-S03` owns generation and freshness.
+- Runtime loading model: `index.html` and `js/doc-loader.js` continue loading raw HTML fragments directly.
+- Template role: the archived component-doc template is the required rewrite contract, not a generator.
+- Deferred architecture: a template/data renderer may be designed later through `INFRA-S03` or another approved docs tooling session, but it must not block `DOCS-S03` through `DOCS-S05`.
 
 ### Raw-Doc Rewrite Queue
 
@@ -122,7 +132,7 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 - Generated docs metadata will drift from raw-doc rewrites until `INFRA-S03` owns generation and freshness validation.
 - Docs shell duplicate `home` and `state` routes remain `DOCS-S07` work.
 - Raw-doc `h1` structure is inconsistent and remains `DOCS-S09` lint/rewrite work.
-- The template/generator decision remains `DOCS-S02`; do not start broad rewrites until the authoring model is locked.
+- Template/data-generator implementation remains deferred to `INFRA-S03` or a later approved docs tooling session.
 - Shared accessibility, theming, utility, migration, and recipe docs remain `DOCS-S08` work.
 
 ## Program 3: VDS Infrastructure

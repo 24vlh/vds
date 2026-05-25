@@ -46,9 +46,11 @@ Priority components for early `1.0.0` work are `buttons`, `forms`, `navigation`,
 
 Docs must become product documentation, not raw class dumps.
 
+The `1.0.0` authoring model is raw-first hybrid: `doc-raw/*.doc.html` remains canonical handwritten source, while strict template rules guide every rewrite. Generated docs metadata stays evidence/index output until infrastructure work owns generation and freshness.
+
 Each component doc should explain what the component does, when to use it, how it looks, how it behaves, what JavaScript the consumer owns, what markup is required, what accessibility responsibilities apply, and which examples can be copied safely.
 
-Docs infrastructure must reduce manual effort: examples, metadata, navigation, search, linting, and dependency checks should be reliable enough to maintain the docs over time.
+Docs infrastructure must reduce manual effort over time: examples, metadata, navigation, search, linting, and dependency checks should be reliable enough to maintain the docs without blocking the raw-doc rewrite queue.
 
 ### Infrastructure
 
@@ -66,4 +68,3 @@ Archived selector and consumer compatibility scripts may be reintroduced only th
 ## Release Output
 
 The output of this roadmap is `vds-next-major-backlog.md`: the `1.0.0` session backlog that can be executed without hand-writing hundreds of micro-plans.
-

@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `DOCS-S02 Raw docs authoring model`.
+Next session: `DOCS-S03 Start/Foundation docs rewrite`.
 
-Reason: `DOCS-S01` converted the documentation IA and quality rules into an executable raw-doc rewrite queue. The next useful step is to lock the authoring model before heavy raw-doc rewrites begin.
+Reason: `DOCS-S02` locked the `1.0.0` docs authoring model as raw-first hybrid. The next useful step is to rewrite the Start/Foundation docs against that model.
 
 ## Release Programs
 
