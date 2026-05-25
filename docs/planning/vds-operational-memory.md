@@ -62,6 +62,7 @@ If CSS and docs conflict, source CSS wins for current behavior and the mismatch 
 - Every raw-doc rewrite must use source-backed selectors, copy-safe examples, accessible labels/names, explicit consumer-owned runtime/ARIA notes, and responsive/theme notes where relevant.
 - Template/data generator work is deferred to `INFRA-S03` or a later approved docs tooling session and must not block `DOCS-S03` through `DOCS-S05`.
 - `DOCS-S03` rewrote the Start/Foundation raw docs: `vds-index`, `vds-base`, `vds-layout`, `vds-sections`, `vds-typography`, `vds-utilities`, `vds-icons`, `vds-identity`, `vds-authoring`, and `vds-doc-block`. They now use one live `h1`, current source/package paths, copy-safe examples, and runtime ownership notes.
+- `DOCS-S04` rewrote the priority behavior raw docs: `vds-buttons`, `vds-action-bar`, `vds-navigation`, `vds-header-footer`, `vds-tabs`, `vds-forms`, `vds-forms-advanced`, `vds-description-list`, `vds-overlays`, `vds-tooltips-popovers`, `vds-command`, `vds-tables`, `vds-toasts`, `vds-feedback`, `vds-progress`, `vds-skeleton`, and `vds-state`. They now use one live `h1`, current source/package paths, copy-safe examples, and explicit consumer-owned JavaScript/ARIA/runtime ownership notes. Generated metadata remains stale until `INFRA-S03`.
 
 ## Current Validation Commands
 

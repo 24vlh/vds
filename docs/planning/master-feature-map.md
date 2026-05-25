@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `DOCS-S04 Priority behavior docs rewrite`.
+Next session: `DOCS-S05 Remaining component/pattern docs rewrite`.
 
-Reason: `DOCS-S03` rewrote the Start/Foundation raw docs against the raw-first hybrid model. The next useful step is to rewrite the priority behavior docs that users copy for actions, forms, overlays, data, feedback, loading, and state.
+Reason: `DOCS-S04` rewrote the priority behavior raw docs for actions/navigation, forms, overlays/command, data, feedback, loading, and state. The next useful step is to finish the remaining component and pattern docs queue.
 
 ## Release Programs
 
