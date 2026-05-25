@@ -90,8 +90,8 @@ Every component family session must close with CSS changes where needed, docs/ex
 | --- | --- | --- |
 | `DOCS-S01` | `done` | Convert documentation IA and quality rules into a raw-doc rewrite queue tied to component sessions. |
 | `DOCS-S02` | `done` | Lock the `1.0.0` docs authoring model as raw-first hybrid: handwritten raw HTML remains canonical, with strict template rules and deferred generator work. |
-| `DOCS-S03` | `ready` | Rewrite Start/Foundation raw docs: overview, base, layout, sections, typography, utilities, icons, identity, authoring, and doc-block. |
-| `DOCS-S04` | `todo` | Rewrite priority behavior raw docs: actions/navigation, forms, overlays/command, data, feedback, loading, and state. |
+| `DOCS-S03` | `done` | Rewrite Start/Foundation raw docs: overview, base, layout, sections, typography, utilities, icons, identity, authoring, and doc-block. |
+| `DOCS-S04` | `ready` | Rewrite priority behavior raw docs: actions/navigation, forms, overlays/command, data, feedback, loading, and state. |
 | `DOCS-S05` | `todo` | Rewrite remaining component/pattern raw docs: accordion, shell/work surfaces, media, badge/tag, charts, content, flows, guidance, hero, and inbox. |
 | `DOCS-S06` | `todo` | Rebuild examples so they are realistic, accessible, source-backed, and explicit about consumer-owned JS/ARIA behavior. |
 | `DOCS-S07` | `todo` | Fix docs shell routes, duplicate links, search, titles, loading, errors, and deep-link behavior. |
@@ -134,6 +134,11 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 - Raw-doc `h1` structure is inconsistent and remains `DOCS-S09` lint/rewrite work.
 - Template/data-generator implementation remains deferred to `INFRA-S03` or a later approved docs tooling session.
 - Shared accessibility, theming, utility, migration, and recipe docs remain `DOCS-S08` work.
+
+### Documentation Rewrite Progress
+
+- `DOCS-S03` rewrote the Start/Foundation queue with one live `h1` per raw doc, current package/source truth, copy-safe examples, and explicit runtime ownership notes.
+- Generated metadata was not refreshed; any `source_css` or extracted block drift remains deferred to `INFRA-S03`.
 
 ## Program 3: VDS Infrastructure
 

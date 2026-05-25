@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `DOCS-S03 Start/Foundation docs rewrite`.
+Next session: `DOCS-S04 Priority behavior docs rewrite`.
 
-Reason: `DOCS-S02` locked the `1.0.0` docs authoring model as raw-first hybrid. The next useful step is to rewrite the Start/Foundation docs against that model.
+Reason: `DOCS-S03` rewrote the Start/Foundation raw docs against the raw-first hybrid model. The next useful step is to rewrite the priority behavior docs that users copy for actions, forms, overlays, data, feedback, loading, and state.
 
 ## Release Programs
 
