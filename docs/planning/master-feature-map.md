@@ -11,14 +11,14 @@ Target release version: `1.0.0`
 
 - VDS is a CSS-first design system with source CSS under `src/`, checked-in package output under `dist/`, raw runnable docs under `doc-raw/`, and generated docs metadata under `@24vlh/agents/docs_vds`.
 - The previous planning tree was archived under `_archive/2026-05-planning-ledger/`; active planning is now session-based, not micro-plan based.
-- The previous selector inventory and consumer compatibility evidence is archived because the matching audit script changes are not active in the cleaned package metadata.
+- Selector/token inventories and generated docs metadata are active generated evidence with explicit write commands and read-only drift checks.
 - `1.0.0` may include breaking cleanup, but every breaking selector, token, import, docs example, or package-surface change must be documented with migration guidance.
 
 ## Next Recommended Session
 
-Next session: `INFRA-S03 Rework docs metadata generation`.
+Next session: `INFRA-S04 Make build/dist verification reliable`.
 
-Reason: `INFRA-S02` restored active selector and token inventories with explicit generation commands and read-only drift checks. The next useful step is to make generated docs metadata equally reproducible and freshness-checked.
+Reason: `INFRA-S03` refreshed generated docs metadata for all `42` raw docs and added a read-only freshness check. The next useful step is to make checked-in `dist` reproducibility and freshness reliable without accidental manual edits.
 
 ## Release Programs
 

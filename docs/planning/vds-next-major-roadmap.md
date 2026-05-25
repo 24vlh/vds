@@ -24,7 +24,7 @@ Breaking cleanup is allowed for `1.0.0`, but never silently. Preserve selectors 
 
 - Component CSS is the source truth when docs disagree.
 - Raw docs are currently handwritten runnable docs, but they are inconsistent and hard to maintain.
-- Generated docs metadata is useful evidence, but some `source_css` fields and extracted structures are incomplete.
+- Generated docs metadata is useful evidence and now has an explicit write command plus freshness check; richer extraction can keep improving through infrastructure sessions.
 - Package consumers currently see checked-in `dist/`; `src/` is repo authoring source.
 - Existing audits catch useful static problems but do not prove visual, responsive, accessibility, theme, package, or release readiness.
 - Planning became too noisy. Active planning is now compact; detailed history is archived.
@@ -46,7 +46,7 @@ Priority components for early `1.0.0` work are `buttons`, `forms`, `navigation`,
 
 Docs must become product documentation, not raw class dumps.
 
-The `1.0.0` authoring model is raw-first hybrid: `doc-raw/*.doc.html` remains canonical handwritten source, while strict template rules guide every rewrite. Generated docs metadata stays evidence/index output until infrastructure work owns generation and freshness.
+The `1.0.0` authoring model is raw-first hybrid: `doc-raw/*.doc.html` remains canonical handwritten source, while strict template rules guide every rewrite. Generated docs metadata stays evidence/index output and is regenerated only through the approved metadata command.
 
 Each component doc should explain what the component does, when to use it, how it looks, how it behaves, what JavaScript the consumer owns, what markup is required, what accessibility responsibilities apply, and which examples can be copied safely.
 

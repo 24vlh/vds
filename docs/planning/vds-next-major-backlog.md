@@ -145,7 +145,7 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 - `DOCS-S07` normalized the docs shell to one canonical route per raw doc, added lightweight search over canonical docs links, and moved loading, error, title, active navigation, exact route, and `popstate` handling into `js/doc-loader.js`.
 - `DOCS-S08` added five shared guidance docs and routes: `vds-accessibility`, `vds-theming`, `vds-utilities-guide`, `vds-migration`, and `vds-recipes`. The docs shell now has `42` canonical raw-doc routes; generated metadata was not refreshed.
 - `DOCS-S09` added a maintained docs quality validator to `pnpm run audit:docs`, covering one live `h1`, required quality blocks and language, copy-safe buttons/links, image alt text, and accessible button names across all `42` raw docs.
-- Generated metadata was not refreshed; any `source_css` or extracted block drift remains deferred to `INFRA-S03`.
+- `INFRA-S03` refreshed generated docs metadata for all `42` raw docs, including the shared guidance pages, and wired `audit:docs:metadata` so generated evidence now fails on drift.
 
 ## Program 3: VDS Infrastructure
 
@@ -153,8 +153,8 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 | --- | --- | --- |
 | `INFRA-S01` | `done` | Reintroduce selector, token, docs, dist, and consumer checks deliberately with clear check/write command boundaries. |
 | `INFRA-S02` | `done` | Improve selector and token parsing, inventories, generated evidence, and drift detection. |
-| `INFRA-S03` | `ready` | Rework docs metadata generation and freshness validation. |
-| `INFRA-S04` | `todo` | Make build/dist verification reliable without accidental manual `dist` edits. |
+| `INFRA-S03` | `done` | Rework docs metadata generation, refresh the `42`-doc index, and add read-only freshness validation. |
+| `INFRA-S04` | `ready` | Make build/dist verification reliable without accidental manual `dist` edits. |
 | `INFRA-S05` | `todo` | Add package smoke tests for full, core, component, theme, and standalone identity imports. |
 | `INFRA-S06` | `todo` | Add visual, responsive, theme, reduced-motion, forced-colors, and accessibility smoke checks. |
 | `INFRA-S07` | `todo` | Review CI, npm publish workflow, provenance, secrets, and pre-publish gates. |

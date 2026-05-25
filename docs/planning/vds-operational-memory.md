@@ -37,7 +37,7 @@ If CSS and docs conflict, source CSS wins for current behavior and the mismatch 
 - Component CSS files under `src/components`: `33`
 - Theme files: `4`
 - Raw docs: `42`
-- Generated docs component JSON files: `37`
+- Generated docs component JSON files: `42`
 - Archived planning Markdown: `166` files before compression, about `41k` lines.
 
 ## Package and Docs Model
@@ -48,7 +48,7 @@ If CSS and docs conflict, source CSS wins for current behavior and the mismatch 
 - `src/` is canonical authoring source in the repo, not the current package-facing published surface.
 - Raw docs are currently loaded as HTML fragments by the docs shell.
 - Generated metadata is evidence and index data, not the hand-edited docs source.
-- Archived selector and consumer compatibility scripts are not active; `INFRA-S01` owns reintroducing them deliberately.
+- Selector/token inventories and generated docs metadata have explicit write commands plus read-only drift checks.
 
 ## Documentation Program Memory
 
@@ -56,18 +56,19 @@ If CSS and docs conflict, source CSS wins for current behavior and the mismatch 
 - `DOCS-S02` locked the `1.0.0` authoring model as raw-first hybrid: raw docs stay handwritten and canonical, while strict template rules guide rewrites.
 - `index.html` and `js/doc-loader.js` continue loading raw HTML fragments directly during this cycle.
 - Generated component JSON stays evidence/index output only, not hand-edited source.
-- Current generated docs evidence has `37` component JSON files; generated metadata may drift after raw-doc rewrites until `INFRA-S03` owns freshness validation.
+- Current generated docs evidence has `42` component JSON files and is freshness-checked by `INFRA-S03`.
 - Current docs shell evidence has `42` canonical `data-doc` links, `42` unique linked raw docs, no missing linked raw docs, and no duplicate docs routes after `DOCS-S08`.
 - Raw-doc heading, required-section, copy-safety, image-alt, hash-link, and button-name checks are enforced by `DOCS-S09` through `pnpm run audit:docs`.
 - Every raw-doc rewrite must use source-backed selectors, copy-safe examples, accessible labels/names, explicit consumer-owned runtime/ARIA notes, and responsive/theme notes where relevant.
-- Template/data generator work is deferred to `INFRA-S03` or a later approved docs tooling session and must not block `DOCS-S03` through `DOCS-S05`.
+- Template/data renderer work remains deferred to a later approved docs tooling session; `INFRA-S03` covers metadata generation and freshness only.
 - `DOCS-S03` rewrote the Start/Foundation raw docs: `vds-index`, `vds-base`, `vds-layout`, `vds-sections`, `vds-typography`, `vds-utilities`, `vds-icons`, `vds-identity`, `vds-authoring`, and `vds-doc-block`. They now use one live `h1`, current source/package paths, copy-safe examples, and runtime ownership notes.
-- `DOCS-S04` rewrote the priority behavior raw docs: `vds-buttons`, `vds-action-bar`, `vds-navigation`, `vds-header-footer`, `vds-tabs`, `vds-forms`, `vds-forms-advanced`, `vds-description-list`, `vds-overlays`, `vds-tooltips-popovers`, `vds-command`, `vds-tables`, `vds-toasts`, `vds-feedback`, `vds-progress`, `vds-skeleton`, and `vds-state`. They now use one live `h1`, current source/package paths, copy-safe examples, and explicit consumer-owned JavaScript/ARIA/runtime ownership notes. Generated metadata remains stale until `INFRA-S03`.
-- `DOCS-S05` rewrote the remaining component/pattern raw docs: `vds-accordion`, `vds-android-shell`, `vds-avatar`, `vds-badge-tag`, `vds-charts`, `vds-content-blocks`, `vds-flows`, `vds-guidance`, `vds-hero`, and `vds-inbox`. They now use one live `h1`, current source/package paths, copy-safe examples, and explicit consumer-owned JavaScript/ARIA/runtime ownership notes. Generated metadata remains stale until `INFRA-S03`.
-- `DOCS-S06` consolidated example quality across all `37` raw docs by adding shared validation, responsive/theme/motion, migration/release, source-truth, package-surface, and runtime-ownership notes. Generated metadata remains stale until `INFRA-S03`.
-- `DOCS-S07` fixed docs shell routes/search/navigation: `index.html` now exposes one canonical route per raw doc, and `js/doc-loader.js` owns exact route loading, lightweight link search, loading/error states, active navigation, title updates, and browser back/forward handling. Generated metadata remains stale until `INFRA-S03`.
-- `DOCS-S08` added five shared handwritten raw docs and routes: `vds-accessibility`, `vds-theming`, `vds-utilities-guide`, `vds-migration`, and `vds-recipes`. The shell now indexes `42` canonical raw docs; generated metadata remains stale until `INFRA-S03`.
+- `DOCS-S04` rewrote the priority behavior raw docs: `vds-buttons`, `vds-action-bar`, `vds-navigation`, `vds-header-footer`, `vds-tabs`, `vds-forms`, `vds-forms-advanced`, `vds-description-list`, `vds-overlays`, `vds-tooltips-popovers`, `vds-command`, `vds-tables`, `vds-toasts`, `vds-feedback`, `vds-progress`, `vds-skeleton`, and `vds-state`. They now use one live `h1`, current source/package paths, copy-safe examples, and explicit consumer-owned JavaScript/ARIA/runtime ownership notes.
+- `DOCS-S05` rewrote the remaining component/pattern raw docs: `vds-accordion`, `vds-android-shell`, `vds-avatar`, `vds-badge-tag`, `vds-charts`, `vds-content-blocks`, `vds-flows`, `vds-guidance`, `vds-hero`, and `vds-inbox`. They now use one live `h1`, current source/package paths, copy-safe examples, and explicit consumer-owned JavaScript/ARIA/runtime ownership notes.
+- `DOCS-S06` consolidated example quality across all `37` original raw docs by adding shared validation, responsive/theme/motion, migration/release, source-truth, package-surface, and runtime-ownership notes.
+- `DOCS-S07` fixed docs shell routes/search/navigation: `index.html` now exposes one canonical route per raw doc, and `js/doc-loader.js` owns exact route loading, lightweight link search, loading/error states, active navigation, title updates, and browser back/forward handling.
+- `DOCS-S08` added five shared handwritten raw docs and routes: `vds-accessibility`, `vds-theming`, `vds-utilities-guide`, `vds-migration`, and `vds-recipes`. The shell now indexes `42` canonical raw docs.
 - `DOCS-S09` added `static/js/validate-doc-quality.js` and chained it into `audit:docs`, making the raw-first docs contract enforceable without editing generated metadata.
+- `INFRA-S03` refreshed `@24vlh/agents/docs_vds` from all `42` raw docs, improved `source_css` extraction from Source truth/import examples, and wired generated metadata freshness into `audit:docs`.
 
 ## Current Validation Commands
 
@@ -78,6 +79,7 @@ pnpm run audit:css
 pnpm run audit:classes
 pnpm run audit:tokens
 pnpm run audit:docs
+pnpm run audit:docs:metadata
 pnpm run audit:selectors
 pnpm run audit:dist
 pnpm run audit:consumers
@@ -91,6 +93,7 @@ Current generated-evidence commands:
 pnpm run inventory:selectors
 pnpm run inventory:tokens
 pnpm run inventory
+pnpm run docs:vds:index
 ```
 
 Current guarded/write-like commands:
@@ -106,11 +109,13 @@ Future `1.0.0` infrastructure sessions should restore deliberate selector, docs 
 
 `INFRA-S02` restored active selector and token inventories under `docs/planning/api/`. `audit:selectors` and `audit:tokens` are read-only drift checks; `inventory:selectors`, `inventory:tokens`, and `inventory` are the explicit write commands. Consumer compatibility now reads current selector evidence when present, while generated consumer reports remain deferred.
 
+`INFRA-S03` restored generated docs metadata freshness: `docs:vds:index` is the explicit write command for `@24vlh/agents/docs_vds`, and `audit:docs:metadata` is the read-only drift check included in `audit:docs`. The generated index now covers all `42` raw docs.
+
 ## Known System Gaps
 
 - Component contracts are large and uneven; several files combine component, utility, docs-demo, and app-pattern responsibilities.
 - Docs are manually authored raw HTML, inconsistent in structure, and sometimes stale against CSS.
-- Generated docs metadata can miss source CSS evidence.
+- Generated docs metadata is active generated evidence, but richer full-text/search extraction remains a future docs tooling concern.
 - Existing audits are useful but not enough for visual, responsive, accessibility, theme, package, and release readiness.
 - Consumer/runtime responsibilities are often implied rather than documented.
 - `dist` is checked in, but generation and freshness remain a maintenance risk.
