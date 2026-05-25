@@ -258,6 +258,8 @@
                         <li>If you implement roving tabindex, add <code>role="toolbar"</code> with a label.</li>
                         <li>Keep focus states visible against the bar surface.</li>
                         <li>Provide <code>aria-label</code> for icon-only actions.</li>
+                        <li>Use <code>aria-disabled="true"</code> on the bar only when the entire action set is unavailable.</li>
+                        <li>Let the built-in wrapping and horizontal overflow handle narrow viewports.</li>
                     </ul>
                 </div>
 
@@ -268,6 +270,7 @@
                         <li>Do not hide actions behind hover-only menus.</li>
                         <li>Do not use low-contrast text for the selection count.</li>
                         <li>Do not remove actions without clearing selection state.</li>
+                        <li>Do not rely on CSS for selection, dismissal, or undo behavior; consumer code owns those state changes.</li>
                     </ul>
                 </div>
             </div>

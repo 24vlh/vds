@@ -1,0 +1,608 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "static/js/scan-consumer-compatibility.js",
+  "scope": {
+    "sourceOnly": true,
+    "selectorInventory": "docs/planning/api/vds-selector-inventory.json",
+    "includeGlobs": [
+      "**/*.html",
+      "**/*.css",
+      "**/*.scss",
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.jsx",
+      "**/*.md"
+    ],
+    "ignoreGlobs": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/coverage/**",
+      "**/.git/**",
+      "**/.angular/**",
+      "**/.cache/**",
+      "**/android/app/src/main/assets/**",
+      "**/src/assets/css/vds.css",
+      "**/src/assets/css/vds.min.css",
+      "**/src/assets/css/identity.css",
+      "**/src/assets/css/identity.min.css",
+      "**/src/assets/css/graphite.css",
+      "**/src/assets/css/graphite.min.css"
+    ]
+  },
+  "riskRules": {
+    "public": "Normal usage.",
+    "candidatePublic": "Compatibility-sensitive; block casual removal or rename.",
+    "legacyCompatible": "Preserve until migration is approved.",
+    "deprecated": "Requires migration notes.",
+    "unknown": "Reported for review when a consumer has VDS evidence and the class uses a VDS-looking prefix or known BEM block but is absent from inventory."
+  },
+  "totals": {
+    "targets": 2,
+    "scannedFiles": 319,
+    "matchedVdsClasses": 363,
+    "candidatePublicUsages": 24,
+    "deprecatedUsages": 0,
+    "legacyCompatibleUsages": 0,
+    "unknownVdsLikeUsages": 7
+  },
+  "targets": [
+    {
+      "id": "keep-exec",
+      "label": "@24vlh/keep-exec",
+      "root": "../keep-exec",
+      "rootExists": true,
+      "notes": "Direct npm package consumer of @24vlh/vds.",
+      "dependencyEvidence": [
+        {
+          "type": "package",
+          "file": "package.json",
+          "match": "@24vlh/vds"
+        },
+        {
+          "type": "angular-style",
+          "file": "angular.json",
+          "match": "@24vlh/vds"
+        }
+      ],
+      "scannedFiles": 237,
+      "matchedVdsClasses": 282,
+      "byClassification": {
+        "candidate-public": 14,
+        "public": 268
+      },
+      "topModules": [
+        {
+          "moduleName": "components/inbox",
+          "count": 45
+        },
+        {
+          "moduleName": "components/guidance",
+          "count": 40
+        },
+        {
+          "moduleName": "components/overlays",
+          "count": 28
+        },
+        {
+          "moduleName": "components/forms",
+          "count": 26
+        },
+        {
+          "moduleName": "components/utilities",
+          "count": 23
+        },
+        {
+          "moduleName": "components/progress",
+          "count": 22
+        },
+        {
+          "moduleName": "components/icons",
+          "count": 19
+        },
+        {
+          "moduleName": "components/header-footer",
+          "count": 16
+        },
+        {
+          "moduleName": "components/buttons",
+          "count": 13
+        },
+        {
+          "moduleName": "components/toasts",
+          "count": 12
+        },
+        {
+          "moduleName": "components/feedback",
+          "count": 11
+        },
+        {
+          "moduleName": "components/badge-tag",
+          "count": 10
+        },
+        {
+          "moduleName": "components/tables",
+          "count": 10
+        },
+        {
+          "moduleName": "components/sections",
+          "count": 9
+        },
+        {
+          "moduleName": "identity",
+          "count": 9
+        },
+        {
+          "moduleName": "components/navigation",
+          "count": 5
+        },
+        {
+          "moduleName": "layout",
+          "count": 3
+        },
+        {
+          "moduleName": "components/android-shell",
+          "count": 2
+        },
+        {
+          "moduleName": "components/command",
+          "count": 1
+        },
+        {
+          "moduleName": "components/content-blocks",
+          "count": 1
+        }
+      ],
+      "candidatePublicUsages": [
+        {
+          "className": "badge__dot",
+          "modules": [
+            "components/badge-tag"
+          ],
+          "files": [
+            "src/app/pages/inbox/inbox-tab-view.html"
+          ]
+        },
+        {
+          "className": "constant",
+          "modules": [
+            "components/doc-block"
+          ],
+          "files": [
+            "README.md"
+          ]
+        },
+        {
+          "className": "form-control-file-surface--disabled",
+          "modules": [
+            "components/forms"
+          ],
+          "files": [
+            "src/app/modals/import-video-modal/import-video-modal.html"
+          ]
+        },
+        {
+          "className": "form-help--success",
+          "modules": [
+            "components/forms"
+          ],
+          "files": [
+            "src/app/modals/copy-tools-modal/copy-tools-modal.html",
+            "src/app/modals/dump-transfer-modal/dump-transfer-modal.html",
+            "src/app/modals/startup-cloud-backup-modal/startup-cloud-backup-modal.html",
+            "src/app/modals/video-transcript-modal/video-transcript-modal.html"
+          ]
+        },
+        {
+          "className": "mr-3",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/app/modals/video-transcript-modal/video-transcript-modal.html"
+          ]
+        },
+        {
+          "className": "p-6",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/app/app.html"
+          ]
+        },
+        {
+          "className": "py-0",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/app/modals/video-transcript-modal/video-transcript-modal.html"
+          ]
+        },
+        {
+          "className": "safe-area",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/app/app.html"
+          ]
+        },
+        {
+          "className": "table-cell--nowrap",
+          "modules": [
+            "components/tables"
+          ],
+          "files": [
+            "src/app/modals/dump-transfer-modal/dump-transfer-modal.html"
+          ]
+        },
+        {
+          "className": "text-danger",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/app/modals/import-video-modal/import-video-modal.html"
+          ]
+        },
+        {
+          "className": "text-warning",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/app/modals/import-video-modal/import-video-modal.html",
+            "src/app/modals/startup-cloud-backup-modal/startup-cloud-backup-modal.html"
+          ]
+        },
+        {
+          "className": "toast-stack--bottom-left",
+          "modules": [
+            "components/toasts"
+          ],
+          "files": [
+            "src/components/cloud-backup-nudge-toast/cloud-backup-nudge-toast.css",
+            "src/components/cloud-backup-nudge-toast/cloud-backup-nudge-toast.html"
+          ]
+        },
+        {
+          "className": "vds-guidance",
+          "modules": [
+            "components/guidance"
+          ],
+          "files": [
+            "src/app/modals/via-ferrata-focus-modal/via-ferrata-focus-modal.html"
+          ]
+        },
+        {
+          "className": "vds-progress",
+          "modules": [
+            "components/progress"
+          ],
+          "files": [
+            "src/app/modals/via-ferrata-focus-modal/via-ferrata-focus-modal.html"
+          ]
+        }
+      ],
+      "deprecatedUsages": [],
+      "legacyCompatibleUsages": [],
+      "unknownVdsLikeUsages": [
+        {
+          "className": "button--fluid",
+          "files": [
+            "src/app/modals/planning-stage-edit-modal/planning-stage-edit-modal.html"
+          ]
+        },
+        {
+          "className": "footer__link--button",
+          "files": [
+            "src/app/app.css",
+            "src/app/app.html"
+          ]
+        }
+      ],
+      "risk": "compatibility-sensitive",
+      "riskNotes": [
+        "14 candidate-public selectors are used and must block casual removal or rename.",
+        "2 VDS-like classes are used but absent from the inventory and require review."
+      ]
+    },
+    {
+      "id": "vlah.io",
+      "label": "@24vlh/vlah.io",
+      "root": "../vlah.io",
+      "rootExists": true,
+      "notes": "Public site that carries and uses VDS assets/classes.",
+      "dependencyEvidence": [
+        {
+          "type": "vendored-asset",
+          "file": "src/assets/css/vds.css",
+          "match": "VDS CSS asset"
+        },
+        {
+          "type": "vendored-asset",
+          "file": "src/assets/css/vds.min.css",
+          "match": "VDS CSS asset"
+        },
+        {
+          "type": "vendored-asset",
+          "file": "src/assets/css/identity.css",
+          "match": "VDS CSS asset"
+        },
+        {
+          "type": "vendored-asset",
+          "file": "src/assets/css/graphite.css",
+          "match": "VDS CSS asset"
+        }
+      ],
+      "scannedFiles": 82,
+      "matchedVdsClasses": 81,
+      "byClassification": {
+        "candidate-public": 10,
+        "public": 71
+      },
+      "topModules": [
+        {
+          "moduleName": "components/header-footer",
+          "count": 16
+        },
+        {
+          "moduleName": "components/utilities",
+          "count": 16
+        },
+        {
+          "moduleName": "components/sections",
+          "count": 10
+        },
+        {
+          "moduleName": "identity",
+          "count": 8
+        },
+        {
+          "moduleName": "components/buttons",
+          "count": 7
+        },
+        {
+          "moduleName": "components/content-blocks",
+          "count": 7
+        },
+        {
+          "moduleName": "components/icons",
+          "count": 7
+        },
+        {
+          "moduleName": "layout",
+          "count": 7
+        },
+        {
+          "moduleName": "components/hero",
+          "count": 6
+        },
+        {
+          "moduleName": "components/navigation",
+          "count": 5
+        },
+        {
+          "moduleName": "components/flows",
+          "count": 4
+        },
+        {
+          "moduleName": "components/android-shell",
+          "count": 1
+        },
+        {
+          "moduleName": "components/charts",
+          "count": 1
+        },
+        {
+          "moduleName": "components/command",
+          "count": 1
+        },
+        {
+          "moduleName": "components/feedback",
+          "count": 1
+        },
+        {
+          "moduleName": "components/forms",
+          "count": 1
+        },
+        {
+          "moduleName": "components/tables",
+          "count": 1
+        },
+        {
+          "moduleName": "components/typography",
+          "count": 1
+        }
+      ],
+      "candidatePublicUsages": [
+        {
+          "className": "container-narrow",
+          "modules": [
+            "layout"
+          ],
+          "files": [
+            "src/partials/about.html",
+            "src/partials/angular-stabilisation.html",
+            "src/partials/architectural-design.html",
+            "src/partials/architecture-rescue.html",
+            "src/partials/contact.html",
+            "src/partials/cto-vp-engineering.html",
+            "src/partials/data-processing.html",
+            "src/partials/engagement.html",
+            "src/partials/engineering-manager-tech-lead.html",
+            "src/partials/founders-early-stage-companies.html"
+          ]
+        },
+        {
+          "className": "max-content-lg",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/partials/index.html"
+          ]
+        },
+        {
+          "className": "mt-0",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/partials/about.html",
+            "src/partials/contact.html",
+            "src/partials/data-processing.html",
+            "src/partials/engagement.html",
+            "src/partials/privacy.html",
+            "src/templates/system-and-domains.html"
+          ]
+        },
+        {
+          "className": "mt-10",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/partials/about.html",
+            "src/partials/angular-stabilisation.html",
+            "src/partials/architectural-design.html",
+            "src/partials/architecture-rescue.html",
+            "src/partials/contact.html",
+            "src/partials/cto-vp-engineering.html",
+            "src/partials/engagement.html",
+            "src/partials/engineering-manager-tech-lead.html",
+            "src/partials/founders-early-stage-companies.html",
+            "src/partials/index.html"
+          ]
+        },
+        {
+          "className": "mt-12",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/partials/architectural-design.html",
+            "src/partials/index.html"
+          ]
+        },
+        {
+          "className": "mt-20",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/partials/architectural-design.html"
+          ]
+        },
+        {
+          "className": "mt-32",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/templates/related-contexts-a.html",
+            "src/templates/related-contexts-b.html",
+            "src/templates/related-contexts-c.html",
+            "src/templates/related-contexts.html"
+          ]
+        },
+        {
+          "className": "mt-5",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/partials/index.html"
+          ]
+        },
+        {
+          "className": "mx-auto",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/partials/about.html",
+            "src/partials/angular-stabilisation.html",
+            "src/partials/architectural-design.html",
+            "src/partials/architecture-rescue.html",
+            "src/partials/contact.html",
+            "src/partials/cto-vp-engineering.html",
+            "src/partials/engineering-manager-tech-lead.html",
+            "src/partials/founders-early-stage-companies.html",
+            "src/partials/index.html",
+            "src/partials/oversight.html"
+          ]
+        },
+        {
+          "className": "stack-md",
+          "modules": [
+            "components/utilities"
+          ],
+          "files": [
+            "src/partials/about.html",
+            "src/partials/angular-stabilisation.html",
+            "src/partials/architectural-design.html",
+            "src/partials/architecture-rescue.html",
+            "src/partials/contact.html",
+            "src/partials/cto-vp-engineering.html",
+            "src/partials/data-processing.html",
+            "src/partials/engagement.html",
+            "src/partials/engineering-manager-tech-lead.html",
+            "src/partials/founders-early-stage-companies.html"
+          ]
+        }
+      ],
+      "deprecatedUsages": [],
+      "legacyCompatibleUsages": [],
+      "unknownVdsLikeUsages": [
+        {
+          "className": "card--span-1-3",
+          "files": [
+            "src/assets/css/vlah.css"
+          ]
+        },
+        {
+          "className": "card--span-full",
+          "files": [
+            "src/assets/css/vlah.css"
+          ]
+        },
+        {
+          "className": "card-grid--capabilities",
+          "files": [
+            "src/assets/css/vlah.css"
+          ]
+        },
+        {
+          "className": "card-grid--personas",
+          "files": [
+            "src/assets/css/vlah.css"
+          ]
+        },
+        {
+          "className": "section--content",
+          "files": [
+            "src/archive/ai-in-engineering-force-multiplier-not-shortcut.html",
+            "src/archive/beyond-factorials-interview-questions-engineering-culture.html",
+            "src/archive/beyond-familiarity-designing-engineering-assessments-that-reveal-true-talent.html",
+            "src/archive/beyond-reflex-designing-hiring-assessments-real-talent.html",
+            "src/archive/breaking-the-cycle-building-innovation-and-empowerment-in-technology.html",
+            "src/archive/breaking-the-cycle-how-the-uk-can-rebuild-growth-through-excellence.html",
+            "src/archive/breaking-the-cycle-of-mediocrity-building-sustainable-excellence-in-tech.html",
+            "src/archive/building-stronger-teams-what-misaligned-hiring-really-costs.html",
+            "src/archive/choosing-the-right-tools-for-the-right-problems-a-pragmatic-approach-to-front-end-development.html",
+            "src/archive/engineering-excellence-starts-with-measuring-the-right-things.html"
+          ]
+        }
+      ],
+      "risk": "compatibility-sensitive",
+      "riskNotes": [
+        "10 candidate-public selectors are used and must block casual removal or rename.",
+        "5 VDS-like classes are used but absent from the inventory and require review."
+      ]
+    }
+  ]
+}

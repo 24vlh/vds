@@ -36,6 +36,7 @@
                             <div class="tabs">
                                 <div aria-label="Project tabs" class="tab-list" role="tablist">
                                     <button
+                                            aria-controls="tabs-concept-overview-panel"
                                             aria-selected="true"
                                             class="tab tab--active"
                                             id="tabs-concept-overview"
@@ -45,6 +46,7 @@
                                         Overview
                                     </button>
                                     <button
+                                            aria-controls="tabs-concept-activity-panel"
                                             aria-selected="false"
                                             class="tab"
                                             id="tabs-concept-activity"
@@ -54,6 +56,7 @@
                                         Activity
                                     </button>
                                     <button
+                                            aria-controls="tabs-concept-settings-panel"
                                             aria-selected="false"
                                             class="tab"
                                             id="tabs-concept-settings"
@@ -67,6 +70,7 @@
                                 <div
                                         aria-labelledby="tabs-concept-overview"
                                         class="tab-panel"
+                                        id="tabs-concept-overview-panel"
                                         role="tabpanel"
                                 >
                                     <p class="text-sm">
@@ -160,6 +164,7 @@
                             <div class="tabs">
                                 <div aria-label="Account tabs" class="tab-list" role="tablist">
                                     <button
+                                            aria-controls="tabs-base-profile-panel"
                                             aria-selected="true"
                                             class="tab tab--active"
                                             id="tabs-base-profile"
@@ -169,6 +174,7 @@
                                         Profile
                                     </button>
                                     <button
+                                            aria-controls="tabs-base-security-panel"
                                             aria-selected="false"
                                             class="tab"
                                             id="tabs-base-security"
@@ -178,6 +184,7 @@
                                         Security
                                     </button>
                                     <button
+                                            aria-controls="tabs-base-teams-panel"
                                             aria-selected="false"
                                             class="tab"
                                             id="tabs-base-teams"
@@ -191,6 +198,7 @@
                                 <div
                                         aria-labelledby="tabs-base-profile"
                                         class="tab-panel"
+                                        id="tabs-base-profile-panel"
                                         role="tabpanel"
                                 >
                                     <p class="text-sm">
@@ -551,6 +559,7 @@
                                         role="tablist"
                                 >
                                     <button
+                                            aria-controls="tabs-vertical-profile-panel"
                                             aria-selected="true"
                                             class="tab tab--active"
                                             id="tabs-vertical-profile"
@@ -560,6 +569,7 @@
                                         Profile
                                     </button>
                                     <button
+                                            aria-controls="tabs-vertical-security-panel"
                                             aria-selected="false"
                                             class="tab"
                                             id="tabs-vertical-security"
@@ -569,6 +579,7 @@
                                         Security
                                     </button>
                                     <button
+                                            aria-controls="tabs-vertical-notifications-panel"
                                             aria-selected="false"
                                             class="tab"
                                             id="tabs-vertical-notifications"
@@ -578,6 +589,7 @@
                                         Notifications
                                     </button>
                                     <button
+                                            aria-controls="tabs-vertical-billing-panel"
                                             aria-selected="false"
                                             class="tab"
                                             id="tabs-vertical-billing"
@@ -591,6 +603,7 @@
                                 <div
                                         aria-labelledby="tabs-vertical-profile"
                                         class="tab-panel"
+                                        id="tabs-vertical-profile-panel"
                                         role="tabpanel"
                                 >
                                     <h3 class="text-sm font-semibold mb-1">Profile</h3>
@@ -1070,6 +1083,9 @@
                                 </li>
                                 <li><code>aria-selected="true|false"</code> on each tab to reflect
                                     selection.
+                                </li>
+                                <li><code>aria-controls</code> on each tab referencing the matching panel
+                                    <code>id</code>.
                                 </li>
                                 <li><code>aria-labelledby</code> on each panel referencing the
                                     corresponding tab <code>id</code>.

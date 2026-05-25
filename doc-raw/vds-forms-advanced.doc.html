@@ -32,8 +32,8 @@
                     <div class="card">
                         <div class="card__body section__stack-sm">
                             <div class="form-field">
-                                <label class="form-label">Status (single)</label>
-                                <div class="choice-buttons">
+                                <label class="form-label" id="choice-status-label">Status (single)</label>
+                                <div aria-labelledby="choice-status-label" class="choice-buttons" role="radiogroup">
                                     <label class="choice-button">
                                         <input checked class="choice-button__input" name="status" type="radio">
                                         <span class="choice-button__surface">Planned</span>
@@ -50,8 +50,8 @@
                             </div>
 
                             <div class="form-field">
-                                <label class="form-label">Signals (multi)</label>
-                                <div class="choice-buttons">
+                                <label class="form-label" id="choice-signals-label">Signals (multi)</label>
+                                <div aria-labelledby="choice-signals-label" class="choice-buttons" role="group">
                                     <label class="choice-button">
                                         <input checked class="choice-button__input" type="checkbox">
                                         <span class="choice-button__surface">Calm</span>
@@ -68,8 +68,8 @@
                             </div>
 
                             <div class="form-field">
-                                <label class="form-label">Stage (grid)</label>
-                                <div class="choice-buttons choice-buttons--grid">
+                                <label class="form-label" id="choice-stage-label">Stage (grid)</label>
+                                <div aria-labelledby="choice-stage-label" class="choice-buttons choice-buttons--grid" role="radiogroup">
                                     <label class="choice-button">
                                         <input checked class="choice-button__input" name="stage" type="radio">
                                         <span class="choice-button__surface">Intro</span>
@@ -96,8 +96,8 @@
                     <div class="doc-block__toolbar">
                         <span class="doc-block__lang">HTML</span>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
-                            <button class="doc-block__action">Expand</button>
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
                     <pre class="doc-block__code"><code>&lt;div class="choice-buttons"&gt;
@@ -181,8 +181,8 @@
                     <div class="doc-block__toolbar">
                         <span class="doc-block__lang">HTML</span>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
-                            <button class="doc-block__action">Expand</button>
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
                     <pre class="doc-block__code"><code>&lt;label class="choice-chip"&gt;
@@ -241,8 +241,8 @@
                     <div class="doc-block__toolbar">
                         <span class="doc-block__lang">HTML</span>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
-                            <button class="doc-block__action">Expand</button>
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
                     <pre class="doc-block__code"><code>&lt;label class="choice-card"&gt;
@@ -276,12 +276,12 @@
                                 <div class="chip-field__row">
                                     <div class="chip-field__label">Selected labels (toggle)</div>
                                     <div class="chip-field__items">
-                                        <button class="chip-choice chip-choice--selected" type="button">
+                                        <button aria-label="Remove label series:reset" aria-pressed="true" class="chip-choice chip-choice--selected" type="button">
                                             <span class="chip-choice__check icon icon--mask icon--check"></span>
                                             <span class="chip-choice__label">series:reset</span>
                                             <span class="chip-choice__remove icon icon--mask icon--close"></span>
                                         </button>
-                                        <button class="chip-choice chip-choice--selected" type="button">
+                                        <button aria-label="Remove label format:tutorial" aria-pressed="true" class="chip-choice chip-choice--selected" type="button">
                                             <span class="chip-choice__check icon icon--mask icon--check"></span>
                                             <span class="chip-choice__label">format:tutorial</span>
                                             <span class="chip-choice__remove icon icon--mask icon--close"></span>
@@ -290,8 +290,8 @@
                                 </div>
 
                                 <div class="chip-field__row">
-                                    <div class="chip-field__label">Add label</div>
-                                    <input class="form-control chip-field__input" placeholder="Add label">
+                                    <div class="chip-field__label" id="chip-add-label">Add label</div>
+                                    <input aria-labelledby="chip-add-label" class="form-control chip-field__input" placeholder="Add label">
                                 </div>
 
                                 <div class="chip-field__row">
@@ -313,12 +313,12 @@
                                 <div class="chip-field__row">
                                     <div class="chip-field__label">Selected tags (transfer)</div>
                                     <div class="chip-field__items">
-                                        <button class="chip-choice chip-choice--transfer chip-choice--selected"
+                                        <button aria-label="Remove tag night-run" aria-pressed="true" class="chip-choice chip-choice--transfer chip-choice--selected"
                                                 type="button">
                                             <span class="chip-choice__label">night-run</span>
                                             <span class="chip-choice__remove icon icon--mask icon--close"></span>
                                         </button>
-                                        <button class="chip-choice chip-choice--transfer chip-choice--selected"
+                                        <button aria-label="Remove tag field-notes" aria-pressed="true" class="chip-choice chip-choice--transfer chip-choice--selected"
                                                 type="button">
                                             <span class="chip-choice__label">field-notes</span>
                                             <span class="chip-choice__remove icon icon--mask icon--close"></span>
@@ -334,15 +334,15 @@
                     <div class="doc-block__toolbar">
                         <span class="doc-block__lang">HTML</span>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
-                            <button class="doc-block__action">Expand</button>
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
                     <pre class="doc-block__code"><code>&lt;div class="chip-field"&gt;
   &lt;div class="chip-field__row"&gt;
     &lt;div class="chip-field__label"&gt;Selected labels&lt;/div&gt;
     &lt;div class="chip-field__items"&gt;
-      &lt;button class="chip-choice chip-choice--selected"&gt;
+      &lt;button class="chip-choice chip-choice--selected" type="button" aria-pressed="true" aria-label="Remove label series:reset"&gt;
         &lt;span class="chip-choice__check icon icon--mask icon--check"&gt;&lt;/span&gt;
         &lt;span class="chip-choice__label"&gt;series:reset&lt;/span&gt;
         &lt;span class="chip-choice__remove icon icon--mask icon--close"&gt;&lt;/span&gt;
@@ -371,8 +371,8 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="form-field">
-                                <label class="form-label">Density</label>
-                                <div aria-label="Density" class="segmented-control" role="group">
+                                <label class="form-label" id="density-label">Density</label>
+                                <div aria-labelledby="density-label" class="segmented-control" role="radiogroup">
                                     <label class="segmented-control__option">
                                         <input checked class="segmented-control__input" name="density" type="radio">
                                         <span class="segmented-control__label">Compact</span>
@@ -395,11 +395,12 @@
                     <div class="doc-block__toolbar">
                         <span class="doc-block__lang">HTML</span>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
-                            <button class="doc-block__action">Expand</button>
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
-                    <pre class="doc-block__code"><code>&lt;div class="segmented-control" role="group" aria-label="Density"&gt;
+                    <pre class="doc-block__code"><code>&lt;label class="form-label" id="density-label"&gt;Density&lt;/label&gt;
+&lt;div class="segmented-control" role="radiogroup" aria-labelledby="density-label"&gt;
   &lt;label class="segmented-control__option"&gt;
     &lt;input class="segmented-control__input" type="radio" name="density" checked&gt;
     &lt;span class="segmented-control__label"&gt;Compact&lt;/span&gt;
@@ -448,8 +449,8 @@
                     <div class="doc-block__toolbar">
                         <span class="doc-block__lang">HTML</span>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
-                            <button class="doc-block__action">Expand</button>
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
                     <pre class="doc-block__code"><code>&lt;label class="toggle"&gt;
@@ -482,28 +483,28 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="form-field">
-                                <label class="form-label">Skills</label>
+                                <label class="form-label" id="skills-label">Skills</label>
 
-                                <div class="multi-select multi-select--open">
-                                    <div class="multi-select__control">
+                                <div class="multi-select multi-select--open" data-state="open">
+                                    <div aria-controls="skills-listbox" aria-expanded="true" aria-haspopup="listbox" aria-labelledby="skills-label" class="multi-select__control" role="combobox">
 
                                         <div class="multi-select__chip">
                                             JavaScript
-                                            <span class="multi-select__chip-remove">×</span>
+                                            <button aria-label="Remove skill JavaScript" class="multi-select__chip-remove" type="button">×</button>
                                         </div>
 
                                         <div class="multi-select__chip">
                                             TypeScript
-                                            <span class="multi-select__chip-remove">×</span>
+                                            <button aria-label="Remove skill TypeScript" class="multi-select__chip-remove" type="button">×</button>
                                         </div>
 
-                                        <input class="multi-select__input" placeholder="Add skill…">
+                                        <input aria-label="Filter skills" class="multi-select__input" placeholder="Add skill…">
                                     </div>
 
-                                    <div class="multi-select__list">
-                                        <div class="multi-select__option">React</div>
-                                        <div class="multi-select__option">Node.js</div>
-                                        <div class="multi-select__option multi-select__option--selected">
+                                    <div aria-multiselectable="true" class="multi-select__list" id="skills-listbox" role="listbox">
+                                        <div class="multi-select__option" role="option">React</div>
+                                        <div class="multi-select__option" role="option">Node.js</div>
+                                        <div aria-selected="true" class="multi-select__option multi-select__option--selected" role="option">
                                             Angular
                                         </div>
                                     </div>
@@ -519,27 +520,27 @@
                     <div class="doc-block__toolbar">
                         <span class="doc-block__lang">HTML</span>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
-                            <button class="doc-block__action">Expand</button>
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
 
                     <pre class="doc-block__code"><code>&lt;div class="form-field"&gt;
-    &lt;label class="form-label"&gt;Skills&lt;/label&gt;
+    &lt;label class="form-label" id="skills-label"&gt;Skills&lt;/label&gt;
 
-    &lt;div class="multi-select"&gt;
-        &lt;div class="multi-select__control"&gt;
+    &lt;div class="multi-select" data-state="open"&gt;
+        &lt;div class="multi-select__control" role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-controls="skills-listbox" aria-labelledby="skills-label"&gt;
             &lt;div class="multi-select__chip"&gt;
                 JavaScript
-                &lt;span class="multi-select__chip-remove"&gt;×&lt;/span&gt;
+                &lt;button class="multi-select__chip-remove" type="button" aria-label="Remove skill JavaScript"&gt;×&lt;/button&gt;
             &lt;/div&gt;
-            &lt;input class="multi-select__input" placeholder="Add skill…" /&gt;
+            &lt;input class="multi-select__input" aria-label="Filter skills" placeholder="Add skill…" /&gt;
         &lt;/div&gt;
 
-        &lt;div class="multi-select__list"&gt;
-            &lt;div class="multi-select__option"&gt;React&lt;/div&gt;
-            &lt;div class="multi-select__option"&gt;Node.js&lt;/div&gt;
-            &lt;div class="multi-select__option multi-select__option--selected"&gt;Angular&lt;/div&gt;
+        &lt;div class="multi-select__list" id="skills-listbox" role="listbox" aria-multiselectable="true"&gt;
+            &lt;div class="multi-select__option" role="option"&gt;React&lt;/div&gt;
+            &lt;div class="multi-select__option" role="option"&gt;Node.js&lt;/div&gt;
+            &lt;div class="multi-select__option multi-select__option--selected" role="option" aria-selected="true"&gt;Angular&lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 
@@ -569,15 +570,15 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="form-field">
-                                <label class="form-label">Tags</label>
+                                <label class="form-label" id="tags-label">Tags</label>
 
                                 <div class="tag-input">
                                     <div class="tag-input__chip">
                                         backend
-                                        <span class="tag-input__chip-remove">×</span>
+                                        <button aria-label="Remove tag backend" class="tag-input__chip-remove" type="button">×</button>
                                     </div>
 
-                                    <input class="tag-input__input" placeholder="Add tag…">
+                                    <input aria-labelledby="tags-label" class="tag-input__input" placeholder="Add tag…">
                                 </div>
 
                                 <div class="form-help">
@@ -592,16 +593,16 @@
                     <div class="doc-block__toolbar">
                         <span class="doc-block__lang">HTML</span>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
-                            <button class="doc-block__action">Expand</button>
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
                     <pre class="doc-block__code"><code>&lt;div class="tag-input"&gt;
     &lt;div class="tag-input__chip"&gt;
         backend
-        &lt;span class="tag-input__chip-remove"&gt;×&lt;/span&gt;
+        &lt;button class="tag-input__chip-remove" type="button" aria-label="Remove tag backend"&gt;×&lt;/button&gt;
     &lt;/div&gt;
-    &lt;input class="tag-input__input" placeholder="Add tag…" /&gt;
+    &lt;input class="tag-input__input" aria-label="Add tag" placeholder="Add tag…" /&gt;
 &lt;/div&gt;
 </code></pre>
                 </div>
@@ -626,15 +627,15 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="form-field">
-                                <label class="form-label">Quantity</label>
+                                <label class="form-label" for="quantity-stepper">Quantity</label>
 
                                 <div class="stepper">
-                                    <button class="stepper__button">-</button>
-                                    <input class="stepper__input" max="10" min="1" type="number" value="1">
-                                    <button class="stepper__button">+</button>
+                                    <button aria-label="Decrease quantity" class="stepper__button" type="button">-</button>
+                                    <input aria-describedby="quantity-stepper-help" class="stepper__input" id="quantity-stepper" max="10" min="1" type="number" value="1">
+                                    <button aria-label="Increase quantity" class="stepper__button" type="button">+</button>
                                 </div>
 
-                                <div class="form-help">Use arrow keys for precise adjustments.</div>
+                                <div class="form-help" id="quantity-stepper-help">Use arrow keys for precise adjustments.</div>
                             </div>
                         </div>
                     </div>
@@ -644,15 +645,16 @@
                     <div class="doc-block__toolbar">
                         <span class="doc-block__lang">HTML</span>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
-                            <button class="doc-block__action">Expand</button>
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
 
-                    <pre class="doc-block__code"><code>&lt;div class="stepper"&gt;
-    &lt;button class="stepper__button"&gt;-&lt;/button&gt;
-    &lt;input type="number" class="stepper__input" value="1"&gt;
-    &lt;button class="stepper__button"&gt;+&lt;/button&gt;
+                    <pre class="doc-block__code"><code>&lt;label class="form-label" for="quantity"&gt;Quantity&lt;/label&gt;
+&lt;div class="stepper"&gt;
+    &lt;button class="stepper__button" type="button" aria-label="Decrease quantity"&gt;-&lt;/button&gt;
+    &lt;input id="quantity" type="number" class="stepper__input" min="1" max="10" value="1"&gt;
+    &lt;button class="stepper__button" type="button" aria-label="Increase quantity"&gt;+&lt;/button&gt;
 &lt;/div&gt;
 </code></pre>
                 </div>
@@ -678,27 +680,32 @@
                         <div class="card__body">
                             <form class="flex flex-column gap-4">
                                 <div class="form-field">
-                                    <label class="form-label">Date</label>
-                                    <input class="input" type="date">
+                                    <label class="form-label" for="native-date">Date</label>
+                                    <input class="input" id="native-date" type="date">
                                 </div>
 
                                 <div class="form-field">
-                                    <label class="form-label">Time</label>
-                                    <input class="input" type="time">
+                                    <label class="form-label" for="native-time">Time</label>
+                                    <input class="input" id="native-time" type="time">
                                 </div>
 
                                 <div class="form-field">
-                                    <label class="form-label">Date & time</label>
-                                    <input class="input" type="datetime-local">
+                                    <label class="form-label" for="native-datetime">Date &amp; time</label>
+                                    <input class="input" id="native-datetime" type="datetime-local">
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
 
-                <pre class="doc-block__code"><code>&lt;input class="input" type="date"&gt;
-&lt;input class="input" type="time"&gt;
-&lt;input class="input" type="datetime-local"&gt;
+                <pre class="doc-block__code"><code>&lt;label class="form-label" for="native-date"&gt;Date&lt;/label&gt;
+&lt;input class="input" id="native-date" type="date"&gt;
+
+&lt;label class="form-label" for="native-time"&gt;Time&lt;/label&gt;
+&lt;input class="input" id="native-time" type="time"&gt;
+
+&lt;label class="form-label" for="native-datetime"&gt;Date and time&lt;/label&gt;
+&lt;input class="input" id="native-datetime" type="datetime-local"&gt;
 </code></pre>
             </div>
         </article>
@@ -726,19 +733,19 @@
                                 <div class="calendar__header">
                                     <strong>November 2025</strong>
                                     <div class="calendar__nav">
-                                        <span class="calendar__nav-button">‹</span>
-                                        <span class="calendar__nav-button">›</span>
+                                        <button aria-label="Previous month" class="calendar__nav-button" type="button">‹</button>
+                                        <button aria-label="Next month" class="calendar__nav-button" type="button">›</button>
                                     </div>
                                 </div>
 
                                 <div class="calendar__grid">
-                                    <div class="calendar__day">27</div>
-                                    <div class="calendar__day">28</div>
-                                    <div class="calendar__day">29</div>
-                                    <div class="calendar__day">30</div>
-                                    <div class="calendar__day calendar__day--today">1</div>
-                                    <div class="calendar__day">2</div>
-                                    <div class="calendar__day">3</div>
+                                    <button class="calendar__day" type="button">27</button>
+                                    <button class="calendar__day" type="button">28</button>
+                                    <button class="calendar__day" type="button">29</button>
+                                    <button class="calendar__day" type="button">30</button>
+                                    <button class="calendar__day calendar__day--today" type="button">1</button>
+                                    <button class="calendar__day" type="button">2</button>
+                                    <button class="calendar__day" type="button">3</button>
                                 </div>
                             </div>
                         </div>
@@ -749,15 +756,15 @@
     &lt;div class="calendar__header"&gt;
         &lt;strong&gt;Month 2025&lt;/strong&gt;
         &lt;div class="calendar__nav"&gt;
-            &lt;span class="calendar__nav-button"&gt;‹&lt;/span&gt;
-            &lt;span class="calendar__nav-button"&gt;›&lt;/span&gt;
+            &lt;button class="calendar__nav-button" type="button" aria-label="Previous month"&gt;‹&lt;/button&gt;
+            &lt;button class="calendar__nav-button" type="button" aria-label="Next month"&gt;›&lt;/button&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 
     &lt;div class="calendar__grid"&gt;
-        &lt;div class="calendar__day"&gt;1&lt;/div&gt;
-        &lt;div class="calendar__day calendar__day--selected"&gt;2&lt;/div&gt;
-        &lt;div class="calendar__day"&gt;3&lt;/div&gt;
+        &lt;button class="calendar__day" type="button"&gt;1&lt;/button&gt;
+        &lt;button class="calendar__day calendar__day--selected" type="button" aria-selected="true"&gt;2&lt;/button&gt;
+        &lt;button class="calendar__day" type="button"&gt;3&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -790,15 +797,15 @@
                                     </div>
                                     <div class="guidance__body">Capture the spark and why it matters now.</div>
                                 </div>
-                                <div class="form-field">
-                                    <label class="form-label">Title</label>
-                                    <input class="form-control" placeholder="Short working title">
-                                </div>
-                                <div class="form-field">
-                                    <label class="form-label">Idea</label>
-                                    <textarea class="form-control" placeholder="One or two sentences"></textarea>
-                                </div>
-                                <button class="button button--primary">Save idea</button>
+	                                <div class="form-field">
+	                                    <label class="form-label" for="idea-title">Title</label>
+	                                    <input class="form-control" id="idea-title" placeholder="Short working title">
+	                                </div>
+	                                <div class="form-field">
+	                                    <label class="form-label" for="idea-body">Idea</label>
+	                                    <textarea class="form-control" id="idea-body" placeholder="One or two sentences"></textarea>
+	                                </div>
+	                                <button class="button button--primary" type="button">Save idea</button>
                             </div>
                         </div>
                     </div>
@@ -812,8 +819,8 @@
 &lt;/div&gt;
 
 &lt;div class="form-field"&gt;
-  &lt;label class="form-label"&gt;Title&lt;/label&gt;
-  &lt;input class="form-control" placeholder="Short working title"&gt;
+  &lt;label class="form-label" for="idea-title"&gt;Title&lt;/label&gt;
+  &lt;input class="form-control" id="idea-title" placeholder="Short working title"&gt;
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
@@ -824,12 +831,12 @@
                         <div class="card">
                             <div class="card__body section__stack-sm">
                                 <div class="form-field">
-                                    <label class="form-label">Labels</label>
+	                                    <label class="form-label" id="labels-picker-label">Labels</label>
                                     <div class="chip-field">
                                         <div class="chip-field__row">
                                             <div class="chip-field__label">Selected labels</div>
                                             <div class="chip-field__items">
-                                                <button class="chip-choice chip-choice--selected" type="button">
+	                                                <button aria-label="Remove label series:reset" aria-pressed="true" class="chip-choice chip-choice--selected" type="button">
                                                     <span class="chip-choice__check icon icon--mask icon--check"></span>
                                                     <span class="chip-choice__label">series:reset</span>
                                                     <span class="chip-choice__remove icon icon--mask icon--close"></span>
@@ -837,8 +844,8 @@
                                             </div>
                                         </div>
                                         <div class="chip-field__row">
-                                            <div class="chip-field__label">Add label</div>
-                                            <input class="form-control chip-field__input" placeholder="Add label">
+	                                            <div class="chip-field__label" id="labels-add-label">Add label</div>
+	                                            <input aria-labelledby="labels-add-label" class="form-control chip-field__input" placeholder="Add label">
                                         </div>
                                         <div class="chip-field__row">
                                             <div class="chip-field__label">Available</div>
@@ -859,21 +866,21 @@
                                 </div>
 
                                 <div class="form-field">
-                                    <label class="form-label">Tags</label>
+	                                    <label class="form-label" id="tags-picker-label">Tags</label>
                                     <div class="chip-field">
                                         <div class="chip-field__row">
                                             <div class="chip-field__label">Selected tags</div>
                                             <div class="chip-field__items">
-                                                <button class="chip-choice chip-choice--transfer chip-choice--selected"
-                                                        type="button">
+	                                                <button aria-label="Remove tag field-notes" aria-pressed="true" class="chip-choice chip-choice--transfer chip-choice--selected"
+	                                                        type="button">
                                                     <span class="chip-choice__label">field-notes</span>
                                                     <span class="chip-choice__remove icon icon--mask icon--close"></span>
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="chip-field__row">
-                                            <div class="chip-field__label">Add tag</div>
-                                            <input class="form-control chip-field__input" placeholder="Add tag">
+	                                            <div class="chip-field__label" id="tags-add-label">Add tag</div>
+	                                            <input aria-labelledby="tags-add-label" class="form-control chip-field__input" placeholder="Add tag">
                                         </div>
                                     </div>
                                 </div>
@@ -885,7 +892,7 @@
   &lt;div class="chip-field__row"&gt;
     &lt;div class="chip-field__label"&gt;Selected labels&lt;/div&gt;
     &lt;div class="chip-field__items"&gt;
-      &lt;button class="chip-choice chip-choice--selected"&gt;
+      &lt;button class="chip-choice chip-choice--selected" type="button" aria-pressed="true" aria-label="Remove label series:reset"&gt;
         &lt;span class="chip-choice__check icon icon--mask icon--check"&gt;&lt;/span&gt;
         &lt;span class="chip-choice__label"&gt;series:reset&lt;/span&gt;
         &lt;span class="chip-choice__remove icon icon--mask icon--close"&gt;&lt;/span&gt;
@@ -893,8 +900,8 @@
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="chip-field__row"&gt;
-    &lt;div class="chip-field__label"&gt;Add label&lt;/div&gt;
-    &lt;input class="form-control chip-field__input" placeholder="Add label"&gt;
+    &lt;div class="chip-field__label" id="add-label"&gt;Add label&lt;/div&gt;
+    &lt;input class="form-control chip-field__input" aria-labelledby="add-label" placeholder="Add label"&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                     </div>
@@ -906,8 +913,8 @@
                         <div class="card">
                             <div class="card__body section__stack-sm">
                                 <div class="form-field">
-                                    <label class="form-label">Signals</label>
-                                    <div class="choice-chips">
+	                                    <label class="form-label" id="signals-label">Signals</label>
+	                                    <div aria-labelledby="signals-label" class="choice-chips" role="group">
                                         <label class="choice-chip">
                                             <input checked class="choice-chip__input" type="checkbox">
                                             <span aria-hidden="true" class="choice-chip__indicator"></span>
@@ -927,8 +934,8 @@
                                 </div>
 
                                 <div class="form-field">
-                                    <label class="form-label">Status</label>
-                                    <div class="choice-buttons">
+	                                    <label class="form-label" id="status-label">Status</label>
+	                                    <div aria-labelledby="status-label" class="choice-buttons" role="radiogroup">
                                         <label class="choice-button">
                                             <input checked class="choice-button__input" name="status" type="radio">
                                             <span class="choice-button__surface">Planned</span>
@@ -986,6 +993,10 @@
                         <li>Load <code>forms.css</code> first.</li>
                         <li>Then load <code>forms-advanced.css</code>.</li>
                         <li>Native inputs remain semantic; JavaScript is responsible for behaviour only.</li>
+                        <li>Consumer code owns multiselect open/close, tag creation/removal, segmented/toggle state,
+                            numeric validation, calendar/date-picker logic, Escape/outside-click dismissal,
+                            <code>aria-*</code> synchronization, live announcements, and hidden form values.
+                        </li>
                         <li>All components respond to <code>.form-control--error</code>,
                             <code>aria-invalid="true"</code>, and density layers (<code>.form--a</code> /
                             default / <code>.form--c</code>).
@@ -997,8 +1008,8 @@
                     <div class="doc-block__toolbar">
                         <span class="doc-block__lang">HTML</span>
                         <div class="doc-block__actions">
-                            <button class="doc-block__action">Copy</button>
-                            <button class="doc-block__action">Expand</button>
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
                         </div>
                     </div>
 
@@ -1056,10 +1067,13 @@
                             <code>.stepper--disabled</code>.
                         </li>
 
-                        <li>Keep JavaScript responsibilities minimal:
+                        <li>Keep JavaScript responsibilities explicit:
                             toggle dropdowns, update hidden inputs, manage chip lists,
                             apply <code>--open</code>,
-                            <code>--selected</code> and similar state classes.
+                            <code>--selected</code> and similar state classes, synchronize
+                            <code>aria-expanded</code>, <code>aria-selected</code>,
+                            <code>aria-disabled</code>, <code>aria-invalid</code>, and
+                            <code>aria-valuenow</code>, and announce async changes when needed.
                         </li>
 
                         <li>Use semantic tokens for meaning and status:
@@ -1071,6 +1085,11 @@
                         <li>Preserve calendar semantics by modelling days as interactive
                             elements (<code>&lt;button&gt;</code> recommended)
                             when binding behaviour through JavaScript.
+                        </li>
+
+                        <li>Implement keyboard behavior in application code for custom controls:
+                            Arrow/Home/End navigation where appropriate, Enter/Space selection,
+                            Escape dismissal for popovers, focus return, and outside-click policy.
                         </li>
 
                         <li>Let density layers (<code>.form--a</code>,
@@ -1134,4 +1153,3 @@
         </article>
     </div>
 </section>
-

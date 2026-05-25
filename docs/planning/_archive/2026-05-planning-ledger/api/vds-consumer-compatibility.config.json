@@ -1,0 +1,44 @@
+{
+  "description": "Official first-pass VDS consumer compatibility scan targets and source-only ignore rules.",
+  "selectorInventory": "docs/planning/api/vds-selector-inventory.json",
+  "targets": [
+    {
+      "id": "keep-exec",
+      "label": "@24vlh/keep-exec",
+      "root": "../keep-exec",
+      "notes": "Direct npm package consumer of @24vlh/vds."
+    },
+    {
+      "id": "vlah.io",
+      "label": "@24vlh/vlah.io",
+      "root": "../vlah.io",
+      "notes": "Public site that carries and uses VDS assets/classes."
+    }
+  ],
+  "includeGlobs": [
+    "**/*.html",
+    "**/*.css",
+    "**/*.scss",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.md"
+  ],
+  "ignoreGlobs": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/coverage/**",
+    "**/.git/**",
+    "**/.angular/**",
+    "**/.cache/**",
+    "**/android/app/src/main/assets/**",
+    "**/src/assets/css/vds.css",
+    "**/src/assets/css/vds.min.css",
+    "**/src/assets/css/identity.css",
+    "**/src/assets/css/identity.min.css",
+    "**/src/assets/css/graphite.css",
+    "**/src/assets/css/graphite.min.css"
+  ]
+}

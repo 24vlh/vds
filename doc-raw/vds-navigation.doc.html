@@ -321,15 +321,16 @@
                             <nav aria-label="Pagination" class="pagination">
                                 <button aria-label="Previous page"
                                         class="pagination__item pagination__prev pagination__item--disabled"
-                                        disabled>
+                                        disabled
+                                        type="button">
                                     ← Prev
                                 </button>
-                                <button aria-current="page" class="pagination__item pagination__item--active">1</button>
-                                <button class="pagination__item">2</button>
-                                <button class="pagination__item">3</button>
+                                <button aria-current="page" class="pagination__item pagination__item--active" type="button">1</button>
+                                <button class="pagination__item" type="button">2</button>
+                                <button class="pagination__item" type="button">3</button>
                                 <span aria-hidden="true" class="pagination__item pagination__ellipsis">...</span>
-                                <button class="pagination__item">8</button>
-                                <button aria-label="Next page" class="pagination__item pagination__next">Next →</button>
+                                <button class="pagination__item" type="button">8</button>
+                                <button aria-label="Next page" class="pagination__item pagination__next" type="button">Next →</button>
                             </nav>
                         </div>
                     </div>
@@ -338,11 +339,11 @@
                         <div class="card__body">
                             <nav aria-label="Back and forward pagination"
                                  class="pagination pagination--back-forward pagination--minimal">
-                                <button class="pagination__item pagination__prev pagination__item--disabled" disabled>
+                                <button class="pagination__item pagination__prev pagination__item--disabled" disabled type="button">
                                     ← Previous
                                 </button>
                                 <span class="pagination__meta">Page 1 of 12</span>
-                                <button class="pagination__item pagination__next">Next →</button>
+                                <button class="pagination__item pagination__next" type="button">Next →</button>
                             </nav>
                         </div>
                     </div>
@@ -350,7 +351,7 @@
                     <div class="card mt-6">
                         <div class="card__body">
                             <nav aria-label="Load more" class="pagination pagination--load-more">
-                                <button class="pagination__item">Load more</button>
+                                <button class="pagination__item" type="button">Load more</button>
                                 <span class="pagination__status">Showing 24 of 128</span>
                             </nav>
                         </div>
@@ -359,11 +360,11 @@
                     <div class="card mt-6">
                         <div class="card__body">
                             <nav aria-label="Compact pagination" class="pagination pagination--compact">
-                                <button aria-label="Previous page" class="pagination__item pagination__prev">←</button>
-                                <button aria-current="page" class="pagination__item pagination__item--active">4</button>
-                                <button class="pagination__item">5</button>
-                                <button class="pagination__item">6</button>
-                                <button aria-label="Next page" class="pagination__item pagination__next">→</button>
+                                <button aria-label="Previous page" class="pagination__item pagination__prev" type="button">←</button>
+                                <button aria-current="page" class="pagination__item pagination__item--active" type="button">4</button>
+                                <button class="pagination__item" type="button">5</button>
+                                <button class="pagination__item" type="button">6</button>
+                                <button aria-label="Next page" class="pagination__item pagination__next" type="button">→</button>
                             </nav>
                         </div>
                     </div>
@@ -371,38 +372,38 @@
 
                 <div class="doc-block__code">
 <pre class="doc-block__code"><code>&lt;nav class="pagination" aria-label="Pagination"&gt;
-    &lt;button class="pagination__item pagination__prev pagination__item--disabled" disabled aria-label="Previous page"&gt;
+    &lt;button class="pagination__item pagination__prev pagination__item--disabled" type="button" disabled aria-label="Previous page"&gt;
         ← Prev
     &lt;/button&gt;
 
-    &lt;button class="pagination__item pagination__item--active" aria-current="page"&gt;1&lt;/button&gt;
-    &lt;button class="pagination__item"&gt;2&lt;/button&gt;
-    &lt;button class="pagination__item"&gt;3&lt;/button&gt;
+    &lt;button class="pagination__item pagination__item--active" type="button" aria-current="page"&gt;1&lt;/button&gt;
+    &lt;button class="pagination__item" type="button"&gt;2&lt;/button&gt;
+    &lt;button class="pagination__item" type="button"&gt;3&lt;/button&gt;
 
     &lt;span class="pagination__item pagination__ellipsis" aria-hidden="true"&gt;...&lt;/span&gt;
-    &lt;button class="pagination__item"&gt;8&lt;/button&gt;
-    &lt;button class="pagination__item pagination__next" aria-label="Next page"&gt;Next →&lt;/button&gt;
+    &lt;button class="pagination__item" type="button"&gt;8&lt;/button&gt;
+    &lt;button class="pagination__item pagination__next" type="button" aria-label="Next page"&gt;Next →&lt;/button&gt;
 &lt;/nav&gt;
 
 &lt;nav class="pagination pagination--back-forward pagination--minimal" aria-label="Back and forward pagination"&gt;
-    &lt;button class="pagination__item pagination__prev pagination__item--disabled" disabled&gt;
+    &lt;button class="pagination__item pagination__prev pagination__item--disabled" type="button" disabled&gt;
         ← Previous
     &lt;/button&gt;
     &lt;span class="pagination__meta"&gt;Page 1 of 12&lt;/span&gt;
-    &lt;button class="pagination__item pagination__next"&gt;Next →&lt;/button&gt;
+    &lt;button class="pagination__item pagination__next" type="button"&gt;Next →&lt;/button&gt;
 &lt;/nav&gt;
 
 &lt;nav class="pagination pagination--load-more" aria-label="Load more"&gt;
-    &lt;button class="pagination__item"&gt;Load more&lt;/button&gt;
+    &lt;button class="pagination__item" type="button"&gt;Load more&lt;/button&gt;
     &lt;span class="pagination__status"&gt;Showing 24 of 128&lt;/span&gt;
 &lt;/nav&gt;
 
 &lt;nav class="pagination pagination--compact" aria-label="Compact pagination"&gt;
-    &lt;button class="pagination__item pagination__prev" aria-label="Previous page"&gt;←&lt;/button&gt;
-    &lt;button class="pagination__item pagination__item--active" aria-current="page"&gt;4&lt;/button&gt;
-    &lt;button class="pagination__item"&gt;5&lt;/button&gt;
-    &lt;button class="pagination__item"&gt;6&lt;/button&gt;
-    &lt;button class="pagination__item pagination__next" aria-label="Next page"&gt;→&lt;/button&gt;
+    &lt;button class="pagination__item pagination__prev" type="button" aria-label="Previous page"&gt;←&lt;/button&gt;
+    &lt;button class="pagination__item pagination__item--active" type="button" aria-current="page"&gt;4&lt;/button&gt;
+    &lt;button class="pagination__item" type="button"&gt;5&lt;/button&gt;
+    &lt;button class="pagination__item" type="button"&gt;6&lt;/button&gt;
+    &lt;button class="pagination__item pagination__next" type="button" aria-label="Next page"&gt;→&lt;/button&gt;
 &lt;/nav&gt;
 </code></pre>
                 </div>
@@ -426,11 +427,11 @@
                     <div class="card">
                         <div class="card__body">
                             <div class="nav-tabs" role="tablist">
-                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab">
+                                <button aria-controls="nav-tab-panel-overview" aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab" type="button">
                                     Overview
                                 </button>
-                                <button aria-selected="false" class="nav-tabs__item" role="tab">Activity</button>
-                                <button aria-selected="false" class="nav-tabs__item" role="tab">Settings</button>
+                                <button aria-controls="nav-tab-panel-activity" aria-selected="false" class="nav-tabs__item" role="tab" type="button">Activity</button>
+                                <button aria-controls="nav-tab-panel-settings" aria-selected="false" class="nav-tabs__item" role="tab" type="button">Settings</button>
                             </div>
                         </div>
                     </div>
@@ -438,11 +439,11 @@
                     <div class="card mt-6">
                         <div class="card__body">
                             <div class="nav-tabs nav-tabs--compact" role="tablist">
-                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab">
+                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab" type="button">
                                     Overview
                                 </button>
-                                <button aria-selected="false" class="nav-tabs__item" role="tab">Activity</button>
-                                <button aria-selected="false" class="nav-tabs__item" role="tab">Settings</button>
+                                <button aria-selected="false" class="nav-tabs__item" role="tab" type="button">Activity</button>
+                                <button aria-selected="false" class="nav-tabs__item" role="tab" type="button">Settings</button>
                             </div>
                         </div>
                     </div>
@@ -450,17 +451,17 @@
                     <div class="card mt-6">
                         <div class="card__body">
                             <div class="nav-tabs" role="tablist">
-                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab">
+                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab" type="button">
                                     <span class="icon icon--mask icon--search nav-tabs__icon"></span>
                                     Overview
                                 </button>
 
-                                <button aria-selected="false" class="nav-tabs__item" role="tab">
+                                <button aria-selected="false" class="nav-tabs__item" role="tab" type="button">
                                     <span class="icon icon--mask icon--calendar nav-tabs__icon"></span>
                                     Activity
                                 </button>
 
-                                <button aria-selected="false" class="nav-tabs__item" role="tab">
+                                <button aria-selected="false" class="nav-tabs__item" role="tab" type="button">
                                     <span class="icon icon--mask icon--settings nav-tabs__icon"></span>
                                     Settings
                                 </button>
@@ -471,17 +472,17 @@
                     <div class="card mt-6">
                         <div class="card__body">
                             <div class="nav-tabs" role="tablist">
-                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab">
+                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab" type="button">
                                     Overview
                                     <span class="nav-tabs__badge">12</span>
                                 </button>
 
-                                <button aria-selected="false" class="nav-tabs__item" role="tab">
+                                <button aria-selected="false" class="nav-tabs__item" role="tab" type="button">
                                     Activity
                                     <span class="nav-tabs__badge">3</span>
                                 </button>
 
-                                <button aria-selected="false" class="nav-tabs__item" role="tab">
+                                <button aria-selected="false" class="nav-tabs__item" role="tab" type="button">
                                     Settings
                                 </button>
                             </div>
@@ -491,46 +492,46 @@
 
                 <div class="doc-block__code">
 <pre class="doc-block__code"><code>&lt;div class="nav-tabs"&gt;
-    &lt;button class="nav-tabs__item nav-tabs__item--active"&gt;Overview&lt;/button&gt;
-    &lt;button class="nav-tabs__item"&gt;Activity&lt;/button&gt;
-    &lt;button class="nav-tabs__item"&gt;Settings&lt;/button&gt;
+    &lt;button class="nav-tabs__item nav-tabs__item--active" type="button"&gt;Overview&lt;/button&gt;
+    &lt;button class="nav-tabs__item" type="button"&gt;Activity&lt;/button&gt;
+    &lt;button class="nav-tabs__item" type="button"&gt;Settings&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;nav-tabs nav-tabs--compact&quot; role=&quot;tablist&quot;&gt;
-    &lt;button class=&quot;nav-tabs__item nav-tabs__item--active&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot;&gt;Overview&lt;/button&gt;
-    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Activity&lt;/button&gt;
-    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Settings&lt;/button&gt;
+    &lt;button class=&quot;nav-tabs__item nav-tabs__item--active&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot;&gt;Overview&lt;/button&gt;
+    &lt;button class=&quot;nav-tabs__item&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Activity&lt;/button&gt;
+    &lt;button class=&quot;nav-tabs__item&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;Settings&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;nav-tabs&quot; role=&quot;tablist&quot;&gt;
-    &lt;button class=&quot;nav-tabs__item nav-tabs__item--active&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot;&gt;
+    &lt;button class=&quot;nav-tabs__item nav-tabs__item--active&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot;&gt;
         &lt;span class=&quot;icon icon--mask icon--search nav-tabs__icon&quot;&gt;&lt;/span&gt;
         Overview
     &lt;/button&gt;
 
-    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
+    &lt;button class=&quot;nav-tabs__item&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
         &lt;span class=&quot;icon icon--mask icon--calendar nav-tabs__icon&quot;&gt;&lt;/span&gt;
         Activity
     &lt;/button&gt;
 
-    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
+    &lt;button class=&quot;nav-tabs__item&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
         &lt;span class=&quot;icon icon--mask icon--settings nav-tabs__icon&quot;&gt;&lt;/span&gt;
         Settings
     &lt;/button&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;nav-tabs&quot; role=&quot;tablist&quot;&gt;
-    &lt;button class=&quot;nav-tabs__item nav-tabs__item--active&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot;&gt;
+    &lt;button class=&quot;nav-tabs__item nav-tabs__item--active&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot;&gt;
         Overview
         &lt;span class=&quot;nav-tabs__badge&quot;&gt;12&lt;/span&gt;
     &lt;/button&gt;
 
-    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
+    &lt;button class=&quot;nav-tabs__item&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
         Activity
         &lt;span class=&quot;nav-tabs__badge&quot;&gt;3&lt;/span&gt;
     &lt;/button&gt;
 
-    &lt;button class=&quot;nav-tabs__item&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
+    &lt;button class=&quot;nav-tabs__item&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot;&gt;
         Settings
     &lt;/button&gt;
 &lt;/div&gt;
@@ -559,8 +560,8 @@
                         <h3 class="toolbar__title">Users</h3>
                     </div>
                     <div class="toolbar__actions">
-                        <button class="button button--subtle">Export</button>
-                        <button class="button button--primary">Add User</button>
+                        <button class="button button--subtle" type="button">Export</button>
+                        <button class="button button--primary" type="button">Add User</button>
                     </div>
                 </div>
             </div>
@@ -589,8 +590,8 @@
                             <h3 class="toolbar__title">Projects</h3>
                         </div>
                         <div class="toolbar__actions">
-                            <button class="button button--ghost">Filter</button>
-                            <button class="button button--primary">New Project</button>
+                            <button class="button button--ghost" type="button">Filter</button>
+                            <button class="button button--primary" type="button">New Project</button>
                         </div>
                     </div>
                 </div>
@@ -602,8 +603,8 @@
     &lt;/div&gt;
 
     &lt;div class="toolbar__actions"&gt;
-        &lt;button class="button button--ghost"&gt;Filter&lt;/button&gt;
-        &lt;button class="button button--primary"&gt;New Project&lt;/button&gt;
+        &lt;button class="button button--ghost" type="button"&gt;Filter&lt;/button&gt;
+        &lt;button class="button button--primary" type="button"&gt;New Project&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -619,7 +620,7 @@
                             <span class="toolbar__title">Dense</span>
                         </div>
                         <div class="toolbar__actions">
-                            <button class="button button--subtle">Save</button>
+                            <button class="button button--subtle" type="button">Save</button>
                         </div>
                     </div>
                 </div>
@@ -630,7 +631,7 @@
         &lt;span class="toolbar__title"&gt;Dense&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="toolbar__actions"&gt;
-        &lt;button class="button button--subtle"&gt;Save&lt;/button&gt;
+        &lt;button class="button button--subtle" type="button"&gt;Save&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -642,7 +643,7 @@
                             <span class="toolbar__title">Spacious</span>
                         </div>
                         <div class="toolbar__actions">
-                            <button class="button button--primary">Create</button>
+                            <button class="button button--primary" type="button">Create</button>
                         </div>
                     </div>
                 </div>
@@ -653,7 +654,7 @@
         &lt;span class="toolbar__title"&gt;Spacious&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="toolbar__actions"&gt;
-        &lt;button class="button button--primary"&gt;Create&lt;/button&gt;
+        &lt;button class="button button--primary" type="button"&gt;Create&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -670,16 +671,16 @@
                         <div class="toolbar__section">
                             <h3 class="toolbar__title">Analytics</h3>
                             <div class="nav-tabs nav-tabs--compact" role="tablist">
-                                <button aria-selected="true" class="nav-tabs__item nav-tabs__item--active">Overview
+                                <button aria-controls="analytics-overview-panel" aria-selected="true" class="nav-tabs__item nav-tabs__item--active" role="tab" type="button">Overview
                                 </button>
-                                <button class="nav-tabs__item">Traffic</button>
-                                <button class="nav-tabs__item">Events</button>
+                                <button aria-controls="analytics-traffic-panel" aria-selected="false" class="nav-tabs__item" role="tab" type="button">Traffic</button>
+                                <button aria-controls="analytics-events-panel" aria-selected="false" class="nav-tabs__item" role="tab" type="button">Events</button>
                             </div>
                         </div>
 
                         <div class="toolbar__actions">
-                            <button class="button button--ghost">Refresh</button>
-                            <button class="button button--primary">Export</button>
+                            <button class="button button--ghost" type="button">Refresh</button>
+                            <button class="button button--primary" type="button">Export</button>
                         </div>
                     </div>
                 </div>
@@ -690,15 +691,15 @@
         &lt;h3 class="toolbar__title"&gt;Analytics&lt;/h3&gt;
 
         &lt;div class="nav-tabs nav-tabs--compact" role="tablist"&gt;
-            &lt;button class="nav-tabs__item nav-tabs__item--active"&gt;Overview&lt;/button&gt;
-            &lt;button class="nav-tabs__item"&gt;Traffic&lt;/button&gt;
-            &lt;button class="nav-tabs__item"&gt;Events&lt;/button&gt;
+            &lt;button class="nav-tabs__item nav-tabs__item--active" type="button"&gt;Overview&lt;/button&gt;
+            &lt;button class="nav-tabs__item" type="button"&gt;Traffic&lt;/button&gt;
+            &lt;button class="nav-tabs__item" type="button"&gt;Events&lt;/button&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 
     &lt;div class="toolbar__actions"&gt;
-        &lt;button class="button button--ghost"&gt;Refresh&lt;/button&gt;
-        &lt;button class="button button--primary"&gt;Export&lt;/button&gt;
+        &lt;button class="button button--ghost" type="button"&gt;Refresh&lt;/button&gt;
+        &lt;button class="button button--primary" type="button"&gt;Export&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -826,7 +827,7 @@
                             <span class="announcement__text">Welcome to the new VDS 3.0 release.</span>
                             <a class="announcement__link" href="#">Learn more</a>
                         </div>
-                        <button class="announcement__close">
+                        <button aria-label="Dismiss announcement" class="announcement__close" type="button">
                             <span class="icon icon--mask icon--close"></span>
                         </button>
                     </div>
@@ -862,7 +863,7 @@
                                 <span class="announcement__text">We’ve updated our Terms of Service.</span>
                                 <a class="announcement__link" href="#">View changes</a>
                             </div>
-                            <button class="announcement__close">
+                            <button aria-label="Dismiss announcement" class="announcement__close" type="button">
                                 <span class="icon icon--mask icon--close"></span>
                             </button>
                         </div>
@@ -879,7 +880,7 @@
             &lt;a href="#" class="announcement__link"&gt;View changes&lt;/a&gt;
         &lt;/div&gt;
 
-        &lt;button class="announcement__close"&gt;
+        &lt;button class="announcement__close" type="button" aria-label="Dismiss announcement"&gt;
             &lt;span class="icon icon--mask icon--close"&gt;&lt;/span&gt;
         &lt;/button&gt;
 
@@ -980,8 +981,8 @@
                     </div>
 
                     <div class="nav__actions">
-                        <button class="button button--subtle">Docs</button>
-                        <button class="button button--primary">Login</button>
+                        <button class="button button--subtle" type="button">Docs</button>
+                        <button class="button button--primary" type="button">Login</button>
                     </div>
                 </nav>
             </div>
@@ -1063,16 +1064,16 @@
                 <div class="doc-block__preview">
                     <nav class="nav">
                         <div class="nav__actions">
-                            <button class="button button--subtle">Help</button>
-                            <button class="button button--primary">Sign In</button>
+                            <button class="button button--subtle" type="button">Help</button>
+                            <button class="button button--primary" type="button">Sign In</button>
                         </div>
                     </nav>
                 </div>
 
                 <div class="doc-block__code">
 <pre><code>&lt;div class="nav__actions"&gt;
-    &lt;button class="button button--subtle"&gt;Help&lt;/button&gt;
-    &lt;button class="button button--primary"&gt;Sign In&lt;/button&gt;
+    &lt;button class="button button--subtle" type="button"&gt;Help&lt;/button&gt;
+    &lt;button class="button button--primary" type="button"&gt;Sign In&lt;/button&gt;
 &lt;/div&gt;
 </code></pre>
                 </div>
@@ -1106,7 +1107,7 @@
             </header>
 
             <div class="doc-block__preview">
-                <button class="nav__toggle">
+                <button aria-controls="primary-navigation-panel" aria-expanded="false" aria-label="Open navigation" class="nav__toggle" type="button">
                     <svg fill="none" viewBox="0 0 24 24">
                         <line stroke-width="2" x1="3" x2="21" y1="6" y2="6"/>
                         <line stroke-width="2" x1="3" x2="21" y1="12" y2="12"/>
@@ -1132,7 +1133,7 @@
 
                 <h3 class="text-sm text-muted">Basic</h3>
                 <div class="doc-block__preview">
-                    <button class="nav__toggle">
+                    <button aria-controls="primary-navigation-panel" aria-expanded="false" aria-label="Open navigation" class="nav__toggle" type="button">
                         <svg fill="none" viewBox="0 0 24 24">
                             <line stroke-width="2" x1="3" x2="21" y1="6" y2="6"/>
                             <line stroke-width="2" x1="3" x2="21" y1="12" y2="12"/>
@@ -1142,7 +1143,7 @@
                 </div>
 
                 <div class="doc-block__code">
-<pre><code>&lt;button class="nav__toggle"&gt;
+<pre><code>&lt;button class="nav__toggle" type="button" aria-label="Open navigation" aria-controls="primary-navigation-panel" aria-expanded="false"&gt;
     &lt;svg viewBox="0 0 24 24" fill="none"&gt;
         &lt;line x1="3" y1="6"  x2="21" y2="6"  stroke-width="2" /&gt;
         &lt;line x1="3" y1="12" x2="21" y2="12" stroke-width="2" /&gt;
@@ -1158,7 +1159,7 @@
                 </p>
 
                 <div class="doc-block__preview">
-                    <button class="nav__toggle nav__toggle--active">
+                    <button aria-controls="primary-navigation-panel" aria-expanded="true" aria-label="Close navigation" class="nav__toggle nav__toggle--active" type="button">
                         <svg fill="none" viewBox="0 0 24 24">
                             <line stroke-width="2" x1="3" x2="21" y1="6" y2="6"/>
                             <line stroke-width="2" x1="3" x2="21" y1="12" y2="12"/>
@@ -1168,7 +1169,7 @@
                 </div>
 
                 <div class="doc-block__code">
-<pre><code>&lt;button class="nav__toggle nav__toggle--active"&gt;
+<pre><code>&lt;button class="nav__toggle nav__toggle--active" type="button" aria-label="Close navigation" aria-controls="primary-navigation-panel" aria-expanded="true"&gt;
     &lt;svg viewBox="0 0 24 24" fill="none"&gt;
         &lt;line x1="3" y1="6"  x2="21" y2="6"  stroke-width="2" /&gt;
         &lt;line x1="3" y1="12" x2="21" y2="12" stroke-width="2" /&gt;
@@ -1334,7 +1335,6 @@
                             <code>&lt;ul&gt;</code>/<code>&lt;li&gt;</code> if using semantics,
                             <code>&lt;button&gt;</code> for pagination and tab triggers.
                         </li>
-
                         <li>
                             Mark the current page explicitly with
                             <code>aria-current="page"</code> on
@@ -1344,7 +1344,6 @@
                             <code>aria-current="page"</code> on the active
                             <code>.breadcrumbs__link</code>.
                         </li>
-
                         <li>
                             Keep <code>:focus-visible</code> intact — navigation relies on token-driven
                             focus rings for full keyboard operability.
@@ -1377,12 +1376,14 @@
                         <li>
                             Apply disabled state semantically:
                             <code>disabled</code> + <code>.pagination__item--disabled</code>
-                            or <code>.nav__item--disabled</code>.
+                            for buttons, or <code>.nav__item--disabled</code> with
+                            <code>aria-disabled="true"</code> for non-button navigation items.
                         </li>
-
                         <li>
                             Keep mobile panels (<code>.nav-panel</code>) paired with a backdrop
                             (<code>.nav-backdrop</code>) to ensure proper focus trapping and dismiss behaviour.
+                            Consumer JavaScript owns open/close state, Escape, outside-click, focus return,
+                            and <code>aria-expanded</code> synchronization.
                         </li>
 
                         <li>

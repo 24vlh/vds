@@ -31,24 +31,42 @@
 .description-list {
     display: grid;
     gap: var(--dl-gap);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .description-list__item {
     display: grid;
     gap: var(--space-2);
+    min-width: 0;
 }
 
 .description-list__term {
+    min-width: 0;
+    margin: 0;
     font-size: var(--text-xs);
     font-weight: 600;
     color: var(--dl-term-color);
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    overflow-wrap: anywhere;
 }
 
 .description-list__desc {
+    min-width: 0;
+    margin: 0;
     font-size: var(--text-sm);
     color: var(--dl-desc-color);
+    overflow-wrap: anywhere;
+}
+
+.description-list__desc > :first-child {
+    margin-top: 0;
+}
+
+.description-list__desc > :last-child {
+    margin-bottom: 0;
 }
 
 /* ---------------------------------------------------------

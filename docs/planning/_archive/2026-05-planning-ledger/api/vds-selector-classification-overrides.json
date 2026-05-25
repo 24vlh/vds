@@ -1,0 +1,12 @@
+{
+  "description": "Manual selector classification overrides for VDS component audits. Add entries only with a reason.",
+  "allowedClassifications": [
+    "public",
+    "candidate-public",
+    "docs-only",
+    "internal",
+    "legacy-compatible",
+    "deprecated"
+  ],
+  "overrides": {}
+}

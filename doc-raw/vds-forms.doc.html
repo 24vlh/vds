@@ -115,14 +115,19 @@
                         <li><code>.form-control--disabled</code></li>
                         <li><code>.form-control--readonly</code></li>
                     </ul>
+                    <p class="text-sm">
+                        VDS styles these states only. Application code owns validation, submission, disabled and
+                        readonly behavior, file handling, <code>aria-describedby</code>, <code>aria-invalid</code>,
+                        <code>aria-busy</code>, live announcements, and async state changes.
+                    </p>
                 </div>
                 <div class="doc-block__code">
 <pre><code>&lt;div class="section__stack-sm"&gt;
-    &lt;label class="text-sm"&gt;Email&lt;/label&gt;
+    &lt;label class="text-sm" for="demo-email"&gt;Email&lt;/label&gt;
     &lt;div class="form-control-wrapper"&gt;
-        &lt;input class="form-control"&gt;
+        &lt;input class="form-control" id="demo-email" type="email" aria-describedby="demo-email-help"&gt;
     &lt;/div&gt;
-    &lt;p class="text-xs text-muted"&gt;We never share your email.&lt;/p&gt;
+    &lt;p class="text-xs text-muted" id="demo-email-help"&gt;We never share your email.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </div>
@@ -146,28 +151,29 @@
                     <h3 class="text-sm">All controls · all states</h3>
 
                     <div class="form-grid form-grid--two">
-                        <input class="form-control" placeholder="Default input">
-                        <input class="form-control form-control--loading" value="Loading">
+                        <input aria-label="Default text input" class="form-control" placeholder="Default input">
+                        <input aria-busy="true" aria-label="Loading text input" class="form-control form-control--loading" value="Loading">
 
-                        <input class="form-control form-control--success" value="Success">
-                        <input class="form-control form-control--warning" value="Warning">
+                        <input aria-label="Successful text input" class="form-control form-control--success" value="Success">
+                        <input aria-label="Warning text input" class="form-control form-control--warning" value="Warning">
 
-                        <input class="form-control form-control--error" value="Error">
-                        <input class="form-control form-control--info" value="Info">
+                        <input aria-describedby="state-error-help" aria-invalid="true" aria-label="Errored text input" class="form-control form-control--error" value="Error">
+                        <input aria-label="Informational text input" class="form-control form-control--info" value="Info">
 
-                        <input class="form-control" disabled value="Disabled">
-                        <input class="form-control" readonly value="Readonly">
+                        <input aria-label="Disabled text input" class="form-control" disabled value="Disabled">
+                        <input aria-label="Readonly text input" class="form-control" readonly value="Readonly">
 
-                        <input aria-invalid="true" class="form-control" value="ARIA invalid">
+                        <input aria-describedby="state-error-help" aria-invalid="true" aria-label="ARIA invalid text input" class="form-control" value="ARIA invalid">
 
-                        <select class="form-control">
+                        <select aria-label="Example select" class="form-control">
                             <option>Select option…</option>
                             <option>A</option>
                             <option>B</option>
                         </select>
 
-                        <textarea class="form-control" placeholder="Textarea"></textarea>
+                        <textarea aria-label="Example textarea" class="form-control" placeholder="Textarea"></textarea>
                     </div>
+                    <p class="form-help form-help--error" id="state-error-help">Use <code>aria-describedby</code> to connect invalid controls to their error text.</p>
                 </section>
 
                 <!-- ========================================================= -->
@@ -177,9 +183,9 @@
                     <h3 class="text-sm">Base controls · vertical</h3>
 
                     <div class="section__stack-sm">
-                        <input class="form-control" placeholder="Text input">
-                        <textarea class="form-control" placeholder="Textarea"></textarea>
-                        <select class="form-control">
+                        <input aria-label="Text input" class="form-control" placeholder="Text input">
+                        <textarea aria-label="Textarea" class="form-control" placeholder="Textarea"></textarea>
+                        <select aria-label="Example options" class="form-control">
                             <option>Select…</option>
                             <option>Option A</option>
                             <option>Option B</option>
@@ -194,14 +200,14 @@
                     <h3 class="text-sm">Base controls · horizontal</h3>
 
                     <div class="form-row">
-                        <input class="form-control" placeholder="First name">
-                        <input class="form-control" placeholder="Last name">
+                        <input aria-label="First name" class="form-control" placeholder="First name">
+                        <input aria-label="Last name" class="form-control" placeholder="Last name">
                     </div>
 
                     <div class="form-grid form-grid--three">
-                        <input class="form-control" placeholder="Email">
-                        <input class="form-control" placeholder="Phone">
-                        <input class="form-control" placeholder="Company">
+                        <input aria-label="Email" class="form-control" placeholder="Email" type="email">
+                        <input aria-label="Phone" class="form-control" placeholder="Phone" type="tel">
+                        <input aria-label="Company" class="form-control" placeholder="Company">
                     </div>
                 </section>
 
@@ -214,11 +220,11 @@
                     <div class="form-grid form-grid--two">
                         <div class="form-control-wrapper" data-icon="left">
                             <span class="form-control-icon">🔍</span>
-                            <input class="form-control" placeholder="Search">
+                            <input aria-label="Search" class="form-control" placeholder="Search" type="search">
                         </div>
 
                         <div class="form-control-wrapper" data-icon="right">
-                            <input class="form-control" placeholder="Amount">
+                            <input aria-label="Amount" class="form-control" placeholder="Amount" inputmode="decimal">
                             <span class="form-control-icon">€</span>
                         </div>
                     </div>
@@ -232,7 +238,7 @@
 
                     <div class="form-control-wrapper">
                         <span class="form-control-prefix">£</span>
-                        <input class="form-control" placeholder="Price">
+                        <input aria-label="Price in GBP" class="form-control" placeholder="Price" inputmode="decimal">
                         <span class="form-control-suffix">GBP</span>
                     </div>
                 </section>
@@ -244,8 +250,8 @@
                     <h3 class="text-sm">Grouped controls</h3>
 
                     <div class="form-control-group">
-                        <input class="form-control" placeholder="Min">
-                        <input class="form-control" placeholder="Max">
+                        <input aria-label="Minimum value" class="form-control" placeholder="Min" inputmode="numeric">
+                        <input aria-label="Maximum value" class="form-control" placeholder="Max" inputmode="numeric">
                     </div>
                 </section>
 
@@ -256,11 +262,12 @@
                     <h3 class="text-sm">Behavioural states</h3>
 
                     <div class="form-grid form-grid--two">
-                        <input class="form-control form-control--loading" value="Loading">
-                        <input class="form-control" disabled value="Disabled">
-                        <input class="form-control" readonly value="Readonly">
-                        <input aria-invalid="true" class="form-control" value="ARIA invalid">
+                        <input aria-busy="true" aria-label="Loading username" class="form-control form-control--loading" value="Loading">
+                        <input aria-label="Disabled username" class="form-control" disabled value="Disabled">
+                        <input aria-label="Readonly account id" class="form-control" readonly value="Readonly">
+                        <input aria-describedby="behaviour-error-help" aria-invalid="true" aria-label="Invalid username" class="form-control" value="ARIA invalid">
                     </div>
+                    <p class="form-help form-help--error" id="behaviour-error-help">Username is already taken.</p>
                 </section>
 
                 <!-- ========================================================= -->
@@ -271,7 +278,7 @@
 
                     <div class="section__stack-sm">
                         <div class="form-control-file-surface">
-                            <input type="file">
+                            <input aria-label="Upload evidence file" type="file">
                             <strong class="text-sm">Drop file here</strong>
                             <span class="text-xs text-muted">or click to browse</span>
                         </div>
@@ -295,8 +302,8 @@
                                 <label class="form-label" for="field-name">Name</label>
                                 <span class="form-label-meta">Optional</span>
                             </div>
-                            <input class="form-control" id="field-name" placeholder="e.g. Alex">
-                            <p class="form-help">Shown on your profile.</p>
+                            <input aria-describedby="field-name-help" class="form-control" id="field-name" placeholder="e.g. Alex">
+                            <p class="form-help" id="field-name-help">Shown on your profile.</p>
                         </div>
 
                         <div class="form-field">
@@ -304,8 +311,8 @@
                                 <label class="form-label" for="field-email">Email</label>
                                 <span class="form-label-meta form-label-meta--required">Required</span>
                             </div>
-                            <input class="form-control" id="field-email" placeholder="alex@example.com">
-                            <p class="form-help form-help--error">Please enter a valid address.</p>
+                            <input aria-describedby="field-email-error" aria-invalid="true" class="form-control" id="field-email" placeholder="alex@example.com" type="email">
+                            <p class="form-help form-help--error" id="field-email-error">Please enter a valid address.</p>
                         </div>
                     </div>
 
@@ -462,8 +469,10 @@
                     <h3 class="text-sm">Form · basic actions</h3>
 
                     <form class="section__stack-sm">
-                        <input class="form-control" placeholder="Email">
-                        <input class="form-control" placeholder="Password" type="password">
+                        <label class="form-label" for="signin-email">Email</label>
+                        <input autocomplete="email" class="form-control" id="signin-email" placeholder="alex@example.com" type="email">
+                        <label class="form-label" for="signin-password">Password</label>
+                        <input autocomplete="current-password" class="form-control" id="signin-password" placeholder="Password" type="password">
 
                         <div class="flow__nav">
                             <button class="button button--primary" type="submit">
@@ -479,15 +488,15 @@
                     <h3 class="text-sm">Form · horizontal with actions</h3>
 
                     <form class="form-grid form-grid--three">
-                        <input class="form-control" placeholder="First name">
-                        <input class="form-control" placeholder="Last name">
-                        <input class="form-control" placeholder="Email">
+                        <input aria-label="First name" class="form-control" placeholder="First name">
+                        <input aria-label="Last name" class="form-control" placeholder="Last name">
+                        <input aria-label="Email" class="form-control" placeholder="Email" type="email">
 
                         <div class="flow__nav" style="grid-column: 1 / -1">
-                            <button class="button button--secondary">
+                            <button class="button button--secondary" type="submit">
                                 Save
                             </button>
-                            <button class="button button--primary">
+                            <button class="button button--primary" type="submit">
                                 Save & continue
                             </button>
                         </div>
@@ -497,14 +506,16 @@
                     <h3 class="text-sm">Form · disabled & loading actions</h3>
 
                     <form class="section__stack-sm">
-                        <input class="form-control" placeholder="Username">
-                        <input aria-invalid="true" class="form-control" value="Already taken">
+                        <label class="form-label" for="create-username">Username</label>
+                        <input class="form-control" id="create-username" placeholder="Username">
+                        <input aria-describedby="create-username-error" aria-invalid="true" aria-label="Username validation result" class="form-control" value="Already taken">
+                        <p class="form-help form-help--error" id="create-username-error">Choose a different username.</p>
 
                         <div class="flow__nav">
-                            <button class="button button--secondary" disabled>
+                            <button class="button button--secondary" disabled type="button">
                                 Cancel
                             </button>
-                            <button aria-busy="true" class="button button--primary button--loading">
+                            <button aria-busy="true" class="button button--primary button--loading" type="submit">
                                 Creating…
                             </button>
                         </div>
@@ -531,14 +542,16 @@
                     </div>
 
                     <form class="section__stack-sm">
-                        <input class="form-control" placeholder="Display name">
-                        <textarea class="form-control" placeholder="Bio"></textarea>
+                        <label class="form-label" for="profile-display-name">Display name</label>
+                        <input class="form-control" id="profile-display-name" placeholder="Display name">
+                        <label class="form-label" for="profile-bio">Bio</label>
+                        <textarea class="form-control" id="profile-bio" placeholder="Bio"></textarea>
 
                         <div class="flow__nav">
-                            <button class="button button--secondary">
+                            <button class="button button--secondary" type="button">
                                 Back
                             </button>
-                            <button class="button button--primary">
+                            <button class="button button--primary" type="submit">
                                 Next
                             </button>
                         </div>
@@ -551,33 +564,34 @@
 
                         <div class="form-flow__step form-flow__step--success p-3">
                             <h4 class="text-sm">Account</h4>
-                            <input class="form-control" readonly value="user@example.com">
+                            <input aria-label="Account email" class="form-control" readonly value="user@example.com">
                         </div>
 
                         <div class="form-flow__step form-flow__step--error p-3">
                             <h4 class="text-sm">Profile</h4>
-                            <input class="form-control form-control--error" value="Too short">
+                            <input aria-describedby="flow-profile-error" aria-invalid="true" aria-label="Profile display name" class="form-control form-control--error" value="Too short">
+                            <p class="form-help form-help--error" id="flow-profile-error">Display name must be at least 3 characters.</p>
                         </div>
 
                         <div class="form-flow__step">
                             <h4 class="text-sm">Upload</h4>
                             <div class="form-control-file-surface">
-                                <input type="file">
+                                <input aria-label="Upload confirmation document" type="file">
                                 <strong>Upload document</strong>
                                 <span class="text-xs text-muted">PDF or image</span>
                             </div>
                         </div>
 
                         <div class="form-flow__actions">
-                            <button class="button button--ghost">
+                            <button class="button button--ghost" type="button">
                                 Cancel
                             </button>
 
                             <div class="form-flow__actions-right">
-                                <button class="button button--secondary">
+                                <button class="button button--secondary" type="button">
                                     Back
                                 </button>
-                                <button class="button button--primary">
+                                <button class="button button--primary" type="submit">
                                     Submit
                                 </button>
                             </div>
@@ -588,13 +602,14 @@
                     <h3 class="text-sm">Form · status & destructive actions</h3>
 
                     <form class="section__stack-sm">
-                        <input class="form-control" value="Dangerous setting">
+                        <label class="form-label" for="danger-setting">Dangerous setting</label>
+                        <input class="form-control" id="danger-setting" value="Dangerous setting">
 
                         <div class="flow__nav">
-                            <button class="button button--outline-danger">
+                            <button class="button button--outline-danger" type="button">
                                 Delete
                             </button>
-                            <button class="button button--primary">
+                            <button class="button button--primary" type="submit">
                                 Save changes
                             </button>
                         </div>
@@ -607,11 +622,11 @@
 
                         <div class="form-control-wrapper" data-icon="left">
                             <span class="form-control-icon icon icon--mask icon--search"></span>
-                            <input class="form-control" placeholder="Search">
+                            <input aria-label="Search projects" class="form-control" placeholder="Search" type="search">
                         </div>
 
                         <div class="form-control-wrapper" data-icon="right">
-                            <input class="form-control" placeholder="Amount">
+                            <input aria-label="Invoice amount" class="form-control" placeholder="Amount" inputmode="decimal">
                             <span class="form-control-icon icon icon--mask icon--money"></span>
                         </div>
 
@@ -624,15 +639,16 @@
 
                         <div class="form-control-wrapper" data-icon="left">
                             <span class="form-control-icon icon icon--mask icon--alert"></span>
-                            <input class="form-control form-control--error" value="Invalid value">
+                            <input aria-describedby="icon-error-help" aria-invalid="true" aria-label="Invalid budget" class="form-control form-control--error" value="Invalid value">
                         </div>
 
                         <div class="form-control-wrapper" data-icon="left">
                             <span class="form-control-icon icon icon--mask icon--check-circle"></span>
-                            <input class="form-control form-control--success" value="Looks good">
+                            <input aria-label="Valid budget" class="form-control form-control--success" value="Looks good">
                         </div>
 
                     </div>
+                    <p class="form-help form-help--error" id="icon-error-help">Budget must be a positive number.</p>
                 </section>
                 <section class="section__stack">
                     <h3 class="text-sm">Grouped controls with icons</h3>
@@ -640,12 +656,12 @@
                     <div class="form-control-group">
                         <div class="form-control-wrapper" data-icon="left">
                             <span class="form-control-icon icon icon--mask icon--calendar"></span>
-                            <input class="form-control" placeholder="Start date">
+                            <input aria-label="Start date" class="form-control" placeholder="Start date">
                         </div>
 
                         <div class="form-control-wrapper" data-icon="left">
                             <span class="form-control-icon icon icon--mask icon--calendar"></span>
-                            <input class="form-control" placeholder="End date">
+                            <input aria-label="End date" class="form-control" placeholder="End date">
                         </div>
                     </div>
                 </section>
@@ -653,8 +669,8 @@
                     <h3 class="text-sm">Password field with action icon</h3>
 
                     <div class="form-control-group">
-                        <input class="form-control" placeholder="Password" type="password">
-                        <button class="button button--outline" type="button">
+                        <input aria-label="Password" class="form-control" placeholder="Password" type="password">
+                        <button aria-label="Show password" class="button button--outline" type="button">
                             <span class="icon icon--mask icon--eye"></span>
                         </button>
                     </div>
@@ -663,7 +679,7 @@
                     <h3 class="text-sm">File upload with icon</h3>
 
                     <div class="form-control-file-surface">
-                        <input type="file">
+                        <input aria-label="Upload document" type="file">
                         <span class="icon icon--mask icon--upload"></span>
                         <strong class="text-sm">Upload document</strong>
                         <span class="text-xs text-muted">PDF or image</span>
@@ -673,17 +689,17 @@
                     <h3 class="text-sm">Form actions with icons</h3>
 
                     <div class="flow__nav">
-                        <button class="button button--primary">
+                        <button class="button button--primary" type="button">
                             <span class="icon icon--mask icon--check"></span>
                             <span>Save</span>
                         </button>
 
-                        <button class="button button--secondary">
+                        <button class="button button--secondary" type="button">
                             <span class="icon icon--mask icon--refresh"></span>
                             <span>Reset</span>
                         </button>
 
-                        <button class="button button--ghost button--danger">
+                        <button class="button button--ghost button--danger" type="button">
                             <span class="icon icon--mask icon--trash"></span>
                             <span>Delete</span>
                         </button>
@@ -723,18 +739,23 @@
                 <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Base controls</h3>
                         <div class="section__stack-sm">
-                            <input class="form-control" placeholder="Text input" type="text"/>
-                            <textarea class="form-control" placeholder="Textarea"></textarea>
-                            <select class="form-control">
+                            <input aria-label="Text input" class="form-control" placeholder="Text input" type="text"/>
+                            <textarea aria-label="Textarea" class="form-control" placeholder="Textarea"></textarea>
+                            <select aria-label="Example select" class="form-control">
                                 <option>Select…</option>
                                 <option>Option A</option>
                                 <option>Option B</option>
                             </select>
                         </div>
                     </div>
-                    <div class="doc-block__code mt-4"><pre><code>&lt;input class="form-control" type="text" placeholder="Text input"&gt;
-&lt;textarea class="form-control" placeholder="Textarea"&gt;&lt;/textarea&gt;
-&lt;select class="form-control"&gt;
+                    <div class="doc-block__code mt-4"><pre><code>&lt;label class="form-label" for="example-text"&gt;Text input&lt;/label&gt;
+&lt;input class="form-control" id="example-text" type="text" placeholder="Text input"&gt;
+
+&lt;label class="form-label" for="example-notes"&gt;Notes&lt;/label&gt;
+&lt;textarea class="form-control" id="example-notes" placeholder="Textarea"&gt;&lt;/textarea&gt;
+
+&lt;label class="form-label" for="example-select"&gt;Option&lt;/label&gt;
+&lt;select class="form-control" id="example-select"&gt;
   &lt;option&gt;Select…&lt;/option&gt;
   &lt;option&gt;Option A&lt;/option&gt;
   &lt;option&gt;Option B&lt;/option&gt;
@@ -746,21 +767,21 @@
                         <div class="section__stack-sm">
                             <div class="form-control-wrapper" data-icon="left">
                                 <span class="form-control-icon">🔍</span>
-                                <input class="form-control" placeholder="Search"/>
+                                <input aria-label="Search" class="form-control" placeholder="Search" type="search"/>
                             </div>
                             <div class="form-control-wrapper" data-icon="right">
-                                <input class="form-control" placeholder="Amount"/>
+                                <input aria-label="Amount" class="form-control" placeholder="Amount" inputmode="decimal"/>
                                 <span class="form-control-icon">€</span>
                             </div>
                         </div>
                     </div>
                     <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-control-wrapper" data-icon="left"&gt;
   &lt;span class="form-control-icon"&gt;🔍&lt;/span&gt;
-  &lt;input class="form-control" placeholder="Search"&gt;
+  &lt;input class="form-control" type="search" aria-label="Search" placeholder="Search"&gt;
 &lt;/div&gt;
 
 &lt;div class="form-control-wrapper" data-icon="right"&gt;
-  &lt;input class="form-control" placeholder="Amount"&gt;
+  &lt;input class="form-control" aria-label="Amount" inputmode="decimal" placeholder="Amount"&gt;
   &lt;span class="form-control-icon"&gt;€&lt;/span&gt;
 &lt;/div&gt;</code></pre>
                     </div>
@@ -769,13 +790,13 @@
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Prefix / suffix</h3>
                         <div class="form-control-wrapper">
                             <span class="form-control-prefix">£</span>
-                            <input class="form-control" placeholder="Price"/>
+                            <input aria-label="Price in GBP" class="form-control" placeholder="Price" inputmode="decimal"/>
                             <span class="form-control-suffix">GBP</span>
                         </div>
                     </div>
                     <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-control-wrapper"&gt;
   &lt;span class="form-control-prefix"&gt;£&lt;/span&gt;
-  &lt;input class="form-control" placeholder="Price"&gt;
+  &lt;input class="form-control" aria-label="Price in GBP" inputmode="decimal" placeholder="Price"&gt;
   &lt;span class="form-control-suffix"&gt;GBP&lt;/span&gt;
 &lt;/div&gt;</code></pre>
                     </div>
@@ -783,42 +804,44 @@
                 <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Grouped controls</h3>
                         <div class="form-control-group">
-                            <input class="form-control" placeholder="Min"/>
-                            <input class="form-control" placeholder="Max"/>
+                            <input aria-label="Minimum value" class="form-control" placeholder="Min" inputmode="numeric"/>
+                            <input aria-label="Maximum value" class="form-control" placeholder="Max" inputmode="numeric"/>
                         </div>
                     </div>
                     <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-control-group"&gt;
-  &lt;input class="form-control" placeholder="Min"&gt;
-  &lt;input class="form-control" placeholder="Max"&gt;
+  &lt;input class="form-control" aria-label="Minimum value" inputmode="numeric" placeholder="Min"&gt;
+  &lt;input class="form-control" aria-label="Maximum value" inputmode="numeric" placeholder="Max"&gt;
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
                 <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Validation + loading</h3>
                         <div class="section__stack-sm">
-                            <input aria-invalid="true" class="form-control" value="ARIA invalid"/>
-                            <input class="form-control form-control--error" value="Error"/>
-                            <input class="form-control form-control--success" value="Success"/>
-                            <input class="form-control form-control--loading" value="Loading…"/>
+                            <input aria-describedby="ufal-validation-error" aria-invalid="true" aria-label="Invalid billing code" class="form-control" value="ARIA invalid"/>
+                            <input aria-describedby="ufal-validation-error" aria-invalid="true" aria-label="Billing code with error" class="form-control form-control--error" value="Error"/>
+                            <input aria-label="Valid billing code" class="form-control form-control--success" value="Success"/>
+                            <input aria-busy="true" aria-label="Loading billing code" class="form-control form-control--loading" value="Loading…"/>
+                            <p class="form-help form-help--error" id="ufal-validation-error">Billing code is required.</p>
                         </div>
                     </div>
-                    <div class="doc-block__code mt-4"><pre><code>&lt;input class="form-control" aria-invalid="true" value="ARIA invalid"&gt;
+                    <div class="doc-block__code mt-4"><pre><code>&lt;input class="form-control" aria-label="Billing code" aria-invalid="true" aria-describedby="billing-error" value="ARIA invalid"&gt;
+&lt;p class="form-help form-help--error" id="billing-error"&gt;Billing code is required.&lt;/p&gt;
 
-&lt;input class="form-control form-control--error" value="Error"&gt;
-&lt;input class="form-control form-control--success" value="Success"&gt;
+&lt;input class="form-control form-control--error" aria-label="Errored billing code" aria-invalid="true" aria-describedby="billing-error" value="Error"&gt;
+&lt;input class="form-control form-control--success" aria-label="Valid billing code" value="Success"&gt;
 
-&lt;input class="form-control form-control--loading" value="Loading…" /&gt;</code></pre>
+&lt;input class="form-control form-control--loading" aria-label="Loading billing code" aria-busy="true" value="Loading…" /&gt;</code></pre>
                     </div>
                 </div>
                 <div class="section__grid-2 section__grid-sm">
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Disabled / readonly</h3>
                         <div class="section__stack-sm">
-                            <input class="form-control" disabled="" value="Disabled"/>
-                            <input class="form-control" readonly="" value="Readonly"/>
+                            <input aria-label="Disabled account id" class="form-control" disabled="" value="Disabled"/>
+                            <input aria-label="Readonly account id" class="form-control" readonly="" value="Readonly"/>
                         </div>
                     </div>
-                    <div class="doc-block__code mt-4"><pre><code>&lt;input class="form-control" disabled value="Disabled"&gt;
-&lt;input class="form-control" readonly value="Readonly"&gt;</code></pre>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;input class="form-control" aria-label="Disabled account id" disabled value="Disabled"&gt;
+&lt;input class="form-control" aria-label="Readonly account id" readonly value="Readonly"&gt;</code></pre>
                     </div>
                 </div>
                 <div class="section__grid-2 section__grid-sm">
@@ -826,7 +849,7 @@
                         inline)</h3>
                         <div class="section__stack-sm">
                             <div class="form-control-file-surface">
-                                <input type="file"/>
+                                <input aria-label="Upload contract" type="file"/>
                                 <strong class="text-sm">Drop file here</strong>
                                 <span class="text-xs text-muted">or click to browse</span>
                             </div>
@@ -837,7 +860,7 @@
                         </div>
                     </div>
                     <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-control-file-surface"&gt;
-  &lt;input type="file"&gt;
+  &lt;input type="file" aria-label="Upload file"&gt;
   &lt;strong&gt;Drop file here&lt;/strong&gt;
   &lt;span class="text-xs text-muted"&gt;or click to browse&lt;/span&gt;
 &lt;/div&gt;
@@ -855,8 +878,8 @@
                                 <label class="form-label" for="field-shell-name">Name</label>
                                 <span class="form-label-meta">Optional</span>
                             </div>
-                            <input class="form-control" id="field-shell-name" placeholder="e.g. Alex"/>
-                            <p class="form-help">Shown on your profile.</p>
+                            <input aria-describedby="field-shell-name-help" class="form-control" id="field-shell-name" placeholder="e.g. Alex"/>
+                            <p class="form-help" id="field-shell-name-help">Shown on your profile.</p>
                         </div>
                     </div>
                     <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-field"&gt;
@@ -876,8 +899,8 @@
                                 <label class="form-label" for="field-shell-inline">Title</label>
                                 <span class="form-label-meta">Optional</span>
                             </div>
-                            <input class="form-control" id="field-shell-inline" placeholder="Inline layout"/>
-                            <p class="form-help">Compact label/control layout.</p>
+                            <input aria-describedby="field-shell-inline-help" class="form-control" id="field-shell-inline" placeholder="Inline layout"/>
+                            <p class="form-help" id="field-shell-inline-help">Compact label/control layout.</p>
                         </div>
                     </div>
                     <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-field form-field--inline"&gt;
@@ -898,9 +921,9 @@
                                 <span class="form-label-meta">Optional</span>
                             </div>
                             <textarea class="form-control" id="field-shell-counter" rows="3"
-                                      placeholder="Type here"></textarea>
+                                      aria-describedby="field-shell-counter-help" placeholder="Type here"></textarea>
                             <div class="form-help-row">
-                                <span class="form-help">Each line becomes a bullet.</span>
+                                <span class="form-help" id="field-shell-counter-help">Each line becomes a bullet.</span>
                                 <span class="form-help form-help-row__counter">12</span>
                             </div>
                         </div>
@@ -926,13 +949,13 @@
                                 <span class="form-label-meta form-label-meta--required">Required</span>
                             </div>
                             <textarea class="form-control" id="field-shell-limit" rows="3" maxlength="120"
-                                      placeholder="Stay under 120 characters"></textarea>
+                                      aria-describedby="field-shell-limit-help field-shell-limit-warning" placeholder="Stay under 120 characters"></textarea>
                             <div class="form-help-row">
-                                <span class="form-help">Keep this under 120 characters.</span>
+                                <span class="form-help" id="field-shell-limit-help">Keep this under 120 characters.</span>
                                 <span class="form-help form-help-row__counter">120/120</span>
                             </div>
                             <div class="form-help-row">
-                                <span class="form-help form-help--warning">Max length reached.</span>
+                                <span class="form-help form-help--warning" id="field-shell-limit-warning">Max length reached.</span>
                                 <span class="form-help form-help--warning form-help-row__counter">120/120</span>
                             </div>
                         </div>
@@ -1024,23 +1047,23 @@
                     <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Layout primitives</h3>
                         <div class="section__stack-sm">
                             <div class="form-row">
-                                <input class="form-control" placeholder="First name"/>
-                                <input class="form-control" placeholder="Last name"/>
+                                <input aria-label="First name" class="form-control" placeholder="First name"/>
+                                <input aria-label="Last name" class="form-control" placeholder="Last name"/>
                             </div>
                             <div class="form-grid form-grid--two">
-                                <input class="form-control" placeholder="Email"/>
-                                <input class="form-control" placeholder="Phone"/>
+                                <input aria-label="Email" class="form-control" placeholder="Email" type="email"/>
+                                <input aria-label="Phone" class="form-control" placeholder="Phone" type="tel"/>
                             </div>
                         </div>
                     </div>
                     <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-row"&gt;
-  &lt;input class="form-control" placeholder="First name"&gt;
-  &lt;input class="form-control" placeholder="Last name"&gt;
+  &lt;input class="form-control" aria-label="First name" placeholder="First name"&gt;
+  &lt;input class="form-control" aria-label="Last name" placeholder="Last name"&gt;
 &lt;/div&gt;
 
 &lt;div class="form-grid form-grid--two"&gt;
-  &lt;input class="form-control" placeholder="Email"&gt;
-  &lt;input class="form-control" placeholder="Phone"&gt;
+  &lt;input class="form-control" type="email" aria-label="Email" placeholder="Email"&gt;
+  &lt;input class="form-control" type="tel" aria-label="Phone" placeholder="Phone"&gt;
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>

@@ -110,7 +110,11 @@
                     <ul class="text-sm">
                         <li>Use description lists for metadata panels and summaries.</li>
                         <li>Keep terms short and align values for quick scanning.</li>
+                        <li>Use semantic <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, and <code>&lt;dd&gt;</code>
+                            for copyable examples; the wrapper classes only control presentation.
+                        </li>
                         <li>Use inline layout for short lists and stacked for narrow spaces.</li>
+                        <li>Expect inline lists to collapse to stacked rows on narrow viewports.</li>
                         <li>Use borders or stripes to separate dense lists.</li>
                         <li>Align related lists with the same column count.</li>
                     </ul>
@@ -121,6 +125,9 @@
                     <ul class="text-sm">
                         <li>Do not use description lists for primary content or paragraphs.</li>
                         <li>Do not overload values with long sentences.</li>
+                        <li>Do not use description lists for data that needs row/column headers, sorting,
+                            comparison, or spreadsheet-style scanning; use a table instead.
+                        </li>
                         <li>Do not mix unrelated terms in the same list.</li>
                         <li>Do not use inconsistent term casing or punctuation.</li>
                         <li>Do not nest complex interactive controls inside values.</li>
@@ -150,6 +157,9 @@
                         </li>
                         <li>Keep each term paired with its description.</li>
                         <li>Use clear labels for abbreviated terms.</li>
+                        <li>Let long URLs, identifiers, and generated values wrap instead of forcing horizontal
+                            scroll in compact panels.
+                        </li>
                         <li>Keep contrast strong for terms and values.</li>
                     </ul>
                 </div>

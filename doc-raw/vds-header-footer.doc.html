@@ -293,8 +293,8 @@
                             </nav>
                             <div class="header__right">
                                 <div class="header__actions">
-                                    <button class="button button--sm">New</button>
-                                    <button class="button button--ghost button--sm">Share</button>
+                                    <button class="button button--sm" type="button">New</button>
+                                    <button class="button button--ghost button--sm" type="button">Share</button>
                                 </div>
                             </div>
                         </div>
@@ -324,7 +324,7 @@
 
     &lt;div class="header__right"&gt;
       &lt;div class="header__actions"&gt;
-        &lt;button class="button button--sm"&gt;New&lt;/button&gt;
+        &lt;button class="button button--sm" type="button"&gt;New&lt;/button&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -954,6 +954,17 @@
                             Expose active navigation state via:
                             <code>.nav__item--active</code> AND (optionally)
                             <code>aria-current="page"</code> for screen readers.
+                        </li>
+
+                        <li>
+                            Use <code>aria-disabled="true"</code> only for navigation links that remain in the
+                            tab order by design; otherwise remove unavailable links or use disabled buttons
+                            for actions.
+                        </li>
+
+                        <li>
+                            Consumer JavaScript owns mobile nav open state, <code>aria-expanded</code>,
+                            <code>aria-controls</code>, Escape/outside-click dismissal, and focus return.
                         </li>
 
                         <li>

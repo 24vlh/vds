@@ -242,7 +242,8 @@ select.form-control:not([multiple]):not([size]) {
     --choice-on-accent: var(--color-on-warning);
 }
 
-.choice--error {
+.choice--error,
+.choice[aria-invalid="true"] {
     --choice-accent: var(--color-danger);
     --choice-on-accent: var(--color-on-danger);
 }
@@ -333,8 +334,14 @@ select.form-control:not([multiple]):not([size]) {
     border-color: var(--color-border-strong);
 }
 
+.choice[aria-invalid="true"] .choice__indicator,
+.choice__input[aria-invalid="true"] + .choice__indicator {
+    border-color: var(--color-danger);
+}
+
 .choice__input:disabled + .choice__indicator,
-.choice--disabled .choice__indicator {
+.choice--disabled .choice__indicator,
+.choice[aria-disabled="true"] .choice__indicator {
     background-color: var(--color-muted-bg);
     border-color: var(--color-border-subtle);
     box-shadow: none;
@@ -342,9 +349,16 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 .choice__input:disabled + .choice__indicator::after,
-.choice--disabled .choice__indicator::after {
+.choice--disabled .choice__indicator::after,
+.choice[aria-disabled="true"] .choice__indicator::after {
     border-color: var(--color-text-muted);
     background-color: var(--color-text-muted);
+}
+
+.choice--disabled,
+.choice[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: .75;
 }
 
 .choice__label {
@@ -381,23 +395,27 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    4. STATE MODIFIERS
 --------------------------------------------------------- */
-.form-control--loading {
+.form-control--loading,
+.form-control[aria-busy="true"] {
     cursor: progress;
     opacity: .55;
     pointer-events: none;
 }
 
-.form-control--disabled {
+.form-control--disabled,
+.form-control[aria-disabled="true"] {
     opacity: .45;
     pointer-events: none;
 }
 
-.form-control--readonly {
+.form-control--readonly,
+.form-control[aria-readonly="true"] {
     opacity: .75;
     cursor: default;
 }
 
-.form-control--error {
+.form-control--error,
+.form-control[aria-invalid="true"] {
     box-shadow: 0 0 0 var(--border-width-strong) var(--color-danger);
 }
 
@@ -415,19 +433,22 @@ select.form-control:not([multiple]):not([size]) {
 
 /* Native disabled / readonly */
 .form-control:disabled,
-.form-control[disabled] {
+.form-control[disabled],
+.form-control[aria-disabled="true"] {
     background-color: var(--color-muted-bg);
     color: var(--color-text-muted);
     cursor: not-allowed;
 }
 
-.form-control[readonly] {
+.form-control[readonly],
+.form-control[aria-readonly="true"] {
     background-color: var(--color-surface-subtle);
     color: var(--color-text-muted);
     border-style: dashed;
 }
 
-.form-control--error:focus-visible {
+.form-control--error:focus-visible,
+.form-control[aria-invalid="true"]:focus-visible {
     box-shadow: 0 0 0 var(--border-width-strong) var(--semantic-error-border-strong, var(--color-danger));
 }
 
@@ -578,7 +599,8 @@ select.form-control:not([multiple]):not([size]) {
 /* ---------------------------------------------------------
    6. LOADING OVERLAYS
 --------------------------------------------------------- */
-.form-control--loading::after {
+.form-control--loading::after,
+.form-control[aria-busy="true"]::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -653,13 +675,15 @@ select.form-control:not([multiple]):not([size]) {
     border-color: var(--focus-ring-color);
 }
 
-.form-control-file-surface--disabled {
+.form-control-file-surface--disabled,
+.form-control-file-surface[aria-disabled="true"] {
     opacity: .65;
     cursor: not-allowed;
     pointer-events: none;
 }
 
-.form-control-file-surface--error {
+.form-control-file-surface--error,
+.form-control-file-surface[aria-invalid="true"] {
     border-color: var(--color-danger);
     background-color: var(--color-danger-soft);
 }
@@ -699,7 +723,8 @@ select.form-control:not([multiple]):not([size]) {
 }
 
 /* Loading shimmer on surface */
-.form-control-file-surface.form-control--loading::after {
+.form-control-file-surface.form-control--loading::after,
+.form-control-file-surface[aria-busy="true"]::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -712,6 +737,10 @@ select.form-control:not([multiple]):not([size]) {
     );
     background-size: 200% 100%;
     animation: input-loading-shimmer 1.5s infinite;
+}
+
+.form-control-file-surface[aria-busy="true"] {
+    cursor: progress;
 }
 
 /* ---------------------------------------------------------
@@ -831,4 +860,21 @@ select.form-control:not([multiple]):not([size]) {
 .form-section--success:not(:last-child),
 .form-section--info:not(:last-child) {
     margin-bottom: var(--space-4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .form-control,
+    .choice__indicator,
+    .choice__indicator::after,
+    .form-control-group .form-control,
+    .form-control-file-surface {
+        transition: none;
+    }
+
+    .form-control--loading::after,
+    .form-control[aria-busy="true"]::after,
+    .form-control-file-surface.form-control--loading::after,
+    .form-control-file-surface[aria-busy="true"]::after {
+        animation: none;
+    }
 }
