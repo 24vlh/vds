@@ -475,11 +475,6 @@
     }
 }
 
-/* --- Actions “full row” helper should still work; now it just reinforces the layout --- */
-.inbox-row--actions-full .inbox-row__actions {
-    grid-column: 1 / -1; /* already in file:contentReference[oaicite:8]{index=8} */
-}
-
 /* ---------------------------------------------------------
    LABEL ALIGNMENT FIX
 --------------------------------------------------------- */
@@ -808,11 +803,38 @@
     padding-top: 0;
 }
 
-/* Force actions to occupy a full row (even when grid is 2 cols) */
+/* Keep the full-width actions variant in a dedicated row so action controls never
+   overlap the title/details content. */
+/* Force a stable stacked layout for this variant to avoid action/data overlap in docs and live usage. */
+.inbox-row--actions-full .inbox-row__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.inbox-row--actions-full .inbox-row__badges,
+.inbox-row--actions-full .inbox-row__meta,
+.inbox-row--actions-full .inbox-row__actions,
+.inbox-row--actions-full .inbox-row__data {
+    width: 100%;
+}
+
 .inbox-row--actions-full .inbox-row__actions {
-    grid-column: 1 / -1;
-    justify-content: flex-start;
+    order: 3;
+    justify-content: var(--inbox-actions-justify);
+    min-width: 0;
+    width: 100%;
     padding-top: 0;
+}
+
+.inbox-row--actions-full .inbox-row__meta {
+    order: 2;
+    min-width: 0;
+}
+
+.inbox-row--actions-full .inbox-row__data {
+    order: 4;
+    min-width: 0;
 }
 
 /* Actions alignment helpers (useful on mobile / below layout) */
