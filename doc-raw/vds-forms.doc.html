@@ -1,97 +1,1100 @@
-<section class="section section--lg" data-vds-doc="vds-forms">
-    <div class="section__inner section__stack section__stack-lg">
-        <header class="section__header section__header--wide">
-            <p class="section__eyebrow">Forms</p>
-            <h1 class="section__title">Forms</h1>
-            <p class="section__subtitle">
-                Forms style labels, fields, native controls, help text, messages, choices, file surfaces, grids, and
-                validation states. Submission, validation, masking, and announcements are application-owned.
-            </p>
-        </header>
-
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-content-block="" data-vds-dock-block="" data-vds-form="">
+    <div class="section__inner">
+        <h1>Forms</h1>
+        <p class="leading-relaxed text-soft">Token-driven, accessible form primitives: text inputs, selects, textareas,
+            file uploads, layout grids, density layers, semantic states, and form messaging.</p>
+        <p class="text-sm text-muted">
+            Source: <code>forms.css</code> · Depends on
+            <code>base.css</code>,
+            <code>typography.css</code>,
+            theme tokens in <code>/themes/*.css</code>.
+        </p>
+    </div>
+</section>
+<section class="section section--inset" data-vds-content-block="" data-vds-dock-block="" data-vds-form="">
+    <div class="section__inner">
+        <article class="doc-block">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Source truth</p>
-                <h2 class="doc-block__title">Imports</h2>
+                <h2 class="doc-block__title">Installation &amp; dependencies</h2>
                 <p class="doc-block__summary">
-                    Core forms are authored in <code>src/components/forms.css</code> and ship through
-                    <code>dist/components/forms.css</code>.
+                    <code>forms.css</code> sits above the base, layout, typography and theme
+                    layers. Load files in this order to guarantee correct tokens and resets.
                 </p>
             </header>
             <div class="doc-block__body">
-                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/core.css";
-@import "@24vlh/vds/dist/components/forms.css";</code></pre>
+                <div class="doc-block__preview">
+                    <ul>
+                        <li>Load <code>base.css</code> and <code>layout.css</code>
+                            first (page reset and layout primitives).
+                        </li>
+                        <li>Load <code>typography.css</code> and <code>icons.css</code>.
+                        </li>
+                        <li>Load an active theme:
+                            <code>themes/slate.css</code>,
+                            <code>themes/navy.css</code>,
+                            or <code>themes/carbon.css</code>.
+                        </li>
+                        <li>Then load <code>forms.css</code> as the dedicated form control layer.</li>
+                    </ul>
+                </div>
+                <div class="doc-block__code">
+                    <div class="doc-block__toolbar">
+                        <span class="doc-block__lang">HTML</span>
+                        <div class="doc-block__actions">
+                            <button class="doc-block__action" type="button">Copy</button>
+                            <button class="doc-block__action" type="button">Expand</button>
+                        </div>
+                    </div>
+                    <pre class="doc-block__code"><code>&lt;link rel="stylesheet" href="../css/base.css"&gt;
+&lt;link rel="stylesheet" href="../css/layout.css"&gt;
+&lt;link rel="stylesheet" href="../css/typography.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/themes/slate.css"&gt;
+&lt;link rel="stylesheet" href="../css/themes/navy.css"&gt;
+&lt;link rel="stylesheet" href="../css/themes/carbon.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/icons.css"&gt;
+&lt;link rel="stylesheet" href="../css/forms.css"&gt;
+
+&lt;link rel="stylesheet" href="../css/doc-block.css"&gt;
+</code></pre>
+                </div>
             </div>
         </article>
-
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+    </div>
+</section>
+<section class="section" data-vds-content-block="" data-vds-dock-block="" data-vds-form="">
+    <div class="section__inner">
+        <article class="doc-block">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Example</p>
-                <h2 class="doc-block__title">Labeled field with help and error wiring</h2>
+                <h2 class="doc-block__title">Unified Form Abstraction Layer (UFAL)</h2>
+                <p class="doc-block__summary">UFAL defines a universal control interface (<code>.form-control</code>)
+                    and structural wrappers (<code>.form-control-wrapper</code>, <code>.form-control-group</code>) for
+                    consistent behaviour across inputs, textareas, selects, and file upload surfaces.</p>
+            </header>
+            <div class="doc-block__body section__stack">
+                <div class="doc-block__preview section__stack typography">
+                    <h3 class="text-sm">Why UFAL exists</h3>
+                    <p class="text-sm">
+                        Traditional form systems rely on per-component behaviour. UFAL provides an unified
+                        structural layer that:
+                    </p>
+                    <ul class="text-sm prose-tight">
+                        <li>Standardises width, layout and behavioural hooks across all controls.</li>
+                        <li>Supports icons, validation rings, loading states and overlays consistently.</li>
+                        <li>Decouples behaviour from component visuals (inputs, selects, textarea remain unchanged).
+                        </li>
+                    </ul>
+                    <h3 class="text-sm">UFAL Anatomy</h3>
+                    <div class="doc-block__section">
+                        <div class="content-block content-block--surface content-block--inset">
+                            <div class="content-block__body section__stack-sm">
+                                <p class="text-sm"><strong>.form-control</strong> — the universal primitive</p>
+                                <ul class="text-sm prose-tight">
+                                    <li>Takes up available width.</li>
+                                    <li>Defines unified behavioural hooks (loading, validation, disabled, readonly).
+                                    </li>
+                                    <li>Never sets padding, borders, colours or typography.</li>
+                                </ul>
+                                <p class="text-sm"><strong>.form-control-wrapper</strong> — structural container</p>
+                                <ul class="text-sm prose-tight">
+                                    <li>Handles inline icons.</li>
+                                    <li>Hosts loading overlays.</li>
+                                    <li>Defines relative positioning for future add-ons.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-sm">Supported semantic states</h3>
+                    <ul class="text-sm prose-tight">
+                        <li><code>.form-control--loading</code></li>
+                        <li><code>.form-control--success</code></li>
+                        <li><code>.form-control--warning</code></li>
+                        <li><code>.form-control--error</code></li>
+                        <li><code>.form-control--info</code></li>
+                        <li><code>.form-control--disabled</code></li>
+                        <li><code>.form-control--readonly</code></li>
+                    </ul>
+                </div>
+                <div class="doc-block__code">
+<pre><code>&lt;div class="section__stack-sm"&gt;
+    &lt;label class="text-sm"&gt;Email&lt;/label&gt;
+    &lt;div class="form-control-wrapper"&gt;
+        &lt;input class="form-control"&gt;
+    &lt;/div&gt;
+    &lt;p class="text-xs text-muted"&gt;We never share your email.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">UFAL — Complete Examples</h2>
                 <p class="doc-block__summary">
-                    Use labels, IDs, <code>aria-describedby</code>, and <code>aria-invalid</code> together. CSS only
-                    supplies visual hooks for the state.
+                    Exhaustive, copy-paste-ready examples covering all UFAL selectors,
+                    control types, states, layouts, and compositions defined in
+                    <code>forms.css</code>.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <form class="form-grid form-grid--two" action="/docs/forms/example" method="post">
-                    <div class="form-field">
-                        <label class="form-label" for="profile-email">Email</label>
-                        <input class="form-control form-control--error" id="profile-email" name="email" type="email" aria-invalid="true" aria-describedby="profile-email-help">
-                        <p class="form-help form-help--error" id="profile-email-help">Use a work email address.</p>
+
+            <div class="doc-block__body section__stack">
+
+                <!-- ========================================================= -->
+                <!-- 1. ALL CONTROLS + ALL STATES (KITCHEN SINK)                -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">All controls · all states</h3>
+
+                    <div class="form-grid form-grid--two">
+                        <input class="form-control" placeholder="Default input">
+                        <input class="form-control form-control--loading" value="Loading">
+
+                        <input class="form-control form-control--success" value="Success">
+                        <input class="form-control form-control--warning" value="Warning">
+
+                        <input class="form-control form-control--error" value="Error">
+                        <input class="form-control form-control--info" value="Info">
+
+                        <input class="form-control" disabled value="Disabled">
+                        <input class="form-control" readonly value="Readonly">
+
+                        <input aria-invalid="true" class="form-control" value="ARIA invalid">
+
+                        <select class="form-control">
+                            <option>Select option…</option>
+                            <option>A</option>
+                            <option>B</option>
+                        </select>
+
+                        <textarea class="form-control" placeholder="Textarea"></textarea>
                     </div>
-                    <div class="form-field">
-                        <label class="form-label" for="profile-role">Role</label>
-                        <select class="form-control" id="profile-role" name="role">
-                            <option>Admin</option>
-                            <option>Reviewer</option>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 2. BASE CONTROLS (VERTICAL)                               -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Base controls · vertical</h3>
+
+                    <div class="section__stack-sm">
+                        <input class="form-control" placeholder="Text input">
+                        <textarea class="form-control" placeholder="Textarea"></textarea>
+                        <select class="form-control">
+                            <option>Select…</option>
+                            <option>Option A</option>
+                            <option>Option B</option>
                         </select>
                     </div>
-                    <button class="button button--primary" type="submit">Save profile</button>
-                </form>
-                <pre class="doc-block__code"><code>&lt;label class="form-label" for="profile-email"&gt;Email&lt;/label&gt;
-&lt;input class="form-control form-control--error" id="profile-email" name="email" type="email"
-       aria-invalid="true" aria-describedby="profile-email-help"&gt;
-&lt;p class="form-help form-help--error" id="profile-email-help"&gt;Use a work email address.&lt;/p&gt;</code></pre>
-            </div>
-        </article>
+                </section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
-            <header class="doc-block__header">
-                <p class="doc-block__eyebrow">States</p>
-                <h2 class="doc-block__title">Disabled, readonly, loading, and file handling</h2>
-                <p class="doc-block__summary">
-                    State classes and ARIA aliases must match actual behavior. File upload handling is not provided by CSS.
-                </p>
-            </header>
-            <div class="doc-block__body">
-                <ul>
-                    <li>Use native <code>disabled</code> for unavailable controls when possible.</li>
-                    <li>Use <code>readonly</code> only when the value remains focusable and copyable.</li>
-                    <li>Use <code>aria-busy="true"</code> and visible text when async state changes matter.</li>
-                    <li>Application code owns validation, submit prevention, file size/type checks, and live announcements.</li>
-                </ul>
-            </div>
-        </article>
+                <!-- ========================================================= -->
+                <!-- 3. BASE CONTROLS (HORIZONTAL / GRID)                      -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Base controls · horizontal</h3>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
-            <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Validation</p>
-                <h2 class="doc-block__title">Example quality and release checks</h2>
-                <p class="doc-block__summary">
-                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
-                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
-                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
-                </p>
-            </header>
-            <div class="doc-block__body">
-                <ul>
-                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
-                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
-                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
-                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
-                </ul>
+                    <div class="form-row">
+                        <input class="form-control" placeholder="First name">
+                        <input class="form-control" placeholder="Last name">
+                    </div>
+
+                    <div class="form-grid form-grid--three">
+                        <input class="form-control" placeholder="Email">
+                        <input class="form-control" placeholder="Phone">
+                        <input class="form-control" placeholder="Company">
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 4. ICONS                                                  -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Icons · left & right</h3>
+
+                    <div class="form-grid form-grid--two">
+                        <div class="form-control-wrapper" data-icon="left">
+                            <span class="form-control-icon">🔍</span>
+                            <input class="form-control" placeholder="Search">
+                        </div>
+
+                        <div class="form-control-wrapper" data-icon="right">
+                            <input class="form-control" placeholder="Amount">
+                            <span class="form-control-icon">€</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 5. PREFIX / SUFFIX                                        -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Prefix / suffix</h3>
+
+                    <div class="form-control-wrapper">
+                        <span class="form-control-prefix">£</span>
+                        <input class="form-control" placeholder="Price">
+                        <span class="form-control-suffix">GBP</span>
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 6. GROUPED CONTROLS                                       -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Grouped controls</h3>
+
+                    <div class="form-control-group">
+                        <input class="form-control" placeholder="Min">
+                        <input class="form-control" placeholder="Max">
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 7. LOADING + DISABLED + READONLY                          -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Behavioural states</h3>
+
+                    <div class="form-grid form-grid--two">
+                        <input class="form-control form-control--loading" value="Loading">
+                        <input class="form-control" disabled value="Disabled">
+                        <input class="form-control" readonly value="Readonly">
+                        <input aria-invalid="true" class="form-control" value="ARIA invalid">
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 8. FILE UPLOAD                                            -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">File upload</h3>
+
+                    <div class="section__stack-sm">
+                        <div class="form-control-file-surface">
+                            <input type="file">
+                            <strong class="text-sm">Drop file here</strong>
+                            <span class="text-xs text-muted">or click to browse</span>
+                        </div>
+
+                        <label class="file-upload-inline">
+                            <input class="file-upload-inline__input" type="file">
+                            <span class="file-upload-inline__label">Upload file</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 9. FIELD SHELL                                           -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Field shell</h3>
+
+                    <div class="form-grid form-grid--two">
+                        <div class="form-field">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-name">Name</label>
+                                <span class="form-label-meta">Optional</span>
+                            </div>
+                            <input class="form-control" id="field-name" placeholder="e.g. Alex">
+                            <p class="form-help">Shown on your profile.</p>
+                        </div>
+
+                        <div class="form-field">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-email">Email</label>
+                                <span class="form-label-meta form-label-meta--required">Required</span>
+                            </div>
+                            <input class="form-control" id="field-email" placeholder="alex@example.com">
+                            <p class="form-help form-help--error">Please enter a valid address.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-field form-field--inline">
+                        <div class="form-label-row">
+                            <label class="form-label" for="field-inline-title">Title</label>
+                            <span class="form-label-meta">Optional</span>
+                        </div>
+                        <input class="form-control" id="field-inline-title" placeholder="Inline layout">
+                        <p class="form-help">Use inline fields for compact layouts.</p>
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 10. CHOICE CONTROLS                                      -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Choice controls</h3>
+
+                    <div class="choice-group">
+                        <label class="choice choice--checkbox">
+                            <input checked class="choice__input" type="checkbox">
+                            <span aria-hidden="true" class="choice__indicator"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Send notifications</span>
+                                <span class="choice__hint">Weekly summaries and alerts.</span>
+                            </span>
+                        </label>
+                        <label class="choice choice--checkbox">
+                            <input class="choice__input" type="checkbox">
+                            <span aria-hidden="true" class="choice__indicator"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Auto-archive completed items</span>
+                                <span class="choice__hint">Moves them into archive after 30 days.</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="choice-group choice-group--inline">
+                        <label class="choice choice--radio">
+                            <input checked class="choice__input" name="plan" type="radio">
+                            <span aria-hidden="true" class="choice__indicator"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Basic</span>
+                                <span class="choice__hint">For drafts</span>
+                            </span>
+                        </label>
+                        <label class="choice choice--radio">
+                            <input class="choice__input" name="plan" type="radio">
+                            <span aria-hidden="true" class="choice__indicator"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Pro</span>
+                                <span class="choice__hint">For teams</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="choice-group choice-group--grid">
+                        <label class="choice choice--checkbox choice--success">
+                            <input checked class="choice__input" type="checkbox">
+                            <span aria-hidden="true" class="choice__indicator"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Auto-sync</span>
+                                <span class="choice__hint">Keeps devices updated.</span>
+                            </span>
+                        </label>
+                        <label class="choice choice--checkbox choice--warning">
+                            <input class="choice__input" type="checkbox">
+                            <span aria-hidden="true" class="choice__indicator"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Experimental mode</span>
+                                <span class="choice__hint">May change without notice.</span>
+                            </span>
+                        </label>
+                        <label class="choice choice--checkbox choice--error">
+                            <input class="choice__input" type="checkbox">
+                            <span aria-hidden="true" class="choice__indicator"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">High-risk actions</span>
+                                <span class="choice__hint">Requires confirmation.</span>
+                            </span>
+                        </label>
+                        <label class="choice choice--checkbox choice--disabled">
+                            <input class="choice__input" disabled type="checkbox">
+                            <span aria-hidden="true" class="choice__indicator"></span>
+                            <span class="choice__label">
+                                <span class="choice__label-text">Disabled option</span>
+                                <span class="choice__hint">Unavailable in this plan.</span>
+                            </span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 11. FORM MESSAGES                                         -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Form messages</h3>
+
+                    <div class="section__stack-sm">
+                        <div class="form-message form-message--info">
+                            <div class="form-message__content">
+                                <strong>Info</strong>
+                                <span class="text-sm">Informational message.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-message form-message--success">
+                            <div class="form-message__content">
+                                <strong>Success</strong>
+                                <span class="text-sm">Success message.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-message form-message--warning">
+                            <div class="form-message__content">
+                                <strong>Warning</strong>
+                                <span class="text-sm">Warning message.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-message form-message--error">
+                            <div class="form-message__content">
+                                <strong>Error</strong>
+                                <span class="text-sm">Error message.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========================================================= -->
+                <!-- 12. FORM SECTIONS                                         -->
+                <!-- ========================================================= -->
+                <section class="section__stack">
+                    <h3 class="text-sm">Form section states</h3>
+
+                    <div class="form-section--info">
+                        <p class="text-sm">Info section</p>
+                    </div>
+
+                    <div class="form-section--success">
+                        <p class="text-sm">Success section</p>
+                    </div>
+
+                    <div class="form-section--warning">
+                        <p class="text-sm">Warning section</p>
+                    </div>
+
+                    <div class="form-section--error">
+                        <p class="text-sm">Error section</p>
+                    </div>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">Form · basic actions</h3>
+
+                    <form class="section__stack-sm">
+                        <input class="form-control" placeholder="Email">
+                        <input class="form-control" placeholder="Password" type="password">
+
+                        <div class="flow__nav">
+                            <button class="button button--primary" type="submit">
+                                Sign in
+                            </button>
+                            <button class="button button--ghost" type="button">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">Form · horizontal with actions</h3>
+
+                    <form class="form-grid form-grid--three">
+                        <input class="form-control" placeholder="First name">
+                        <input class="form-control" placeholder="Last name">
+                        <input class="form-control" placeholder="Email">
+
+                        <div class="flow__nav" style="grid-column: 1 / -1">
+                            <button class="button button--secondary">
+                                Save
+                            </button>
+                            <button class="button button--primary">
+                                Save & continue
+                            </button>
+                        </div>
+                    </form>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">Form · disabled & loading actions</h3>
+
+                    <form class="section__stack-sm">
+                        <input class="form-control" placeholder="Username">
+                        <input aria-invalid="true" class="form-control" value="Already taken">
+
+                        <div class="flow__nav">
+                            <button class="button button--secondary" disabled>
+                                Cancel
+                            </button>
+                            <button aria-busy="true" class="button button--primary button--loading">
+                                Creating…
+                            </button>
+                        </div>
+                    </form>
+                </section>
+                <section class="section__stack" data-vds-flow>
+                    <h3 class="text-sm">Multi-step form · stepper</h3>
+
+                    <div class="steps">
+                        <div class="steps__item steps__item--complete">
+                            <div class="steps__bullet">1</div>
+                            <span class="steps__label">Account</span>
+                        </div>
+                        <div class="steps__line"></div>
+                        <div aria-current="step" class="steps__item steps__item--active">
+                            <div class="steps__bullet">2</div>
+                            <span class="steps__label">Profile</span>
+                        </div>
+                        <div class="steps__line"></div>
+                        <div class="steps__item steps__item--upcoming">
+                            <div class="steps__bullet">3</div>
+                            <span class="steps__label">Confirm</span>
+                        </div>
+                    </div>
+
+                    <form class="section__stack-sm">
+                        <input class="form-control" placeholder="Display name">
+                        <textarea class="form-control" placeholder="Bio"></textarea>
+
+                        <div class="flow__nav">
+                            <button class="button button--secondary">
+                                Back
+                            </button>
+                            <button class="button button--primary">
+                                Next
+                            </button>
+                        </div>
+                    </form>
+                </section>
+                <section class="section__stack" data-vds-flow>
+                    <h3 class="text-sm">Multi-step form · full flow</h3>
+
+                    <div class="form-flow">
+
+                        <div class="form-flow__step form-flow__step--success p-3">
+                            <h4 class="text-sm">Account</h4>
+                            <input class="form-control" readonly value="user@example.com">
+                        </div>
+
+                        <div class="form-flow__step form-flow__step--error p-3">
+                            <h4 class="text-sm">Profile</h4>
+                            <input class="form-control form-control--error" value="Too short">
+                        </div>
+
+                        <div class="form-flow__step">
+                            <h4 class="text-sm">Upload</h4>
+                            <div class="form-control-file-surface">
+                                <input type="file">
+                                <strong>Upload document</strong>
+                                <span class="text-xs text-muted">PDF or image</span>
+                            </div>
+                        </div>
+
+                        <div class="form-flow__actions">
+                            <button class="button button--ghost">
+                                Cancel
+                            </button>
+
+                            <div class="form-flow__actions-right">
+                                <button class="button button--secondary">
+                                    Back
+                                </button>
+                                <button class="button button--primary">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">Form · status & destructive actions</h3>
+
+                    <form class="section__stack-sm">
+                        <input class="form-control" value="Dangerous setting">
+
+                        <div class="flow__nav">
+                            <button class="button button--outline-danger">
+                                Delete
+                            </button>
+                            <button class="button button--primary">
+                                Save changes
+                            </button>
+                        </div>
+                    </form>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">Inputs with icons</h3>
+
+                    <div class="form-grid form-grid--two">
+
+                        <div class="form-control-wrapper" data-icon="left">
+                            <span class="form-control-icon icon icon--mask icon--search"></span>
+                            <input class="form-control" placeholder="Search">
+                        </div>
+
+                        <div class="form-control-wrapper" data-icon="right">
+                            <input class="form-control" placeholder="Amount">
+                            <span class="form-control-icon icon icon--mask icon--money"></span>
+                        </div>
+
+                    </div>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">Icons with validation states</h3>
+
+                    <div class="form-grid form-grid--two">
+
+                        <div class="form-control-wrapper" data-icon="left">
+                            <span class="form-control-icon icon icon--mask icon--alert"></span>
+                            <input class="form-control form-control--error" value="Invalid value">
+                        </div>
+
+                        <div class="form-control-wrapper" data-icon="left">
+                            <span class="form-control-icon icon icon--mask icon--check-circle"></span>
+                            <input class="form-control form-control--success" value="Looks good">
+                        </div>
+
+                    </div>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">Grouped controls with icons</h3>
+
+                    <div class="form-control-group">
+                        <div class="form-control-wrapper" data-icon="left">
+                            <span class="form-control-icon icon icon--mask icon--calendar"></span>
+                            <input class="form-control" placeholder="Start date">
+                        </div>
+
+                        <div class="form-control-wrapper" data-icon="left">
+                            <span class="form-control-icon icon icon--mask icon--calendar"></span>
+                            <input class="form-control" placeholder="End date">
+                        </div>
+                    </div>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">Password field with action icon</h3>
+
+                    <div class="form-control-group">
+                        <input class="form-control" placeholder="Password" type="password">
+                        <button class="button button--outline" type="button">
+                            <span class="icon icon--mask icon--eye"></span>
+                        </button>
+                    </div>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">File upload with icon</h3>
+
+                    <div class="form-control-file-surface">
+                        <input type="file">
+                        <span class="icon icon--mask icon--upload"></span>
+                        <strong class="text-sm">Upload document</strong>
+                        <span class="text-xs text-muted">PDF or image</span>
+                    </div>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">Form actions with icons</h3>
+
+                    <div class="flow__nav">
+                        <button class="button button--primary">
+                            <span class="icon icon--mask icon--check"></span>
+                            <span>Save</span>
+                        </button>
+
+                        <button class="button button--secondary">
+                            <span class="icon icon--mask icon--refresh"></span>
+                            <span>Reset</span>
+                        </button>
+
+                        <button class="button button--ghost button--danger">
+                            <span class="icon icon--mask icon--trash"></span>
+                            <span>Delete</span>
+                        </button>
+                    </div>
+                </section>
+                <section class="section__stack">
+                    <h3 class="text-sm">Stepper with icons</h3>
+
+                    <div class="steps">
+                        <div class="steps__item steps__item--complete">
+                            <span class="icon icon--mask icon--check"></span>
+                            <span class="steps__label">Account</span>
+                        </div>
+
+                        <div class="steps__line"></div>
+
+                        <div aria-current="step" class="steps__item steps__item--active">
+                            <span class="icon icon--mask icon--user"></span>
+                            <span class="steps__label">Profile</span>
+                        </div>
+
+                        <div class="steps__line"></div>
+
+                        <div class="steps__item steps__item--upcoming">
+                            <span class="icon icon--mask icon--flag"></span>
+                            <span class="steps__label">Confirm</span>
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </article>
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header"><h2 class="doc-block__title">UFAL Examples</h2>
+                <p class="doc-block__summary">Copy/paste-ready patterns aligned to forms.css (UFAL-only).</p></header>
+            <div class="doc-block__body section__stack">
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Base controls</h3>
+                        <div class="section__stack-sm">
+                            <input class="form-control" placeholder="Text input" type="text"/>
+                            <textarea class="form-control" placeholder="Textarea"></textarea>
+                            <select class="form-control">
+                                <option>Select…</option>
+                                <option>Option A</option>
+                                <option>Option B</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;input class="form-control" type="text" placeholder="Text input"&gt;
+&lt;textarea class="form-control" placeholder="Textarea"&gt;&lt;/textarea&gt;
+&lt;select class="form-control"&gt;
+  &lt;option&gt;Select…&lt;/option&gt;
+  &lt;option&gt;Option A&lt;/option&gt;
+  &lt;option&gt;Option B&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Icons (left / right)</h3>
+                        <div class="section__stack-sm">
+                            <div class="form-control-wrapper" data-icon="left">
+                                <span class="form-control-icon">🔍</span>
+                                <input class="form-control" placeholder="Search"/>
+                            </div>
+                            <div class="form-control-wrapper" data-icon="right">
+                                <input class="form-control" placeholder="Amount"/>
+                                <span class="form-control-icon">€</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-control-wrapper" data-icon="left"&gt;
+  &lt;span class="form-control-icon"&gt;🔍&lt;/span&gt;
+  &lt;input class="form-control" placeholder="Search"&gt;
+&lt;/div&gt;
+
+&lt;div class="form-control-wrapper" data-icon="right"&gt;
+  &lt;input class="form-control" placeholder="Amount"&gt;
+  &lt;span class="form-control-icon"&gt;€&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Prefix / suffix</h3>
+                        <div class="form-control-wrapper">
+                            <span class="form-control-prefix">£</span>
+                            <input class="form-control" placeholder="Price"/>
+                            <span class="form-control-suffix">GBP</span>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-control-wrapper"&gt;
+  &lt;span class="form-control-prefix"&gt;£&lt;/span&gt;
+  &lt;input class="form-control" placeholder="Price"&gt;
+  &lt;span class="form-control-suffix"&gt;GBP&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Grouped controls</h3>
+                        <div class="form-control-group">
+                            <input class="form-control" placeholder="Min"/>
+                            <input class="form-control" placeholder="Max"/>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-control-group"&gt;
+  &lt;input class="form-control" placeholder="Min"&gt;
+  &lt;input class="form-control" placeholder="Max"&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Validation + loading</h3>
+                        <div class="section__stack-sm">
+                            <input aria-invalid="true" class="form-control" value="ARIA invalid"/>
+                            <input class="form-control form-control--error" value="Error"/>
+                            <input class="form-control form-control--success" value="Success"/>
+                            <input class="form-control form-control--loading" value="Loading…"/>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;input class="form-control" aria-invalid="true" value="ARIA invalid"&gt;
+
+&lt;input class="form-control form-control--error" value="Error"&gt;
+&lt;input class="form-control form-control--success" value="Success"&gt;
+
+&lt;input class="form-control form-control--loading" value="Loading…" /&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Disabled / readonly</h3>
+                        <div class="section__stack-sm">
+                            <input class="form-control" disabled="" value="Disabled"/>
+                            <input class="form-control" readonly="" value="Readonly"/>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;input class="form-control" disabled value="Disabled"&gt;
+&lt;input class="form-control" readonly value="Readonly"&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">File upload (drop surface +
+                        inline)</h3>
+                        <div class="section__stack-sm">
+                            <div class="form-control-file-surface">
+                                <input type="file"/>
+                                <strong class="text-sm">Drop file here</strong>
+                                <span class="text-xs text-muted">or click to browse</span>
+                            </div>
+                            <label class="file-upload-inline">
+                                <input class="file-upload-inline__input" type="file"/>
+                                <span class="file-upload-inline__label">Upload file</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-control-file-surface"&gt;
+  &lt;input type="file"&gt;
+  &lt;strong&gt;Drop file here&lt;/strong&gt;
+  &lt;span class="text-xs text-muted"&gt;or click to browse&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;label class="file-upload-inline"&gt;
+  &lt;input class="file-upload-inline__input" type="file"&gt;
+  &lt;span class="file-upload-inline__label"&gt;Upload file&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Field shell</h3>
+                        <div class="form-field">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-shell-name">Name</label>
+                                <span class="form-label-meta">Optional</span>
+                            </div>
+                            <input class="form-control" id="field-shell-name" placeholder="e.g. Alex"/>
+                            <p class="form-help">Shown on your profile.</p>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-field"&gt;
+  &lt;div class="form-label-row"&gt;
+    &lt;label class="form-label" for="field-shell-name"&gt;Name&lt;/label&gt;
+    &lt;span class="form-label-meta"&gt;Optional&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;input class="form-control" id="field-shell-name" placeholder="e.g. Alex"&gt;
+  &lt;p class="form-help"&gt;Shown on your profile.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Field shell (inline)</h3>
+                        <div class="form-field form-field--inline">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-shell-inline">Title</label>
+                                <span class="form-label-meta">Optional</span>
+                            </div>
+                            <input class="form-control" id="field-shell-inline" placeholder="Inline layout"/>
+                            <p class="form-help">Compact label/control layout.</p>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-field form-field--inline"&gt;
+  &lt;div class="form-label-row"&gt;
+    &lt;label class="form-label" for="field-shell-inline"&gt;Title&lt;/label&gt;
+    &lt;span class="form-label-meta"&gt;Optional&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;input class="form-control" id="field-shell-inline" placeholder="Inline layout"&gt;
+&lt;p class="form-help"&gt;Compact label/control layout.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Help row + counter</h3>
+                        <div class="form-field">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-shell-counter">Notes</label>
+                                <span class="form-label-meta">Optional</span>
+                            </div>
+                            <textarea class="form-control" id="field-shell-counter" rows="3"
+                                      placeholder="Type here"></textarea>
+                            <div class="form-help-row">
+                                <span class="form-help">Each line becomes a bullet.</span>
+                                <span class="form-help form-help-row__counter">12</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-field"&gt;
+  &lt;div class="form-label-row"&gt;
+    &lt;label class="form-label" for="field-shell-counter"&gt;Notes&lt;/label&gt;
+    &lt;span class="form-label-meta"&gt;Optional&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;textarea class="form-control" id="field-shell-counter" rows="3" placeholder="Type here"&gt;&lt;/textarea&gt;
+  &lt;div class="form-help-row"&gt;
+    &lt;span class="form-help"&gt;Each line becomes a bullet.&lt;/span&gt;
+    &lt;span class="form-help form-help-row__counter"&gt;12&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Help row (max length)</h3>
+                        <div class="form-field">
+                            <div class="form-label-row">
+                                <label class="form-label" for="field-shell-limit">Summary</label>
+                                <span class="form-label-meta form-label-meta--required">Required</span>
+                            </div>
+                            <textarea class="form-control" id="field-shell-limit" rows="3" maxlength="120"
+                                      placeholder="Stay under 120 characters"></textarea>
+                            <div class="form-help-row">
+                                <span class="form-help">Keep this under 120 characters.</span>
+                                <span class="form-help form-help-row__counter">120/120</span>
+                            </div>
+                            <div class="form-help-row">
+                                <span class="form-help form-help--warning">Max length reached.</span>
+                                <span class="form-help form-help--warning form-help-row__counter">120/120</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-field"&gt;
+  &lt;div class="form-label-row"&gt;
+    &lt;label class="form-label" for="field-shell-limit"&gt;Summary&lt;/label&gt;
+    &lt;span class="form-label-meta form-label-meta--required"&gt;Required&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;textarea class="form-control" id="field-shell-limit" rows="3" maxlength="120" placeholder="Stay under 120 characters"&gt;&lt;/textarea&gt;
+  &lt;div class="form-help-row"&gt;
+    &lt;span class="form-help"&gt;Keep this under 120 characters.&lt;/span&gt;
+    &lt;span class="form-help form-help-row__counter"&gt;120/120&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="form-help-row"&gt;
+    &lt;span class="form-help form-help--warning"&gt;Max length reached.&lt;/span&gt;
+    &lt;span class="form-help form-help--warning form-help-row__counter"&gt;120/120&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Choice controls</h3>
+                        <div class="choice-group">
+                            <label class="choice choice--checkbox">
+                                <input checked class="choice__input" type="checkbox"/>
+                                <span aria-hidden="true" class="choice__indicator"></span>
+                                <span class="choice__label">
+                                    <span class="choice__label-text">Send notifications</span>
+                                    <span class="choice__hint">Weekly summaries and alerts.</span>
+                                </span>
+                            </label>
+                            <label class="choice choice--checkbox">
+                                <input class="choice__input" type="checkbox"/>
+                                <span aria-hidden="true" class="choice__indicator"></span>
+                                <span class="choice__label">
+                                    <span class="choice__label-text">Auto-archive completed items</span>
+                                    <span class="choice__hint">Moves them into archive after 30 days.</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="choice-group"&gt;
+  &lt;label class="choice choice--checkbox"&gt;
+    &lt;input class="choice__input" type="checkbox" checked&gt;
+    &lt;span class="choice__indicator" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span class="choice__label"&gt;
+      &lt;span class="choice__label-text"&gt;Send notifications&lt;/span&gt;
+      &lt;span class="choice__hint"&gt;Weekly summaries and alerts.&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Choice grid</h3>
+                        <div class="choice-group choice-group--grid">
+                            <label class="choice choice--checkbox choice--success">
+                                <input checked class="choice__input" type="checkbox"/>
+                                <span aria-hidden="true" class="choice__indicator"></span>
+                                <span class="choice__label">
+                                    <span class="choice__label-text">Auto-sync</span>
+                                    <span class="choice__hint">Keeps devices updated.</span>
+                                </span>
+                            </label>
+                            <label class="choice choice--checkbox choice--warning">
+                                <input class="choice__input" type="checkbox"/>
+                                <span aria-hidden="true" class="choice__indicator"></span>
+                                <span class="choice__label">
+                                    <span class="choice__label-text">Experimental mode</span>
+                                    <span class="choice__hint">May change without notice.</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="choice-group choice-group--grid"&gt;
+  &lt;label class="choice choice--checkbox choice--success"&gt;
+    &lt;input class="choice__input" type="checkbox" checked&gt;
+    &lt;span class="choice__indicator" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span class="choice__label"&gt;
+      &lt;span class="choice__label-text"&gt;Auto-sync&lt;/span&gt;
+      &lt;span class="choice__hint"&gt;Keeps devices updated.&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Layout primitives</h3>
+                        <div class="section__stack-sm">
+                            <div class="form-row">
+                                <input class="form-control" placeholder="First name"/>
+                                <input class="form-control" placeholder="Last name"/>
+                            </div>
+                            <div class="form-grid form-grid--two">
+                                <input class="form-control" placeholder="Email"/>
+                                <input class="form-control" placeholder="Phone"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-row"&gt;
+  &lt;input class="form-control" placeholder="First name"&gt;
+  &lt;input class="form-control" placeholder="Last name"&gt;
+&lt;/div&gt;
+
+&lt;div class="form-grid form-grid--two"&gt;
+  &lt;input class="form-control" placeholder="Email"&gt;
+  &lt;input class="form-control" placeholder="Phone"&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="section__grid-2 section__grid-sm">
+                    <div class="doc-block__preview section__stack-sm"><h3 class="text-sm">Form messages + section
+                        states</h3>
+                        <div class="section__stack-sm">
+                            <div class="form-message form-message--info">
+                                <div class="form-message__content">
+                                    <strong>Info</strong>
+                                    <span class="text-sm">This is an informational message.</span>
+                                </div>
+                            </div>
+                            <div class="form-section--error">
+                                <p class="text-sm">Error section</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doc-block__code mt-4"><pre><code>&lt;div class="form-message form-message--info"&gt;
+  &lt;div class="form-message__content"&gt;
+    &lt;strong&gt;Info&lt;/strong&gt;
+    &lt;span&gt;This is an informational message.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-section--error"&gt;
+  &lt;p&gt;Error section&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-v1-doc-addendum>
+    <h2>Forms V1 testing notes</h2>
+    <p>The examples and specimens above are the primary visual test matrix for this surface. For VDS 1.0, keep every existing feature example visible and use this addendum to verify the new compatibility and release behavior without replacing the rich examples.</p>
+    <div class="doc-block doc-block--surface">
+        <h3>Source truth and package import</h3>
+        <p>Source truth: <code>src/components/forms.css</code>. Package-facing import for consumers: <code>dist/components/forms.css</code>.</p>
+        <pre><code>@import "@24vlh/vds/dist/components/forms.css";</code></pre>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>What to verify in V1</h3>
+        <ul>
+            <li>Each feature, variant, size, density, layout, and state shown above still renders with the V1 CSS.</li>
+            <li>ARIA and <code>data-*</code> aliases added for V1 behave as compatibility hooks, not as application logic.</li>
+            <li>Focus-visible, disabled, current, selected, expanded, loading, reduced-motion, forced-colors, responsive, and theme behavior are checked where the component exposes those states.</li>
+            <li>Consumer JavaScript still owns routing, validation, keyboard behavior, focus management, announcements, lifecycle, and state synchronization.</li>
+        </ul>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>Migration and release notes</h3>
+        <p>No example in this page should be removed for V1 testing. If a selector, import, token, or runtime expectation changes later, add migration notes next to the affected example and keep the old behavior documented until compatibility is decided.</p>
     </div>
 </section>

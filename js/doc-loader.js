@@ -167,8 +167,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const temp = document.createElement("div");
             temp.innerHTML = html;
 
-            const h1 = temp.querySelector("h1");
-            const title = h1 ? h1.innerText.trim() : record.label;
+            const heading = temp.querySelector("h1, h2, h3");
+            const title = heading ? heading.innerText.trim() : record.label;
 
             container.innerHTML = html;
             clearLoading();

@@ -1,93 +1,334 @@
-<section class="section section--lg" data-vds-doc="vds-badge-tag">
-    <div class="section__inner section__stack section__stack-lg">
-        <header class="section__header section__header--wide">
-            <p class="section__eyebrow">Status</p>
-            <h1 class="section__title">Badge Tag</h1>
-            <p class="section__subtitle">
-                Badge/tag CSS styles counts, labels, removable chips, status dots, sizes, shapes, and semantic tones.
-                CSS owns presentation; the application owns selection, removal, filtering, and status meaning.
-            </p>
-        </header>
-
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-badge-tag data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Source truth</p>
-                <h2 class="doc-block__title">Imports and package surface</h2>
+                <h2 class="doc-block__title">Badges, tags, and status pills</h2>
                 <p class="doc-block__summary">
-                    Badge/tag is authored in <code>src/components/badge-tag.css</code> and ships through
-                    <code>dist/components/badge-tag.css</code>.
+                    Badges label status, tags support filtering, and pills provide compact states.
+                    Use semantic colors to convey meaning and shape modifiers for layout control.
+                </p>
+                <p class="text-sm text-muted">
+                    Source: <code>badge-tag.css</code> · Depends on
+                    <code>primitives.css</code>,
+                    <code>base.css</code>,
+                    <code>typography.css</code>,
+                    and theme tokens in <code>/themes/*.css</code>.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/core.css";
-@import "@24vlh/vds/dist/components/badge-tag.css";</code></pre>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="text-xs text-muted text-mono">Full color system</div>
+                    <div class="section__inline section__inline-wrap">
+                        <span class="badge-tag badge-tag--neutral">Neutral</span>
+                        <span class="badge-tag badge-tag--accent">Accent</span>
+                        <span class="badge-tag badge-tag--mono">Mono</span>
+                        <span class="badge-tag badge-tag--success">Success</span>
+                        <span class="badge-tag badge-tag--info">Info</span>
+                        <span class="badge-tag badge-tag--warning">Warning</span>
+                        <span class="badge-tag badge-tag--danger">Danger</span>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;span class="badge-tag badge-tag--neutral"&gt;Neutral&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--accent"&gt;Accent&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--mono"&gt;Mono&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--success"&gt;Success&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--info"&gt;Info&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--warning"&gt;Warning&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--danger"&gt;Danger&lt;/span&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section section--inset" data-vds-badge-tag data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Examples</p>
-                <h2 class="doc-block__title">Status, count, and removable tag</h2>
+                <h2 class="doc-block__title">Style modes</h2>
                 <p class="doc-block__summary">
-                    Pair semantic color with text. Removable tags need a real button with an accessible name.
+                    Switch between soft (default), outline, and solid treatments without changing semantics.
                 </p>
             </header>
+
             <div class="doc-block__body">
-                <div class="section__inline section__inline-wrap">
-                    <span class="badge-tag badge-tag--success">
-                        <span class="badge-tag__dot" aria-hidden="true"></span>
-                        Synced
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="text-xs text-muted text-mono">Soft (default)</div>
+                    <div class="section__inline section__inline-wrap">
+                        <span class="badge-tag badge-tag--success">Live</span>
+                        <span class="badge-tag badge-tag--warning">Paused</span>
+                        <span class="badge-tag badge-tag--danger">Offline</span>
+                    </div>
+
+                    <div class="text-xs text-muted text-mono">Outline</div>
+                    <div class="section__inline section__inline-wrap">
+                        <span class="badge-tag badge-tag--success badge-tag--outline">Live</span>
+                        <span class="badge-tag badge-tag--warning badge-tag--outline">Paused</span>
+                        <span class="badge-tag badge-tag--danger badge-tag--outline">Offline</span>
+                    </div>
+
+                    <div class="text-xs text-muted text-mono">Solid</div>
+                    <div class="section__inline section__inline-wrap">
+                        <span class="badge-tag badge-tag--success badge-tag--solid">Live</span>
+                        <span class="badge-tag badge-tag--warning badge-tag--solid">Paused</span>
+                        <span class="badge-tag badge-tag--danger badge-tag--solid">Offline</span>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;span class="badge-tag badge-tag--success"&gt;Live&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--warning badge-tag--outline"&gt;Paused&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--danger badge-tag--solid"&gt;Offline&lt;/span&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-badge-tag data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Counts and icon badge-tags</h2>
+                <p class="doc-block__summary">
+                    Use circular badge-tags for counts and dot the count on top of icons or buttons when needed.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__inline section__inline-wrap">
+                    <span class="badge-tag badge-tag--circle badge-tag--solid badge-tag--accent">3</span>
+                    <span class="badge-tag badge-tag--count badge-tag--solid badge-tag--danger">12</span>
+                    <span class="badge-tag badge-tag--solid badge-tag--info">
+                        <span aria-hidden="true" class="badge-tag__icon">!</span>
+                        New
                     </span>
-                    <span class="badge-tag badge-tag--warning badge-tag--outline">Needs review</span>
-                    <span class="badge-tag badge-tag--count" aria-label="12 open tasks">12</span>
-                    <span class="badge-tag badge-tag--tag">
-                        Enterprise
-                        <button class="badge-tag__remove" type="button" aria-label="Remove Enterprise filter">x</button>
+                    <span class="badge-tag badge-tag--outline badge-tag--mono">
+                        <span aria-hidden="true" class="badge-tag__icon">#</span>
+                        Finance
                     </span>
                 </div>
-                <pre class="doc-block__code"><code>&lt;span class="badge-tag badge-tag--tag"&gt;
-  Enterprise
-  &lt;button class="badge-tag__remove" type="button" aria-label="Remove Enterprise filter"&gt;x&lt;/button&gt;
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;span class="badge-tag badge-tag--circle badge-tag--solid badge-tag--accent"&gt;3&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--count badge-tag--solid badge-tag--danger"&gt;12&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--solid badge-tag--info"&gt;
+  &lt;span class="badge-tag__icon" aria-hidden="true"&gt;!&lt;/span&gt; New
 &lt;/span&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section section--inset" data-vds-badge-tag data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Accessibility</p>
-                <h2 class="doc-block__title">Runtime ownership</h2>
+                <h2 class="doc-block__title">Tags and sharp corners</h2>
                 <p class="doc-block__summary">
-                    CSS cannot remove a filter, update counts, or define what a semantic badge means.
+                    Tags are interactive badge-tags used for filtering or selection. Use square or sharp
+                    corners for rectangular tag systems.
                 </p>
             </header>
+
             <div class="doc-block__body">
-                <ul>
-                    <li>Use text such as "Needs review" rather than color alone.</li>
-                    <li>Synchronize selected, disabled, and removed state in application code.</li>
-                    <li>Announce filter changes or count changes when they alter visible results.</li>
-                    <li>Use disabled state only when the underlying action is actually unavailable.</li>
-                </ul>
+                <div class="doc-block__preview section__inline section__inline-wrap">
+                    <button class="badge-tag badge-tag--tag badge-tag--outline badge-tag--sharp" type="button">Design</button>
+                    <button class="badge-tag badge-tag--tag badge-tag--square" type="button">Research</button>
+                    <span class="badge-tag badge-tag--success">
+                        Shipped
+                        <button aria-label="Remove tag" class="badge-tag__remove" type="button">&times;</button>
+                    </span>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;button class="badge-tag badge-tag--tag badge-tag--outline badge-tag--sharp" type="button"&gt;Design&lt;/button&gt;
+&lt;button class="badge-tag badge-tag--tag badge-tag--square" type="button"&gt;Research&lt;/button&gt;
+&lt;span class="badge-tag badge-tag--success"&gt;
+  Shipped
+  &lt;button class="badge-tag__remove" type="button" aria-label="Remove tag"&gt;&amp;times;&lt;/button&gt;
+&lt;/span&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+<section class="section" data-vds-badge-tag data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Validation</p>
-                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <h2 class="doc-block__title">Status pills</h2>
                 <p class="doc-block__summary">
-                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
-                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
-                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                    Dot badge-tags signal status quickly in tables, lists, and cards.
                 </p>
             </header>
+
             <div class="doc-block__body">
-                <ul>
-                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
-                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
-                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
-                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
-                </ul>
+                <div class="doc-block__preview section__inline section__inline-wrap">
+                    <span class="badge-tag badge-tag--success">
+                        <span aria-hidden="true" class="badge-tag__dot"></span>
+                        Live
+                    </span>
+                    <span class="badge-tag badge-tag--warning">
+                        <span aria-hidden="true" class="badge-tag__dot"></span>
+                        Paused
+                    </span>
+                    <span class="badge-tag badge-tag--danger">
+                        <span aria-hidden="true" class="badge-tag__dot"></span>
+                        Offline
+                    </span>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;span class="badge-tag badge-tag--success"&gt;
+  &lt;span class="badge-tag__dot" aria-hidden="true"&gt;&lt;/span&gt;
+  Live
+&lt;/span&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-badge-tag data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Sizing and shape</h2>
+                <p class="doc-block__summary">
+                    Use size modifiers for density control and shape modifiers for rectangular or sharp tags.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="text-xs text-muted text-mono">Sizes</div>
+                    <div class="section__inline section__inline-wrap">
+                        <span class="badge-tag badge-tag--xs">XS</span>
+                        <span class="badge-tag badge-tag--sm">SM</span>
+                        <span class="badge-tag">MD</span>
+                        <span class="badge-tag badge-tag--lg">LG</span>
+                    </div>
+
+                    <div class="text-xs text-muted text-mono">Shapes</div>
+                    <div class="section__inline section__inline-wrap">
+                        <span class="badge-tag">Pill</span>
+                        <span class="badge-tag badge-tag--square">Square</span>
+                        <span class="badge-tag badge-tag--sharp">Sharp</span>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;span class="badge-tag badge-tag--xs"&gt;XS&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--lg"&gt;LG&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--square"&gt;Square&lt;/span&gt;
+&lt;span class="badge-tag badge-tag--sharp"&gt;Sharp&lt;/span&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-badge-tag data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Usage patterns &amp; best practices</h2>
+                <p class="doc-block__summary">
+                    Keep badge labels short, attach them to content they describe, and avoid stacking
+                    multiple badge types on the same surface.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use semantic colors for status or workflow signals.</li>
+                        <li>Keep labels to one or two words and align with the data it labels.</li>
+                        <li>Use dot badges for quick state scanning in lists or tables.</li>
+                        <li>Use tags for filters or categories that users can act on.</li>
+                        <li>Show counts only when the number drives urgency or attention.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not stack multiple badges to communicate a single status.</li>
+                        <li>Do not rely on color alone; pair with text or dot indicators.</li>
+                        <li>Do not use badges as primary navigation or CTA elements.</li>
+                        <li>Do not use sharp corners unless the system uses sharp tags consistently.</li>
+                        <li>Do not overload cards with too many badge styles at once.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-badge-tag data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Keep badges readable, provide accessible labels for icon-only tags, and use semantic
+                    HTML elements when badges are interactive.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use <code>&lt;button&gt;</code> for interactive tags and filters.</li>
+                        <li>Use a separate remove <code>&lt;button&gt;</code> inside a non-button badge.</li>
+                        <li>Provide <code>aria-label</code> for icon-only badges or remove controls.</li>
+                        <li>Mark decorative dots or icons with <code>aria-hidden="true"</code>.</li>
+                        <li>Ensure text has sufficient contrast for the chosen variant.</li>
+                        <li>Use <code>badge-tag--outline</code> when the surface is highly saturated.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not hide status behind color-only badges without text.</li>
+                        <li>Do not use badges as the only focusable element in a row.</li>
+                        <li>Do not nest a remove button inside a <code>&lt;button&gt;</code> badge.</li>
+                        <li>Do not use small badges (<code>badge-tag--xs</code>) for long labels.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-v1-doc-addendum>
+    <h2>Badge Tag V1 testing notes</h2>
+    <p>The examples and specimens above are the primary visual test matrix for this surface. For VDS 1.0, keep every existing feature example visible and use this addendum to verify the new compatibility and release behavior without replacing the rich examples.</p>
+    <div class="doc-block doc-block--surface">
+        <h3>Source truth and package import</h3>
+        <p>Source truth: <code>src/components/badge-tag.css</code>. Package-facing import for consumers: <code>dist/components/badge-tag.css</code>.</p>
+        <pre><code>@import "@24vlh/vds/dist/components/badge-tag.css";</code></pre>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>What to verify in V1</h3>
+        <ul>
+            <li>Each feature, variant, size, density, layout, and state shown above still renders with the V1 CSS.</li>
+            <li>ARIA and <code>data-*</code> aliases added for V1 behave as compatibility hooks, not as application logic.</li>
+            <li>Focus-visible, disabled, current, selected, expanded, loading, reduced-motion, forced-colors, responsive, and theme behavior are checked where the component exposes those states.</li>
+            <li>Consumer JavaScript still owns routing, validation, keyboard behavior, focus management, announcements, lifecycle, and state synchronization.</li>
+        </ul>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>Migration and release notes</h3>
+        <p>No example in this page should be removed for V1 testing. If a selector, import, token, or runtime expectation changes later, add migration notes next to the affected example and keep the old behavior documented until compatibility is decided.</p>
     </div>
 </section>

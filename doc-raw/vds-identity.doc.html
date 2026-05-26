@@ -1,109 +1,1134 @@
-<section class="section section--lg" data-vds-doc="vds-identity">
-    <div class="section__inner section__stack section__stack-lg">
-        <header class="section__header section__header--wide">
-            <p class="section__eyebrow">Foundation</p>
-            <h1 class="section__title">Identity</h1>
-            <p class="section__subtitle">
-                Identity styles inline SVG logo lockups, marks, wordmarks, color modes, sizing, and clearspace. It is
-                a standalone package surface, not a component CSS file under <code>src/components</code>.
-            </p>
-        </header>
-
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Source truth</p>
-                <h2 class="doc-block__title">Standalone import</h2>
+                <h2 class="doc-block__title">Identity tokens</h2>
                 <p class="doc-block__summary">
-                    Identity is authored in <code>src/identity.css</code> and ships through
-                    <code>dist/identity.css</code> and <code>dist/identity.min.css</code>. No
-                    <code>dist/components/identity.css</code> output is expected.
+                    Stroke, sizing and spacing are driven by identity tokens. Themes only
+                    supply colour; geometry is fully system-controlled.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/identity.css";
-@import "@24vlh/vds/dist/themes/graphite.css";</code></pre>
-                <p>
-                    Inline SVG logo classes can inherit theme tokens. External static logo assets have their colors
-                    baked into the asset.
-                </p>
-            </div>
-        </article>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
-            <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Anatomy</p>
-                <h2 class="doc-block__title">Logo classes</h2>
-                <p class="doc-block__summary">
-                    The CSS covers the root logo, frame, rail, chevron, wordmark, text, KeepExec helpers, size
-                    modifiers, layout modifiers, clearspace, and color modes.
-                </p>
-            </header>
             <div class="doc-block__body">
-                <div class="section__inline section__inline-wrap">
-                    <span class="logo logo--horizontal logo--md" aria-label="KeepExec">
-                        <span class="logo-frame" aria-hidden="true"></span>
-                        <span class="logo-wordmark">KeepExec</span>
-                    </span>
-                    <span class="logo logo--mark-only logo--sm" aria-label="KeepExec mark">
-                        <span class="logo-frame" aria-hidden="true"></span>
-                    </span>
+                <div class="doc-block__preview section__grid-3 section__grid-auto section__grid-sm">
+                    <div class="section__stack-sm">
+                        <h3 class="text-sm">Geometry tokens</h3>
+                        <ul class="text-sm">
+                            <li><code>--logo-stroke-primary</code> — base stroke width.</li>
+                            <li><code>--logo-clearspace</code> — padding multiplier around mark.</li>
+                            <li><code>--logo-min-horizontal</code> — min height for full lockup.</li>
+                            <li><code>--logo-min-mark</code> — min size for mark-only.</li>
+                            <li><code>--logo-primary-letter-spacing</code> — primary wordmark
+                                tracking.
+                            </li>
+                            <li><code>--logo-secondary-letter-spacing</code> — secondary line
+                                tracking.
+                            </li>
+                            <li><code>--logo-doc-height</code> — compact inline doc height.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section__stack-sm">
+                        <h3 class="text-sm">Size scale</h3>
+                        <ul class="text-sm">
+                            <li><code>--logo-size-xs</code> — 2.5rem</li>
+                            <li><code>--logo-size-sm</code> — 3rem</li>
+                            <li><code>--logo-size-md</code> — 3.75rem</li>
+                            <li><code>--logo-size-lg</code> — 4.5rem</li>
+                            <li><code>--logo-size-xl</code> — 5.5rem</li>
+                            <li><code>--logo-size-xxl</code> — 6.5rem</li>
+                        </ul>
+                    </div>
+
+                    <div class="section__stack-sm">
+                        <h3 class="text-sm">KeepExec tokens</h3>
+                        <ul class="text-sm">
+                            <li><code>--logo-ke-frame-stroke</code> — frame stroke width.</li>
+                            <li><code>--logo-ke-mark-stroke</code> — mark stroke width.</li>
+                            <li><code>--logo-ke-text-primary-size</code> — wordmark size.</li>
+                            <li><code>--logo-ke-text-secondary-size</code> — tagline size.</li>
+                            <li><code>--logo-ke-primary-letter-spacing</code> — primary tracking.</li>
+                            <li><code>--logo-ke-secondary-letter-spacing</code> — secondary tracking.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>:root {
+    --logo-stroke-primary: 2.75;
+    --logo-clearspace: 0.5;
+    --logo-min-horizontal: 24px;
+    --logo-min-mark: 16px;
+    --logo-primary-letter-spacing: 0.18em;
+    --logo-secondary-letter-spacing: 0.30em;
+    --logo-size-xs: 2.5rem;
+    --logo-size-sm: 3rem;
+    --logo-size-md: 3.75rem;
+    --logo-size-lg: 4.5rem;
+    --logo-size-xl: 5.5rem;
+    --logo-size-xxl: 6.5rem;
+    --logo-doc-height: 2.25rem;
+    --logo-ke-frame-stroke: 2.5;
+    --logo-ke-mark-stroke: 3.2;
+    --logo-ke-text-primary-size: 18px;
+    --logo-ke-text-secondary-size: 10px;
+    --logo-ke-primary-letter-spacing: 0.04em;
+    --logo-ke-secondary-letter-spacing: 0.06em;
+}
+</code></pre>
                 </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Copy-safe example</p>
-                <h2 class="doc-block__title">Linked logo</h2>
+                <h2 class="doc-block__title">KeepExec identity — lockup &amp; mark</h2>
                 <p class="doc-block__summary">
-                    A logo link needs an accessible name that describes the destination, not just the image.
+                    KeepExec uses its own mark geometry and wordmark classes while sharing the
+                    same size and variant utilities. Apply <code>.logo--mono</code>,
+                    <code>.logo--footer</code> or <code>.logo--inverse</code> on the SVG to
+                    shift colour modes.
                 </p>
             </header>
+
             <div class="doc-block__body">
-                <pre class="doc-block__code"><code>&lt;a class="logo logo--horizontal logo--md" href="/home" aria-label="KeepExec home"&gt;
-  &lt;span class="logo-frame" aria-hidden="true"&gt;&lt;/span&gt;
-  &lt;span class="logo-wordmark"&gt;KeepExec&lt;/span&gt;
-&lt;/a&gt;</code></pre>
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="text-xs text-mono">Primary lockup</div>
+                    <svg aria-label="KeepExec"
+                         class="logo logo--horizontal logo--md"
+                         role="img"
+                         viewBox="0 0 320 44"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <g class="ke-ink" transform="translate(0,6)">
+                            <rect class="ke-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                            <path class="ke-mark" d="M10 8 L10 24"/>
+                            <path class="ke-mark" d="M10 16 L19 8"/>
+                            <path class="ke-mark" d="M10 16 L19 24"/>
+                        </g>
+                        <g class="ke-accent" transform="translate(0,6)">
+                            <path class="ke-mark" d="M20 10 L26 16 L20 22"/>
+                        </g>
+                        <g transform="translate(44,0)">
+                            <text class="ke-text-primary ke-ink" x="0" y="22">KeepExec</text>
+                            <text class="ke-text-secondary ke-muted" x="0" y="38">
+                                Inbox &#8594; Brainstorm &#8594; Video
+                            </text>
+                        </g>
+                    </svg>
+
+                    <div class="text-xs text-mono">Mark-only</div>
+                    <svg aria-label="KeepExec mark"
+                         class="logo logo--mark-only logo--xs"
+                         role="img"
+                         viewBox="0 0 32 32"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <rect class="ke-frame ke-ink" height="28" rx="4" width="28" x="2" y="2"/>
+                        <path class="ke-mark ke-ink" d="M10 8 L10 24"/>
+                        <path class="ke-mark ke-ink" d="M10 16 L19 8"/>
+                        <path class="ke-mark ke-ink" d="M10 16 L19 24"/>
+                        <path class="ke-mark ke-accent" d="M20 10 L26 16 L20 22"/>
+                    </svg>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;svg class="logo logo--horizontal logo--md"
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 320 44"
+     role="img"
+     aria-label="KeepExec"&gt;
+    &lt;g class="ke-ink" transform="translate(0,6)"&gt;
+        &lt;rect class="ke-frame" x="2" y="2" width="28" height="28" rx="4" /&gt;
+        &lt;path class="ke-mark" d="M10 8 L10 24" /&gt;
+        &lt;path class="ke-mark" d="M10 16 L19 8" /&gt;
+        &lt;path class="ke-mark" d="M10 16 L19 24" /&gt;
+    &lt;/g&gt;
+    &lt;g class="ke-accent" transform="translate(0,6)"&gt;
+        &lt;path class="ke-mark" d="M20 10 L26 16 L20 22" /&gt;
+    &lt;/g&gt;
+    &lt;g transform="translate(44,0)"&gt;
+        &lt;text class="ke-text-primary ke-ink" x="0" y="22"&gt;KeepExec&lt;/text&gt;
+        &lt;text class="ke-text-secondary ke-muted" x="0" y="38"&gt;
+            Inbox &amp;#8594; Brainstorm &amp;#8594; Video
+        &lt;/text&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+
+&lt;svg class="logo logo--mark-only logo--xs"
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 32 32"
+     role="img"
+     aria-label="KeepExec mark"&gt;
+    &lt;rect class="ke-frame ke-ink" x="2" y="2" width="28" height="28" rx="4" /&gt;
+    &lt;path class="ke-mark ke-ink" d="M10 8 L10 24" /&gt;
+    &lt;path class="ke-mark ke-ink" d="M10 16 L19 8" /&gt;
+    &lt;path class="ke-mark ke-ink" d="M10 16 L19 24" /&gt;
+    &lt;path class="ke-mark ke-accent" d="M20 10 L26 16 L20 22" /&gt;
+&lt;/svg&gt;
+</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Accessibility</p>
-                <h2 class="doc-block__title">Logo meaning is contextual</h2>
+                <h2 class="doc-block__title">Theme bindings</h2>
                 <p class="doc-block__summary">
-                    Consumers decide whether a logo is informative, decorative, or a navigation link. The CSS only
-                    controls visual identity styling.
+                    Themes supply identity colours only: ink, accent, mono and footer-specific
+                    values. Geometry and layout remain shared across all themes.
                 </p>
             </header>
+
             <div class="doc-block__body">
-                <ul>
-                    <li>Use <code>aria-label</code> on logo links when the wordmark is hidden or ambiguous.</li>
-                    <li>Use empty <code>alt=""</code> for decorative static logo images.</li>
-                    <li>Keep clearspace utilities when placing logos near controls or dense chrome.</li>
-                    <li>Validate inverse, footer, mono, and ink modes against the active theme.</li>
-                </ul>
+                <div class="doc-block__preview">
+                    <div class="section__grid-3 section__grid-auto">
+                        <div class="section__stack-sm">
+                            <h3 class="text-sm">Core</h3>
+                            <ul class="text-sm">
+                                <li><code>--color-logo-ink</code></li>
+                                <li><code>--color-logo-accent</code></li>
+                                <li><code>--color-logo-mono</code></li>
+                            </ul>
+                        </div>
+                        <div class="section__stack-sm">
+                            <h3 class="text-sm">Footer</h3>
+                            <ul class="text-sm">
+                                <li><code>--color-logo-footer-ink</code></li>
+                                <li><code>--color-logo-footer-accent</code></li>
+                            </ul>
+                        </div>
+                        <div class="section__stack-sm">
+                            <h3 class="text-sm">Inverse palette</h3>
+                            <ul class="text-sm">
+                                <li><code>--color-logo-ink-inverse</code></li>
+                                <li><code>--color-logo-accent-inverse</code></li>
+                            </ul>
+                            <p class="text-xs text-muted">
+                                Used by <code>.logo--inverse</code> for logos on dark or image
+                                overlays. Required if you use the inverse variant.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>/* themes/slate.css (excerpt) */
+:root {
+    --color-logo-ink:            var(--color-text-strong);
+    --color-logo-accent:         var(--color-accent);
+    --color-logo-mono:           var(--color-text-strong);
+
+    --color-logo-footer-ink:     var(--color-text-on-strong);
+    --color-logo-footer-accent:  var(--color-accent-soft);
+
+    --color-logo-ink-inverse:    #FFFFFF;
+    --color-logo-accent-inverse: #FFFFFF;
+}
+</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Validation</p>
-                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <h2 class="doc-block__title">Logo anatomy — horizontal lockup</h2>
                 <p class="doc-block__summary">
-                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
-                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
-                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                    The primary lockup is a horizontal composition of the mark (frame, rail,
+                    chevron) and the wordmark (primary + optional secondary line).
                 </p>
             </header>
+
             <div class="doc-block__body">
-                <ul>
-                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
-                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
-                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
-                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
-                </ul>
+
+                <div class="doc-block__preview">
+
+                    <svg aria-hidden="true"
+                         class="logo logo--horizontal logo--md"
+                         viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+
+                        <g transform="translate(0,4)">
+                            <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                            <path class="logo-rail" d="M18 13 L24 24"/>
+                            <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                        </g>
+
+                        <g class="logo-wordmark" transform="translate(44,0)">
+                            <text class="logo-text-primary" x="0" y="22">
+                                VLAH GROUP
+                            </text>
+                            <text class="logo-text-secondary" x="0" y="34">
+                                DESIGN SYSTEM
+                            </text>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>
+&lt;svg class="logo logo--horizontal"
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 220 40"
+     aria-hidden="true"&gt;
+    &lt;g transform="translate(0,4)"&gt;
+        &lt;rect class="logo-frame" x="2" y="2" width="28" height="28" rx="4" /&gt;
+        &lt;path class="logo-rail" d="M18 13 L24 24" /&gt;
+        &lt;path class="logo-chevron" d="M8 10 L16 24 L24 10" /&gt;
+    &lt;/g&gt;
+    &lt;g class="logo-wordmark" transform="translate(44,0)"&gt;
+        &lt;text class="logo-text-primary" x="0" y="22"&gt;VLAH GROUP&lt;/text&gt;
+        &lt;text class="logo-text-secondary" x="0" y="34"&gt;
+            DESIGN SYSTEM
+        &lt;/text&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Core variants</h2>
+                <p class="doc-block__summary">
+                    Four main variants cover most use cases: primary (theme ink/accent), mono
+                    (single-colour), footer (footer ink/accent) and inverse (for overlays).
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__grid-4 section__grid-sm">
+                    <div class="section__stack-sm">
+                        <div class="text-xs text-mono">Primary</div>
+                        <svg aria-hidden="true"
+                             class="logo logo--horizontal logo--sm"
+                             viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                            <g transform="translate(0,4)">
+                                <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                <path class="logo-rail" d="M18 13 L24 24"/>
+                                <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                            </g>
+                            <g class="logo-wordmark" transform="translate(44,0)">
+                                <text class="logo-text-primary" x="0" y="22">
+                                    VLAH GROUP
+                                </text>
+                                <text class="logo-text-secondary" x="0" y="34">
+                                    LTD
+                                </text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="section__stack-sm">
+                        <div class="text-xs text-mono">Mono</div>
+                        <svg aria-hidden="true"
+                             class="logo logo--horizontal logo--sm logo--mono"
+                             viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                            <g transform="translate(0,4)">
+                                <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                <path class="logo-rail" d="M18 13 L24 24"/>
+                                <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                            </g>
+                            <g class="logo-wordmark" transform="translate(44,0)">
+                                <text class="logo-text-primary" x="0" y="22">
+                                    VLAH GROUP
+                                </text>
+                                <text class="logo-text-secondary" x="0" y="34">
+                                    DESIGN SYSTEM
+                                </text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="section__stack-sm">
+                        <div class="text-xs text-mono">Footer</div>
+                        <svg aria-hidden="true"
+                             class="logo logo--horizontal logo--sm logo--footer"
+                             viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                            <g transform="translate(0,4)">
+                                <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                <path class="logo-rail" d="M18 13 L24 24"/>
+                                <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                            </g>
+                            <g class="logo-wordmark" transform="translate(44,0)">
+                                <text class="logo-text-primary" x="0" y="22">
+                                    VLAH GROUP
+                                </text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="section__stack-sm">
+                        <div class="text-xs text-mono">Inverse</div>
+                        <div class="section--surface">
+                            <svg aria-hidden="true"
+                                 class="logo logo--horizontal logo--sm logo--inverse"
+                                 viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                                <g transform="translate(0,4)">
+                                    <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                    <path class="logo-rail" d="M18 13 L24 24"/>
+                                    <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                                </g>
+                                <g class="logo-wordmark" transform="translate(44,0)">
+                                    <text class="logo-text-primary" x="0" y="22">
+                                        VLAH GROUP
+                                    </text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>/* Mono */
+.logo--mono .logo-frame,
+.logo--mono .logo-rail,
+.logo--mono .logo-chevron {
+    stroke: var(--color-logo-mono) !important;
+}
+
+.logo--mono .logo-wordmark,
+.logo--mono .logo-text-primary,
+.logo--mono .logo-text-secondary {
+    fill: var(--color-logo-mono) !important;
+    stroke: none !important;
+}
+
+.logo--mono .ke-ink,
+.logo--mono .ke-accent,
+.logo--mono .ke-muted {
+    color: var(--color-logo-mono);
+}
+
+/* Footer */
+.logo--footer {
+    color: var(--color-logo-footer-ink);
+}
+
+.logo--footer .logo-frame,
+.logo--footer .logo-rail {
+    stroke: var(--color-logo-footer-ink);
+}
+
+.logo--footer .logo-chevron {
+    stroke: var(--color-logo-footer-accent);
+}
+
+.logo--footer .ke-ink,
+.logo--footer .ke-muted {
+    color: var(--color-logo-footer-ink);
+}
+
+.logo--footer .ke-accent {
+    color: var(--color-logo-footer-accent);
+}
+
+/* Inverse */
+.logo--inverse .logo-frame,
+.logo--inverse .logo-rail {
+    stroke: var(--color-logo-ink-inverse) !important;
+}
+
+.logo--inverse .logo-chevron {
+    stroke: var(--color-logo-accent-inverse) !important;
+}
+
+.logo--inverse .logo-wordmark,
+.logo--inverse .logo-text-primary,
+.logo--inverse .logo-text-secondary {
+    fill: var(--color-logo-ink-inverse) !important;
+    stroke: none !important;
+}
+
+.logo--inverse .ke-ink,
+.logo--inverse .ke-muted {
+    color: var(--color-logo-ink-inverse);
+}
+
+.logo--inverse .ke-accent {
+    color: var(--color-logo-accent-inverse);
+}
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Size & layout utilities</h2>
+                <p class="doc-block__summary">
+                    Size utilities adjust the logo height; width is auto. Layout utilities align
+                    the logo relative to surrounding content.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__grid-2 section__grid-sm">
+                    <div class="section__stack-sm">
+                        <h3 class="text-sm">Size scale</h3>
+                        <div class="section__stack-sm">
+                            <svg aria-hidden="true"
+                                 class="logo logo--horizontal logo--xs"
+                                 viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                                <g transform="translate(0,4)">
+                                    <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                    <path class="logo-rail" d="M18 13 L24 24"/>
+                                    <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                                </g>
+                            </svg>
+                            <svg aria-hidden="true"
+                                 class="logo logo--horizontal logo--sm"
+                                 viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                                <g transform="translate(0,4)">
+                                    <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                    <path class="logo-rail" d="M18 13 L24 24"/>
+                                    <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                                </g>
+                            </svg>
+                            <svg aria-hidden="true"
+                                 class="logo logo--horizontal logo--md"
+                                 viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                                <g transform="translate(0,4)">
+                                    <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                    <path class="logo-rail" d="M18 13 L24 24"/>
+                                    <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                                </g>
+                            </svg>
+                            <svg aria-hidden="true"
+                                 class="logo logo--horizontal logo--lg"
+                                 viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                                <g transform="translate(0,4)">
+                                    <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                    <path class="logo-rail" d="M18 13 L24 24"/>
+                                    <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="section__stack-sm">
+                        <h3 class="text-sm">Layout alignment</h3>
+                        <div class="section__stack-sm">
+                            <div class="flex items-center gap-3">
+                                <svg aria-hidden="true"
+                                     class="logo logo--horizontal logo--sm logo--inline"
+                                     viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="translate(0,4)">
+                                        <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                        <path class="logo-rail" d="M18 13 L24 24"/>
+                                        <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                                    </g>
+                                </svg>
+                                <span class="text-sm">Inline with text</span>
+                            </div>
+                            <div class="flex justify-center items-center gap-3">
+                                <div class="logo logo--horizontal logo--sm logo--center">
+                                    <svg aria-hidden="true"
+                                         viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                                        <g transform="translate(0,4)">
+                                            <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                            <path class="logo-rail" d="M18 13 L24 24"/>
+                                            <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>/* Size utilities */
+.logo--xs  { height: var(--logo-size-xs); }
+.logo--sm  { height: var(--logo-size-sm); }
+.logo--md  { height: var(--logo-size-md); }
+.logo--lg  { height: var(--logo-size-lg); }
+.logo--xl  { height: var(--logo-size-xl); }
+.logo--xxl { height: var(--logo-size-xxl); }
+
+/* Layout utilities */
+.logo--inline {
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo--block {
+    display: flex;
+    align-items: center;
+}
+
+.logo--center {
+    display: block;
+    margin-inline: auto;
+}
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Clearspace utilities</h2>
+                <p class="doc-block__summary">
+                    Clearspace utilities wrap the logo in consistent padding using the
+                    <code>--logo-clearspace</code> multiplier and spacing tokens.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__grid-5 section__grid-sm">
+                    <svg aria-hidden="true"
+                         class="logo logo--horizontal logo--xs logo--pad-xs"
+                         viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(0,4)">
+                            <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                            <path class="logo-rail" d="M18 13 L24 24"/>
+                            <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                        </g>
+                    </svg>
+                    <svg aria-hidden="true"
+                         class="logo logo--horizontal logo--sm logo--pad-sm"
+                         viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(0,4)">
+                            <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                            <path class="logo-rail" d="M18 13 L24 24"/>
+                            <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                        </g>
+                    </svg>
+                    <svg aria-hidden="true"
+                         class="logo logo--horizontal logo--md logo--pad-md"
+                         viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(0,4)">
+                            <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                            <path class="logo-rail" d="M18 13 L24 24"/>
+                            <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                        </g>
+                    </svg>
+                    <svg aria-hidden="true"
+                         class="logo logo--horizontal logo--lg logo--pad-lg"
+                         viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(0,4)">
+                            <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                            <path class="logo-rail" d="M18 13 L24 24"/>
+                            <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                        </g>
+                    </svg>
+                    <svg aria-hidden="true"
+                         class="logo logo--horizontal logo--xl logo--pad-xl"
+                         viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(0,4)">
+                            <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                            <path class="logo-rail" d="M18 13 L24 24"/>
+                            <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>/* Clearspace utilities */
+.logo--pad-xs { padding: var(--space-2); }
+.logo--pad-sm { padding: var(--space-3); }
+.logo--pad-md { padding: var(--space-4); }
+.logo--pad-lg { padding: var(--space-6); }
+.logo--pad-xl { padding: var(--space-8); }
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Mark-only & wordmark-only</h2>
+                <p class="doc-block__summary">
+                    Use mark-only for small avatars, favicons or dense UI surfaces. Use
+                    wordmark-only when no vertical space is available for the full lockup.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__grid-2 section__grid-sm">
+                    <div class="section__stack-sm">
+                        <h3 class="text-sm">Mark-only</h3>
+                        <svg aria-hidden="true"
+                             class="logo logo--mark-only logo--sm"
+                             viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <g transform="translate(4,4)">
+                                <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                <path class="logo-rail" d="M18 13 L24 24"/>
+                                <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="section__stack-sm">
+                        <h3 class="text-sm">External SVG assets</h3>
+                        <ul class="text-sm">
+                            <li><code>/svg/vlah-horizontal-[theme]-[mode]-[color|mono].svg</code> — horizontal lockups.
+                            </li>
+                            <li><code>/svg/vlah-mark-[theme]-[mode]-[color|mono].svg</code> — mark-only.</li>
+                            <li><code>/svg/vlah-favicon-[theme]-[mode].svg</code> — favicons.</li>
+                            <li><code>Wordmark-only</code> — export on demand (not packaged in /svg).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;svg class="logo logo--mark-only logo--mono"
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 40 40"
+     aria-hidden="true"&gt;
+    &lt;g transform="translate(4,4)"&gt;
+        &lt;rect class="logo-frame" x="2" y="2" width="28" height="28" rx="4" /&gt;
+        &lt;path class="logo-rail" d="M18 13 L24 24" /&gt;
+        &lt;path class="logo-chevron" d="M8 10 L16 24 L24 10" /&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+
+&lt;img src="../svg/vlah-horizontal-slate-light-color.svg" alt="Vlah Group logo" class="logo logo--sm"&gt;
+&lt;img src="../svg/vlah-mark-slate-light-color.svg" alt="Vlah Group mark" class="logo logo--xs"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Inline vs external SVG usage</h2>
+                <p class="doc-block__summary">
+                    Choose inline SVG for dynamic theming and animation; external assets for
+                    static, cacheable logos in content surfaces.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="section__stack-sm">
+                    <h3 class="text-sm">Inline SVG</h3>
+                    <p class="text-sm">
+                        Inline SVG is recommended for app chrome, navigations and any surface
+                        where you need fine-grained control over strokes, fills or animation.
+                    </p>
+                    <pre class="doc-block__code"><code>&lt;header&gt;
+    &lt;a href="/"&gt;
+        &lt;svg class="logo logo--horizontal logo--sm logo--inline"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 220 40"&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/header&gt;
+</code></pre>
+                </div>
+
+                <div class="section__stack-sm">
+                    <h3 class="text-sm">External SVG</h3>
+                    <p class="text-sm">
+                        External assets are preferred for content-rich pages and emails
+                        where caching and delivery via CMS or CDN matter more than theming.
+                    </p>
+                    <pre class="doc-block__code"><code>&lt;img src="../svg/vlah-horizontal-slate-light-color.svg"
+     alt="Vlah Group"
+     class="logo logo--sm"&gt;
+
+&lt;img src="../svg/vlah-mark-slate-light-color.svg"
+     alt="Vlah mark"
+     class="logo logo--xs"&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Footer usage</h2>
+                <p class="doc-block__summary">
+                    Footer mode uses footer-specific ink and accent tokens and is designed to
+                    sit on strong or alt footer backgrounds from the theme.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <footer class="footer">
+                        <div class="footer__inner">
+                            <div>
+                                <svg aria-hidden="true"
+                                     class="logo logo--horizontal logo--sm logo--footer"
+                                     viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="translate(0,4)">
+                                        <rect class="logo-frame" height="28" rx="4" width="28" x="2" y="2"/>
+                                        <path class="logo-rail" d="M18 13 L24 24"/>
+                                        <path class="logo-chevron" d="M8 10 L16 24 L24 10"/>
+                                    </g>
+                                    <g class="logo-wordmark" transform="translate(44,0)">
+                                        <text class="logo-text-primary" x="0" y="22">
+                                            VLAH GROUP
+                                        </text>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="footer__meta text-xs">
+                                © Vlah Group. All rights reserved.
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;footer class="footer"&gt;
+    &lt;div class="footer__inner"&gt;
+        &lt;div&gt;
+            &lt;svg class="logo logo--horizontal logo--sm logo--footer"
+                 xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 220 40"&gt;
+            &lt;/svg&gt;
+        &lt;/div&gt;
+        &lt;div class="footer__meta text-xs"&gt;
+            &amp;copy; Vlah Group. All rights reserved.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Color mode utilities</h2>
+                <p class="doc-block__summary">
+                    Color-mode utilities allow you to enforce ink/accent combinations on SVG
+                    descendants without changing the variant class.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview">
+                    <p class="text-sm">
+                        These utilities are particularly useful when logos are injected via CMS
+                        or raw SVG where you can’t easily inject variant classes onto all nodes.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>/* Color mode utilities (applied at container level) */
+.logo--ink svg .logo-frame,
+.logo--ink svg .logo-rail {
+    stroke: var(--color-logo-ink);
+}
+
+.logo--ink svg .logo-chevron {
+    stroke: var(--color-logo-accent);
+}
+
+.logo--ink svg .ke-ink {
+    color: var(--color-logo-ink);
+}
+
+.logo--ink svg .ke-accent {
+    color: var(--color-logo-accent);
+}
+
+.logo--ink svg .ke-muted {
+    color: var(--color-text-muted);
+}
+
+.logo--inverse svg .logo-frame,
+.logo--inverse svg .logo-rail {
+    stroke: var(--color-logo-ink-inverse);
+}
+
+.logo--inverse svg .logo-chevron {
+    stroke: var(--color-logo-accent-inverse);
+}
+
+.logo--inverse svg .ke-ink {
+    color: var(--color-logo-ink-inverse);
+}
+
+.logo--inverse svg .ke-accent {
+    color: var(--color-logo-accent-inverse);
+}
+
+.logo--inverse svg .ke-muted {
+    color: var(--color-logo-ink-inverse);
+}
+</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Packaged logo assets</h2>
+                <p class="doc-block__summary">
+                    In addition to inline SVG, VDS ships pre-rendered logo
+                    files per theme and usage: horizontal lockups, marks,
+                    favicons and masks. These are loaded as standard
+                    <code>&lt;img&gt;</code> elements and can still use
+                    the <code>.logo</code> layout classes.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Common variants</h3>
+
+                    <div class="section__stack-sm">
+                        <div class="text-xs text-mono">Horizontal · slate · light · color</div>
+                        <img alt="Vlah Group logo — slate light color horizontal"
+                             class="logo logo--sm"
+                             src="../svg/vlah-horizontal-slate-light-color.svg"/>
+                    </div>
+
+                    <div class="section__stack-sm">
+                        <div class="text-xs text-mono">Horizontal · slate · dark · mono</div>
+                        <img alt="Vlah Group logo — slate dark mono horizontal"
+                             class="logo logo--sm"
+                             src="../svg/vlah-horizontal-slate-dark-mono.svg"/>
+                    </div>
+
+                    <div class="section__stack-sm">
+                        <div class="text-xs text-mono">Mark-only · slate · light · color</div>
+                        <img alt="Vlah Group logo mark — slate light color"
+                             class="logo logo--xs"
+                             src="../svg/vlah-mark-slate-light-color.svg"/>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>
+&lt;header class="page-header"&gt;
+  &lt;div class="container"&gt;
+    &lt;a href="/"&gt;
+      &lt;img
+        class="logo logo--sm"
+        src="./svg/vlah-horizontal-slate-light-color.svg"
+        alt="Vlah Group"
+      /&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;div&gt;
+  &lt;img
+    class="logo logo--sm"
+    src="./svg/vlah-horizontal-slate-dark-mono.svg"
+    alt="Vlah Group"
+  /&gt;
+&lt;/div&gt;
+
+&lt;button&gt;
+  &lt;img
+    class="logo logo--xs"
+    src="./svg/vlah-mark-slate-light-color.svg"
+    alt="Vlah mark"
+  /&gt;
+&lt;/button&gt;</code></pre>
+
+                    <p class="text-xs text-muted">
+                        Packaged logo assets have colours baked into the SVG files.
+                        Use inline SVG + identity tokens when you need theme-driven
+                        recolouring. Use <code>&lt;img&gt;</code> assets when you
+                        want fixed, curated artwork per theme.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-identity>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    The identity subsystem is a strict, token-driven rendering contract. Logos must
+                    preserve geometric accuracy, minimum sizes, contrast requirements, and alt-text
+                    semantics whether embedded as inline SVG or external assets. Variants (mono,
+                    footer, inverse) must be selected based exclusively on background context.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Provide meaningful <code>alt</code> text when using <code>&lt;img&gt;</code> logos
+                            (“Vlah Group”, “Vlah mark”), unless the logo is decorative (then <code>alt=""</code>).
+                        </li>
+
+                        <li>
+                            Use inline SVG for theme-driven recolouring via
+                            <code>--color-logo-*</code> tokens, and for dynamic stroke/fill adjustments.
+                        </li>
+
+                        <li>
+                            Honour minimum geometry:
+                            <code>--logo-min-horizontal</code> and
+                            <code>--logo-min-mark</code> are required for readable rendering.
+                        </li>
+
+                        <li>
+                            Maintain tokenised stroke geometry:
+                            <code>--logo-stroke-primary</code>,
+                            <code>vector-effect: non-scaling-stroke</code>,
+                            <code>round</code> linecaps/joins.
+                        </li>
+
+                        <li>
+                            Use the correct variant for context:
+                            <code>.logo--mono</code> for single-colour layouts,
+                            <code>.logo--footer</code> for footer backgrounds,
+                            <code>.logo--inverse</code> for overlays/dark surfaces.
+                        </li>
+
+                        <li>
+                            Keep the wordmark accessible by ensuring adequate contrast between
+                            <code>--color-logo-ink</code> / <code>--color-logo-accent</code> and the surface.
+                        </li>
+
+                        <li>
+                            Use size utilities (<code>.logo--xs</code> → <code>.logo--xxl</code>) instead of
+                            hardcoded pixel sizing; width must remain <code>auto</code>.
+                        </li>
+
+                        <li>
+                            Use clearspace utilities (<code>.logo--pad-xs</code>, <code>.logo--pad-sm</code>,
+                            <code>.logo--pad-md</code>, <code>.logo--pad-lg</code>, <code>.logo--pad-xl</code>) to
+                            preserve safe breathing room around the logo in dense UI surfaces.
+                        </li>
+
+                        <li>
+                            When using mark-only icons for favicons, avatars, or compact UI,
+                            ensure the mark remains ≥ <code>--logo-min-mark</code>.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t modify paths, strokes, coordinates or proportions of the SVG files.
+                            Geometry is brand-locked and token-driven.
+                        </li>
+
+                        <li>
+                            Don’t recolour logos using inline <code>fill</code> or <code>stroke</code> hex values;
+                            always use theme tokens (<code>--color-logo-*</code>) or appropriate variants.
+                        </li>
+
+                        <li>
+                            Don’t use <code>.logo--inverse</code> on light backgrounds or
+                            <code>.logo--footer</code> outside footer surfaces; these variants
+                            are context-specific.
+                        </li>
+
+                        <li>
+                            Don’t apply <code>width</code>/<code>height</code> distortions that break aspect ratio.
+                            Identity requires proportional scaling.
+                        </li>
+
+                        <li>
+                            Don’t place logos on noisy, low-contrast, photographic or animated surfaces
+                            without verifying that both mark and wordmark remain legible.
+                        </li>
+
+                        <li>
+                            Don’t remove <code>vector-effect: non-scaling-stroke</code> or override
+                            <code>stroke-width</code> — this breaks rendering on high-dpi screens.
+                        </li>
+
+                        <li>
+                            Don’t inject non-brand shadows, filters, gradients or visual effects.
+                        </li>
+
+                        <li>
+                            Don’t overlay text, icons or buttons inside the padding/clearspace boundary.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Provide meaningful alt="" unless decorative.
+2. Inline SVG for theme-driven recolouring; &lt;img&gt; for fixed artwork.
+3. Always preserve proportional geometry and non-scaling-stroke.
+4. Respect min sizes: --logo-min-horizontal / --logo-min-mark.
+5. Use the correct variant (primary / mono / footer / inverse) for background context.
+6. No hardcoded colours; use theme identity tokens only.
+7. Size via .logo--xs → .logo--xxl, never by px dimensions.
+8. Maintain clearspace via .logo--pad-xs/.logo--pad-sm/.logo--pad-md/.logo--pad-lg/.logo--pad-xl classes.
+9. Do not edit SVG strokes, coordinates, or brand geometry.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-v1-doc-addendum>
+    <h2>Identity V1 testing notes</h2>
+    <p>The examples and specimens above are the primary visual test matrix for this surface. For VDS 1.0, keep every existing feature example visible and use this addendum to verify the new compatibility and release behavior without replacing the rich examples.</p>
+    <div class="doc-block doc-block--surface">
+        <h3>Source truth and package import</h3>
+        <p>Source truth: <code>src/identity.css</code>. Package-facing import for consumers: <code>dist/identity.css</code>.</p>
+        <pre><code>@import "@24vlh/vds/dist/identity.css";</code></pre>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>What to verify in V1</h3>
+        <ul>
+            <li>Each feature, variant, size, density, layout, and state shown above still renders with the V1 CSS.</li>
+            <li>ARIA and <code>data-*</code> aliases added for V1 behave as compatibility hooks, not as application logic.</li>
+            <li>Focus-visible, disabled, current, selected, expanded, loading, reduced-motion, forced-colors, responsive, and theme behavior are checked where the component exposes those states.</li>
+            <li>Consumer JavaScript still owns routing, validation, keyboard behavior, focus management, announcements, lifecycle, and state synchronization.</li>
+        </ul>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>Migration and release notes</h3>
+        <p>No example in this page should be removed for V1 testing. If a selector, import, token, or runtime expectation changes later, add migration notes next to the affected example and keep the old behavior documented until compatibility is decided.</p>
     </div>
 </section>

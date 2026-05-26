@@ -1,107 +1,819 @@
-<section class="section section--lg" data-vds-doc="vds-layout">
-    <div class="section__inner section__stack section__stack-lg">
-        <header class="section__header section__header--wide">
-            <p class="section__eyebrow">Foundation</p>
-            <h1 class="section__title">Layout System</h1>
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <header class="section__header">
+            <div class="section__eyebrow">Foundations</div>
+            <h1 class="section__title">VDS Layout System</h1>
             <p class="section__subtitle">
-                Layout CSS provides containers, content regions, sections, grids, sidebars, and split patterns. It
-                controls geometry only; landmarks, headings, routing, and reading order remain application-owned.
+                The layout layer defines the structural skeleton of VDS: page shell, containers,
+                vertical rhythm, structural grids, and semantic layouts. It is token-driven,
+                theme-agnostic, and purely concerned with structure.
             </p>
         </header>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Source truth</p>
-                <h2 class="doc-block__title">Authoring and package surfaces</h2>
+                <h2 class="doc-block__title">Layout foundation</h2>
                 <p class="doc-block__summary">
-                    Layout is authored in <code>src/layout.css</code>. It is package-facing through
-                    <code>dist/core.css</code> and <code>dist/vds.css</code>.
+                    layout.css exposes a small set of structural primitives: page frame, reusable
+                    content regions, containers, section spacing, grids, and high-level layouts.
+                    All values are driven by tokens from primitives.css.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/core.css";
-@import "@24vlh/vds/dist/components/sections.css";</code></pre>
-                <p>
-                    Use <code>layout.css</code> primitives for page geometry and <code>sections.css</code> when you need
-                    section-level rhythm, bands, split layouts, or inset surfaces.
-                </p>
-            </div>
-        </article>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
-            <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Contract</p>
-                <h2 class="doc-block__title">Core layout primitives</h2>
-                <p class="doc-block__summary">
-                    These selectors are safe for app shells, docs pages, dashboards, and marketing-style content areas.
-                </p>
-            </header>
-            <div class="doc-block__body">
-                <div class="layout-grid-3">
-                    <div class="doc-block__preview">Containers: <code>container</code>, <code>container-wide</code>, <code>container-narrow</code>.</div>
-                    <div class="doc-block__preview">Grids: <code>layout-grid-2</code> through <code>layout-grid-6</code>.</div>
-                    <div class="doc-block__preview">Regions: <code>content-header</code>, <code>content-body</code>, <code>content-footer</code>.</div>
+            <div class="doc-block__body section__grid-3 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Page frame</h3>
+                    <ul class="text-sm">
+                        <li><code>header.page-header</code> — global site header.</li>
+                        <li><code>main.page-content</code> — primary page content.</li>
+                        <li><code>footer.page-footer</code> — global footer.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Content regions</h3>
+                    <ul class="text-sm">
+                        <li><code>.content-header</code> — local header area.</li>
+                        <li><code>.content-body</code> — flex-filling content area.</li>
+                        <li><code>.content-footer</code> — local footer/actions.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Containers & grids</h3>
+                    <ul class="text-sm">
+                        <li><code>.container*</code> — max-width shells.</li>
+                        <li><code>.section*</code> — vertical spacing helpers.</li>
+                        <li><code>.layout-grid-auto</code>, <code>.layout-grid-2</code>,
+                            <code>.layout-grid-3</code>, <code>.layout-grid-4</code>,
+                            <code>.layout-grid-5</code>, <code>.layout-grid-6</code> — structural grids.
+                        </li>
+                    </ul>
                 </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Copy-safe example</p>
-                <h2 class="doc-block__title">A semantic page shell</h2>
+                <h2 class="doc-block__title">Page shell</h2>
                 <p class="doc-block__summary">
-                    Layout classes do not create landmarks. Use native elements for the page structure and apply VDS
-                    classes for spacing and responsive behavior.
+                    The page shell is semantic-bound and single-instance: one header, one main
+                    content region, one footer. layout.css wires them into a flex column shell
+                    with a growing main region.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <pre class="doc-block__code"><code>&lt;main class="page-content"&gt;
-  &lt;section class="section"&gt;
-    &lt;div class="container content-body"&gt;
-      &lt;h2&gt;Workspace overview&lt;/h2&gt;
-      &lt;p&gt;Place the actual product content here.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/section&gt;
-&lt;/main&gt;</code></pre>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <header class="page-header bg-soft">
+                        <div class="container">
+                            <div class="text-sm text-mono">VDS</div>
+                        </div>
+                    </header>
+
+                    <main class="page-content bg-muted">
+                        <section class="section" data-vds-content-block data-vds-dock-block>
+                            <div class="container">
+                                <h1 class="text-md">Page title</h1>
+                                <p class="text-sm text-muted">Primary content lives here.</p>
+                            </div>
+                        </section>
+                    </main>
+
+                    <footer class="page-footer bg-soft">
+                        <div class="container">
+                            <p class="text-xs text-muted">© Vlah Group</p>
+                        </div>
+                    </footer>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;body&gt;
+  &lt;header class="page-header"&gt;
+    &lt;div class="container"&gt;…&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;main class="page-content"&gt;
+    &lt;section class="section"&gt;
+      &lt;div class="container"&gt;…&lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer class="page-footer"&gt;
+    &lt;div class="container"&gt;…&lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+                    <pre class="doc-block__code"><code>/* layout.css — page frame */
+header.page-header {
+  width: 100%;
+  position: relative;
+  z-index: var(--z-header);
+}
+
+main.page-content {
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+footer.page-footer {
+  width: 100%;
+  position: relative;
+  z-index: var(--z-base);
+}</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Responsive behavior</p>
-                <h2 class="doc-block__title">Collapse is visual, not semantic</h2>
+                <h2 class="doc-block__title">Content regions</h2>
                 <p class="doc-block__summary">
-                    Grid, sidebar, and split helpers collapse at their source-defined breakpoints. The DOM order still
-                    controls reading order, focus order, and screen reader order.
+                    Reusable structural regions used inside any shell: modals, panels,
+                    drawers, dashboards, sidebar layouts. They abstract the common pattern
+                    “header / scrollable body / footer”.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <ul>
-                    <li>Put the primary content first unless the product has a stronger semantic reason.</li>
-                    <li>Use headings and landmarks to describe regions.</li>
-                    <li>Keep overflow and sticky behavior tested on narrow screens.</li>
-                </ul>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview flex flex-column gap-3">
+                    <div class="content-header">
+                        <h3 class="text-sm">Panel title</h3>
+                    </div>
+                    <div class="content-body">
+                        <p class="text-sm text-muted">
+                            This region grows and can become scrollable inside a flex
+                            container.
+                        </p>
+                    </div>
+                    <div class="content-footer">
+                        <div class="button-row">
+                            <button class="button button--ghost">Cancel</button>
+                            <button class="button button--primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="flex flex-column gap-3"&gt;
+  &lt;div class="content-header"&gt;…&lt;/div&gt;
+  &lt;div class="content-body"&gt;…&lt;/div&gt;
+  &lt;div class="content-footer"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                    <pre class="doc-block__code"><code>/* layout.css — content regions */
+.content-header {
+  width: 100%;
+}
+
+.content-body {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.content-footer {
+  width: 100%;
+  flex-shrink: 0;
+}</code></pre>
+                </div>
+
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Validation</p>
-                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <h2 class="doc-block__title">Containers</h2>
                 <p class="doc-block__summary">
-                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
-                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
-                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                    Max-width containers keep content centred and readable. layout.css
+                    defines a small set of semantic containers for apps, marketing and
+                    documentation surfaces.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <ul>
-                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
-                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
-                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
-                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
-                </ul>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <section class="section" data-vds-content-block data-vds-dock-block>
+                        <div class="container">
+                            <h3 class="text-sm">.container</h3>
+                            <p class="text-sm text-muted">Default page container.</p>
+                        </div>
+                    </section>
+
+                    <section class="section" data-vds-content-block data-vds-dock-block>
+                        <div class="container-wide">
+                            <h3 class="text-sm">.container-wide</h3>
+                            <p class="text-sm text-muted">For wide heroes / galleries.</p>
+                        </div>
+                    </section>
+
+                    <section class="section" data-vds-content-block data-vds-dock-block>
+                        <div class="container-relaxed">
+                            <h3 class="text-sm">.container-relaxed</h3>
+                            <p class="text-sm text-muted">
+                                Optimised for long-form text (~90ch).
+                            </p>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section"&gt;
+  &lt;div class="container"&gt;…&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="section"&gt;
+  &lt;div class="container-wide"&gt;…&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="section"&gt;
+  &lt;div class="container-relaxed"&gt;…&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+                    <pre class="doc-block__code"><code>/* layout.css — containers */
+.container {
+  width: 100%;
+  max-width: var(--content-width-xl);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.container-wide {
+  width: 100%;
+  max-width: var(--content-width-2xl);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.container-relaxed {
+  width: 100%;
+  max-width: 90ch;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Full-bleed patterns</h2>
+                <p class="doc-block__summary">
+                    Use <code>.full-bleed</code> and <code>.section-bleed</code> to break
+                    out of the standard container padding and create edge-to-edge bands.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <section class="section bg-soft" data-vds-content-block data-vds-dock-block>
+                        <div class="full-bleed">
+                            <div class="container-wide">
+                                <p class="text-sm text-muted">
+                                    This hero band spans the viewport, but content is still
+                                    constrained by <code>.container-wide</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="section" data-vds-content-block data-vds-dock-block>
+                        <div class="container section-bleed bg-soft">
+                            <p class="text-sm text-muted">
+                                <code>.section-bleed</code> breaks the background out of
+                                the container padding while keeping text aligned.
+                            </p>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="section bg-soft"&gt;
+  &lt;div class="full-bleed"&gt;
+    &lt;div class="container-wide"&gt;…&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="section"&gt;
+  &lt;div class="container section-bleed bg-soft"&gt;…&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+                    <pre class="doc-block__code"><code>/* layout.css — full-bleed helpers */
+.full-bleed {
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+.section-bleed {
+  margin-inline: calc(-1 * var(--space-4));
+}
+
+@media (max-width: 768px) {
+  .section-bleed {
+    margin-inline: calc(-1 * var(--space-3));
+  }
+}</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Section spacing</h2>
+                <p class="doc-block__summary">
+                    Vertical rhythm is controlled with <code>.section*</code> helpers that
+                    map to section-spacing tokens. They can be applied to any block-level
+                    element, not only &lt;section&gt;.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="section-xs bg-soft">
+                        <p class="text-xs text-muted">.section-xs</p>
+                    </div>
+                    <div class="section bg-soft mt-2">
+                        <p class="text-xs text-muted">.section (default)</p>
+                    </div>
+                    <div class="section-lg bg-soft mt-2">
+                        <p class="text-xs text-muted">.section-lg</p>
+                    </div>
+                    <div class="section-xl bg-soft mt-2">
+                        <p class="text-xs text-muted">.section-xl</p>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="section-xs"&gt;…&lt;/div&gt;
+&lt;div class="section"&gt;…&lt;/div&gt;
+&lt;div class="section-lg"&gt;…&lt;/div&gt;
+&lt;div class="section-xl"&gt;…&lt;/div&gt;</code></pre>
+
+                    <pre class="doc-block__code"><code>/* layout.css — section spacing */
+.section-none { padding-block: 0; }
+.section-xs   { padding-block: var(--section-spacing-xs); }
+.section-sm   { padding-block: var(--section-spacing-sm); }
+.section      { padding-block: var(--section-spacing-md); }
+.section-lg   { padding-block: var(--section-spacing-lg); }
+.section-xl   { padding-block: var(--section-spacing-xl); }</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Structural grids</h2>
+                <p class="doc-block__summary">
+                    Use <code>.layout-grid-auto</code>, <code>.layout-grid-2</code>,
+                    <code>.layout-grid-3</code>, <code>.layout-grid-4</code>, <code>.layout-grid-5</code>,
+                    <code>.layout-grid-6</code> for simple, semantic grids. For more
+                    granular control, fall back to utility-level grid classes.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="bg-soft p-3 text-xs text-muted">Item 1</div>
+                    <div class="bg-soft p-3 text-xs text-muted">Item 2</div>
+                    <div class="bg-soft p-3 text-xs text-muted">Item 3</div>
+                    <div class="bg-soft p-3 text-xs text-muted">Item 4</div>
+                    <div class="bg-soft p-3 text-xs text-muted">Item 5</div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="layout-grid-3"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+  &lt;div&gt;Item 3&lt;/div&gt;
+  &lt;div&gt;Item 4&lt;/div&gt;
+  &lt;div&gt;Item 5&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                    <pre class="doc-block__code"><code>/* layout.css — structural grids */
+.layout-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min), 1fr));
+  gap: var(--gap-lg);
+}
+
+.layout-grid-3 {
+  display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap-lg);
+}
+
+@media (max-width: 768px) {
+  .layout-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">High-level layouts</h2>
+                <p class="doc-block__summary">
+                    layout.css includes a minimal set of semantic layouts: sidebar layouts
+                    and two-column splits. These cover the majority of app/dashboard and
+                    marketing hero patterns.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Sidebar layout</h3>
+                    <div class="sidebar-layout">
+                        <aside class="bg-soft p-3 text-xs text-muted">
+                            Sidebar
+                        </aside>
+                        <div class="content-body bg-muted p-3 text-xs text-muted">
+                            Main area
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="sidebar-layout"&gt;
+  &lt;aside&gt;…&lt;/aside&gt;
+  &lt;div class="content-body"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                    <pre class="doc-block__code"><code>/* layout.css — sidebar layouts */
+.sidebar-layout {
+  display: grid;
+    grid-template-columns: var(--sidebar-width-md) minmax(0, 1fr);
+  gap: var(--gap-lg);
+}
+
+@media (max-width: 1024px) {
+    .sidebar-layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm mt-8">
+                <div class="doc-block__preview">
+                    <h3 class="text-sm">Split / split-reverse</h3>
+                    <div class="split">
+                        <div class="bg-soft p-3 text-xs text-muted">Left</div>
+                        <div class="bg-soft p-3 text-xs text-muted">Right</div>
+                    </div>
+                    <div class="split-reverse mt-4">
+                        <div class="bg-soft p-3 text-xs text-muted">Left (visual second)</div>
+                        <div class="bg-soft p-3 text-xs text-muted">Right (visual first)</div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;section class="split"&gt;
+  &lt;div&gt;Left&lt;/div&gt;
+  &lt;div&gt;Right&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="split-reverse"&gt;
+  &lt;div&gt;Copy&lt;/div&gt;
+  &lt;div&gt;Media&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+                    <pre class="doc-block__code"><code>/* layout.css — split layouts */
+.split,
+.split-reverse {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-lg);
+}
+
+.split-reverse &gt; *:first-child { order: 2; }
+.split-reverse &gt; *:last-child  { order: 1; }
+
+@media (max-width: 768px) {
+  .split,
+  .split-reverse {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .split-reverse &gt; * {
+    order: initial;
+  }
+}</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Inline modal (layout only)</h2>
+                <p class="doc-block__summary">
+                    The modal component’s visual styling lives elsewhere. The layout layer
+                    only defines the internal structure via content regions.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="flex flex-column gap-3">
+                        <div class="content-header">
+                            <h3 class="text-sm">Delete project</h3>
+                        </div>
+                        <div class="content-body">
+                            <p class="text-sm text-muted">
+                                This action cannot be undone. All associated data will be removed.
+                            </p>
+                        </div>
+                        <div class="content-footer">
+                            <div class="button-row">
+                                <button class="button button--ghost">Cancel</button>
+                                <button class="button button--danger">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="modal flex-column gap-3"&gt;
+  &lt;div class="content-header"&gt;
+    &lt;h3&gt;Delete project&lt;/h3&gt;
+  &lt;/div&gt;
+
+  &lt;div class="content-body"&gt;
+    &lt;p&gt;This action cannot be undone…&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="content-footer"&gt;
+    &lt;button class="button button--ghost"&gt;Cancel&lt;/button&gt;
+    &lt;button class="button button--danger"&gt;Delete&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                    <pre class="doc-block__code"><code>/* layout.css — reused content-region primitives */
+.content-header { width: 100%; }
+
+.content-body {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.content-footer {
+  width: 100%;
+  flex-shrink: 0;
+}</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Documentation shell</h2>
+                <p class="doc-block__summary">
+                    A simple documentation shell composed from layout primitives: sidebar
+                    layout, content regions, containers and section spacing.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <div class="sidebar-layout">
+                        <aside class="content-header bg-soft p-3">
+                            <p class="text-xs text-muted">Nav / TOC</p>
+                        </aside>
+                        <div class="content-body">
+                            <main class="page-content">
+                                <section class="section" data-vds-content-block data-vds-dock-block>
+                                    <div class="container-relaxed">
+                                        <h1 class="text-md">Doc page title</h1>
+                                        <p class="text-sm text-muted">
+                                            Long-form content sits inside container-relaxed,
+                                            while the shell is managed by layout.css.
+                                        </p>
+                                    </div>
+                                </section>
+                            </main>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="sidebar-layout"&gt;
+  &lt;aside class="content-header"&gt;…nav…&lt;/aside&gt;
+  &lt;div class="content-body"&gt;
+    &lt;main class="page-content"&gt;
+      &lt;section class="section"&gt;
+        &lt;div class="container-relaxed"&gt;…&lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    The layout layer provides structural semantics and predictable reading order.
+                    It must remain colour-neutral, typography-neutral, and free of interactive
+                    behaviour. Accessibility is guaranteed through correct landmarks, consistent
+                    DOM order, responsive collapse rules, and token-driven spacing.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Use semantic landmarks for the page shell:
+                            <code>&lt;header class="page-header" role="banner"&gt;</code>,
+                            <code>&lt;main class="page-content" role="main"&gt;</code>,
+                            <code>&lt;footer class="page-footer" role="contentinfo"&gt;</code>.
+                        </li>
+
+                        <li>
+                            Keep DOM order meaningful — layout utilities (<code>split</code>,
+                            <code>sidebar-layout</code>,
+                            <code>layout-grid-auto</code>/<code>layout-grid-2</code>/<code>layout-grid-3</code>/<code>layout-grid-4</code>/<code>layout-grid-5</code>/<code>layout-grid-6</code>)
+                            must not be used to
+                            reorder semantics. Visual order may change; reading order must not.
+                        </li>
+
+                        <li>
+                            Allow content regions (<code>.content-header</code>,
+                            <code>.content-body</code>, <code>.content-footer</code>) to behave as true
+                            structural sections for modals, panels, dashboards and shells.
+                        </li>
+
+                        <li>
+                            Use max-width containers for readability:
+                            <code>.container</code>,
+                            <code>.container-wide</code>,
+                            <code>.container-narrow</code>,
+                            <code>.container-tight</code>,
+                            <code>.container-relaxed</code>.
+                        </li>
+
+                        <li>
+                            Apply <code>.section*</code> classes to maintain consistent vertical rhythm
+                            driven by tokens (<code>--section-spacing-*</code>).
+                        </li>
+
+                        <li>
+                            Let structural grids collapse at mobile breakpoints exactly as defined:
+                            <code>@media (max-width: 768px)</code> → single column.
+                        </li>
+
+                        <li>
+                            In sidebar layouts (<code>.sidebar-layout</code>,
+                            <code>.sidebar-layout-right</code>), keep the sidebar as the first semantic
+                            element in the DOM, even if visually moved or collapsed.
+                        </li>
+
+                        <li>
+                            Use full-bleed patterns (<code>.full-bleed</code>,
+                            <code>.section-bleed</code>) only to extend background/surfaces — content
+                            must remain inside containers for readable line lengths.
+                        </li>
+
+                        <li>
+                            Ensure the document shell remains height-stable:
+                            <code>main.page-content { flex: 1 }</code> is required for
+                            accessible viewport fill.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>
+                            Don’t inject colours, typography, borders or component visuals
+                            into layout primitives — layout.css is structure-only.
+                        </li>
+
+                        <li>
+                            Don’t use grid or split layouts to reassign semantic order
+                            (e.g., placing the footer before the main content visually).
+                        </li>
+
+                        <li>
+                            Don’t override container max-widths with arbitrary pixel values —
+                            always use the provided token-based container classes.
+                        </li>
+
+                        <li>
+                            Don’t attach interaction behaviour (toggles, overlays, JS-driven
+                            transitions) to layout classes.
+                        </li>
+
+                        <li>
+                            Don’t collapse structural grids using custom breakpoints —
+                            follow the system breakpoint at 768px for grid and split collapse.
+                        </li>
+
+                        <li>
+                            Don’t “double-wrap” content in competing containers (e.g.,
+                            <code>.container</code> inside <code>.container-tight</code>).
+                        </li>
+
+                        <li>
+                            Don’t hardcode padding or margins inside layout classes —
+                            spacing is managed exclusively via tokens and section helpers.
+                        </li>
+
+                        <li>
+                            Don’t attempt to modify or remove <code>min-height: 0</code> from
+                            <code>.content-body</code>; scrollable regions depend on this for
+                            correct overflow behaviour in flex parents.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Use header/main/footer landmarks correctly; one instance each.
+2. Never reorder semantic DOM structure using CSS grid/flex.
+3. Content regions must remain scroll-safe: min-height: 0 is required.
+4. Use containers for max-width readability; never hardcode widths.
+5. Maintain section spacing using token-driven .section* helpers.
+6. Structural grids collapse to 1fr at 768px — don’t override this.
+7. Sidebar layouts collapse to single-column at 1024px; sidebar stays first.
+8. Full-bleed patterns expand background only, not content width.
+9. Layout.css must contain no colours, typography or component logic.</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-v1-doc-addendum>
+    <h2>Layout V1 testing notes</h2>
+    <p>The examples and specimens above are the primary visual test matrix for this surface. For VDS 1.0, keep every existing feature example visible and use this addendum to verify the new compatibility and release behavior without replacing the rich examples.</p>
+    <div class="doc-block doc-block--surface">
+        <h3>Source truth and package import</h3>
+        <p>Source truth: <code>src/layout.css</code>. Package-facing import for consumers: <code>dist/core.css</code>.</p>
+        <pre><code>@import "@24vlh/vds/dist/core.css";</code></pre>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>What to verify in V1</h3>
+        <ul>
+            <li>Each feature, variant, size, density, layout, and state shown above still renders with the V1 CSS.</li>
+            <li>ARIA and <code>data-*</code> aliases added for V1 behave as compatibility hooks, not as application logic.</li>
+            <li>Focus-visible, disabled, current, selected, expanded, loading, reduced-motion, forced-colors, responsive, and theme behavior are checked where the component exposes those states.</li>
+            <li>Consumer JavaScript still owns routing, validation, keyboard behavior, focus management, announcements, lifecycle, and state synchronization.</li>
+        </ul>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>Migration and release notes</h3>
+        <p>No example in this page should be removed for V1 testing. If a selector, import, token, or runtime expectation changes later, add migration notes next to the affected example and keep the old behavior documented until compatibility is decided.</p>
     </div>
 </section>

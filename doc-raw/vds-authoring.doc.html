@@ -1,108 +1,859 @@
-<section class="section section--lg" data-vds-doc="vds-authoring">
-    <div class="section__inner section__stack section__stack-lg">
-        <header class="section__header section__header--wide">
-            <p class="section__eyebrow">Docs foundation</p>
-            <h1 class="section__title">Authoring Layer</h1>
-            <p class="section__subtitle">
-                Authoring CSS styles Markdown-like prose, admonitions, callouts, heading anchors, footnotes, inline
-                markers, and prose grids inside documentation content.
+<section class="section" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner section__stack">
+        <div class="section__stack-sm">
+            <h1>Authoring Layer</h1>
+
+            <p class="leading-relaxed text-soft">
+                <code>authoring.css</code> provides the authoring surface for VDS:
+                admonitions, MDX-style callouts, heading anchors, footnotes, inline markers and
+                prose helpers that sit cleanly on top of your typography.
             </p>
-        </header>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+            <p class="text-sm text-muted">
+                Source: <code>authoring.css</code> · Safe on top of
+                <code>primitives.css</code>,
+                <code>themes/slate.css</code>,
+                <code>base.css</code>,
+                <code>layout.css</code> and
+                <code>typography.css</code>, plus
+                <code>icons.css</code> when using callout or anchor glyphs.
+            </p>
+        </div>
+
+        <p class="text-sm text-muted">
+            This page documents the full authoring surface: base admonitions, Markdown callouts,
+            heading anchors, footnotes, inline markers, prose helpers and doc-block integration.
+            Everything is designed to work with semantic HTML and the existing VDS documentation
+            stack.
+        </p>
+    </div>
+</section>
+
+
+<section class="section section--inset" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Source truth</p>
-                <h2 class="doc-block__title">Imports and scope</h2>
+                <h2 class="doc-block__title">Installation & dependencies</h2>
                 <p class="doc-block__summary">
-                    Authoring is authored in <code>src/components/authoring.css</code> and ships through
-                    <code>dist/components/authoring.css</code>. It is for docs/prose content, not app runtime widgets.
+                    <code>authoring.css</code> is a thin layer that styles semantic
+                    documentation markup. It assumes tokens, theme, base, layout and typography are
+                    already loaded.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/core.css";
-@import "@24vlh/vds/dist/components/authoring.css";
-@import "@24vlh/vds/dist/components/doc-block.css";</code></pre>
-            </div>
-        </article>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
-            <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Contract</p>
-                <h2 class="doc-block__title">Markdown-style surfaces</h2>
-                <p class="doc-block__summary">
-                    Authoring styles generated or handwritten documentation fragments. It does not generate headings,
-                    IDs, anchors, copy buttons, or footnote targets.
-                </p>
-            </header>
-            <div class="doc-block__body">
-                <div class="admonition admonition--tip">
-                    <div class="admonition__content">
-                        <p class="admonition__title">Tip</p>
-                        <p class="admonition__body">Use admonitions for explanatory documentation, not product alerts.</p>
-                    </div>
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <ul class="text-body">
+                        <li>Load neutral tokens: <code>primitives.css</code>.</li>
+                        <li>Load one active theme, e.g.
+                            <code>themes/slate.css</code>.
+                        </li>
+                        <li>Load core structural layers:
+                            <code>base.css</code>,
+                            <code>layout.css</code>,
+                            <code>typography.css</code>.
+                        </li>
+                        <li>Load <code>icons.css</code> for anchor and callout glyphs.</li>
+                        <li>Optionally load:
+                            <code>utilities.css</code>,
+                            <code>doc-block.css</code>.
+                        </li>
+                        <li>Then load <code>authoring.css</code> to enable
+                            admonitions, callouts, anchors, footnotes and prose helpers.
+                        </li>
+                    </ul>
                 </div>
-                <p>
-                    Use feedback components for runtime alerts and status messages in an application.
-                </p>
+
+                <div class="doc-block__code">
+<pre><code>&lt;link rel="stylesheet" href="./css/primitives.css"&gt;
+&lt;link rel="stylesheet" href="./css/themes/slate.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/base.css"&gt;
+&lt;link rel="stylesheet" href="./css/layout.css"&gt;
+&lt;link rel="stylesheet" href="./css/typography.css"&gt;
+&lt;link rel="stylesheet" href="./css/icons.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/utilities.css"&gt;
+&lt;link rel="stylesheet" href="./css/doc-block.css"&gt;
+
+&lt;link rel="stylesheet" href="./css/authoring.css"&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+
+<section class="section" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Copy-safe example</p>
-                <h2 class="doc-block__title">Heading anchor and footnote</h2>
+                <h2 class="doc-block__title">Authoring scope &amp; foundation</h2>
                 <p class="doc-block__summary">
-                    Generated-site code owns IDs, anchor URLs, collision handling, and footnote back references.
+                    A single class or data attribute sets sensible defaults for admonitions,
+                    footnotes and inline markers. Use it on any container that hosts documentation
+                    content.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <pre class="doc-block__code"><code>&lt;article class="authoring"&gt;
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm">
+                    <h3 class="text-sm">Scope helpers</h3>
+
+                    <p class="text-sm">
+                        Wrap long-form documentation areas with
+                        <code>.authoring</code>,
+                        <code>.doc-authoring</code>,
+                        <code>[data-vds-authoring]</code> or
+                        <code>.vds-authoring</code> to initialise authoring variables.
+                    </p>
+
+                    <div class="authoring">
+                        <div class="admonition admonition--note">
+                            <div class="admonition__icon">
+                                <span aria-hidden="true" class="icon icon--mask icon--info"></span>
+                            </div>
+
+                            <div class="admonition__content">
+                                <div class="admonition__title">Authoring context</div>
+                                <div class="admonition__body">
+                                    This box lives inside an
+                                    <code>.authoring</code>
+                                    container, so all authoring tokens are active.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        You can scope the authoring layer to a single article or the whole page.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;article class="typography" data-vds-authoring&gt;
+  &lt;h1&gt;Guide title&lt;/h1&gt;
+  &lt;p&gt;Introductory copy…&lt;/p&gt;
+
+  &lt;div class="admonition admonition--note"&gt;
+    &lt;div class="admonition__icon"&gt;&lt;span class="icon icon--mask icon--info" aria-hidden="true"&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="admonition__content"&gt;
+      &lt;div class="admonition__title"&gt;Note&lt;/div&gt;
+      &lt;div class="admonition__body"&gt;
+        This guide assumes Node 20+ is installed.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section class="section section--inset" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Admonition system (GitHub-style)</h2>
+                <p class="doc-block__summary">
+                    Structured, icon-ready blocks for notes, tips, warnings and dangers. Includes
+                    semantic variants, layout modifiers, lists and footer actions for richer
+                    guidance blocks.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm authoring">
+                    <h3 class="text-sm">Base structure</h3>
+
+                    <div class="admonition admonition--note">
+                        <div class="admonition__icon">
+                            <span aria-hidden="true" class="icon icon--mask icon--info"></span>
+                        </div>
+
+                        <div class="admonition__content">
+                            <div class="admonition__title">Note</div>
+                            <div class="admonition__body">
+                                Use <code>.admonition</code> with an optional icon and
+                                a <code>.admonition__content</code> wrapper.
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm">Variants</h3>
+
+                    <div class="section__stack-sm">
+                        <div class="admonition admonition--tip">
+                            <div class="admonition__icon">
+                                <span aria-hidden="true" class="icon icon--mask icon--tip"></span>
+                            </div>
+                            <div class="admonition__content">
+                                <div class="admonition__title">Tip</div>
+                                <div class="admonition__body">
+                                    Use for positive guidance or best practices.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="admonition" data-variant="warning">
+                            <div class="admonition__icon">
+                                <span aria-hidden="true" class="icon icon--mask icon--warning"></span>
+                            </div>
+                            <div class="admonition__content">
+                                <div class="admonition__title">Warning</div>
+                                <div class="admonition__body">
+                                    Use for risky operations or irreversible actions.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="admonition admonition--danger">
+                            <div class="admonition__icon">
+                                <span aria-hidden="true" class="icon icon--mask icon--danger"></span>
+                            </div>
+                            <div class="admonition__content">
+                                <div class="admonition__title">Danger</div>
+                                <div class="admonition__body">
+                                    Use for critical failures, data loss or security concerns.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm">Layout &amp; actions</h3>
+
+                    <div class="admonition admonition--accent admonition--bordered">
+                        <div class="admonition__icon">
+                            <span aria-hidden="true" class="icon icon--mask icon--sparkles"></span>
+                        </div>
+                        <div class="admonition__content">
+                            <div class="admonition__title">Release checklist</div>
+                            <div class="admonition__body">
+                                Use <code>.admonition__list</code> and <code>.admonition__footer</code>
+                                to structure multi-step guidance.
+                            </div>
+                            <ul class="admonition__list">
+                                <li>Update changelog.</li>
+                                <li>Run integration checks.</li>
+                                <li>Share rollout plan.</li>
+                            </ul>
+                            <div class="admonition__footer">
+                                <span class="admonition__meta">Updated 2 days ago</span>
+                                <div class="admonition__actions">
+                                    <a class="text-sm" href="#">View checklist</a>
+                                    <a class="text-sm" href="#">Notify team</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        Add <code>.admonition--compact</code> to reduce padding, or use
+                        <code>.admonition--bordered</code>, <code>.admonition--outline</code>,
+                        or <code>.admonition--plain</code> to change the surface.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="admonition admonition--note"&gt;…&lt;/div&gt;
+&lt;div class="admonition admonition--tip"&gt;…&lt;/div&gt;
+&lt;div class="admonition" data-variant="warning"&gt;…&lt;/div&gt;
+&lt;div class="admonition admonition--danger"&gt;…&lt;/div&gt;
+
+&lt;div class="admonition admonition--note admonition--compact"&gt;…&lt;/div&gt;
+&lt;div class="admonition admonition--accent admonition--bordered"&gt;…&lt;/div&gt;
+&lt;div class="admonition admonition--warning admonition--outline"&gt;…&lt;/div&gt;
+&lt;div class="admonition admonition--neutral admonition--plain"&gt;…&lt;/div&gt;
+
+&lt;ul class="admonition__list"&gt;…&lt;/ul&gt;
+&lt;div class="admonition__footer"&gt;
+  &lt;span class="admonition__meta"&gt;Updated 2 days ago&lt;/span&gt;
+  &lt;div class="admonition__actions"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Markdown / MDX callouts</h2>
+                <p class="doc-block__summary">
+                    Lightweight classes for Markdown-generated callouts, mirroring the admonition
+                    variants without needing nested markup. Use <code>.md-callout</code> with
+                    <code>data-variant="info|success|warning|danger|accent|neutral"</code> for
+                    single-class pipelines, or the explicit classes below for MDX output.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm authoring">
+                    <h3 class="text-sm">Direct HTML output</h3>
+                    <div class="md-note">
+                        <p><strong>Note.</strong> This guide assumes Node 20+.</p>
+                    </div>
+                    <div class="md-tip">
+                        <p><strong>Tip.</strong> Cache dependencies between builds to speed up CI.</p>
+                    </div>
+                    <div class="md-warning">
+                        <p><strong>Warning.</strong> This migration modifies production tables.</p>
+                    </div>
+                    <div class="md-danger">
+                        <p><strong>Danger.</strong> Never commit real credentials to source control.</p>
+                    </div>
+                    <div class="md-callout" data-variant="accent">
+                        <p><strong>Heads up.</strong> This section is authored in Markdown and
+                            styled with a <code>data-variant</code> override.</p>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        <code>.md-note</code>, <code>.md-info</code>, <code>.md-tip</code>,
+                        <code>.md-success</code>, <code>.md-warning</code>,
+                        <code>.md-danger</code> and <code>.md-important</code> share spacing
+                        and typography but use semantic colours from the theme.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="md-note"&gt;
+  &lt;p&gt;&lt;strong&gt;Note.&lt;/strong&gt; This guide assumes Node 20+.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="md-tip"&gt;
+  &lt;p&gt;&lt;strong&gt;Tip.&lt;/strong&gt; Cache dependencies between builds.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="md-warning"&gt;
+  &lt;p&gt;&lt;strong&gt;Warning.&lt;/strong&gt; This operation is destructive.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="md-danger"&gt;
+  &lt;p&gt;&lt;strong&gt;Danger.&lt;/strong&gt; Never run this in production.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="md-callout" data-variant="accent"&gt;
+  &lt;p&gt;&lt;strong&gt;Heads up.&lt;/strong&gt; Markdown callout with a variant override.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Heading anchors</h2>
+                <p class="doc-block__summary">
+                    Small, hover-revealed anchors for deep-linking into sections. Works with
+                    plain headings or headings inside a <code>.typography</code>
+                    container. On touch devices anchors stay visible; use
+                    <code>.heading-anchor--always</code> to keep them persistent.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm typography authoring">
+                    <h3 class="text-sm">Hover to reveal</h3>
+                    <h2 id="setup">
+                        Setup
+                        <a aria-label="Link to this section" class="heading-anchor" href="#setup">#</a>
+                    </h2>
+                    <p class="text-sm">
+                        Hover or focus the heading to reveal the <code>#</code> anchor.
+                        The anchor uses theme colours and respects focus states.
+                    </p>
+
+                    <p class="text-xs text-muted">
+                        Attach <code>id</code> to the heading and point the anchor’s
+                        <code>href</code> to the same value for deep-linking.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;article class="typography authoring"&gt;
   &lt;h2 id="setup"&gt;
     Setup
-    &lt;a class="heading-anchor" href="#setup" aria-label="Link to setup section"&gt;#&lt;/a&gt;
+    &lt;a
+      href="#setup"
+      class="heading-anchor"
+      aria-label="Link to this section"
+    &gt;#&lt;/a&gt;
   &lt;/h2&gt;
-  &lt;p&gt;Cache dependencies between documentation builds.&lt;/p&gt;
+
+  &lt;p&gt;Use anchors for shareable section links in long guides.&lt;/p&gt;
 &lt;/article&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Accessibility</p>
-                <h2 class="doc-block__title">Generated content still needs semantics</h2>
+                <h2 class="doc-block__title">Footnotes</h2>
                 <p class="doc-block__summary">
-                    Authoring CSS cannot repair a broken heading outline, invalid anchor target, missing footnote
-                    backref, or color-only warning.
+                    Superscript references and a dedicated <code>.footnotes</code>
+                    block for long-form documentation and research-style writing.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <ul>
-                    <li>Use one page title and stable heading IDs.</li>
-                    <li>Give heading anchors names such as "Link to setup section".</li>
-                    <li>Pair warning and danger callouts with clear text.</li>
-                    <li>Keep authoring, typography, and doc-block responsibilities separate.</li>
-                </ul>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm typography authoring">
+                    <h3 class="text-sm">Inline reference + list</h3>
+                    <p class="text-sm">
+                        VDS is optimised for documentation-heavy workflows
+                        <a class="fn-ref" href="#fn-1" id="fnref-1">1</a>
+                        where clarity and semantics matter more than raw speed.
+                    </p>
+
+                    <div class="footnotes">
+                        <ol>
+                            <li id="fn-1">
+                                VDS is designed as a CSS-first system that can be wired into any
+                                static-site engine or SPA.
+                                <a aria-label="Back to content" class="fn-back" href="#fnref-1">
+                                    ↩
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        Use <code>.fn-ref</code> for superscripts and
+                        <code>.fn-back</code> for the “back to content” link.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;p&gt;
+  VDS is optimised for documentation-heavy workflows
+  &lt;a href="#fn-1" class="fn-ref" id="fnref-1"&gt;1&lt;/a&gt;
+  where clarity matters.
+&lt;/p&gt;
+
+&lt;div class="footnotes"&gt;
+  &lt;ol&gt;
+    &lt;li id="fn-1"&gt;
+      VDS is designed as a CSS-first system.
+      &lt;a href="#fnref-1" class="fn-back" aria-label="Back to content"&gt;↩&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+<section class="section section--inset" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Validation</p>
-                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <h2 class="doc-block__title">Inline markers</h2>
                 <p class="doc-block__summary">
-                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
-                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
-                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                    Small, high-contrast labels for inline annotations: “Draft”, “Breaking change”,
+                    “Experimental”, and more. Supports accent/neutral variants plus outline and
+                    pill styles.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <ul>
-                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
-                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
-                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
-                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
-                </ul>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm authoring">
+                    <h3 class="text-sm">Usage in copy</h3>
+                    <p class="text-sm">
+                        This API is currently
+                        <span class="inline-marker inline-marker--warning">beta</span>
+                        and subject to change.
+                    </p>
+                    <p class="text-sm">
+                        The v2 layout engine is
+                        <span class="inline-marker inline-marker--info">experimental</span>
+                        but safe to test in non-critical pages.
+                    </p>
+                    <p class="text-sm">
+                        This path is
+                        <span class="inline-marker inline-marker--success">migration-ready</span>
+                        for production rollout.
+                    </p>
+                    <p class="text-sm">
+                        The legacy endpoint is
+                        <span class="inline-marker inline-marker--danger">deprecated</span>
+                        and will be removed in the next major release.
+                    </p>
+                    <p class="text-sm">
+                        This section is
+                        <span class="inline-marker inline-marker--accent inline-marker--pill">highlighted</span>
+                        for quick scanning.
+                    </p>
+                    <p class="text-sm">
+                        Use a
+                        <span class="inline-marker inline-marker--neutral inline-marker--outline">neutral</span>
+                        label for low emphasis tags.
+                    </p>
+
+                    <p class="text-xs text-muted">
+                        Use <code>.inline-marker</code> plus a semantic modifier (or
+                        <code>data-variant</code>):
+                        <code>--info</code>,
+                        <code>--success</code>,
+                        <code>--warning</code>,
+                        <code>--danger</code>,
+                        <code>--accent</code>,
+                        <code>--neutral</code>.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;p&gt;
+  This API is currently
+  &lt;span class="inline-marker inline-marker--warning"&gt;beta&lt;/span&gt;
+  and subject to change.
+&lt;/p&gt;
+
+&lt;p&gt;
+  The v2 layout engine is
+  &lt;span class="inline-marker inline-marker--info"&gt;experimental&lt;/span&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+  This path is
+  &lt;span class="inline-marker inline-marker--success"&gt;migration-ready&lt;/span&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+  The legacy endpoint is
+  &lt;span class="inline-marker inline-marker--danger"&gt;deprecated&lt;/span&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+  This section is
+  &lt;span class="inline-marker inline-marker--accent inline-marker--pill"&gt;highlighted&lt;/span&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+  Use a
+  &lt;span class="inline-marker inline-marker--neutral inline-marker--outline"&gt;neutral&lt;/span&gt;
+  label for low emphasis tags.
+&lt;/p&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
+
+<section class="section" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Prose helpers</h2>
+                <p class="doc-block__summary">
+                    Helpers for lead paragraphs, muted notes and tuned vertical rhythm in long-form
+                    documentation, plus simple multi-column layouts.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm typography authoring">
+                    <h3 class="text-sm">Lead &amp; muted text</h3>
+                    <div class="prose-lead">
+                        <p>
+                            VDS is designed for teams who want a single, disciplined CSS system to
+                            drive both marketing sites and internal tools.
+                        </p>
+                    </div>
+                    <p class="prose-muted text-sm">
+                        This note is intentionally lower-contrast to avoid competing with the main
+                        narrative.
+                    </p>
+
+                    <h3 class="text-sm">Tight vs relaxed stacks</h3>
+                    <div class="prose-tight">
+                        <p><strong>Tight prose.</strong> Use in sidebars or dense reference material.</p>
+                        <p>Each subsequent block has a small, predictable gap.</p>
+                    </div>
+
+                    <div class="prose-relaxed">
+                        <p><strong>Relaxed prose.</strong> Use in high-level guides or concept pages.</p>
+                        <p>Each block has a more generous gap for easier scanning.</p>
+                    </div>
+
+                    <h3 class="text-sm">Two-column prose</h3>
+                    <div class="prose-grid-2">
+                        <div>
+                            <p><strong>Left column.</strong> Conceptual overview, goals, constraints.</p>
+                        </div>
+                        <div>
+                            <p><strong>Right column.</strong> Concrete examples, code, links.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm">Three-column prose</h3>
+                    <div class="prose-grid-3">
+                        <div>
+                            <p><strong>First.</strong> Scope and intent.</p>
+                        </div>
+                        <div>
+                            <p><strong>Second.</strong> Decisions and rationale.</p>
+                        </div>
+                        <div>
+                            <p><strong>Third.</strong> Links and references.</p>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-muted">
+                        These helpers only adjust spacing and colour; they respect your underlying
+                        typography scale. Use <code>.prose-grid-1-2</code> or
+                        <code>.prose-grid-2-1</code> for asymmetric layouts.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;div class="prose-lead"&gt;
+  &lt;p&gt;VDS is designed as a disciplined CSS system…&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p class="prose-muted"&gt;
+  This note is intentionally lower-contrast.
+&lt;/p&gt;
+
+&lt;div class="prose-tight"&gt;
+  &lt;p&gt;&lt;strong&gt;Tight prose.&lt;/strong&gt; Use for dense reference.&lt;/p&gt;
+  &lt;p&gt;Each block uses a small, fixed gap.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="prose-relaxed"&gt;
+  &lt;p&gt;&lt;strong&gt;Relaxed prose.&lt;/strong&gt; Use for concept pages.&lt;/p&gt;
+  &lt;p&gt;Blocks are spaced more generously.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="prose-grid-2"&gt;
+  &lt;div&gt;…left column…&lt;/div&gt;
+  &lt;div&gt;…right column…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="prose-grid-3"&gt;
+  &lt;div&gt;…column one…&lt;/div&gt;
+  &lt;div&gt;…column two…&lt;/div&gt;
+  &lt;div&gt;…column three…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="prose-grid-1-2"&gt;
+  &lt;div&gt;…narrow…&lt;/div&gt;
+  &lt;div&gt;…wide…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="prose-grid-2-1"&gt;
+  &lt;div&gt;…wide…&lt;/div&gt;
+  &lt;div&gt;…narrow…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Authoring + doc-block integration</h2>
+                <p class="doc-block__summary">
+                    The authoring layer is tuned to sit inside <code>.doc-block</code>
+                    bodies: margins are normalised so multiple callouts do not break the documentation
+                    rhythm.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview section__stack-sm authoring">
+                    <h3 class="text-sm">Composed inside a doc-block</h3>
+                    <p class="text-sm">
+                        You can safely mix admonitions, Markdown callouts, inline markers and
+                        footnotes inside the same documentation block.
+                    </p>
+
+                    <div class="admonition admonition--info">
+                        <div class="admonition__icon">
+                            <span aria-hidden="true" class="icon icon--mask icon--info"></span>
+                        </div>
+                        <div class="admonition__content">
+                            <div class="admonition__title">Authoring-aware spacing</div>
+                            <div class="admonition__body">
+                                When used inside <code>.doc-block__body</code>,
+                                <code>authoring.css</code> slightly adjusts vertical
+                                margins to match the documentation grid.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md-callout" data-variant="success">
+                        <p><strong>Tip.</strong> Use numbered code blocks from
+                            <code>doc-block.css</code> together with inline markers to
+                            explain each step.
+                        </p>
+                    </div>
+
+                    <p class="text-sm">
+                        Numbered lines are ideal for step-by-step explanations
+                        <span class="inline-marker inline-marker--info">see example below</span>.
+                    </p>
+                </div>
+
+                <div class="doc-block__code">
+<pre><code>&lt;article class="doc-block"&gt;
+  &lt;div class="doc-block__body authoring"&gt;
+    &lt;p&gt;You can mix authoring primitives inside a doc-block.&lt;/p&gt;
+
+    &lt;div class="admonition admonition--info"&gt;…&lt;/div&gt;
+
+    &lt;div class="md-callout" data-variant="success"&gt;
+      &lt;p&gt;&lt;strong&gt;Tip.&lt;/strong&gt; Use numbered code with inline markers.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;
+      Numbered lines are ideal for step-by-step guides
+      &lt;span class="inline-marker inline-marker--info"&gt;see example below&lt;/span&gt;.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-authoring data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Contract for accessible, predictable authoring surfaces. Maintain semantic HTML,
+                    respect typography, and let tokens drive spacing, colour and hierarchy.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Wrap documentation areas in <code>.authoring</code>, <code>.doc-authoring</code>,
+                            <code>.vds-authoring</code>, or <code>[data-vds-authoring]</code> to activate tokens.
+                        </li>
+
+                        <li>Use semantic structure for admonitions:
+                            <code>.admonition</code>,
+                            <code>.admonition__title</code>,
+                            <code>.admonition__body</code>.
+                        </li>
+
+                        <li>Use MDX-style callouts (<code>.md-note</code>, <code>.md-warning</code>,
+                            etc.) only when the content comes from Markdown. Prefer
+                            <code>.md-callout</code> + <code>data-variant</code> for pipelines that
+                            need a single class.
+                        </li>
+
+                        <li>Attach anchors directly to headings (<code>h2–h6</code>) with matching
+                            <code>id</code> and <code>href</code>.
+                        </li>
+
+                        <li>Mark decorative icons as <code>aria-hidden="true"</code> and add
+                            <code>aria-label</code> to heading anchors when the visible glyph is just “#”.
+                        </li>
+
+                        <li>Use <code>.fn-ref</code> and <code>.fn-back</code> for
+                            proper footnote semantics.
+                        </li>
+
+                        <li>Use inline markers (<code>.inline-marker--info</code>,
+                            <code>.inline-marker--success</code>, <code>.inline-marker--warning</code>,
+                            <code>.inline-marker--danger</code>, <code>.inline-marker--accent</code>,
+                            <code>.inline-marker--neutral</code>) for short, high-signal inline labels only.
+                        </li>
+
+                        <li>Use <code>data-variant</code> or semantic modifiers for colours; keep
+                            the palette token-driven.
+                        </li>
+
+                        <li>Use <code>.prose-tight</code> /
+                            <code>.prose-relaxed</code> to tune reading rhythm without overriding
+                            typography.
+                        </li>
+
+                        <li>Compose authoring primitives inside <code>.doc-block__body</code> for
+                            consistent margins.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Don’t</h3>
+                    <ul class="text-sm">
+                        <li>Don’t nest admonitions or MDX callouts inside paragraphs.</li>
+
+                        <li>Don’t mix <code>.admonition</code> and Markdown callouts
+                            (<code>.md-note</code>, <code>.md-info</code>, <code>.md-tip</code>,
+                            <code>.md-success</code>, <code>.md-warning</code>, <code>.md-danger</code>,
+                            <code>.md-important</code>) in the same block; choose one model per context.
+                        </li>
+
+                        <li>Don’t place heading anchors outside the heading or after sibling elements.</li>
+
+                        <li>Don’t use footnotes for clarifications better served by admonitions.</li>
+
+                        <li>Don’t overuse inline markers; they are for emphasis, not decoration.</li>
+
+                        <li>Don’t apply authoring styles globally to application UI surfaces.</li>
+
+                        <li>Don’t override semantic colours of admonitions or markers; rely on theme tokens.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>1. Wrap documentation content in .authoring, .doc-authoring, .vds-authoring, or [data-vds-authoring].
+2. Use .admonition or Markdown callouts (.md-note, .md-info, .md-tip, .md-success, .md-warning, .md-danger, .md-important) consistently (never mixed); prefer .md-callout + data-variant for pipelines.
+3. Place heading anchors directly in h2–h6 with matching id/href.
+4. Keep footnotes semantic: .fn-ref in copy, .footnotes list below.
+5. Use inline-marker--info|success|warning|danger|accent|neutral (or data-variant) only for short, high-signal labels.
+6. Preserve spacing via prose-tight / prose-relaxed; do not override.
+7. Never apply global authoring styles to UI components or layouts.</code></pre>
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section data-vds-v1-doc-addendum>
+    <h2>Authoring V1 testing notes</h2>
+    <p>The examples and specimens above are the primary visual test matrix for this surface. For VDS 1.0, keep every existing feature example visible and use this addendum to verify the new compatibility and release behavior without replacing the rich examples.</p>
+    <div class="doc-block doc-block--surface">
+        <h3>Source truth and package import</h3>
+        <p>Source truth: <code>src/components/authoring.css</code>. Package-facing import for consumers: <code>dist/components/authoring.css</code>.</p>
+        <pre><code>@import "@24vlh/vds/dist/components/authoring.css";</code></pre>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>What to verify in V1</h3>
+        <ul>
+            <li>Each feature, variant, size, density, layout, and state shown above still renders with the V1 CSS.</li>
+            <li>ARIA and <code>data-*</code> aliases added for V1 behave as compatibility hooks, not as application logic.</li>
+            <li>Focus-visible, disabled, current, selected, expanded, loading, reduced-motion, forced-colors, responsive, and theme behavior are checked where the component exposes those states.</li>
+            <li>Consumer JavaScript still owns routing, validation, keyboard behavior, focus management, announcements, lifecycle, and state synchronization.</li>
+        </ul>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>Migration and release notes</h3>
+        <p>No example in this page should be removed for V1 testing. If a selector, import, token, or runtime expectation changes later, add migration notes next to the affected example and keep the old behavior documented until compatibility is decided.</p>
     </div>
 </section>

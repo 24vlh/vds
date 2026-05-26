@@ -1,103 +1,324 @@
-<section class="section section--lg" data-vds-doc="vds-avatar">
-    <div class="section__inner section__stack section__stack-lg">
-        <header class="section__header section__header--wide">
-            <p class="section__eyebrow">Media</p>
-            <h1 class="section__title">Avatar</h1>
-            <p class="section__subtitle">
-                Avatar CSS styles people, teams, and entity images, initials, status dots, and groups. CSS owns
-                sizing, shape, tone, status placement, and grouping; the application owns identity data and text alternatives.
-            </p>
-        </header>
-
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-avatar data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Source truth</p>
-                <h2 class="doc-block__title">Imports and package surface</h2>
+                <h2 class="doc-block__title">Avatars</h2>
                 <p class="doc-block__summary">
-                    Avatar is authored in <code>src/components/avatar.css</code> and ships through
-                    <code>dist/components/avatar.css</code>.
+                    Avatars represent people, teams, or entities. Use initials for placeholders,
+                    images when available, and status dots for presence.
+                </p>
+                <p class="text-sm text-muted">
+                    Source: <code>avatar.css</code> · Depends on
+                    <code>primitives.css</code>,
+                    <code>base.css</code>,
+                    <code>typography.css</code>,
+                    and theme tokens in <code>/themes/*.css</code>.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/core.css";
-@import "@24vlh/vds/dist/components/avatar.css";</code></pre>
-            </div>
-        </article>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
-            <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Examples</p>
-                <h2 class="doc-block__title">Image, initials, status, and group</h2>
-                <p class="doc-block__summary">
-                    Use meaningful image <code>alt</code> text when the avatar identifies a person. Hide decorative
-                    presence dots and pair status with visible or adjacent text.
-                </p>
-            </header>
-            <div class="doc-block__body">
-                <div class="section__inline section__inline-wrap">
-                    <span class="avatar avatar--lg avatar--ring">
-                        <span class="avatar__media">
-                            <img class="avatar__image" src="static/img/avatars/avatar-01.jpg" alt="Avery Johnson">
-                        </span>
-                        <span class="avatar__status avatar__status--online" aria-hidden="true"></span>
-                    </span>
-                    <span class="avatar avatar--accent">
-                        <span class="avatar__initials" aria-hidden="true">MK</span>
-                    </span>
-                    <span class="avatar avatar--square avatar--warning">
-                        <span class="avatar__initials" aria-hidden="true">QA</span>
-                    </span>
-                    <span class="avatar-group" aria-label="Project reviewers">
-                        <span class="avatar avatar--sm"><span class="avatar__initials" aria-hidden="true">AL</span></span>
-                        <span class="avatar avatar--sm"><span class="avatar__initials" aria-hidden="true">NS</span></span>
-                        <span class="avatar-group__more">+3</span>
-                    </span>
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="text-xs text-muted text-mono">Sizes</div>
+                    <div class="section__inline section__inline-wrap">
+                        <div class="avatar avatar--xs"><span class="avatar__initials">AV</span></div>
+                        <div class="avatar avatar--sm"><span class="avatar__initials">AV</span></div>
+                        <div class="avatar"><span class="avatar__initials">AV</span></div>
+                        <div class="avatar avatar--lg"><span class="avatar__initials">AV</span></div>
+                        <div class="avatar avatar--xl"><span class="avatar__initials">AV</span></div>
+                    </div>
+
+                    <div class="text-xs text-muted text-mono">Shape variants</div>
+                    <div class="section__inline section__inline-wrap">
+                        <div class="avatar"><span class="avatar__initials">RD</span></div>
+                        <div class="avatar avatar--square"><span class="avatar__initials">SQ</span></div>
+                        <div class="avatar avatar--sharp"><span class="avatar__initials">SH</span></div>
+                    </div>
                 </div>
-                <pre class="doc-block__code"><code>&lt;span class="avatar avatar--lg avatar--ring"&gt;
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar avatar--lg"&gt;
+  &lt;span class="avatar__initials"&gt;AV&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="avatar avatar--square"&gt;...&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-avatar data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Images, rings, and borders</h2>
+                <p class="doc-block__summary">
+                    Use images for known users. Apply rings to separate avatars on busy surfaces
+                    and borders when you need higher contrast.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__inline section__inline-wrap">
+                    <div class="avatar avatar--ring">
+                        <span class="avatar__media">
+                            <img alt="Profile photo placeholder" class="avatar__image"
+                                 src="static/img/avatars/avatar-01.jpg">
+                        </span>
+                    </div>
+                    <div class="avatar avatar--bordered">
+                        <span class="avatar__media">
+                            <img alt="Profile photo placeholder" class="avatar__image"
+                                 src="static/img/avatars/avatar-02.jpg">
+                        </span>
+                    </div>
+                    <div class="avatar avatar--square avatar--ring">
+                        <span class="avatar__media">
+                            <img alt="Profile photo placeholder" class="avatar__image"
+                                 src="static/img/avatars/avatar-03.jpg">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar avatar--ring"&gt;
   &lt;span class="avatar__media"&gt;
-    &lt;img class="avatar__image" src="static/img/avatars/avatar-01.jpg" alt="Avery Johnson"&gt;
+    &lt;img class="avatar__image" src="static/img/avatars/avatar-01.jpg" alt="Profile photo placeholder"&gt;
   &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section" data-vds-avatar data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Color variants</h2>
+                <p class="doc-block__summary">
+                    Use color variants to cluster teams or highlight roles when photos are not available.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__inline section__inline-wrap">
+                    <div class="avatar avatar--accent"><span class="avatar__initials">AC</span></div>
+                    <div class="avatar avatar--success"><span class="avatar__initials">SU</span></div>
+                    <div class="avatar avatar--info"><span class="avatar__initials">IN</span></div>
+                    <div class="avatar avatar--warning"><span class="avatar__initials">WA</span></div>
+                    <div class="avatar avatar--danger"><span class="avatar__initials">DA</span></div>
+                    <div class="avatar avatar--mono"><span class="avatar__initials">MO</span></div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar avatar--success"&gt;
+  &lt;span class="avatar__initials"&gt;SU&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section--inset" data-vds-avatar data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Presence status</h2>
+                <p class="doc-block__summary">
+                    Status dots sit above the avatar border to signal presence. Use one status per avatar.
+                </p>
+            </header>
+
+            <div class="doc-block__body">
+                <div class="doc-block__preview section__inline section__inline-wrap">
+                    <div class="avatar">
+                        <span class="avatar__initials">JS</span>
+                        <span aria-hidden="true" class="avatar__status avatar__status--online"></span>
+                    </div>
+                    <div class="avatar">
+                        <span class="avatar__initials">KM</span>
+                        <span aria-hidden="true" class="avatar__status avatar__status--away"></span>
+                    </div>
+                    <div class="avatar">
+                        <span class="avatar__initials">LT</span>
+                        <span aria-hidden="true" class="avatar__status avatar__status--busy"></span>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar"&gt;
+  &lt;span class="avatar__initials"&gt;JS&lt;/span&gt;
   &lt;span class="avatar__status avatar__status--online" aria-hidden="true"&gt;&lt;/span&gt;
-&lt;/span&gt;</code></pre>
+&lt;/div&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-avatar data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Accessibility</p>
-                <h2 class="doc-block__title">Identity and presence ownership</h2>
+                <h2 class="doc-block__title">Avatar groups</h2>
                 <p class="doc-block__summary">
-                    CSS cannot decide whether an avatar is informative or decorative, nor can it announce live presence changes.
+                    Group avatars to show shared ownership or participants. Use the overflow
+                    indicator for additional counts.
                 </p>
             </header>
+
             <div class="doc-block__body">
-                <ul>
-                    <li>Use <code>alt=""</code> only when nearby text already names the person or entity.</li>
-                    <li>Do not communicate availability with the status dot alone.</li>
-                    <li>Application code owns profile links, tooltip content, live presence updates, and group counts.</li>
-                    <li>Validate image contrast and status visibility in the final theme and surface.</li>
-                </ul>
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="avatar-group">
+                        <div class="avatar avatar--sm">
+                            <span class="avatar__media">
+                                <img alt="Profile photo placeholder" class="avatar__image"
+                                     src="static/img/avatars/avatar-01.jpg">
+                            </span>
+                        </div>
+                        <div class="avatar avatar--sm">
+                            <span class="avatar__media">
+                                <img alt="Profile photo placeholder" class="avatar__image"
+                                     src="static/img/avatars/avatar-02.jpg">
+                            </span>
+                        </div>
+                        <div class="avatar avatar--sm"><span class="avatar__initials">RK</span></div>
+                        <div aria-label="3 more participants" class="avatar avatar--sm avatar-group__more">+3</div>
+                    </div>
+
+                    <div class="avatar-group avatar-group--spread">
+                        <div class="avatar"><span class="avatar__initials">PM</span></div>
+                        <div class="avatar"><span class="avatar__initials">ST</span></div>
+                        <div class="avatar"><span class="avatar__initials">CL</span></div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar-group"&gt;
+  &lt;div class="avatar avatar--sm"&gt;
+    &lt;span class="avatar__media"&gt;
+      &lt;img class="avatar__image" src="static/img/avatars/avatar-01.jpg" alt="Profile photo placeholder"&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="avatar avatar--sm avatar-group__more" aria-label="3 more participants"&gt;+3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+<section class="section section--inset" data-vds-avatar data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Validation</p>
-                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <h2 class="doc-block__title">Usage patterns &amp; best practices</h2>
                 <p class="doc-block__summary">
-                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
-                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
-                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                    Avatars should clarify identity, ownership, or presence without distracting from content.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <ul>
-                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
-                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
-                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
-                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
-                </ul>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use images when available and initials as fallbacks.</li>
+                        <li>Keep avatar sizes consistent within the same surface.</li>
+                        <li>Use groups for shared ownership or participant lists.</li>
+                        <li>Use color variants sparingly to indicate teams or roles.</li>
+                        <li>Keep status dots consistent across the product.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not mix multiple sizes in the same row.</li>
+                        <li>Do not use avatars as primary navigation elements.</li>
+                        <li>Do not place labels inside avatars; keep text outside.</li>
+                        <li>Do not rely on color alone for identity or role.</li>
+                        <li>Do not stack too many avatars without a count indicator.</li>
+                    </ul>
+                </div>
             </div>
         </article>
+    </div>
+</section>
+
+<section class="section" data-vds-avatar data-vds-content-block data-vds-dock-block>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Provide accessible text for image avatars, keep contrast sufficient,
+                    and avoid using avatars as the only status indicator.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use <code>alt</code> text for images that convey identity.</li>
+                        <li>Use empty <code>alt=""</code> when avatars are purely decorative inside labelled controls.</li>
+                        <li>Use <code>aria-label</code> when avatars are interactive.</li>
+                        <li>Keep initials to two characters for readability.</li>
+                        <li>Use <code>role="img"</code> + <code>aria-label</code> for initials-only avatars
+                            and set <code>aria-hidden="true"</code> on the initials.
+                        </li>
+                        <li>Pair status dots with a text label in the UI.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not leave image <code>alt</code> attributes empty when needed.</li>
+                        <li>Do not duplicate names in both visible text and <code>aria-label</code> on the same element.</li>
+                        <li>Do not use low-contrast color combinations for initials.</li>
+                        <li>Do not animate status dots excessively.</li>
+                        <li>Do not hide critical status only inside the avatar.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="avatar" role="img" aria-label="Avery Vega"&gt;
+  &lt;span class="avatar__initials" aria-hidden="true"&gt;AV&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="avatar"&gt;
+  &lt;span class="avatar__media"&gt;
+    &lt;img class="avatar__image" src="static/img/avatars/avatar-01.jpg" alt="Avery Vega"&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-v1-doc-addendum>
+    <h2>Avatar V1 testing notes</h2>
+    <p>The examples and specimens above are the primary visual test matrix for this surface. For VDS 1.0, keep every existing feature example visible and use this addendum to verify the new compatibility and release behavior without replacing the rich examples.</p>
+    <div class="doc-block doc-block--surface">
+        <h3>Source truth and package import</h3>
+        <p>Source truth: <code>src/components/avatar.css</code>. Package-facing import for consumers: <code>dist/components/avatar.css</code>.</p>
+        <pre><code>@import "@24vlh/vds/dist/components/avatar.css";</code></pre>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>What to verify in V1</h3>
+        <ul>
+            <li>Each feature, variant, size, density, layout, and state shown above still renders with the V1 CSS.</li>
+            <li>ARIA and <code>data-*</code> aliases added for V1 behave as compatibility hooks, not as application logic.</li>
+            <li>Focus-visible, disabled, current, selected, expanded, loading, reduced-motion, forced-colors, responsive, and theme behavior are checked where the component exposes those states.</li>
+            <li>Consumer JavaScript still owns routing, validation, keyboard behavior, focus management, announcements, lifecycle, and state synchronization.</li>
+        </ul>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>Migration and release notes</h3>
+        <p>No example in this page should be removed for V1 testing. If a selector, import, token, or runtime expectation changes later, add migration notes next to the affected example and keep the old behavior documented until compatibility is decided.</p>
     </div>
 </section>

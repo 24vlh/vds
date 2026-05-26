@@ -1,94 +1,221 @@
-<section class="section section--lg" data-vds-doc="vds-state">
-    <div class="section__inner section__stack section__stack-lg">
-        <header class="section__header section__header--wide">
-            <p class="section__eyebrow">Status</p>
-            <h1 class="section__title">State</h1>
-            <p class="section__subtitle">
-                State CSS currently covers empty and zero-state presentation: icon/media, title, text, action, and
-                metadata slots with inline, split, compact, plain, soft, left, and center variants.
-            </p>
-        </header>
-
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-state>
+    <div class="section__inner">
+        <article class="doc-block doc-block--elevated">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Source truth</p>
-                <h2 class="doc-block__title">Imports and metadata gap</h2>
+                <h2 class="doc-block__title">Empty states</h2>
                 <p class="doc-block__summary">
-                    State is authored in <code>src/components/state.css</code> and ships through
-                    <code>dist/components/state.css</code>. Generated metadata currently has incomplete
-                    <code>source_css</code> evidence.
+                    Empty states explain what is missing, why it matters, and what the user can do next.
+                    Use the base layout to keep tone and spacing consistent across surfaces.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <pre class="doc-block__code"><code>@import "@24vlh/vds/dist/core.css";
-@import "@24vlh/vds/dist/components/state.css";
-@import "@24vlh/vds/dist/components/buttons.css";</code></pre>
+
+            <div class="doc-block__body section__grid-2 section__grid-md">
+                <div class="doc-block__preview">
+                    <div class="state">
+                        <div class="state__eyebrow">Campaigns</div>
+                        <div class="state__icon">+</div>
+                        <div class="state__title">No campaigns yet</div>
+                        <div class="state__text">
+                            Create your first campaign to start collecting feedback and approvals.
+                        </div>
+                        <div class="state__actions">
+                            <button class="button button--primary">Create campaign</button>
+                            <button class="button button--ghost">View templates</button>
+                        </div>
+                        <div class="state__meta">Tips and imports available in settings.</div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="state"&gt;
+  &lt;div class="state__icon"&gt;+&lt;/div&gt;
+  &lt;div class="state__title"&gt;No campaigns yet&lt;/div&gt;
+  &lt;div class="state__text"&gt;Create your first campaign...&lt;/div&gt;
+  &lt;div class="state__actions"&gt;
+    &lt;button class="button button--primary"&gt;Create campaign&lt;/button&gt;
+    &lt;button class="button button--ghost"&gt;View templates&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-state>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Example</p>
-                <h2 class="doc-block__title">Empty state</h2>
+                <h2 class="doc-block__title">Inline and split layouts</h2>
                 <p class="doc-block__summary">
-                    Use state for empty or zero-result contexts. Do not use it as a replacement for loading, error,
-                    success, blocked, or permission patterns.
+                    Inline states are ideal for empty list regions. Split layouts pair media with copy
+                    for onboarding or guided actions.
                 </p>
             </header>
+
             <div class="doc-block__body">
-                <div class="state state--soft">
-                    <div class="state__icon" aria-hidden="true">+</div>
-                    <div class="state__content">
-                        <h2 class="state__title">No projects yet</h2>
-                        <p class="state__text">Create a project to start collecting review evidence.</p>
-                        <div class="state__actions">
-                            <button class="button button--primary" type="button">Create project</button>
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="state state--inline">
+                        <div class="state__media">!</div>
+                        <div class="state__content">
+                            <div class="state__title">No assignees</div>
+                            <div class="state__text">Assign someone to continue this task.</div>
+                            <div class="state__actions">
+                                <button class="button button--secondary">Assign</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="state state--split state--soft">
+                        <div class="state__media">?</div>
+                        <div class="state__content">
+                            <div class="state__title">Connect your calendar</div>
+                            <div class="state__text">Sync schedules and reminders across the team.</div>
+                            <div class="state__actions">
+                                <button class="button button--primary">Connect</button>
+                                <button class="button button--ghost">Learn more</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <pre class="doc-block__code"><code>&lt;div class="state state--soft"&gt;
-  &lt;div class="state__icon" aria-hidden="true"&gt;+&lt;/div&gt;
-  &lt;h2 class="state__title"&gt;No projects yet&lt;/h2&gt;
-  &lt;button class="button button--primary" type="button"&gt;Create project&lt;/button&gt;
-&lt;/div&gt;</code></pre>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="state state--inline"&gt;...&lt;/div&gt;
+&lt;div class="state state--split state--soft"&gt;...&lt;/div&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block>
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-state>
+    <div class="section__inner">
+        <article class="doc-block doc-block--split">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Accessibility</p>
-                <h2 class="doc-block__title">Empty-state boundaries</h2>
+                <h2 class="doc-block__title">Compact and plain variants</h2>
                 <p class="doc-block__summary">
-                    Consumer code decides when the empty state appears and what the action does.
+                    Compact modes reduce padding for dense layouts. Plain states remove surface styling
+                    for embedded messaging.
                 </p>
             </header>
+
             <div class="doc-block__body">
-                <ul>
-                    <li>Use real headings and action labels.</li>
-                    <li>Mark decorative icon/media slots with <code>aria-hidden="true"</code>.</li>
-                    <li>Use feedback, progress, or skeleton components for live status, errors, and loading lifecycle.</li>
-                </ul>
+                <div class="doc-block__preview section__stack-sm">
+                    <div class="state state--compact state--left">
+                        <div class="state__icon">?</div>
+                        <div class="state__title">Nothing saved</div>
+                        <div class="state__text">Drafts will appear here.</div>
+                    </div>
+
+                    <div class="state state--plain state--left">
+                        <div class="state__title">Filter returned zero results</div>
+                        <div class="state__text">Adjust filters or clear search to continue.</div>
+                        <div class="state__actions">
+                            <button class="button button--ghost button--sm">Clear filters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-block__code">
+<pre class="doc-block__code"><code>&lt;div class="state state--compact state--left"&gt;...&lt;/div&gt;
+&lt;div class="state state--plain state--left"&gt;...&lt;/div&gt;</code></pre>
+                </div>
             </div>
         </article>
+    </div>
+</section>
 
-        <article class="doc-block doc-block--surface" data-vds-doc-block data-doc-quality-checks>
+<section class="section section--inset" data-vds-content-block data-vds-dock-block data-vds-state>
+    <div class="section__inner">
+        <article class="doc-block">
             <header class="doc-block__header">
-                <p class="doc-block__eyebrow">Validation</p>
-                <h2 class="doc-block__title">Example quality and release checks</h2>
+                <h2 class="doc-block__title">Usage patterns &amp; best practices</h2>
                 <p class="doc-block__summary">
-                    Source truth and package-facing imports must stay aligned: authoring evidence lives under
-                    <code>src/</code>, while copyable consumer imports use <code>dist/</code>. Validate examples in
-                    narrow and wide viewports, active themes, reduced-motion, forced-colors, and high-contrast contexts.
+                    A good empty state gives context, removes uncertainty, and offers a clear next action.
                 </p>
             </header>
-            <div class="doc-block__body">
-                <ul>
-                    <li>Examples must remain source-backed, copy-safe, and realistic enough to adapt.</li>
-                    <li>Application code owns runtime JavaScript, ARIA synchronization, focus, keyboard, routing, lifecycle, and announcements.</li>
-                    <li>Responsive, theme, motion, and contrast behavior must be checked in the consuming layout.</li>
-                    <li>Migration and release notes must record any changed selector, token, import, or example contract.</li>
-                </ul>
+
+            <div class="doc-block__body section__grid-auto section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do</h3>
+                    <ul class="text-sm">
+                        <li>Explain why the section is empty in plain language.</li>
+                        <li>Offer one primary action and optional secondary action.</li>
+                        <li>Use the split layout for onboarding and setup prompts.</li>
+                        <li>Keep copy short and actionable.</li>
+                        <li>Show lightweight tips in <code>state__meta</code> when helpful.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not overwhelm users with multiple CTAs.</li>
+                        <li>Do not hide critical instructions outside the empty state.</li>
+                        <li>Do not use empty states to advertise unrelated features.</li>
+                        <li>Do not add large illustrations in dense admin views.</li>
+                        <li>Do not use empty states as error messaging.</li>
+                    </ul>
+                </div>
             </div>
         </article>
+    </div>
+</section>
+
+<section class="section" data-vds-content-block data-vds-dock-block data-vds-state>
+    <div class="section__inner">
+        <article class="doc-block">
+            <header class="doc-block__header">
+                <h2 class="doc-block__title">Accessibility &amp; usage rules</h2>
+                <p class="doc-block__summary">
+                    Ensure empty states are readable, actionable, and provide semantic context for assistive tech.
+                </p>
+            </header>
+
+            <div class="doc-block__body section__grid-2 section__grid-sm">
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do</h3>
+                    <ul class="text-sm">
+                        <li>Use headings for the state title to establish hierarchy.</li>
+                        <li>Ensure actions are focusable and keyboard accessible.</li>
+                        <li>Keep icon text alternatives clear for screen readers.</li>
+                        <li>Provide short helper text for the next steps.</li>
+                    </ul>
+                </div>
+
+                <div class="doc-block__preview">
+                    <h3 class="text-xs text-muted text-mono">Do not</h3>
+                    <ul class="text-sm">
+                        <li>Do not rely on icon-only messages without text.</li>
+                        <li>Do not hide core guidance inside tooltips only.</li>
+                        <li>Do not use empty states as destructive confirmations.</li>
+                        <li>Do not remove the empty state without replacing context.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section data-vds-v1-doc-addendum>
+    <h2>State V1 testing notes</h2>
+    <p>The examples and specimens above are the primary visual test matrix for this surface. For VDS 1.0, keep every existing feature example visible and use this addendum to verify the new compatibility and release behavior without replacing the rich examples.</p>
+    <div class="doc-block doc-block--surface">
+        <h3>Source truth and package import</h3>
+        <p>Source truth: <code>src/components/state.css</code>. Package-facing import for consumers: <code>dist/components/state.css</code>.</p>
+        <pre><code>@import "@24vlh/vds/dist/components/state.css";</code></pre>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>What to verify in V1</h3>
+        <ul>
+            <li>Each feature, variant, size, density, layout, and state shown above still renders with the V1 CSS.</li>
+            <li>ARIA and <code>data-*</code> aliases added for V1 behave as compatibility hooks, not as application logic.</li>
+            <li>Focus-visible, disabled, current, selected, expanded, loading, reduced-motion, forced-colors, responsive, and theme behavior are checked where the component exposes those states.</li>
+            <li>Consumer JavaScript still owns routing, validation, keyboard behavior, focus management, announcements, lifecycle, and state synchronization.</li>
+        </ul>
+    </div>
+    <div class="doc-block doc-block--surface">
+        <h3>Migration and release notes</h3>
+        <p>No example in this page should be removed for V1 testing. If a selector, import, token, or runtime expectation changes later, add migration notes next to the affected example and keep the old behavior documented until compatibility is decided.</p>
     </div>
 </section>

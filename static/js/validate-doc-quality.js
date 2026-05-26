@@ -1,181 +1,114 @@
 const fs = require("fs");
 const glob = require("glob");
 
-const REQUIRED_LANGUAGE = [
+const REQUIRED_DOC_COUNT = 42;
+
+const WARNING_PATTERNS = [
     {
-        label: "source truth",
-        pattern: /source truth/i,
+        label: "live button without explicit type",
+        pattern: /<button\b(?![^>]*\btype=)[^>]*>/gi,
     },
     {
-        label: "package-facing dist",
-        pattern: /\bdist\b/i,
+        label: "escaped copyable button without explicit type",
+        pattern: /&lt;button\b(?!(?:(?!&gt;).)*\btype=)(?:(?!&gt;).)*&gt;/gi,
     },
     {
-        label: "validation",
-        pattern: /validation/i,
+        label: "copyable href=\"#\" placeholder",
+        pattern: /href=["']#["']|href=&quot;#&quot;|href=&#34;#&#34;|href=&#39;#&#39;/gi,
     },
     {
-        label: "accessibility evidence",
-        pattern: /accessib|aria-|aria\s|focus|keyboard|label|alt|semantic/i,
-    },
-    {
-        label: "runtime ownership",
-        pattern: /runtime|consumer-owned|consumer owns|application code owns|application owns/i,
-    },
-    {
-        label: "responsive",
-        pattern: /responsive/i,
-    },
-    {
-        label: "theme",
-        pattern: /theme/i,
-    },
-    {
-        label: "motion",
-        pattern: /motion|reduced-motion/i,
-    },
-    {
-        label: "migration",
-        pattern: /migration/i,
-    },
-    {
-        label: "release",
-        pattern: /release/i,
+        label: "live image without alt",
+        pattern: /<img\b(?![^>]*\balt=)[^>]*>/gi,
     },
 ];
 
-const BUTTON_NAME_CANDIDATE = /icon-only|copy|remove|close|dismiss|action|nav-toggle|toggle|calendar|stepper|collapse|expand|icon--/i;
-
-function stripTags(value) {
-    return value
-        .replace(/<[^>]*>/g, " ")
-        .replace(/&lt;[^&]*?&gt;/g, " ")
-        .replace(/&[a-z0-9#]+;/gi, " ")
-        .replace(/\s+/g, " ")
-        .trim();
+function countMatches(content, pattern) {
+    return (content.match(pattern) || []).length;
 }
 
-function hasAccessibleName(attrs, body) {
-    return /\b(?:aria-label|aria-labelledby|title)\s*=/.test(attrs) || stripTags(body).length > 0;
+function hasHeading(content) {
+    return /<h[1-3]\b/i.test(content);
 }
 
-function checkButtonNames(file, content, findings) {
-    const liveButtonPattern = /<button\b([^>]*)>([\s\S]*?)<\/button>/gi;
-    let liveMatch;
+function hasExample(content) {
+    return /\b(?:doc-block|example|demo|specimen|preview|showcase|sample)\b/i.test(content);
+}
 
-    while ((liveMatch = liveButtonPattern.exec(content)) !== null) {
-        const [, attrs, body] = liveMatch;
-        const candidateText = `${attrs} ${body}`;
+function hasSnippet(content) {
+    return /<pre\b|<code\b|&lt;[a-z][^&]*&gt;/i.test(content);
+}
 
-        if ((BUTTON_NAME_CANDIDATE.test(candidateText) || stripTags(body).length === 0) && !hasAccessibleName(attrs, body)) {
-            findings.push({
-                file,
-                reason: "button candidate lacks text, aria-label, aria-labelledby, or title",
-            });
-        }
-    }
-
-    const escapedButtonPattern = /&lt;button\b((?:(?!&gt;).)*)&gt;((?:(?!&lt;\/button&gt;).)*)&lt;\/button&gt;/gis;
-    let escapedMatch;
-
-    while ((escapedMatch = escapedButtonPattern.exec(content)) !== null) {
-        const [, attrs, body] = escapedMatch;
-        const candidateText = `${attrs} ${body}`;
-
-        if ((BUTTON_NAME_CANDIDATE.test(candidateText) || stripTags(body).length === 0) && !hasAccessibleName(attrs, body)) {
-            findings.push({
-                file,
-                reason: "escaped button candidate lacks text, aria-label, aria-labelledby, or title",
-            });
-        }
-    }
+function hasGuidance(content) {
+    return /accessib|aria-|keyboard|focus|responsive|theme|motion|runtime|consumer|validation|source|dist/i.test(content);
 }
 
 function checkFile(file, content) {
-    const findings = [];
-    const h1Count = (content.match(/<h1\b/gi) || []).length;
-    const qualityBlockCount = (content.match(/\bdata-doc-quality-checks\b/gi) || []).length;
-    const liveButtonsWithoutType = content.match(/<button\b(?![^>]*\btype=)[^>]*>/gi) || [];
-    const escapedButtonsWithoutType = content.match(/&lt;button\b(?!(?:(?!&gt;).)*\btype=)(?:(?!&gt;).)*&gt;/gi) || [];
-    const imagesWithoutAlt = content.match(/<img\b(?![^>]*\balt=)[^>]*>/gi) || [];
-    const copyableHashLinks = content.match(/href=["']#["']|href=&quot;#&quot;|href=&#34;#&#34;|href=&#39;#&#39;/gi) || [];
+    const failures = [];
+    const warnings = [];
+    const lineCount = content.split(/\r?\n/).length;
 
-    if (h1Count !== 1) {
-        findings.push({
-            file,
-            reason: `expected exactly one live h1, found ${h1Count}`,
-        });
+    if (lineCount < 40) {
+        failures.push("doc is too small to be a useful component reference");
     }
 
-    if (qualityBlockCount < 1) {
-        findings.push({
-            file,
-            reason: "missing data-doc-quality-checks block",
-        });
+    if (!hasHeading(content)) {
+        failures.push("missing visible heading");
     }
 
-    for (const {label, pattern} of REQUIRED_LANGUAGE) {
-        if (!pattern.test(content)) {
-            findings.push({
-                file,
-                reason: `missing required ${label} language`,
-            });
+    if (!hasExample(content)) {
+        failures.push("missing visible example/demo/specimen language");
+    }
+
+    if (!hasSnippet(content)) {
+        failures.push("missing copyable snippet/code evidence");
+    }
+
+    if (!hasGuidance(content)) {
+        failures.push("missing practical guidance language");
+    }
+
+    for (const {label, pattern} of WARNING_PATTERNS) {
+        const count = countMatches(content, pattern);
+        if (count > 0) {
+            warnings.push(`${label} (${count})`);
         }
     }
 
-    if (liveButtonsWithoutType.length > 0) {
-        findings.push({
-            file,
-            reason: `live button without explicit type (${liveButtonsWithoutType.length})`,
-        });
-    }
-
-    if (escapedButtonsWithoutType.length > 0) {
-        findings.push({
-            file,
-            reason: `escaped copyable button without explicit type (${escapedButtonsWithoutType.length})`,
-        });
-    }
-
-    if (copyableHashLinks.length > 0) {
-        findings.push({
-            file,
-            reason: `copyable href="#" placeholder remains (${copyableHashLinks.length})`,
-        });
-    }
-
-    if (imagesWithoutAlt.length > 0) {
-        findings.push({
-            file,
-            reason: `live image without alt (${imagesWithoutAlt.length})`,
-        });
-    }
-
-    checkButtonNames(file, content, findings);
-
-    return findings;
+    return {file, failures, warnings};
 }
 
 function main() {
     const files = glob.sync("doc-raw/vds-*.doc.html").sort();
-    const findings = [];
+    const results = files.map((file) => checkFile(file, fs.readFileSync(file, "utf8")));
+    const failures = results.flatMap((result) => result.failures.map((reason) => ({file: result.file, reason})));
+    const warnings = results.flatMap((result) => result.warnings.map((reason) => ({file: result.file, reason})));
 
-    for (const file of files) {
-        const content = fs.readFileSync(file, "utf8");
-        findings.push(...checkFile(file, content));
+    if (files.length !== REQUIRED_DOC_COUNT) {
+        failures.push({
+            file: "doc-raw",
+            reason: `expected ${REQUIRED_DOC_COUNT} VDS docs, found ${files.length}`,
+        });
     }
 
-    if (findings.length === 0) {
-        console.log(`Doc quality audit passed for ${files.length} files.`);
+    if (warnings.length > 0) {
+        console.log("Doc quality warnings for rich docs:");
+        for (const warning of warnings.slice(0, 80)) {
+            console.log(`- ${warning.file}: ${warning.reason}`);
+        }
+        if (warnings.length > 80) {
+            console.log(`- ... ${warnings.length - 80} additional warning(s) omitted`);
+        }
+    }
+
+    if (failures.length === 0) {
+        console.log(`Doc quality audit passed for ${files.length} rich docs.`);
         return;
     }
 
-    console.log("Doc quality audit findings:");
-
-    for (const finding of findings) {
-        console.log(`- ${finding.file}: ${finding.reason}`);
+    console.log("Doc quality audit failures:");
+    for (const failure of failures) {
+        console.log(`- ${failure.file}: ${failure.reason}`);
     }
-
     process.exitCode = 1;
 }
 

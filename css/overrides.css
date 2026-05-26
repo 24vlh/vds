@@ -52,3 +52,25 @@
 #doc-content .toast strong {
     color: var(--color-text);
 }
+
+#doc-content {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+#doc-content pre,
+#doc-content code {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+#doc-content .doc-block__preview {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 640px) {
+    #doc-content .doc-block__preview .drawer {
+        max-width: calc(100vw - 2rem);
+    }
+}
