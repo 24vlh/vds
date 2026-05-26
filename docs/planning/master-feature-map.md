@@ -4,7 +4,7 @@ Last updated: `2026-05-26`
 
 This is the compact dashboard for the `@24vlh/vds` `1.0.0` major release.
 
-Current package version: `0.3.8`
+Current package version: `1.0.0`
 Target release version: `1.0.0`
 
 ## Current State
@@ -16,9 +16,9 @@ Target release version: `1.0.0`
 
 ## Next Recommended Session
 
-Next session: `INFRA-S08 Final release checklist`.
+Next session: `REL-S03 Release candidate and tag preparation`.
 
-Reason: `INFRA-S07` hardened CI and npm publishing around read-only audits, checked-in `dist`, trusted publishing, provenance, no-token policy, and prepared-package validation. The next useful step is the final release checklist, version bump, release notes, and publish dry run.
+Reason: `INFRA-S08` completed the final infrastructure checklist, promoted the package metadata to `1.0.0`, added root release artifacts, refreshed approved generated outputs, and verified release gates. The next useful step is release-candidate/tag preparation and final human review before publishing.
 
 ## Release Programs
 
@@ -27,7 +27,7 @@ Reason: `INFRA-S07` hardened CI and npm publishing around read-only audits, chec
 | `REL` | `in-progress` | Coordinate `1.0.0` release sessions, gates, version bump, and publish readiness. | `vds-next-major-backlog.md` |
 | `COMP` | `done` | Modernize every VDS component through family sessions and component rows. | `vds-next-major-backlog.md` |
 | `DOCS` | `done` | Rebuild docs content, examples, ownership, shell, metadata, and linting. | `vds-next-major-backlog.md` |
-| `INFRA` | `in-progress` | Make build, audit, generated metadata, package checks, CI, and publishing reliable. | `vds-next-major-backlog.md` |
+| `INFRA` | `done` | Make build, audit, generated metadata, package checks, CI, and publishing reliable. | `vds-next-major-backlog.md` |
 
 ## Active Planning Files
 

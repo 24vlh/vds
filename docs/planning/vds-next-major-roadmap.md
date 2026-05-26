@@ -26,7 +26,7 @@ Breaking cleanup is allowed for `1.0.0`, but never silently. Preserve selectors 
 - Raw docs are currently handwritten runnable docs, but they are inconsistent and hard to maintain.
 - Generated docs metadata is useful evidence and now has an explicit write command plus freshness check; richer extraction can keep improving through infrastructure sessions.
 - Package consumers currently see checked-in `dist/`; `src/` is repo authoring source.
-- Existing audits now cover static contracts, generated evidence, package imports, dist freshness, a first browser smoke gate, CI, and trusted-publish gates; deeper visual baselines, scripted interaction tests, release notes, and final publish readiness remain release work.
+- Existing audits now cover static contracts, generated evidence, package imports, dist freshness, a first browser smoke gate, CI, trusted-publish gates, root release artifacts, and release-package verification; deeper visual baselines, scripted interaction tests, final tag preparation, and publish handoff remain release work.
 - Planning became too noisy. Active planning is now compact; detailed history is archived.
 
 ## Program Direction

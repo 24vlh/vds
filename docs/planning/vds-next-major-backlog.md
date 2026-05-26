@@ -9,9 +9,9 @@ Status values: `done`, `ready`, `todo`, `blocked`.
 | Session | Status | Outcome |
 | --- | --- | --- |
 | `REL-S00` | `done` | Normalize compact planning around the `1.0.0` release backlog, gates, and stop conditions. |
-| `REL-S01` | `todo` | Freeze final public interface policy for selectors, tokens, package paths, docs examples, and compatibility aliases. |
-| `REL-S02` | `todo` | Compile migration guide, changelog, known limitations, and release notes from completed component/docs/infra sessions. |
-| `REL-S03` | `todo` | Bump package version to `1.0.0`, refresh approved generated outputs, run release candidate checks, and prepare publish. |
+| `REL-S01` | `done` | Freeze final public interface policy for selectors, tokens, package paths, docs examples, and compatibility aliases. |
+| `REL-S02` | `done` | Compile migration guide, changelog, known limitations, and release notes from completed component/docs/infra sessions. |
+| `REL-S03` | `ready` | Prepare the release candidate tag, run final publish dry run, and hand off to trusted publishing. |
 | `REL-S04` | `todo` | Publish verification and post-release follow-up backlog. |
 
 ## Program 1: VDS Components
@@ -158,7 +158,15 @@ Every `doc-raw/vds-*.doc.html` file appears exactly once in this queue.
 | `INFRA-S05` | `done` | Add package smoke tests for full, core, component, theme, and standalone identity imports. |
 | `INFRA-S06` | `done` | Add browser smoke checks for representative docs routes, desktop/mobile overflow, theme switching, reduced-motion, forced-colors, and serious/critical axe findings. |
 | `INFRA-S07` | `done` | Harden CI and npm publish workflow with read-only audit gates, checked-in `dist` publishing, trusted publishing/provenance, no-token guards, and prepared-package validation. |
-| `INFRA-S08` | `ready` | Finalize release checklist: migration guide, changelog, release notes, version bump, dist refresh, package smoke, publish dry run. |
+| `INFRA-S08` | `done` | Finalized release checklist: migration guide, changelog, known limitations, release notes, version bump, approved generated refreshes, package verification, and publish dry-run attempt. |
+
+### Infrastructure Completion Notes
+
+- `INFRA-S08` promoted package metadata to `1.0.0`.
+- Root release artifacts now exist: `CHANGELOG.md`, `RELEASE_NOTES.md`, `MIGRATION.md`, and `KNOWN_LIMITATIONS.md`.
+- Approved generated outputs are refreshed through explicit commands only: `pnpm run inventory`, `pnpm run docs:vds:index`, and `pnpm run dist:refresh`.
+- Release verification uses `pnpm run audit`, `pnpm run release:context -- --tag v1.0.0`, and `pnpm run release:verify`.
+- The next release action is `REL-S03`: prepare the release candidate tag, perform final publish dry run in the publish package context, and hand off to the trusted-publishing workflow.
 
 ## 1.0.0 Acceptance Gates
 

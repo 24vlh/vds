@@ -3,7 +3,7 @@
 ## Repo Identity
 
 - Package: `@24vlh/vds`
-- Current version: `0.3.8`
+- Current version: `1.0.0`
 - Target release version: `1.0.0`
 - Package surface: checked-in `dist/`
 - Published files policy: package metadata currently publishes `dist`
@@ -88,7 +88,7 @@ pnpm run package:smoke
 pnpm run audit:browser
 pnpm run browser:smoke
 pnpm run audit:consumers
-pnpm run release:context -- --tag v0.3.8
+pnpm run release:context -- --tag v1.0.0
 pnpm run release:prepare
 pnpm run release:package
 pnpm run release:verify
@@ -113,7 +113,7 @@ pnpm run build
 pnpm run build:prod
 ```
 
-Current `1.0.0` infrastructure has deliberate selector, docs metadata, dist freshness, package smoke, browser smoke, consumer compatibility checks, CI, and npm trusted-publish gates. Remaining infrastructure work is final release checklist, version bump, release notes, and release-candidate verification.
+Current `1.0.0` infrastructure has deliberate selector, docs metadata, dist freshness, package smoke, browser smoke, consumer compatibility checks, CI, npm trusted-publish gates, root release artifacts, version `1.0.0`, and release-package verification.
 
 `INFRA-S01` restored read-only selector, dist-presence, and consumer compatibility audit commands and changed `lint-staged` to run CSS/token validation instead of the build. Generated selector inventories, generated consumer reports, docs metadata regeneration, and dist freshness comparison remain deferred to later `INFRA-*` sessions.
 
@@ -129,6 +129,8 @@ Current `1.0.0` infrastructure has deliberate selector, docs metadata, dist fres
 
 `INFRA-S07` hardened CI and publishing: pull requests and `main` pushes run `pnpm run audit` with sibling `@24vlh/agents` metadata tooling checked out beside VDS, while tag publishes verify release context, run the full audit, prepare a sanitized package from checked-in `dist`, validate `npm pack --dry-run`, and publish with npm trusted publishing/OIDC plus `--provenance`. npm auth tokens are intentionally rejected.
 
+`INFRA-S08` finalized the release checklist: `CHANGELOG.md`, `RELEASE_NOTES.md`, `MIGRATION.md`, and `KNOWN_LIMITATIONS.md` summarize the component, docs, and infrastructure work; `package.json` is versioned to `1.0.0`; approved generated outputs are refreshed only through `inventory`, `docs:vds:index`, and `dist:refresh`; release verification uses `release:context -- --tag v1.0.0` and `release:verify`. The local WSL environment blocks direct `npm publish --dry-run`, so `REL-S03` should repeat the raw npm dry-run in CI or an unrestricted shell before creating the release tag.
+
 ## Known System Gaps
 
 - Component contracts are large and uneven; several files combine component, utility, docs-demo, and app-pattern responsibilities.
@@ -137,7 +139,7 @@ Current `1.0.0` infrastructure has deliberate selector, docs metadata, dist fres
 - Browser smoke now covers first-gate docs rendering, responsive overflow, theme values, reduced-motion, forced-colors, and serious/critical axe checks; deeper screenshot baselines and scripted interaction tests remain future release work.
 - Consumer/runtime responsibilities are often implied rather than documented.
 - `dist` is checked in and freshness-checked; build performance remains slow on this filesystem and can be optimized later if it becomes a blocker.
-- Release workflow now has CI and trusted-publish gates; final `1.0.0` still needs release notes, version bump, changelog/migration review, and a release-candidate publish dry run.
+- Release workflow now has CI, trusted-publish gates, release artifacts, and version `1.0.0`; final work is release-candidate tag preparation, human review, and publish handoff.
 
 ## 1.0.0 Working Rule
 
