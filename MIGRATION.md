@@ -1,5 +1,14 @@
 # Migration Guide: 0.3.8 To 1.0.0
 
+## Path alias
+
+Source of truth: `@24vlh/agents/path-roots.json`.
+
+- `@24vlh` => WSL primary `/public_html/24vlh`
+- `@24vlh` => Windows fallback `\\wsl.localhost\CentOS10\public_html\24vlh`
+- `@24vlh` => legacy WSL fallback `/mnt/w/public_html/24vlh`
+- `@24vlh` => legacy Windows fallback `W:/public_html/24vlh`
+
 VDS 1.0.0 is a stable-major release of the CSS-first package. The modernization work focused on compatibility aliases, stronger docs, and verifiable package infrastructure rather than silent selector removals.
 
 ## Compatibility Stance

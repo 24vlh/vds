@@ -1,5 +1,14 @@
 # VDS-0300 File Naming and Component Alias Policy
 
+## Path alias
+
+Source of truth: `@24vlh/agents/path-roots.json`.
+
+- `@24vlh` => WSL primary `/public_html/24vlh`
+- `@24vlh` => Windows fallback `\\wsl.localhost\CentOS10\public_html\24vlh`
+- `@24vlh` => legacy WSL fallback `/mnt/w/public_html/24vlh`
+- `@24vlh` => legacy Windows fallback `W:/public_html/24vlh`
+
 - Status: `done`
 - Last updated: `2026-05-23`
 - Master item: `VDS-0300`

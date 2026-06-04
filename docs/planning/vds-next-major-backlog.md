@@ -1,5 +1,14 @@
 # VDS 1.0.0 Backlog
 
+## Path alias
+
+Source of truth: `@24vlh/agents/path-roots.json`.
+
+- `@24vlh` => WSL primary `/public_html/24vlh`
+- `@24vlh` => Windows fallback `\\wsl.localhost\CentOS10\public_html\24vlh`
+- `@24vlh` => legacy WSL fallback `/mnt/w/public_html/24vlh`
+- `@24vlh` => legacy Windows fallback `W:/public_html/24vlh`
+
 This backlog is organized by executable sessions. The user should be able to say `run COMP-S02`, `run DOCS-S04`, or `run the next infra session` without creating another planning file first.
 
 Status values: `done`, `ready`, `todo`, `blocked`.

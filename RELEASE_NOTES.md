@@ -1,5 +1,14 @@
 # VDS 1.0.0 Release Notes
 
+## Path alias
+
+Source of truth: `@24vlh/agents/path-roots.json`.
+
+- `@24vlh` => WSL primary `/public_html/24vlh`
+- `@24vlh` => Windows fallback `\\wsl.localhost\CentOS10\public_html\24vlh`
+- `@24vlh` => legacy WSL fallback `/mnt/w/public_html/24vlh`
+- `@24vlh` => legacy Windows fallback `W:/public_html/24vlh`
+
 VDS 1.0.0 is the stable major release target for `@24vlh/vds`. It keeps VDS CSS-first, keeps package imports centered on checked-in `dist`, and turns the component, documentation, and infrastructure work into a verifiable release surface.
 
 ## What Changed

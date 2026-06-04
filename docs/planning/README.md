@@ -1,5 +1,14 @@
 # VDS Planning
 
+## Path alias
+
+Source of truth: `@24vlh/agents/path-roots.json`.
+
+- `@24vlh` => WSL primary `/public_html/24vlh`
+- `@24vlh` => Windows fallback `\\wsl.localhost\CentOS10\public_html\24vlh`
+- `@24vlh` => legacy WSL fallback `/mnt/w/public_html/24vlh`
+- `@24vlh` => legacy Windows fallback `W:/public_html/24vlh`
+
 This folder is the compact operational memory for the next major `@24vlh/vds` update.
 
 It replaces the previous micro-plan workflow. Do not create one numbered plan file per task. Use the session backlog instead.

@@ -1,5 +1,14 @@
 # VDS Planning Workflow
 
+## Path alias
+
+Source of truth: `@24vlh/agents/path-roots.json`.
+
+- `@24vlh` => WSL primary `/public_html/24vlh`
+- `@24vlh` => Windows fallback `\\wsl.localhost\CentOS10\public_html\24vlh`
+- `@24vlh` => legacy WSL fallback `/mnt/w/public_html/24vlh`
+- `@24vlh` => legacy Windows fallback `W:/public_html/24vlh`
+
 This folder is the planning source of truth for `@24vlh/vds`.
 
 ## Files
@@ -50,9 +59,9 @@ When the user asks what to do next:
 ## Validation Commands
 
 - Full audit pass:
-  - `wsl sh -lc "cd /mnt/w/public_html/24vlh/vds && pnpm run audit"`
+  - `wsl sh -lc "cd /public_html/24vlh/vds && pnpm run audit"`
 - Targeted audits:
-  - `wsl sh -lc "cd /mnt/w/public_html/24vlh/vds && pnpm run audit:css"`
-  - `wsl sh -lc "cd /mnt/w/public_html/24vlh/vds && pnpm run audit:classes"`
-  - `wsl sh -lc "cd /mnt/w/public_html/24vlh/vds && pnpm run audit:tokens"`
-  - `wsl sh -lc "cd /mnt/w/public_html/24vlh/vds && pnpm run audit:docs"`
+  - `wsl sh -lc "cd /public_html/24vlh/vds && pnpm run audit:css"`
+  - `wsl sh -lc "cd /public_html/24vlh/vds && pnpm run audit:classes"`
+  - `wsl sh -lc "cd /public_html/24vlh/vds && pnpm run audit:tokens"`
+  - `wsl sh -lc "cd /public_html/24vlh/vds && pnpm run audit:docs"`

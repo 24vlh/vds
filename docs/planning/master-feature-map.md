@@ -1,5 +1,14 @@
 # VDS 1.0.0 Master Feature Map
 
+## Path alias
+
+Source of truth: `@24vlh/agents/path-roots.json`.
+
+- `@24vlh` => WSL primary `/public_html/24vlh`
+- `@24vlh` => Windows fallback `\\wsl.localhost\CentOS10\public_html\24vlh`
+- `@24vlh` => legacy WSL fallback `/mnt/w/public_html/24vlh`
+- `@24vlh` => legacy Windows fallback `W:/public_html/24vlh`
+
 Last updated: `2026-05-26`
 
 This is the compact dashboard for the `@24vlh/vds` `1.0.0` major release.
