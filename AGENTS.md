@@ -1,30 +1,8 @@
-# VDS AI Router
+# VDS entry point
 
-Use this file as the thin routing entry point for VDS tasks.
+Project: `@24vlh/vds`. Path aliases: `@24vlh/agents/path-roots.json`.
+Read `@24vlh/agents/AGENTS.md`, then `@24vlh/agents/agents-repo/vds/AGENTS.md`.
 
-The maintained router lives at:
-- `@24vlh/agents/agents-repo/vds/AGENTS.md`
-
-Load the maintained router for actual routing, guardrails, and validation commands.
-Do not duplicate the full router here.
-
-## Path alias
-
-- `@24vlh` => Windows `W:/public_html/24vlh`
-- `@24vlh` => WSL `/mnt/w/public_html/24vlh`
-
-## Project root reference
-
-- `@24vlh/vds`
-
-## Command execution policy (WSL-first, mandatory)
-
-- Run commands through WSL shell:
-  - `wsl sh -lc "cd /mnt/w/public_html/24vlh/vds && <command>"`
-
-## Routing
-
-- Maintained router:
-  - `@24vlh/agents/agents-repo/vds/AGENTS.md`
-- Emit:
-  - `Routing: vds + @24vlh/agents/agents-repo/vds/AGENTS.md [+ other routers]`
+Owner direction, 12 October 2026: VDS is deferred. Previous plans and outstanding work are
+withdrawn. When work resumes, assess the current repository and branch intentions before choosing
+new work. Read `docs/planning/RESUMPTION_MEMO.md`; it is a dated observation, not an approved backlog.
